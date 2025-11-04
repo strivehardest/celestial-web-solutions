@@ -14,7 +14,6 @@
 .animate-scroll {
   animation: scroll 40s linear infinite;
 }
-
 .animate-scroll:hover {
   animation-play-state: paused;
 }
@@ -31,7 +30,57 @@
 .scroll-left {
   animation: scrollLeft 30s linear infinite;
 }
-
 .scroll-left:hover {
   animation-play-state: paused;
+}
+
+/* Orange Scrollbar Styles */
+@layer base {
+  /* Webkit Browsers (Chrome, Safari, Edge, Opera) */
+  ::-webkit-scrollbar {
+    width: 13px;  /* ✅ Fixed typo (was 130x) */
+    height: 13px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #f3f4f6;
+    border-radius: 20px;
+  }
+
+  html.dark ::-webkit-scrollbar-track {
+    background: #1f2937;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #f97316, #ea580c);
+    border-radius: 10px;
+    border: 4px solid #f3f4f6;
+  }
+
+  html.dark ::-webkit-scrollbar-thumb {
+    border-color: #1f2937;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #ea580c, #c2410c);
+  }
+
+  ::-webkit-scrollbar-thumb:active {
+    background: #c2410c;
+  }
+
+  /* Firefox */
+  html, body {
+    scrollbar-width: thin;
+    scrollbar-color: #f97316 #f3f4f6;
+  }
+
+  html.dark {
+    scrollbar-color: #f97316 #1f2937;
+  }
+
+  /* Smooth scrolling */
+  html {
+    scroll-behavior: smooth;
+  }
 }
