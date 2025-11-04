@@ -1,66 +1,82 @@
 import { motion } from "framer-motion";
-import { Monitor, Code, Search, ShoppingCart, Palette, Headphones, Target, MousePointer } from "lucide-react";
-import Navbar from '../components/Navbar';
+import { Monitor, Code, Search, ShoppingCart, Palette, Headphones, Target, MousePointer, ArrowRight } from "lucide-react";
 import { useEffect } from "react";
+import Link from "next/link";
+import WhatsAppButton from '../components/WhatsAppButton';
 
 const services = [
   { 
-    title: "Web Development", 
-    description: "At Celestial Web Solutions, we specialize in building robust, scalable web applications and custom portals using cutting-edge technologies like React, Next.js, Node.js, and modern frameworks. Our development process begins with thorough requirement analysis and system architecture design, followed by agile development methodologies to ensure timely delivery. We create everything from simple business websites to complex enterprise-level web systems, including custom Content Management Systems (CMS), e-learning platforms, customer portals, and API integrations. Our developers are proficient in both frontend and backend technologies, ensuring seamless user experiences with powerful server-side functionality. We prioritize clean, maintainable code, performance optimization, and scalability to ensure your web applications grow with your business needs. Each project includes comprehensive testing, documentation, and post-launch support to guarantee optimal performance and reliability.",
+    title: "Web Development",
+    slug: "web-development",
+    description: "We build robust, scalable web applications using cutting-edge technologies like React, Next.js, and Node.js. From simple business websites to complex enterprise systems, we create custom solutions that grow with your business, including CMS platforms, e-learning systems, and API integrations.",
     icon: Code,
-    keywords: ["web development", "custom web applications", "scalable websites", "modern web technologies", "React development", "Node.js"]
+    keywords: ["web development", "custom web applications", "React development", "Node.js"]
   },
   { 
-    title: "Web Design", 
-    description: "At Celestial Web Solutions, we create stunning, responsive websites that captivate your audience across all devices and screen sizes. Our design philosophy seamlessly blends modern aesthetics with intuitive user experience, ensuring your brand stands out in the competitive digital landscape. We begin every project with comprehensive brand analysis and target audience research to create designs that truly resonate with your customers. Our design process includes wireframing, mockup creation, prototyping, and iterative refinement based on client feedback. We specialize in creating visually appealing layouts with optimal color schemes, typography, and imagery that reflects your brand identity. Our responsive designs ensure perfect functionality across desktops, tablets, and mobile devices, incorporating the latest design trends like minimalism, micro-interactions, and accessibility standards. We also focus on conversion-oriented design elements, strategic call-to-action placement, and user journey optimization to maximize engagement and business results.",
+    title: "Web Design",
+    slug: "web-design",
+    description: "We create stunning, responsive websites that captivate your audience across all devices. Our designs blend modern aesthetics with intuitive user experience, featuring optimal color schemes, strategic layouts, and conversion-oriented elements that reflect your brand identity and maximize engagement.",
     icon: Monitor,
-    keywords: ["responsive web design", "modern website design", "UI design", "brand identity", "mobile-first design"]
+    keywords: ["responsive web design", "modern website design", "UI design", "mobile-first design"]
   },
   { 
-    title: "E-Commerce Solutions", 
-    description: "At Celestial Web Solutions, we develop comprehensive, high-converting online stores that maximize your sales potential and provide exceptional shopping experiences. Our e-commerce platforms are built with scalability in mind, featuring secure payment gateways, advanced inventory management systems, and user-friendly interfaces that convert visitors into loyal customers. We integrate multiple payment options including PayPal, Stripe, bank transfers, and mobile money solutions popular in Ghana and Africa. Our e-commerce solutions include advanced features like abandoned cart recovery, wishlist functionality, product recommendations, multi-currency support, and detailed analytics dashboards. We implement robust security measures including SSL certificates, PCI compliance, and fraud protection to ensure customer data safety. Our platforms are optimized for search engines and mobile devices, include social media integration, and support multiple shipping options. We also provide comprehensive admin panels for easy product management, order processing, and customer relationship management.",
+    title: "E-Commerce Solutions",
+    slug: "ecommerce-solutions",
+    description: "We develop high-converting online stores with secure payment gateways, inventory management, and user-friendly interfaces. Our platforms support multiple payment options including mobile money, feature abandoned cart recovery, product recommendations, and comprehensive analytics dashboards.",
     icon: ShoppingCart,
-    keywords: ["e-commerce development", "online store", "payment gateway", "shopping cart solutions", "mobile money integration"]
+    keywords: ["e-commerce development", "online store", "payment gateway", "mobile money integration"]
   },
   { 
-    title: "SEO Optimization", 
-    description: "At Celestial Web Solutions, we elevate your online visibility with proven, data-driven SEO strategies that drive organic traffic and significantly improve search engine rankings. Our comprehensive SEO approach begins with thorough website audits, competitor analysis, and keyword research tailored to your industry and target market in Ghana and beyond. We implement both on-page and off-page optimization techniques, including content optimization, meta tag enhancement, internal linking strategies, and technical SEO improvements like site speed optimization and mobile responsiveness. Our services include local SEO for Ghana-based businesses, Google My Business optimization, citation building, and reputation management. We create engaging, SEO-friendly content that addresses your audience's search intent while building your authority in your industry. Our team stays updated with Google algorithm changes and implements white-hat SEO practices that deliver sustainable, long-term results. We provide detailed monthly reports showing ranking improvements, traffic growth, and conversion metrics to demonstrate the tangible impact of our SEO efforts.",
+    title: "SEO Optimization",
+    slug: "seo-optimization",
+    description: "We elevate your online visibility with data-driven SEO strategies that drive organic traffic and improve search rankings. Our services include keyword research, on-page optimization, technical SEO, local SEO for Ghana, and monthly performance reports showing measurable results.",
     icon: Search,
-    keywords: ["SEO services", "search engine optimization", "organic traffic", "keyword research", "local SEO Ghana"]
+    keywords: ["SEO services", "search engine optimization", "organic traffic", "local SEO Ghana"]
   },
   { 
-    title: "UX/UI Design", 
-    description: "At Celestial Web Solutions, we craft exceptional user experiences through thoughtful UX/UI design that combines aesthetic appeal with functional excellence. Our design process begins with extensive user research, persona development, and journey mapping to understand your target audience's needs, behaviors, and pain points. We create detailed wireframes, interactive prototypes, and conduct usability testing to ensure optimal user flow and interface design. Our UI designs focus on visual hierarchy, color psychology, typography selection, and consistent design systems that enhance brand recognition and user engagement. We specialize in creating intuitive navigation structures, efficient information architecture, and accessibility-compliant designs that cater to users with diverse abilities. Our designs are optimized for conversion, incorporating strategic placement of call-to-action buttons, forms, and interactive elements. We also ensure cross-platform consistency, designing interfaces that work seamlessly across web, mobile, and tablet devices while maintaining the same high-quality user experience and brand consistency throughout all touchpoints.",
+    title: "UX/UI Design",
+    slug: "ux-ui-design",
+    description: "We craft exceptional user experiences through thoughtful design that combines beauty with functionality. Our process includes user research, wireframing, interactive prototypes, and usability testing to create intuitive, accessible interfaces that work seamlessly across all platforms.",
     icon: Palette,
-    keywords: ["UX design", "UI design", "user experience", "interface design", "wireframing", "usability testing"]
+    keywords: ["UX design", "UI design", "user experience", "wireframing", "usability testing"]
   },
   { 
-    title: "IT Support", 
-    description: "At Celestial Web Solutions, we provide comprehensive IT support services designed to keep your business technology infrastructure running smoothly and efficiently. Our IT support encompasses everything from initial system setup and configuration to ongoing maintenance, troubleshooting, and strategic technology consulting. We offer both remote and on-site support for hardware issues, software installations, network configuration, and security implementations. Our services include regular system maintenance, software updates, backup solutions, cybersecurity measures, and disaster recovery planning. We provide proactive monitoring of your systems to identify and resolve potential issues before they impact your business operations. Our team is experienced in supporting various operating systems, cloud platforms, and business applications commonly used in Ghana and internationally. We also offer technology consulting to help you make informed decisions about hardware upgrades, software selections, and digital transformation initiatives. Our goal is to ensure your technology serves as an enabler for your business growth rather than a source of frustration or downtime.",
+    title: "IT Support",
+    slug: "it-support",
+    description: "We provide comprehensive IT support to keep your business technology running smoothly. From system setup and maintenance to troubleshooting, security implementations, and technology consulting, we ensure your technology enables business growth rather than causing downtime.",
     icon: Headphones,
-    keywords: ["IT support", "technical support", "system maintenance", "technology consulting", "cybersecurity", "network support"]
+    keywords: ["IT support", "technical support", "system maintenance", "cybersecurity"]
   },
   { 
-    title: "Google AdSense Management", 
-    description: "At Celestial Web Solutions, we maximize your website's revenue potential through strategic Google AdSense optimization and comprehensive monetization strategies. Our data-driven approach begins with thorough analysis of your website's content, traffic patterns, and user behavior to identify the most profitable ad placement opportunities. We implement advanced ad optimization techniques including strategic ad unit placement, size optimization, and A/B testing to maximize click-through rates and earnings per click. Our services include content strategy development to create high-quality, AdSense-friendly content that attracts both users and advertisers. We monitor your AdSense performance continuously, analyzing metrics like page RPM, CTR, and CPC to make data-driven optimizations. We also ensure compliance with Google AdSense policies, helping you avoid violations that could lead to account suspension. Our team stays updated with AdSense policy changes and industry best practices, implementing white-hat optimization techniques that deliver sustainable revenue growth. We provide detailed monthly reports showing revenue growth, traffic analysis, and optimization recommendations to help you understand and improve your website's monetization performance.",
+    title: "Google AdSense Management",
+    slug: "google-adsense-management",
+    description: "We maximize your website revenue through strategic AdSense optimization. Our services include ad placement optimization, A/B testing, content strategy development, performance monitoring, and policy compliance to ensure sustainable revenue growth from your website traffic.",
     icon: Target,
-    keywords: ["Google AdSense", "ad revenue optimization", "website monetization", "advertising income", "content monetization"]
+    keywords: ["Google AdSense", "ad revenue optimization", "website monetization", "content monetization"]
   },
   { 
-    title: "Google Ads Management", 
-    description: "At Celestial Web Solutions, we drive targeted traffic and maximize conversions through expertly managed Google Ads campaigns tailored to the Ghanaian and international markets. Our certified Google Ads specialists handle every aspect of your campaigns, from initial strategy development and keyword research to ad creation, bid management, and continuous performance optimization. We begin with comprehensive market research and competitor analysis to identify the most profitable keywords and audience segments for your business. Our campaign setup includes precise audience targeting, geographic targeting (especially for Ghana-based businesses), device optimization, and strategic budget allocation across different campaign types including Search, Display, Shopping, and Video ads. We create compelling ad copy that resonates with your target audience and drives action, while continuously testing different variations to improve performance. Our optimization process includes regular bid adjustments, negative keyword management, ad schedule optimization, and landing page recommendations to maximize your return on ad spend (ROAS). We provide transparent, detailed reporting that shows exactly how your advertising budget is performing and contributing to your business growth.",
+    title: "Google Ads Management",
+    slug: "google-ads-management",
+    description: "We drive targeted traffic and maximize conversions through expertly managed Google Ads campaigns. Our certified specialists handle strategy, keyword research, ad creation, bid management, and continuous optimization across Search, Display, Shopping, and Video campaigns to maximize your ROI.",
     icon: MousePointer,
-    keywords: ["Google Ads", "PPC management", "paid advertising", "conversion optimization", "campaign management", "ROAS optimization"]
+    keywords: ["Google Ads", "PPC management", "paid advertising", "campaign management"]
   }
+];
+
+// Happy Clients Data
+const happyClients = [
+  { name: "Building Planner Designs", logo: "/png/projects/building.png" },
+  { name: "Ghana Updates Online", logo: "/png/projects/ghanaupdates1.jpg" },
+  { name: "AdBay Store", logo: "/png/projects/Adbay1.png" },
+  { name: "Elolo Agbleke", logo: "/png/projects/elolo2.jpeg" },
+  { name: "Mart Ban Logistics", logo: "/png/projects/martb.png" },
 ];
 
 export default function ServicesPage() {
   // SEO Meta Tags and Structured Data
   useEffect(() => {
-    // Update page title and meta description
     document.title = "Professional Web Services | Celestial Web Solutions - Web Development, SEO & Digital Marketing";
     
-    // Create or update meta description
     let metaDescription = document.querySelector('meta[name="description"]');
     if (!metaDescription) {
       metaDescription = document.createElement('meta');
@@ -69,63 +85,25 @@ export default function ServicesPage() {
     }
     metaDescription.content = "Expert web development, design, SEO optimization, e-commerce solutions, and digital marketing services. Transform your business with Celestial Web Solutions' comprehensive digital services.";
 
-    // Create or update meta keywords
     let metaKeywords = document.querySelector('meta[name="keywords"]');
     if (!metaKeywords) {
       metaKeywords = document.createElement('meta');
       metaKeywords.name = 'keywords';
       document.head.appendChild(metaKeywords);
     }
-    metaKeywords.content = "web development, web design, SEO optimization, e-commerce solutions, UX/UI design, IT support, Google AdSense, Google Ads, digital marketing, responsive design";
+    metaKeywords.content = "web development, web design, best web designer in Accra, best web designer Ghana, SEO optimization, e-commerce solutions, UX/UI design, IT support, Google AdSense, Google Ads, digital marketing";
 
-    // Add Open Graph meta tags
-    const ogTags = [
-      { property: 'og:title', content: 'Best Web Designer in Accra, Professional Web Services | Celestial Web Solutions' },
-      { property: 'og:description', content: 'Expert web development, design, SEO optimization, and digital marketing services to transform your business online.' },
-      { property: 'og:type', content: 'website' },
-      { property: 'og:url', content: window.location.href },
-      { property: 'og:site_name', content: 'Celestial Web Solutions' }
-    ];
-
-    ogTags.forEach(tag => {
-      let existingTag = document.querySelector(`meta[property="${tag.property}"]`);
-      if (!existingTag) {
-        existingTag = document.createElement('meta');
-        existingTag.setAttribute('property', tag.property);
-        document.head.appendChild(existingTag);
-      }
-      existingTag.content = tag.content;
-    });
-
-    // Add Twitter Card meta tags
-    const twitterTags = [
-      { name: 'twitter:card', content: 'summary_large_image' },
-      { name: 'twitter:title', content: 'Best Web Designer in Ghana, Professional Web Services | Celestial Web Solutions' },
-      { name: 'twitter:description', content: 'Expert web development, design, SEO optimization, and digital marketing services.' }
-    ];
-
-    twitterTags.forEach(tag => {
-      let existingTag = document.querySelector(`meta[name="${tag.name}"]`);
-      if (!existingTag) {
-        existingTag = document.createElement('meta');
-        existingTag.name = tag.name;
-        document.head.appendChild(existingTag);
-      }
-      existingTag.content = tag.content;
-    });
-
-    // Add structured data (JSON-LD)
     const structuredData = {
       "@context": "https://schema.org",
       "@type": "Organization",
       "name": "Celestial Web Solutions",
-      "description": "Best web Designer in Accra, Best Web Developr in Accra, design, and digital marketing services",
+      "description": "Best web Designer in Accra, Best Web Developer in Accra, design, and digital marketing services",
       "url": window.location.origin,
       "logo": `${window.location.origin}/logo.png`,
       "sameAs": [
         "https://facebook.com/celestialwebsolutions",
-        "https://twitter.com/celestialweb",
-        "https://linkedin.com/company/celestial-web-solutions"
+        "https://twitter.com/strivehardest",
+        "https://linkedin.com/in/aforlabi"
       ],
       "contactPoint": {
         "@type": "ContactPoint",
@@ -161,9 +139,7 @@ export default function ServicesPage() {
     }
     structuredDataScript.textContent = JSON.stringify(structuredData);
 
-    // Cleanup function
     return () => {
-      // Remove structured data on unmount
       const script = document.querySelector('#structured-data');
       if (script) {
         script.remove();
@@ -173,30 +149,106 @@ export default function ServicesPage() {
 
   return (
     <div className="min-h-screen bg-white dark:bg-gray-900">
-      <Navbar />
-      
-      <div className="pt-32 pb-20">
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="max-w-7xl mx-auto px-4 text-center"
-        >
-          <h1 
-            className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-orange-600 to-orange-500 bg-clip-text text-transparent"
-            style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}
-          >
-            Our Professional Services
-          </h1>
-          <p 
-            className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto"
-            style={{ fontFamily: 'Quicksand, sans-serif' }}
-          >
-            Comprehensive digital solutions to transform your business presence and drive measurable growth.
-          </p>
-        </motion.div>
+      {/* Hero Section */}
+      <section className="relative py-20 bg-gradient-to-br from-orange-500 via-orange-600 to-red-500 overflow-hidden">
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute -top-40 -right-40 w-80 h-80 bg-white/10 rounded-full opacity-50 animate-pulse"></div>
+          <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-white/10 rounded-full opacity-50 animate-pulse" style={{animationDelay: '2s'}}></div>
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-white/5 rounded-full opacity-30 animate-spin" style={{animationDuration: '20s'}}></div>
+        </div>
 
-        {/* Two Column Services Grid */}
-        <div className="max-w-7xl mx-auto px-4 mt-16">
+        <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <h1
+              className="text-4xl md:text-6xl font-bold text-white mb-6"
+              style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}
+            >
+              Our Services
+            </h1>
+            <p
+              className="text-xl text-orange-100 max-w-3xl mx-auto leading-relaxed"
+              style={{ fontFamily: "Quicksand, sans-serif" }}
+            >
+              Comprehensive digital solutions to transform your business presence and drive measurable growth.
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Scrolling Clients Section */}
+      <section className="py-16 bg-gradient-to-r from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 mb-8">
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-3xl md:text-4xl font-bold text-center mb-4 bg-gradient-to-r from-orange-600 to-orange-500 bg-clip-text text-transparent"
+            style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}
+          >
+            Our Happy Clients
+          </motion.h2>
+          <p className="text-center text-gray-600 dark:text-gray-300 mb-8" style={{ fontFamily: "Quicksand, sans-serif" }}>
+            Trusted by businesses 
+          </p>
+        </div>
+
+        {/* Scrolling Container */}
+        <div className="relative">
+          <div className="flex animate-scroll">
+            {/* First set of logos */}
+            {happyClients.map((client, index) => (
+              <div
+                key={`client-1-${index}`}
+                className="flex-shrink-0 mx-8 w-48 h-32 bg-white dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center p-6 border border-gray-200 dark:border-gray-700"
+              >
+                <img
+                  src={client.logo}
+                  alt={client.name}
+                  className="max-w-full max-h-full object-contain grayscale hover:grayscale-0 transition-all duration-300"
+                />
+              </div>
+            ))}
+            {/* Duplicate set for seamless loop */}
+            {happyClients.map((client, index) => (
+              <div
+                key={`client-2-${index}`}
+                className="flex-shrink-0 mx-8 w-48 h-32 bg-white dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center p-6 border border-gray-200 dark:border-gray-700"
+              >
+                <img
+                  src={client.logo}
+                  alt={client.name}
+                  className="max-w-full max-h-full object-contain grayscale hover:grayscale-0 transition-all duration-300"
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <style jsx>{`
+          @keyframes scroll {
+            0% {
+              transform: translateX(0);
+            }
+            100% {
+              transform: translateX(-50%);
+            }
+          }
+          .animate-scroll {
+            animation: scroll 30s linear infinite;
+          }
+          .animate-scroll:hover {
+            animation-play-state: paused;
+          }
+        `}</style>
+      </section>
+
+      {/* Services Grid */}
+      <div className="py-20">
+        <div className="max-w-7xl mx-auto px-4">
           <div className="grid md:grid-cols-2 gap-8">
             {services.map((service, index) => (
               <motion.div
@@ -205,7 +257,7 @@ export default function ServicesPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-xl hover:shadow-2xl transition-all duration-300 group"
+                className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-xl hover:shadow-2xl transition-all duration-300 group border border-gray-100 dark:border-gray-700"
               >
                 <div className="flex gap-6 mb-6">
                   <motion.div 
@@ -229,7 +281,7 @@ export default function ServicesPage() {
                   {service.description}
                 </p>
 
-                <div className="flex flex-wrap gap-2">
+                <div className="flex flex-wrap gap-2 mb-6">
                   {service.keywords.map((keyword, idx) => (
                     <span 
                       key={idx}
@@ -240,6 +292,12 @@ export default function ServicesPage() {
                     </span>
                   ))}
                 </div>
+
+                {/* Learn More Link */}
+                <Link href={`/services/${service.slug}`} className="inline-flex items-center gap-2 text-orange-600 dark:text-orange-400 font-semibold hover:gap-3 transition-all duration-300 cursor-pointer" style={{ fontFamily: 'Quicksand, sans-serif' }}>
+                  Learn More
+                  <ArrowRight className="w-5 h-5" />
+                </Link>
               </motion.div>
             ))}
           </div>
@@ -251,35 +309,40 @@ export default function ServicesPage() {
             viewport={{ once: true }}
             className="text-center mt-20"
           >
-            <h2 
-              className="text-2xl md:text-3xl font-bold mb-6 text-gray-900 dark:text-white"
-              style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}
-            >
-              Ready to Transform Your Business?
-            </h2>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <motion.button
-                className="px-8 py-4 bg-gradient-to-r from-orange-500 to-orange-600 text-white font-semibold rounded-xl shadow-lg hover:shadow-orange-500/25"
-                style={{ fontFamily: 'Quicksand, sans-serif' }}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                onClick={() => window.location.href = '/contact'}
+            <div className="bg-gradient-to-r from-orange-500 via-orange-600 to-red-500 rounded-3xl p-8 md:p-12 shadow-2xl">
+              <h2 
+                className="text-2xl md:text-3xl font-bold mb-6 text-white"
+                style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}
               >
-                Get Started Today
-              </motion.button>
-              <motion.button
-                className="px-8 py-4 border-2 border-orange-500 text-orange-600 dark:text-orange-400 font-semibold rounded-xl hover:bg-orange-500 hover:text-white"
-                style={{ fontFamily: 'Quicksand, sans-serif' }}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                onClick={() => window.location.href = '/portfolio'}
+                Ready to Transform Your Business?
+              </h2>
+              <p
+                className="text-orange-100 mb-8 max-w-2xl mx-auto leading-relaxed"
+                style={{ fontFamily: "Quicksand, sans-serif" }}
               >
-                View Our Work
-              </motion.button>
+                Let's discuss your project and create something amazing together. Get started with a free consultation today.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Link
+                  href="/contact"
+                  className="px-8 py-4 bg-white text-orange-600 font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
+                  style={{ fontFamily: 'Quicksand, sans-serif' }}
+                >
+                  Get Started Today
+                </Link>
+                <Link
+                  href="/portfolio"
+                  className="px-8 py-4 border-2 border-white text-white font-semibold rounded-xl hover:bg-white/10 transition-all duration-300"
+                  style={{ fontFamily: 'Quicksand, sans-serif' }}
+                >
+                  View Our Work
+                </Link>
+              </div>
             </div>
           </motion.div>
         </div>
       </div>
+      <WhatsAppButton />
     </div>
   );
 }
