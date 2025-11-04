@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Sun, Moon, Monitor } from "lucide-react";
+import * as gtag from "../lib/gtag";
 
 export default function ThemeToggle() {
   const [theme, setTheme] = useState("light");

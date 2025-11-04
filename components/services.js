@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import * as gtag from "../lib/gtag";
 
 const Services = ({ services }) => {
   return (

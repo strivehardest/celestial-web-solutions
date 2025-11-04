@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import Particles from "react-tsparticles";
+import * as gtag from "../lib/gtag";
 
 export default function Hero({ headline, subheadline, ctaText }) {
   return (
