@@ -84,3 +84,69 @@
     scroll-behavior: smooth;
   }
 }
+
+/* Custom Cursor Styles */
+@media (min-width: 769px) {
+  html, body {
+    cursor: none !important;
+  }
+  
+  a, button, input, textarea, select, [role="button"], .cursor-hover {
+    cursor: none !important;
+  }
+}
+
+/* Magnetic hover effect for buttons */
+.magnetic-hover {
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.magnetic-hover:hover {
+  transform: scale(1.02);
+}
+
+/* Glow effect on hover */
+.glow-hover {
+  transition: all 0.3s ease;
+}
+
+.glow-hover:hover {
+  box-shadow: 0 0 20px rgba(249, 115, 22, 0.4),
+              0 0 40px rgba(249, 115, 22, 0.2),
+              0 0 60px rgba(249, 115, 22, 0.1);
+}
+
+/* Ripple effect */
+.ripple {
+  position: relative;
+  overflow: hidden;
+}
+
+.ripple::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.6s ease, height 0.6s ease;
+}
+
+.ripple:active::after {
+  width: 300px;
+  height: 300px;
+}
+
+/* Smooth scroll behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Selection color */
+::selection {
+  background-color: rgba(249, 115, 22, 0.3);
+  color: inherit;
+}
