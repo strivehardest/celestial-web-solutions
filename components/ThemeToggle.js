@@ -1,50 +1,63 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Sun, Moon, Monitor } from "lucide-react";
-import * as gtag from "../lib/gtag";
 
-export default function ThemeToggle() {
-  const [theme, setTheme] = useState("light");
+export default function ThemeToggle({ darkMode, toggleDarkMode, isMobile }) {
+  const [theme, setTheme] = useState("system");
   const [mounted, setMounted] = useState(false);
 
   const themes = [
     { value: "light", icon: Sun, label: "Light" },
-    { value: "dark", icon: Moon, label: "Dark" },
     { value: "system", icon: Monitor, label: "System" },
+    { value: "dark", icon: Moon, label: "Dark" },
   ];
 
   useEffect(() => {
     setMounted(true);
-    const savedTheme = localStorage.getItem("theme") || "system";
+    
+    // Check localStorage for saved theme preference
+    let savedTheme = localStorage.getItem("theme");
+    
+    // If no theme is saved, default to "system"
+    if (!savedTheme) {
+      savedTheme = "system";
+      localStorage.setItem("theme", "system");
+    }
+    
     setTheme(savedTheme);
     applyTheme(savedTheme);
 
     // Listen for system theme changes
     const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
-    const handleChange = () => {
-      if (theme === "system") {
+    const handleSystemThemeChange = () => {
+      const currentTheme = localStorage.getItem("theme");
+      if (currentTheme === "system") {
         applyTheme("system");
       }
     };
 
-    mediaQuery.addEventListener("change", handleChange);
-    return () => mediaQuery.removeEventListener("change", handleChange);
-  }, [theme]);
+    mediaQuery.addEventListener("change", handleSystemThemeChange);
+    return () => mediaQuery.removeEventListener("change", handleSystemThemeChange);
+  }, []);
 
   const applyTheme = (newTheme) => {
     const root = document.documentElement;
     
-    if (newTheme === "dark") {
-      root.classList.add("dark");
-    } else if (newTheme === "light") {
-      root.classList.remove("dark");
-    } else if (newTheme === "system") {
-      const systemPrefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-      if (systemPrefersDark) {
+    if (newTheme === "system") {
+      const systemPreference = window.matchMedia("(prefers-color-scheme: dark)").matches;
+      if (systemPreference) {
         root.classList.add("dark");
+        document.body.style.backgroundColor = '#111827';
       } else {
         root.classList.remove("dark");
+        document.body.style.backgroundColor = '#ffffff';
       }
+    } else if (newTheme === "dark") {
+      root.classList.add("dark");
+      document.body.style.backgroundColor = '#111827';
+    } else {
+      root.classList.remove("dark");
+      document.body.style.backgroundColor = '#ffffff';
     }
   };
 
@@ -54,39 +67,39 @@ export default function ThemeToggle() {
     applyTheme(newTheme);
   };
 
-  // Prevent hydration mismatch
   if (!mounted) return null;
 
   return (
-    <div className="flex items-center rounded-full border shadow-lg backdrop-blur-sm
-                    bg-white/80 dark:bg-dark-800/80 border-gray-200/50 dark:border-dark-600/50
-                    p-1 transition-all duration-300">
+    <div
+      className={`flex items-center rounded-full border shadow-lg backdrop-blur-sm
+                 bg-white/80 dark:bg-gray-800/80 border-gray-200/50 dark:border-gray-600/50
+                 p-1 transition-all duration-300 ${isMobile ? 'w-full justify-center' : ''}`}
+    >
       {themes.map((themeOption) => {
         const Icon = themeOption.icon;
         const isSelected = theme === themeOption.value;
-        
+
         return (
           <button
             key={themeOption.value}
             onClick={() => selectTheme(themeOption.value)}
             className={`relative p-2 rounded-full transition-all duration-300
-                       ${isSelected 
-                         ? 'text-white shadow-md' 
-                         : 'text-gray-500 dark:text-dark-400 hover:text-gray-700 dark:hover:text-dark-200'
-                       }`}
+                       ${
+                         isSelected
+                           ? "text-white shadow-md"
+                           : "text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200"
+                       } ${isMobile ? 'flex-1' : ''}`}
             aria-label={`${themeOption.label} theme`}
             title={`${themeOption.label} theme`}
           >
-            {/* Background for selected state */}
             {isSelected && (
               <motion.div
                 layoutId="theme-bg"
-                className="absolute inset-0 rounded-full bg-accent-light dark:bg-accent-dark"
+                className="absolute inset-0 rounded-full bg-gradient-to-r from-orange-500 to-orange-600"
                 transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
               />
             )}
-            
-            {/* Icon */}
+
             <motion.div
               className="relative z-10"
               whileHover={{ scale: 1.1 }}

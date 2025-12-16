@@ -1,144 +1,57 @@
 // data/projects.js
 const projects = [
   {
-    title: "Celestial Web Solutions",
-    slug: "best-web-design-company-in-ghana",
-    description: "A comprehensive business portfolio website showcasing web development services with modern design, client testimonials, and integrated payment solutions for seamless business operations.",
-    image: "/png/projects/celestial.png",
-    screenshot: "/png/screenshots/celestial-full.png", // Full page screenshot
-    link: "https://celestialwebsolutions.net",
-    tech: ["Next.js", "Tailwind CSS", "Vercel", "Paystack", "WordPress", "Node.js"],
-    startDate: "2024-08-01",
-    completionDate: "2024-08-15",
-    duration: "14 days",
-    client: "Celestial Web Solutions",
-    features: [
-      "Responsive Design",
-      "Payment Integration with Paystack",
-      "SEO Optimized",
-      "Contact Forms",
-      "Service Showcase",
-      "Client Testimonials",
-      "Modern UI/UX",
-      "Dark/Light Mode Toggle",
-      "Fast Loading Performance",
-      "WhatsApp Integration",
-      "Google Analytics Setup"
-    ]
-  },
-  {
-    title: "Building Planner Designs",
-    slug: "best-web-designer-in-accra",
-    description: "Professional website for a leading building planner company in Accra, featuring project galleries, service listings, and e-commerce functionality for construction planning services.",
-    image: "/png/projects/buildingplanner.png",
-    screenshot: "/png/screenshots/buildingplanner-full.png", // Full page screenshot
-    link: "https://buildingplannerdesigns.com",
-    tech: ["WordPress", "WooCommerce", "Elementor", "Paystack"],
-    startDate: "2025-01-01",
-    completionDate: "2025-01-15",
-    duration: "2 weeks",
-    client: "Building Planner Designs",
-    features: [
-      "E-commerce Integration",
-      "Project Portfolio Gallery",
-      "Service Catalog",
-      "Online Booking System",
-      "Payment Processing",
-      "Responsive Design",
-      "SEO Optimization",
-      "Contact Management",
-      "Social Media Integration",
-      "Youtube Integration",
-      "Google Analytics Setup",
-      "WhatsApp Integration"
-    ]
-  },
-  {
-    title: "Ghana Updates Online",
-    slug: "ghana-updates-online",
-    description: "A comprehensive news and radio streaming website featuring real-time Ghana news updates, live radio streaming, and AdSense monetization for sustainable revenue generation.",
-    image: "/png/projects/ghanaupdates.png",
-    screenshot: "/png/screenshots/ghanaupdates-full.png", // Full page screenshot
-    link: "https://ghanaupdates.online",
-    tech: ["WordPress", "Elementor", "Google AdSense"],
-    startDate: "2023-04-01",
-    completionDate: "2023-04-10",
+    slug: "myspace-furniture",
+    title: "My Space Furniture",
+    category: "Furniture E-Commerce",
+    client: "My Space Furniture",
+    clientCountry: "United States",
+    description: "Modern furniture platform with interactive furniture categories from mattresses, vanities, sectionals, sofas and loveseats, beds, dining sets, and more. .",
+    image: "/png/projects/myspace-furniture.png",
+    screenshot: "/png/screenshots/myspace-furniture-full.png",
+    startDate: "2025-11-28",
+    completionDate: "2025-12-08",
     duration: "10 days",
-    client: "Ghana Updates Media",
+    link: "https://www.myyspacefurniture.com",
     features: [
-      "Live Radio Streaming",
-      "News Content Management",
-      "AdSense Integration",
-      "Social Media Integration",
-      "Mobile Responsive",
-      "SEO Optimized",
-      "Comment System",
-      "Newsletter Subscription",
-      "Contact Forms",
-      "Fast Loading Speed",
-      "Google Analytics Setup"
-    ]
-  },
-  {
-    title: "AdBay.store",
-    slug: "adbay-store",
-    description: "A comprehensive free classified marketplace website where users can buy and sell items across various categories with user-friendly interface and secure transaction features.",
-    image: "/png/projects/adbay.png",
-    screenshot: "/png/screenshots/adbay-full.png", // Full page screenshot
-    link: "https://adbay.store",
-    tech: ["WordPress", "Elementor", "CSS", "HTML", "PHP"],
-    startDate: "2025-07-01",
-    completionDate: "2025-07-16",
-    duration: "16 days",
-    client: "AdBay Marketplace",
-    features: [
-      "User Registration & Profiles",
-      "Ad Posting System",
-      "Category Management",
-      "Search & Filter Functionality",
-      "Image Upload System",
-      "Contact Forms",
-      "Responsive Design",
-      "Admin Dashboard",
-      "SEO Optimization",
-      "Social Media Integration"
-    ]
-  },
-  {
-    title: "Personal Portfolio Website",
-    slug: "personal-portfolio-website",
-    description: "A modern, animated personal portfolio website featuring dark mode toggle, smooth animations, project showcases, and contact functionality to highlight professional skills and experience.",
-    image: "/png/projects/waliu-portfolio.png",
-    screenshot: "/png/screenshots/waliu-portfolio-full.png", // Full page screenshot
-    link: "https://waliu-portfolio-sage.vercel.app",
-    tech: ["Next.js", "Tailwind CSS", "Framer Motion", "GitHub", "Vercel"],
-    startDate: "2025-08-01",
-    completionDate: "2025-08-08",
-    duration: "8 days",
-    client: "Waliu",
-    features: [
-      "Dark/Light Mode Toggle",
-      "Smooth Animations",
-      "Project Showcase",
-      "Skills Section",
-      "Contact Form",
-      "Responsive Design",
-      "Fast Performance",
-      "SEO Optimized"
+      "Various furniture categories",
+      "Interactive product configurator",
+      "Map integration",
+      "Google Analytics setup",
+      "Responsive design",
+      "SEO optimized",
+      "Accessibility features",
+      "WhatsApp integration"
+    ],
+    tech: ["Next.js", "TypeScript", "Framer Motion", "Tailwind CSS", "Stripe", "MongoDB"],
+    techLogos: [
+      { name: "Next.js", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" },
+      { name: "TypeScript", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" },
+      { name: "Framer Motion", logo: "https://cdn.worldvectorlogo.com/logos/framer-motion.svg" },
+      { name: "Tailwind CSS", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg" },
+      { name: "Vercel", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vercel/vercel-original.svg" }
     ]
   },
   {
     title: "Elolo Agbleke Portfolio Website",
     slug: "elolo-agbleke-website",
+    category: "Personal Projects",
+    client: "Elolo Agbleke",
+    clientCountry: "Ghana",
     description: "Professional website for a seasoned motivational speaker, chaplain, mentor, and entrepreneur, featuring speaking engagements, testimonials, and booking functionality for events.",
     image: "/png/projects/elolo1.png",
-    screenshot: "/png/screenshots/elolo-full.png", // Full page screenshot
+    screenshot: "/png/screenshots/elolo-full.png",
     link: "https://eloloagbleke.com",
     tech: ["WordPress", "Node.js", "Next.js", "Framer Motion", "GitHub", "Tailwind CSS", "Vercel"],
-    startDate: "2025-09-01",
-    completionDate: "2025-10-30",
+    techLogos: [
+      { name: "WordPress", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/wordpress/wordpress-original.svg" },
+      { name: "Next.js", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" },
+      { name: "Node.js", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" },
+      { name: "Tailwind CSS", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg" }
+    ],
+    startDate: "2025-10-15",
+    completionDate: "2025-11-30",
     duration: "1.5 months",
-    client: "Elolo Agbleke",
     features: [
       "Event Booking System",
       "Speaking Engagements Calendar",
@@ -155,17 +68,67 @@ const projects = [
     ]
   },
   {
-   title : "Celestial Shopping",
-   slug : "celestial-shopping",
-   description :"An E-Commerce Website built with Next.js/React and Django",
-   image: "/png/projects/celestial1.png",
-    screenshot: "/png/screenshots/celestial-shopping.png", // Full page screenshot
-    link: "https://celestialshopping.com",
+    title: "Finance Tracker",
+    slug: "finance-tracker",
+    category: "Personal Projects",
+    client: "Personal Project",
+    clientCountry: "Ghana",
+    description: "A personal finance tracking web application that helps users manage their income, expenses, and budgets with intuitive visualizations and reporting features.",
+    image: "/png/projects/finance-tracker.png",
+    screenshot: "/png/screenshots/finance-tracker-full.png",
+    link: "https://finance-tracker-muiu.onrender.com/",
+    tech: ["HTML5", "CSS3", "Django", "Python", "Github", "Render"],
+    techLogos: [
+      { name: "HTML5", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" },
+      { name: "CSS3", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" },
+      { name: "Django", logo: "https://cdn.worldvectorlogo.com/logos/django.svg" },
+      { name: "Python", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" }
+    ],
+    startDate: "2025-11-06",
+    completionDate: "2025-11-14",
+    duration: "8 days",
+    features: [
+      "Dark/Light Mode Toggle",
+      "Smooth Animations",
+      "Login/Sign up",
+      "Category Management",
+      "Chart Visualizations",
+      "Expense Tracking",
+      "Budget Planning",
+      "Responsive Design",
+      "Fast Performance",
+      "Google Analytics Setup",
+      "CSV Export Functionality",
+      "Data Filtering Options",
+      "Monthly Reports",
+      "PDF Export Functionality",
+      "Multi-Currency Support",
+      "Currency Conversion Feature",
+      "Secure Authentication",
+      "Password Recovery Options",
+      "User Profile Management"
+    ]
+  },
+  {
+    title: "Celestial Shopping",
+    slug: "celestial-shopping",
+    category: "E-Commerce",
+    client: "E-Commerce Demo Website - Work in Progress",
+    clientCountry: "Ghana",
+    description: "An E-Commerce Website built with Next.js/React and Django for seamless shopping experience with cart, checkout, and order tracking.",
+    image: "/png/projects/celestial1.png",
+    screenshot: "/png/screenshots/celestial-shopping.png",
+    link: "https://celestial-shopping.vercel.app/",
     tech: ["Next.js", "Framer Motion", "GitHub", "Tailwind CSS", "Vercel", "Render", "Django"],
+    techLogos: [
+      { name: "Next.js", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" },
+      { name: "React", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" },
+      { name: "Tailwind CSS", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg" },
+      { name: "Django", logo: "https://cdn.worldvectorlogo.com/logos/django.svg" }
+    ],
     startDate: "2025-10-18",
     completionDate: "2025-11-04",
     duration: "2 weeks",
-    client: "Celestial Shopping",
     features: [
       "Cart",
       "Checkout",
@@ -180,7 +143,173 @@ const projects = [
       "Google Analytics Setup",
       "WhatsApp Integration"
     ]
-
+  },
+  {
+    title: "Personal Portfolio Website",
+    slug: "personal-portfolio-website",
+    category: "Personal Projects",
+    client: "Waliu",
+    clientCountry: "Ghana",
+    description: "A modern, animated personal portfolio website featuring dark mode toggle, smooth animations, project showcases, and contact functionality to highlight professional skills and experience.",
+    image: "/png/projects/waliu-portfolio.png",
+    screenshot: "/png/screenshots/waliu-portfolio-full.png",
+    link: "https://waliu-portfolio-sage.vercel.app",
+    tech: ["Next.js", "Tailwind CSS", "Framer Motion", "GitHub", "Vercel"],
+    techLogos: [
+      { name: "Next.js", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" },
+      { name: "Tailwind CSS", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg" },
+      { name: "Framer Motion", logo: "https://cdn.worldvectorlogo.com/logos/framer-motion.svg" },
+      { name: "GitHub", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" },
+      { name: "Vercel", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vercel/vercel-original.svg" }
+    ],
+    startDate: "2025-08-01",
+    completionDate: "2025-08-08",
+    duration: "8 days",
+    features: [
+      "Dark/Light Mode Toggle",
+      "Smooth Animations",
+      "Project Showcase",
+      "Skills Section",
+      "Contact Form",
+      "Responsive Design",
+      "Fast Performance",
+      "SEO Optimized"
+    ]
+  },
+  {
+    title: "Building Planner Designs",
+    slug: "best-web-designer-in-accra",
+    category: "Web Design",
+    client: "Building Planner Designs",
+    clientCountry: "Ghana",
+    description: "Professional website for a leading building planner company in Accra, featuring project galleries, service listings, and e-commerce functionality for construction planning services.",
+    image: "/png/projects/buildingplanner.png",
+    screenshot: "/png/screenshots/buildingplanner-full.png",
+    link: "https://buildingplannerdesigns.com",
+    tech: ["WordPress", "WooCommerce", "Elementor", "Paystack"],
+    techLogos: [
+      { name: "WordPress", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/wordpress/wordpress-original.svg" },
+      { name: "WooCommerce", logo: "https://www.logo.wine/a/logo/WooCommerce/WooCommerce-Logo.wine.svg" },
+      { name: "Elementor", logo: "https://cdn.iconscout.com/icon/free/png-256/free-elementor-logo-icon-svg-download-png-3029975.png" },
+      { name: "Paystack", logo: "https://images.seeklogo.com/logo-png/40/2/paystack-logo-png_seeklogo-409509.png" }
+    ],
+    startDate: "2025-01-01",
+    completionDate: "2025-01-15",
+    duration: "2 weeks",
+    features: [
+      "E-commerce Integration",
+      "Project Portfolio Gallery",
+      "Service Catalog",
+      "Online Booking System",
+      "Payment Processing",
+      "Responsive Design",
+      "SEO Optimization",
+      "Contact Management",
+      "Social Media Integration",
+      "Youtube Integration",
+      "Google Analytics Setup",
+      "WhatsApp Integration"
+    ]
+  },
+  {
+    title: "AdBay.store",
+    slug: "adbay-store",
+    category: "E-Commerce",
+    client: "AdBay Marketplace",
+    clientCountry: "Ghana",
+    description: "A comprehensive free classified marketplace website where users can buy and sell items across various categories with user-friendly interface and secure transaction features.",
+    image: "/png/projects/adbay.png",
+    screenshot: "/png/screenshots/adbay-full.png",
+    link: "https://adbay.store",
+    tech: ["WordPress", "Elementor", "CSS", "HTML", "PHP"],
+    techLogos: [
+      { name: "WordPress", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/wordpress/wordpress-original.svg" },
+      { name: "PHP", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg" },
+      { name: "HTML", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" },
+      { name: "CSS", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" }
+    ],
+    startDate: "2025-07-01",
+    completionDate: "2025-07-16",
+    duration: "16 days",
+    features: [
+      "User Registration & Profiles",
+      "Ad Posting System",
+      "Category Management",
+      "Search & Filter Functionality",
+      "Image Upload System",
+      "Contact Forms",
+      "Responsive Design",
+      "Admin Dashboard",
+      "SEO Optimization",
+      "Social Media Integration"
+    ]
+  },
+  {
+    title: "Celestial Web Solutions",
+    slug: "best-web-design-company-in-ghana",
+    category: "Web Development",
+    client: "Celestial Web Solutions",
+    clientCountry: "Ghana",
+    description: "A comprehensive business portfolio website showcasing web development services with modern design, client testimonials, and integrated payment solutions for seamless business operations.",
+    image: "/png/projects/celestial.png",
+    screenshot: "/png/screenshots/celestial-full.png",
+    link: "https://celestialwebsolutions.net",
+    tech: ["Next.js", "Tailwind CSS", "Vercel", "Paystack", "Node.js"],
+    techLogos: [
+      { name: "Next.js", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" },
+      { name: "Tailwind CSS", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg" },
+      { name: "Vercel", logo: "https://www.svgrepo.com/show/354513/vercel-icon.svg" },
+      { name: "Paystack", logo: "https://images.seeklogo.com/logo-png/40/2/paystack-logo-png_seeklogo-409509.png" },
+      { name: "Node.js", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" }
+    ],
+    startDate: "2024-08-01",
+    completionDate: "2024-08-15",
+    duration: "14 days",
+    features: [
+      "Responsive Design",
+      "Payment Integration with Paystack",
+      "SEO Optimized",
+      "Contact Forms",
+      "Service Showcase",
+      "Client Testimonials",
+      "Modern UI/UX",
+      "Dark/Light Mode Toggle",
+      "Fast Loading Performance",
+      "WhatsApp Integration",
+      "Google Analytics Setup"
+    ]
+  },
+  {
+    title: "Ghana Updates Online",
+    slug: "ghana-updates-online",
+    category: "News & Media",
+    client: "Ghana Updates Media",
+    clientCountry: "Ghana",
+    description: "A comprehensive news and radio streaming website featuring real-time Ghana news updates, live radio streaming, and AdSense monetization for sustainable revenue generation.",
+    image: "/png/projects/ghanaupdates.png",
+    screenshot: "/png/screenshots/ghanaupdates-full.png",
+    link: "https://ghanaupdates.online",
+    tech: ["WordPress", "Elementor", "Google AdSense"],
+    techLogos: [
+      { name: "WordPress", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/wordpress/wordpress-original.svg" },
+      { name: "Google AdSense", logo: "https://i.pinimg.com/736x/01/3c/67/013c675490fbfab9d04d9359466aa678.jpg" }
+    ],
+    startDate: "2023-04-01",
+    completionDate: "2023-04-10",
+    duration: "10 days",
+    features: [
+      "Live Radio Streaming",
+      "News Content Management",
+      "AdSense Integration",
+      "Social Media Integration",
+      "Mobile Responsive",
+      "SEO Optimized",
+      "Comment System",
+      "Newsletter Subscription",
+      "Contact Forms",
+      "Fast Loading Speed",
+      "Google Analytics Setup"
+    ]
   }
 ];
 

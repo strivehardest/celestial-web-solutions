@@ -1,5 +1,18 @@
+import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { X, Facebook, Instagram, Linkedin, MessageCircle, Star, MapPin, Phone, Mail } from 'lucide-react';
+import { Star, MapPin, Phone, Mail, Building2 } from 'lucide-react';
+
+const whatsappNumber = '233530505031';
+const whatsappMessage = encodeURIComponent("Hi Celestial, I'm interested in your web development services.");
+const whatsappLink = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
+
+const navLinks = [
+  { href: '/', label: 'Home' },
+  { href: '/about', label: 'About' },
+  { href: '/services', label: 'Services' },
+  { href: '/portfolio', label: 'Portfolio' },
+  { href: '/contact', label: 'Contact' },
+];
 
 export default function Footer({ darkMode, toggleDarkMode }) {
   const currentYear = new Date().getFullYear();
@@ -8,6 +21,25 @@ export default function Footer({ darkMode, toggleDarkMode }) {
     score: 4.9,
     totalReviews: 30,
     googleBusinessUrl: "https://www.google.com/maps/place/Celestial+Web+Solutions/@5.883579,0.9829622,17z/data=!4m6!3m5!1s0x1021710073fe6fff:0x96453357ca880329!8m2!3d5.8836217!4d0.9828871!16s%2Fg%2F11lf36fzj1?entry=ttu&g_ep=EgoyMDI1MTEwMi4wIKXMDSoASAFQAw%3D%3D"
+  };
+
+  const offices = {
+    main: {
+      name: "Main Office - Keta",
+      address: "235 Agblor Link, Keta",
+      city: "Keta, Ghana",
+      phone: "+233 245 671 832",
+      mapEmbed: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3968.80059685584!2d0.9828870999999997!3d5.883621700000006!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1021710073fe6fff%3A0x96453357ca880329!2sCelestial%20Web%20Solutions!5e0!3m2!1sen!2sgh!4v1755809307538!5m2!1sen!2sgh",
+      mapUrl: googleRating.googleBusinessUrl
+    },
+    branch: {
+      name: "Branch Office - Accra",
+      address: "Madina Estate, Accra",
+      city: "Accra, Ghana",
+      phone: "+233 530 505 031",
+      mapEmbed: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3970.7171234567!2d-0.1870!3d5.6037!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNcKwMzYnMTMuMyJOIDDCsDExJzEzLjIiVw!5e0!3m2!1sen!2sgh!4v1234567890",
+      mapUrl: "https://maps.google.com/?q=Accra,Ghana"
+    }
   };
 
   const footerLinks = {
@@ -21,7 +53,8 @@ export default function Footer({ darkMode, toggleDarkMode }) {
       { name: 'Contact', href: '/contact' },
       { name: 'FAQs', href: '/faqs' },
       { name: 'Pricing', href: '/pricing' },
-      { name: 'Make Payment', href: '/payment' }
+      { name: 'Payments', href: '/payment' }
+
     ],
     legal: [
       { name: 'Terms of Service', href: '/terms' },
@@ -30,11 +63,31 @@ export default function Footer({ darkMode, toggleDarkMode }) {
   };
 
   const socialLinks = [
-    { icon: X, href: 'https://x.com/strivehardest', label: 'X (Twitter)', gradient: 'from-gray-800 to-black' },
-    { icon: MessageCircle, href: 'https://wa.me/+233530505031', label: 'WhatsApp', gradient: 'from-green-500 to-green-600' },
-    { icon: Facebook, href: 'https://facebook.com/celestialwebsolutions', label: 'Facebook', gradient: 'from-blue-600 to-blue-700' },
-    { icon: Instagram, href: 'https://instagram.com/celestialwebsolutions', label: 'Instagram', gradient: 'from-pink-500 to-purple-600' },
-    { icon: Linkedin, href: 'https://linkedin.com/in/aforlabi', label: 'LinkedIn', gradient: 'from-blue-700 to-blue-800' }
+    { 
+      icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/twitter/twitter-original.svg', 
+      href: 'https://x.com/strivehardest', 
+      label: 'X (Twitter)'
+    },
+    { 
+      icon: 'https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg', 
+      href: 'https://wa.me/+233530505031', 
+      label: 'WhatsApp'
+    },
+    { 
+      icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/facebook/facebook-original.svg', 
+      href: 'https://facebook.com/celestialwebsolutions', 
+      label: 'Facebook'
+    },
+    { 
+      icon: 'https://upload.wikimedia.org/wikipedia/commons/9/95/Instagram_logo_2022.svg', 
+      href: 'https://instagram.com/celestialwebsolutions', 
+      label: 'Instagram'
+    },
+    { 
+      icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg', 
+      href: 'https://linkedin.com/in/aforlabi', 
+      label: 'LinkedIn'
+    }
   ];
 
   const StarRating = ({ rating }) => (
@@ -50,6 +103,61 @@ export default function Footer({ darkMode, toggleDarkMode }) {
           }`}
         />
       ))}
+    </div>
+  );
+
+  const OfficeCard = ({ office, isMain }) => (
+    <div className="h-full">
+      <div className="flex items-center mb-3">
+        <Building2 size={18} className={`${isMain ? 'text-orange-500' : 'text-orange-400'} mr-2`} />
+        <h3 className={`text-base font-bold ${isMain ? 'text-orange-600 dark:text-orange-400' : 'text-gray-700 dark:text-gray-300'}`} style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>
+          {office.name}
+        </h3>
+      </div>
+
+      <div className="space-y-2 mb-3">
+        <div className="flex items-start space-x-2 text-sm text-gray-600 dark:text-gray-400">
+          <MapPin size={16} className="text-orange-500 flex-shrink-0 mt-0.5" />
+          <div style={{ fontFamily: 'Quicksand, sans-serif' }}>
+            <div>{office.address}</div>
+            <div className="text-xs text-gray-500 dark:text-gray-500">{office.city}</div>
+          </div>
+        </div>
+
+        <div className="flex items-center space-x-2 text-sm text-gray-600 dark:text-gray-400">
+          <Phone size={16} className="text-orange-500 flex-shrink-0" />
+          <a href={`tel:${office.phone}`} className="hover:text-orange-500 transition-colors duration-200" style={{ fontFamily: 'Quicksand, sans-serif' }}>
+            {office.phone}
+          </a>
+        </div>
+      </div>
+
+      <div className="relative w-full h-[160px] rounded-lg overflow-hidden shadow-md border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-shadow duration-300">
+        <iframe
+          src={office.mapEmbed}
+          width="100%"
+          height="160"
+          style={{ border: 0 }}
+          allowFullScreen=""
+          loading="lazy"
+          referrerPolicy="no-referrer-when-downgrade"
+          className="grayscale hover:grayscale-0 transition-all duration-500"
+          title={`${office.name} Location`}
+        />
+
+        <motion.a
+          href={office.mapUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="absolute bottom-2 right-2 px-3 py-1.5 bg-gradient-to-br from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white text-xs font-semibold rounded-lg shadow-lg flex items-center space-x-1.5 transition-all duration-300"
+          style={{ fontFamily: 'Quicksand, sans-serif' }}
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+        >
+          <MapPin size={14} />
+          <span>View</span>
+        </motion.a>
+      </div>
     </div>
   );
 
@@ -99,7 +207,7 @@ export default function Footer({ darkMode, toggleDarkMode }) {
               Transforming ideas into exceptional digital experiences. Your vision, our expertise.
             </p>
 
-            {/* Google Reviews Card - now includes Google logo */}
+            {/* Google Reviews Card */}
             <motion.a
               href={googleRating.googleBusinessUrl}
               target="_blank"
@@ -113,8 +221,6 @@ export default function Footer({ darkMode, toggleDarkMode }) {
                 <span className="text-sm font-semibold text-gray-700 dark:text-gray-300" style={{ fontFamily: 'Quicksand, sans-serif' }}>
                   Google Reviews
                 </span>
-
-                {/* Google logo (small) */}
                 <img
                   src="https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_74x24dp.png"
                   alt="Google"
@@ -141,20 +247,8 @@ export default function Footer({ darkMode, toggleDarkMode }) {
               </div>
             </motion.a>
 
-            {/* Contact Info */}
+            {/* General Contact Info */}
             <div className="space-y-3 mb-6">
-              <div className="flex items-center space-x-3 text-gray-600 dark:text-gray-400">
-                <MapPin size={18} className="text-orange-500 flex-shrink-0" />
-                <span style={{ fontFamily: 'Quicksand, sans-serif' }}>235 Agblor Link, Keta-Ghana</span>
-              </div>
-
-              <div className="flex items-center space-x-3 text-gray-600 dark:text-gray-400">
-                <Phone size={18} className="text-orange-500 flex-shrink-0" />
-                <a href="tel:+233245671832" className="hover:text-orange-500 transition-colors duration-200" style={{ fontFamily: 'Quicksand, sans-serif' }}>
-                  +233 245 671 832
-                </a>
-              </div>
-
               <div className="flex items-center space-x-3 text-gray-600 dark:text-gray-400">
                 <Mail size={18} className="text-orange-500 flex-shrink-0" />
                 <a href="mailto:info@celestialwebsolutions.net" className="hover:text-orange-500 transition-colors duration-200" style={{ fontFamily: 'Quicksand, sans-serif' }}>
@@ -165,65 +259,32 @@ export default function Footer({ darkMode, toggleDarkMode }) {
 
             {/* Social Links */}
             <div className="flex items-center space-x-3 mb-6">
-              <motion.a 
-                href="https://x.com/strivehardest" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                whileHover={{ y: -3, scale: 1.1 }} 
-                whileTap={{ scale: 0.95 }} 
-                className="w-11 h-11 rounded-xl bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-700 flex items-center justify-center text-gray-600 dark:text-gray-400 hover:text-white hover:bg-gradient-to-br hover:from-gray-800 hover:to-black dark:hover:from-gray-600 dark:hover:to-gray-800 transition-all duration-300 shadow-md hover:shadow-lg"
-              >
-                <X size={18} />
-              </motion.a>
-
-              <motion.a 
-                href="https://wa.me/+233530505031" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                whileHover={{ y: -3, scale: 1.1 }} 
-                whileTap={{ scale: 0.95 }} 
-                className="w-11 h-11 rounded-xl bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-700 flex items-center justify-center text-gray-600 dark:text-gray-400 hover:text-white hover:bg-gradient-to-br hover:from-green-500 hover:to-green-600 transition-all duration-300 shadow-md hover:shadow-lg"
-              >
-                <MessageCircle size={18} />
-              </motion.a>
-
-              <motion.a 
-                href="https://facebook.com/celestialwebsolutions" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                whileHover={{ y: -3, scale: 1.1 }} 
-                whileTap={{ scale: 0.95 }} 
-                className="w-11 h-11 rounded-xl bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-700 flex items-center justify-center text-gray-600 dark:text-gray-400 hover:text-white hover:bg-gradient-to-br hover:from-blue-600 hover:to-blue-700 transition-all duration-300 shadow-md hover:shadow-lg"
-              >
-                <Facebook size={18} />
-              </motion.a>
-
-              <motion.a 
-                href="https://instagram.com/celestialwebsolutions" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                whileHover={{ y: -3, scale: 1.1 }} 
-                whileTap={{ scale: 0.95 }} 
-                className="w-11 h-11 rounded-xl bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-700 flex items-center justify-center text-gray-600 dark:text-gray-400 hover:text-white hover:bg-gradient-to-br hover:from-pink-500 hover:to-purple-600 transition-all duration-300 shadow-md hover:shadow-lg"
-              >
-                <Instagram size={18} />
-              </motion.a>
-
-              <motion.a 
-                href="https://linkedin.com/in/aforlabi" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                whileHover={{ y: -3, scale: 1.1 }} 
-                whileTap={{ scale: 0.95 }} 
-                className="w-11 h-11 rounded-xl bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-700 flex items-center justify-center text-gray-600 dark:text-gray-400 hover:text-white hover:bg-gradient-to-br hover:from-blue-700 hover:to-blue-800 transition-all duration-300 shadow-md hover:shadow-lg"
-              >
-                <Linkedin size={18} />
-              </motion.a>
+              {socialLinks.map((social) => (
+                <motion.a 
+                  key={social.label}
+                  href={social.href} 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  whileHover={{ y: -3, scale: 1.1 }} 
+                  whileTap={{ scale: 0.95 }} 
+                  className="w-11 h-11 rounded-xl bg-gray-100 dark:bg-gray-800 flex items-center justify-center shadow-lg transition-all duration-300"
+                  title={social.label}
+                >
+                  <img 
+                    src={social.icon} 
+                    alt={social.label}
+                    className="w-6 h-6 object-contain"
+                    onError={(e) => {
+                      e.target.style.display = 'none';
+                    }}
+                  />
+                </motion.a>
+              ))}
             </div>
           </div>
 
-          {/* Links Columns - Spans 5 columns */}
-          <div className="lg:col-span-5 grid grid-cols-2 sm:grid-cols-3 gap-8">
+          {/* Links Columns - Spans 3 columns */}
+          <div className="lg:col-span-3 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-1 gap-8">
             {/* Company */}
             <div>
               <h3 className="text-lg font-bold mb-4 bg-gradient-to-r from-orange-600 to-orange-500 bg-clip-text text-transparent" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>
@@ -288,43 +349,18 @@ export default function Footer({ darkMode, toggleDarkMode }) {
             </div>
           </div>
 
-          {/* Find Us / Map - Spans 3 columns */}
-          <div className="lg:col-span-3">
-            <div className="flex items-center justify-between mb-4">
-              <h3 className="text-lg font-bold bg-gradient-to-r from-orange-600 to-orange-500 bg-clip-text text-transparent" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>
-                Find Us
-              </h3>
-            </div>
+          {/* Office Locations - Spans 5 columns */}
+          <div className="lg:col-span-5">
+            <h3 className="text-xl font-bold mb-6 bg-gradient-to-r from-orange-600 to-orange-500 bg-clip-text text-transparent" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>
+              Our Offices
+            </h3>
 
-            <p className="mb-3 text-sm text-gray-700 dark:text-gray-300" style={{ fontFamily: 'Quicksand, sans-serif' }}>
-              Celestial Web Solutions Office Location — Keta, Ghana
-            </p>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {/* Main Office - Keta */}
+              <OfficeCard office={offices.main} isMain={true} />
 
-            <div className="relative w-full h-[200px] rounded-xl overflow-hidden shadow-lg border border-gray-200 dark:border-gray-700 hover:shadow-xl transition-shadow duration-300">
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3968.80059685584!2d0.9828870999999997!3d5.883621700000006!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1021710073fe6fff%3A0x96453357ca880329!2sCelestial%20Web%20Solutions!5e0!3m2!1sen!2sgh!4v1755809307538!5m2!1sen!2sgh"
-                width="100%"
-                height="200"
-                style={{ border: 0 }}
-                allowFullScreen=""
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                className="grayscale hover:grayscale-0 transition-all duration-500"
-                title="Celestial Web Solutions Location"
-              />
-
-              <motion.a
-                href={googleRating.googleBusinessUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="absolute bottom-4 right-4 px-4 py-2 bg-gradient-to-br from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white text-sm font-semibold rounded-lg shadow-lg flex items-center space-x-2 transition-all duration-300"
-                style={{ fontFamily: 'Quicksand, sans-serif' }}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <MapPin size={16} />
-                <span>View Map</span>
-              </motion.a>
+              {/* Branch Office - Accra */}
+              <OfficeCard office={offices.branch} isMain={false} />
             </div>
           </div>
         </div>
@@ -333,7 +369,7 @@ export default function Footer({ darkMode, toggleDarkMode }) {
         <div className="pt-8 border-t border-gray-200 dark:border-gray-700">
           <p className="text-center text-sm text-gray-500 dark:text-gray-400" style={{ fontFamily: 'Quicksand, sans-serif' }}>
             © {currentYear} Celestial Web Solutions. All rights reserved.
-            <span className="block sm:inline sm:ml-2">Crafted with ❤️ in Keta, Ghana</span>
+            <span className="block sm:inline sm:ml-2">Main Office in Keta • Branch Office in Accra, Ghana</span>
           </p>
         </div>
       </div>

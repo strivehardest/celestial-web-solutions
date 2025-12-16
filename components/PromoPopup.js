@@ -9,7 +9,7 @@ const PromoPopup = () => {
   const config = {
     delayBeforeShow: 3000, // 3 seconds delay before showing popup
     whatsappNumber: '233530505031',
-    whatsappMessage: 'Hi! I saw your October discount offer. I would like to know more about your web development services.',
+    whatsappMessage: 'Hi! I saw your December discount offer. I would like to know more about your web development services.',
     posterImage: '/promo-poster1.png', // Saved poster image in public folder
     showOncePerSession: true // Set to false to show every time page loads
   };
