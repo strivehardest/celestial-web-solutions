@@ -79,7 +79,7 @@ We do not sell or rent your personal information to third parties for their mark
 
 Service Providers:
 • Third-party vendors who assist in providing our services
-• Payment processors (PayPal, Paystack, mobile money providers)
+• Payment processors (Flutterwave, Paystack, mobile money providers)
 • Hosting providers and cloud service platforms
 • Email and communication service providers
 • Analytics and performance monitoring tools
@@ -228,7 +228,7 @@ We regularly review and delete data that is no longer necessary. You can request
 Essential Services:
 • Web hosting providers (secure servers and infrastructure)
 • Domain registrars (domain management services)
-• Payment processors (PayPal, Paystack, mobile money services)
+• Payment processors (Flutterwave, Paystack, mobile money services)
 • Email service providers (business communication)
 
 Development Tools:
@@ -344,9 +344,14 @@ Primary Contact:
 • WhatsApp: +233 530 505 031
 
 Physical Address:
-• Celestial Web Solutions
-• 235 Agblor Link
-• Keta, Ghana
+• Celestial Web Solutions, 235 Agblor Link, Keta, Ghana
+• Accra, Ghana
+
+
+Support Hours:
+• Monday to Friday: 9:00 AM - 6:00 PM GMT
+• Saturday: 10:00 AM - 4:00 PM GMT
+• Sunday: Closed
 
 Response Time:
 • We aim to respond to all inquiries within 2-3 business days
@@ -396,10 +401,14 @@ We take privacy seriously and are committed to addressing your concerns promptly
       <div className="min-h-screen bg-white dark:bg-gray-900">
         {/* Hero Section */}
         <section className="relative py-20 bg-gradient-to-br from-orange-500 via-orange-600 to-red-500 overflow-hidden">
-          {/* Background Elements */}
+          {/* Background Image */}
           <div className="absolute inset-0 overflow-hidden">
-            <div className="absolute -top-40 -right-40 w-80 h-80 bg-white/10 rounded-full opacity-50 animate-pulse"></div>
-            <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-white/10 rounded-full opacity-50 animate-pulse" style={{animationDelay: '2s'}}></div>
+            <img 
+              src="https://www.cookieyes.com/wp-content/uploads/2023/03/privacy-by-design.png" 
+              alt="Privacy Background"
+              className="w-full h-full object-cover opacity-20"
+            />
+            <div className="absolute inset-0 bg-gradient-to-br from-orange-300/80 via-orange-500/60 to-red-500/60"></div>
           </div>
 
           <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">

@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { motion } from "framer-motion";
 import Head from 'next/head';
 import WhatsAppButton from '../components/WhatsAppButton';
+import PremiumCTA from '../components/PremiumCTA';
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -74,9 +75,24 @@ export default function Contact() {
   return (
     <>
       <Head>
-        <title>Contact Us | Celestial Web Solutions - Get In Touch</title>
-        <meta name="description" content="Contact Celestial Web Solutions for professional web development services in Ghana. Get a free consultation and quote for your project." />
-        <meta name="keywords" content="contact web developer Ghana, web design quote, free consultation, Celestial Web Solutions contact, Keta Ghana" />
+        <title>Contact Celestial Web Solutions | Web Design Company Ghana</title>
+        <meta name="description" content="Contact Celestial Web Solutions in Accra or Keta, Ghana. Get in touch for web design, development, and digital marketing services. Free consultation available." />
+        <meta name="keywords" content="contact us Ghana, web designer contact, web development inquiries, Celestial Web Solutions contact, email web designer Ghana, phone web developer, consultation Ghana, contact form Ghana, office location Accra, office Keta, business hours Ghana, website inquiry, project quote, free consultation, support contact, customer service Ghana" />
+        <meta name="author" content="Celestial Web Solutions" />
+        <meta name="robots" content="index, follow" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        
+        {/* Open Graph */}
+        <meta property="og:title" content="Contact Celestial Web Solutions | Ghana"/>
+        <meta property="og:description" content="Get in touch with Celestial Web Solutions. Contact us for web design and development services." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://celestialwebsolutions.net/contact" />
+        
+        {/* Twitter Card */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Contact Celestial Web Solutions | Ghana" />
+        <meta name="twitter:description" content="Contact us for web design and development services in Ghana." />
+        
         <link rel="canonical" href="https://celestialwebsolutions.net/contact" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
@@ -84,8 +100,18 @@ export default function Contact() {
       </Head>
 
       <div className="min-h-screen bg-white dark:bg-gray-900">
-        {/* Hero Section */}
-        <section className="relative py-20 bg-gradient-to-br from-orange-500 via-orange-600 to-red-500 overflow-hidden">
+        {/* Hero Section with Background Image */}
+        <section className="relative py-20 overflow-hidden">
+          {/* Background Image with Overlay */}
+          <div 
+            className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+            style={{
+              backgroundImage: 'url("https://media.istockphoto.com/id/879441788/photo/web-contact-us-icons-on-cubes.jpg?s=612x612&w=0&k=20&c=4wKebqcelXRP3skkhI-SlTeJQekYavAKGrcwYm9awag=")',
+            }}
+          />
+          <div className="absolute inset-0 bg-gradient-to-br from-orange-500/95 via-orange-600/90 to-red-500/95"></div>
+
+          {/* Animated Background Elements */}
           <div className="absolute inset-0 overflow-hidden">
             <div className="absolute -top-40 -right-40 w-80 h-80 bg-white/10 rounded-full opacity-50 animate-pulse"></div>
             <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-white/10 rounded-full opacity-50 animate-pulse" style={{animationDelay: '2s'}}></div>
@@ -99,13 +125,13 @@ export default function Contact() {
               transition={{ duration: 0.8 }}
             >
               <h1
-                className="text-4xl md:text-6xl font-bold text-white mb-6"
+                className="text-4xl md:text-6xl font-bold text-white mb-6 drop-shadow-lg"
                 style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}
               >
                 Get In Touch
               </h1>
               <p
-                className="text-xl text-orange-100 max-w-3xl mx-auto leading-relaxed"
+                className="text-xl text-orange-100 max-w-3xl mx-auto leading-relaxed drop-shadow-md"
                 style={{ fontFamily: "Quicksand, sans-serif" }}
               >
                 Ready to bring your digital vision to life? Let's discuss your project and create something amazing together.
@@ -188,7 +214,7 @@ export default function Contact() {
                     </div>
                   </div>
                   <h3 className="font-bold text-gray-900 dark:text-white mb-2 text-lg" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>Location</h3>
-                  <p className="text-gray-600 dark:text-gray-300 font-medium" style={{ fontFamily: 'Quicksand, sans-serif' }}>Keta, Ghana</p>
+                  <p className="text-gray-600 dark:text-gray-300 font-medium" style={{ fontFamily: 'Quicksand, sans-serif' }}>Keta & Accra, Ghana</p>
                 </motion.div>
               </div>
 
@@ -201,7 +227,7 @@ export default function Contact() {
               >
                 <div className="p-8 border-b border-gray-200 dark:border-gray-700 bg-gradient-to-r from-orange-50 to-orange-100 dark:from-gray-800 dark:to-gray-700">
                   <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>Find Us</h3>
-                  <p className="text-gray-600 dark:text-gray-300 font-medium" style={{ fontFamily: 'Quicksand, sans-serif' }}>Located in the beautiful coastal city of Keta, Ghana</p>
+                  <p className="text-gray-600 dark:text-gray-300 font-medium" style={{ fontFamily: 'Quicksand, sans-serif' }}> Our Main Office is located in the beautiful coastal city of Keta, Ghana</p>
                 </div>
                 <div className="h-64 bg-gray-200 relative">
                   <iframe
@@ -359,26 +385,28 @@ export default function Contact() {
                   />
                 </div>
 
-                <motion.button
-                  type="submit"
-                  disabled={isSubmitting}
-                  whileHover={{ scale: 1.02, y: -2 }}
-                  whileTap={{ scale: 0.98 }}
-                  className="w-full bg-gradient-to-r from-orange-500 to-orange-600 text-white font-bold py-4 px-8 rounded-2xl hover:from-orange-600 hover:to-orange-700 focus:ring-4 focus:ring-orange-300 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed shadow-xl"
-                  style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}
-                >
-                  {isSubmitting ? (
-                    <span className="flex items-center justify-center">
-                      <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                      </svg>
-                      Sending...
-                    </span>
-                  ) : (
-                    'Send Message'
-                  )}
-                </motion.button>
+                <div>
+                  <PremiumCTA
+                    type="submit"
+                    size="large"
+                    variant="primary"
+                    icon
+                    className="w-full"
+                    disabled={isSubmitting}
+                  >
+                    {isSubmitting ? (
+                      <span className="flex items-center justify-center">
+                        <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                          <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                          <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                        </svg>
+                        Sending...
+                      </span>
+                    ) : (
+                      'Send Message'
+                    )}
+                  </PremiumCTA>
+                </div>
               </form>
 
               <div className="mt-8 pt-6 border-t border-gray-200 dark:border-gray-700">

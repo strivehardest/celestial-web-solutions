@@ -1,532 +1,588 @@
-import { useRouter } from "next/router";
-import Link from "next/link";
-import { motion } from "framer-motion";
-import { Monitor, Code, Search, ShoppingCart, Palette, Headphones, Target, MousePointer, Check, ArrowRight } from "lucide-react";
-import Head from "next/head";
-import WhatsAppButton from '../../components/WhatsAppButton';
+import { useRouter } from 'next/router';
+import Head from 'next/head';
+import { motion } from 'framer-motion';
+import PremiumCTA from '../../components/PremiumCTA';
+import Link from 'next/link';
 
-// Service data with detailed content
-const servicesData = {
-  "web-development": {
-    title: "Web Development",
-    icon: Code,
-    description: "Transform your business with custom web solutions built using cutting-edge technologies",
-    longDescription: "We specialize in creating robust, scalable web applications that drive business growth. Our expert developers use modern frameworks and best practices to deliver solutions that are fast, secure, and built to scale with your business needs.",
-    features: [
-      "Custom Web Applications",
-      "Content Management Systems (CMS)",
-      "E-learning Platforms",
-      "API Development & Integration",
-      "Progressive Web Apps (PWA)",
-      "Database Design & Optimization",
-      "Performance Optimization",
-      "Security Implementation"
-    ],
-    technologies: ["React", "Next.js", "Node.js", "Javascript", "HTML5", "CSS3", "WordPress", "django"],
-    benefits: [
-      { title: "Scalable Architecture", description: "Build applications that grow with your business without performance degradation" },
-      { title: "Modern Tech Stack", description: "Leverage the latest technologies for optimal performance and user experience" },
-      { title: "SEO-Friendly", description: "Built-in SEO optimization for better search engine visibility" },
-      { title: "Maintenance & Support", description: "Ongoing support and updates to keep your application running smoothly" }
-    ],
-    process: [
-      { step: 1, title: "Discovery & Planning", description: "We understand your business goals, target audience, and technical requirements" },
-      { step: 2, title: "Design & Architecture", description: "Create wireframes, user flows, and technical architecture" },
-      { step: 3, title: "Development", description: "Build your application using agile methodology with regular updates" },
-      { step: 4, title: "Testing & QA", description: "Rigorous testing across devices, browsers, and scenarios" },
-      { step: 5, title: "Deployment", description: "Launch your application with zero downtime and monitoring" },
-      { step: 6, title: "Support & Maintenance", description: "Ongoing updates, security patches, and feature enhancements" }
-    ],
-    pricing: {
-      starting: "GH₵ 2,000",
-      note: "Pricing varies based on project complexity and requirements"
-    }
-  },
-  "web-design": {
+// Add a heroImage property for each service
+const services = [
+  { 
     title: "Web Design",
-    icon: Monitor,
-    description: "Create stunning, user-centric designs that captivate and convert",
-    longDescription: "Our design team creates beautiful, intuitive websites that not only look amazing but also deliver exceptional user experiences. We combine aesthetics with functionality to create designs that resonate with your target audience and drive conversions.",
-    features: [
-      "Responsive Design",
-      "Mobile-First Approach",
-      "Brand Identity Integration",
-      "UI/UX Design",
-      "Wireframing & Prototyping",
-      "Color Theory & Typography",
-      "Accessibility Compliance",
-      "Conversion Optimization"
+    slug: "web-design",
+    description: "We create stunning, responsive websites that captivate your audience across all devices. Our designs blend modern aesthetics with intuitive user experience, featuring optimal color schemes, strategic layouts, and conversion-oriented elements that reflect your brand identity and maximize engagement.",
+    icon: require("lucide-react").Monitor,
+    heroImage: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=1200&q=80",
+    keywords: [
+      "responsive web design", "modern website design", "UI design", "mobile-first design",
+      "branding", "user experience", "website redesign", "landing page design"
     ],
-    technologies: ["Figma", "Canva", "Photoshop", "Illustrator", "Tailwind CSS", "Bootstrap"],
-    benefits: [
-      { title: "First Impressions Matter", description: "Make a lasting impact with professionally designed interfaces" },
-      { title: "User-Centric Design", description: "Designs focused on user needs and behavior patterns" },
-      { title: "Brand Consistency", description: "Cohesive design language across all touchpoints" },
-      { title: "Higher Conversions", description: "Strategic design elements that drive user actions" }
-    ],
-    process: [
-      { step: 1, title: "Research & Discovery", description: "Understanding your brand, audience, and competitors" },
-      { step: 2, title: "Concept Development", description: "Creating initial design concepts and mood boards" },
-      { step: 3, title: "Wireframing", description: "Developing layout structure and user flow" },
-      { step: 4, title: "Visual Design", description: "Applying colors, typography, and brand elements" },
-      { step: 5, title: "Prototyping", description: "Creating interactive prototypes for testing" },
-      { step: 6, title: "Final Delivery", description: "Delivering design files and style guides" }
-    ],
-    pricing: {
-      starting: "GH₵ 1,500",
-      note: "Custom quotes based on project scope and deliverables"
-    }
+    details: [
+      {
+        heading: "Why Invest in Professional Web Design?",
+        content: [
+          "Your website is your digital storefront—first impressions matter.",
+          "A professional design builds trust, credibility, and drives conversions.",
+          "Mobile-first and responsive layouts ensure your site looks perfect on every device.",
+          "Modern design trends and best practices keep your business ahead of the competition.",
+          "SEO-friendly structure and fast loading for better Google rankings."
+        ]
+      },
+      {
+        heading: "What We Offer",
+        content: [
+          "Custom website design for businesses, brands, and startups.",
+          "Mobile-first, responsive layouts for all devices.",
+          "Branding, color schemes, and typography tailored to your identity.",
+          "Wireframes, mockups, and interactive prototypes for a clear vision.",
+          "Landing pages, multi-page sites, and redesigns for existing websites.",
+          "Conversion-focused layouts and call-to-action strategies.",
+          "UI kits and design systems for scalability."
+        ]
+      },
+      {
+        heading: "Our Web Design Process",
+        content: [
+          "1. Discovery & Strategy: We learn about your business, goals, and audience.",
+          "2. Research & Inspiration: Competitor analysis and moodboards.",
+          "3. Wireframing: Structure and layout planning for optimal user flow.",
+          "4. Visual Design: High-fidelity mockups and interactive prototypes.",
+          "5. Feedback & Iteration: Collaborative reviews and refinements.",
+          "6. Handover: Developer-ready assets or seamless transition to our dev team."
+        ]
+      },
+      {
+        heading: "Design Tools & Tech Stack",
+        content: [
+          {
+            name: "Figma",
+            url: "https://avatars.githubusercontent.com/u/5155369?s=200&v=4"
+          },
+          {
+            name: "Adobe XD",
+            url: "https://cdn.worldvectorlogo.com/logos/adobe-xd-2.svg"
+          },
+          {
+          name: "HTML5",
+            url: "https://kinsta.com/wp-content/uploads/2021/03/HTML-5-Badge-Logo.png"
+          },
+          {
+            name: "Framer Motion",
+            url: "https://cdn.worldvectorlogo.com/logos/framer-motion.svg"
+          },
+          {
+            name: "Tailwind CSS",
+            url: "https://cdn.worldvectorlogo.com/logos/tailwindcss.svg"
+          }
+        ]
+      },
+      {
+        heading: "What's Included",
+        content: [
+          "Bespoke homepage and inner page designs.",
+          "Mobile and tablet responsive layouts.",
+          "Branding and color palette recommendations.",
+          "UI kits and design systems for scalability.",
+          "SEO-friendly structure and best practices.",
+          "Handover of all design assets and source files.",
+          "Free consultation and project strategy session."
+        ]
+      },
+      {
+        heading: "Sample Deliverables",
+        content: [
+          "• Homepage and up to 5 inner pages (more on request)",
+          "• Interactive Figma/Adobe XD prototype",
+          "• Brand style guide (colors, fonts, logo usage)",
+          "• Exported assets (SVG, PNG, JPG, etc)",
+          "• Developer handoff with specs and notes"
+        ]
+      },
+      {
+        heading: "Pricing",
+        content: [
+          "Landing Page Design: from $200 (GH₵2,500)",
+          "Multi-page Website Design: from $400 (GH₵5,000)",
+          "UI/UX Audit & Redesign: from $300 (GH₵3,800)",
+          "Branding Package: from $150 (GH  ₵1,900)",
+          "Contact us for a custom quote or special requirements."
+        ]
+      },
+      {
+        heading: "Why Choose Celestial Web Solutions?",
+        content: [
+          "Collaborative, transparent process with unlimited feedback rounds.",
+          "Focus on conversion, accessibility, and user experience.",
+          "Fast turnaround and ongoing support.",
+          "Trusted by startups, SMEs, and established brands in Ghana and beyond.",
+          "100% satisfaction guarantee—your vision, perfectly realized."
+        ]
+      },
+      {
+        heading: "Frequently Asked Questions",
+        content: [
+          "Q: How long does a typical web design project take?",
+          "A: Most projects are completed in 2-4 weeks, depending on scope and feedback cycles.",
+          "Q: Can you redesign my existing website?",
+          "A: Absolutely! We specialize in website redesigns and UI/UX audits.",
+          "Q: Do you offer development as well?",
+          "A: Yes, we can handle both design and full-stack development for a seamless experience.",
+          "Q: Will my site be mobile-friendly?",
+          "A: 100%—all our designs are fully responsive and tested on all devices."
+        ]
+      }
+    ]
   },
-  "ecommerce-solutions": {
+  { 
+    title: "Web Development",
+    slug: "web-development",
+    description: "We build robust, scalable web applications using cutting-edge technologies like React, Next.js, and Node.js. From simple business websites to complex enterprise systems, we create custom solutions that grow with your business, including CMS platforms, e-learning systems, and API integrations.",
+    icon: require("lucide-react").Code,
+    heroImage: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1200&q=80",
+    keywords: ["web development", "custom web applications", "React development", "Node.js"],
+    details: [
+      {
+        heading: "What We Offer",
+        content: [
+          "Custom website and web app development tailored to your business needs.",
+          "CMS solutions (WordPress, Headless CMS, etc).",
+          "API integrations, payment gateways, and third-party services.",
+          "E-learning platforms, booking systems, and more."
+        ]
+      },
+      {
+        heading: "Our Approach",
+        content: [
+          "Discovery & requirements gathering.",
+          "UI/UX design and prototyping.",
+          "Agile development with regular updates.",
+          "Testing, deployment, and ongoing support."
+        ]
+      },
+      {
+        heading: "Tech Stack",
+        content: [
+          {
+            name: "React",
+            url: "https://cdn.worldvectorlogo.com/logos/react-2.svg"
+          },
+          {
+            name: "Next.js",
+            url: "https://cdn.worldvectorlogo.com/logos/nextjs-2.svg"
+          },
+          {
+            name: "Node.js",
+            url: "https://cdn.worldvectorlogo.com/logos/nodejs-1.svg"
+          },
+          {
+            name: "Express",
+            url: "https://cdn.worldvectorlogo.com/logos/express-109.svg"
+          },
+          {
+            name: "MongoDB",
+            url: "https://cdn.worldvectorlogo.com/logos/mongodb-icon-1.svg"
+          },
+          {
+            name: "PostgreSQL",
+            url: "https://cdn.worldvectorlogo.com/logos/postgresql.svg"
+          },
+          {
+            name: "Tailwind CSS",
+            url: "https://cdn.worldvectorlogo.com/logos/tailwindcss.svg"
+          },
+          {
+            name: "HTML5",
+            url: "https://kinsta.com/wp-content/uploads/2021/03/HTML-5-Badge-Logo.png"
+          },
+          {
+            name: "CSS3",
+            url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3iHW9F8U24tel7OWvX4YKDzZH1n8Kt42Zsw&s"
+          },
+          {
+            name: "JavaScript",
+            url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRorNhvtDW5k2_HniJ1ltvv_LzRta5lVb1ekQ&s"
+          },
+          { name: "TypeScript",
+            url: "https://cdn.worldvectorlogo.com/logos/typescript.svg"
+          },
+          {
+            name: "Django",
+            url: "https://cdn.worldvectorlogo.com/logos/django-community.svg"
+          }
+        ]
+      },
+      {
+        heading: "Pricing",
+        content: [
+          "Basic Website: from $170 (GH₵2,500)",
+          "Business Website: from $600 (GH₵7,500)",
+          "Custom Web App: from $1,200 (GH₵15,000)",
+          "E-learning/Booking/Portal: from $1,500 (GH₵19,000)",
+          "Contact us for a tailored quote."
+        ]
+      }
+    ]
+  },
+  { 
     title: "E-Commerce Solutions",
-    icon: ShoppingCart,
-    description: "Build powerful online stores that drive sales and delight customers",
-    longDescription: "Launch a successful online store with our comprehensive e-commerce solutions. We create secure, scalable platforms with seamless payment integration, inventory management, and analytics to help you grow your online business.",
-    features: [
-      "Custom Shopping Cart",
-      "Payment Gateway Integration",
-      "Mobile Money Integration",
-      "Inventory Management",
-      "Order Tracking System",
-      "Customer Reviews & Ratings",
-      "Abandoned Cart Recovery",
-      "Analytics Dashboard"
-    ],
-    technologies: ["WooCommerce", "Shopify", "Paystack", "Stripe", "React", "Node.js", "Flutterwave"],
-    benefits: [
-      { title: "Secure Payments", description: "Multiple payment options with bank-level security" },
-      { title: "Mobile Commerce", description: "Optimized shopping experience on all devices" },
-      { title: "Inventory Control", description: "Real-time stock management and alerts" },
-      { title: "Growth Tools", description: "Built-in marketing and sales optimization features" }
-    ],
-    process: [
-      { step: 1, title: "Business Analysis", description: "Understanding your products, target market, and business model" },
-      { step: 2, title: "Platform Selection", description: "Choosing the right e-commerce platform for your needs" },
-      { step: 3, title: "Store Setup", description: "Configuring products, categories, and payment methods" },
-      { step: 4, title: "Custom Development", description: "Building custom features and integrations" },
-      { step: 5, title: "Testing & QA", description: "Thorough testing of checkout, payments, and user flows" },
-      { step: 6, title: "Launch & Training", description: "Going live and training your team on store management" }
-    ],
-    pricing: {
-      starting: "GH₵ 3,000",
-      note: "Pricing depends on store complexity and integrations"
-    }
+    slug: "ecommerce-solutions",
+    description: "We develop high-converting online stores with secure payment gateways, inventory management, and user-friendly interfaces. Our platforms support multiple payment options including mobile money, feature abandoned cart recovery, product recommendations, and comprehensive analytics dashboards.",
+    icon: require("lucide-react").ShoppingCart,
+    heroImage: "https://images.unsplash.com/photo-1515168833906-d2a3b82b302b?auto=format&fit=crop&w=1200&q=80",
+    keywords: ["e-commerce development", "online store", "payment gateway", "mobile money integration"],
+    details: [
+      {
+        heading: "What We Offer",
+        content: [
+          "Custom e-commerce website development.",
+          "Shopify, WooCommerce, and custom solutions.",
+          "Payment gateway integration (Visa, Mobile Money, PayPal, etc).",
+          "Inventory, order, and customer management."
+        ]
+      },
+      {
+        heading: "Features",
+        content: [
+          "Abandoned cart recovery, product recommendations.",
+          "Discounts, coupons, and loyalty programs.",
+          "Analytics dashboards and reporting."
+        ]
+      },
+      {
+        heading: "Tech Stack",
+        content: [
+          { name: "Shopify", url: "https://cdn.worldvectorlogo.com/logos/shopify.svg" },
+          { name: "WooCommerce", url: "https://cdn.worldvectorlogo.com/logos/woocommerce.svg" },
+          { name: "Stripe", url: "https://cdn.worldvectorlogo.com/logos/stripe-4.svg" },
+          { name: "PayPal", url: "https://cdn.worldvectorlogo.com/logos/paypal-3.svg" },
+          { name: "React", url: "https://cdn.worldvectorlogo.com/logos/react-2.svg" },
+          { name: "Next.js", url: "https://cdn.worldvectorlogo.com/logos/nextjs-2.svg" },
+          { name: "Node.js", url: "https://cdn.worldvectorlogo.com/logos/nodejs-1.svg" },
+          { name: "MongoDB", url: "https://cdn.worldvectorlogo.com/logos/mongodb-icon-1.svg" },
+          { name: "PostgreSQL", url: "https://cdn.worldvectorlogo.com/logos/postgresql.svg" },
+          { name: "Django", url: "https://cdn.worldvectorlogo.com/logos/django-community.svg" },
+          { name: "Tailwind CSS", url: "https://cdn.worldvectorlogo.com/logos/tailwindcss.svg" },
+          { name: "Paystack", url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdsrdSBdYYXvXzieXYJWaBuy_S2jIT26igzw&s" }
+        ]
+      },
+      {
+        heading: "Pricing",
+        content: [
+          "Starter Store: from $350 (GH₵4,000)",
+          "Advanced Store: from $900 (GH₵11,000)",
+          "Marketplace/Custom: from $1,800 (GH₵22,000)"
+        ]
+      }
+    ]
   },
-  "seo-optimization": {
+  { 
     title: "SEO Optimization",
-    icon: Search,
-    description: "Boost your visibility and drive organic traffic with proven SEO strategies",
-    longDescription: "Dominate search results with our data-driven SEO services. We implement comprehensive strategies that improve your rankings, increase organic traffic, and drive qualified leads to your business.",
-    features: [
-      "Keyword Research & Analysis",
-      "On-Page Optimization",
-      "Technical SEO Audit",
-      "Local SEO",
-      "Content Strategy",
-      "Link Building",
-      "Competitor Analysis",
-      "Monthly Reporting"
-    ],
-    technologies: ["Google Analytics", "Google Search Console", "SEMrush", "Ahrefs", "Moz", "Screaming Frog", "Yoast SEO"],
-    benefits: [
-      { title: "Increased Visibility", description: "Rank higher in search results for relevant keywords" },
-      { title: "Quality Traffic", description: "Attract visitors who are actively searching for your services" },
-      { title: "Better ROI", description: "Cost-effective marketing with long-term results" },
-      { title: "Measurable Results", description: "Track rankings, traffic, and conversions with detailed reports" }
-    ],
-    process: [
-      { step: 1, title: "SEO Audit", description: "Comprehensive analysis of your current SEO performance" },
-      { step: 2, title: "Strategy Development", description: "Creating a custom SEO roadmap for your business" },
-      { step: 3, title: "On-Page Optimization", description: "Optimizing content, meta tags, and site structure" },
-      { step: 4, title: "Technical SEO", description: "Improving site speed, mobile-friendliness, and crawlability" },
-      { step: 5, title: "Content Creation", description: "Developing SEO-optimized content for your audience" },
-      { step: 6, title: "Monitoring & Reporting", description: "Tracking progress and adjusting strategies" }
-    ],
-    pricing: {
-      starting: "GH₵ 800/month",
-      note: "Monthly packages with flexible terms"
-    }
+    slug: "seo-optimization",
+    description: "We elevate your online visibility with data-driven SEO strategies that drive organic traffic and improve search rankings. Our services include keyword research, on-page optimization, technical SEO, local SEO for Ghana, and monthly performance reports showing measurable results.",
+    icon: require("lucide-react").Search,
+    heroImage: "https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=1200&q=80",
+    keywords: ["SEO services", "search engine optimization", "organic traffic", "local SEO Ghana"],
+    details: [
+      {
+        heading: "What We Offer",
+        content: [
+          "Comprehensive SEO audits and strategy.",
+          "On-page and technical SEO.",
+          "Local SEO for Ghana and Africa.",
+          "Monthly performance reports."
+        ]
+      },
+      {
+        heading: "Our Approach",
+        content: [
+          "Keyword research and competitor analysis.",
+          "Content optimization and link building.",
+          "Continuous monitoring and improvement."
+        ]
+      },
+      {
+        heading: "Tech Stack",
+        content: [
+          { name: "Google Analytics", url: "https://cdn.worldvectorlogo.com/logos/google-analytics-4.svg" },
+          { name: "Google Search Console", url: "https://cdn.worldvectorlogo.com/logos/google-search-console.svg" },
+          { name: "Ahrefs", url: "data:image/png;base64,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" },
+          { name: "SEMrush", url: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAVQAAACUCAMAAAD70yGHAAAAwFBMVEX///8AAAD/ZC3s7Oz/VwvZ2dn/6eX/VAD//PozMzPJycljY2OdnZ1qamq/v79ycnKjo6PFxcXm5ub/YCYpKSn/XB2urq5QUFD29vY/Pz/S0tL/WhX/XR7i4uKNjY1FRUX/8u7/v67/ybosLCx7e3usrKz/5Nz/nID/08dMTEwfHx//hmH/qZL/aTT/d0r/2s//iWX/lnj/ckD/r5n/tKAPDw+Hh4eTk5P/dUn/l3n/f1f/vav/oYb/kG3/39b/xrYdsFYPAAAIJ0lEQVR4nO2biXKqOhiAUXFDXCqCFrCl1qXVqq1dPMe2+v5vdckCJBAW771TYfp/c+aMISSGjyw/wUoSAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAkA+cWlacxqXbWhScupwRyy7vVk8T59ItLgCNtV3OjmZb1p/X+aUbnXsaf+vaGVqRWPnwcOlW556HnXWWVdervNleutW557Osn6u1voBlK4XGW/nc3mqvYWpNo3G3ts6cW63JpRtdACYHKyYS0CxLW6/XZdvSWfEyWM3A/EtgVbO0v5MankGd49uGFS9DFJCFz8iKZa0n3JJU+2KmCb12qYbmiUYKi9C8qul3kTqcZ39R0zYXuIa88VpPRg451TeOqJpT3e/Hbz98BTnk+ZxnUlfZd1D0ZJc3L58OSRxl/xTnEteRKxz7nLBJZ5xKO62saXp9dcSpuddX7a/LXEmecMrZrWoHtuSaHqwvcHLi9VXoqq7VXeYZwHbYgjvvbug7fNyLvvTXS1xG3lhlfCC1+HX/ri7TWEorO2664Z23u8hV5I2neqxIBi0iy3lYEK3aH5S8ozfHgj0AxIOWYWK1ToKSNES10JBv0Ep0iKowzkpO8omxxVt7C/zIVXckf1bVVj/a9hxzSouttO+YkgdU0H5yP23p+F//ZMNzjfOc3FkFj6eEGimHqqD3hY8SfjeTclJwZR3jyj0jlzLaSaFRFqxUDI2vhG1p2YkrdkKj3kKbfs9UKryvYjkeYueAeuwrqDkqo3+6n16oVNhV5ZmsY1751WOLNNBWlgVSE2i82sKpNb6nSq/uMxV+VP2G4R+HswjvouI5NWn1ob+q2mjpp/5aat/RFSvLmKYbVxBSiTmuwr0Vh/fJ1LydmR9oYDEJayWbJonckTVOe/6B5hWV44pbsdJnygO5C7Chksg321e1vylnz62s9n81K24CkFPe6dPnKdhP4XCs0Atqfq1KmSu39GEMXqdwOCmbqnLcRhXGj72cH2puQdimbKrG71S5UwVd1eyXn2tvMajtkn/sq8WuQQsvRoVfU0VZJE4Bmh3zXPXiO01/RviFPCT/Ml0WLUO1jVcm+soVQDS+RPspwbz6J9xZG6/BTkHSrPu7qT0nadXkw8kJTp4/MV1b/rxYo/PP9pCo1dIOr6ftdvvwudhxP6SGCTWRZK34L/1cdO5XGOA0lfmLft4fU4HTLDivZ/zVjyb8WRAg4OHbzubV2kDQnx3ntEr3qmuJ2wJAFGfysub/Ci008Ndv8Hep/4b53cvOtnQ79KNLTbe0b3jN/x9wjndPzzsk0pLRP11bf79toZP+HzhObT4/bufzGvgEAAAAAAAAAAAAAAAAkhgbH63h47A1VY3xyD9aERLK4uqJPSt6+ggnR4LiwSlKr9t6dJv10eskFxxFm3JhRvtBiWU4o80blkRU3ZxKkBwzNVX9o0ucXkZLL9sKOfcKJztcS97RoXuvsi5XcNDlCqpcQQUf+3+1/Cc6AnHtPsppZZG6Z6q68Y82cboprKCN8xSBVHxzr8nnj2jB931QsMcVzJtUQ3jh+GIzSb1n6gokJkktDVFeilTxKAkK5lpqRdj4M6SW+n5d4+BgolRsJFlqT1xQkgohdUpaO1SNzlXH6N0MlyGp910ePDMQqfvQ5akoedsNSX0fBlwHcpKlktPepz3jSukY6rRZKKm4Ncs+c2Q8e2SltkWliFSlGfhDYGWzsNQmV5BoraZINXFml8kamTfLYkndhw5WPjJJNcnC5IUyfZJKlEqnCCNFKlnhxxKP2UL/F0XqUJyX2lNJCDWjB3tESTtRKgmbepmkziQRIqlmvqSS4XivKmY0dk6TekUseLfkFiXUFKmjTD2VdPpSy1CqfJQveQU/TCXA7OVL6qzE0GxNb4yqnyde/VGOJ5UEk+S6K3TIJkslJcy0heqW+cL32/ZUvfLvuSJsVa6kStfRxk3pupUulYx/A59tUINhqQPDZ6be+nUkS+1Hv3dJR3wRpArVqbE5vFSiAa8fJFxXo1IFpMepzBMvAx5EhZAqKQJ52GoGqcH490Z/Bql4Eq7GSb2liZlgDKEhVAypLmZHnbYf2f0P5IkG/20edL4v1fTVeKM/XSoJP/nIAUMWsVaQVoybbot1i/IKI9WnYvZwzIPnyfTVn0ZILe9kFPCmSG2ZpIqwQcnzHA6a0bljZerf6wLEqb3IkYp/aVmkTunlEEdo0gtLva6aCLpxY/h1kB7IBnJdv9aKIYUhUdO4EFKbpV44EjxLqjf+O77KsFRvjlRLvncmzXRVxe+Mbv23SugrzQJJRf2lq7BeZ2cNf3ILukQlHrlxUmlH9Psm6dulrvfddF936tW/VLnH1GGBhj9dBoZ7o9p3UXqP5ABaZ7HU657KsUdSGKl0/Hv9KEEqjej9hwG6pf2+N/v9sUG/lzinW4vLbu9q7LZq3NmTRfRRKpLUMLh/pu2nYqnkehiT8VJHZA30R7xoHSPhQMwuL/7GAkgVi7sfxeeFpEpBDlm346V6Ef0HTVbeI5XTrJHYKc4tgFRpNog2fkjmuWxSp1xOolRv3vTW9lH4pYmvajQtRSE3rQhS3Ra1+R5z7T3mxL9NJY/m5Dw/GB+QUvhWMG9TuQ0VOo+aXtpgp4Auu1c+mj2WONp03SrE21REdTZ9bA4Gg+bt1AiurF8VgXtx8Il+dqEFxzhBKkDwW4r4UJ+JNqpqC33z9dSI7D2OFLV9fY+aNbzp+EVGuH7+5FHwnQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACQR/4B9Sqg+18g0yYAAAAASUVORK5CYII=" },
+        ]
+      },
+      {
+        heading: "Pricing",
+        content: [
+          "SEO Audit: from $120 (GH₵1,500)",
+          "Monthly SEO Package: from $60 (GH₵800)",
+          "Local SEO: from $180 (GH₵2,300)"
+        ]
+      }
+    ]
   },
-  "ux-ui-design": {
+  { 
     title: "UX/UI Design",
-    icon: Palette,
-    description: "Create intuitive interfaces that users love",
-    longDescription: "We design user experiences that are both beautiful and functional. Our UX/UI design services focus on creating interfaces that are intuitive, accessible, and aligned with your business goals.",
-    features: [
-      "User Research",
-      "Information Architecture",
-      "Wireframing",
-      "Interactive Prototypes",
-      "Usability Testing",
-      "Design Systems",
-      "Accessibility Design",
-      "Interaction Design"
-    ],
-    technologies: ["Figma", "Adobe XD", "Sketch", "Framer"],
-    benefits: [
-      { title: "User Satisfaction", description: "Create experiences that users find intuitive and enjoyable" },
-      { title: "Reduced Development Costs", description: "Catch usability issues early in the design phase" },
-      { title: "Competitive Advantage", description: "Stand out with superior user experience" },
-      { title: "Data-Driven Decisions", description: "Design based on user research and testing" }
-    ],
-    process: [
-      { step: 1, title: "User Research", description: "Understanding your users through interviews and surveys" },
-      { step: 2, title: "Persona Development", description: "Creating detailed user personas and journey maps" },
-      { step: 3, title: "Information Architecture", description: "Organizing content and navigation structure" },
-      { step: 4, title: "Wireframing", description: "Creating low-fidelity designs to test concepts" },
-      { step: 5, title: "Visual Design", description: "Applying visual elements and brand identity" },
-      { step: 6, title: "Usability Testing", description: "Testing designs with real users and iterating" }
-    ],
-    pricing: {
-      starting: "GH₵ 2,500",
-      note: "Project-based pricing for comprehensive UX/UI packages"
-    }
+    slug: "ux-ui-design",
+    description: "We craft exceptional user experiences through thoughtful design that combines beauty with functionality. Our process includes user research, wireframing, interactive prototypes, and usability testing to create intuitive, accessible interfaces that work seamlessly across all platforms.",
+    icon: require("lucide-react").Palette,
+    heroImage: "https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?auto=format&fit=crop&w=1200&q=80",
+    keywords: ["UX design", "UI design", "user experience", "wireframing", "usability testing"],
+    details: [
+      {
+        heading: "What We Offer",
+        content: [
+          "User research and persona development.",
+          "Wireframes, mockups, and interactive prototypes.",
+          "Usability testing and accessibility audits.",
+          "UI kits and design systems."
+        ]
+      },
+      {
+        heading: "Tools & Tech Stack",
+        content: [
+          { name: "Figma", url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTa54MKk4H1Gvj4AN46AGs2-qeIYpOvOUo5vQ&s" },
+          { name: "Adobe XD", url: "https://cdn.worldvectorlogo.com/logos/adobe-xd-2.svg" },
+          { name: "Sketch", url: "https://cdn.worldvectorlogo.com/logos/sketch-2.svg" },
+          { name: "InVision", url: "https://cdn.worldvectorlogo.com/logos/invision.svg" },
+          { name: "Framer", url: "https://i.pinimg.com/736x/b2/44/8c/b2448c6183e4a6c6bb9a1a22093905f3.jpg" }
+        ]
+      },
+      {
+        heading: "Pricing",
+        content: [
+          "UX Audit: from $100 (GH₵1,300)",
+          "UI/UX Design for Website: from $350 (GH₵4,500)",
+          "App UI/UX: from $500 (GH₵6,200)"
+        ]
+      }
+    ]
   },
-  "it-support": {
+  { 
     title: "IT Support",
-    icon: Headphones,
-    description: "Keep your technology running smoothly with expert IT support",
-    longDescription: "Our IT support services ensure your business technology operates efficiently and securely. From system setup to ongoing maintenance, we provide the technical expertise you need to focus on growing your business.",
-    features: [
-      "Help Desk Support",
-      "System Maintenance",
-      "Security Management",
-      "Data Backup Solutions",
-      "Network Setup",
-      "Cloud Services",
-      "Hardware Support",
-      "Remote Assistance"
-    ],
-    technologies: ["Microsoft 365", "Google Workspace", "VPN", "Firewalls"],
-    benefits: [
-      { title: "24/7 Support", description: "Get help whenever you need it with our support team" },
-      { title: "Proactive Monitoring", description: "Prevent issues before they affect your business" },
-      { title: "Cost Savings", description: "Reduce downtime and avoid expensive IT emergencies" },
-      { title: "Expert Guidance", description: "Access to experienced IT professionals" }
-    ],
-    process: [
-      { step: 1, title: "Assessment", description: "Evaluating your current IT infrastructure" },
-      { step: 2, title: "Strategy Development", description: "Creating an IT support plan tailored to your needs" },
-      { step: 3, title: "Implementation", description: "Setting up systems and support protocols" },
-      { step: 4, title: "Monitoring", description: "Continuous monitoring of your systems" },
-      { step: 5, title: "Support", description: "Providing ongoing help desk and technical support" },
-      { step: 6, title: "Optimization", description: "Regular reviews and improvements to your IT systems" }
-    ],
-    pricing: {
-      starting: "GH₵ 500/month",
-      note: "Flexible support packages based on your needs"
-    }
+    slug: "it-support",
+    description: "We provide comprehensive IT support to keep your business technology running smoothly. From system setup and maintenance to troubleshooting, security implementations, and technology consulting, we ensure your technology enables business growth rather than causing downtime.",
+    icon: require("lucide-react").Headphones,
+    heroImage: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1200&q=80",
+    keywords: ["IT support", "technical support", "system maintenance", "cybersecurity"],
+    details: [
+      {
+        heading: "What We Offer",
+        content: [
+          "System setup and maintenance.",
+          "Troubleshooting and technical support.",
+          "Cybersecurity and data protection.",
+          "Technology consulting and training."
+        ]
+      },
+      {
+        heading: "Tech Stack",
+        content: [
+          { name: "Windows Server", url: "https://cdn.worldvectorlogo.com/logos/microsoft-windows-22.svg" },
+          { name: "Cloudflare", url: "https://cdn.worldvectorlogo.com/logos/cloudflare-1.svg" },
+          { name: "Norton", url: "https://cdn.worldvectorlogo.com/logos/norton-1.svg" },
+          { name: "Google Workspace", url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_cv1HKhknP3YyBra1OqqqDhIIGtpmNSrfhQ&s" },
+          { name: "Microsoft 365", url: "https://www.popu.se/wp-content/uploads/2025/02/microsoft-3652260.logowik.com_.webp"}
+        ]
+      },
+      {
+        heading: "Pricing",
+        content: [
+          "Basic Support: from $60/mo (GH₵750/mo)",
+          "On-Demand Support: from $30/hr (GH₵380/hr)",
+          "Consulting: from $100 (GH₵1,300)"
+        ]
+      }
+    ]
   },
-  "google-adsense-management": {
+  { 
     title: "Google AdSense Management",
-    icon: Target,
-    description: "Maximize your website revenue through strategic AdSense optimization",
-    longDescription: "We help you maximize your website revenue through strategic AdSense optimization. Our services include ad placement optimization, A/B testing, content strategy development, performance monitoring, and policy compliance to ensure sustainable revenue growth from your website traffic.",
-    features: [
-      "Ad Placement Optimization",
-      "Revenue Tracking & Analytics",
-      "A/B Testing",
-      "Content Strategy",
-      "Policy Compliance",
-      "Performance Monitoring",
-      "Mobile Optimization",
-      "Monthly Revenue Reports"
-    ],
-    technologies: ["Google AdSense", "Google Analytics", "Google Tag Manager", "AdThrive", "Mediavine"],
-    benefits: [
-      { title: "Increased Revenue", description: "Optimize ad placements for maximum earnings" },
-      { title: "Policy Compliance", description: "Stay compliant with AdSense policies to avoid penalties" },
-      { title: "Performance Insights", description: "Detailed analytics and reporting on ad performance" },
-      { title: "Strategic Placement", description: "Balance user experience with revenue optimization" }
-    ],
-    process: [
-      { step: 1, title: "Account Audit", description: "Reviewing your current AdSense setup and performance" },
-      { step: 2, title: "Strategy Development", description: "Creating an optimization plan for your website" },
-      { step: 3, title: "Implementation", description: "Optimizing ad placements and formats" },
-      { step: 4, title: "Testing", description: "A/B testing different ad configurations" },
-      { step: 5, title: "Monitoring", description: "Tracking performance and making adjustments" },
-      { step: 6, title: "Reporting", description: "Monthly reports with insights and recommendations" }
-    ],
-    pricing: {
-      starting: "GH₵ 600/month",
-      note: "Performance-based pricing options available"
-    }
+    slug: "google-adsense-management",
+    description: "We maximize your website revenue through strategic AdSense optimization. Our services include ad placement optimization, A/B testing, content strategy development, performance monitoring, and policy compliance to ensure sustainable revenue growth from your website traffic.",
+    icon: require("lucide-react").Target,
+    heroImage: "https://www.strategicrevenue.com/wp-content/uploads/2025/11/adsense_2641887479.jpg",
+    keywords: ["Google AdSense", "ad revenue optimization", "website monetization", "content monetization"],
+    details: [
+      {
+        heading: "What We Offer",
+        content: [
+          "Ad placement and layout optimization.",
+          "A/B testing and performance monitoring.",
+          "Content strategy for higher revenue.",
+          "AdSense policy compliance."
+        ]
+      },
+      {
+        heading: "Tech Stack",
+        content: [
+          { name: "Google AdSense", url: "https://cdn.worldvectorlogo.com/logos/google-adsense.svg" },
+          { name: "Google Analytics", url: "https://cdn.worldvectorlogo.com/logos/google-analytics-4.svg" },
+          { name: "Google Tag Manager", url: "data:image/jpeg;base64,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" }
+        ]
+      },
+      {
+        heading: "Pricing",
+        content: [
+          "AdSense Setup: from $100 (GH₵1,300)",
+          "Optimization Package: from $120 (GH₵1,500)",
+        ]
+      }
+    ]
   },
-  "google-ads-management": {
+  { 
     title: "Google Ads Management",
-    icon: MousePointer,
-    description: "Drive targeted traffic and maximize conversions with expert Google Ads campaigns",
-    longDescription: "We drive targeted traffic and maximize conversions through expertly managed Google Ads campaigns. Our certified specialists handle strategy, keyword research, ad creation, bid management, and continuous optimization across Search, Display, Shopping, and Video campaigns to maximize your ROI.",
-    features: [
-      "Campaign Strategy & Setup",
-      "Keyword Research",
-      "Ad Copy Creation",
-      "Bid Management",
-      "Landing Page Optimization",
-      "Conversion Tracking",
-      "A/B Testing",
-      "Performance Reporting"
-    ],
-    technologies: ["Google Ads", "Google Analytics", "Google Tag Manager", "SEMrush", "Google Keyword Planner"],
-    benefits: [
-      { title: "Targeted Traffic", description: "Reach customers actively searching for your products or services" },
-      { title: "Measurable ROI", description: "Track every click, conversion, and dollar spent" },
-      { title: "Quick Results", description: "Start seeing results within days, not months" },
-      { title: "Expert Management", description: "Google Ads certified specialists managing your campaigns" }
-    ],
-    process: [
-      { step: 1, title: "Business Analysis", description: "Understanding your goals, audience, and competition" },
-      { step: 2, title: "Campaign Strategy", description: "Developing a comprehensive advertising strategy" },
-      { step: 3, title: "Setup & Launch", description: "Creating campaigns, ad groups, and compelling ads" },
-      { step: 4, title: "Optimization", description: "Continuous testing and refinement of campaigns" },
-      { step: 5, title: "Monitoring", description: "Daily monitoring and bid adjustments" },
-      { step: 6, title: "Reporting", description: "Detailed performance reports and strategy updates" }
-    ],
-    pricing: {
-      starting: "GH₵ 1,000/month",
-      note: "Management fee separate from ad spend budget"
-    }
+    slug: "google-ads-management",
+    description: "We drive targeted traffic and maximize conversions through expertly managed Google Ads campaigns. Our certified specialists handle strategy, keyword research, ad creation, bid management, and continuous optimization across Search, Display, Shopping, and Video campaigns to maximize your ROI.",
+    icon: require("lucide-react").MousePointer,
+    heroImage: "https://embryo.com/wp-content/uploads/2025/03/fixing-suspension-from-google-ads-account.jpg",
+    keywords: ["Google Ads", "PPC management", "paid advertising", "campaign management"],
+    details: [
+      {
+        heading: "What We Offer",
+        content: [
+          "Google Ads campaign setup and management.",
+          "Search, Display, Shopping, and Video campaigns.",
+          "Keyword research and ad copywriting.",
+          "Bid management and conversion tracking."
+        ]
+      },
+      {
+        heading: "Tech Stack",
+        content: [
+          { name: "Google Ads", url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTXtz4Jb9cqEDCVPS7TfRQs0uiOOc6Ec_gtFvPpTgaTBA&s" },
+          { name: "Google Analytics", url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTSUIGkGS6jhACPzlGFSPQDlA9Rmo5gVlm0gA&s" },
+          { name: "Google Tag Manager", url: "data:image/jpeg;base64,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" },
+        ]
+      },
+      {
+        heading: "Pricing",
+        content: [
+          "Campaign Setup: from $120 (GH₵1,500)",
+          "Monthly Management: from $200/mo (GH₵2,500/mo)",
+          "Consulting: from $80 (GH₵1,000)"
+        ]
+      }
+    ]
   }
-};
+];
 
-export default function ServiceDetail() {
+export default function ServiceDetailPage() {
   const router = useRouter();
   const { slug } = router.query;
-  
-  // Add early return for initial render
-  if (!router.isReady) {
-    return null;
-  }
-  
-  const service = slug ? servicesData[slug] : null;
+
+  const service = services.find((s) => s.slug === slug);
 
   if (!service) {
     return (
-      <div className="min-h-screen bg-gray-50 dark:bg-gray-900 flex items-center justify-center">
+      <div className="min-h-screen flex items-center justify-center bg-white dark:bg-gray-900">
         <div className="text-center">
-          <h1 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">Service not found</h1>
-          <Link href="/services" className="text-orange-500 hover:text-orange-600">
+          <h1 className="text-3xl font-bold mb-4 text-orange-600">Service Not Found</h1>
+          <p className="mb-8 text-gray-600 dark:text-gray-300">Sorry, the service you are looking for does not exist.</p>
+          <PremiumCTA href="/services" size="large" variant="primary">
             Back to Services
-          </Link>
+          </PremiumCTA>
         </div>
       </div>
     );
   }
-
-  const Icon = service.icon;
 
   return (
     <>
       <Head>
         <title>{service.title} | Celestial Web Solutions</title>
         <meta name="description" content={service.description} />
+        <meta name="keywords" content={service.keywords.join(', ')} />
       </Head>
-
-      <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
-        {/* Hero Section */}
-        <section className="bg-gradient-to-br from-orange-500 via-orange-600 to-red-500 text-white py-20">
-          <div className="container mx-auto px-4">
-            <Link href="/services" className="inline-flex items-center text-white hover:text-orange-100 mb-8">
-              <ArrowRight className="w-4 h-4 mr-2 rotate-180" />
-              Back to Services
-            </Link>
-            
+      <div className="min-h-screen bg-white dark:bg-gray-900">
+        <section className="relative py-20 md:py-28" style={{ minHeight: '60vh' }}>
+          {/* Hero Background Image */}
+          <div className="absolute inset-0 overflow-hidden pointer-events-none">
+            <img 
+              src={service.heroImage}
+              alt={`${service.title} hero background`}
+              className="w-full h-full object-cover opacity-20 dark:opacity-15"
+              style={{ zIndex: 0 }}
+            />
+            <div className="absolute inset-0 bg-gradient-to-br from-orange-100/80 via-orange-200/60 to-red-100/60 dark:from-gray-900/90 dark:via-gray-900/80 dark:to-gray-900/90"></div>
+          </div>
+          <div className="relative z-10 max-w-3xl mx-auto px-4 text-center">
+            {/* Spacer for fixed header */}
+            <div className="h-20 md:h-24" />
+            {/* Back to All Services CTA at the top */}
+            <div className="mb-8 flex justify-start">
+              <Link
+                href="/services"
+                className="inline-flex items-center text-orange-600 dark:text-orange-400 hover:underline font-semibold text-base"
+                style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}
+              >
+                ← Back to All Services
+              </Link>
+            </div>
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              className="max-w-4xl"
+              transition={{ duration: 0.8 }}
             >
-              <div className="flex items-center mb-6">
-                <div className="bg-white/20 backdrop-blur-sm p-4 rounded-lg mr-4">
-                  <Icon className="w-8 h-8 text-white" />
+              <div className="flex justify-center mb-6">
+                <div className="w-20 h-20 bg-gradient-to-br from-orange-500 to-orange-600 dark:from-orange-700 dark:to-orange-500 rounded-2xl flex items-center justify-center shadow-lg">
+                  {service.icon && <service.icon className="w-10 h-10 text-white" />}
                 </div>
-                <h1 className="text-4xl md:text-5xl font-bold" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>
-                  {service.title}
-                </h1>
               </div>
-              <p className="text-xl text-orange-100" style={{ fontFamily: 'Quicksand, sans-serif' }}>
+              <h1 className="text-4xl md:text-5xl font-bold text-orange-700 dark:text-orange-400 mb-6" style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}>
+                {service.title}
+              </h1>
+              <p className="text-lg text-orange-900 dark:text-orange-100 max-w-2xl mx-auto leading-relaxed mb-8" style={{ fontFamily: "Quicksand, sans-serif" }}>
                 {service.description}
               </p>
-            </motion.div>
-          </div>
-        </section>
-
-        {/* Overview Section */}
-        <section className="py-16">
-          <div className="container mx-auto px-4">
-            <div className="max-w-4xl">
-              <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-6" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>
-                Overview
-              </h2>
-              <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed" style={{ fontFamily: 'Quicksand, sans-serif' }}>
-                {service.longDescription}
-              </p>
-            </div>
-          </div>
-        </section>
-
-        {/* Features Section */}
-        <section className="py-16 bg-white dark:bg-gray-800">
-          <div className="container mx-auto px-4">
-            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-12 text-center" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>
-              Key Features
-            </h2>
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
-              {service.features.map((feature, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  viewport={{ once: true }}
-                  className="bg-gray-50 dark:bg-gray-900 p-6 rounded-lg"
-                >
-                  <Check className="w-6 h-6 text-orange-500 mb-3" />
-                  <p className="text-gray-900 dark:text-white font-medium" style={{ fontFamily: 'Quicksand, sans-serif' }}>
-                    {feature}
-                  </p>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Technologies Section */}
-        <section className="py-16">
-          <div className="container mx-auto px-4">
-            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-12 text-center" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>
-              Technologies We Use
-            </h2>
-            <div className="flex flex-wrap justify-center gap-4 max-w-4xl mx-auto">
-              {service.technologies.map((tech, index) => (
-                <motion.span
-                  key={index}
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.3, delay: index * 0.05 }}
-                  viewport={{ once: true }}
-                  className="bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-400 px-4 py-2 rounded-full font-medium"
-                  style={{ fontFamily: 'Quicksand, sans-serif' }}
-                >
-                  {tech}
-                </motion.span>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Benefits Section */}
-        <section className="py-16 bg-white dark:bg-gray-800">
-          <div className="container mx-auto px-4">
-            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-12 text-center" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>
-              Why Choose Us
-            </h2>
-            <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-              {service.benefits.map((benefit, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, x: index % 2 === 0 ? -20 : 20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
-                  viewport={{ once: true }}
-                  className="bg-gray-50 dark:bg-gray-900 p-8 rounded-xl"
-                >
-                  <Target className="w-10 h-10 text-orange-500 mb-4" />
-                  <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>
-                    {benefit.title}
-                  </h3>
-                  <p className="text-gray-700 dark:text-gray-300" style={{ fontFamily: 'Quicksand, sans-serif' }}>
-                    {benefit.description}
-                  </p>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Process Section */}
-        <section className="py-16">
-          <div className="container mx-auto px-4">
-            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-12 text-center" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>
-              Our Process
-            </h2>
-            <div className="max-w-4xl mx-auto">
-              {service.process.map((step, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  viewport={{ once: true }}
-                  className="flex gap-6 mb-8"
-                >
-                  <div className="flex-shrink-0">
-                    <div className="w-12 h-12 bg-orange-500 text-white rounded-full flex items-center justify-center font-bold text-lg">
-                      {step.step}
+              <div className="flex flex-wrap gap-2 justify-center mb-8">
+                {service.keywords.map((keyword, idx) => (
+                  <span
+                    key={idx}
+                    className="text-sm px-3 py-1 bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-400 rounded-full"
+                    style={{ fontFamily: 'Quicksand, sans-serif' }}
+                  >
+                    {keyword}
+                  </span>
+                ))}
+              </div>
+              {/* Details Section */}
+              {service.details && service.details.length > 0 && (
+                <div className="text-left bg-white/90 dark:bg-gray-900/90 rounded-2xl shadow-lg p-8 mb-10 mx-auto max-w-2xl border border-orange-100 dark:border-orange-800">
+                  {service.details.map((section, idx) => (
+                    <div key={idx} className="mb-8 last:mb-0">
+                      <h2 className="text-xl font-bold text-orange-600 dark:text-orange-400 mb-2" style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}>
+                        {section.heading}
+                      </h2>
+                      {/* Render tech stack/tools with logos if present */}
+                      {Array.isArray(section.content) && section.content.length > 0 && typeof section.content[0] === 'object' && section.content[0].url ? (
+                        <div className="flex flex-wrap gap-4 mb-2">
+                          {section.content.map((tech, i) => (
+                            <div key={i} className="flex flex-col items-center">
+                              <img src={tech.url} alt={tech.name} className="w-10 h-10 object-contain mb-1" loading="lazy" />
+                              <span className="text-xs text-gray-700 dark:text-gray-200">{tech.name}</span>
+                            </div>
+                          ))}
+                        </div>
+                      ) : (
+                        <ul className="list-disc list-inside text-gray-700 dark:text-gray-200 space-y-1" style={{ fontFamily: "Quicksand, sans-serif" }}>
+                          {section.content.map((item, i) => (
+                            <li key={i}>{item}</li>
+                          ))}
+                        </ul>
+                      )}
                     </div>
-                  </div>
-                  <div className="flex-grow">
-                    <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>
-                      {step.title}
-                    </h3>
-                    <p className="text-gray-700 dark:text-gray-300" style={{ fontFamily: 'Quicksand, sans-serif' }}>
-                      {step.description}
-                    </p>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Pricing Section */}
-        <section className="py-16 bg-gradient-to-br from-orange-500 via-orange-600 to-red-500 text-white">
-          <div className="container mx-auto px-4 text-center">
-            <h2 className="text-3xl font-bold mb-6" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>
-              Pricing
-            </h2>
-            <p className="text-5xl font-bold mb-4" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>
-              Starting from {service.pricing.starting}
-            </p>
-            <p className="text-xl text-orange-100 mb-8" style={{ fontFamily: 'Quicksand, sans-serif' }}>
-              {service.pricing.note}
-            </p>
-            <Link href="/contact" className="inline-flex items-center bg-white text-orange-500 px-8 py-4 rounded-lg font-bold text-lg hover:bg-gray-100 transition-colors" style={{ fontFamily: 'Quicksand, sans-serif' }}>
-              Get a Quote
-              <ArrowRight className="w-5 h-5 ml-2" />
-            </Link>
-          </div>
-        </section>
-
-        {/* CTA Section */}
-        <section className="py-20 bg-gray-900 text-white">
-          <div className="container mx-auto px-4 text-center">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
-            >
-              <h2 className="text-4xl font-bold mb-6" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>
-                Ready to Get Started?
-              </h2>
-              <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto" style={{ fontFamily: 'Quicksand, sans-serif' }}>
-                Let's discuss how we can help you achieve your goals with our {service.title.toLowerCase()} services.
-              </p>
-              <div className="flex flex-wrap gap-4 justify-center">
-                <Link href="/contact" className="bg-orange-500 text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-orange-600 transition-colors" style={{ fontFamily: 'Quicksand, sans-serif' }}>
-                  Contact Us
-                </Link>
-                <Link href="/services" className="bg-gray-700 text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-gray-600 transition-colors" style={{ fontFamily: 'Quicksand, sans-serif' }}>
-                  View All Services
-                </Link>
+                  ))}
+                </div>
+              )}
+              {/* Premium CTAs */}
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <PremiumCTA href="/contact" size="large" variant="primary" icon>
+                  Start Your Project
+                </PremiumCTA>
+                <PremiumCTA href="/portfolio" size="large" variant="secondary" icon>
+                  View Our Work
+                </PremiumCTA>
               </div>
             </motion.div>
           </div>
         </section>
-
-        <WhatsAppButton />
       </div>
     </>
   );

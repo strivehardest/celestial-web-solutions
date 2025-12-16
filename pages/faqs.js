@@ -1,7 +1,7 @@
 import Head from "next/head";
 import { useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronDown, MessageCircle, Clock, Users, Globe, Code, ShoppingCart } from "lucide-react";
+import { ChevronDown, MessageCircle, Clock, Users, Globe, Code, ShoppingCart, Phone } from "lucide-react";
 import WhatsAppButton from '../components/WhatsAppButton';
 
 
@@ -48,7 +48,7 @@ export default function FAQs() {
         },
         {
           question: "Do you work with businesses outside Ghana?",
-          answer: "Yes! While we're based in Keta, Ghana, we work with clients globally. We would deliver projects for clients across Africa, Europe, and North America through our remote collaboration process."
+          answer: "Yes! While we're based in Accra and Keta, Ghana, we work with clients globally. We would deliver projects for clients across Africa, Europe, and North America through our remote collaboration process."
         },
         {
           question: "What makes Celestial Web Solutions different?",
@@ -86,11 +86,11 @@ export default function FAQs() {
       questions: [
         {
           question: "What technologies do you use?",
-          answer: "We use modern technologies including React, Next.js, Node.js, WordPress, WooCommerce, Shopify, TailwindCSS, and various databases. We choose the best technology stack based on your project requirements and budget."
+          answer: "We use modern technologies including HTML5, CSS3, Javascript, React, Next.js, Node.js, WordPress, WooCommerce, Shopify, TailwindCSS, Framer Motion and various databases. We choose the best technology stack based on your project requirements and budget."
         },
         {
           question: "Do you provide website hosting?",
-          answer: "Yes, we offer reliable hosting solutions starting from ₵200/month. We also work with popular hosting providers like Vercel, Netlify, and traditional hosting companies based on your needs and budget."
+          answer: "No, but we work with popular hosting providers like Namecheap, Vercel, Netlify, Render, Hostinger, and traditional hosting companies based on your needs and budget."
         },
         {
           question: "Will my website be mobile-friendly?",
@@ -156,8 +156,17 @@ export default function FAQs() {
       </Head>
 
       <div className="min-h-screen bg-white dark:bg-gray-900">
-        {/* Hero Section */}
-        <section className="relative py-20 bg-gradient-to-br from-orange-500 via-orange-600 to-red-500 overflow-hidden">
+        {/* Hero Section with Background Image */}
+        <section className="relative py-20 overflow-hidden">
+          {/* Background Image with Overlay */}
+          <div 
+            className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+            style={{
+              backgroundImage: 'url("https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80")',
+            }}
+          />
+          <div className="absolute inset-0 bg-gradient-to-br from-orange-500/95 via-orange-600/90 to-red-500/95"></div>
+
           {/* Background Elements */}
           <div className="absolute inset-0 overflow-hidden">
             <div className="absolute -top-40 -right-40 w-80 h-80 bg-white/10 rounded-full opacity-50 animate-pulse"></div>
@@ -171,13 +180,13 @@ export default function FAQs() {
               transition={{ duration: 0.8 }}
             >
               <h1
-                className="text-4xl md:text-6xl font-bold text-white mb-6"
+                className="text-4xl md:text-6xl font-bold text-white mb-6 drop-shadow-lg"
                 style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}
               >
                 Frequently Asked Questions
               </h1>
               <p
-                className="text-xl text-orange-100 max-w-2xl mx-auto leading-relaxed"
+                className="text-xl text-orange-100 max-w-2xl mx-auto leading-relaxed drop-shadow-md"
                 style={{ fontFamily: "Quicksand, sans-serif" }}
               >
                 Get answers to common questions about our web development services, pricing, and process
@@ -341,7 +350,7 @@ export default function FAQs() {
                   style={{ fontFamily: "Quicksand, sans-serif" }}
                 >
                   <span>Call Us</span>
-                  <span>📞</span>
+                  <Phone size={20} className="text-orange-500" />
                 </motion.a>
               </div>
             </motion.div>

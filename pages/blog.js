@@ -218,9 +218,14 @@ export default function BlogPage() {
       <div className="min-h-screen bg-white dark:bg-gray-900">
         {/* Hero Section */}
         <section className="relative py-20 bg-gradient-to-br from-orange-500 via-orange-600 to-red-500 overflow-hidden">
+          {/* Background Image */}
           <div className="absolute inset-0 overflow-hidden">
-            <div className="absolute -top-40 -right-40 w-80 h-80 bg-white/10 rounded-full opacity-50 animate-pulse"></div>
-            <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-white/10 rounded-full opacity-50 animate-pulse" style={{animationDelay: '2s'}}></div>
+            <img 
+              src="https://www.expandgh.com/wp-content/uploads/2017/11/blog-1.jpg" 
+              alt="Portfolio Background"
+              className="w-full h-full object-cover opacity-20"
+            />
+            <div className="absolute inset-0 bg-gradient-to-br from-orange-300/80 via-orange-500/60 to-red-500/60"></div>
           </div>
 
           <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">

@@ -106,23 +106,36 @@ export default function Portfolio() {
         }
       });
 
+  // Happy Clients Data
+  const happyClients = [
+    { name: "Building Planner Designs", logo: "/png/projects/building.png" },
+    { name: "Ghana Updates Online", logo: "/png/projects/ghanaupdates1.jpg" },
+    { name: "AdBay Store", logo: "/png/projects/Adbay1.png" },
+    { name: "Elolo Agbleke", logo: "/png/projects/elolo2.jpeg" },
+    { name: "Mart Ban Logistics", logo: "/png/projects/martb.png" },
+    { name: "My Space Furniture", logo: "/png/projects/myspace.png" },
+  ];
+
   return (
     <>
       <Head>
         <title>Portfolio | Celestial Web Solutions - Our Recent Projects</title>
         <meta name="description" content="Explore our portfolio of successful web development projects. See how we've helped businesses, NGOs, churches, educational institutions and more grow with custom websites, e-commerce solutions, and digital platforms." />
-        <meta name="keywords" content="web development portfolio, website projects, e-commerce websites, Ghana web projects, Celestial Web Solutions work, NGO websites, church websites, educational websites" />
+        <meta name="keywords" content="web development portfolio, website projects, e-commerce websites, Ghana web projects, Celestial Web Solutions work, NGO websites, church websites, educational websites, best web designer in accra" />
         <link rel="canonical" href="https://celestialwebsolutions.net/portfolio" />
       </Head>
 
       <div className="min-h-screen bg-white dark:bg-gray-900">
         {/* Hero Section */}
         <section className="relative py-20 bg-gradient-to-br from-orange-500 via-orange-600 to-red-500 overflow-hidden">
-          {/* Background Elements */}
+          {/* Background Image */}
           <div className="absolute inset-0 overflow-hidden">
-            <div className="absolute -top-40 -right-40 w-80 h-80 bg-white/10 rounded-full opacity-50 animate-pulse"></div>
-            <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-white/10 rounded-full opacity-50 animate-pulse" style={{animationDelay: '2s'}}></div>
-            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-white/5 rounded-full opacity-30 animate-spin" style={{animationDuration: '20s'}}></div>
+            <img 
+              src="https://celestialwebsolutions.net/images/projects/adbay/adbay-home.png" 
+              alt="Portfolio Background"
+              className="w-full h-full object-cover opacity-20"
+            />
+            <div className="absolute inset-0 bg-gradient-to-br from-orange-300/80 via-orange-500/60 to-red-500/60"></div>
           </div>
 
           <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
@@ -259,6 +272,73 @@ export default function Portfolio() {
               </p>
             </motion.div>
           )}
+
+          {/* Happy Clients Section */}
+          <section className="py-16 bg-gradient-to-r from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 overflow-hidden rounded-3xl mt-20 mb-12">
+            <div className="max-w-7xl mx-auto px-4 mb-8">
+              <motion.h2
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="text-3xl md:text-4xl font-bold text-center mb-4 bg-gradient-to-r from-orange-600 to-orange-500 bg-clip-text text-transparent"
+                style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}
+              >
+                Our Happy Clients
+              </motion.h2>
+              <p className="text-center text-gray-600 dark:text-gray-300 mb-8" style={{ fontFamily: "Quicksand, sans-serif" }}>
+                Trusted by businesses across Ghana
+              </p>
+            </div>
+
+            {/* Scrolling Container */}
+            <div className="relative">
+              <div className="flex animate-scroll">
+                {/* First set of logos */}
+                {happyClients.map((client, index) => (
+                  <div
+                    key={`client-1-${index}`}
+                    className="flex-shrink-0 mx-8 w-48 h-32 bg-white dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center p-6 border border-gray-200 dark:border-gray-700"
+                  >
+                    <img
+                      src={client.logo}
+                      alt={client.name}
+                      className="max-w-full max-h-full object-contain grayscale hover:grayscale-0 transition-all duration-300"
+                    />
+                  </div>
+                ))}
+                {/* Duplicate set for seamless loop */}
+                {happyClients.map((client, index) => (
+                  <div
+                    key={`client-2-${index}`}
+                    className="flex-shrink-0 mx-8 w-48 h-32 bg-white dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center p-6 border border-gray-200 dark:border-gray-700"
+                  >
+                    <img
+                      src={client.logo}
+                      alt={client.name}
+                      className="max-w-full max-h-full object-contain grayscale hover:grayscale-0 transition-all duration-300"
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <style jsx>{`
+              @keyframes scroll {
+                0% {
+                  transform: translateX(0);
+                }
+                100% {
+                  transform: translateX(-50%);
+                }
+              }
+              .animate-scroll {
+                animation: scroll 30s linear infinite;
+              }
+              .animate-scroll:hover {
+                animation-play-state: paused;
+              }
+            `}</style>
+          </section>
 
           {/* Start a Project CTA Section */}
           <motion.div

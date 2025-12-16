@@ -3,6 +3,8 @@ import { motion } from "framer-motion";
 import { Target, Eye, Lightbulb, Shield, Award, Users, Rocket, Heart, Code, Linkedin, Facebook, Twitter, Github } from "lucide-react";
 import WhatsAppButton from '../components/WhatsAppButton';
 import Link from "next/link";
+import PremiumCTA from '../components/PremiumCTA';
+import CTASection from '../components/CTASection';
 
 /**
  * HappyClients data (place images under public/png/projects/)
@@ -28,6 +30,10 @@ const happyClients = [
   {
     name: "Mart Ban Logistics",
     src: "/png/projects/martb.png",
+  },
+  {
+    name: "My Space Furniture",
+    src: "/png/projects/myspace.png",
   }
 ];
 
@@ -109,57 +115,67 @@ function HappyClients({ clients = [], speed = 28, cardWidth = "w-48" }) {
 }
 
 export default function AboutUs() {
+  // Technology stack with external logo URLs
+  const techStack = [
+    { name: 'React', logo: 'https://cdn.worldvectorlogo.com/logos/react-2.svg' },
+    { name: 'Next.js', logo: 'https://cdn.worldvectorlogo.com/logos/nextjs-2.svg' },
+    { name: 'Node.js', logo: 'https://cdn.worldvectorlogo.com/logos/nodejs-1.svg' },
+    { name: 'Django', logo: 'https://cdn.worldvectorlogo.com/logos/django.svg' },
+    { name: 'Tailwind CSS', logo: 'https://cdn.worldvectorlogo.com/logos/tailwindcss.svg' },
+    { name: 'JavaScript', logo: 'https://cdn.worldvectorlogo.com/logos/javascript-1.svg' },
+    { name: 'TypeScript', logo: 'https://cdn.worldvectorlogo.com/logos/typescript.svg' },
+    { name: 'Python', logo: 'https://cdn.worldvectorlogo.com/logos/python-5.svg' },
+    { name: 'HTML5', logo: 'https://cdn.worldvectorlogo.com/logos/html-1.svg' },
+    { name: 'CSS3', logo: 'https://cdn.worldvectorlogo.com/logos/css-3.svg' },
+    { name: 'WordPress', logo: 'https://cdn.worldvectorlogo.com/logos/wordpress-icon.svg' },
+    { name: 'Bootstrap', logo: 'https://cdn.worldvectorlogo.com/logos/bootstrap-4.svg' },
+    { name: 'Framer Motion', logo: 'https://cdn.worldvectorlogo.com/logos/framer-motion.svg' },
+    { name: 'PostgreSQL', logo: 'https://cdn.worldvectorlogo.com/logos/postgresql.svg' },
+    { name: 'MongoDB', logo: 'https://cdn.worldvectorlogo.com/logos/mongodb-icon-1.svg' },
+    { name: 'Shopify', logo: 'https://cdn.worldvectorlogo.com/logos/shopify.svg' },
+    { name: 'Vercel', logo: 'https://www.svgrepo.com/show/354513/vercel-icon.svg' },
+    { name: 'Render', logo: 'https://images.seeklogo.com/logo-png/53/1/render-logo-png_seeklogo-532232.png' },
+    { name: 'GitHub', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg' },
+    { name: 'Elementor', logo: 'https://cdn.iconscout.com/icon/free/png-256/free-elementor-logo-icon-svg-download-png-3029975.png' }
+  ];
+
   return (
     <>
-      {/* ✅ SEO Meta Tags */}
       <Head>
-        <title>About Us | Celestial Web Solutions</title>
-        <meta
-          name="description"
-          content="Learn more about Celestial Web Solutions - Our mission, vision, and core values. We deliver innovative, secure, and scalable digital solutions to empower businesses."
-        />
-        <meta
-          name="keywords"
-          content="About Celestial Web Solutions, Web Development, Digital Solutions, Best Web Designer in Ghana, Web Designer in Ghana, Best Web Designer in Accra, Ghana Web Agency, Mission, Vision, Core Values"
-        />
+        <title>About Celestial Web Solutions | Web Design Company in Ghana</title>
+        <meta name="description" content="Learn about Celestial Web Solutions, a leading web design and development company in Accra, Ghana. Our mission, team, and commitment to delivering exceptional digital solutions." />
+        <meta name="keywords" content="about Celestial Web Solutions, web design company Ghana, web development company Accra, professional web designers Ghana, experienced developers Accra, web solutions company Ghana, best web agency Accra, website design team Ghana, digital agency Accra, company mission, team expertise, web development services, design philosophy, client testimonials, award-winning designers Ghana" />
         <meta name="author" content="Celestial Web Solutions" />
-
-        {/* ✅ Open Graph for Social Sharing */}
-        <meta property="og:title" content="About Celestial Web Solutions" />
-        <meta
-          property="og:description"
-          content="Discover our mission and vision to empower businesses with cutting-edge web solutions."
-        />
-        <meta
-          property="og:image"
-          content="https://celestialwebsolutions.net/images/about-us-banner.jpg"
-        />
+        <meta name="robots" content="index, follow" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="geo.region" content="GH" />
+        <meta name="geo.placename" content="Accra, Ghana" />
+        
+        {/* Open Graph */}
+        <meta property="og:title" content="About Celestial Web Solutions | Web Design Company Ghana"/>
+        <meta property="og:description" content="Discover the story behind Celestial Web Solutions, a premier web design and development company in Accra, Ghana." />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://celestialwebsolutions.net/about" />
-
-        {/* ✅ Twitter Card */}
+        <meta property="og:locale" content="en_GH" />
+        
+        {/* Twitter Card */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="About Celestial Web Solutions" />
-        <meta
-          name="twitter:description"
-          content="Learn more about our mission, vision, and values."
-        />
-        <meta
-          name="twitter:image"
-          content="https://celestialwebsolutions.net/images/about-us-banner.jpg"
-        />
-
-        {/* ✅ Canonical URL */}
+        <meta name="twitter:title" content="About Celestial Web Solutions | Web Design Company Ghana" />
+        <meta name="twitter:description" content="Learn about our web design and development expertise in Ghana." />
+        
         <link rel="canonical" href="https://celestialwebsolutions.net/about" />
       </Head>
 
-      {/* Hero Section - Similar to Pricing Page */}
+      {/* Hero Section */}
       <section className="relative py-20 bg-gradient-to-br from-orange-500 via-orange-600 to-red-500 overflow-hidden">
-        {/* Background Elements */}
+        {/* Background Image */}
         <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute -top-40 -right-40 w-80 h-80 bg-white/10 rounded-full opacity-50 animate-pulse"></div>
-          <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-white/10 rounded-full opacity-50 animate-pulse" style={{animationDelay: '2s'}}></div>
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-white/5 rounded-full opacity-30 animate-spin" style={{animationDuration: '20s'}}></div>
+          <img 
+            src="https://img.freepik.com/free-vector/hand-drawn-web-developers_23-2148819604.jpg" 
+            alt="About us Background"
+            className="w-full h-full object-cover opacity-20"
+          />
+          <div className="absolute inset-0 bg-gradient-to-br from-orange-300/80 via-orange-500/80 to-red-500/80"></div>
         </div>
 
         <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
@@ -222,11 +238,10 @@ export default function AboutUs() {
                   <div className="absolute inset-0 bg-gradient-to-br from-orange-500 to-orange-600 rounded-3xl transform rotate-6"></div>
                   <div className="relative bg-white dark:bg-gray-800 rounded-3xl overflow-hidden shadow-2xl transform -rotate-3 hover:rotate-0 transition-transform duration-500">
                     <img
-                      src="/founder-waliu.png" // image in public folder
+                      src="/founder-waliu.png"
                       alt="Waliu Ibrahimah Aforlabi - Founder & CEO"
                       className="w-full h-full object-cover"
                       onError={(e) => {
-                        // Fallback placeholder
                         e.target.style.display = 'none';
                         e.target.nextSibling.style.display = 'flex';
                       }}
@@ -240,8 +255,8 @@ export default function AboutUs() {
                         <div className="w-32 h-32 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4">
                           <Code size={64} />
                         </div>
-                        <p className="text-lg font-semibold">Add founder image:</p>
-                        <p className="text-sm">/public/founder-waliu.jpg</p>
+                        <p className="text-lg font-semibold">Waliu Ibrahimah Aforlabi</p>
+                        <p className="text-sm">Founder & CEO</p>
                       </div>
                     </div>
                   </div>
@@ -294,23 +309,40 @@ export default function AboutUs() {
                     </p>
                   </div>
 
-                  {/* Skills/Expertise */}
+                  {/* Skills/Expertise - Tech Stack with Logo Images */}
                   <div className="mb-6">
                     <h4
-                      className="text-lg font-semibold text-gray-900 dark:text-white mb-3"
+                      className="text-lg font-semibold text-gray-900 dark:text-white mb-4"
                       style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}
                     >
-                      Expertise
+                      Tech Stack & Expertise
                     </h4>
-                    <div className="flex flex-wrap gap-2">
-                      {['React', 'Next.js', 'Node.js', 'Django', 'Tailwind CSS', 'Framer Motion','Javascript', 'CSS3', 'HTML5', 'Python', 'Bootstrap','WordPress', 'Google AdSense & Ads','UI/UX Design', 'E-Commerce'].map((skill, index) => (
-                        <span
+                    <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-4 gap-2 sm:gap-3 md:gap-4">
+                      {techStack.map((tech, index) => (
+                        <motion.div
                           key={index}
-                          className="bg-white dark:bg-gray-800 px-4 py-2 rounded-lg text-sm font-medium text-gray-700 dark:text-gray-300 border border-orange-200 dark:border-orange-700"
-                          style={{ fontFamily: "Quicksand, sans-serif" }}
+                          initial={{ opacity: 0, scale: 0.8 }}
+                          whileInView={{ opacity: 1, scale: 1 }}
+                          viewport={{ once: true }}
+                          transition={{ duration: 0.4, delay: index * 0.05 }}
+                          className="flex flex-col items-center justify-center p-2 sm:p-3 bg-white dark:bg-gray-800 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 border border-orange-100 dark:border-orange-800 hover:border-orange-300 dark:hover:border-orange-600 group"
+                          title={tech.name}
                         >
-                          {skill}
-                        </span>
+                          <div className="w-8 sm:w-10 md:w-12 h-8 sm:h-10 md:h-12 flex items-center justify-center mb-1 sm:mb-2 group-hover:scale-110 transition-transform duration-300">
+                            <img
+                              src={tech.logo}
+                              alt={tech.name}
+                              className="max-w-full max-h-full object-contain"
+                              loading="lazy"
+                              onError={(e) => {
+                                e.target.style.display = 'none';
+                              }}
+                            />
+                          </div>
+                          <span className="text-xs sm:text-xs md:text-sm font-medium text-gray-700 dark:text-gray-300 text-center group-hover:text-orange-600 dark:group-hover:text-orange-400 transition-colors duration-300 line-clamp-2" style={{ fontFamily: "Quicksand, sans-serif" }}>
+                            {tech.name}
+                          </span>
+                        </motion.div>
                       ))}
                     </div>
                   </div>
@@ -323,9 +355,14 @@ export default function AboutUs() {
                       rel="noopener noreferrer"
                       whileHover={{ scale: 1.1, y: -2 }}
                       whileTap={{ scale: 0.95 }}
-                      className="w-12 h-12 rounded-xl bg-white dark:bg-gray-800 flex items-center justify-center text-orange-600 hover:text-white hover:bg-orange-600 transition-all duration-300 shadow-md"
+                      className="w-12 h-12 rounded-xl bg-white dark:bg-gray-800 flex items-center justify-center shadow-md hover:shadow-lg transition-all duration-300"
+                      title="LinkedIn"
                     >
-                      <Linkedin size={20} />
+                      <img 
+                        src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg" 
+                        alt="LinkedIn"
+                        className="w-6 h-6 object-contain"
+                      />
                     </motion.a>
                     <motion.a
                       href="https://twitter.com/strivehardest"
@@ -333,9 +370,14 @@ export default function AboutUs() {
                       rel="noopener noreferrer"
                       whileHover={{ scale: 1.1, y: -2 }}
                       whileTap={{ scale: 0.95 }}
-                      className="w-12 h-12 rounded-xl bg-white dark:bg-gray-800 flex items-center justify-center text-orange-600 hover:text-white hover:bg-orange-600 transition-all duration-300 shadow-md"
+                      className="w-12 h-12 rounded-xl bg-white dark:bg-gray-800 flex items-center justify-center shadow-md hover:shadow-lg transition-all duration-300"
+                      title="Twitter"
                     >
-                      <Twitter size={20} />
+                      <img 
+                        src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/twitter/twitter-original.svg" 
+                        alt="Twitter"
+                        className="w-6 h-6 object-contain"
+                      />
                     </motion.a>
                     <motion.a
                       href="https://facebook.com/aforlabi"
@@ -343,10 +385,14 @@ export default function AboutUs() {
                       rel="noopener noreferrer"
                       whileHover={{ scale: 1.1, y: -2 }}
                       whileTap={{ scale: 0.95 }}
-                      className="w-12 h-12 rounded-xl bg-white dark:bg-gray-800 flex items-center justify-center text-orange-600 hover:text-white hover:bg-orange-600 transition-all duration-300 shadow-md"
+                      className="w-12 h-12 rounded-xl bg-white dark:bg-gray-800 flex items-center justify-center shadow-md hover:shadow-lg transition-all duration-300"
+                      title="Facebook"
                     > 
-                      <Facebook size={20} />
-
+                      <img 
+                        src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/facebook/facebook-original.svg" 
+                        alt="Facebook"
+                        className="w-6 h-6 object-contain"
+                      />
                     </motion.a>
                     <motion.a
                       href="https://github.com/strivehardest"
@@ -354,9 +400,14 @@ export default function AboutUs() {
                       rel="noopener noreferrer"
                       whileHover={{ scale: 1.1, y: -2 }}
                       whileTap={{ scale: 0.95 }}
-                      className="w-12 h-12 rounded-xl bg-white dark:bg-gray-800 flex items-center justify-center text-orange-600 hover:text-white hover:bg-orange-600 transition-all duration-300 shadow-md"
+                      className="w-12 h-12 rounded-xl bg-white dark:bg-gray-800 flex items-center justify-center shadow-md hover:shadow-lg transition-all duration-300"
+                      title="GitHub"
                     >
-                      <Github size={20} />
+                      <img 
+                        src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" 
+                        alt="GitHub"
+                        className="w-6 h-6 object-contain"
+                      />
                     </motion.a>
                   </div>
                 </motion.div>
@@ -555,14 +606,24 @@ export default function AboutUs() {
         </section>
 
         {/* ✅ Enhanced CTA Section */}
-        <section className="py-20 px-6 md:px-12 lg:px-20">
-          <div className="max-w-4xl mx-auto text-center">
+        <section className="py-20 px-6 md:px-12 lg:px-20 relative overflow-hidden">
+          {/* Background Image */}
+          <div className="absolute inset-0 overflow-hidden">
+            <img 
+              src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=1920&h=600&fit=crop" 
+              alt="Developer coding background"
+              className="w-full h-full object-cover opacity-20"
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-orange-500/80 via-orange-600/80 to-red-500/80"></div>
+          </div>
+
+          <div className="max-w-4xl mx-auto text-center relative z-10">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
-              className="bg-gradient-to-r from-orange-500 via-orange-600 to-red-500 rounded-3xl p-8 md:p-12 shadow-2xl"
+              className="bg-white/10 backdrop-blur-sm rounded-3xl p-8 md:p-12 shadow-2xl border border-white/20"
             >
               <h3
                 className="text-2xl md:text-3xl font-bold text-white mb-4"
@@ -576,10 +637,24 @@ export default function AboutUs() {
               >
                 Let's discuss your project and create something amazing together. Get started with a free consultation today.
               </p>
-              <Link href="/contact" className="inline-flex items-center space-x-2 bg-white text-orange-600 py-4 px-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 font-semibold text-lg" style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}>
-                <span>Work With Us</span>
-                <span>→</span>
-              </Link>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <PremiumCTA
+                  href="/contact"
+                  size="large"
+                  variant="primary"
+                  icon={true}
+                >
+                  Work With Us
+                </PremiumCTA>
+                <PremiumCTA
+                  href="/portfolio"
+                  size="large"
+                  variant="secondary"
+                  icon={true}
+                >
+                  View Our Portfolio
+                </PremiumCTA>
+              </div>
             </motion.div>
           </div>
         </section>

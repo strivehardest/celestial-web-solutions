@@ -6,20 +6,14 @@ import {
   Clock,
   User,
   ArrowLeft,
-  Share2,
-  Facebook,
-  Twitter,
-  Linkedin,
-  MessageCircle,
   Tag,
   TrendingUp,
-  WhatsApp,
   Mail,
   Send
 } from "lucide-react";
 import Head from "next/head";
 import WhatsAppButton from '../../components/WhatsAppButton';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 // Complete blog articles data with formatted content
 const blogArticles = {
@@ -1973,10 +1967,24 @@ const blogArticles = {
 export default function BlogPost() {
   const router = useRouter();
   const { slug } = router.query;
+  const [article, setArticle] = useState(null);
+  const [copied, setCopied] = useState(false);
 
-  if (!router.isReady) return null;
+  useEffect(() => {
+    if (slug && blogArticles[slug]) {
+      setArticle(blogArticles[slug]);
+    }
+  }, [slug]);
 
-  const article = slug ? blogArticles[slug] : null;
+  if (!router.isReady || !article) {
+    return (
+      <div className="min-h-screen bg-gray-50 dark:bg-gray-900 flex items-center justify-center">
+        <div className="text-center">
+          <p className="text-lg text-gray-600 dark:text-gray-400">Loading...</p>
+        </div>
+      </div>
+    );
+  }
 
   if (!article) {
     return (
@@ -1997,12 +2005,19 @@ export default function BlogPost() {
 
   const handleShare = (platform) => {
     const shareUrls = {
-      twitter: `https://twitter.com/intent/tweet?url=${encodeURIComponent(currentUrl)}&text=${encodeURIComponent(article.title)}`,
+      x: `https://x.com/intent/tweet?url=${encodeURIComponent(currentUrl)}&text=${encodeURIComponent(article.title)}`,
       facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(currentUrl)}`,
       linkedin: `https://www.linkedin.com/shareArticle?url=${encodeURIComponent(currentUrl)}&title=${encodeURIComponent(article.title)}`,
       whatsapp: `https://api.whatsapp.com/send?text=${encodeURIComponent(`${article.title}\n\n${currentUrl}`)}`,
       email: `mailto:?subject=${encodeURIComponent(article.title)}&body=${encodeURIComponent(currentUrl)}`,
     };
+
+    if (platform === 'copy') {
+      navigator.clipboard.writeText(currentUrl);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+      return;
+    }
 
     if (platform && shareUrls[platform]) {
       window.open(shareUrls[platform], "_blank", "noopener,noreferrer");
@@ -2079,8 +2094,8 @@ export default function BlogPost() {
       <section className="py-16">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto">
-            {/* Social Share */}
-            <div className="flex items-center justify-between mb-8 p-6 bg-white dark:bg-gray-800 rounded-xl shadow-lg">
+            {/* Social Share with Logos */}
+            <div className="flex items-center justify-between mb-8 p-6 bg-white dark:bg-gray-800 rounded-xl shadow-lg flex-wrap gap-4">
               <div className="flex items-center gap-4">
                 <Tag className="w-5 h-5 text-orange-500" />
                 <div className="flex flex-wrap gap-2">
@@ -2094,22 +2109,87 @@ export default function BlogPost() {
                   ))}
                 </div>
               </div>
-              <div className="flex gap-2">
-                <button onClick={() => handleShare("twitter")} className="p-2 text-gray-600 hover:text-blue-400">
-                  <Twitter className="w-5 h-5" />
-                </button>
-                <button onClick={() => handleShare("facebook")} className="p-2 text-gray-600 hover:text-blue-600">
-                  <Facebook className="w-5 h-5" />
-                </button>
-                <button onClick={() => handleShare("linkedin")} className="p-2 text-gray-600 hover:text-blue-500">
-                  <Linkedin className="w-5 h-5" />
-                </button>
-                <button onClick={() => handleShare("whatsapp")} className="p-2 text-gray-600 hover:text-green-500">
-                  <WhatsAppButton className="w-5 h-5" />
-                </button>
-                <button onClick={() => handleShare("email")} className="p-2 text-gray-600 hover:text-red-500">
+              
+              <div className="flex gap-3 flex-wrap">
+                {/* X (Twitter) */}
+                <motion.button
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.95 }}
+                  onClick={() => handleShare("x")}
+                  className="p-2.5 bg-black text-white rounded-lg hover:bg-gray-800 transition"
+                  title="Share on X"
+                >
+                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24h-6.6l-5.165-6.75-5.868 6.75h-3.308l7.732-8.835L2.882 2.25h6.6l4.866 6.232 5.164-6.232zM17.55 19.5h1.828L6.281 3.75H4.38l13.17 15.75z"/>
+                  </svg>
+                </motion.button>
+
+                {/* Facebook */}
+                <motion.button
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.95 }}
+                  onClick={() => handleShare("facebook")}
+                  className="p-2.5 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
+                  title="Share on Facebook"
+                >
+                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                  </svg>
+                </motion.button>
+
+                {/* LinkedIn */}
+                <motion.button
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.95 }}
+                  onClick={() => handleShare("linkedin")}
+                  className="p-2.5 bg-blue-700 text-white rounded-lg hover:bg-blue-800 transition"
+                  title="Share on LinkedIn"
+                >
+                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"/>
+                  </svg>
+                </motion.button>
+
+                {/* WhatsApp - Simple Clean Icon */}
+                <motion.button
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.95 }}
+                  onClick={() => handleShare("whatsapp")}
+                  className="p-2.5 bg-green-500 text-white rounded-lg hover:bg-green-600 transition"
+                  title="Share on WhatsApp"
+                >
+                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 2.26.67 4.35 1.85 6.12L2 22l4.25-1.98c1.62.88 3.53 1.37 5.54 1.37 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01-1.87-1.87-4.36-2.9-7.01-2.9m.1 1.88c2.33 0 4.51.91 6.16 2.56 1.65 1.65 2.56 3.83 2.56 6.16 0 4.41-3.59 8-8 8-1.52 0-2.98-.43-4.23-1.24l-.3-.18-3.12 1.45.94-3.45-.2-.32C4.15 14.33 3.5 13.2 3.5 11.91 3.5 7.5 7.09 4.2 11.14 3.88z"/>
+                    <path d="M8.91 7.36c-.21 0-.54.1-.82.38-.28.29-.96.94-.96 2.28 0 1.34.98 2.64 1.12 2.82.14.18 1.95 3.09 4.75 4.26 2.35.99 2.83.79 3.34.74.51-.05 1.62-.67 1.85-1.31.23-.64.23-1.18.16-1.31-.07-.13-.27-.2-.56-.35-.29-.15-1.7-.84-1.96-.93-.27-.09-.46-.14-.65.14-.19.28-.74.93-.91 1.11-.16.19-.33.21-.62.07-.29-.15-1.23-.45-2.33-1.43-.86-.77-1.44-1.71-1.6-2-.17-.29 0-.44.13-.58.13-.13.29-.34.43-.51.15-.17.2-.29.29-.48.09-.19.05-.35-.04-.49-.09-.14-.65-1.59-.9-2.17-.24-.56-.49-.49-.65-.5z"/>
+                  </svg>
+                </motion.button>
+
+                {/* Email */}
+                <motion.button
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.95 }}
+                  onClick={() => handleShare("email")}
+                  className="p-2.5 bg-red-500 text-white rounded-lg hover:bg-red-600 transition"
+                  title="Share via Email"
+                >
                   <Mail className="w-5 h-5" />
-                </button>
+                </motion.button>
+
+                {/* Copy Link */}
+                <motion.button
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.95 }}
+                  onClick={() => handleShare("copy")}
+                  className="p-2.5 bg-gray-500 text-white rounded-lg hover:bg-gray-600 transition relative"
+                  title="Copy link"
+                >
+                  <Send className="w-5 h-5" />
+                  {copied && (
+                    <span className="absolute -top-8 left-1/2 transform -translate-x-1/2 bg-gray-900 text-white text-xs px-2 py-1 rounded whitespace-nowrap">
+                      Copied!
+                    </span>
+                  )}
+                </motion.button>
               </div>
             </div>
 
@@ -2161,12 +2241,14 @@ export default function BlogPost() {
               <Link
                 href="/contact"
                 className="bg-white text-orange-500 px-8 py-4 rounded-lg font-semibold shadow-md hover:shadow-lg transition"
+                style={{ fontFamily: "Quicksand, sans-serif" }}
               >
                 Contact Us
               </Link>
               <Link
                 href="/services"
                 className="border border-white px-8 py-4 rounded-lg font-semibold text-white hover:bg-white hover:text-orange-600 transition"
+                style={{ fontFamily: "Quicksand, sans-serif" }}
               >
                 View Our Services
               </Link>
@@ -2180,3 +2262,4 @@ export default function BlogPost() {
     </main>
   );
 }
+

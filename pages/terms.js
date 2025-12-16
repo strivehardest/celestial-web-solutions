@@ -1,6 +1,6 @@
 import Head from "next/head";
 import { motion } from "framer-motion";
-import { FileText, Shield, Clock, CreditCard, Users, AlertTriangle, CheckCircle, Info } from "lucide-react";
+import { FileText, Shield, Clock, CreditCard, Users, AlertTriangle, CheckCircle, Info, Mail, Phone, MapPin } from "lucide-react";
 import WhatsAppButton from '../components/WhatsAppButton';
 
 
@@ -34,7 +34,7 @@ All services are provided according to the specifications agreed upon in individ
       content: `Payment terms are specified in individual project agreements. Unless otherwise agreed:
 
 • Project payments are due according to the payment schedule outlined in your project agreement
-• We accept payments in Ghana Cedis (₵) through mobile money, bank transfer, cash, and international payments via PayPal/Paystack
+• We accept payments in Ghana Cedis (₵) through mobile money, bank transfer, cash, and international payments via Flutterwave/Paystack
 • A deposit of 50% is typically required before work commences
 • Final payment is due upon project completion and before final delivery
 • Monthly service fees (hosting, maintenance, SEO) are due in advance
@@ -185,10 +185,14 @@ We are committed to resolving any disputes fairly and professionally in accordan
       <div className="min-h-screen bg-white dark:bg-gray-900">
         {/* Hero Section */}
         <section className="relative py-20 bg-gradient-to-br from-orange-500 via-orange-600 to-red-500 overflow-hidden">
-          {/* Background Elements */}
+          {/* Background Image */}
           <div className="absolute inset-0 overflow-hidden">
-            <div className="absolute -top-40 -right-40 w-80 h-80 bg-white/10 rounded-full opacity-50 animate-pulse"></div>
-            <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-white/10 rounded-full opacity-50 animate-pulse" style={{animationDelay: '2s'}}></div>
+            <img 
+              src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=1920&h=600&fit=crop" 
+              alt="Terms and Conditions Background"
+              className="w-full h-full object-cover opacity-20"
+            />
+            <div className="absolute inset-0 bg-gradient-to-br from-orange-500/80 via-orange-600/80 to-red-500/80"></div>
           </div>
 
           <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
@@ -352,20 +356,23 @@ We are committed to resolving any disputes fairly and professionally in accordan
                   className="inline-flex items-center space-x-2 border-2 border-white text-white px-8 py-4 rounded-2xl font-semibold hover:bg-white/10 transition-all duration-300"
                   style={{ fontFamily: "Quicksand, sans-serif" }}
                 >
+                  <Mail size={20} />
                   <span>Email Us</span>
-                  <span>✉️</span>
                 </motion.a>
               </div>
 
               <div className="mt-8 text-orange-100 space-y-2">
-                <p style={{ fontFamily: "Quicksand, sans-serif" }}>
-                  📧 Email: info@celestialwebsolutions.net
+                <p className="flex items-center justify-center space-x-2" style={{ fontFamily: "Quicksand, sans-serif" }}>
+                  <Mail size={18} />
+                  <span>Email: info@celestialwebsolutions.net</span>
                 </p>
-                <p style={{ fontFamily: "Quicksand, sans-serif" }}>
-                  📞 Phone: +233 245 671 832
+                <p className="flex items-center justify-center space-x-2" style={{ fontFamily: "Quicksand, sans-serif" }}>
+                  <Phone size={18} />
+                  <span>Phone: +233 245 671 832</span>
                 </p>
-                <p style={{ fontFamily: "Quicksand, sans-serif" }}>
-                  📍 235 Agblor Link, Keta, Ghana
+                <p className="flex items-center justify-center space-x-2" style={{ fontFamily: "Quicksand, sans-serif" }}>
+                  <MapPin size={18} />
+                  <span>235 Agblor Link, Keta, Ghana</span>
                 </p>
               </div>
             </motion.div>

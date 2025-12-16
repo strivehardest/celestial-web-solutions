@@ -59,7 +59,7 @@ export default function Custom404() {
             className="text-lg text-orange-100 max-w-3xl mx-auto leading-relaxed"
             style={{ fontFamily: "Quicksand, sans-serif" }}
           >
-            The page you're looking for might have been moved or no longer exists. Try searching
+            The page you're looking for might have been moved, does not exists or no longer exists. Try searching
             our site, return home, or contact us and we'll help you find what you need.
           </p>
         </ClientAnimatedHero>
