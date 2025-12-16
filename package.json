@@ -23,6 +23,6 @@
     "eslint": "^8.56.0"
   },
   "engines": {
-    "node": "18.x"
+    "node": "24.x"
   }
 }
