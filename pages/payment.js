@@ -101,9 +101,10 @@ export default function PaymentPage() {
       <section className="relative py-20 bg-gradient-to-br from-orange-500 via-orange-500 to-red-200 dark:from-gray-800 dark:via-gray-900 dark:to-black overflow-hidden transition-colors duration-500">
         <div className="absolute inset-0 opacity-20">
           <img
-            // src removed: only Ghana Cedi supported
-            alt="Secure web payment Ghana background"
+            src="/payment-hero.jpg"
+            alt="Payment hero background"
             className="w-full h-full object-cover"
+            loading="lazy"
           />
         </div>
         <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
