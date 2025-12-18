@@ -12,6 +12,7 @@ import {
   ArrowRight
 } from 'lucide-react';
 import WhatsAppButton from '../components/WhatsAppButton';
+import PremiumCTA from '../components/PremiumCTA';
 
 export default function PaymentPage() {
   const [selectedOption, setSelectedOption] = useState(null);
@@ -97,7 +98,7 @@ export default function PaymentPage() {
       </Head>
 
       {/* Hero Section */}
-      <section className="relative py-20 bg-gradient-to-br from-orange-200 via-orange-300 to-red-200 dark:from-gray-800 dark:via-gray-900 dark:to-black overflow-hidden transition-colors duration-500">
+      <section className="relative py-20 bg-gradient-to-br from-orange-500 via-orange-500 to-red-200 dark:from-gray-800 dark:via-gray-900 dark:to-black overflow-hidden transition-colors duration-500">
         <div className="absolute inset-0 opacity-20">
           <img
             src="/dollar.webp"
@@ -198,15 +199,17 @@ export default function PaymentPage() {
                     )}
 
                     {option.id === 3 && (
-                      <a
+                      <PremiumCTA
                         href={`https://${option.details.link}`}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center space-x-2 bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-xl mt-4 transition"
+                        size="small"
+                        variant="primary"
+                        external={true}
+                        className="mt-4"
+                        icon={false}
                       >
-                        <span>Pay with Paystack</span>
-                        <ExternalLink size={18} />
-                      </a>
+                        Pay with Paystack
+                        <ExternalLink size={18} style={{ marginLeft: 8 }} />
+                      </PremiumCTA>
                     )}
 
                     {option.id === 4 && (
@@ -247,20 +250,12 @@ export default function PaymentPage() {
           Call or WhatsApp us for instant support on your payment or service confirmation.
         </p>
         <div className="flex flex-col sm:flex-row justify-center gap-4">
-          <a
-            href="tel:+233245671832"
-            className="bg-white text-orange-600 px-8 py-3 rounded-xl font-semibold hover:shadow-lg transition"
-          >
+          <PremiumCTA href="tel:+233245671832" size="default" variant="primary">
             Call +233 24 567 1832
-          </a>
-          <a
-            href="https://wa.me/233530505031"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="border-2 border-white px-8 py-3 rounded-xl font-semibold hover:bg-white hover:text-orange-600 transition"
-          >
+          </PremiumCTA>
+          <PremiumCTA href="https://wa.me/233530505031" size="default" variant="primary" target="_blank" rel="noopener noreferrer">
             Chat on WhatsApp
-          </a>
+          </PremiumCTA>
         </div>
       </section>
 

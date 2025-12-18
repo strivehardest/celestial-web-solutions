@@ -13,6 +13,7 @@ import {
 } from "lucide-react";
 import Head from "next/head";
 import WhatsAppButton from '../../components/WhatsAppButton';
+import PremiumCTA from '../../components/PremiumCTA';
 import { useState, useEffect } from 'react';
 
 // Complete blog articles data with formatted content
@@ -2217,7 +2218,7 @@ export default function BlogPost() {
         </div>
       </section>
 
-      {/* CTA Section */}
+      {/* CTA Section - Use PremiumCTA */}
       <section className="py-20 bg-gradient-to-br from-orange-500 via-orange-600 to-red-500 text-white">
         <div className="container mx-auto px-4 text-center">
           <motion.div
@@ -2238,20 +2239,12 @@ export default function BlogPost() {
               Let Celestial Web Solutions help you build a powerful online presence that drives real results.
             </p>
             <div className="flex flex-wrap gap-4 justify-center">
-              <Link
-                href="/contact"
-                className="bg-white text-orange-500 px-8 py-4 rounded-lg font-semibold shadow-md hover:shadow-lg transition"
-                style={{ fontFamily: "Quicksand, sans-serif" }}
-              >
+              <PremiumCTA href="/contact" size="large" variant="primary">
                 Contact Us
-              </Link>
-              <Link
-                href="/services"
-                className="border border-white px-8 py-4 rounded-lg font-semibold text-white hover:bg-white hover:text-orange-600 transition"
-                style={{ fontFamily: "Quicksand, sans-serif" }}
-              >
+              </PremiumCTA>
+              <PremiumCTA href="/services" size="large" variant="primary">
                 View Our Services
-              </Link>
+              </PremiumCTA>
             </div>
           </motion.div>
         </div>

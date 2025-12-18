@@ -14,6 +14,7 @@ import {
   Mail
 } from "lucide-react";
 import WhatsAppButton from '../components/WhatsAppButton';
+import PremiumCTA from '../components/PremiumCTA';
 
 export default function Privacy() {
   const sections = [
@@ -555,27 +556,12 @@ We take privacy seriously and are committed to addressing your concerns promptly
               </p>
               
               <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-4">
-                <motion.a
-                  href="/contact"
-                  whileHover={{ scale: 1.05, y: -2 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="inline-flex items-center space-x-2 bg-white text-orange-600 px-8 py-4 rounded-2xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
-                  style={{ fontFamily: "Quicksand, sans-serif" }}
-                >
-                  <span>Contact Us</span>
-                  <span>→</span>
-                </motion.a>
-                <motion.a
-                  href="mailto:info@celestialwebsolutions.net"
-                  whileHover={{ scale: 1.05, y: -2 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="inline-flex items-center space-x-2 border-2 border-white text-white px-8 py-4 rounded-2xl font-semibold hover:bg-white/10 transition-all duration-300"
-                  style={{ fontFamily: "Quicksand, sans-serif" }}
-                >
+                <PremiumCTA href="/contact" size="large" variant="primary">
+                  Contact Us
+                </PremiumCTA>
+                <PremiumCTA href="mailto:info@celestialwebsolutions.net" size="large" variant="primary">
                   <span>Email Us</span>
-                  <Mail size={18} />
-                  
-                </motion.a>
+                </PremiumCTA>
               </div>
 
               <div className="mt-8 text-orange-100 space-y-2">

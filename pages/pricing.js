@@ -3,6 +3,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Check, Star, Zap, Globe, ShoppingCart, Rocket, Crown, Smartphone, Calculator, Plus, Minus, Info, X } from "lucide-react";
 import WhatsAppButton from '../components/WhatsAppButton';
+import PremiumCTA from '../components/PremiumCTA';
 
 export default function PricingWithCalculator() {
   const [billingPeriod, setBillingPeriod] = useState("yearly");
@@ -338,17 +339,9 @@ export default function PricingWithCalculator() {
                     <div className="text-gray-700 dark:text-gray-300 font-semibold" style={{ fontFamily: "Quicksand, sans-serif" }}>Total Price ({billingPeriod === "yearly" ? "Yearly" : "Yearly"}):</div>
                     <div className="text-3xl font-bold text-orange-600" style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}>{formatPrice(calculateTotal())}</div>
                   </div>
-                  <motion.a 
-                    href={getCalculatorWhatsAppLink()} 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
-                    whileHover={{ scale: 1.05 }} 
-                    whileTap={{ scale: 0.95 }} 
-                    className="bg-orange-600 text-white px-6 py-3 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 flex items-center space-x-2" 
-                    style={{ fontFamily: "Quicksand, sans-serif" }}
-                  >
+                  <PremiumCTA href={getCalculatorWhatsAppLink()} size="default" variant="primary" className="flex items-center space-x-2" target="_blank" rel="noopener noreferrer">
                     <span>Order on WhatsApp</span>
-                  </motion.a>
+                  </PremiumCTA>
                 </div>
               </div>
             </div>
@@ -376,17 +369,9 @@ export default function PricingWithCalculator() {
                     <li key={i} className="flex items-center space-x-2"><Check className="text-green-500" size={16} /> <span>{feat}</span></li>
                   ))}
                 </ul>
-                <motion.a 
-                  href={getWhatsAppLink(plan.name, plan.price[billingPeriod])} 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  whileHover={{ scale: 1.02 }} 
-                  whileTap={{ scale: 0.98 }} 
-                  className="w-full bg-orange-600 text-white py-3 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 inline-block text-center" 
-                  style={{ fontFamily: "Quicksand, sans-serif" }}
-                >
+                <PremiumCTA href={getWhatsAppLink(plan.name, plan.price[billingPeriod])} size="default" variant="primary" className="w-full justify-center" target="_blank" rel="noopener noreferrer">
                   {plan.cta}
-                </motion.a>
+                </PremiumCTA>
               </motion.div>
             ))}
           </div>
@@ -397,7 +382,9 @@ export default function PricingWithCalculator() {
       <section className="py-16 bg-orange-600 text-white text-center">
         <h2 className="text-3xl md:text-5xl font-bold mb-4" style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}>Ready to Start Your Project?</h2>
         <p className="text-lg mb-8" style={{ fontFamily: "Quicksand, sans-serif" }}>Get in touch today and let's build your online presence together!</p>
-        <motion.a whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} href="/contact" className="bg-white text-orange-600 px-8 py-4 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300" style={{ fontFamily: "Quicksand, sans-serif" }}>Contact Us</motion.a>
+        <PremiumCTA href="/contact" size="default" variant="primary">
+          Contact Us
+        </PremiumCTA>
       </section>
 
       <WhatsAppButton />

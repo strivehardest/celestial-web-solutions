@@ -190,8 +190,7 @@ const projects = [
     techLogos: [
       { name: "WordPress", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/wordpress/wordpress-original.svg" },
       { name: "WooCommerce", logo: "https://www.logo.wine/a/logo/WooCommerce/WooCommerce-Logo.wine.svg" },
-      { name: "Elementor", logo: "https://cdn.iconscout.com/icon/free/png-256/free-elementor-logo-icon-svg-download-png-3029975.png" },
-      { name: "Paystack", logo: "https://images.seeklogo.com/logo-png/40/2/paystack-logo-png_seeklogo-409509.png" }
+      { name: "Paystack", logo: "https://assets.paystack.com/assets/img/hero/Paystack-mark-white-twitter.png" }
     ],
     startDate: "2025-01-01",
     completionDate: "2025-01-15",
@@ -259,7 +258,6 @@ const projects = [
       { name: "Next.js", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" },
       { name: "Tailwind CSS", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg" },
       { name: "Vercel", logo: "https://www.svgrepo.com/show/354513/vercel-icon.svg" },
-      { name: "Paystack", logo: "https://images.seeklogo.com/logo-png/40/2/paystack-logo-png_seeklogo-409509.png" },
       { name: "Node.js", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" }
     ],
     startDate: "2024-08-01",
@@ -292,8 +290,7 @@ const projects = [
     tech: ["WordPress", "Elementor", "Google AdSense"],
     techLogos: [
       { name: "WordPress", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/wordpress/wordpress-original.svg" },
-      { name: "Google AdSense", logo: "https://i.pinimg.com/736x/01/3c/67/013c675490fbfab9d04d9359466aa678.jpg" }
-    ],
+     ],
     startDate: "2023-04-01",
     completionDate: "2023-04-10",
     duration: "10 days",

@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { Calendar, Clock, User, ArrowRight, Tag } from "lucide-react";
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import PremiumCTA from '../components/PremiumCTA';
 import WhatsAppButton from '../components/WhatsAppButton';
 import { image } from "framer-motion/client";
 
@@ -479,20 +480,12 @@ export default function BlogPage() {
                 Let's create something amazing together. Contact us for a free consultation.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link
-                  href="/contact"
-                  className="px-8 py-4 bg-white text-orange-600 font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
-                  style={{ fontFamily: 'Quicksand, sans-serif' }}
-                >
+                <PremiumCTA href="/contact" size="default" variant="primary">
                   Get Started Today
-                </Link>
-                <Link
-                  href="/services"
-                  className="px-8 py-4 border-2 border-white text-white font-semibold rounded-xl hover:bg-white/10 transition-all duration-300"
-                  style={{ fontFamily: 'Quicksand, sans-serif' }}
-                >
+                </PremiumCTA>
+                <PremiumCTA href="/services" size="default" variant="primary">
                   View Our Services
-                </Link>
+                </PremiumCTA>
               </div>
             </motion.div>
           </div>

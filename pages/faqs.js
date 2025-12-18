@@ -3,6 +3,7 @@ import { useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown, MessageCircle, Clock, Users, Globe, Code, ShoppingCart, Phone } from "lucide-react";
 import WhatsAppButton from '../components/WhatsAppButton';
+import PremiumCTA from '../components/PremiumCTA';
 
 
 export default function FAQs() {
@@ -332,26 +333,12 @@ export default function FAQs() {
                 Can't find the answer you're looking for? Our team is here to help! Get in touch for a personalized consultation.
               </p>
               <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-4">
-                <motion.a
-                  href="/contact"
-                  whileHover={{ scale: 1.05, y: -2 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="inline-flex items-center space-x-2 bg-gradient-to-r from-orange-500 to-orange-600 text-white px-8 py-4 rounded-2xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
-                  style={{ fontFamily: "Quicksand, sans-serif" }}
-                >
-                  <span>Contact Us</span>
-                  <span>→</span>
-                </motion.a>
-                <motion.a
-                  href="tel:+233245671832"
-                  whileHover={{ scale: 1.05, y: -2 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="inline-flex items-center space-x-2 border-2 border-orange-500 text-orange-600 dark:text-orange-400 px-8 py-4 rounded-2xl font-semibold hover:bg-orange-50 dark:hover:bg-gray-600 transition-all duration-300"
-                  style={{ fontFamily: "Quicksand, sans-serif" }}
-                >
+                <PremiumCTA href="/contact" size="large" variant="primary">
+                  Contact Us
+                </PremiumCTA>
+                <PremiumCTA href="tel:+233245671832" size="large" variant="outline">
                   <span>Call Us</span>
-                  <Phone size={20} className="text-orange-500" />
-                </motion.a>
+                </PremiumCTA>
               </div>
             </motion.div>
           </div>

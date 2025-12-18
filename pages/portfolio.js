@@ -5,6 +5,7 @@ import { useState } from "react";
 import Head from "next/head";
 import projects from "../data/projects";
 import WhatsAppButton from '../components/WhatsAppButton';
+import PremiumCTA from '../components/PremiumCTA';
 
 export default function Portfolio() {
   const [filter, setFilter] = useState("all");
@@ -361,34 +362,16 @@ export default function Portfolio() {
                 Let's create something amazing together. Whether it's a website, e-commerce platform, or custom web application, we're here to bring your vision to life.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <motion.a
-                  href="/contact"
-                  whileHover={{ scale: 1.05, y: -2 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="inline-flex items-center justify-center space-x-2 bg-white text-orange-600 px-8 py-4 rounded-2xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
-                  style={{ fontFamily: "Quicksand, sans-serif" }}
-                >
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
-                  </svg>
-                  <span>Start a Project</span>
-                </motion.a>
-                <motion.a
-                  href="/pricing"
-                  whileHover={{ scale: 1.05, y: -2 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="inline-flex items-center justify-center space-x-2 border-2 border-white text-white px-8 py-4 rounded-2xl font-semibold hover:bg-white/10 transition-all duration-300"
-                  style={{ fontFamily: "Quicksand, sans-serif" }}
-                >
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                  <span>View Pricing</span>
-                </motion.a>
+                <PremiumCTA href="/contact" size="default" variant="primary">
+                  Start a Project
+                </PremiumCTA>
+                <PremiumCTA href="/pricing" size="default" variant="primary">
+                  View Pricing
+                </PremiumCTA>
               </div>
               
               {/* Additional Info */}
-              <div className="mt-8 flex flex-wrap justify-center gap-6 text-orange-100 text-sm">
+              <div className="mt-8 flex flex-wrap justify-center gap-6 text-orange-100 text-sm" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>
                 <div className="flex items-center space-x-2">
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
