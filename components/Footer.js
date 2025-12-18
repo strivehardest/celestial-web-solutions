@@ -171,7 +171,7 @@ export default function Footer({ darkMode, toggleDarkMode }) {
             <motion.div className="flex items-center mb-6">
               <motion.div whileHover={{ scale: 1.05 }} className="w-24 h-24 relative">
                 <img
-                  src="/logo.png"
+                  src="/logo1.png"
                   alt="Celestial Web Solutions"
                   className="w-full h-full object-contain"
                   onError={(e) => {
