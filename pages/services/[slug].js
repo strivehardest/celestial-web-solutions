@@ -491,97 +491,62 @@ export default function ServiceDetailPage() {
         <meta name="keywords" content={service.keywords.join(', ')} />
       </Head>
       <div className="min-h-screen bg-white dark:bg-gray-900">
-        <section className="relative py-20 md:py-28" style={{ minHeight: '60vh' }}>
-          {/* Hero Background Image */}
-          <div className="absolute inset-0 overflow-hidden pointer-events-none">
-            <img 
-              src={service.heroImage}
-              alt={`${service.title} hero background`}
-              className="w-full h-full object-cover opacity-20 dark:opacity-15"
-              style={{ zIndex: 0 }}
-            />
-            <div className="absolute inset-0 bg-gradient-to-br from-orange-100/80 via-orange-200/60 to-red-100/60 dark:from-gray-900/90 dark:via-gray-900/80 dark:to-gray-900/90"></div>
-          </div>
-          <div className="relative z-10 max-w-3xl mx-auto px-4 text-center">
-            {/* Spacer for fixed header */}
-            <div className="h-20 md:h-24" />
-            {/* Back to All Services CTA at the top */}
-            <div className="mb-8 flex justify-start">
+        {/* HERO SECTION */}
+        <section className="relative py-24 md:py-32 bg-gradient-to-br from-orange-500 via-orange-600 to-orange-700 text-white overflow-hidden">
+          <div className="absolute inset-0 opacity-10 pointer-events-none" />
+          <div className="relative z-10 max-w-4xl mx-auto px-4 text-center flex flex-col items-center">
+            <div className="mb-8 w-full flex justify-start">
               <Link
                 href="/services"
-                className="inline-flex items-center text-orange-600 dark:text-orange-400 hover:underline font-semibold text-base"
-                style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}
+                className="inline-flex items-center gap-2 px-5 py-2 rounded-xl bg-white/90 hover:bg-white text-orange-600 font-bold shadow transition-all duration-200 border-2 border-orange-200 hover:border-orange-400 focus:outline-none focus:ring-2 focus:ring-orange-400"
+                style={{ fontFamily: 'Bricolage Grotesque, sans-serif', fontSize: '1.1rem', letterSpacing: '0.01em' }}
               >
-                ← Back to All Services
+                <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="-ml-1"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7" /></svg>
+                Back to Services
               </Link>
             </div>
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-            >
-              <div className="flex justify-center mb-6">
-                <div className="w-20 h-20 bg-gradient-to-br from-orange-500 to-orange-600 dark:from-orange-700 dark:to-orange-500 rounded-2xl flex items-center justify-center shadow-lg">
-                  {service.icon && <service.icon className="w-10 h-10 text-white" />}
-                </div>
+            <div className="flex flex-col items-center mb-6">
+              <div className="w-24 h-24 bg-white/20 rounded-full flex items-center justify-center shadow-lg mb-4">
+                {service.icon && <service.icon className="w-12 h-12 text-white" />}
               </div>
-              <h1 className="text-4xl md:text-5xl font-bold text-orange-700 dark:text-orange-400 mb-6" style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}>
-                {service.title}
-              </h1>
-              <p className="text-lg text-orange-900 dark:text-orange-100 max-w-2xl mx-auto leading-relaxed mb-8" style={{ fontFamily: "Quicksand, sans-serif" }}>
-                {service.description}
-              </p>
-              <div className="flex flex-wrap gap-2 justify-center mb-8">
+              <h1 className="text-5xl md:text-6xl font-extrabold mb-4" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>{service.title}</h1>
+              <p className="text-xl md:text-2xl max-w-2xl mx-auto leading-relaxed mb-6 text-white/90" style={{ fontFamily: 'Quicksand, sans-serif' }}>{service.description}</p>
+              <div className="flex flex-wrap gap-2 justify-center mb-4">
                 {service.keywords.map((keyword, idx) => (
-                  <span
-                    key={idx}
-                    className="text-sm px-3 py-1 bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-400 rounded-full"
-                    style={{ fontFamily: 'Quicksand, sans-serif' }}
-                  >
-                    {keyword}
-                  </span>
+                  <span key={idx} className="text-xs md:text-sm px-3 py-1 bg-white/20 text-white rounded-full" style={{ fontFamily: 'Quicksand, sans-serif' }}>{keyword}</span>
                 ))}
               </div>
-              {/* Details Section */}
-              {service.details && service.details.length > 0 && (
-                <div className="text-left bg-white/90 dark:bg-gray-900/90 rounded-2xl shadow-lg p-8 mb-10 mx-auto max-w-2xl border border-orange-100 dark:border-orange-800">
-                  {service.details.map((section, idx) => (
-                    <div key={idx} className="mb-8 last:mb-0">
-                      <h2 className="text-xl font-bold text-orange-600 dark:text-orange-400 mb-2" style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}>
-                        {section.heading}
-                      </h2>
-                      {/* Render tech stack/tools with logos if present */}
-                      {Array.isArray(section.content) && section.content.length > 0 && typeof section.content[0] === 'object' && section.content[0].url ? (
-                        <div className="flex flex-wrap gap-4 mb-2">
-                          {section.content.map((tech, i) => (
-                            <div key={i} className="flex flex-col items-center">
-                              <img src={tech.url} alt={tech.name} className="w-10 h-10 object-contain mb-1" loading="lazy" />
-                              <span className="text-xs text-gray-700 dark:text-gray-200">{tech.name}</span>
-                            </div>
-                          ))}
-                        </div>
-                      ) : (
-                        <ul className="list-disc list-inside text-gray-700 dark:text-gray-200 space-y-1" style={{ fontFamily: "Quicksand, sans-serif" }}>
-                          {section.content.map((item, i) => (
-                            <li key={i}>{item}</li>
-                          ))}
-                        </ul>
-                      )}
+              <div className="flex flex-col sm:flex-row gap-4 justify-center mt-6">
+                <PremiumCTA href="/contact" size="large" variant="primary" icon>Start Your Project</PremiumCTA>
+                <PremiumCTA href="/portfolio" size="large" variant="secondary" icon>View Our Work</PremiumCTA>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* DETAILS SECTION */}
+        <section className="max-w-3xl mx-auto px-4 py-16">
+          {service.details && service.details.length > 0 && service.details.map((section, idx) => (
+            <div key={idx} className="mb-12 last:mb-0 bg-white dark:bg-gray-900 rounded-2xl shadow-lg p-8 border border-orange-100 dark:border-orange-800">
+              <h2 className="text-2xl font-bold text-orange-600 dark:text-orange-400 mb-4" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>{section.heading}</h2>
+              {Array.isArray(section.content) && section.content.length > 0 && typeof section.content[0] === 'object' && section.content[0].url ? (
+                <div className="flex flex-wrap gap-6 mb-2">
+                  {section.content.map((tech, i) => (
+                    <div key={i} className="flex flex-col items-center">
+                      <img src={tech.url} alt={tech.name} className="w-12 h-12 object-contain mb-1" loading="lazy" />
+                      <span className="text-xs text-gray-700 dark:text-gray-200">{tech.name}</span>
                     </div>
                   ))}
                 </div>
+              ) : (
+                <ul className="list-disc list-inside text-gray-700 dark:text-gray-200 space-y-2" style={{ fontFamily: 'Quicksand, sans-serif' }}>
+                  {section.content.map((item, i) => (
+                    <li key={i}>{item}</li>
+                  ))}
+                </ul>
               )}
-              {/* Premium CTAs */}
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <PremiumCTA href="/contact" size="large" variant="primary" icon>
-                  Start Your Project
-                </PremiumCTA>
-                <PremiumCTA href="/portfolio" size="large" variant="secondary" icon>
-                  View Our Work
-                </PremiumCTA>
-              </div>
-            </motion.div>
-          </div>
+            </div>
+          ))}
         </section>
       </div>
     </>
