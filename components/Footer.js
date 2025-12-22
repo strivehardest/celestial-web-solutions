@@ -87,6 +87,11 @@ export default function Footer({ darkMode, toggleDarkMode }) {
       icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg', 
       href: 'https://linkedin.com/in/aforlabi', 
       label: 'LinkedIn'
+    },
+    {
+      icon: 'https://upload.wikimedia.org/wikipedia/commons/0/09/YouTube_full-color_icon_%282017%29.svg',
+      href: 'https://youtube.com/@celestialwebsolutions',
+      label: 'YouTube'
     }
   ];
 
