@@ -1,6 +1,5 @@
 import Head from "next/head";
-import { useState, useEffect } from "react";
-// Only Ghana Cedi supported
+import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Check, Star, Zap, Globe, ShoppingCart, Rocket, Crown, Smartphone, Calculator, Plus, Minus, Info, X } from "lucide-react";
 import WhatsAppButton from '../components/WhatsAppButton';
@@ -9,10 +8,6 @@ import PremiumCTA from '../components/PremiumCTA';
 export default function PricingWithCalculator() {
   const [billingPeriod, setBillingPeriod] = useState("yearly");
   const [showCalculator, setShowCalculator] = useState(false);
-  // Only Ghana Cedi (GHS) is supported
-  const currency = 'GHS';
-  const exchangeRates = { GHS: 1 };
-  const loadingRates = false;
 
   // Calculator state
   const [selectedBase, setSelectedBase] = useState("starter");
@@ -163,12 +158,7 @@ export default function PricingWithCalculator() {
   ];
 
   const formatPrice = (price) => {
-    return new Intl.NumberFormat('en', {
-      style: 'currency',
-      currency: 'GHS',
-      minimumFractionDigits: 0,
-      maximumFractionDigits: 0
-    }).format(price).replace('GHS', '₵');
+    return new Intl.NumberFormat('en-GH', { style: 'currency', currency: 'GHS', minimumFractionDigits: 0, maximumFractionDigits: 0 }).format(price).replace('GHS', '₵');
   };
 
   const toggleAddOn = (addOnName) => setAddOns(prev => ({ ...prev, [addOnName]: !prev[addOnName] }));
@@ -231,18 +221,15 @@ export default function PricingWithCalculator() {
               Quality web development services at affordable rates. No hidden fees, flexible payment plans, and prices in Ghana Cedis.
             </p>
 
-            {/* Billing & Currency Toggle */}
-            <div className="flex flex-wrap items-center justify-center gap-4 bg-white/20 backdrop-blur-sm rounded-2xl p-2 mb-2">
-              <div className="flex items-center space-x-2">
-                <button onClick={() => setBillingPeriod("monthly")} className={`px-6 py-2 rounded-xl font-medium transition-all duration-300 ${billingPeriod === "monthly" ? "bg-white text-orange-600 shadow-lg" : "text-white hover:bg-white/10"}`} style={{ fontFamily: "Quicksand, sans-serif" }}>
-                  Development Packages
-                </button>
-                <button onClick={() => setBillingPeriod("yearly")} className={`px-6 py-2 rounded-xl font-medium transition-all duration-300 relative ${billingPeriod === "yearly" ? "bg-white text-orange-600 shadow-lg" : "text-white hover:bg-white/10"}`} style={{ fontFamily: "Quicksand, sans-serif" }}>
-                  With Maintenance
-                  <span className="absolute -top-2 -right-2 bg-yellow-400 text-orange-800 text-xs px-2 py-1 rounded-full font-bold" style={{ fontFamily: "Quicksand, sans-serif" }}>Save</span>
-                </button>
-              </div>
-              {/* Currency selection removed: Only Ghana Cedi (GHS) is supported */}
+            {/* Billing Toggle */}
+            <div className="flex items-center justify-center space-x-4 bg-white/20 backdrop-blur-sm rounded-2xl p-2 inline-flex flex-wrap">
+              <button onClick={() => setBillingPeriod("monthly")} className={`px-6 py-2 rounded-xl font-medium transition-all duration-300 ${billingPeriod === "monthly" ? "bg-white text-orange-600 shadow-lg" : "text-white hover:bg-white/10"}`} style={{ fontFamily: "Quicksand, sans-serif" }}>
+                Development Packages
+              </button>
+              <button onClick={() => setBillingPeriod("yearly")} className={`px-6 py-2 rounded-xl font-medium transition-all duration-300 relative ${billingPeriod === "yearly" ? "bg-white text-orange-600 shadow-lg" : "text-white hover:bg-white/10"}`} style={{ fontFamily: "Quicksand, sans-serif" }}>
+                With Maintenance
+                <span className="absolute -top-2 -right-2 bg-yellow-400 text-orange-800 text-xs px-2 py-1 rounded-full font-bold" style={{ fontFamily: "Quicksand, sans-serif" }}>Save</span>
+              </button>
             </div>
 
             {/* Calculator Toggle Button */}
