@@ -345,10 +345,18 @@ export default function BlogPage() {
                               <User className="w-4 h-4" />
                               {article.author}
                             </span>
-                            <span className="inline-flex items-center gap-2 text-orange-600 dark:text-orange-400 font-semibold group-hover:gap-3 transition-all">
-                              Read More
-                              <ArrowRight className="w-5 h-5" />
-                            </span>
+                            <PremiumCTA
+                              href={`/blog/${article.slug}`}
+                              size="small"
+                              variant="primary"
+                              className="!px-4 !py-2 !text-sm"
+                              icon={false}
+                            >
+                              <span className="flex items-center gap-2">
+                                Read More
+                                <ArrowRight className="w-5 h-5" />
+                              </span>
+                            </PremiumCTA>
                           </div>
                         </div>
                       </div>
@@ -425,10 +433,18 @@ export default function BlogPage() {
                             </span>
                           </div>
 
-                          <span className="inline-flex items-center gap-2 text-orange-600 dark:text-orange-400 font-semibold text-sm group-hover:gap-3 transition-all">
-                            Read Article
-                            <ArrowRight className="w-4 h-4" />
-                          </span>
+                          <PremiumCTA
+                            href={`/blog/${article.slug}`}
+                            size="small"
+                            variant="primary"
+                            className="!px-4 !py-2 !text-sm"
+                            icon={false}
+                          >
+                            <span className="flex items-center gap-2">
+                              Read Article
+                              <ArrowRight className="w-4 h-4" />
+                            </span>
+                          </PremiumCTA>
                         </div>
                       </div>
                     </Link>
