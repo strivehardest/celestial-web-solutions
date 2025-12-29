@@ -21,7 +21,7 @@ const Services = ({ services }) => {
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.1 }}
-            style={{ fontFamily: 'Quicksand, sans-serif' }}
+            style={{ fontFamily: 'Google Sans, sans-serif' }}
           >
             We offer a wide range of digital solutions to help you grow your business online.
           </motion.p>
@@ -66,7 +66,7 @@ const Services = ({ services }) => {
                   </div>
 
                   <p className="text-gray-600 dark:text-gray-300 leading-relaxed group-hover:text-gray-700 dark:group-hover:text-gray-200 transition-colors duration-300" 
-                     style={{ fontFamily: 'Quicksand, sans-serif' }}>
+                     style={{ fontFamily: 'Google Sans, sans-serif' }}>
                     {service.description}
                   </p>
                   

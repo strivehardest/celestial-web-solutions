@@ -197,7 +197,7 @@ export function TextCTA({ children, href = '/contact', className = '', ...props 
           animate={{ x: isHovered ? 5 : 0 }}
           transition={{ duration: 0.3 }}
         >
-          →
+          â†’
         </motion.span>
       </motion.span>
     </Link>
@@ -219,7 +219,7 @@ const whatsappLink = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
       ? 'bg-green-500 text-white hover:bg-green-600'
       : 'bg-white/20 text-white hover:bg-white/30 backdrop-blur-sm'
   }`}
-  style={{ fontFamily: 'Quicksand, sans-serif' }}
+  style={{ fontFamily: 'Google Sans, sans-serif' }}
   whileHover={{ scale: 1.05 }}
   whileTap={{ scale: 0.95 }}
 >

@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { MessageCircle } from 'lucide-react';
+import { MessageCircle, Menu, X, ChevronDown } from 'lucide-react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import ThemeToggle from './ThemeToggle';
@@ -186,7 +186,7 @@ const Navbar = () => {
                   ? "text-xs text-gray-500 dark:text-gray-400 -mt-1"
                   : "text-xs text-white -mt-1"
               }
-              style={{ fontFamily: 'Quicksand, sans-serif' }}
+              style={{ fontFamily: 'Google Sans, sans-serif' }}
             >
               Web Solutions
             </div>
@@ -217,7 +217,7 @@ const Navbar = () => {
             Celestial
           </div>
           <div className="text-xs text-gray-500 dark:text-gray-400 -mt-1"
-               style={{ fontFamily: 'Quicksand, sans-serif' }}>
+               style={{ fontFamily: 'Google Sans, sans-serif' }}>
             Web Solutions
           </div>
         </div>
@@ -233,9 +233,11 @@ const Navbar = () => {
           className={`flex items-center space-x-2 px-4 py-3 text-sm font-medium rounded-xl transition-all duration-300 ${
             isActive(item.href)
               ? 'text-white bg-gradient-to-r from-orange-500 to-orange-600 shadow-lg shadow-orange-500/25'
-              : 'text-gray-700 dark:text-gray-300 hover:text-orange-600 dark:hover:text-orange-400 hover:bg-gray-100/50 dark:hover:bg-gray-800/50'
+              : scrolled
+                ? 'text-gray-700 dark:text-gray-300 hover:text-orange-600 dark:hover:text-orange-400 hover:bg-gray-100/50 dark:hover:bg-gray-800/50'
+                : 'text-white hover:text-orange-100 hover:bg-white/10'
           }`}
-          style={{ fontFamily: 'Quicksand, sans-serif' }}
+          style={{ fontFamily: 'Google Sans, sans-serif' }}
           whileHover={{ y: -1 }}
           onMouseEnter={() => setActiveDropdown(item.name)}
           onClick={() => handleNavigation(item.href)}
@@ -263,7 +265,7 @@ const Navbar = () => {
               ? 'text-gray-700 dark:text-gray-300 hover:text-orange-600 dark:hover:text-orange-400 hover:bg-gray-100/50 dark:hover:bg-gray-800/50'
               : 'text-white hover:text-orange-100 hover:bg-white/10'
         }`}
-        style={{ fontFamily: 'Quicksand, sans-serif' }}
+        style={{ fontFamily: 'Google Sans, sans-serif' }}
         whileHover={{ y: -1 }}
         onClick={() => handleNavigation(item.href)}
       >
@@ -315,7 +317,7 @@ const Navbar = () => {
                             <motion.button
                               key={dropItem.name}
                               className="w-full flex items-center px-4 py-3 text-sm text-gray-700 dark:text-gray-300 hover:text-orange-600 dark:hover:text-orange-400 hover:bg-orange-50/50 dark:hover:bg-orange-900/20 transition-all duration-200 text-left"
-                              style={{ fontFamily: 'Quicksand, sans-serif' }}
+                              style={{ fontFamily: 'Google Sans, sans-serif' }}
                               whileHover={{ x: 4 }}
                               initial={{ opacity: 0, x: -10 }}
                               animate={{ opacity: 1, x: 0 }}
@@ -390,13 +392,13 @@ const Navbar = () => {
                   onClick={() => setIsMenuOpen(!isMenuOpen)}
                   className="flex items-center justify-center w-10 h-10 rounded-xl bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700 transition-all duration-300"
                   whileTap={{ scale: 0.95 }}
+                  aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
                 >
-                  <motion.div
-                    animate={{ rotate: isMenuOpen ? 45 : 0 }}
-                    transition={{ duration: 0.2 }}
-                  >
-                    {isMenuOpen ? '✕' : '☰'}
-                  </motion.div>
+                  {isMenuOpen ? (
+                    <X size={28} />
+                  ) : (
+                    <Menu size={28} />
+                  )}
                 </motion.button>
               </div>
             </div>
@@ -424,11 +426,9 @@ const Navbar = () => {
                         className={`w-full flex items-center justify-between px-4 py-3 text-base font-medium rounded-xl transition-all duration-300 ${
                           isActive(item.href)
                             ? 'text-white bg-gradient-to-r from-orange-500 to-orange-600 shadow-lg'
-                            : scrolled
-                              ? 'text-gray-700 dark:text-gray-300 hover:text-orange-600 dark:hover:text-orange-400 hover:bg-orange-50/50 dark:hover:bg-orange-900/20'
-                              : 'text-white hover:text-orange-100 hover:bg-white/10'
+                            : 'text-gray-800 dark:text-gray-100 hover:text-orange-600 dark:hover:text-orange-400 hover:bg-orange-50/50 dark:hover:bg-orange-900/20'
                         }`}
-                        style={{ fontFamily: 'Quicksand, sans-serif' }}
+                        style={{ fontFamily: 'Google Sans, sans-serif' }}
                         onClick={() => item.dropdown ? setActiveDropdown(activeDropdown === item.name ? null : item.name) : handleNavigation(item.href)}
                       >
                         <span>{item.name}</span>
@@ -436,9 +436,9 @@ const Navbar = () => {
                           <motion.span
                             animate={{ rotate: activeDropdown === item.name ? 180 : 0 }}
                             transition={{ duration: 0.2 }}
-                            className="text-lg"
+                            className="text-lg flex items-center"
                           >
-                            ⌄
+                            <ChevronDown size={20} />
                           </motion.span>
                         )}
                       </button>
@@ -460,7 +460,7 @@ const Navbar = () => {
                                 animate={{ opacity: 1, x: 0 }}
                                 transition={{ delay: dropIndex * 0.05 }}
                                 className="w-full flex items-center px-4 py-2 text-sm text-gray-600 dark:text-gray-400 hover:text-orange-600 dark:hover:text-orange-400 hover:bg-orange-50/30 dark:hover:bg-orange-900/10 rounded-lg transition-all duration-200 text-left"
-                                style={{ fontFamily: 'Quicksand, sans-serif' }}
+                                style={{ fontFamily: 'Google Sans, sans-serif' }}
                                 onClick={() => handleNavigation(dropItem.href)}
                               >
                                 <span>{dropItem.name}</span>

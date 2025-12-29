@@ -75,7 +75,7 @@ const HeroSection = () => {
           >
             <span className="hidden sm:inline">Full Stack Development</span>
             <span className="sm:hidden">Full Stack Dev</span>
-            <span className="animate-pulse">●</span>
+            <span className="animate-pulse">â—</span>
             <span className="hidden sm:inline">Available for Projects</span>
             <span className="sm:hidden">Available</span>
           </motion.div>
@@ -125,7 +125,7 @@ const HeroSection = () => {
             {/* Primary CTA Button */}
             <motion.button
               className="group relative w-full sm:w-auto px-8 sm:px-10 py-4 sm:py-5 lg:px-14 lg:py-6 bg-gradient-to-r from-orange-500 to-red-500 text-white font-bold rounded-2xl shadow-2xl overflow-hidden text-base sm:text-lg lg:text-xl transition-all duration-300"
-              style={{ fontFamily: 'Quicksand, sans-serif' }}
+              style={{ fontFamily: 'Google Sans, sans-serif' }}
               whileHover={{ scale: 1.08, y: -4 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => handleNavigation('/contact')}
@@ -143,7 +143,7 @@ const HeroSection = () => {
             {/* Secondary CTA Button */}
             <motion.button
               className="group relative w-full sm:w-auto px-8 sm:px-10 py-4 sm:py-5 lg:px-14 lg:py-6 border-3 border-white/60 text-white font-bold rounded-2xl shadow-xl hover:bg-white/10 backdrop-blur-sm transition-all duration-300 text-base sm:text-lg lg:text-xl"
-              style={{ fontFamily: 'Quicksand, sans-serif' }}
+              style={{ fontFamily: 'Google Sans, sans-serif' }}
               whileHover={{ scale: 1.08, y: -4, borderColor: '#ffffff' }}
               whileTap={{ scale: 0.95 }}
               onClick={() => handleNavigation('/portfolio')}

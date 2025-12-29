@@ -43,8 +43,8 @@ export default function PremiumCTA({
 
   const variantClasses = {
     primary: 'bg-gradient-to-r from-orange-500 to-orange-600 text-white',
-    secondary: 'bg-white text-orange-600',
-    outline: 'bg-transparent text-orange-600 border-2 border-orange-500',
+    secondary: 'bg-white text-orange-600 shadow-lg',
+    outline: 'bg-transparent text-white border-2 border-white hover:bg-white/10',
   };
 
   const ButtonContent = () => (
@@ -67,7 +67,13 @@ export default function PremiumCTA({
     >
       {/* Background slide effect */}
       <motion.span
-        className={`absolute inset-0 ${variant === 'primary' ? 'bg-white' : 'bg-gradient-to-r from-orange-500 to-orange-600'}`}
+        className={`absolute inset-0 ${
+          variant === 'primary' 
+            ? 'bg-white' 
+            : variant === 'outline' 
+              ? 'bg-white/20' 
+              : 'bg-gradient-to-r from-orange-500 to-orange-600'
+        }`}
         initial={{ x: '-100%', skewX: '-15deg' }}
         animate={{ x: isHovered ? '0%' : '-100%' }}
         transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
@@ -94,8 +100,8 @@ export default function PremiumCTA({
         className="relative z-10"
         animate={{
           color: isHovered 
-            ? (variant === 'primary' ? '#ea580c' : '#ffffff') 
-            : (variant === 'primary' ? '#ffffff' : '#ea580c'),
+            ? (variant === 'primary' ? '#ea580c' : variant === 'outline' ? '#ffffff' : '#ffffff') 
+            : (variant === 'primary' ? '#ffffff' : variant === 'outline' ? '#ffffff' : '#ea580c'),
         }}
         transition={{ duration: 0.3 }}
       >
@@ -109,8 +115,8 @@ export default function PremiumCTA({
           animate={{
             x: isHovered ? 5 : 0,
             color: isHovered 
-              ? (variant === 'primary' ? '#ea580c' : '#ffffff') 
-              : (variant === 'primary' ? '#ffffff' : '#ea580c'),
+              ? (variant === 'primary' ? '#ea580c' : variant === 'outline' ? '#ffffff' : '#ffffff') 
+              : (variant === 'primary' ? '#ffffff' : variant === 'outline' ? '#ffffff' : '#ea580c'),
           }}
           transition={{ duration: 0.3 }}
         >

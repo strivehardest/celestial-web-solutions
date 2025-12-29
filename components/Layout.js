@@ -186,7 +186,7 @@ export default function Layout({ children }) {
                         ? 'text-gray-700 dark:text-gray-200 hover:text-orange-600 dark:hover:text-orange-400'
                         : 'text-white hover:text-orange-200'
                   }`}
-                  style={{ fontFamily: 'Quicksand, sans-serif' }}
+                  style={{ fontFamily: 'Google Sans, sans-serif' }}
                 >
                   {link.label}
                   {router.pathname === link.href && (
@@ -299,7 +299,7 @@ export default function Layout({ children }) {
                         ? 'text-orange-600 dark:text-orange-400'
                         : 'text-gray-700 dark:text-gray-200 hover:text-orange-600 dark:hover:text-orange-400'
                     }`}
-                    style={{ fontFamily: 'Quicksand, sans-serif' }}
+                    style={{ fontFamily: 'Google Sans, sans-serif' }}
                   >
                     {link.label}
                   </Link>
@@ -332,7 +332,7 @@ export default function Layout({ children }) {
               </h3>
               <p 
                 className="text-gray-400 mb-6 max-w-md"
-                style={{ fontFamily: 'Quicksand, sans-serif' }}
+                style={{ fontFamily: 'Google Sans, sans-serif' }}
               >
                 Transforming ideas into stunning digital experiences. We build modern, 
                 responsive websites that help businesses grow and succeed online.
@@ -357,7 +357,7 @@ export default function Layout({ children }) {
             {/* Quick Links */}
             <div>
               <h4 className="font-bold mb-4" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>Quick Links</h4>
-              <ul className="space-y-2" style={{ fontFamily: 'Quicksand, sans-serif' }}>
+              <ul className="space-y-2" style={{ fontFamily: 'Google Sans, sans-serif' }}>
                 {navLinks.map((link) => (
                   <li key={link.href}>
                     <Link href={link.href} className="text-gray-400 hover:text-orange-500 transition-colors duration-300">
@@ -371,7 +371,7 @@ export default function Layout({ children }) {
             {/* Contact Info */}
             <div>
               <h4 className="font-bold mb-4" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>Contact Us</h4>
-              <ul className="space-y-3 text-gray-400" style={{ fontFamily: 'Quicksand, sans-serif' }}>
+              <ul className="space-y-3 text-gray-400" style={{ fontFamily: 'Google Sans, sans-serif' }}>
                 <li className="flex items-center space-x-2">
                   <Phone size={16} className="text-orange-500" />
                   <span>+233 24 567 1832</span>
@@ -388,7 +388,7 @@ export default function Layout({ children }) {
             </div>
           </div>
 
-          <div className="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400" style={{ fontFamily: 'Quicksand, sans-serif' }}>
+          <div className="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400" style={{ fontFamily: 'Google Sans, sans-serif' }}>
             <p>&copy; {new Date().getFullYear()} Celestial Web Solutions. All rights reserved.</p>
           </div>
         </div>

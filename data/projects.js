@@ -33,6 +33,37 @@ const projects = [
     ]
   },
   {
+    title: "Ghana Updates Online",
+    slug: "ghana-updates-online",
+    category: "News & Media",
+    client: "Ghana Updates Media",
+    clientCountry: "Ghana",
+    description: "A comprehensive news and radio streaming website featuring real-time Ghana news updates, live radio streaming, and AdSense monetization for sustainable revenue generation.",
+    image: "/png/projects/ghanaupdates.png",
+    screenshot: "/png/screenshots/ghanaupdates-full.png",
+    link: "https://ghanaupdates.online",
+    tech: ["WordPress", "Elementor", "Google AdSense"],
+    techLogos: [
+      { name: "WordPress", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/wordpress/wordpress-original.svg" },
+     ],
+    startDate: "2023-04-01",
+    completionDate: "2023-04-10",
+    duration: "10 days",
+    features: [
+      "Live Radio Streaming",
+      "News Content Management",
+      "AdSense Integration",
+      "Social Media Integration",
+      "Mobile Responsive",
+      "SEO Optimized",
+      "Comment System",
+      "Newsletter Subscription",
+      "Contact Forms",
+      "Fast Loading Speed",
+      "Google Analytics Setup"
+    ]
+  },
+  {
     title: "Elolo Agbleke Portfolio Website",
     slug: "elolo-agbleke-website",
     category: "Personal Projects",
@@ -274,37 +305,6 @@ const projects = [
       "Dark/Light Mode Toggle",
       "Fast Loading Performance",
       "WhatsApp Integration",
-      "Google Analytics Setup"
-    ]
-  },
-  {
-    title: "Ghana Updates Online",
-    slug: "ghana-updates-online",
-    category: "News & Media",
-    client: "Ghana Updates Media",
-    clientCountry: "Ghana",
-    description: "A comprehensive news and radio streaming website featuring real-time Ghana news updates, live radio streaming, and AdSense monetization for sustainable revenue generation.",
-    image: "/png/projects/ghanaupdates.png",
-    screenshot: "/png/screenshots/ghanaupdates-full.png",
-    link: "https://ghanaupdates.online",
-    tech: ["WordPress", "Elementor", "Google AdSense"],
-    techLogos: [
-      { name: "WordPress", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/wordpress/wordpress-original.svg" },
-     ],
-    startDate: "2023-04-01",
-    completionDate: "2023-04-10",
-    duration: "10 days",
-    features: [
-      "Live Radio Streaming",
-      "News Content Management",
-      "AdSense Integration",
-      "Social Media Integration",
-      "Mobile Responsive",
-      "SEO Optimized",
-      "Comment System",
-      "Newsletter Subscription",
-      "Contact Forms",
-      "Fast Loading Speed",
       "Google Analytics Setup"
     ]
   }
