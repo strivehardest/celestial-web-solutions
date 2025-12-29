@@ -107,6 +107,14 @@ export default function PremiumCTA({
     </motion.span>
   );
 
+  if (props.type === 'submit') {
+    // Render as button for form submission
+    return (
+      <button type="submit" className={className} disabled={props.disabled} style={props.style} onClick={handleClick}>
+        <ButtonContent />
+      </button>
+    );
+  }
   if (external) {
     return (
       <a href={href} target="_blank" rel="noopener noreferrer">
@@ -114,7 +122,6 @@ export default function PremiumCTA({
       </a>
     );
   }
-
   return (
     <Link href={href}>
       <ButtonContent />

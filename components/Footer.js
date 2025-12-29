@@ -30,7 +30,8 @@ export default function Footer({ darkMode, toggleDarkMode }) {
       { name: 'About Us', href: '/about' },
       { name: 'Portfolio', href: '/portfolio' },
       { name: 'Blog', href: '/blog' },
-      { name: 'Pricing', href: '/pricing' }
+      { name: 'Pricing', href: '/pricing' },
+      { name: 'Make Payment', href: '/payment' }
     ],
     support: [
       { name: 'Contact', href: '/contact' },
