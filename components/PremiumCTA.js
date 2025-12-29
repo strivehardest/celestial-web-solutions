@@ -42,8 +42,8 @@ export default function PremiumCTA({
   };
 
   const variantClasses = {
-    primary: 'bg-gradient-to-r from-orange-500 to-orange-600 text-white',
-    secondary: 'bg-white text-orange-600 shadow-lg',
+    primary: 'bg-white/20 backdrop-blur-md border border-white/30 shadow-lg text-orange-700 dark:text-white',
+    secondary: 'bg-white/30 backdrop-blur-md border border-white/30 shadow-lg text-orange-600',
     outline: 'bg-transparent text-white border-2 border-white hover:bg-white/10',
   };
 
@@ -56,29 +56,13 @@ export default function PremiumCTA({
         ${sizeClasses[size]}
         ${variantClasses[variant]}
         ${className}
+        glass-cta
       `}
-      style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
+      style={{ fontFamily: 'Bricolage Grotesque, sans-serif', ...props.style }}
       onClick={handleClick}
-      whileHover={{ scale: 1.02 }}
-      whileTap={{ scale: 0.98 }}
       {...props}
     >
-      {/* Background slide effect */}
-      <motion.span
-        className={`absolute inset-0 ${
-          variant === 'primary' 
-            ? 'bg-white' 
-            : variant === 'outline' 
-              ? 'bg-white/20' 
-              : 'bg-gradient-to-r from-orange-500 to-orange-600'
-        }`}
-        initial={{ x: '-100%', skewX: '-15deg' }}
-        animate={{ x: isHovered ? '0%' : '-100%' }}
-        transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
-        style={{ transformOrigin: 'left' }}
-      />
+      {/* Removed background slide effect for hover */}
 
       {/* Ripple effect */}
       {showRipple && (
@@ -95,31 +79,14 @@ export default function PremiumCTA({
         />
       )}
 
-      {/* Text with color change on hover */}
-      <motion.span
-        className="relative z-10"
-        animate={{
-          color: isHovered 
-            ? (variant === 'primary' ? '#ea580c' : variant === 'outline' ? '#ffffff' : '#ffffff') 
-            : (variant === 'primary' ? '#ffffff' : variant === 'outline' ? '#ffffff' : '#ea580c'),
-        }}
-        transition={{ duration: 0.3 }}
-      >
+      {/* Text without color change on hover */}
+      <span className="relative z-10">
         {children}
-      </motion.span>
+      </span>
 
-      {/* Arrow icon */}
+      {/* Arrow icon without hover effect */}
       {icon && (
-        <motion.span
-          className="relative z-10 flex items-center"
-          animate={{
-            x: isHovered ? 5 : 0,
-            color: isHovered 
-              ? (variant === 'primary' ? '#ea580c' : variant === 'outline' ? '#ffffff' : '#ffffff') 
-              : (variant === 'primary' ? '#ffffff' : variant === 'outline' ? '#ffffff' : '#ea580c'),
-          }}
-          transition={{ duration: 0.3 }}
-        >
+        <span className="relative z-10 flex items-center">
           <svg 
             className="w-5 h-5" 
             fill="none" 
@@ -133,23 +100,10 @@ export default function PremiumCTA({
               d="M17 8l4 4m0 0l-4 4m4-4H3" 
             />
           </svg>
-        </motion.span>
+        </span>
       )}
 
-      {/* Shine effect */}
-      <motion.span
-        className="absolute inset-0 z-0"
-        initial={{ x: '-100%', opacity: 0 }}
-        animate={{ 
-          x: isHovered ? '200%' : '-100%',
-          opacity: isHovered ? [0, 0.5, 0] : 0,
-        }}
-        transition={{ duration: 0.8, ease: 'easeInOut' }}
-        style={{
-          background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent)',
-          width: '50%',
-        }}
-      />
+      {/* Removed shine effect for hover */}
     </motion.span>
   );
 
