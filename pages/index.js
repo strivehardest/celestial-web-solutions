@@ -1,11 +1,37 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { useRouter } from 'next/router';
-import { motion } from 'framer-motion';
-import { Code, Monitor, Search, ShoppingCart, ArrowRight, Zap } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Code, Monitor, Search, ShoppingCart, ArrowRight, Zap, CheckCircle2 } from 'lucide-react';
 import Head from 'next/head';
+import Link from 'next/link';
 import WhatsAppButton from '../components/WhatsAppButton';
 import PremiumCTA, { TextCTA } from '../components/PremiumCTA';
 import CTASection from '../components/CTASection';
+
+// Glass Button Component
+const GlassButton = ({ children, href, variant = "light", className = "" }) => {
+  const baseClasses = "inline-flex items-center gap-2 px-6 py-3 rounded-full font-semibold transition-all duration-300 backdrop-blur-md border cursor-pointer";
+  const variants = {
+    light: "bg-white/20 hover:bg-white/30 border-white/30 text-white hover:shadow-lg hover:shadow-white/10",
+    dark: "bg-black/20 hover:bg-black/30 border-black/20 text-gray-900 hover:shadow-lg",
+    orange: "bg-orange-500/20 hover:bg-orange-500/30 border-orange-500/30 text-orange-600 dark:text-orange-400 hover:shadow-lg hover:shadow-orange-500/20",
+    solid: "bg-orange-500 hover:bg-orange-600 border-orange-500 text-white hover:shadow-lg hover:shadow-orange-500/30"
+  };
+
+  return (
+    <Link href={href}>
+      <motion.span
+        className={`${baseClasses} ${variants[variant]} ${className}`}
+        style={{ fontFamily: 'Google Sans, sans-serif' }}
+        whileHover={{ scale: 1.05, y: -2 }}
+        whileTap={{ scale: 0.95 }}
+      >
+        {children}
+        <ArrowRight size={18} />
+      </motion.span>
+    </Link>
+  );
+};
 
 // SEO Component with Next.js Head
 const SEOHead = () => {
@@ -137,28 +163,32 @@ const mainServices = [
     title: "Web Development",
     description: "Modern, responsive websites built with Next.js, React and cutting-edge technologies",
     color: "from-orange-500 to-orange-600",
-    link: "/services/web-development"
+    link: "/services/web-development",
+    image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?q=90&w=800&auto=format&fit=crop"
   },
   {
     icon: Monitor,
     title: "Web Design",
     description: "Beautiful, user-friendly designs that engage your audience and drive conversions",
     color: "from-orange-500 to-orange-600",
-    link: "/services/web-design"
+    link: "/services/web-design",
+    image: "https://www.ntc.edu/sites/default/files/styles/16_9_1600x900/public/2021-06/web-design-header.jpg?itok=KPytPu7S"
   },
   {
     icon: ShoppingCart,
     title: "E-Commerce Solutions",
     description: "Custom online stores with secure payment integration and inventory management",
     color: "from-orange-500 to-orange-600",
-    link: "/services/ecommerce-solutions"
+    link: "/services/ecommerce-solutions",
+    image: "https://admin.wac.co/uploads/What_is_E_commerce_and_What_are_its_Applications_2_d2eb0d4402.jpg"
   },
   {
     icon: Search,
     title: "SEO Optimization",
     description: "Improve your visibility and reach with our proven SEO strategies",
     color: "from-orange-500 to-orange-600",
-    link: "/services/seo-optimization"
+    link: "/services/seo-optimization",
+    image: "https://www.intellibright.com/wp-content/uploads/2025/04/Search-Engine-Optimization.jpg"
   }
 ];
 
@@ -222,9 +252,60 @@ const techStackCategories = [
   }
 ];
 
+// Hero slideshow images - Featuring actual project screenshots
+const heroImages = [
+  {
+    image: '/png/projects/myspace-furniture.png',
+    title: 'My Space Furniture',
+    category: 'E-Commerce',
+    link: '/portfolio/myspace-furniture'
+  },
+  {
+    image: '/png/projects/ghanaupdates.png',
+    title: 'Ghana Updates Online',
+    category: 'News & Media',
+    link: '/portfolio/ghana-updates-online'
+  },
+  {
+    image: '/png/screenshots/elolo-full.png',
+    title: 'Elolo Agbleke Portfolio',
+    category: 'Personal Website',
+    link: '/portfolio/elolo-agbleke-website'
+  },
+  {
+    image: '/png/projects/finance-tracker.png',
+    title: 'Finance Tracker',
+    category: 'Web Application',
+    link: '/portfolio/finance-tracker'
+  },
+  {
+    image: '/png/projects/celestial1.png',
+    title: 'Celestial Shopping',
+    category: 'E-Commerce',
+    link: '/portfolio/celestial-shopping'
+  }
+];
+
+// Typing effect phrases
+const typingPhrases = [
+  'Websites',
+  'E-Commerce Stores',
+  'Web Applications',
+  'Mobile Apps',
+  'Digital Solutions'
+];
+
 const IndexPage = () => {
   const [scrolled, setScrolled] = useState(false);
   const router = useRouter();
+  
+  // Hero image slideshow state
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  
+  // Typing effect state
+  const [currentPhraseIndex, setCurrentPhraseIndex] = useState(0);
+  const [displayText, setDisplayText] = useState('');
+  const [isDeleting, setIsDeleting] = useState(false);
 
   // Handle scroll effect for any scroll-based animations
   useEffect(() => {
@@ -234,6 +315,40 @@ const IndexPage = () => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  // Auto-scroll hero images every 5 seconds
+  useEffect(() => {
+    const imageInterval = setInterval(() => {
+      setCurrentImageIndex((prev) => (prev + 1) % heroImages.length);
+    }, 5000);
+    return () => clearInterval(imageInterval);
+  }, []);
+
+  // Typing effect
+  useEffect(() => {
+    const currentPhrase = typingPhrases[currentPhraseIndex];
+    const typingSpeed = isDeleting ? 50 : 100;
+    
+    const timeout = setTimeout(() => {
+      if (!isDeleting) {
+        if (displayText.length < currentPhrase.length) {
+          setDisplayText(currentPhrase.slice(0, displayText.length + 1));
+        } else {
+          // Pause before deleting
+          setTimeout(() => setIsDeleting(true), 2000);
+        }
+      } else {
+        if (displayText.length > 0) {
+          setDisplayText(displayText.slice(0, -1));
+        } else {
+          setIsDeleting(false);
+          setCurrentPhraseIndex((prev) => (prev + 1) % typingPhrases.length);
+        }
+      }
+    }, typingSpeed);
+    
+    return () => clearTimeout(timeout);
+  }, [displayText, isDeleting, currentPhraseIndex]);
 
   // Navigation function using Next.js router
   const handleNavigation = (path) => {
@@ -302,16 +417,81 @@ const IndexPage = () => {
     <>
       <SEOHead />
       <div className="min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300">
-        {/* Hero Section with Enhanced Buttons and Local Image */}
+        {/* Hero Section with Auto-Scroll Images and Typing Effect */}
         <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
-          {/* Custom Background with Local Image */}
-          <div 
-            className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-            style={{
-              backgroundImage: 'linear-gradient(135deg, rgba(255,107,0,0.85) 0%, rgba(255,69,0,0.8) 50%, rgba(220,38,127,0.85) 100%), url("/hero-bg.jpg")',
-              backgroundAttachment: 'fixed'
-            }}
-          />
+          {/* Auto-Scrolling Background Images */}
+          <div className="absolute inset-0">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={currentImageIndex}
+                initial={{ opacity: 0, scale: 1.1 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 1.05 }}
+                transition={{ duration: 1.5 }}
+                className="absolute inset-0"
+              >
+                <img
+                  src={heroImages[currentImageIndex].image}
+                  alt={heroImages[currentImageIndex].title}
+                  className="w-full h-full object-cover object-top"
+                />
+              </motion.div>
+            </AnimatePresence>
+            {/* Dark Overlay for text readability */}
+            <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-black/40"></div>
+          </div>
+          
+          {/* Project Info Overlay - Bottom Left (desktop), Top for mobile) */}
+          <div>
+            <div className="hidden sm:block absolute bottom-20 left-8 z-20">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={currentImageIndex}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: 20 }}
+                  transition={{ duration: 0.5 }}
+                  className="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-6 max-w-xs"
+                >
+                  <span 
+                    className="text-orange-400 text-xs font-semibold tracking-wider uppercase"
+                    style={{ fontFamily: 'Google Sans, sans-serif' }}
+                  >
+                    {heroImages[currentImageIndex].category}
+                  </span>
+                  <h3 
+                    className="text-white text-xl font-bold mt-1 mb-3"
+                    style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}
+                  >
+                    {heroImages[currentImageIndex].title}
+                  </h3>
+                  <Link 
+                    href={heroImages[currentImageIndex].link}
+                    className="inline-flex items-center gap-2 text-white/80 hover:text-white text-sm font-medium transition-colors"
+                    style={{ fontFamily: 'Google Sans, sans-serif' }}
+                  >
+                    View Case Study <ArrowRight className="w-4 h-4" />
+                  </Link>
+                </motion.div>
+              </AnimatePresence>
+            </div>
+            {/* Mobile overlay edited */}
+          </div>
+          
+          {/* Image Indicators - Below Project Info */}
+          <div className="absolute bottom-6 left-4 sm:left-8 z-30 flex space-x-2 mt-4" style={{ bottom: '1.5rem', left: 'calc(1rem + 280px)' }}>
+            {heroImages.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => setCurrentImageIndex(index)}
+                className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                  index === currentImageIndex 
+                    ? 'w-8 bg-orange-500' 
+                    : 'bg-white/50 hover:bg-white/70'
+                }`}
+              />
+            ))}
+          </div>
           
           {/* Floating Code Elements - Hidden on mobile for cleaner look */}
           <div className="absolute inset-0 overflow-hidden hidden md:block">
@@ -380,15 +560,16 @@ const IndexPage = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3, duration: 0.8 }}
               >
-                <span className="block">Welcome to</span>
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-300 via-orange-400 to-red-400">
-                  Celestial Web Solutions
+                <span className="block">We Build</span>
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-300 via-yellow-300 to-red-400 min-h-[1.2em] inline-block">
+                  {displayText}
+                  <span className="animate-pulse">|</span>
                 </span>
               </motion.h1>
               
               <motion.p
                 className="text-sm sm:text-lg md:text-xl lg:text-2xl xl:text-3xl text-white/90 mb-3 sm:mb-4 max-w-4xl mx-auto leading-relaxed drop-shadow-lg px-2"
-                style={{ fontFamily: 'Quicksand, sans-serif' }}
+                style={{ fontFamily: 'Google Sans, sans-serif' }}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.4, duration: 0.8 }}
@@ -399,7 +580,7 @@ const IndexPage = () => {
               
               <motion.p
                 className="text-sm sm:text-base md:text-lg lg:text-xl text-white/80 mb-6 sm:mb-8 max-w-3xl mx-auto px-2"
-                style={{ fontFamily: 'Quicksand, sans-serif' }}
+                style={{ fontFamily: 'Google Sans, sans-serif' }}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.5, duration: 0.8 }}
@@ -408,27 +589,28 @@ const IndexPage = () => {
                 Let's turn your vision into digital reality.
               </motion.p>
               
-              {/* Enhanced Call to Action Buttons - PREMIUM STYLE */}
+              {/* Enhanced Call to Action Buttons - GLASS STYLE */}
               <motion.div
-                className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 px-4"
+                className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 px-4 pb-24"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.6, duration: 0.8 }}
               >
-                <PremiumCTA href="/contact" variant="secondary" size="large">
+                <GlassButton href="/contact" variant="solid">
                   Let's Build Together
-                </PremiumCTA>
+                </GlassButton>
 
-                <PremiumCTA href="/portfolio" variant="primary" size="large">
+                <GlassButton href="/portfolio" variant="light">
                   View Our Work
-                </PremiumCTA>
+                </GlassButton>
               </motion.div>
             </motion.div>
           </div>
         </section>
 
-        {/* Services Section */}
-        <section className="py-20 bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-800">
+
+        {/* Services Section - Enhanced with Images */}
+        <section className="py-24 bg-gray-50 dark:bg-gray-800">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -436,49 +618,106 @@ const IndexPage = () => {
               viewport={{ once: true }}
               className="text-center mb-16"
             >
-              <h2 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-orange-600 to-orange-500 bg-clip-text text-transparent mb-4"
+              <motion.span
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="inline-block px-4 py-2 bg-orange-100 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400 rounded-full text-sm font-semibold mb-4"
+                style={{ fontFamily: 'Google Sans, sans-serif' }}
+              >
+                WHAT WE DO
+              </motion.span>
+              <h2 className="text-3xl md:text-5xl font-bold bg-gradient-to-r from-orange-600 to-orange-500 bg-clip-text text-transparent mb-4"
                   style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>
                 Our Core Services
               </h2>
-              <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto"
-                 style={{ fontFamily: 'Quicksand, sans-serif' }}>
+              <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto text-lg"
+                 style={{ fontFamily: 'Google Sans, sans-serif' }}>
                 Comprehensive digital solutions to transform your business presence
               </p>
             </motion.div>
 
-            <div className="grid md:grid-cols-2 gap-8">
+            <div className="space-y-16">
               {mainServices.map((service, index) => (
                 <motion.div
                   key={service.title}
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={{ opacity: 0, y: 40 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.2 }}
-                  whileHover={{ y: -5 }}
-                  className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-xl hover:shadow-2xl transition-all duration-300"
+                  viewport={{ once: true, margin: "-100px" }}
+                  transition={{ delay: index * 0.1 }}
+                  className={`flex flex-col ${index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'} gap-8 lg:gap-12 items-center`}
                 >
-                  <div className={`w-14 h-14 rounded-xl bg-gradient-to-r ${service.color} flex items-center justify-center text-white mb-6`}>
-                    <service.icon size={24} />
+                  {/* Image */}
+                  <div className="w-full lg:w-1/2">
+                    <motion.div
+                      className="relative h-72 lg:h-96 rounded-3xl overflow-hidden shadow-2xl group"
+                      whileHover={{ scale: 1.02 }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      <img
+                        src={service.image}
+                        alt={service.title}
+                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
+                      
+                      {/* Service Icon Badge */}
+                      <motion.div 
+                        className="absolute top-6 left-6 w-14 h-14 bg-gradient-to-br from-orange-500 to-orange-600 rounded-2xl flex items-center justify-center shadow-xl shadow-orange-500/30"
+                        whileHover={{ rotate: 10, scale: 1.1 }}
+                      >
+                        <service.icon className="w-7 h-7 text-white" />
+                      </motion.div>
+
+                      {/* Service Number */}
+                      <div className="absolute bottom-6 right-6 text-7xl font-bold text-white/10" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>
+                        0{index + 1}
+                      </div>
+                    </motion.div>
                   </div>
-                  <h3 className="text-xl font-bold mb-3 text-gray-900 dark:text-white"
-                      style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>
-                    {service.title}
-                  </h3>
-                  <p className="text-gray-600 dark:text-gray-300 mb-6"
-                     style={{ fontFamily: 'Quicksand, sans-serif' }}>
-                    {service.description}
-                  </p>
-                  <TextCTA href={service.link}>
-                    Learn More
-                  </TextCTA>
+
+                  {/* Content */}
+                  <div className="w-full lg:w-1/2 space-y-5">
+                    <span 
+                      className="text-orange-500 font-semibold text-sm tracking-wider"
+                      style={{ fontFamily: 'Google Sans, sans-serif' }}
+                    >
+                      SERVICE 0{index + 1}
+                    </span>
+                    <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white"
+                        style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>
+                      {service.title}
+                    </h3>
+                    <p className="text-gray-600 dark:text-gray-300 text-lg leading-relaxed"
+                       style={{ fontFamily: 'Google Sans, sans-serif' }}>
+                      {service.description}
+                    </p>
+                    <div className="pt-2">
+                      <GlassButton href={service.link} variant="orange">
+                        Learn More
+                      </GlassButton>
+                    </div>
+                  </div>
                 </motion.div>
               ))}
             </div>
+
+            {/* View All Services CTA */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-center mt-16"
+            >
+              <GlassButton href="/services" variant="solid">
+                View All Services
+              </GlassButton>
+            </motion.div>
           </div>
         </section>
 
-        {/* Portfolio Section */}
-        <section className="py-20 bg-white dark:bg-gray-800">
+        {/* Portfolio Section - Enhanced */}
+        <section className="py-24 bg-white dark:bg-gray-900">
           <div className="max-w-7xl mx-auto px-4">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -486,75 +725,135 @@ const IndexPage = () => {
               viewport={{ once: true }}
               className="text-center mb-16"
             >
+              <motion.span
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="inline-block px-4 py-2 bg-orange-100 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400 rounded-full text-sm font-semibold mb-4"
+                style={{ fontFamily: 'Google Sans, sans-serif' }}
+              >
+                OUR WORK
+              </motion.span>
               <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-orange-600 to-orange-500 bg-clip-text text-transparent"
                   style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>
                 Featured Projects
               </h2>
               <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed"
-                 style={{ fontFamily: 'Quicksand, sans-serif' }}>
+                 style={{ fontFamily: 'Google Sans, sans-serif' }}>
                 Showcasing our latest work and the innovative solutions we've created for our clients
               </p>
             </motion.div>
-            <div className="space-y-12">
+            
+            <div className="space-y-16">
               {portfolioItems.slice(0, 2).map((item, index) => (
                 <motion.div
                   key={index}
-                  initial={{ opacity: 0, y: 30 }}
+                  initial={{ opacity: 0, y: 40 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.2 }}
-                  className="group relative bg-gradient-to-br from-orange-50 to-orange-100 dark:from-gray-700 dark:to-gray-600 rounded-3xl p-8 md:p-12 hover:shadow-2xl transition-all duration-500 overflow-hidden"
-                  whileHover={{ scale: 1.01, y: -4 }}
+                  viewport={{ once: true, margin: "-100px" }}
+                  transition={{ delay: index * 0.15 }}
+                  className={`flex flex-col ${index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'} gap-8 lg:gap-12 items-center`}
                 >
-                  <div className="absolute inset-0 bg-gradient-to-br from-orange-500/10 to-orange-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                  <div className="relative z-10">
-                    <div className="grid md:grid-cols-2 gap-8 items-center">
-                      {/* Image Column */}
-                      <div className="w-full h-64 md:h-80 overflow-hidden rounded-2xl order-2 md:order-1">
+                  {/* Image Column */}
+                  <div className="w-full lg:w-1/2">
+                    <motion.div
+                      className="relative h-72 md:h-96 rounded-3xl overflow-hidden shadow-2xl group"
+                      whileHover={{ scale: 1.02 }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      <img
+                        src={item.images.main}
+                        alt={item.title}
+                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                        onError={(e) => {
+                          e.target.src = `https://via.placeholder.com/600x400?text=${encodeURIComponent(item.title)}`;
+                        }}
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
+                      
+                      {/* Category Badge */}
+                      <div className="absolute top-6 left-6 px-4 py-2 bg-gradient-to-r from-orange-500 to-orange-600 rounded-full text-white text-sm font-semibold shadow-lg">
+                        {item.category}
+                      </div>
+
+                      {/* Hover Overlay with View Button */}
+                      <div className="absolute inset-0 bg-orange-600/0 group-hover:bg-orange-600/20 transition-colors duration-500 flex items-center justify-center opacity-0 group-hover:opacity-100">
+                        <Link href={item.link}>
+                          <motion.span 
+                            className="px-6 py-3 bg-white text-gray-900 rounded-full font-semibold inline-flex items-center gap-2"
+                            style={{ fontFamily: 'Google Sans, sans-serif' }}
+                            whileHover={{ scale: 1.05 }}
+                          >
+                            View Project <ArrowRight className="w-4 h-4" />
+                          </motion.span>
+                        </Link>
+                      </div>
+                    </motion.div>
+                  </div>
+                  
+                  {/* Content Column */}
+                  <div className="w-full lg:w-1/2 relative">
+                    <div className="relative rounded-3xl overflow-hidden min-h-[400px]">
+                      {/* Background Image */}
+                      <div className="absolute inset-0">
                         <img
                           src={item.images.main}
                           alt={item.title}
-                          className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-300"
-                          onError={(e) => {
-                            e.target.src = `https://via.placeholder.com/600x400?text=${encodeURIComponent(item.title)}`;
-                          }}
+                          className="w-full h-full object-cover"
                         />
+                        <div className="absolute inset-0 bg-gradient-to-br from-gray-900/80 via-gray-900/70 to-orange-900/60"></div>
                       </div>
                       
-                      {/* Content Column */}
-                      <div className="order-1 md:order-2">
-                        <div className="inline-block bg-orange-200 dark:bg-orange-900/50 text-orange-700 dark:text-orange-300 px-4 py-2 rounded-full text-sm font-bold mb-4">
-                          {item.category}
-                        </div>
-                        <h3 className="text-3xl md:text-4xl font-bold mb-4 text-gray-800 dark:text-white group-hover:text-orange-600 dark:group-hover:text-orange-400 transition-colors"
+                      {/* Content */}
+                      <div className="relative p-8 md:p-10 space-y-5 h-full flex flex-col justify-center">
+                        <span 
+                          className="text-orange-400 font-semibold text-sm tracking-wider"
+                          style={{ fontFamily: 'Google Sans, sans-serif' }}
+                        >
+                          PROJECT 0{index + 1}
+                        </span>
+                        <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white"
                             style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>
                           {item.title}
                         </h3>
-                        <p className="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed text-lg"
-                           style={{ fontFamily: 'Quicksand, sans-serif' }}>
+                        <p className="text-gray-200 text-lg leading-relaxed"
+                           style={{ fontFamily: 'Google Sans, sans-serif' }}>
                           {item.description}
                         </p>
-                        <div className="flex flex-wrap gap-2 mb-8">
+                        <div className="flex flex-wrap gap-2">
                           {item.tech.map((tech, techIndex) => (
-                            <span key={techIndex} className="px-4 py-2 bg-white/60 dark:bg-gray-800/60 rounded-lg text-sm font-semibold text-gray-700 dark:text-gray-300 border border-orange-200 dark:border-orange-700">
+                            <motion.span 
+                              key={techIndex} 
+                              className="px-4 py-2 bg-white/15 backdrop-blur-sm rounded-full text-sm font-medium text-white border border-white/30 hover:border-orange-400/50 transition-colors"
+                              style={{ fontFamily: 'Google Sans, sans-serif' }}
+                              whileHover={{ scale: 1.05, y: -2 }}
+                            >
                               {tech}
-                            </span>
+                            </motion.span>
                           ))}
                         </div>
-                        <PremiumCTA href={item.link} size="default">
-                          View Project
-                        </PremiumCTA>
+                        <div className="pt-2">
+                          <GlassButton href={item.link} variant="light">
+                            View Project
+                          </GlassButton>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </motion.div>
               ))}
             </div>
-            <div className="text-center mt-12">
-              <PremiumCTA href="/portfolio" size="large">
+            
+            <motion.div 
+              className="text-center mt-16"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+            >
+              <GlassButton href="/portfolio" variant="solid">
                 View All Projects
-              </PremiumCTA>
-            </div>
+              </GlassButton>
+            </motion.div>
           </div>
         </section>
 
@@ -572,7 +871,7 @@ const IndexPage = () => {
                 Our Technology Stack
               </h2>
               <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto"
-                 style={{ fontFamily: 'Quicksand, sans-serif' }}>
+                 style={{ fontFamily: 'Google Sans, sans-serif' }}>
                 Modern tools and technologies we use to build exceptional digital experiences
               </p>
             </motion.div>
@@ -655,20 +954,35 @@ const IndexPage = () => {
         </section>
 
         {/* Testimonials Section */}
-        <section className="py-20 bg-gradient-to-br from-orange-500 via-orange-600 to-red-500">
-          <div className="max-w-7xl mx-auto px-4">
+        <section className="py-24 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 relative overflow-hidden">
+          {/* Decorative Elements */}
+          <div className="absolute inset-0 overflow-hidden">
+            <div className="absolute top-0 left-1/4 w-96 h-96 bg-orange-500/10 rounded-full blur-3xl"></div>
+            <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-orange-600/10 rounded-full blur-3xl"></div>
+          </div>
+          
+          <div className="max-w-7xl mx-auto px-4 relative z-10">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               className="text-center mb-16"
             >
+              <motion.span
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="inline-block px-4 py-2 bg-orange-500/20 backdrop-blur-sm border border-orange-500/30 rounded-full text-orange-400 text-sm font-semibold mb-6"
+                style={{ fontFamily: 'Google Sans, sans-serif' }}
+              >
+                TESTIMONIALS
+              </motion.span>
               <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white"
                   style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>
                 What Our Clients Say
               </h2>
-              <p className="text-xl text-orange-100 max-w-3xl mx-auto leading-relaxed"
-                 style={{ fontFamily: 'Quicksand, sans-serif' }}>
+              <p className="text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed"
+                 style={{ fontFamily: 'Google Sans, sans-serif' }}>
                 Don't just take our word for it - hear from satisfied clients who've experienced transformative results
               </p>
             </motion.div>
@@ -676,19 +990,40 @@ const IndexPage = () => {
               {testimonials.map((testimonial, index) => (
                 <motion.div
                   key={index}
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
-                  className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm p-8 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 group border border-white/20"
-                  whileHover={{ y: -4, scale: 1.02 }}
+                  transition={{ delay: index * 0.15 }}
+                  className="relative bg-white/5 backdrop-blur-md p-8 rounded-3xl border border-white/10 hover:border-orange-500/30 transition-all duration-500 group"
+                  whileHover={{ y: -8 }}
                 >
-                  <div className="flex items-center mb-4">
-                    <div className="relative w-16 h-16 mr-4">
+                  {/* Large Quote Mark */}
+                  <div className="absolute -top-4 -left-2 text-8xl text-orange-500/20 font-serif leading-none select-none">
+                    "
+                  </div>
+                  
+                  {/* Stars */}
+                  <div className="flex mb-6 relative z-10">
+                    {[...Array(testimonial.rating)].map((_, i) => (
+                      <svg key={i} className="w-5 h-5 text-orange-500 fill-current" viewBox="0 0 20 20">
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                      </svg>
+                    ))}
+                  </div>
+                  
+                  {/* Testimonial Text */}
+                  <p className="text-gray-300 text-lg leading-relaxed mb-8 relative z-10"
+                     style={{ fontFamily: 'Google Sans, sans-serif' }}>
+                    {testimonial.text}
+                  </p>
+                  
+                  {/* Author Info */}
+                  <div className="flex items-center relative z-10">
+                    <div className="relative w-14 h-14 mr-4">
                       <img
                         src={testimonial.image}
                         alt={testimonial.name}
-                        className="w-full h-full object-cover rounded-xl shadow-lg"
+                        className="w-full h-full object-cover rounded-full ring-2 ring-orange-500/50"
                         onError={(e) => {
                           e.target.onerror = null;
                           e.target.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(testimonial.name)}&background=FF6B00&color=fff`;
@@ -696,109 +1031,188 @@ const IndexPage = () => {
                       />
                     </div>
                     <div>
-                      <h4 className="font-bold text-gray-800 dark:text-white"
+                      <h4 className="font-bold text-white text-lg"
                           style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>
                         {testimonial.name}
                       </h4>
-                      <p className="text-orange-600 dark:text-orange-400 text-sm font-medium"
-                         style={{ fontFamily: 'Quicksand, sans-serif' }}>
-                        {testimonial.role}
-                      </p>
-                      <p className="text-gray-600 dark:text-gray-400 text-sm"
-                         style={{ fontFamily: 'Quicksand, sans-serif' }}>
-                        {testimonial.company}
+                      <p className="text-orange-400 text-sm font-medium"
+                         style={{ fontFamily: 'Google Sans, sans-serif' }}>
+                        {testimonial.role}, {testimonial.company}
                       </p>
                     </div>
                   </div>
-                  <div className="flex mb-4">
-                    {[...Array(testimonial.rating)].map((_, i) => (
-                      <span key={i} className="text-orange-500 text-lg">⭐</span>
-                    ))}
+                  
+                  {/* Closing Quote */}
+                  <div className="absolute -bottom-6 -right-2 text-8xl text-orange-500/20 font-serif leading-none select-none rotate-180">
+                    "
                   </div>
-                  <p className="text-gray-700 dark:text-gray-300 leading-relaxed italic"
-                     style={{ fontFamily: 'Quicksand, sans-serif' }}>
-                    "{testimonial.text}"
-                  </p>
                 </motion.div>
               ))}
             </div>
           </div>
         </section>
 
-        {/* About Us Section */}
-        <section className="py-20 bg-white dark:bg-gray-800">
-          <div className="max-w-7xl mx-auto px-4">
-            <div className="grid lg:grid-cols-2 gap-16 items-center">
+        {/* About Us Section - Kava Style */}
+        <section className="py-24 bg-gray-50 dark:bg-gray-900 relative overflow-hidden">
+          <div className="max-w-7xl mx-auto px-4 relative z-10">
+            {/* Section Header */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-center mb-16"
+            >
+              <motion.span
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="inline-block px-4 py-2 bg-orange-100 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400 rounded-full text-sm font-semibold mb-6 uppercase tracking-wider"
+                style={{ fontFamily: 'Google Sans, sans-serif' }}
+              >
+                Best in Web Design in Ghana
+              </motion.span>
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-gray-900 dark:text-white"
+                  style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>
+                A Website Design & Creative<br />
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-orange-600">Marketing Agency</span> in Ghana
+              </h2>
+            </motion.div>
+
+            {/* Content Grid */}
+            <div className="grid lg:grid-cols-2 gap-16 items-start mb-20">
+              {/* Left Column - Text Content */}
               <motion.div
                 initial={{ opacity: 0, x: -30 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
               >
-                <h2 className="text-4xl md:text-5xl font-bold mb-8 bg-gradient-to-r from-orange-600 to-orange-500 bg-clip-text text-transparent"
-                    style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>
-                  About Celestial Web Solutions
-                </h2>
                 <p className="text-gray-600 dark:text-gray-300 text-lg mb-6 leading-relaxed"
-                   style={{ fontFamily: 'Quicksand, sans-serif' }}>
-                  At Celestial Web Solutions, we're passionate about creating digital experiences that truly shine. 
-                  With over 3 years of experience in web development and design.
+                   style={{ fontFamily: 'Google Sans, sans-serif' }}>
+                  Celestial Web Solutions based in Accra, Ghana is a website design and digital marketing 
+                  company with years of experience on the Ghanaian market. We have had the privilege of 
+                  working with award winning clients and international prestigious companies as well as start-up companies.
                 </p>
                 <p className="text-gray-600 dark:text-gray-300 text-lg mb-8 leading-relaxed"
-                   style={{ fontFamily: 'Quicksand, sans-serif' }}>
-                  Our team of skilled developers and designers combines creativity with technical expertise to 
-                  deliver solutions that not only look stunning but also drive real business results. We believe 
-                  in building long-term partnerships with our clients and providing ongoing support.
+                   style={{ fontFamily: 'Google Sans, sans-serif' }}>
+                  Our dedication in crafting custom professional websites that meet industry standards with 
+                  the latest and innovative technologies has positioned us as one of the leading and best 
+                  web design companies in Accra, Ghana to work with.
                 </p>
-                <PremiumCTA href="/about" size="large">
-                  Learn More About Us
-                </PremiumCTA>
+                <p className="text-gray-600 dark:text-gray-300 text-lg mb-8 leading-relaxed"
+                   style={{ fontFamily: 'Google Sans, sans-serif' }}>
+                  Our design and development teams never stop learning. We are committed to continuous 
+                  learning and improvement to better solve complex challenges for our clients with measurable results.
+                </p>
+                
+                <div className="flex flex-wrap gap-4">
+                  <GlassButton href="/about" variant="solid">
+                    More About Us
+                  </GlassButton>
+                  <GlassButton href="/contact" variant="orange">
+                    Work With Us
+                  </GlassButton>
+                </div>
               </motion.div>
+              
+              {/* Right Column - Image */}
               <motion.div
                 initial={{ opacity: 0, x: 30 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 className="relative"
               >
-                <div className="bg-gradient-to-br from-orange-500 to-red-500 rounded-3xl p-8 text-center shadow-2xl">
-                  <div className="w-20 h-20 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-6">
-                    <svg
-                      className="w-10 h-10 text-white"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"
-                      />
-                    </svg>
-                  </div>
-                  <h3 className="text-3xl font-bold text-white mb-6"
-                      style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>
-                    Our Mission
-                  </h3>
-                  <p className="text-orange-100 text-lg leading-relaxed"
-                     style={{ fontFamily: 'Quicksand, sans-serif' }}>
-                    To deliver innovative, secure, and scalable digital solutions that empower businesses to achieve their full potential in the digital era.
-                  </p>
+                <div className="relative rounded-3xl overflow-hidden shadow-2xl">
+                  <img 
+                    src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=90&w=1200&auto=format&fit=crop"
+                    alt="Celestial Web Solutions Team"
+                    className="w-full h-[400px] object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-orange-600/40 to-transparent"></div>
                 </div>
+                
+                {/* Floating Badge */}
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.3 }}
+                  className="absolute -bottom-6 -left-6 bg-white dark:bg-gray-800 rounded-2xl p-4 shadow-xl border border-gray-100 dark:border-gray-700"
+                >
+                  <div className="flex items-center gap-3">
+                    <div className="w-12 h-12 bg-gradient-to-br from-orange-500 to-red-500 rounded-xl flex items-center justify-center">
+                      <Zap className="w-6 h-6 text-white" />
+                    </div>
+                    <div>
+                      <p className="text-2xl font-bold text-gray-900 dark:text-white" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>3+</p>
+                      <p className="text-sm text-gray-500 dark:text-gray-400" style={{ fontFamily: 'Google Sans, sans-serif' }}>Years Experience</p>
+                    </div>
+                  </div>
+                </motion.div>
               </motion.div>
             </div>
+
           </div>
         </section>
 
-        {/* CTA Section - PREMIUM STYLE */}
-        <CTASection 
-          title="Ready to Transform Your Business?"
-          subtitle="Let's discuss your project and create something amazing together. Get started with a free consultation today."
-          primaryText="Start Your Project Today"
-          secondaryText="View Portfolio"
-          primaryHref="/contact"
-          secondaryHref="/portfolio"
-          variant="gradient"
-        />
+        {/* CTA Section - Glass Style */}
+        <section className="relative py-24 overflow-hidden">
+          <div className="absolute inset-0">
+            <img 
+              src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=90&w=2400&auto=format&fit=crop" 
+              alt="Team collaboration"
+              className="w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-orange-600/95 via-orange-500/90 to-red-500/95"></div>
+            
+            {/* Decorative Elements */}
+            <motion.div 
+              className="absolute -top-20 -right-20 w-64 h-64 bg-white/10 rounded-full"
+              animate={{ scale: [1, 1.2, 1], rotate: [0, 90, 0] }}
+              transition={{ duration: 10, repeat: Infinity }}
+            />
+            <motion.div 
+              className="absolute -bottom-20 -left-20 w-80 h-80 bg-white/5 rounded-full"
+              animate={{ scale: [1.2, 1, 1.2], rotate: [0, -90, 0] }}
+              transition={{ duration: 12, repeat: Infinity }}
+            />
+          </div>
+
+          <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+            >
+              <span 
+                className="inline-block px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full text-white text-sm font-semibold mb-6"
+                style={{ fontFamily: 'Google Sans, sans-serif' }}
+              >
+                GET STARTED
+              </span>
+              <h2
+                className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6"
+                style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}
+              >
+                Ready to Transform Your Business?
+              </h2>
+              <p
+                className="text-lg sm:text-xl text-orange-100 mb-10 max-w-2xl mx-auto"
+                style={{ fontFamily: 'Google Sans, sans-serif' }}
+              >
+                Let's discuss your project and create something amazing together. Get started with a free consultation today.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <GlassButton href="/contact" variant="light">
+                  Start Your Project
+                </GlassButton>
+                <GlassButton href="/portfolio" variant="light">
+                  View Our Work
+                </GlassButton>
+              </div>
+            </motion.div>
+          </div>
+        </section>
 
         <WhatsAppButton />
       </div>

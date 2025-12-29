@@ -14,13 +14,52 @@ import {
 import WhatsAppButton from '../components/WhatsAppButton';
 import PremiumCTA from '../components/PremiumCTA';
 
+const typingPhrases = [
+  'Pay with MTN Mobile Money',
+  'Pay with Telecel Cash',
+  'Pay securely via Paystack',
+  'Pay with Fidelity Bank Transfer',
+  'Fast, Secure, Trusted Payments',
+  'Contact: +233 24 567 1832',
+  'Chat on WhatsApp: +233 53 050 5031',
+  'info@celestialwebsolutions.net',
+];
+
 export default function PaymentPage() {
   const [selectedOption, setSelectedOption] = useState(null);
   const [copied, setCopied] = useState('');
 
+  // Typing effect state
+  const [currentPhraseIndex, setCurrentPhraseIndex] = useState(0);
+  const [displayText, setDisplayText] = useState('');
+  const [isDeleting, setIsDeleting] = useState(false);
+
   useEffect(() => {
     document.title = 'Secure Payment | Celestial Web Solutions | Pay for Web Design in Ghana';
   }, []);
+
+  // Typing effect logic
+  useEffect(() => {
+    const currentPhrase = typingPhrases[currentPhraseIndex];
+    const typingSpeed = isDeleting ? 40 : 80;
+    const timeout = setTimeout(() => {
+      if (!isDeleting) {
+        if (displayText.length < currentPhrase.length) {
+          setDisplayText(currentPhrase.slice(0, displayText.length + 1));
+        } else {
+          setTimeout(() => setIsDeleting(true), 1200);
+        }
+      } else {
+        if (displayText.length > 0) {
+          setDisplayText(displayText.slice(0, -1));
+        } else {
+          setIsDeleting(false);
+          setCurrentPhraseIndex((prev) => (prev + 1) % typingPhrases.length);
+        }
+      }
+    }, typingSpeed);
+    return () => clearTimeout(timeout);
+  }, [displayText, isDeleting, currentPhraseIndex]);
 
   const copyToClipboard = (text, type) => {
     if (navigator.clipboard) {
@@ -116,12 +155,16 @@ export default function PaymentPage() {
               Secure Payment Options
             </h1>
           </div>
+          <div className="flex flex-col items-center justify-center mb-4 min-h-[2.5em]">
+            <span className="text-lg md:text-2xl text-white bg-black/20 px-4 py-2 rounded-full font-semibold tracking-wide shadow-lg animate-pulse" style={{ fontFamily: 'Google Sans, sans-serif', letterSpacing: '0.04em' }}>
+              {displayText}<span className="animate-pulse">|</span>
+            </span>
+          </div>
           <p
             className="text-lg text-white/90 max-w-3xl mx-auto"
-            style={{ fontFamily: 'Quicksand, sans-serif' }}
+            style={{ fontFamily: 'Google Sans, sans-serif' }}
           >
-            Choose from MTN Mobile Money, Telecel Cash, Paystack, or Fidelity Bank transfer.
-            100% safe and verified for all Celestial Web Solutions services.
+            Pay securely for web design, website development, and digital services with Celestial Web Solutions. Accepting MTN MoMo, Telecel Cash, Paystack, and Fidelity Bank transfers.
           </p>
         </div>
       </section>
@@ -136,7 +179,7 @@ export default function PaymentPage() {
             Select Your Payment Method
           </h2>
 
-          <div className="space-y-6" style={{ fontFamily: 'Quicksand, sans-serif' }}>
+          <div className="space-y-6" style={{ fontFamily: 'Google Sans, sans-serif' }}>
             {paymentOptions.map(option => (
               <div
                 key={option.id}
@@ -238,7 +281,7 @@ export default function PaymentPage() {
       {/* Contact Section */}
       <section
         className="py-16 bg-gradient-to-r from-orange-500 to-red-500 text-white text-center transition-colors duration-500"
-        style={{ fontFamily: 'Quicksand, sans-serif' }}
+        style={{ fontFamily: 'Google Sans, sans-serif' }}
       >
         <h3
           className="text-3xl font-bold mb-4"

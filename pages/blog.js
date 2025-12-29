@@ -243,7 +243,7 @@ export default function BlogPage() {
               </h1>
               <p
                 className="text-xl text-orange-100 max-w-3xl mx-auto leading-relaxed"
-                style={{ fontFamily: "Quicksand, sans-serif" }}
+                style={{ fontFamily: "Google Sans, sans-serif" }}
               >
                 Expert insights on web design, development, SEO, and the latest technology trends in Ghana and beyond.
               </p>
@@ -264,7 +264,7 @@ export default function BlogPage() {
                       ? 'bg-orange-500 text-white shadow-lg scale-105'
                       : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-orange-100 dark:hover:bg-gray-700'
                   }`}
-                  style={{ fontFamily: "Quicksand, sans-serif" }}
+                  style={{ fontFamily: "Google Sans, sans-serif" }}
                 >
                   {category}
                 </button>
@@ -322,7 +322,7 @@ export default function BlogPage() {
 
                           <p 
                             className="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed"
-                            style={{ fontFamily: 'Quicksand, sans-serif' }}
+                            style={{ fontFamily: 'Google Sans, sans-serif' }}
                           >
                             {article.excerpt}
                           </p>
@@ -409,7 +409,7 @@ export default function BlogPage() {
 
                           <p 
                             className="text-gray-600 dark:text-gray-300 mb-4 leading-relaxed line-clamp-3"
-                            style={{ fontFamily: 'Quicksand, sans-serif' }}
+                            style={{ fontFamily: 'Google Sans, sans-serif' }}
                           >
                             {article.excerpt}
                           </p>
@@ -446,7 +446,7 @@ export default function BlogPage() {
               <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4" style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}>
                 No articles found in this category
               </h3>
-              <p className="text-gray-600 dark:text-gray-300 mb-8" style={{ fontFamily: "Quicksand, sans-serif" }}>
+              <p className="text-gray-600 dark:text-gray-300 mb-8" style={{ fontFamily: "Google Sans, sans-serif" }}>
                 Try selecting a different category to explore more content.
               </p>
               <button
@@ -475,7 +475,7 @@ export default function BlogPage() {
               </h2>
               <p
                 className="text-xl text-orange-100 mb-8"
-                style={{ fontFamily: "Quicksand, sans-serif" }}
+                style={{ fontFamily: "Google Sans, sans-serif" }}
               >
                 Let's create something amazing together. Contact us for a free consultation.
               </p>

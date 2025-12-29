@@ -14,6 +14,11 @@ const nextConfig = {
         hostname: 'assets.paystack.com',
         pathname: '/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'images.unsplash.com',
+        pathname: '/**',
+      },
     ],
   },
 };

@@ -1,14 +1,109 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Head from "next/head";
+import { ArrowRight } from "lucide-react";
 import projects from "../data/projects";
 import WhatsAppButton from '../components/WhatsAppButton';
-import PremiumCTA from '../components/PremiumCTA';
+
+// Typing effect phrases for portfolio
+const typingPhrases = [
+  'Websites',
+  'E-Commerce Stores',
+  'Web Applications',
+  'Digital Platforms',
+  'Business Solutions'
+];
+
+// Glass Button Component
+const GlassButton = ({ children, href, variant = "light" }) => {
+  const baseClasses = "inline-flex items-center gap-2 px-6 py-3 rounded-full font-semibold transition-all duration-300 backdrop-blur-md border cursor-pointer";
+  const variants = {
+    light: "bg-white/20 hover:bg-white/30 border-white/30 text-white hover:shadow-lg hover:shadow-white/10",
+    dark: "bg-black/20 hover:bg-black/30 border-black/20 text-gray-900 hover:shadow-lg",
+    orange: "bg-orange-500/20 hover:bg-orange-500/30 border-orange-500/30 text-orange-600 dark:text-orange-400 hover:shadow-lg hover:shadow-orange-500/20"
+  };
+
+  return (
+    <Link href={href}>
+      <motion.span
+        className={`${baseClasses} ${variants[variant]}`}
+        style={{ fontFamily: 'Google Sans, sans-serif' }}
+        whileHover={{ scale: 1.05, y: -2 }}
+        whileTap={{ scale: 0.95 }}
+      >
+        {children}
+        <ArrowRight size={18} />
+      </motion.span>
+    </Link>
+  );
+};
+
+// Country to flag code mapping
+const countryFlags = {
+  'Ghana': 'gh',
+  'United States': 'us',
+  'USA': 'us',
+  'United Kingdom': 'gb',
+  'UK': 'gb',
+  'Nigeria': 'ng',
+  'South Africa': 'za',
+  'Kenya': 'ke',
+  'Canada': 'ca',
+  'Germany': 'de',
+  'France': 'fr',
+  'India': 'in',
+  'Australia': 'au',
+};
+
+// CountryFlag component
+const CountryFlag = ({ country }) => {
+  const flagCode = countryFlags[country] || 'gh';
+  return (
+    <img 
+      src={`https://flagcdn.com/w40/${flagCode}.png`}
+      alt={country}
+      className="w-5 h-4 object-cover rounded-sm inline-block"
+      onError={(e) => {
+        e.target.style.display = 'none';
+      }}
+    />
+  );
+};
 
 export default function Portfolio() {
   const [filter, setFilter] = useState("all");
+  
+  // Typing effect state
+  const [displayText, setDisplayText] = useState('');
+  const [phraseIndex, setPhraseIndex] = useState(0);
+  const [isDeleting, setIsDeleting] = useState(false);
+
+  // Typing effect logic
+  useEffect(() => {
+    const currentPhrase = typingPhrases[phraseIndex];
+    const typingSpeed = isDeleting ? 50 : 100;
+    
+    const timeout = setTimeout(() => {
+      if (!isDeleting) {
+        if (displayText.length < currentPhrase.length) {
+          setDisplayText(currentPhrase.slice(0, displayText.length + 1));
+        } else {
+          setTimeout(() => setIsDeleting(true), 2000);
+        }
+      } else {
+        if (displayText.length > 0) {
+          setDisplayText(currentPhrase.slice(0, displayText.length - 1));
+        } else {
+          setIsDeleting(false);
+          setPhraseIndex((prev) => (prev + 1) % typingPhrases.length);
+        }
+      }
+    }, typingSpeed);
+    
+    return () => clearTimeout(timeout);
+  }, [displayText, isDeleting, phraseIndex]);
 
   // Enhanced categories to match various service types
   const categories = [
@@ -127,36 +222,59 @@ export default function Portfolio() {
       </Head>
 
       <div className="min-h-screen bg-white dark:bg-gray-900">
-        {/* Hero Section */}
-        <section className="relative py-20 bg-gradient-to-br from-orange-500 via-orange-600 to-red-500 overflow-hidden">
+        {/* Hero Section - Kava Style */}
+        <section className="relative min-h-[60vh] flex items-center overflow-hidden">
           {/* Background Image */}
-          <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute inset-0">
             <img 
-              src="https://celestialwebsolutions.net/images/projects/adbay/adbay-home.png" 
+              src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=90&w=2400&auto=format&fit=crop" 
               alt="Portfolio Background"
-              className="w-full h-full object-cover opacity-20"
+              className="w-full h-full object-cover"
             />
-            <div className="absolute inset-0 bg-gradient-to-br from-orange-300/80 via-orange-500/60 to-red-500/60"></div>
+            <div className="absolute inset-0 bg-gradient-to-r from-gray-900/95 via-gray-900/80 to-gray-900/60"></div>
           </div>
 
-          <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
+          <div className="relative z-10 max-w-7xl mx-auto px-4 py-32">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
+              className="max-w-3xl"
             >
+              <motion.span 
+                className="inline-block px-4 py-2 bg-orange-500/20 backdrop-blur-sm border border-orange-500/30 rounded-full text-orange-400 text-sm font-semibold mb-6"
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.2 }}
+                style={{ fontFamily: 'Google Sans, sans-serif' }}
+              >
+                OUR PORTFOLIO
+              </motion.span>
+              
               <h1
-                className="text-4xl md:text-6xl font-bold text-white mb-6"
+                className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight"
                 style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}
               >
-                Our Portfolio
+                We Build
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-orange-600"> {displayText}</span>
+                <span className="text-orange-500 animate-pulse">|</span>
               </h1>
+              
               <p
-                className="text-xl text-orange-100 max-w-3xl mx-auto leading-relaxed"
-                style={{ fontFamily: "Quicksand, sans-serif" }}
+                className="text-xl text-gray-300 max-w-2xl leading-relaxed mb-8"
+                style={{ fontFamily: "Google Sans, sans-serif" }}
               >
-                Explore our collection of successful projects. From stunning websites to powerful e-commerce platforms, churches, NGOs, and educational institutions - see how we bring ideas to life.
+                Explore our collection of successful projects. From stunning websites to powerful e-commerce platforms - see how we bring ideas to life.
               </p>
+
+              <div className="flex flex-wrap gap-4">
+                <GlassButton href="/contact" variant="light">
+                  Start Your Project
+                </GlassButton>
+                <GlassButton href="/services" variant="light">
+                  Our Services
+                </GlassButton>
+              </div>
             </motion.div>
           </div>
         </section>
@@ -175,7 +293,7 @@ export default function Portfolio() {
                     ? "bg-gradient-to-r from-orange-500 to-orange-600 text-white shadow-lg"
                     : "bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-orange-50 dark:hover:bg-gray-700 border border-gray-200 dark:border-gray-700"
                 }`}
-                style={{ fontFamily: "Quicksand, sans-serif" }}
+                style={{ fontFamily: "Google Sans, sans-serif" }}
               >
                 {category.split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')}
               </motion.button>
@@ -210,23 +328,31 @@ export default function Portfolio() {
                       
                       {/* View Project Badge */}
                       <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        <span className="bg-white text-orange-600 px-6 py-3 rounded-full font-semibold shadow-lg">
-                          View Project →
+                        <span className="bg-white text-orange-600 px-6 py-3 rounded-full font-semibold shadow-lg flex items-center gap-2">
+                          View Project <ArrowRight size={18} />
                         </span>
                       </div>
                     </div>
 
                     {/* Project Info */}
                     <div className="p-6">
-                      <h3
-                        className="text-2xl font-bold text-gray-900 dark:text-white mb-3 group-hover:text-orange-500 dark:group-hover:text-orange-400 transition-colors"
-                        style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}
-                      >
-                        {project.title}
-                      </h3>
+                      <div className="flex items-center justify-between mb-3">
+                        <h3
+                          className="text-2xl font-bold text-gray-900 dark:text-white group-hover:text-orange-500 dark:group-hover:text-orange-400 transition-colors"
+                          style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}
+                        >
+                          {project.title}
+                        </h3>
+                        {project.clientCountry && (
+                          <div className="flex items-center gap-2 text-xs text-gray-500 dark:text-gray-400">
+                            <CountryFlag country={project.clientCountry} />
+                            <span>{project.clientCountry}</span>
+                          </div>
+                        )}
+                      </div>
                       <p
                         className="text-gray-600 dark:text-gray-300 mb-4 line-clamp-2"
-                        style={{ fontFamily: "Quicksand, sans-serif" }}
+                        style={{ fontFamily: "Google Sans, sans-serif" }}
                       >
                         {project.description}
                       </p>
@@ -237,7 +363,7 @@ export default function Portfolio() {
                           <span
                             key={idx}
                             className="text-xs px-3 py-1 bg-orange-100 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400 rounded-full font-medium"
-                            style={{ fontFamily: "Quicksand, sans-serif" }}
+                            style={{ fontFamily: "Google Sans, sans-serif" }}
                           >
                             {tech}
                           </span>
@@ -245,7 +371,7 @@ export default function Portfolio() {
                         {project.tech && project.tech.length > 3 && (
                           <span
                             className="text-xs px-3 py-1 bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-400 rounded-full font-medium"
-                            style={{ fontFamily: "Quicksand, sans-serif" }}
+                            style={{ fontFamily: "Google Sans, sans-serif" }}
                           >
                             +{project.tech.length - 3} more
                           </span>
@@ -267,7 +393,7 @@ export default function Portfolio() {
             >
               <p
                 className="text-gray-500 dark:text-gray-400 text-lg"
-                style={{ fontFamily: "Quicksand, sans-serif" }}
+                style={{ fontFamily: "Google Sans, sans-serif" }}
               >
                 No projects found in this category yet. Check back soon!
               </p>
@@ -286,7 +412,7 @@ export default function Portfolio() {
               >
                 Our Happy Clients
               </motion.h2>
-              <p className="text-center text-gray-600 dark:text-gray-300 mb-8" style={{ fontFamily: "Quicksand, sans-serif" }}>
+              <p className="text-center text-gray-600 dark:text-gray-300 mb-8" style={{ fontFamily: "Google Sans, sans-serif" }}>
                 Trusted by businesses across Ghana
               </p>
             </div>
@@ -342,36 +468,45 @@ export default function Portfolio() {
           </section>
 
           {/* Start a Project CTA Section */}
-          <motion.div
+          <motion.section
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="mt-20"
+            className="relative mt-20 py-24 rounded-3xl overflow-hidden"
           >
-            <div className="bg-gradient-to-r from-orange-500 via-orange-600 to-red-500 rounded-3xl p-8 md:p-12 shadow-2xl text-center">
+            <div className="absolute inset-0">
+              <img 
+                src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=90&w=2400&auto=format&fit=crop" 
+                alt="CTA Background"
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-r from-orange-600/95 via-orange-500/90 to-red-600/95"></div>
+            </div>
+
+            <div className="relative z-10 text-center px-4">
               <h2
-                className="text-2xl md:text-3xl font-bold text-white mb-4"
+                className="text-2xl md:text-4xl font-bold text-white mb-4"
                 style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}
               >
                 Ready to Start Your Project?
               </h2>
               <p
-                className="text-orange-100 mb-8 max-w-2xl mx-auto leading-relaxed text-lg"
-                style={{ fontFamily: "Quicksand, sans-serif" }}
+                className="text-orange-100 mb-10 max-w-2xl mx-auto leading-relaxed text-lg"
+                style={{ fontFamily: "Google Sans, sans-serif" }}
               >
                 Let's create something amazing together. Whether it's a website, e-commerce platform, or custom web application, we're here to bring your vision to life.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <PremiumCTA href="/contact" size="default" variant="primary">
+                <GlassButton href="/contact" variant="light">
                   Start a Project
-                </PremiumCTA>
-                <PremiumCTA href="/pricing" size="default" variant="primary">
+                </GlassButton>
+                <GlassButton href="/pricing" variant="light">
                   View Pricing
-                </PremiumCTA>
+                </GlassButton>
               </div>
               
               {/* Additional Info */}
-              <div className="mt-8 flex flex-wrap justify-center gap-6 text-orange-100 text-sm" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>
+              <div className="mt-12 flex flex-wrap justify-center gap-8 text-orange-100 text-sm" style={{ fontFamily: 'Google Sans, sans-serif' }}>
                 <div className="flex items-center space-x-2">
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
@@ -392,7 +527,7 @@ export default function Portfolio() {
                 </div>
               </div>
             </div>
-          </motion.div>
+          </motion.section>
         </div>
 
         {/* Bottom Spacing */}

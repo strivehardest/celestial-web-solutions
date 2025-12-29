@@ -7,6 +7,28 @@ import Head from "next/head";
 import projects from "../../data/projects";
 import WhatsAppButton from '../../components/WhatsAppButton';
 import PremiumCTA from '../../components/PremiumCTA';
+import { ArrowRight, ArrowLeft, ExternalLink, Calendar, MapPin, User, Clock, Star, CheckCircle2, Code2, Layers, Rocket, Target } from 'lucide-react';
+
+// Glass Button Component
+const GlassButton = ({ children, href, variant = 'light', className = '', external = false, onClick }) => {
+  const baseStyles = "inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full font-semibold text-sm transition-all duration-300 backdrop-blur-md border";
+  
+  const variants = {
+    light: "bg-white/20 hover:bg-white/30 text-white border-white/30 hover:border-white/50 shadow-lg hover:shadow-xl",
+    dark: "bg-black/20 hover:bg-black/30 text-gray-900 dark:text-white border-black/20 dark:border-white/20 hover:border-black/40 dark:hover:border-white/40",
+    orange: "bg-orange-500/90 hover:bg-orange-600 text-white border-orange-400/50 hover:border-orange-500 shadow-lg hover:shadow-orange-500/25",
+    outline: "bg-transparent hover:bg-white/10 text-white border-white/50 hover:border-white"
+  };
+  
+  const Component = href ? (external ? 'a' : Link) : 'button';
+  const props = href ? (external ? { href, target: "_blank", rel: "noopener noreferrer" } : { href }) : { onClick };
+  
+  return (
+    <Component {...props} className={`${baseStyles} ${variants[variant]} ${className}`} style={{ fontFamily: 'Google Sans, sans-serif' }}>
+      {children}
+    </Component>
+  );
+};
 
 export default function ProjectDetail() {
   const router = useRouter();
@@ -143,429 +165,524 @@ export default function ProjectDetail() {
         />
       </Head>
 
-      <div className="min-h-screen bg-gradient-to-br from-white via-gray-50 to-white dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
-        {/* Hero Section */}
-        <section className="relative pt-28 pb-20 bg-gradient-to-br from-orange-500 via-orange-600 to-red-500 overflow-hidden">
-          {/* Background Elements */}
-          <div className="absolute inset-0 overflow-hidden">
-            <div className="absolute -top-40 -right-40 w-80 h-80 bg-white/10 rounded-full opacity-50 animate-pulse"></div>
-            <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-white/10 rounded-full opacity-50 animate-pulse"></div>
+      <div className="min-h-screen bg-white dark:bg-gray-950">
+        {/* Hero Section - Full Width Image Background */}
+        <section className="relative min-h-[70vh] flex items-end overflow-hidden">
+          {/* Background Image */}
+          <div className="absolute inset-0">
+            <Image
+              src={project.image}
+              alt={project.title}
+              fill
+              className="object-cover"
+              priority
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-black/20"></div>
           </div>
 
-          <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Content */}
+          <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 pt-32">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
             >
               {/* Back Link */}
-              <Link href="/portfolio" className="text-white/80 hover:text-white mb-8 inline-flex items-center gap-2 transition font-medium hover:translate-x-[-4px]">
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-                </svg>
+              <Link href="/portfolio" className="text-white/80 hover:text-white mb-6 inline-flex items-center gap-2 transition font-medium group" style={{ fontFamily: 'Google Sans, sans-serif' }}>
+                <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" />
                 Back to Portfolio
               </Link>
 
+              {/* Category Badge */}
+              {project.category && (
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: 0.2 }}
+                  className="mt-4"
+                >
+                  <span className="inline-block px-4 py-1.5 bg-orange-500/90 backdrop-blur-sm text-white text-xs font-semibold rounded-full mb-6">
+                    {project.category}
+                  </span>
+                </motion.div>
+              )}
+
               <h1
-                className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-6 leading-tight"
+                className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight max-w-4xl"
                 style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}
               >
                 {project.title}
               </h1>
               
               <p
-                className="text-lg sm:text-xl text-orange-100 max-w-3xl leading-relaxed mb-8"
-                style={{ fontFamily: "Quicksand, sans-serif" }}
+                className="text-lg sm:text-xl text-gray-300 max-w-2xl leading-relaxed mb-8"
+                style={{ fontFamily: "Google Sans, sans-serif" }}
               >
                 {project.description}
               </p>
 
-              {/* Project Meta Info Grid */}
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-8">
-                {project.category && (
-                  <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4 border border-white/20">
-                    <p className="text-orange-100 text-xs font-semibold uppercase tracking-wide mb-1" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>Category</p>
-                    <p className="text-white font-semibold" style={{ fontFamily: 'Quicksand, sans-serif' }}>{project.category}</p>
-                  </div>
+              {/* Action Buttons */}
+              <div className="flex flex-wrap gap-4">
+                {project.link && (
+                  <GlassButton href={project.link} variant="orange" external>
+                    Visit Live Site <ExternalLink className="w-4 h-4" />
+                  </GlassButton>
                 )}
-                {project.client && (
-                  <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4 border border-white/20">
-                    <p className="text-orange-100 text-xs font-semibold uppercase tracking-wide mb-1" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>Client</p>
-                    <p className="text-white font-semibold truncate" style={{ fontFamily: 'Quicksand, sans-serif' }}>{project.client}</p>
-                  </div>
-                )}
-                {project.clientCountry && (
-                  <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4 border border-white/20">
-                    <p className="text-orange-100 text-xs font-semibold uppercase tracking-wide mb-1" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>Country</p>
-                    <p className="text-white font-semibold" style={{ fontFamily: 'Quicksand, sans-serif' }}>{project.clientCountry}</p>
-                  </div>
-                )}
-                {project.duration && (
-                  <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4 border border-white/20">
-                    <p className="text-orange-100 text-xs font-semibold uppercase tracking-wide mb-1" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>Duration</p>
-                    <p className="text-white font-semibold" style={{ fontFamily: 'Quicksand, sans-serif' }}>{project.duration}</p>
-                  </div>
-                )}
-                <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4 border border-white/20">
-                  <p className="text-orange-100 text-xs font-semibold uppercase tracking-wide mb-1" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>Completed</p>
-                  <p className="text-white font-semibold text-sm" style={{ fontFamily: 'Quicksand, sans-serif' }}>{formatDate(project.completionDate || project.date)}</p>
-                </div>
+                <GlassButton href="/contact" variant="light">
+                  Start Similar Project <ArrowRight className="w-4 h-4" />
+                </GlassButton>
               </div>
             </motion.div>
           </div>
         </section>
 
-        {/* Main Content */}
-        <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-          {/* Project Image */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="mb-12 rounded-2xl overflow-hidden shadow-2xl"
-          >
-            <Image
-              src={project.image}
-              alt={project.title}
-              width={1000}
-              height={600}
-              className="w-full h-auto object-cover"
-              priority
-            />
-          </motion.div>
-
-          {/* Full Page Screenshot Section */}
-          {project.screenshot && (
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="mb-16 bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8"
-            >
-              <h2 
-                className="text-3xl font-bold text-gray-900 dark:text-white mb-6 flex items-center gap-3"
-                style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}
-              >
-                <div className="w-1 h-8 bg-gradient-to-b from-orange-500 to-orange-600 rounded-full"></div>
-                Full Page Preview
-              </h2>
-              
-              <div className="relative group">
+        {/* Project Stats Bar */}
+        <section className="bg-gray-50 dark:bg-gray-900 border-y border-gray-200 dark:border-gray-800">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
+              {project.client && (
                 <motion.div
-                  className="cursor-pointer relative overflow-hidden rounded-xl border-2 border-gray-200 dark:border-gray-700 shadow-lg"
-                  onClick={handleImageClick}
-                  whileHover={{ scale: 1.01 }}
-                  whileTap={{ scale: 0.99 }}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.3 }}
+                  className="flex items-center gap-3"
                 >
-                  <div 
-                    ref={imageContainerRef}
-                    className="relative h-[500px] overflow-hidden rounded-lg bg-gray-100 dark:bg-gray-900"
-                  >
-                    <div ref={imageRef}>
-                      <Image
-                        src={project.screenshot}
-                        alt={`${project.title} - Full Page Screenshot`}
-                        width={1200}
-                        height={3000}
-                        className="object-contain object-top w-full"
-                        priority
-                      />
-                    </div>
+                  <div className="w-10 h-10 rounded-full bg-orange-100 dark:bg-orange-900/30 flex items-center justify-center">
+                    <User className="w-5 h-5 text-orange-600" />
                   </div>
-                  
-                  {/* Overlay and Progress Indicator */}
-                  <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-start justify-center pt-8 rounded-lg pointer-events-none">
-                    <div className="text-white text-center">
-                      <motion.div
-                        animate={{ y: [0, 8, 0] }}
-                        transition={{ duration: 1.5, repeat: Infinity }}
-                        className="text-3xl mb-1"
-                      >
-                        ↓
-                      </motion.div>
-                      <p className="text-xs font-medium bg-black/60 px-3 py-1 rounded-full backdrop-blur-sm">
-                        Click to scroll
-                      </p>
-                    </div>
-                  </div>
-                  
-                  <AnimatePresence>
-                    {isScrolling && (
-                      <motion.div
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                        className="absolute bottom-4 right-4 pointer-events-none"
-                      >
-                        <div className="relative w-14 h-14">
-                          <svg className="w-14 h-14 transform -rotate-90">
-                            <circle cx="28" cy="28" r="24" stroke="currentColor" strokeWidth="4" fill="none" className="text-gray-700/50" />
-                            <circle cx="28" cy="28" r="24" stroke="currentColor" strokeWidth="4" fill="none" strokeDasharray={`${2 * Math.PI * 24}`} strokeDashoffset={`${2 * Math.PI * 24 * (1 - scrollProgress / 100)}`} className="text-orange-500 transition-all duration-100" strokeLinecap="round" />
-                          </svg>
-                          <div className="absolute inset-0 flex items-center justify-center">
-                            <span className="text-xs font-bold text-orange-500 drop-shadow-lg">
-                              {Math.round(scrollProgress)}%
-                            </span>
-                          </div>
-                        </div>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </motion.div>
-                
-                <AnimatePresence>
-                  {showScrollButton && !isScrolling && (
-                    <motion.div
-                      initial={{ opacity: 0, scale: 0.8 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      exit={{ opacity: 0, scale: 0.8 }}
-                      className="absolute top-3 right-3 bg-gradient-to-r from-orange-600 to-orange-500 text-white px-3 py-1.5 rounded-full text-xs font-semibold shadow-lg flex items-center gap-1.5"
-                    >
-                      <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                      </svg>
-                      Click to scroll
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </div>
-            </motion.div>
-          )}
-
-          {/* Features Section */}
-          {project.features && project.features.length > 0 && (
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              className="mb-16 bg-gradient-to-br from-orange-50 to-orange-100 dark:from-gray-800 dark:to-gray-700 rounded-2xl p-8 border border-orange-200 dark:border-gray-600"
-            >
-              <h3
-                className="text-2xl font-bold text-gray-900 dark:text-white mb-6 flex items-center gap-3"
-                style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}
-              >
-                <svg className="w-6 h-6 text-orange-600" fill="currentColor" viewBox="0 0 20 20">
-                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                </svg>
-                Key Features
-              </h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {project.features.map((feature, i) => (
-                  <motion.div
-                    key={i}
-                    initial={{ opacity: 0, x: -10 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.3, delay: 0.4 + i * 0.05 }}
-                    className="flex items-start gap-3 p-3 rounded-lg bg-white/50 dark:bg-gray-800/50"
-                  >
-                    <span className="w-5 h-5 rounded-full bg-gradient-to-r from-orange-500 to-orange-600 flex items-center justify-center flex-shrink-0 mt-1">
-                      <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
-                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                      </svg>
-                    </span>
-                    <span className="text-gray-700 dark:text-gray-200 font-medium" style={{ fontFamily: 'Quicksand, sans-serif' }}>
-                      {feature}
-                    </span>
-                  </motion.div>
-                ))}
-              </div>
-            </motion.div>
-          )}
-
-          {/* Technology Stack */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            className="mb-16 bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8"
-          >
-            <h2
-              className="text-3xl font-bold text-gray-900 dark:text-white mb-8 flex items-center gap-3"
-              style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}
-            >
-              <div className="w-1 h-8 bg-gradient-to-b from-orange-500 to-orange-600 rounded-full"></div>
-              Technology Stack
-            </h2>
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
-              {project.techLogos && project.techLogos.length > 0 ? (
-                project.techLogos.map((tech, idx) => (
-                  <motion.div
-                    key={idx}
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.3, delay: 0.6 + idx * 0.1 }}
-                    className="flex flex-col items-center gap-3 p-4 rounded-lg bg-gradient-to-br from-orange-50 to-red-50 dark:from-gray-700 dark:to-gray-600 hover:shadow-lg hover:scale-105 transition-all duration-300 border border-orange-200 dark:border-gray-500"
-                  >
-                    <div className="relative w-14 h-14 flex-shrink-0 flex items-center justify-center">
-                      {!imageError[idx] ? (
-                        <Image
-                          src={tech.logo}
-                          alt={tech.name}
-                          width={56}
-                          height={56}
-                          className="max-w-full max-h-full object-contain"
-                          style={{ filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.1))' }}
-                          onError={() => handleImageError(idx)}
-                        />
-                      ) : (
-                        <div className="w-12 h-12 bg-gradient-to-br from-orange-400 to-red-500 rounded flex items-center justify-center text-white text-lg font-bold">
-                          {tech.name.charAt(0)}
-                        </div>
-                      )}
-                    </div>
-                    
-                    <span
-                      className="text-sm font-semibold text-gray-900 dark:text-white text-center leading-tight"
-                      style={{ fontFamily: "Quicksand, sans-serif" }}
-                    >
-                      {tech.name}
-                    </span>
-                  </motion.div>
-                ))
-              ) : (
-                project.tech && project.tech.map((tech, idx) => (
-                  <motion.div
-                    key={idx}
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.3, delay: 0.6 + idx * 0.1 }}
-                    className="flex flex-col items-center gap-3 p-4 rounded-lg bg-gradient-to-br from-orange-50 to-red-50 dark:from-gray-700 dark:to-gray-600 hover:shadow-lg hover:scale-105 transition-all duration-300 border border-orange-200 dark:border-gray-500"
-                  >
-                    <div className="w-12 h-12 bg-gradient-to-br from-orange-400 to-red-500 rounded flex items-center justify-center text-white text-lg font-bold">
-                      {tech.charAt(0)}
-                    </div>
-                    <span
-                      className="text-sm font-semibold text-gray-900 dark:text-white text-center leading-tight"
-                      style={{ fontFamily: "Quicksand, sans-serif" }}
-                    >
-                      {tech}
-                    </span>
-                  </motion.div>
-                ))
-              )}
-            </div>
-          </motion.div>
-
-          {/* Project Timeline */}
-          {(project.timeline || project.duration || project.startDate) && (
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.5 }}
-              className="mb-16 bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-700 rounded-2xl p-8 border border-gray-200 dark:border-gray-600"
-            >
-              <h3
-                className="text-2xl font-bold text-gray-900 dark:text-white mb-6 flex items-center gap-3"
-                style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}
-              >
-                <svg className="w-6 h-6 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                </svg>
-                Project Timeline
-              </h3>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                {project.startDate && (
                   <div>
-                    <span className="font-medium text-gray-900 dark:text-white" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>Start Date:</span>
-                    <p className="text-gray-600 dark:text-gray-300" style={{ fontFamily: 'Quicksand, sans-serif' }}>{formatDate(project.startDate)}</p>
+                    <p className="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wide font-medium" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>Client</p>
+                    <p className="text-gray-900 dark:text-white font-semibold truncate" style={{ fontFamily: 'Google Sans, sans-serif' }}>{project.client}</p>
                   </div>
-                )}
-                <div>
-                  <span className="font-medium text-gray-900 dark:text-white" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>Completion Date:</span>
-                  <p className="text-gray-600 dark:text-gray-300" style={{ fontFamily: 'Quicksand, sans-serif' }}>{formatDate(project.completionDate || project.date)}</p>
+                </motion.div>
+              )}
+              {project.clientCountry && (
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.4 }}
+                  className="flex items-center gap-3"
+                >
+                  <div className="w-10 h-10 rounded-full bg-orange-100 dark:bg-orange-900/30 flex items-center justify-center">
+                    <MapPin className="w-5 h-5 text-orange-600" />
+                  </div>
+                  <div>
+                    <p className="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wide font-medium" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>Location</p>
+                    <p className="text-gray-900 dark:text-white font-semibold" style={{ fontFamily: 'Google Sans, sans-serif' }}>{project.clientCountry}</p>
+                  </div>
+                </motion.div>
+              )}
+              {project.duration && (
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.5 }}
+                  className="flex items-center gap-3"
+                >
+                  <div className="w-10 h-10 rounded-full bg-orange-100 dark:bg-orange-900/30 flex items-center justify-center">
+                    <Clock className="w-5 h-5 text-orange-600" />
+                  </div>
+                  <div>
+                    <p className="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wide font-medium" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>Duration</p>
+                    <p className="text-gray-900 dark:text-white font-semibold" style={{ fontFamily: 'Google Sans, sans-serif' }}>{project.duration}</p>
+                  </div>
+                </motion.div>
+              )}
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.6 }}
+                className="flex items-center gap-3"
+              >
+                <div className="w-10 h-10 rounded-full bg-orange-100 dark:bg-orange-900/30 flex items-center justify-center">
+                  <Calendar className="w-5 h-5 text-orange-600" />
                 </div>
-                {project.duration && (
-                  <div>
-                    <span className="font-medium text-gray-900 dark:text-white" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>Duration:</span>
-                    <p className="text-gray-600 dark:text-gray-300" style={{ fontFamily: 'Quicksand, sans-serif' }}>{project.duration}</p>
-                  </div>
-                )}
-                {project.client && (
-                  <div>
-                    <span className="font-medium text-gray-900 dark:text-white" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>Client:</span>
-                    <p className="text-gray-600 dark:text-gray-300" style={{ fontFamily: 'Quicksand, sans-serif' }}>{project.client}</p>
-                  </div>
-                )}
-                {project.clientCountry && (
-                  <div>
-                    <span className="font-medium text-gray-900 dark:text-white" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>Country:</span>
-                    <p className="text-gray-600 dark:text-gray-300" style={{ fontFamily: 'Quicksand, sans-serif' }}>{project.clientCountry}</p>
-                  </div>
-                )}
-              </div>
-            </motion.div>
-          )}
+                <div>
+                  <p className="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wide font-medium" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>Completed</p>
+                  <p className="text-gray-900 dark:text-white font-semibold" style={{ fontFamily: 'Google Sans, sans-serif' }}>{formatDate(project.completionDate || project.date)}</p>
+                </div>
+              </motion.div>
+            </div>
+          </div>
+        </section>
 
-          {/* Development Process */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.6 }}
-            className="mb-16 bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8"
-          >
-            <h3
-              className="text-2xl font-bold text-gray-900 dark:text-white mb-8 flex items-center gap-3"
-              style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}
-            >
-              <div className="w-1 h-8 bg-gradient-to-b from-orange-500 to-orange-600 rounded-full"></div>
-              Development Process
-            </h3>
-            <div className="space-y-4">
-              {[
-                { step: 1, title: "Planning & Research", desc: "Understanding client requirements and market analysis" },
-                { step: 2, title: "Design & Prototyping", desc: "Creating wireframes and visual designs" },
-                { step: 3, title: "Development", desc: "Building the application/website with modern technologies" },
-                { step: 4, title: "Testing & Deployment", desc: "Quality assurance and production deployment" }
-              ].map((phase, i) => (
+        {/* Main Content */}
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-16">
+            {/* Main Content Area */}
+            <div className="lg:col-span-2 space-y-16">
+              {/* Project Showcase Image */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.1 }}
+                className="rounded-2xl overflow-hidden shadow-2xl ring-1 ring-gray-200 dark:ring-gray-800"
+              >
+                <Image
+                  src={project.image}
+                  alt={project.title}
+                  width={1000}
+                  height={600}
+                  className="w-full h-auto object-cover"
+                  priority
+                />
+              </motion.div>
+
+              {/* Full Page Screenshot Section */}
+              {project.screenshot && (
                 <motion.div
-                  key={i}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.4, delay: 0.8 + i * 0.2 }}
-                  className="flex items-start space-x-4"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.2 }}
                 >
-                  <div className="w-8 h-8 bg-gradient-to-r from-orange-500 to-orange-600 text-white rounded-full flex items-center justify-center font-bold text-sm flex-shrink-0">
-                    {phase.step}
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-gray-900 dark:text-white" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>{phase.title}</h4>
-                    <p className="text-sm text-gray-600 dark:text-gray-300" style={{ fontFamily: 'Quicksand, sans-serif' }}>{phase.desc}</p>
+                  <h2 
+                    className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white mb-6"
+                    style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}
+                  >
+                    Full Page Preview
+                  </h2>
+                  
+                  <div className="relative group">
+                    <motion.div
+                      className="cursor-pointer relative overflow-hidden rounded-2xl ring-1 ring-gray-200 dark:ring-gray-800 shadow-xl"
+                      onClick={handleImageClick}
+                      whileHover={{ scale: 1.01 }}
+                      whileTap={{ scale: 0.99 }}
+                    >
+                      <div 
+                        ref={imageContainerRef}
+                        className="relative h-[500px] overflow-hidden bg-gray-100 dark:bg-gray-900"
+                      >
+                        <div ref={imageRef}>
+                          <Image
+                            src={project.screenshot}
+                            alt={`${project.title} - Full Page Screenshot`}
+                            width={1200}
+                            height={3000}
+                            className="object-contain object-top w-full"
+                            priority
+                          />
+                        </div>
+                      </div>
+                      
+                      {/* Overlay and Progress Indicator */}
+                      <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-start justify-center pt-8 pointer-events-none">
+                        <div className="text-white text-center">
+                          <motion.div
+                            animate={{ y: [0, 8, 0] }}
+                            transition={{ duration: 1.5, repeat: Infinity }}
+                            className="text-3xl mb-1"
+                          >
+                            ↓
+                          </motion.div>
+                          <p className="text-xs font-medium bg-black/60 px-3 py-1 rounded-full backdrop-blur-sm">
+                            Click to scroll
+                          </p>
+                        </div>
+                      </div>
+                      
+                      <AnimatePresence>
+                        {isScrolling && (
+                          <motion.div
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            className="absolute bottom-4 right-4 pointer-events-none"
+                          >
+                            <div className="relative w-14 h-14">
+                              <svg className="w-14 h-14 transform -rotate-90">
+                                <circle cx="28" cy="28" r="24" stroke="currentColor" strokeWidth="4" fill="none" className="text-gray-700/50" />
+                                <circle cx="28" cy="28" r="24" stroke="currentColor" strokeWidth="4" fill="none" strokeDasharray={`${2 * Math.PI * 24}`} strokeDashoffset={`${2 * Math.PI * 24 * (1 - scrollProgress / 100)}`} className="text-orange-500 transition-all duration-100" strokeLinecap="round" />
+                              </svg>
+                              <div className="absolute inset-0 flex items-center justify-center">
+                                <span className="text-xs font-bold text-orange-500 drop-shadow-lg">
+                                  {Math.round(scrollProgress)}%
+                                </span>
+                              </div>
+                            </div>
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
+                    </motion.div>
+                    
+                    <AnimatePresence>
+                      {showScrollButton && !isScrolling && (
+                        <motion.div
+                          initial={{ opacity: 0, scale: 0.8 }}
+                          animate={{ opacity: 1, scale: 1 }}
+                          exit={{ opacity: 0, scale: 0.8 }}
+                          className="absolute top-3 right-3 bg-orange-500 text-white px-3 py-1.5 rounded-full text-xs font-semibold shadow-lg flex items-center gap-1.5"
+                        >
+                          <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                          </svg>
+                          Click to scroll
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
                   </div>
                 </motion.div>
-              ))}
-            </div>
-          </motion.div>
-
-          {/* CTA Section - Replace old buttons */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.7 }}
-            className="bg-gradient-to-r from-orange-500 via-orange-600 to-red-500 rounded-2xl p-8 sm:p-12 shadow-2xl text-center"
-          >
-            <h3
-              className="text-2xl sm:text-3xl font-bold text-white mb-4"
-              style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}
-            >
-              Interested in a Similar Project?
-            </h3>
-            <p
-              className="text-orange-100 mb-8 max-w-2xl mx-auto"
-              style={{ fontFamily: 'Quicksand, sans-serif' }}
-            >
-              Let's bring your vision to life with cutting-edge technology and creative solutions.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              {project.link && (
-                <PremiumCTA href={project.link} variant="secondary" size="large" external>
-                  Visit Website
-                </PremiumCTA>
               )}
-              <PremiumCTA href="/contact" variant="primary" size="large">
-                Start Your Project
-              </PremiumCTA>
+
+              {/* Features Section */}
+              {project.features && project.features.length > 0 && (
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.3 }}
+                >
+                  <h2
+                    className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white mb-8"
+                    style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}
+                  >
+                    Key Features
+                  </h2>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    {project.features.map((feature, i) => (
+                      <motion.div
+                        key={i}
+                        initial={{ opacity: 0, x: -10 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.3, delay: 0.4 + i * 0.05 }}
+                        className="flex items-start gap-3 p-4 rounded-xl bg-gray-50 dark:bg-gray-900 border border-gray-100 dark:border-gray-800"
+                      >
+                        <CheckCircle2 className="w-5 h-5 text-orange-500 flex-shrink-0 mt-0.5" />
+                        <span className="text-gray-700 dark:text-gray-200" style={{ fontFamily: 'Google Sans, sans-serif' }}>
+                          {feature}
+                        </span>
+                      </motion.div>
+                    ))}
+                  </div>
+                </motion.div>
+              )}
+
+              {/* Development Process */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.6 }}
+              >
+                <h2
+                  className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white mb-8"
+                  style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}
+                >
+                  Development Process
+                </h2>
+                <div className="space-y-6">
+                  {[
+                    { icon: Target, title: "Planning & Research", desc: "Understanding client requirements and market analysis" },
+                    { icon: Layers, title: "Design & Prototyping", desc: "Creating wireframes and visual designs" },
+                    { icon: Code2, title: "Development", desc: "Building the application with modern technologies" },
+                    { icon: Rocket, title: "Testing & Deployment", desc: "Quality assurance and production deployment" }
+                  ].map((phase, i) => (
+                    <motion.div
+                      key={i}
+                      initial={{ opacity: 0, x: -20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.4, delay: 0.8 + i * 0.1 }}
+                      className="flex items-start gap-4 p-5 rounded-xl bg-gray-50 dark:bg-gray-900 border border-gray-100 dark:border-gray-800"
+                    >
+                      <div className="w-12 h-12 bg-gradient-to-br from-orange-500 to-orange-600 rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg shadow-orange-500/20">
+                        <phase.icon className="w-6 h-6 text-white" />
+                      </div>
+                      <div>
+                        <h4 className="font-semibold text-gray-900 dark:text-white text-lg" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>{phase.title}</h4>
+                        <p className="text-gray-600 dark:text-gray-400" style={{ fontFamily: 'Google Sans, sans-serif' }}>{phase.desc}</p>
+                      </div>
+                    </motion.div>
+                  ))}
+                </div>
+              </motion.div>
             </div>
-          </motion.div>
+
+            {/* Sidebar */}
+            <div className="lg:col-span-1">
+              <div className="sticky top-32 space-y-8">
+                {/* Technology Stack */}
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.4 }}
+                  className="bg-gray-50 dark:bg-gray-900 rounded-2xl p-6 border border-gray-100 dark:border-gray-800"
+                >
+                  <h3
+                    className="text-xl font-bold text-gray-900 dark:text-white mb-6"
+                    style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}
+                  >
+                    Technology Stack
+                  </h3>
+                  <div className="flex flex-wrap gap-3">
+                    {project.techLogos && project.techLogos.length > 0 ? (
+                      project.techLogos.map((tech, idx) => (
+                        <motion.div
+                          key={idx}
+                          initial={{ opacity: 0, scale: 0.8 }}
+                          animate={{ opacity: 1, scale: 1 }}
+                          transition={{ duration: 0.3, delay: 0.5 + idx * 0.05 }}
+                          className="flex items-center gap-2 px-3 py-2 rounded-lg bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 shadow-sm"
+                        >
+                          <div className="relative w-6 h-6 flex-shrink-0">
+                            {!imageError[idx] ? (
+                              <Image
+                                src={tech.logo}
+                                alt={tech.name}
+                                width={24}
+                                height={24}
+                                className="max-w-full max-h-full object-contain"
+                                onError={() => handleImageError(idx)}
+                              />
+                            ) : (
+                              <div className="w-6 h-6 bg-orange-500 rounded flex items-center justify-center text-white text-xs font-bold">
+                                {tech.name.charAt(0)}
+                              </div>
+                            )}
+                          </div>
+                          <span className="text-sm font-medium text-gray-700 dark:text-gray-300" style={{ fontFamily: 'Google Sans, sans-serif' }}>
+                            {tech.name}
+                          </span>
+                        </motion.div>
+                      ))
+                    ) : (
+                      project.tech && project.tech.map((tech, idx) => (
+                        <motion.div
+                          key={idx}
+                          initial={{ opacity: 0, scale: 0.8 }}
+                          animate={{ opacity: 1, scale: 1 }}
+                          transition={{ duration: 0.3, delay: 0.5 + idx * 0.05 }}
+                          className="flex items-center gap-2 px-3 py-2 rounded-lg bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 shadow-sm"
+                        >
+                          <div className="w-6 h-6 bg-orange-500 rounded flex items-center justify-center text-white text-xs font-bold">
+                            {tech.charAt(0)}
+                          </div>
+                          <span className="text-sm font-medium text-gray-700 dark:text-gray-300" style={{ fontFamily: 'Google Sans, sans-serif' }}>
+                            {tech}
+                          </span>
+                        </motion.div>
+                      ))
+                    )}
+                  </div>
+                </motion.div>
+
+                {/* Project Info Card */}
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.5 }}
+                  className="bg-gradient-to-br from-orange-500 to-orange-600 rounded-2xl p-6 text-white shadow-xl shadow-orange-500/20"
+                >
+                  <h3
+                    className="text-xl font-bold mb-4"
+                    style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}
+                  >
+                    Project Info
+                  </h3>
+                  <div className="space-y-4">
+                    {project.client && (
+                      <div>
+                        <p className="text-orange-200 text-xs uppercase tracking-wide font-medium" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>Client</p>
+                        <p className="font-semibold" style={{ fontFamily: 'Google Sans, sans-serif' }}>{project.client}</p>
+                      </div>
+                    )}
+                    {project.clientCountry && (
+                      <div>
+                        <p className="text-orange-200 text-xs uppercase tracking-wide font-medium" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>Location</p>
+                        <p className="font-semibold" style={{ fontFamily: 'Google Sans, sans-serif' }}>{project.clientCountry}</p>
+                      </div>
+                    )}
+                    {project.duration && (
+                      <div>
+                        <p className="text-orange-200 text-xs uppercase tracking-wide font-medium" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>Duration</p>
+                        <p className="font-semibold" style={{ fontFamily: 'Google Sans, sans-serif' }}>{project.duration}</p>
+                      </div>
+                    )}
+                    <div>
+                      <p className="text-orange-200 text-xs uppercase tracking-wide font-medium" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>Completed</p>
+                      <p className="font-semibold" style={{ fontFamily: 'Google Sans, sans-serif' }}>{formatDate(project.completionDate || project.date)}</p>
+                    </div>
+                  </div>
+                  
+                  {project.link && (
+                    <a
+                      href={project.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="mt-6 w-full inline-flex items-center justify-center gap-2 px-4 py-3 bg-white text-orange-600 rounded-xl font-semibold hover:bg-orange-50 transition-colors"
+                      style={{ fontFamily: 'Google Sans, sans-serif' }}
+                    >
+                      Visit Website <ExternalLink className="w-4 h-4" />
+                    </a>
+                  )}
+                </motion.div>
+
+                {/* Need Help Card */}
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.6 }}
+                  className="bg-gray-50 dark:bg-gray-900 rounded-2xl p-6 border border-gray-100 dark:border-gray-800"
+                >
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="w-10 h-10 bg-orange-100 dark:bg-orange-900/30 rounded-full flex items-center justify-center">
+                      <Star className="w-5 h-5 text-orange-600" />
+                    </div>
+                    <h3 className="text-lg font-bold text-gray-900 dark:text-white" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>
+                      Need Something Similar?
+                    </h3>
+                  </div>
+                  <p className="text-gray-600 dark:text-gray-400 text-sm mb-4" style={{ fontFamily: 'Google Sans, sans-serif' }}>
+                    Let's discuss your project and bring your vision to life.
+                  </p>
+                  <GlassButton href="/contact" variant="orange" className="w-full">
+                    Get in Touch <ArrowRight className="w-4 h-4" />
+                  </GlassButton>
+                </motion.div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Full Width CTA Section */}
+        <section className="relative py-24 overflow-hidden">
+          {/* Background Image */}
+          <div className="absolute inset-0">
+            <Image
+              src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=90&w=2400&auto=format&fit=crop"
+              alt="Team collaboration"
+              fill
+              className="object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-orange-600/95 via-orange-500/90 to-red-500/95"></div>
+          </div>
+
+          <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+            >
+              <h2
+                className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6"
+                style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}
+              >
+                Ready to Start Your Project?
+              </h2>
+              <p
+                className="text-lg sm:text-xl text-orange-100 mb-10 max-w-2xl mx-auto"
+                style={{ fontFamily: 'Google Sans, sans-serif' }}
+              >
+                Let's bring your vision to life with cutting-edge technology and creative solutions.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <GlassButton href="/contact" variant="light">
+                  Start Your Project <ArrowRight className="w-4 h-4" />
+                </GlassButton>
+                <GlassButton href="/portfolio" variant="outline">
+                  View More Projects
+                </GlassButton>
+              </div>
+            </motion.div>
+          </div>
         </section>
 
         {/* WhatsApp Button */}

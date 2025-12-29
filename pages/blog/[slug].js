@@ -2204,7 +2204,7 @@ export default function BlogPost() {
               <div
                 dangerouslySetInnerHTML={{ __html: article.content }}
                 className="prose prose-orange prose-lg dark:prose-invert max-w-none"
-                style={{ fontFamily: "Quicksand, sans-serif" }}
+                style={{ fontFamily: "Google Sans, sans-serif" }}
               />
               <div className="mt-8 flex flex-wrap gap-2">
                 {article.hashtags?.map((hashtag, index) => (
@@ -2234,7 +2234,7 @@ export default function BlogPost() {
             </h2>
             <p
               className="text-xl text-orange-100 mb-8 max-w-2xl mx-auto"
-              style={{ fontFamily: "Quicksand, sans-serif" }}
+              style={{ fontFamily: "Google Sans, sans-serif" }}
             >
               Let Celestial Web Solutions help you build a powerful online presence that drives real results.
             </p>

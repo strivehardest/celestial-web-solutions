@@ -1,13 +1,103 @@
 import Head from "next/head";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Check, Star, Zap, Globe, ShoppingCart, Rocket, Crown, Smartphone, Calculator, Plus, Minus, Info, X } from "lucide-react";
 import WhatsAppButton from '../components/WhatsAppButton';
 import PremiumCTA from '../components/PremiumCTA';
 
+// Currency configuration with flags
+const currencies = [
+  { code: 'GHS', symbol: 'GH₵', name: 'Ghana Cedi', flag: 'gh' },
+  { code: 'USD', symbol: '$', name: 'US Dollar', flag: 'us' },
+  { code: 'GBP', symbol: '£', name: 'British Pound', flag: 'gb' },
+  { code: 'EUR', symbol: '€', name: 'Euro', flag: 'eu' },
+  { code: 'NGN', symbol: '₦', name: 'Nigerian Naira', flag: 'ng' },
+];
+
+const typingPhrases = [
+  'Affordable Web Design Packages',
+  'E-Commerce Website Pricing',
+  'Custom Web App Quotes',
+  'Flexible Payment Plans',
+  'Contact us: +233 24 567 1832',
+  'Email: info@celestialwebsolutions.net',
+];
+
 export default function PricingWithCalculator() {
   const [billingPeriod, setBillingPeriod] = useState("yearly");
   const [showCalculator, setShowCalculator] = useState(false);
+  const [selectedCurrency, setSelectedCurrency] = useState('GHS');
+  const [exchangeRates, setExchangeRates] = useState({ GHS: 1, USD: 1, GBP: 1, EUR: 1, NGN: 1 });
+  const [ratesLoading, setRatesLoading] = useState(true);
+  const [lastUpdated, setLastUpdated] = useState(null);
+
+  // Typing effect state
+  const [currentPhraseIndex, setCurrentPhraseIndex] = useState(0);
+  const [displayText, setDisplayText] = useState('');
+  const [isDeleting, setIsDeleting] = useState(false);
+
+  // Fetch exchange rates on component mount
+  useEffect(() => {
+    const fetchExchangeRates = async () => {
+      try {
+        setRatesLoading(true);
+        // Using exchangerate-api.com (free tier)
+        const response = await fetch('https://api.exchangerate-api.com/v4/latest/GHS');
+        const data = await response.json();
+        
+        if (data && data.rates) {
+          setExchangeRates({
+            GHS: 1,
+            USD: data.rates.USD || 0.0625,
+            GBP: data.rates.GBP || 0.049,
+            EUR: data.rates.EUR || 0.057,
+            NGN: data.rates.NGN || 93.75,
+          });
+          setLastUpdated(new Date());
+        }
+      } catch (error) {
+        console.error('Failed to fetch exchange rates:', error);
+        // Fallback rates (approximate)
+        setExchangeRates({
+          GHS: 1,
+          USD: 0.0625,  // 1 GHS â‰ˆ 0.0625 USD
+          GBP: 0.049,   // 1 GHS â‰ˆ 0.049 GBP
+          EUR: 0.057,   // 1 GHS â‰ˆ 0.057 EUR
+          NGN: 93.75,   // 1 GHS â‰ˆ 93.75 NGN
+        });
+        setLastUpdated(null);
+      } finally {
+        setRatesLoading(false);
+      }
+    };
+
+    fetchExchangeRates();
+    // Refresh rates every 5 minutes for more live updates
+    const interval = setInterval(fetchExchangeRates, 300000);
+    return () => clearInterval(interval);
+  }, []);
+
+  // Live time display state
+  const [liveTime, setLiveTime] = useState(new Date());
+  
+  // Update live time every second
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setLiveTime(new Date());
+    }, 1000);
+    return () => clearInterval(timer);
+  }, []);
+
+  // Format time ago
+  const getTimeAgo = (date) => {
+    if (!date) return 'Using fallback rates';
+    const seconds = Math.floor((liveTime - date) / 1000);
+    if (seconds < 60) return `${seconds}s ago`;
+    const minutes = Math.floor(seconds / 60);
+    if (minutes < 60) return `${minutes}m ago`;
+    const hours = Math.floor(minutes / 60);
+    return `${hours}h ago`;
+  };
 
   // Calculator state
   const [selectedBase, setSelectedBase] = useState("starter");
@@ -157,8 +247,65 @@ export default function PricingWithCalculator() {
     }
   ];
 
-  const formatPrice = (price) => {
-    return new Intl.NumberFormat('en-GH', { style: 'currency', currency: 'GHS', minimumFractionDigits: 0, maximumFractionDigits: 0 }).format(price).replace('GHS', '₵');
+  const formatPrice = (priceInGHS) => {
+    const currency = currencies.find(c => c.code === selectedCurrency);
+    const convertedPrice = priceInGHS * exchangeRates[selectedCurrency];
+    
+    // Format based on currency
+    const formatted = new Intl.NumberFormat('en-US', { 
+      minimumFractionDigits: selectedCurrency === 'NGN' ? 0 : 2, 
+      maximumFractionDigits: selectedCurrency === 'NGN' ? 0 : 2 
+    }).format(convertedPrice);
+    
+    return `${currency.symbol}${formatted}`;
+  };
+
+  // Currency Selector Component - Horizontal Layout
+  const CurrencySelector = () => {
+    return (
+      <div className="w-full max-w-2xl mx-auto">
+        {/* Horizontal currency buttons */}
+        <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3">
+          {currencies.map((currency) => (
+            <motion.button
+              key={currency.code}
+              onClick={() => setSelectedCurrency(currency.code)}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className={`flex items-center space-x-2 px-3 py-2 sm:px-4 sm:py-2.5 rounded-xl transition-all duration-300 ${
+                selectedCurrency === currency.code 
+                  ? 'bg-white text-orange-600 shadow-lg ring-2 ring-orange-400' 
+                  : 'bg-white/20 text-white hover:bg-white/30 backdrop-blur-sm'
+              }`}
+              style={{ fontFamily: "Google Sans, sans-serif" }}
+            >
+              <img 
+                src={`https://flagcdn.com/w40/${currency.flag}.png`}
+                alt={currency.code}
+                className="w-6 h-4 sm:w-7 sm:h-5 object-cover rounded shadow-sm"
+              />
+              <span className={`font-bold ${selectedCurrency === currency.code ? 'text-orange-600' : 'text-white'}`}>
+                {currency.symbol}
+              </span>
+              <span className={`font-semibold text-sm sm:text-base ${selectedCurrency === currency.code ? 'text-gray-700' : 'text-white/90'}`}>
+                {currency.code}
+              </span>
+              {selectedCurrency === currency.code && (
+                <Check size={16} className="text-orange-500 hidden sm:block" />
+              )}
+            </motion.button>
+          ))}
+        </div>
+        
+        {/* Live rate indicator */}
+        <div className="flex items-center justify-center mt-3 space-x-2">
+          <div className={`w-2 h-2 rounded-full ${ratesLoading ? 'bg-yellow-400 animate-pulse' : 'bg-green-400 animate-pulse'}`}></div>
+          <span className="text-xs text-white/80" style={{ fontFamily: "Google Sans, sans-serif" }}>
+            {ratesLoading ? 'Updating rates...' : `Live rates • Updated ${getTimeAgo(lastUpdated)}`}
+          </span>
+        </div>
+      </div>
+    );
   };
 
   const toggleAddOn = (addOnName) => setAddOns(prev => ({ ...prev, [addOnName]: !prev[addOnName] }));
@@ -170,18 +317,45 @@ export default function PricingWithCalculator() {
 
   const currentPlanMeta = pricingPlans.find(plan => plan.name.toLowerCase() === selectedBase) || pricingPlans[0];
 
-  const getWhatsAppLink = (planName, price) => {
-    const message = `Hi Celestial Web Solutions! I'm interested in your ${planName} package priced at ${formatPrice(price)}. Can you provide more details?`;
+  const getWhatsAppLink = (planName, priceInGHS) => {
+    const formattedPrice = formatPrice(priceInGHS);
+    const ghsPrice = `â‚µ${new Intl.NumberFormat('en-GH', { minimumFractionDigits: 0, maximumFractionDigits: 0 }).format(priceInGHS)}`;
+    const message = `Hi Celestial Web Solutions! I'm interested in your ${planName} package priced at ${formattedPrice} (${ghsPrice} GHS). Can you provide more details?`;
     const encodedMessage = encodeURIComponent(message);
     return `https://wa.me/233530505031?text=${encodedMessage}`;
   };
 
   const getCalculatorWhatsAppLink = () => {
     const total = calculateTotal();
-    const message = `Hi! I calculated a custom quote using your calculator: ${formatPrice(total)}. Can we discuss this package?`;
+    const formattedPrice = formatPrice(total);
+    const ghsPrice = `â‚µ${new Intl.NumberFormat('en-GH', { minimumFractionDigits: 0, maximumFractionDigits: 0 }).format(total)}`;
+    const message = `Hi! I calculated a custom quote using your calculator: ${formattedPrice} (${ghsPrice} GHS). Can we discuss this package?`;
     const encodedMessage = encodeURIComponent(message);
     return `https://wa.me/233530505031?text=${encodedMessage}`;
   };
+
+  // Typing effect logic
+  useEffect(() => {
+    const currentPhrase = typingPhrases[currentPhraseIndex];
+    const typingSpeed = isDeleting ? 40 : 80;
+    const timeout = setTimeout(() => {
+      if (!isDeleting) {
+        if (displayText.length < currentPhrase.length) {
+          setDisplayText(currentPhrase.slice(0, displayText.length + 1));
+        } else {
+          setTimeout(() => setIsDeleting(true), 1200);
+        }
+      } else {
+        if (displayText.length > 0) {
+          setDisplayText(displayText.slice(0, -1));
+        } else {
+          setIsDeleting(false);
+          setCurrentPhraseIndex((prev) => (prev + 1) % typingPhrases.length);
+        }
+      }
+    }, typingSpeed);
+    return () => clearTimeout(timeout);
+  }, [displayText, isDeleting, currentPhraseIndex]);
 
   return (
     <div className="min-h-screen bg-white dark:bg-gray-900">
@@ -217,23 +391,36 @@ export default function PricingWithCalculator() {
         <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
             <h1 className="text-4xl md:text-6xl font-bold text-white mb-6" style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}>Our Pricing</h1>
-            <p className="text-xl text-orange-100 max-w-3xl mx-auto leading-relaxed mb-8" style={{ fontFamily: "Quicksand, sans-serif" }}>
+            <div className="flex flex-col items-center justify-center mb-4 min-h-[2.5em]">
+              <span className="text-lg md:text-2xl text-white bg-black/20 px-4 py-2 rounded-full font-semibold tracking-wide shadow-lg animate-pulse" style={{ fontFamily: 'Google Sans, sans-serif', letterSpacing: '0.04em' }}>
+                {displayText}<span className="animate-pulse">|</span>
+              </span>
+            </div>
+            <p className="text-xl text-orange-100 max-w-3xl mx-auto leading-relaxed mb-8" style={{ fontFamily: "Google Sans, sans-serif" }}>
               Quality web development services at affordable rates. No hidden fees, flexible payment plans, and prices in Ghana Cedis.
             </p>
 
+            {/* Currency Selector */}
+            <div className="mb-8 px-2">
+              <p className="text-white/90 text-sm font-medium mb-3" style={{ fontFamily: "Google Sans, sans-serif" }}>
+                View prices in your currency:
+              </p>
+              <CurrencySelector />
+            </div>
+
             {/* Billing Toggle */}
-            <div className="flex items-center justify-center space-x-4 bg-white/20 backdrop-blur-sm rounded-2xl p-2 inline-flex flex-wrap">
-              <button onClick={() => setBillingPeriod("monthly")} className={`px-6 py-2 rounded-xl font-medium transition-all duration-300 ${billingPeriod === "monthly" ? "bg-white text-orange-600 shadow-lg" : "text-white hover:bg-white/10"}`} style={{ fontFamily: "Quicksand, sans-serif" }}>
+            <div className="inline-flex items-center justify-center space-x-4 bg-white/20 backdrop-blur-sm rounded-2xl p-2 flex-wrap">
+              <button onClick={() => setBillingPeriod("monthly")} className={`px-6 py-2 rounded-xl font-medium transition-all duration-300 ${billingPeriod === "monthly" ? "bg-white text-orange-600 shadow-lg" : "text-white hover:bg-white/10"}`} style={{ fontFamily: "Google Sans, sans-serif" }}>
                 Development Packages
               </button>
-              <button onClick={() => setBillingPeriod("yearly")} className={`px-6 py-2 rounded-xl font-medium transition-all duration-300 relative ${billingPeriod === "yearly" ? "bg-white text-orange-600 shadow-lg" : "text-white hover:bg-white/10"}`} style={{ fontFamily: "Quicksand, sans-serif" }}>
+              <button onClick={() => setBillingPeriod("yearly")} className={`px-6 py-2 rounded-xl font-medium transition-all duration-300 relative ${billingPeriod === "yearly" ? "bg-white text-orange-600 shadow-lg" : "text-white hover:bg-white/10"}`} style={{ fontFamily: "Google Sans, sans-serif" }}>
                 With Maintenance
-                <span className="absolute -top-2 -right-2 bg-yellow-400 text-orange-800 text-xs px-2 py-1 rounded-full font-bold" style={{ fontFamily: "Quicksand, sans-serif" }}>Save</span>
+                <span className="absolute -top-2 -right-2 bg-yellow-400 text-orange-800 text-xs px-2 py-1 rounded-full font-bold" style={{ fontFamily: "Google Sans, sans-serif" }}>Save</span>
               </button>
             </div>
 
             {/* Calculator Toggle Button */}
-            <motion.button onClick={() => setShowCalculator(!showCalculator)} whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="mt-6 inline-flex items-center space-x-2 bg-white text-orange-600 px-6 py-3 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300" style={{ fontFamily: "Quicksand, sans-serif" }}>
+            <motion.button onClick={() => setShowCalculator(!showCalculator)} whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="mt-6 inline-flex items-center space-x-2 bg-white text-orange-600 px-6 py-3 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300" style={{ fontFamily: "Google Sans, sans-serif" }}>
               <Calculator size={20} />
               <span>{showCalculator ? "Hide Calculator" : "Calculate Your Price"}</span>
             </motion.button>
@@ -252,10 +439,10 @@ export default function PricingWithCalculator() {
                     <Calculator className="text-orange-600" size={32} />
                     <div>
                       <h2 className="text-3xl font-bold text-gray-900 dark:text-white" style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}>Custom Quote Calculator</h2>
-                      <p className="text-gray-600 dark:text-gray-400" style={{ fontFamily: "Quicksand, sans-serif" }}>Build your perfect package</p>
+                      <p className="text-gray-600 dark:text-gray-400" style={{ fontFamily: "Google Sans, sans-serif" }}>Build your perfect package</p>
                     </div>
                   </div>
-                  <button onClick={resetCalculator} className="text-gray-500 hover:text-orange-600 transition-colors text-sm font-medium" style={{ fontFamily: "Quicksand, sans-serif" }}>Reset</button>
+                  <button onClick={resetCalculator} className="text-gray-500 hover:text-orange-600 transition-colors text-sm font-medium" style={{ fontFamily: "Google Sans, sans-serif" }}>Reset</button>
                 </div>
 
                 {/* Base Package Selection */}
@@ -265,7 +452,7 @@ export default function PricingWithCalculator() {
                     {["starter", "professional", "ecommerce", "enterprise"].map((pkg) => (
                       <button key={pkg} onClick={() => setSelectedBase(pkg)} className={`p-4 rounded-xl border-2 transition-all duration-300 ${selectedBase === pkg ? "border-orange-500 bg-orange-50 dark:bg-orange-900/20 shadow-lg" : "border-gray-200 dark:border-gray-700 hover:border-orange-300 bg-white dark:bg-gray-800"}`}>
                         <div className="font-bold text-gray-900 dark:text-white capitalize mb-1" style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}>{pkg}</div>
-                        <div className="text-orange-600 font-semibold" style={{ fontFamily: "Quicksand, sans-serif" }}>{formatPrice(basePrices[pkg])}</div>
+                        <div className="text-orange-600 font-semibold" style={{ fontFamily: "Google Sans, sans-serif" }}>{formatPrice(basePrices[pkg])}</div>
                       </button>
                     ))}
                   </div>
@@ -279,7 +466,7 @@ export default function PricingWithCalculator() {
                     <div className="flex items-center justify-between p-4 bg-gray-50 dark:bg-gray-700 rounded-xl">
                       <div className="flex-1">
                         <div className="font-semibold text-gray-900 dark:text-white" style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}>Extra Pages</div>
-                        <div className="text-sm text-gray-600 dark:text-gray-400" style={{ fontFamily: "Quicksand, sans-serif" }}>{formatPrice(addOnPrices.extraPages)} per page</div>
+                        <div className="text-sm text-gray-600 dark:text-gray-400" style={{ fontFamily: "Google Sans, sans-serif" }}>{formatPrice(addOnPrices.extraPages)} per page</div>
                       </div>
                       <div className="flex items-center space-x-3">
                         <button onClick={() => updateQuantity("extraPages", -1)} className="w-8 h-8 rounded-lg bg-white dark:bg-gray-600 border-2 border-gray-300 dark:border-gray-500 flex items-center justify-center hover:border-orange-500 transition-colors disabled:opacity-50 disabled:cursor-not-allowed" disabled={addOns.extraPages === 0}>
@@ -297,16 +484,16 @@ export default function PricingWithCalculator() {
                       { key: "ecommerce", label: "E-commerce Features", price: addOnPrices.ecommerce, disabled: selectedBase === "ecommerce" },
                       { key: "blog", label: "Blog/News Section", price: addOnPrices.blog },
                       { key: "seo", label: "Advanced SEO Package", price: addOnPrices.seo },
-                      { key: "maintenance", label: "Annual Maintenance", price: addOnPrices.maintenance * 12, note: "₵150/month" },
+                      { key: "maintenance", label: "Annual Maintenance", price: addOnPrices.maintenance * 12, note: "â‚µ150/month" },
                       { key: "mobileApp", label: "Mobile App Development", price: addOnPrices.mobileApp }
                     ].map((addon) => (
                       <div key={addon.key} className={`flex items-center justify-between p-4 bg-gray-50 dark:bg-gray-700 rounded-xl transition-colors ${addon.disabled ? "opacity-50 cursor-not-allowed" : "cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-600"}`} onClick={() => !addon.disabled && toggleAddOn(addon.key)}>
                         <div className="flex-1">
                           <div className="flex items-center space-x-2">
                             <span className="font-semibold text-gray-900 dark:text-white" style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}>{addon.label}</span>
-                            {addon.disabled && <span className="text-xs bg-orange-100 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400 px-2 py-1 rounded" style={{ fontFamily: "Quicksand, sans-serif" }}>Included</span>}
+                            {addon.disabled && <span className="text-xs bg-orange-100 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400 px-2 py-1 rounded" style={{ fontFamily: "Google Sans, sans-serif" }}>Included</span>}
                           </div>
-                          <div className="text-sm text-gray-600 dark:text-gray-400" style={{ fontFamily: "Quicksand, sans-serif" }}>{formatPrice(addon.price)} {addon.note && <span className="ml-1">({addon.note})</span>}</div>
+                          <div className="text-sm text-gray-600 dark:text-gray-400" style={{ fontFamily: "Google Sans, sans-serif" }}>{formatPrice(addon.price)} {addon.note && <span className="ml-1">({addon.note})</span>}</div>
                         </div>
                         <div className={`w-12 h-6 rounded-full transition-colors ${addon.disabled ? "bg-gray-300" : addOns[addon.key] ? "bg-orange-500" : "bg-gray-300"}`}>
                           <div className={`w-5 h-5 bg-white rounded-full shadow-md transform transition-transform ${(addOns[addon.key] && !addon.disabled) ? "translate-x-6" : "translate-x-0.5"} mt-0.5`}></div>
@@ -318,7 +505,7 @@ export default function PricingWithCalculator() {
                     <div className="flex items-center justify-between p-4 bg-gray-50 dark:bg-gray-700 rounded-xl">
                       <div className="flex-1">
                         <div className="font-semibold text-gray-900 dark:text-white" style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}>Custom Features</div>
-                        <div className="text-sm text-gray-600 dark:text-gray-400" style={{ fontFamily: "Quicksand, sans-serif" }}>{formatPrice(addOnPrices.customFeatures)} per feature</div>
+                        <div className="text-sm text-gray-600 dark:text-gray-400" style={{ fontFamily: "Google Sans, sans-serif" }}>{formatPrice(addOnPrices.customFeatures)} per feature</div>
                       </div>
                       <div className="flex items-center space-x-3">
                         <button onClick={() => updateQuantity("customFeatures", -1)} className="w-8 h-8 rounded-lg bg-white dark:bg-gray-600 border-2 border-gray-300 dark:border-gray-500 flex items-center justify-center hover:border-orange-500 transition-colors disabled:opacity-50 disabled:cursor-not-allowed" disabled={addOns.customFeatures === 0}>
@@ -336,7 +523,7 @@ export default function PricingWithCalculator() {
                 {/* Total */}
                 <div className="mt-8 p-6 bg-orange-50 dark:bg-orange-900/20 rounded-2xl flex items-center justify-between">
                   <div>
-                    <div className="text-gray-700 dark:text-gray-300 font-semibold" style={{ fontFamily: "Quicksand, sans-serif" }}>Total Price ({billingPeriod === "yearly" ? "Yearly" : "Yearly"}):</div>
+                    <div className="text-gray-700 dark:text-gray-300 font-semibold" style={{ fontFamily: "Google Sans, sans-serif" }}>Total Price ({billingPeriod === "yearly" ? "Yearly" : "Yearly"}):</div>
                     <div className="text-3xl font-bold text-orange-600" style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}>{formatPrice(calculateTotal())}</div>
                   </div>
                   <PremiumCTA href={getCalculatorWhatsAppLink()} size="default" variant="primary" className="flex items-center space-x-2" target="_blank" rel="noopener noreferrer">
@@ -352,19 +539,61 @@ export default function PricingWithCalculator() {
       {/* Pricing Cards Section */}
       <section className="py-20 bg-white dark:bg-gray-900">
         <div className="max-w-6xl mx-auto px-4">
-          <h2 className="text-4xl font-bold text-gray-900 dark:text-white text-center mb-12" style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}>Our Packages</h2>
+          <h2 className="text-4xl font-bold text-gray-900 dark:text-white text-center mb-6" style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}>Our Packages</h2>
+          
+          {/* Exchange Rate Info Bar */}
+          <div className="bg-gradient-to-r from-gray-50 to-orange-50 dark:from-gray-800 dark:to-gray-900 rounded-2xl p-4 mb-12">
+            <div className="flex flex-wrap items-center justify-center gap-3">
+              <div className="flex items-center space-x-2">
+                <div className={`w-2 h-2 rounded-full ${ratesLoading ? 'bg-yellow-500' : 'bg-green-500'} animate-pulse`}></div>
+                <span className="text-sm font-semibold text-gray-700 dark:text-gray-300" style={{ fontFamily: "Google Sans, sans-serif" }}>
+                  Live Rates:
+                </span>
+              </div>
+              {currencies.filter(c => c.code !== 'GHS').map((currency) => (
+                <div 
+                  key={currency.code}
+                  onClick={() => setSelectedCurrency(currency.code)}
+                  className={`flex items-center space-x-2 px-4 py-2 rounded-xl cursor-pointer transition-all duration-200 ${
+                    selectedCurrency === currency.code 
+                      ? 'bg-orange-500 text-white shadow-lg scale-105' 
+                      : 'bg-white dark:bg-gray-700 hover:bg-orange-100 dark:hover:bg-gray-600'
+                  }`}
+                >
+                  <img 
+                    src={`https://flagcdn.com/w20/${currency.flag}.png`}
+                    alt={currency.code}
+                    className="w-5 h-3.5 object-cover rounded shadow-sm"
+                  />
+                  <span className={`text-sm font-bold ${selectedCurrency === currency.code ? 'text-white' : 'text-gray-800 dark:text-gray-200'}`} style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}>
+                    {currency.symbol}{exchangeRates[currency.code]?.toFixed(currency.code === 'NGN' ? 2 : 4)}
+                  </span>
+                </div>
+              ))}
+            </div>
+            <div className="flex items-center justify-center mt-3 space-x-2">
+              <span className="text-xs text-gray-500 dark:text-gray-400">
+                {ratesLoading ? '🔄 Updating rates...' : `⏱️ Updated ${getTimeAgo(lastUpdated)}`}
+              </span>
+              <span className="text-xs text-gray-400">•</span>
+              <span className="text-xs text-gray-500 dark:text-gray-400">
+                🕐 {liveTime.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', second: '2-digit' })}
+              </span>
+            </div>
+          </div>
+
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {pricingPlans.map((plan, idx) => (
               <motion.div key={idx} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.4 }} className={`border rounded-2xl p-6 shadow-lg relative bg-white dark:bg-gray-800 ${plan.popular ? "border-orange-500" : "border-gray-200 dark:border-gray-700"}`}>
                 {plan.popular && <div className="absolute top-3 right-3 bg-orange-500 text-white text-xs font-bold px-3 py-1 rounded-full">Most Popular</div>}
                 <plan.icon className="text-orange-500 mb-4" size={32} />
                 <h3 className="text-2xl font-bold mb-2 text-gray-900 dark:text-white" style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}>{plan.name}</h3>
-                <p className="text-gray-600 dark:text-gray-400 mb-4" style={{ fontFamily: "Quicksand, sans-serif" }}>{plan.description}</p>
+                <p className="text-gray-600 dark:text-gray-400 mb-4" style={{ fontFamily: "Google Sans, sans-serif" }}>{plan.description}</p>
                 <div className="mb-4">
                   <span className="text-3xl font-bold text-orange-600" style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}>{formatPrice(plan.price[billingPeriod])}</span>
                   <span className="text-sm line-through text-gray-400 ml-2">{formatPrice(plan.originalPrice ? plan.originalPrice[billingPeriod] : plan.price[billingPeriod])}</span>
                 </div>
-                <ul className="mb-6 space-y-2 text-gray-700 dark:text-gray-300 text-sm" style={{ fontFamily: "Quicksand, sans-serif" }}>
+                <ul className="mb-6 space-y-2 text-gray-700 dark:text-gray-300 text-sm" style={{ fontFamily: "Google Sans, sans-serif" }}>
                   {plan.features.map((feat, i) => (
                     <li key={i} className="flex items-center space-x-2"><Check className="text-green-500" size={16} /> <span>{feat}</span></li>
                   ))}
@@ -379,12 +608,21 @@ export default function PricingWithCalculator() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 bg-orange-600 text-white text-center">
-        <h2 className="text-3xl md:text-5xl font-bold mb-4" style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}>Ready to Start Your Project?</h2>
-        <p className="text-lg mb-8" style={{ fontFamily: "Quicksand, sans-serif" }}>Get in touch today and let's build your online presence together!</p>
-        <PremiumCTA href="/contact" size="default" variant="primary">
-          Contact Us
-        </PremiumCTA>
+      <section 
+        className="py-16 text-white text-center relative overflow-hidden"
+        style={{
+          backgroundImage: 'linear-gradient(135deg, rgba(255,107,0,0.9) 0%, rgba(234,88,12,0.9) 100%), url("/hero-bg.jpg")',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center'
+        }}
+      >
+        <h2 className="text-3xl md:text-5xl font-bold mb-4 relative z-10" style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}>Ready to Start Your Project?</h2>
+        <p className="text-lg mb-8 relative z-10" style={{ fontFamily: "Google Sans, sans-serif" }}>Get in touch today and let's build your online presence together!</p>
+        <div className="relative z-10">
+          <PremiumCTA href="/contact" size="default" variant="secondary">
+            Contact Us
+          </PremiumCTA>
+        </div>
       </section>
 
       <WhatsAppButton />

@@ -24,22 +24,22 @@ export default function Privacy() {
       content: `We collect information that you provide directly to us and information that is automatically collected when you use our services:
 
 Personal Information:
-• Name, email address, phone number, and company name
-• Billing and payment information
-• Project requirements and business information
-• Communication preferences and correspondence
+â€¢ Name, email address, phone number, and company name
+â€¢ Billing and payment information
+â€¢ Project requirements and business information
+â€¢ Communication preferences and correspondence
 
 Technical Information:
-• IP address, browser type, and device information
-• Website usage data and analytics
-• Cookies and similar tracking technologies
-• Log files and performance data
+â€¢ IP address, browser type, and device information
+â€¢ Website usage data and analytics
+â€¢ Cookies and similar tracking technologies
+â€¢ Log files and performance data
 
 Project-Related Information:
-• Content, images, and materials you provide for projects
-• Feedback and communication during project development
-• Access credentials for third-party services (encrypted)
-• Website performance and user behavior data
+â€¢ Content, images, and materials you provide for projects
+â€¢ Feedback and communication during project development
+â€¢ Access credentials for third-party services (encrypted)
+â€¢ Website performance and user behavior data
 
 We only collect information that is necessary to provide our services effectively and improve your experience.`
     },
@@ -49,27 +49,27 @@ We only collect information that is necessary to provide our services effectivel
       content: `We use the information we collect for the following purposes:
 
 Service Delivery:
-• To provide, maintain, and improve our web development services
-• To process payments and manage your account
-• To communicate with you about projects and services
-• To provide customer support and respond to inquiries
+â€¢ To provide, maintain, and improve our web development services
+â€¢ To process payments and manage your account
+â€¢ To communicate with you about projects and services
+â€¢ To provide customer support and respond to inquiries
 
 Business Operations:
-• To analyze website usage and improve our services
-• To develop new features and functionality
-• To conduct research and analytics
-• To maintain security and prevent fraud
+â€¢ To analyze website usage and improve our services
+â€¢ To develop new features and functionality
+â€¢ To conduct research and analytics
+â€¢ To maintain security and prevent fraud
 
 Marketing and Communication:
-• To send you updates about our services (with your consent)
-• To provide relevant promotional materials
-• To send project updates and important notifications
-• To request feedback and reviews
+â€¢ To send you updates about our services (with your consent)
+â€¢ To provide relevant promotional materials
+â€¢ To send project updates and important notifications
+â€¢ To request feedback and reviews
 
 Legal Compliance:
-• To comply with legal obligations and regulations
-• To protect our rights and enforce our terms
-• To respond to legal requests and prevent harm
+â€¢ To comply with legal obligations and regulations
+â€¢ To protect our rights and enforce our terms
+â€¢ To respond to legal requests and prevent harm
 
 We do not sell or rent your personal information to third parties for their marketing purposes.`
     },
@@ -79,27 +79,27 @@ We do not sell or rent your personal information to third parties for their mark
       content: `We may share your information in the following circumstances:
 
 Service Providers:
-• Third-party vendors who assist in providing our services
-• Payment processors (Flutterwave, Paystack, mobile money providers)
-• Hosting providers and cloud service platforms
-• Email and communication service providers
-• Analytics and performance monitoring tools
+â€¢ Third-party vendors who assist in providing our services
+â€¢ Payment processors (Flutterwave, Paystack, mobile money providers)
+â€¢ Hosting providers and cloud service platforms
+â€¢ Email and communication service providers
+â€¢ Analytics and performance monitoring tools
 
 Business Transfers:
-• In connection with a merger, acquisition, or sale of assets
-• During negotiations of such transactions
-• To successor entities in business transitions
+â€¢ In connection with a merger, acquisition, or sale of assets
+â€¢ During negotiations of such transactions
+â€¢ To successor entities in business transitions
 
 Legal Requirements:
-• To comply with applicable laws and regulations
-• In response to legal process or government requests
-• To protect our rights, property, or safety
-• To prevent fraud or security issues
+â€¢ To comply with applicable laws and regulations
+â€¢ In response to legal process or government requests
+â€¢ To protect our rights, property, or safety
+â€¢ To prevent fraud or security issues
 
 With Your Consent:
-• When you explicitly authorize us to share information
-• For purposes you have approved
-• To third parties specified by you
+â€¢ When you explicitly authorize us to share information
+â€¢ For purposes you have approved
+â€¢ To third parties specified by you
 
 All third-party service providers are required to maintain appropriate security measures and use your information only for specified purposes.`
     },
@@ -109,24 +109,24 @@ All third-party service providers are required to maintain appropriate security 
       content: `We implement comprehensive security measures to protect your information:
 
 Technical Security:
-• SSL/TLS encryption for data transmission
-• Secure servers and encrypted databases
-• Regular security audits and updates
-• Firewall protection and intrusion detection
-• Access controls and authentication systems
+â€¢ SSL/TLS encryption for data transmission
+â€¢ Secure servers and encrypted databases
+â€¢ Regular security audits and updates
+â€¢ Firewall protection and intrusion detection
+â€¢ Access controls and authentication systems
 
 Organizational Security:
-• Limited access to personal information on a need-to-know basis
-• Employee training on data protection
-• Confidentiality agreements with staff and contractors
-• Regular security policy reviews and updates
+â€¢ Limited access to personal information on a need-to-know basis
+â€¢ Employee training on data protection
+â€¢ Confidentiality agreements with staff and contractors
+â€¢ Regular security policy reviews and updates
 
 Data Protection Practices:
-• Secure backup systems with encryption
-• Password protection and two-factor authentication
-• Secure file transfer protocols
-• Regular software updates and patches
-• Incident response and breach notification procedures
+â€¢ Secure backup systems with encryption
+â€¢ Password protection and two-factor authentication
+â€¢ Secure file transfer protocols
+â€¢ Regular software updates and patches
+â€¢ Incident response and breach notification procedures
 
 While we implement strong security measures, no system is completely secure. We continuously work to improve our security practices and protect your information.`
     },
@@ -136,28 +136,28 @@ While we implement strong security measures, no system is completely secure. We 
       content: `We use cookies and similar technologies to enhance your experience:
 
 Types of Cookies We Use:
-• Essential cookies: Required for website functionality
-• Performance cookies: Help us understand how visitors use our site
-• Functionality cookies: Remember your preferences and settings
-• Analytics cookies: Collect information about site usage
+â€¢ Essential cookies: Required for website functionality
+â€¢ Performance cookies: Help us understand how visitors use our site
+â€¢ Functionality cookies: Remember your preferences and settings
+â€¢ Analytics cookies: Collect information about site usage
 
 Third-Party Cookies:
-• Google Analytics for website analytics
-• Social media plugins (Facebook, Instagram, LinkedIn)
-• Payment processing services
-• Advertising and marketing platforms
+â€¢ Google Analytics for website analytics
+â€¢ Social media plugins (Facebook, Instagram, LinkedIn)
+â€¢ Payment processing services
+â€¢ Advertising and marketing platforms
 
 Your Cookie Choices:
-• Most browsers allow you to control cookies through settings
-• You can block or delete cookies at any time
-• Disabling cookies may affect website functionality
-• You can opt out of third-party cookies individually
+â€¢ Most browsers allow you to control cookies through settings
+â€¢ You can block or delete cookies at any time
+â€¢ Disabling cookies may affect website functionality
+â€¢ You can opt out of third-party cookies individually
 
 Cookie Policy:
-• We display cookie consent notices on first visit
-• You can update your cookie preferences at any time
-• We respect Do Not Track signals where applicable
-• Cookie retention periods vary by type and purpose
+â€¢ We display cookie consent notices on first visit
+â€¢ You can update your cookie preferences at any time
+â€¢ We respect Do Not Track signals where applicable
+â€¢ Cookie retention periods vary by type and purpose
 
 For more information about cookies and how to manage them, please visit your browser's help section.`
     },
@@ -167,28 +167,28 @@ For more information about cookies and how to manage them, please visit your bro
       content: `You have certain rights regarding your personal information:
 
 Access Rights:
-• Request access to your personal information
-• Receive a copy of the data we hold about you
-• Know what information we collect and how we use it
-• Understand who we share your information with
+â€¢ Request access to your personal information
+â€¢ Receive a copy of the data we hold about you
+â€¢ Know what information we collect and how we use it
+â€¢ Understand who we share your information with
 
 Correction and Update:
-• Request correction of inaccurate information
-• Update your personal details and preferences
-• Modify your communication settings
-• Change your consent preferences
+â€¢ Request correction of inaccurate information
+â€¢ Update your personal details and preferences
+â€¢ Modify your communication settings
+â€¢ Change your consent preferences
 
 Deletion Rights:
-• Request deletion of your personal information
-• Withdraw consent for data processing
-• Opt out of marketing communications
-• Close your account and associated data
+â€¢ Request deletion of your personal information
+â€¢ Withdraw consent for data processing
+â€¢ Opt out of marketing communications
+â€¢ Close your account and associated data
 
 Additional Rights:
-• Object to certain types of processing
-• Request data portability (receive data in portable format)
-• Lodge a complaint with data protection authorities
-• Restrict processing under certain circumstances
+â€¢ Object to certain types of processing
+â€¢ Request data portability (receive data in portable format)
+â€¢ Lodge a complaint with data protection authorities
+â€¢ Restrict processing under certain circumstances
 
 To exercise these rights, please contact us at info@celestialwebsolutions.net. We will respond to requests within 30 days.`
     },
@@ -198,26 +198,26 @@ To exercise these rights, please contact us at info@celestialwebsolutions.net. W
       content: `We retain your information for specific periods based on legal and business needs:
 
 Account Information:
-• Active account data: Retained while account is active
-• Inactive accounts: May be deleted after 3 years of inactivity
-• Contact information: Retained for communication purposes
-• Payment history: Retained for 7 years for tax compliance
+â€¢ Active account data: Retained while account is active
+â€¢ Inactive accounts: May be deleted after 3 years of inactivity
+â€¢ Contact information: Retained for communication purposes
+â€¢ Payment history: Retained for 7 years for tax compliance
 
 Project Data:
-• Project files and deliverables: Retained for duration of service agreement
-• Client-provided content: Returned or deleted upon request after project completion
-• Project communications: Retained for 2 years for reference
-• Backup copies: Maintained according to backup schedules (30-90 days)
+â€¢ Project files and deliverables: Retained for duration of service agreement
+â€¢ Client-provided content: Returned or deleted upon request after project completion
+â€¢ Project communications: Retained for 2 years for reference
+â€¢ Backup copies: Maintained according to backup schedules (30-90 days)
 
 Legal and Financial Records:
-• Contracts and agreements: 7 years after termination
-• Financial transactions: 7 years for tax and accounting purposes
-• Legal correspondence: Retained as long as legally required
+â€¢ Contracts and agreements: 7 years after termination
+â€¢ Financial transactions: 7 years for tax and accounting purposes
+â€¢ Legal correspondence: Retained as long as legally required
 
 Marketing Data:
-• Marketing communications: Until you unsubscribe or object
-• Analytics data: Aggregated and anonymized after 2 years
-• Cookie data: Varies by cookie type (session to 2 years)
+â€¢ Marketing communications: Until you unsubscribe or object
+â€¢ Analytics data: Aggregated and anonymized after 2 years
+â€¢ Cookie data: Varies by cookie type (session to 2 years)
 
 We regularly review and delete data that is no longer necessary. You can request early deletion of your data by contacting us.`
     },
@@ -227,28 +227,28 @@ We regularly review and delete data that is no longer necessary. You can request
       content: `We use various third-party services that may collect and process your information:
 
 Essential Services:
-• Web hosting providers (secure servers and infrastructure)
-• Domain registrars (domain management services)
-• Payment processors (Flutterwave, Paystack, mobile money services)
-• Email service providers (business communication)
+â€¢ Web hosting providers (secure servers and infrastructure)
+â€¢ Domain registrars (domain management services)
+â€¢ Payment processors (Flutterwave, Paystack, mobile money services)
+â€¢ Email service providers (business communication)
 
 Development Tools:
-• Content management systems (WordPress, custom platforms)
-• Development frameworks and libraries
-• Version control and collaboration tools
-• Testing and debugging services
+â€¢ Content management systems (WordPress, custom platforms)
+â€¢ Development frameworks and libraries
+â€¢ Version control and collaboration tools
+â€¢ Testing and debugging services
 
 Marketing and Analytics:
-• Google Analytics (website traffic analysis)
-• Social media platforms (Facebook, Instagram, LinkedIn)
-• Email marketing services (when applicable)
-• CRM systems for client management
+â€¢ Google Analytics (website traffic analysis)
+â€¢ Social media platforms (Facebook, Instagram, LinkedIn)
+â€¢ Email marketing services (when applicable)
+â€¢ CRM systems for client management
 
 Your Responsibilities:
-• Review third-party privacy policies independently
-• Understand data sharing with integrated services
-• Manage your preferences within third-party services
-• Contact third parties directly for their data practices
+â€¢ Review third-party privacy policies independently
+â€¢ Understand data sharing with integrated services
+â€¢ Manage your preferences within third-party services
+â€¢ Contact third parties directly for their data practices
 
 We carefully select third-party providers and ensure they maintain appropriate privacy and security standards. However, we are not responsible for the privacy practices of third-party services.`
     },
@@ -258,28 +258,28 @@ We carefully select third-party providers and ensure they maintain appropriate p
       content: `Your information may be transferred and processed in different locations:
 
 Primary Operations:
-• Our primary operations are based in Ghana
-• Data is primarily stored on servers in secure locations
-• Some services may use international cloud providers
-• We ensure appropriate safeguards for all transfers
+â€¢ Our primary operations are based in Ghana
+â€¢ Data is primarily stored on servers in secure locations
+â€¢ Some services may use international cloud providers
+â€¢ We ensure appropriate safeguards for all transfers
 
 Data Protection Measures:
-• Standard contractual clauses with international providers
-• Adequacy decisions and recognized transfer mechanisms
-• Encryption during transmission and storage
-• Compliance with applicable data protection laws
+â€¢ Standard contractual clauses with international providers
+â€¢ Adequacy decisions and recognized transfer mechanisms
+â€¢ Encryption during transmission and storage
+â€¢ Compliance with applicable data protection laws
 
 Third-Party Services:
-• Some third-party services may process data internationally
-• Cloud services may use data centers in multiple countries
-• We ensure providers meet appropriate security standards
-• Data processing agreements are in place with all providers
+â€¢ Some third-party services may process data internationally
+â€¢ Cloud services may use data centers in multiple countries
+â€¢ We ensure providers meet appropriate security standards
+â€¢ Data processing agreements are in place with all providers
 
 Your Rights:
-• You have the right to know where your data is processed
-• Request information about safeguards we use
-• Object to international transfers in certain circumstances
-• Contact us for specific information about data locations
+â€¢ You have the right to know where your data is processed
+â€¢ Request information about safeguards we use
+â€¢ Object to international transfers in certain circumstances
+â€¢ Contact us for specific information about data locations
 
 We take reasonable steps to ensure that your data receives adequate protection regardless of where it is processed.`
     },
@@ -289,22 +289,22 @@ We take reasonable steps to ensure that your data receives adequate protection r
       content: `We are committed to protecting the privacy of children:
 
 Age Restrictions:
-• Our services are not intended for children under 18 years old
-• We do not knowingly collect information from minors
-• Parents/guardians must provide consent for minors' use of services
-• We verify age when necessary
+â€¢ Our services are not intended for children under 18 years old
+â€¢ We do not knowingly collect information from minors
+â€¢ Parents/guardians must provide consent for minors' use of services
+â€¢ We verify age when necessary
 
 Parental Control:
-• Parents have the right to review their child's information
-• Request deletion of a child's personal information
-• Refuse further collection or use of child's information
-• Contact us immediately if you believe we have collected children's data
+â€¢ Parents have the right to review their child's information
+â€¢ Request deletion of a child's personal information
+â€¢ Refuse further collection or use of child's information
+â€¢ Contact us immediately if you believe we have collected children's data
 
 Data Collection:
-• We do not knowingly solicit data from children
-• If we learn we have collected child data, we delete it promptly
-• Special protections apply to educational or youth-focused projects
-• Enhanced consent requirements for services involving minors
+â€¢ We do not knowingly solicit data from children
+â€¢ If we learn we have collected child data, we delete it promptly
+â€¢ Special protections apply to educational or youth-focused projects
+â€¢ Enhanced consent requirements for services involving minors
 
 Reporting:
 If you believe we have inadvertently collected information from a child under 18, please contact us immediately at info@celestialwebsolutions.net, and we will take steps to delete such information.`
@@ -315,22 +315,22 @@ If you believe we have inadvertently collected information from a child under 18
       content: `We may update this privacy policy from time to time:
 
 Updates and Modifications:
-• We reserve the right to modify this policy at any time
-• Material changes will be communicated via email or website notice
-• Continued use of services after changes constitutes acceptance
-• Version history available upon request
+â€¢ We reserve the right to modify this policy at any time
+â€¢ Material changes will be communicated via email or website notice
+â€¢ Continued use of services after changes constitutes acceptance
+â€¢ Version history available upon request
 
 Notification:
-• Significant changes announced with 30 days notice
-• Policy update date shown at the top of this page
-• Email notifications for substantial policy changes
-• Website banners for important updates
+â€¢ Significant changes announced with 30 days notice
+â€¢ Policy update date shown at the top of this page
+â€¢ Email notifications for substantial policy changes
+â€¢ Website banners for important updates
 
 Your Options:
-• Review the updated policy carefully
-• Contact us if you have questions about changes
-• Exercise your rights if you disagree with updates
-• Discontinue services if you do not accept new terms
+â€¢ Review the updated policy carefully
+â€¢ Contact us if you have questions about changes
+â€¢ Exercise your rights if you disagree with updates
+â€¢ Discontinue services if you do not accept new terms
 
 We encourage you to review this privacy policy periodically to stay informed about how we protect your information.`
     },
@@ -340,31 +340,31 @@ We encourage you to review this privacy policy periodically to stay informed abo
       content: `If you have questions, concerns, or requests regarding this privacy policy:
 
 Primary Contact:
-• Email: info@celestialwebsolutions.net
-• Phone: +233 245 671 832
-• WhatsApp: +233 530 505 031
+â€¢ Email: info@celestialwebsolutions.net
+â€¢ Phone: +233 245 671 832
+â€¢ WhatsApp: +233 530 505 031
 
 Physical Address:
-• Celestial Web Solutions, 235 Agblor Link, Keta, Ghana
-• Accra, Ghana
+â€¢ Celestial Web Solutions, 235 Agblor Link, Keta, Ghana
+â€¢ Accra, Ghana
 
 
 Support Hours:
-• Monday to Friday: 9:00 AM - 6:00 PM GMT
-• Saturday: 10:00 AM - 4:00 PM GMT
-• Sunday: Closed
+â€¢ Monday to Friday: 9:00 AM - 6:00 PM GMT
+â€¢ Saturday: 10:00 AM - 4:00 PM GMT
+â€¢ Sunday: Closed
 
 Response Time:
-• We aim to respond to all inquiries within 2-3 business days
-• Complex requests may take up to 30 days
-• Urgent privacy concerns addressed as quickly as possible
-• Written confirmation provided for all requests
+â€¢ We aim to respond to all inquiries within 2-3 business days
+â€¢ Complex requests may take up to 30 days
+â€¢ Urgent privacy concerns addressed as quickly as possible
+â€¢ Written confirmation provided for all requests
 
 What to Include:
-• Clear description of your request or concern
-• Your contact information for follow-up
-• Relevant account or project details
-• Any supporting documentation
+â€¢ Clear description of your request or concern
+â€¢ Your contact information for follow-up
+â€¢ Relevant account or project details
+â€¢ Any supporting documentation
 
 We take privacy seriously and are committed to addressing your concerns promptly and professionally.`
     }
@@ -426,12 +426,12 @@ We take privacy seriously and are committed to addressing your concerns promptly
               </h1>
               <p
                 className="text-xl text-orange-100 max-w-2xl mx-auto leading-relaxed"
-                style={{ fontFamily: "Quicksand, sans-serif" }}
+                style={{ fontFamily: "Google Sans, sans-serif" }}
               >
                 Your privacy is important to us. Learn how we collect, use, and protect your information.
               </p>
               <div className="mt-6 text-orange-100">
-                <p style={{ fontFamily: "Quicksand, sans-serif" }}>
+                <p style={{ fontFamily: "Google Sans, sans-serif" }}>
                   Last Updated: January 15, 2025
                 </p>
               </div>
@@ -451,7 +451,7 @@ We take privacy seriously and are committed to addressing your concerns promptly
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: index * 0.05 }}
                   className="flex items-center space-x-2 bg-white dark:bg-gray-700 px-4 py-2 rounded-lg shadow-sm border border-orange-200 dark:border-orange-600 hover:bg-orange-50 dark:hover:bg-gray-600 transition-colors"
-                  style={{ fontFamily: "Quicksand, sans-serif" }}
+                  style={{ fontFamily: "Google Sans, sans-serif" }}
                 >
                   <section.icon size={16} className="text-orange-500" />
                   <span className="text-gray-700 dark:text-gray-300 text-sm">
@@ -483,7 +483,7 @@ We take privacy seriously and are committed to addressing your concerns promptly
                   </h2>
                   <p
                     className="text-blue-600 dark:text-blue-200 leading-relaxed"
-                    style={{ fontFamily: "Quicksand, sans-serif" }}
+                    style={{ fontFamily: "Google Sans, sans-serif" }}
                   >
                     At Celestial Web Solutions, we are committed to protecting your privacy and handling your personal information with care and respect. 
                     This privacy policy explains how we collect, use, share, and protect your information when you use our services.
@@ -522,7 +522,7 @@ We take privacy seriously and are committed to addressing your concerns promptly
                   {/* Section Content */}
                   <div
                     className="text-gray-700 dark:text-gray-300 leading-relaxed whitespace-pre-line"
-                    style={{ fontFamily: "Quicksand, sans-serif" }}
+                    style={{ fontFamily: "Google Sans, sans-serif" }}
                   >
                     {section.content}
                   </div>
@@ -549,7 +549,7 @@ We take privacy seriously and are committed to addressing your concerns promptly
               </h3>
               <p
                 className="text-orange-100 mb-8 max-w-2xl mx-auto leading-relaxed"
-                style={{ fontFamily: "Quicksand, sans-serif" }}
+                style={{ fontFamily: "Google Sans, sans-serif" }}
               >
                 If you have any questions about this Privacy Policy or how we handle your information, 
                 please don't hesitate to contact us. We're here to address your concerns.
@@ -565,13 +565,13 @@ We take privacy seriously and are committed to addressing your concerns promptly
               </div>
 
               <div className="mt-8 text-orange-100 space-y-2">
-                <p style={{ fontFamily: "Quicksand, sans-serif" }}>
+                <p style={{ fontFamily: "Google Sans, sans-serif" }}>
                   Email: info@celestialwebsolutions.net
                 </p>
-                <p style={{ fontFamily: "Quicksand, sans-serif" }}>
+                <p style={{ fontFamily: "Google Sans, sans-serif" }}>
                   Phone: +233 245 671 832
                 </p>
-                <p style={{ fontFamily: "Quicksand, sans-serif" }}>
+                <p style={{ fontFamily: "Google Sans, sans-serif" }}>
                   Address: 235 Agblor Link, Keta, Ghana
                 </p>
               </div>

@@ -64,11 +64,11 @@ export default function FAQs() {
       questions: [
         {
           question: "How much does a website cost?",
-          answer: "Our websites start from ₵2,500 for basic business websites and can range up to ₵25,000+ for complex e-commerce platforms. We offer flexible payment plans and provide detailed quotes based on your specific requirements."
+          answer: "Our websites start from â‚µ2,500 for basic business websites and can range up to â‚µ25,000+ for complex e-commerce platforms. We offer flexible payment plans and provide detailed quotes based on your specific requirements."
         },
         {
           question: "Do you accept payments in Cedis?",
-          answer: "Yes! We accept payments in Ghana Cedis (₵) through mobile money (MTN, Vodafone, AirtelTigo), bank transfers, and cash payments. We also accept international payments via Flutterwave, DPO Pay and Paystack for overseas clients."
+          answer: "Yes! We accept payments in Ghana Cedis (â‚µ) through mobile money (MTN, Vodafone, AirtelTigo), bank transfers, and cash payments. We also accept international payments via Flutterwave, DPO Pay and Paystack for overseas clients."
         },
         {
           question: "Do you offer payment plans?",
@@ -99,7 +99,7 @@ export default function FAQs() {
         },
         {
           question: "Do you provide website maintenance?",
-          answer: "Yes, we offer ongoing maintenance packages starting from ₵150/month including security updates, content updates, backup services, and technical support. We also offer one-time maintenance services."
+          answer: "Yes, we offer ongoing maintenance packages starting from â‚µ150/month including security updates, content updates, backup services, and technical support. We also offer one-time maintenance services."
         }
       ]
     },
@@ -188,7 +188,7 @@ export default function FAQs() {
               </h1>
               <p
                 className="text-xl text-orange-100 max-w-2xl mx-auto leading-relaxed drop-shadow-md"
-                style={{ fontFamily: "Quicksand, sans-serif" }}
+                style={{ fontFamily: "Google Sans, sans-serif" }}
               >
                 Get answers to common questions about our web development services, pricing, and process
               </p>
@@ -214,7 +214,7 @@ export default function FAQs() {
                   <category.icon size={20} className="text-orange-500" />
                   <span
                     className="font-medium text-gray-700 dark:text-gray-300"
-                    style={{ fontFamily: "Quicksand, sans-serif" }}
+                    style={{ fontFamily: "Google Sans, sans-serif" }}
                   >
                     {category.category}
                   </span>
@@ -294,7 +294,7 @@ export default function FAQs() {
                               <div className="px-6 pb-4 border-t border-gray-100 dark:border-gray-700">
                                 <p
                                   className="text-gray-600 dark:text-gray-300 leading-relaxed pt-4"
-                                  style={{ fontFamily: "Quicksand, sans-serif" }}
+                                  style={{ fontFamily: "Google Sans, sans-serif" }}
                                 >
                                   {faq.answer}
                                 </p>
@@ -328,7 +328,7 @@ export default function FAQs() {
               </h3>
               <p
                 className="text-gray-600 dark:text-gray-300 mb-8 max-w-2xl mx-auto leading-relaxed"
-                style={{ fontFamily: "Quicksand, sans-serif" }}
+                style={{ fontFamily: "Google Sans, sans-serif" }}
               >
                 Can't find the answer you're looking for? Our team is here to help! Get in touch for a personalized consultation.
               </p>
