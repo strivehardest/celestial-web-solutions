@@ -1,11 +1,13 @@
 import { useRouter } from "next/router";
 import Link from "next/link";
+import { blogArticles as blogList } from '../blog';
 import { motion } from "framer-motion";
 import {
   Calendar,
   Clock,
   User,
   ArrowLeft,
+  ArrowRight,
   Tag,
   TrendingUp,
   Mail,
@@ -18,6 +20,68 @@ import { useState, useEffect } from 'react';
 
 // Complete blog articles data with formatted content
 const blogArticles = {
+    "web-design-trends-ghana-world-2026": {
+      title: "Web Design Trends Businesses in Ghana and Worldwide Should Prepare for in 2026",
+      category: "Web Design",
+      author: "Celestial Team",
+      date: "December 29, 2025",
+      readTime: "4 min read",
+      image: "https://images.unsplash.com/photo-1635405050330-b0824eb1bf26?q=80&w=1169&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      excerpt: "Stay ahead in 2026! Discover the top web design trends for Ghanaian and global businesses: AI-driven personalization, minimal UIs, speed, voice optimization, and accessibility.",
+      tags: ["web design", "trends", "AI", "accessibility", "2026"],
+      hashtags: ["#WebDesign2026", "#GhanaBusiness", "#DigitalTrends", "#CelestialWebSolutions"],
+      seoKeywords: "web design trends 2026, AI personalization, minimal UI, website speed, voice search optimization, accessibility, Ghana web design, global web trends",
+      content: `
+        <article class="space-y-8 text-gray-900 dark:text-gray-100">
+          <p class="text-lg text-gray-800 dark:text-gray-200">As businesses in Ghana and across the world continue to embrace digital transformation, web design trends are evolving rapidly. Preparing early for 2026 allows businesses to stay competitive, attract global customers, and deliver better digital experiences.</p>
+          <div class="space-y-6">
+            <h2 class="text-2xl font-bold text-gray-900 dark:text-white">1. AI-Driven Personalization</h2>
+            <p class="text-gray-800 dark:text-gray-200">In 2026, websites will increasingly use artificial intelligence to personalize user experiences. From smart product recommendations to automated customer support, AI helps businesses serve both local and international audiences more efficiently.</p>
+            <h2 class="text-2xl font-bold text-gray-900 dark:text-white">2. Clean and Minimal User Interfaces</h2>
+            <p class="text-gray-800 dark:text-gray-200">Modern users prefer simple, clutter-free websites. Minimalist layouts, bold typography, and clear messaging improve readability and user engagement, regardless of location or device.</p>
+            <h2 class="text-2xl font-bold text-gray-900 dark:text-white">3. Speed and Performance Across Regions</h2>
+            <p class="text-gray-800 dark:text-gray-200">Fast-loading websites are critical, especially for international audiences accessing sites from different regions. Optimized code, compressed images, and reliable hosting ensure smooth performance globally.</p>
+            <h2 class="text-2xl font-bold text-gray-900 dark:text-white">4. Voice and Search Optimization</h2>
+            <p class="text-gray-800 dark:text-gray-200">With the growth of voice assistants worldwide, websites must be optimized for conversational search queries. This helps businesses appear in search results both in Ghana and internationally.</p>
+            <h2 class="text-2xl font-bold text-gray-900 dark:text-white">5. Inclusive and Accessible Design</h2>
+            <p class="text-gray-800 dark:text-gray-200">Accessible websites ensure that users of all abilities can interact with your content. Accessibility is becoming a global standard and reflects professionalism and social responsibility.</p>
+          </div>
+          <h2 class="text-2xl font-bold text-gray-900 dark:text-white">Conclusion</h2>
+          <p class="text-gray-800 dark:text-gray-200">Businesses that prepare for 2026 will stand out by offering smarter, faster, and more inclusive websites. Celestial Web Solutions helps clients in Ghana and beyond build modern websites designed for global reach and long-term success.</p>
+        </article>
+      `
+    },
+    "future-ready-website-ghana-international-2026": {
+      title: "Building a Future-Ready Website for Ghanaian and International Markets in 2026",
+      category: "Web Development",
+      author: "Celestial Team",
+      date: "December 29, 2025",
+      readTime: "4 min read",
+      image: "https://images.unsplash.com/photo-1547658719-da2b51169166?q=80&w=764&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      excerpt: "Learn how to build a website that grows your business in Ghana and globally in 2026: scalable architecture, security, global payments, SEO, and easy content management.",
+      tags: ["future-ready", "global", "Ghana", "website", "2026"],
+      hashtags: ["#FutureReady", "#GhanaWeb", "#InternationalBusiness", "#CelestialWebSolutions"],
+      seoKeywords: "future-ready website, Ghana international website, scalable web architecture, website security, global payment integration, SEO for Ghana, content management 2026",
+      content: `
+        <article class="space-y-8 text-gray-900 dark:text-gray-100">
+          <p class="text-lg text-gray-800 dark:text-gray-200">In an increasingly connected world, websites must be built to serve users across borders. A future-ready website ensures your business can grow locally in Ghana while expanding confidently into international markets in 2026 and beyond.</p>
+          <div class="space-y-6">
+            <h2 class="text-2xl font-bold text-gray-900 dark:text-white">1. Scalable Website Architecture</h2>
+            <p class="text-gray-800 dark:text-gray-200">A scalable website can handle growth in traffic, content, and functionality without compromising performance. This is essential for businesses targeting both local and global customers.</p>
+            <h2 class="text-2xl font-bold text-gray-900 dark:text-white">2. Strong Security and Data Protection</h2>
+            <p class="text-gray-800 dark:text-gray-200">Cybersecurity is a global concern. Secure websites protect customer data, build trust, and meet international best practices for online safety.</p>
+            <h2 class="text-2xl font-bold text-gray-900 dark:text-white">3. Global Payment and Communication Integration</h2>
+            <p class="text-gray-800 dark:text-gray-200">Future-ready websites integrate easily with international payment gateways, contact forms, live chat, and messaging platforms to support customers worldwide.</p>
+            <h2 class="text-2xl font-bold text-gray-900 dark:text-white">4. Search Engine Optimization for Global Reach</h2>
+            <p class="text-gray-800 dark:text-gray-200">Websites must be optimized for both local SEO in Ghana and broader international search visibility. Proper structure, fast loading times, and high-quality content support long-term ranking success.</p>
+            <h2 class="text-2xl font-bold text-gray-900 dark:text-white">5. Easy Content Management</h2>
+            <p class="text-gray-800 dark:text-gray-200">A good website allows business owners to update content easily, publish blog posts, and manage pages without technical difficulty.</p>
+          </div>
+          <h2 class="text-2xl font-bold text-gray-900 dark:text-white">Conclusion</h2>
+          <p class="text-gray-800 dark:text-gray-200">A future-ready website is more than a digital presence — it is a growth platform. At Celestial Web Solutions, we design and develop websites that support businesses in Ghana and internationally, ensuring they are prepared for 2026 and beyond.</p>
+        </article>
+      `
+    },
   "best-web-designers-in-accra-ghana-2025": {
     title: "Best Web Designers in Accra, Ghana 2025: Top 10 Agencies Reviewed",
     category: "Web Design",
@@ -1968,12 +2032,28 @@ const blogArticles = {
 export default function BlogPost() {
   const router = useRouter();
   const { slug } = router.query;
+  const [nav, setNav] = useState({ prev: null, next: null });
   const [article, setArticle] = useState(null);
   const [copied, setCopied] = useState(false);
 
   useEffect(() => {
     if (slug && blogArticles[slug]) {
       setArticle(blogArticles[slug]);
+      // Defensive: blogList is an array, blogArticles is an object
+      if (Array.isArray(blogList)) {
+        const idx = blogList.findIndex(a => a.slug === slug);
+        if (idx !== -1) {
+          setNav({
+            prev: idx > 0 ? blogList[idx - 1] : null,
+            next: idx < blogList.length - 1 ? blogList[idx + 1] : null
+          });
+        } else {
+          setNav({ prev: null, next: null });
+        }
+      }
+    } else {
+      setArticle(null);
+      setNav({ prev: null, next: null });
     }
   }, [slug]);
 
@@ -2053,13 +2133,20 @@ export default function BlogPost() {
         </div>
 
         <div className="relative z-10 container mx-auto px-4 h-full flex flex-col justify-center">
-          <Link
-            href="/blog"
-            className="inline-flex items-center text-white hover:text-orange-100 mb-8"
-          >
-            <ArrowLeft className="w-4 h-4 mr-2" />
-            Back to Blog
-          </Link>
+          <div className="mt-16 md:mt-24 lg:mt-28 flex">
+            <PremiumCTA
+              href="/blog"
+              size="small"
+              variant="primary"
+              className="mb-8 !px-6 !py-3"
+              icon={false}
+            >
+              <span className="flex items-center gap-2">
+                <ArrowLeft className="w-4 h-4" />
+                Back to Blog
+              </span>
+            </PremiumCTA>
+          </div>
 
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -2218,35 +2305,64 @@ export default function BlogPost() {
         </div>
       </section>
 
-      {/* CTA Section - Use PremiumCTA */}
-      <section className="py-20 bg-gradient-to-br from-orange-500 via-orange-600 to-red-500 text-white">
-        <div className="container mx-auto px-4 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
-            <h2
-              className="text-4xl font-bold mb-6"
-              style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}
-            >
-              Need Professional Web Services?
-            </h2>
-            <p
-              className="text-xl text-orange-100 mb-8 max-w-2xl mx-auto"
-              style={{ fontFamily: "Google Sans, sans-serif" }}
-            >
-              Let Celestial Web Solutions help you build a powerful online presence that drives real results.
-            </p>
-            <div className="flex flex-wrap gap-4 justify-center">
-              <PremiumCTA href="/contact" size="large" variant="primary">
-                Contact Us
-              </PremiumCTA>
-              <PremiumCTA href="/services" size="large" variant="primary">
-                View Our Services
+      {/* Navigation CTAs */}
+      <section className="py-16 bg-gradient-to-br from-orange-500 via-orange-600 to-red-500 text-white">
+        <div className="container mx-auto px-4 flex flex-col items-center gap-8">
+          <div className="w-full max-w-2xl grid grid-cols-1 md:grid-cols-3 gap-6">
+            {/* Previous Blog CTA */}
+            <div className="min-h-[110px] flex items-stretch">
+              {nav.prev ? (
+                <PremiumCTA
+                  href={`/blog/${nav.prev.slug}`}
+                  size="default"
+                  variant="primary"
+                  icon={false}
+                  className="w-full h-full flex flex-col items-start justify-center px-8 py-6 rounded-3xl md:rounded-2xl"
+                >
+                  <span className="flex items-center gap-2 text-lg font-semibold">
+                    <ArrowLeft className="w-5 h-5" />
+                    Previous Blog
+                  </span>
+                  <span className="block text-sm font-normal mt-2 opacity-80 text-left">{nav.prev.title}</span>
+                </PremiumCTA>
+              ) : <div className="w-full h-full border border-white/20 rounded-3xl md:rounded-2xl bg-white/10" />}
+            </div>
+
+            {/* Back to Blog CTA (centered) */}
+            <div className="min-h-[110px] flex items-stretch">
+              <PremiumCTA
+                href="/blog"
+                size="default"
+                variant="primary"
+                icon={false}
+                className="w-full h-full flex flex-col items-center justify-center px-8 py-6 rounded-3xl md:rounded-2xl"
+              >
+                <span className="flex items-center gap-2 text-lg font-semibold">
+                  <ArrowLeft className="w-5 h-5" />
+                  Back to Blog
+                </span>
               </PremiumCTA>
             </div>
-          </motion.div>
+
+            {/* Next Blog CTA */}
+            <div className="min-h-[110px] flex items-stretch">
+              {nav.next ? (
+                <PremiumCTA
+                  href={`/blog/${nav.next.slug}`}
+                  size="default"
+                  variant="primary"
+                  icon={false}
+                  className="w-full h-full flex flex-col items-end justify-center px-8 py-6 rounded-3xl md:rounded-2xl"
+                >
+                  <span className="flex items-center gap-2 text-lg font-semibold">
+                    Next Blog
+                    <ArrowRight className="w-5 h-5" />
+                  </span>
+                  <span className="block text-sm font-normal mt-2 opacity-80 text-right">{nav.next.title}</span>
+                </PremiumCTA>
+              ) : <div className="w-full h-full border border-white/20 rounded-3xl md:rounded-2xl bg-white/10" />}
+            </div>
+          </div>
         </div>
       </section>
 

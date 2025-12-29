@@ -8,7 +8,33 @@ import WhatsAppButton from '../components/WhatsAppButton';
 import { image } from "framer-motion/client";
 
 // Blog articles data with external images
-const blogArticles = [
+export const blogArticles = [
+    {
+      id: 1001,
+      slug: "web-design-trends-ghana-world-2026",
+      title: "Web Design Trends Businesses in Ghana and Worldwide Should Prepare for in 2026",
+      excerpt: "Stay ahead in 2026! Discover the top web design trends for Ghanaian and global businesses: AI-driven personalization, minimal UIs, speed, voice optimization, and accessibility.",
+      category: "Web Design",
+      author: "Celestial Team",
+      date: "December 29, 2025",
+      readTime: "4 min read",
+      image: "https://images.unsplash.com/photo-1635405050330-b0824eb1bf26?q=80&w=1169&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      featured: true,
+      tags: ["web design", "trends", "AI", "accessibility", "2026"]
+    },
+    {
+      id: 1002,
+      slug: "future-ready-website-ghana-international-2026",
+      title: "Building a Future-Ready Website for Ghanaian and International Markets in 2026",
+      excerpt: "Learn how to build a website that grows your business in Ghana and globally in 2026: scalable architecture, security, global payments, SEO, and easy content management.",
+      category: "Web Development",
+      author: "Celestial Team",
+      date: "December 29, 2025",
+      readTime: "4 min read",
+      image: "https://images.unsplash.com/photo-1547658719-da2b51169166?q=80&w=764&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      featured: true,
+      tags: ["future-ready", "global", "Ghana", "website", "2026"]
+    },
   {
     id: 1,
     slug: "best-web-designers-in-accra-ghana-2025",
@@ -297,70 +323,72 @@ export default function BlogPage() {
                     transition={{ delay: index * 0.1 }}
                     className="bg-white dark:bg-gray-900 rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 group"
                   >
-                    <Link href={`/blog/${article.slug}`}>
-                      <div className="cursor-pointer">
-                        <div className="relative h-64 overflow-hidden">
-                          <img
-                            src={article.image}
-                            alt={article.title}
-                            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                          />
-                          <div className="absolute top-4 left-4">
-                            <span className="bg-orange-500 text-white px-4 py-2 rounded-full text-sm font-semibold">
-                              {article.category}
-                            </span>
-                          </div>
-                        </div>
-
-                        <div className="p-8">
-                          <h3 
-                            className="text-2xl font-bold text-gray-900 dark:text-white mb-4 group-hover:text-orange-500 dark:group-hover:text-orange-400 transition-colors"
-                            style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}
-                          >
-                            {article.title}
-                          </h3>
-
-                          <p 
-                            className="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed"
-                            style={{ fontFamily: 'Google Sans, sans-serif' }}
-                          >
-                            {article.excerpt}
-                          </p>
-
-                          <div className="flex items-center justify-between text-sm text-gray-500 dark:text-gray-400 mb-6">
-                            <div className="flex items-center gap-4">
-                              <span className="flex items-center gap-1">
-                                <Calendar className="w-4 h-4" />
-                                {article.date}
-                              </span>
-                              <span className="flex items-center gap-1">
-                                <Clock className="w-4 h-4" />
-                                {article.readTime}
+                    <div className="cursor-pointer">
+                      <Link href={`/blog/${article.slug}`} className="block">
+                        <span>
+                          <div className="relative h-64 overflow-hidden">
+                            <img
+                              src={article.image}
+                              alt={article.title}
+                              className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                            />
+                            <div className="absolute top-4 left-4">
+                              <span className="bg-orange-500 text-white px-4 py-2 rounded-full text-sm font-semibold">
+                                {article.category}
                               </span>
                             </div>
                           </div>
 
-                          <div className="flex items-center justify-between">
-                            <span className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
-                              <User className="w-4 h-4" />
-                              {article.author}
-                            </span>
-                            <PremiumCTA
-                              href={`/blog/${article.slug}`}
-                              size="small"
-                              variant="primary"
-                              className="!px-4 !py-2 !text-sm"
-                              icon={false}
+                          <div className="p-8">
+                            <h3 
+                              className="text-2xl font-bold text-gray-900 dark:text-white mb-4 group-hover:text-orange-500 dark:group-hover:text-orange-400 transition-colors"
+                              style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}
                             >
-                              <span className="flex items-center gap-2">
-                                Read More
-                                <ArrowRight className="w-5 h-5" />
+                              {article.title}
+                            </h3>
+
+                            <p 
+                              className="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed"
+                              style={{ fontFamily: 'Google Sans, sans-serif' }}
+                            >
+                              {article.excerpt}
+                            </p>
+
+                            <div className="flex items-center justify-between text-sm text-gray-500 dark:text-gray-400 mb-6">
+                              <div className="flex items-center gap-4">
+                                <span className="flex items-center gap-1">
+                                  <Calendar className="w-4 h-4" />
+                                  {article.date}
+                                </span>
+                                <span className="flex items-center gap-1">
+                                  <Clock className="w-4 h-4" />
+                                  {article.readTime}
+                                </span>
+                              </div>
+                            </div>
+
+                            <div className="flex items-center justify-between">
+                              <span className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
+                                <User className="w-4 h-4" />
+                                {article.author}
                               </span>
-                            </PremiumCTA>
+                              <PremiumCTA
+                                href={`/blog/${article.slug}`}
+                                size="small"
+                                variant="primary"
+                                className="!px-4 !py-2 !text-sm"
+                                icon={false}
+                              >
+                                <span className="flex items-center gap-2">
+                                  Read More
+                                  <ArrowRight className="w-5 h-5" />
+                                </span>
+                              </PremiumCTA>
+                            </div>
                           </div>
-                        </div>
-                      </div>
-                    </Link>
+                        </span>
+                      </Link>
+                    </div>
                   </motion.article>
                 ))}
               </div>
@@ -379,7 +407,7 @@ export default function BlogPage() {
                 className="text-3xl md:text-4xl font-bold mb-12 text-gray-900 dark:text-white"
                 style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}
               >
-                {selectedCategory === "All" ? "Latest Articles" : `${selectedCategory} Articles`}
+                {selectedCategory === "All" ? "More Articles" : `${selectedCategory} Articles`}
               </motion.h2>
 
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -392,62 +420,64 @@ export default function BlogPage() {
                     transition={{ delay: index * 0.1 }}
                     className="bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 group"
                   >
-                    <Link href={`/blog/${article.slug}`}>
-                      <div className="cursor-pointer">
-                        <div className="relative h-48 overflow-hidden">
-                          <img
-                            src={article.image}
-                            alt={article.title}
-                            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                          />
-                          <div className="absolute top-4 left-4">
-                            <span className="bg-white/20 backdrop-blur-sm text-white px-3 py-1 rounded-full text-sm font-semibold">
-                              {article.category}
-                            </span>
-                          </div>
-                        </div>
-
-                        <div className="p-6">
-                          <h3 
-                            className="text-xl font-bold text-gray-900 dark:text-white mb-3 group-hover:text-orange-500 dark:group-hover:text-orange-400 transition-colors line-clamp-2"
-                            style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}
-                          >
-                            {article.title}
-                          </h3>
-
-                          <p 
-                            className="text-gray-600 dark:text-gray-300 mb-4 leading-relaxed line-clamp-3"
-                            style={{ fontFamily: 'Google Sans, sans-serif' }}
-                          >
-                            {article.excerpt}
-                          </p>
-
-                          <div className="flex items-center justify-between text-xs text-gray-500 dark:text-gray-400 mb-4">
-                            <span className="flex items-center gap-1">
-                              <Calendar className="w-3 h-3" />
-                              {article.date}
-                            </span>
-                            <span className="flex items-center gap-1">
-                              <Clock className="w-3 h-3" />
-                              {article.readTime}
-                            </span>
+                    <div className="cursor-pointer">
+                      <Link href={`/blog/${article.slug}`} className="block">
+                        <span>
+                          <div className="relative h-48 overflow-hidden">
+                            <img
+                              src={article.image}
+                              alt={article.title}
+                              className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                            />
+                            <div className="absolute top-4 left-4">
+                              <span className="bg-white/20 backdrop-blur-sm text-white px-3 py-1 rounded-full text-sm font-semibold">
+                                {article.category}
+                              </span>
+                            </div>
                           </div>
 
-                          <PremiumCTA
-                            href={`/blog/${article.slug}`}
-                            size="small"
-                            variant="primary"
-                            className="!px-4 !py-2 !text-sm"
-                            icon={false}
-                          >
-                            <span className="flex items-center gap-2">
-                              Read Article
-                              <ArrowRight className="w-4 h-4" />
-                            </span>
-                          </PremiumCTA>
-                        </div>
-                      </div>
-                    </Link>
+                          <div className="p-6">
+                            <h3 
+                              className="text-xl font-bold text-gray-900 dark:text-white mb-3 group-hover:text-orange-500 dark:group-hover:text-orange-400 transition-colors line-clamp-2"
+                              style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}
+                            >
+                              {article.title}
+                            </h3>
+
+                            <p 
+                              className="text-gray-600 dark:text-gray-300 mb-4 leading-relaxed line-clamp-3"
+                              style={{ fontFamily: 'Google Sans, sans-serif' }}
+                            >
+                              {article.excerpt}
+                            </p>
+
+                            <div className="flex items-center justify-between text-xs text-gray-500 dark:text-gray-400 mb-4">
+                              <span className="flex items-center gap-1">
+                                <Calendar className="w-3 h-3" />
+                                {article.date}
+                              </span>
+                              <span className="flex items-center gap-1">
+                                <Clock className="w-3 h-3" />
+                                {article.readTime}
+                              </span>
+                            </div>
+
+                            <PremiumCTA
+                              href={`/blog/${article.slug}`}
+                              size="small"
+                              variant="primary"
+                              className="!px-4 !py-2 !text-sm"
+                              icon={false}
+                            >
+                              <span className="flex items-center gap-2">
+                                Read Article
+                                <ArrowRight className="w-4 h-4" />
+                              </span>
+                            </PremiumCTA>
+                          </div>
+                        </span>
+                      </Link>
+                    </div>
                   </motion.article>
                 ))}
               </div>

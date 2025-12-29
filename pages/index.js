@@ -255,13 +255,13 @@ const techStackCategories = [
 // Hero slideshow images - Featuring actual project screenshots
 const heroImages = [
   {
-    image: '/png/projects/myspace-furniture.png',
+    image: '/png/screenshots/myspace-furniture-full.png',
     title: 'My Space Furniture',
     category: 'E-Commerce',
     link: '/portfolio/myspace-furniture'
   },
   {
-    image: '/png/projects/ghanaupdates.png',
+    image: '/png/screenshots/ghanaupdates-full.png',
     title: 'Ghana Updates Online',
     category: 'News & Media',
     link: '/portfolio/ghana-updates-online'
@@ -273,13 +273,13 @@ const heroImages = [
     link: '/portfolio/elolo-agbleke-website'
   },
   {
-    image: '/png/projects/finance-tracker.png',
+    image: '/png/screenshots/finance-tracker-full.png',
     title: 'Finance Tracker',
     category: 'Web Application',
     link: '/portfolio/finance-tracker'
   },
   {
-    image: '/png/projects/celestial1.png',
+    image: '/png/screenshots/celestial-shopping.png',
     title: 'Celestial Shopping',
     category: 'E-Commerce',
     link: '/portfolio/celestial-shopping'
