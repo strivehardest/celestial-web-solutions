@@ -19,13 +19,13 @@ These terms constitute a legally binding agreement between you and Celestial Web
       icon: Users,
       content: `Celestial Web Solutions provides web development, web design, e-commerce solutions, digital marketing, SEO optimization, and related technology services. Our services include but are not limited to:
 
-â€¢ Custom website development using modern technologies (React, Next.js, WordPress, etc.)
-â€¢ Responsive web design and user experience optimization
-â€¢ E-commerce platform development and integration
-â€¢ Search engine optimization (SEO) services
-â€¢ Website maintenance and support services
-â€¢ Digital marketing and online advertising management
-â€¢ Domain registration and web hosting services
+• Custom website development using modern technologies (React, Next.js, WordPress, etc.)
+• Responsive web design and user experience optimization
+• E-commerce platform development and integration
+• Search engine optimization (SEO) services
+• Website maintenance and support services
+• Digital marketing and online advertising management
+• Domain registration and web hosting services
 
 All services are provided according to the specifications agreed upon in individual project contracts or service agreements.`
     },
@@ -34,14 +34,14 @@ All services are provided according to the specifications agreed upon in individ
       icon: CreditCard,
       content: `Payment terms are specified in individual project agreements. Unless otherwise agreed:
 
-â€¢ Project payments are due according to the payment schedule outlined in your project agreement
-â€¢ We accept payments in Ghana Cedis (â‚µ) through mobile money, bank transfer, cash, and international payments via Flutterwave/Paystack
-â€¢ A deposit of 50% is typically required before work commences
-â€¢ Final payment is due upon project completion and before final delivery
-â€¢ Monthly service fees (hosting, maintenance, SEO) are due in advance
-â€¢ Late payments may incur a fee of 2% per month on outstanding amounts
-â€¢ All prices quoted are valid for 30 days unless otherwise stated
-â€¢ Additional work beyond the original scope will be charged separately
+• Project payments are due according to the payment schedule outlined in your project agreement
+• We accept payments in Ghana Cedis (₵) through mobile money, bank transfer, cash, and international payments via Flutterwave/Paystack
+• A deposit of 50% is typically required before work commences
+• Final payment is due upon project completion and before final delivery
+• Monthly service fees (hosting, maintenance, SEO) are due in advance
+• Late payments may incur a fee of 2% per month on outstanding amounts
+• All prices quoted are valid for 30 days unless otherwise stated
+• Additional work beyond the original scope will be charged separately
 
 Payment schedules and methods will be clearly outlined in your project agreement.`
     },
@@ -50,12 +50,12 @@ Payment schedules and methods will be clearly outlined in your project agreement
       icon: Clock,
       content: `Project timelines are estimates based on project complexity and scope:
 
-â€¢ Timeline estimates are provided in good faith based on project requirements
-â€¢ Actual delivery dates may vary due to project complexity, client feedback cycles, or unforeseen technical challenges
-â€¢ Client delays in providing required materials, feedback, or approvals may extend project timelines
-â€¢ We will communicate any significant delays promptly and work to minimize impact
-â€¢ Rush projects may incur additional fees (25-50% surcharge)
-â€¢ Project completion is subject to final client approval and payment
+• Timeline estimates are provided in good faith based on project requirements
+• Actual delivery dates may vary due to project complexity, client feedback cycles, or unforeseen technical challenges
+• Client delays in providing required materials, feedback, or approvals may extend project timelines
+• We will communicate any significant delays promptly and work to minimize impact
+• Rush projects may incur additional fees (25-50% surcharge)
+• Project completion is subject to final client approval and payment
 â€¢ We strive to deliver projects on or before the agreed timeline
 
 Timeline adjustments will be communicated and agreed upon with clients as needed.`
@@ -65,14 +65,14 @@ Timeline adjustments will be communicated and agreed upon with clients as needed
       icon: CheckCircle,
       content: `Clients are responsible for providing the following to ensure successful project completion:
 
-â€¢ Accurate project requirements and specifications
-â€¢ Timely provision of content, images, logos, and other materials
-â€¢ Prompt feedback and approvals during the development process
-â€¢ Access to necessary third-party services (hosting, domain, existing systems)
-â€¢ Payment according to agreed schedule
-â€¢ Reasonable and constructive feedback during review phases
-â€¢ Final content review and approval before project launch
-â€¢ Compliance with applicable laws and regulations for their business
+• Accurate project requirements and specifications
+• Timely provision of content, images, logos, and other materials
+• Prompt feedback and approvals during the development process
+• Access to necessary third-party services (hosting, domain, existing systems)
+• Payment according to agreed schedule
+• Reasonable and constructive feedback during review phases
+• Final content review and approval before project launch
+• Compliance with applicable laws and regulations for their business
 
 Delays in client responsibilities may impact project timelines and may incur additional charges for extended project duration.`
     },
@@ -81,13 +81,13 @@ Delays in client responsibilities may impact project timelines and may incur add
       icon: Shield,
       content: `Ownership rights are clearly defined as follows:
 
-â€¢ Upon full payment, clients own the final delivered website/application and custom code developed specifically for their project
-â€¢ Clients retain ownership of their business content, images, logos, and proprietary information
-â€¢ Celestial Web Solutions retains rights to general methodologies, techniques, and any pre-existing intellectual property
-â€¢ Third-party software, plugins, and frameworks remain subject to their respective licenses
-â€¢ We reserve the right to use completed projects in our portfolio and marketing materials (unless otherwise agreed)
-â€¢ Any custom graphics, designs, or code developed specifically for your project becomes your property upon full payment
-â€¢ We may reuse general concepts, layouts, or non-proprietary elements in future projects
+• Upon full payment, clients own the final delivered website/application and custom code developed specifically for their project
+• Clients retain ownership of their business content, images, logos, and proprietary information
+• Celestial Web Solutions retains rights to general methodologies, techniques, and any pre-existing intellectual property
+• Third-party software, plugins, and frameworks remain subject to their respective licenses
+• We reserve the right to use completed projects in our portfolio and marketing materials (unless otherwise agreed)
+• Any custom graphics, designs, or code developed specifically for your project becomes your property upon full payment
+• We may reuse general concepts, layouts, or non-proprietary elements in future projects
 
 Detailed intellectual property terms will be specified in individual project agreements.`
     },
@@ -96,14 +96,14 @@ Detailed intellectual property terms will be specified in individual project agr
       icon: AlertTriangle,
       content: `Our warranty and support terms include:
 
-â€¢ 30-day warranty on custom development work for bug fixes and minor adjustments
-â€¢ Ongoing support packages available for continued maintenance and updates
-â€¢ We do not warrant that websites will be error-free or uninterrupted
-â€¢ Third-party software/services are subject to their own warranties and terms
-â€¢ Support response times vary based on support package (24-72 hours typical)
-â€¢ Emergency support available for critical issues (additional charges may apply)
-â€¢ We provide training and documentation to help clients manage their websites
-â€¢ Major changes or new features beyond original scope are not covered under warranty
+• 30-day warranty on custom development work for bug fixes and minor adjustments
+• Ongoing support packages available for continued maintenance and updates
+• We do not warrant that websites will be error-free or uninterrupted
+• Third-party software/services are subject to their own warranties and terms
+• Support response times vary based on support package (24-72 hours typical)
+• Emergency support available for critical issues (additional charges may apply)
+• We provide training and documentation to help clients manage their websites
+• Major changes or new features beyond original scope are not covered under warranty
 
 Extended support and maintenance packages are available and recommended for optimal website performance.`
     },
@@ -112,13 +112,13 @@ Extended support and maintenance packages are available and recommended for opti
       icon: Info,
       content: `Celestial Web Solutions' liability is limited as follows:
 
-â€¢ Our total liability for any project shall not exceed the total amount paid by the client for that specific project
-â€¢ We are not liable for indirect, incidental, special, consequential, or punitive damages
-â€¢ We are not responsible for data loss, business interruption, or lost profits
-â€¢ Clients are responsible for maintaining backups of their data and content
-â€¢ We are not liable for issues arising from third-party services, hosting providers, or external integrations
-â€¢ Force majeure events (natural disasters, government actions, etc.) may excuse performance delays
-â€¢ We recommend clients maintain appropriate business insurance coverage
+• Our total liability for any project shall not exceed the total amount paid by the client for that specific project
+• We are not liable for indirect, incidental, special, consequential, or punitive damages
+• We are not responsible for data loss, business interruption, or lost profits
+• Clients are responsible for maintaining backups of their data and content
+• We are not liable for issues arising from third-party services, hosting providers, or external integrations
+• Force majeure events (natural disasters, government actions, etc.) may excuse performance delays
+• We recommend clients maintain appropriate business insurance coverage
 
 These limitations apply to the maximum extent permitted by law in Ghana.`
     },
@@ -127,13 +127,13 @@ These limitations apply to the maximum extent permitted by law in Ghana.`
       icon: AlertTriangle,
       content: `Either party may terminate services under the following conditions:
 
-â€¢ Client may terminate services at any time with written notice, but remains liable for work completed and expenses incurred
-â€¢ We may terminate services for non-payment, breach of terms, or if client requests violate legal/ethical standards
-â€¢ Upon termination, client will receive all completed work upon payment of outstanding invoices
-â€¢ Ongoing service subscriptions require 30 days written notice for cancellation
-â€¢ Refunds for terminated projects will be calculated based on work completed
-â€¢ All confidential information must be returned or destroyed upon termination
-â€¢ Termination does not relieve either party of obligations that arose before termination
+• Client may terminate services at any time with written notice, but remains liable for work completed and expenses incurred
+• We may terminate services for non-payment, breach of terms, or if client requests violate legal/ethical standards
+• Upon termination, client will receive all completed work upon payment of outstanding invoices
+• Ongoing service subscriptions require 30 days written notice for cancellation
+• Refunds for terminated projects will be calculated based on work completed
+• All confidential information must be returned or destroyed upon termination
+• Termination does not relieve either party of obligations that arose before termination
 
 Termination procedures and any applicable refunds will be handled professionally and promptly.`
     },
@@ -142,13 +142,13 @@ Termination procedures and any applicable refunds will be handled professionally
       icon: Shield,
       content: `These terms are governed by the laws of Ghana:
 
-â€¢ Any disputes will first be addressed through good faith negotiation
-â€¢ If negotiation fails, disputes will be resolved through arbitration in Accra, Ghana
-â€¢ Ghana courts will have jurisdiction over any legal proceedings
-â€¢ These terms are interpreted according to Ghanaian law
-â€¢ Any invalid provisions will not affect the validity of remaining terms
-â€¢ Amendments must be in writing and signed by both parties
-â€¢ These terms supersede all previous agreements between the parties
+• Any disputes will first be addressed through good faith negotiation
+• If negotiation fails, disputes will be resolved through arbitration in Accra, Ghana
+• Ghana courts will have jurisdiction over any legal proceedings
+• These terms are interpreted according to Ghanaian law
+• Any invalid provisions will not affect the validity of remaining terms
+• Amendments must be in writing and signed by both parties
+• These terms supersede all previous agreements between the parties
 
 We are committed to resolving any disputes fairly and professionally in accordance with Ghanaian legal standards.`
     }

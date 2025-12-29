@@ -619,7 +619,7 @@ export default function PricingWithCalculator() {
         <h2 className="text-3xl md:text-5xl font-bold mb-4 relative z-10" style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}>Ready to Start Your Project?</h2>
         <p className="text-lg mb-8 relative z-10" style={{ fontFamily: "Google Sans, sans-serif" }}>Get in touch today and let's build your online presence together!</p>
         <div className="relative z-10">
-          <PremiumCTA href="/contact" size="default" variant="secondary">
+          <PremiumCTA href="/contact" size="default" variant="outline">
             Contact Us
           </PremiumCTA>
         </div>

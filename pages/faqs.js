@@ -333,10 +333,10 @@ export default function FAQs() {
                 Can't find the answer you're looking for? Our team is here to help! Get in touch for a personalized consultation.
               </p>
               <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-4">
-                <PremiumCTA href="/contact" size="large" variant="primary">
+                <PremiumCTA href="/contact" size="large" variant="secondary">
                   Contact Us
                 </PremiumCTA>
-                <PremiumCTA href="tel:+233245671832" size="large" variant="outline">
+                <PremiumCTA href="tel:+233245671832" size="large" variant="primary">
                   <span>Call Us</span>
                 </PremiumCTA>
               </div>
