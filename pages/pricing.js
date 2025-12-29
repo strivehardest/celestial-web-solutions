@@ -319,7 +319,7 @@ export default function PricingWithCalculator() {
 
   const getWhatsAppLink = (planName, priceInGHS) => {
     const formattedPrice = formatPrice(priceInGHS);
-    const ghsPrice = `â‚µ${new Intl.NumberFormat('en-GH', { minimumFractionDigits: 0, maximumFractionDigits: 0 }).format(priceInGHS)}`;
+    const ghsPrice = `₵${new Intl.NumberFormat('en-GH', { minimumFractionDigits: 0, maximumFractionDigits: 0 }).format(priceInGHS)}`;
     const message = `Hi Celestial Web Solutions! I'm interested in your ${planName} package priced at ${formattedPrice} (${ghsPrice} GHS). Can you provide more details?`;
     const encodedMessage = encodeURIComponent(message);
     return `https://wa.me/233530505031?text=${encodedMessage}`;
@@ -328,7 +328,7 @@ export default function PricingWithCalculator() {
   const getCalculatorWhatsAppLink = () => {
     const total = calculateTotal();
     const formattedPrice = formatPrice(total);
-    const ghsPrice = `â‚µ${new Intl.NumberFormat('en-GH', { minimumFractionDigits: 0, maximumFractionDigits: 0 }).format(total)}`;
+    const ghsPrice = `₵${new Intl.NumberFormat('en-GH', { minimumFractionDigits: 0, maximumFractionDigits: 0 }).format(total)}`;
     const message = `Hi! I calculated a custom quote using your calculator: ${formattedPrice} (${ghsPrice} GHS). Can we discuss this package?`;
     const encodedMessage = encodeURIComponent(message);
     return `https://wa.me/233530505031?text=${encodedMessage}`;
