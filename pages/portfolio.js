@@ -212,7 +212,7 @@ export default function Portfolio() {
     { name: "My Space Furniture", logo: "/png/projects/myspace.png" },
     { name: "Valyd", logo: "/png/projects/valyd.png" },
   ];
-      {/* Happy Clients Section - Kava Style */}
+      {/* Happy Clients Section */}
       <section className="py-10 bg-white dark:bg-gray-900">
         <div className="max-w-5xl mx-auto px-4">
           <h3 className="text-xl md:text-2xl font-bold text-center mb-8 text-gray-700 dark:text-gray-200" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>

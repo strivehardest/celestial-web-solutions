@@ -62,13 +62,13 @@ function HappyClients({ clients = [], speed = 28, cardWidth = "w-48" }) {
         >
           Trusted by
         </motion.h3>
-        <div className="flex flex-wrap justify-center items-center gap-8">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 md:gap-8 justify-items-center items-center">
           {clients.map((client, idx) => (
-            <div key={`${client.name}-${idx}`} className="flex items-center justify-center">
+            <div key={`${client.name}-${idx}`} className="flex items-center justify-center w-full">
               <img
                 src={client.src}
                 alt={client.name}
-                className="h-14 w-auto max-w-[120px] object-contain"
+                className="h-16 sm:h-20 md:h-24 lg:h-32 w-auto max-w-[120px] sm:max-w-[160px] md:max-w-[200px] lg:max-w-[240px] object-contain mx-auto"
                 loading="lazy"
                 decoding="async"
               />
