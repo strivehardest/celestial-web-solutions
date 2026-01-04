@@ -240,6 +240,31 @@ export default function BlogPage() {
         <meta property="og:type" content="website" />
         <meta name="twitter:card" content="summary_large_image" />
         <link rel="canonical" href="https://celestialwebsolutions.com/blog" />
+        {/* Article structured data for each blog post */}
+        {filteredArticles.map((article) => (
+          <script
+            key={article.id}
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": "Article",
+                "headline": article.title,
+                "description": article.excerpt,
+                "image": article.image,
+                "author": {
+                  "@type": "Person",
+                  "name": article.author
+                },
+                "datePublished": article.date,
+                "mainEntityOfPage": {
+                  "@type": "WebPage",
+                  "@id": `https://celestialwebsolutions.com/blog/${article.slug}`
+                }
+              })
+            }}
+          />
+        ))}
       </Head>
 
       <div className="min-h-screen bg-white dark:bg-gray-900">

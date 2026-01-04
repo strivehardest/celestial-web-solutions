@@ -210,7 +210,30 @@ export default function Portfolio() {
     { name: "Elolo Agbleke", logo: "/png/projects/elolo2.jpeg" },
     { name: "Mart Ban Logistics", logo: "/png/projects/martb.png" },
     { name: "My Space Furniture", logo: "/png/projects/myspace.png" },
+    { name: "Valyd", logo: "/png/projects/valyd.png" },
   ];
+      {/* Happy Clients Section - Kava Style */}
+      <section className="py-10 bg-white dark:bg-gray-900">
+        <div className="max-w-5xl mx-auto px-4">
+          <h3 className="text-xl md:text-2xl font-bold text-center mb-8 text-gray-700 dark:text-gray-200" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>
+            Brands that trust us
+          </h3>
+          <div className="flex flex-wrap justify-center items-center gap-8">
+            {happyClients.map((client, idx) => (
+              <div key={client.name + idx} className="flex items-center justify-center">
+                <img
+                  src={client.logo}
+                  alt={client.name}
+                  className="h-14 w-auto max-w-[120px] object-contain"
+                  loading="lazy"
+                  decoding="async"
+                  style={{ filter: 'none', background: 'none' }}
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
   return (
     <>

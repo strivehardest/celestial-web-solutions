@@ -36,6 +36,10 @@ const happyClients = [
     name: "My Space Furniture",
     src: "/png/projects/myspace.png",
   }
+  ,{
+    name: "Valyd",
+    src: "/png/projects/valyd.png",
+  }
 ];
 
 /**
@@ -46,10 +50,8 @@ const happyClients = [
  *  - cardWidth: tailwind width class
  */
 function HappyClients({ clients = [], speed = 28, cardWidth = "w-48" }) {
-  const all = [...clients, ...clients]; // duplicate for seamless loop
-
   return (
-    <section className="py-12 bg-gradient-to-r from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800">
+    <section className="py-12 bg-gradient-to-r from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 background">
       <div className="max-w-7xl mx-auto px-4">
         <motion.h3
           initial={{ opacity: 0, y: 12 }}
@@ -60,57 +62,20 @@ function HappyClients({ clients = [], speed = 28, cardWidth = "w-48" }) {
         >
           Trusted by
         </motion.h3>
-
-        <div className="relative overflow-hidden">
-          <div
-            className="flex items-center"
-            style={{
-              animation: `marquee ${speed}s linear infinite`
-            }}
-          >
-            {all.map((client, idx) => (
-              <div
-                key={`${client.name}-${idx}`}
-                className={`flex-shrink-0 mx-6 ${cardWidth} h-32 bg-white dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center p-4 border border-gray-200 dark:border-gray-700`}
-              >
-                <picture>
-                  {client.webp && <source srcSet={client.webp} type="image/webp" />}
-                  {client.srcSet ? (
-                    <img
-                      src={client.src}
-                      srcSet={client.srcSet}
-                      sizes="(max-width: 640px) 120px, (max-width: 1024px) 160px, 192px"
-                      alt={client.name}
-                      className="max-w-full max-h-full object-contain grayscale hover:grayscale-0 transition-all duration-300"
-                      loading="lazy"
-                      decoding="async"
-                    />
-                  ) : (
-                    <img
-                      src={client.src}
-                      alt={client.name}
-                      className="max-w-full max-h-full object-contain grayscale hover:grayscale-0 transition-all duration-300"
-                      loading="lazy"
-                      decoding="async"
-                    />
-                  )}
-                </picture>
-              </div>
-            ))}
-          </div>
+        <div className="flex flex-wrap justify-center items-center gap-8">
+          {clients.map((client, idx) => (
+            <div key={`${client.name}-${idx}`} className="flex items-center justify-center">
+              <img
+                src={client.src}
+                alt={client.name}
+                className="h-14 w-auto max-w-[120px] object-contain"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+          ))}
         </div>
       </div>
-
-      <style jsx>{`
-        @keyframes marquee {
-          0% { transform: translateX(0); }
-          100% { transform: translateX(-50%); }
-        }
-        /* Pause animation on hover (important for accessibility) */
-        .relative > .flex:hover {
-          animation-play-state: paused !important;
-        }
-      `}</style>
     </section>
   );
 }
@@ -205,14 +170,17 @@ export default function AboutUs() {
 
       {/* Hero Section - Full Background Image Like Services Page */}
       <section className="relative min-h-[90vh] flex items-center overflow-hidden">
-        {/* Background Image */}
+        {/* Hero Video */}
         <div className="absolute inset-0 z-0">
-          <img 
-            src="/team.png" 
-            alt="Celestial Web Solutions Team" 
-            className="w-full h-full object-cover object-center" 
-            style={{ minHeight: '90vh' }} 
-            onError={(e) => { e.target.onerror = null; e.target.src = 'https://ui-avatars.com/api/?name=Celestial+Web+Solutions&background=FF6B00&color=fff&size=1200'; }}
+          <video
+            src="/videos/hero1.mp4"
+            className="w-full h-full object-cover object-center"
+            style={{ minHeight: '90vh' }}
+            autoPlay
+            muted
+            loop
+            playsInline
+            poster="/team.png"
           />
           <div className="absolute inset-0 bg-gradient-to-br from-gray-950 via-gray-900 to-gray-950 opacity-80"></div>
         </div>

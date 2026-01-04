@@ -1,3 +1,13 @@
+// Happy Clients data (same as About/Portfolio)
+const happyClients = [
+  { name: "Building Planner Designs", src: "/png/projects/building.png" },
+  { name: "Ghana Updates Online", src: "/png/projects/ghanaupdates1.jpg" },
+  { name: "AdBay Store", src: "/png/projects/Adbay1.png" },
+  { name: "Elolo Agbleke", src: "/png/projects/elolo2.jpeg" },
+  { name: "Mart Ban Logistics", src: "/png/projects/martb.png" },
+  { name: "My Space Furniture", src: "/png/projects/myspace.png" },
+  { name: "Valyd", src: "/png/projects/valyd.png" },
+];
 import { useState, useEffect, useCallback } from 'react';
 import { useRouter } from 'next/router';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -296,11 +306,36 @@ const typingPhrases = [
 ];
 
 const IndexPage = () => {
+    // Hero overlay portfolio state
+    const [currentPortfolioIndex, setCurrentPortfolioIndex] = useState(0);
+    useEffect(() => {
+      const interval = setInterval(() => {
+        setCurrentPortfolioIndex((prev) => (prev + 1) % heroImages.length);
+      }, 5000); // Change every 5 seconds
+      return () => clearInterval(interval);
+    }, []);
   const [scrolled, setScrolled] = useState(false);
   const router = useRouter();
   
-  // Hero image slideshow state
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  // Hero video state
+  const heroVideos = [
+    '/videos/hero1.mp4', 
+    '/videos/hero2.mp4', 
+  ];
+  const [showFirstVideo, setShowFirstVideo] = useState(true);
+  const videoRef = useCallback((node) => {
+    if (node) {
+      node.currentTime = 0;
+      node.play();
+    }
+  }, [showFirstVideo]);
+  const handleVideoEnd = () => {
+    if (showFirstVideo) {
+      setShowFirstVideo(false);
+    } else {
+      setShowFirstVideo(true); // Loop back to the first video
+    }
+  };
   
   // Typing effect state
   const [currentPhraseIndex, setCurrentPhraseIndex] = useState(0);
@@ -316,13 +351,7 @@ const IndexPage = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Auto-scroll hero images every 5 seconds
-  useEffect(() => {
-    const imageInterval = setInterval(() => {
-      setCurrentImageIndex((prev) => (prev + 1) % heroImages.length);
-    }, 5000);
-    return () => clearInterval(imageInterval);
-  }, []);
+  // Removed auto-scroll images effect
 
   // Typing effect
   useEffect(() => {
@@ -419,24 +448,18 @@ const IndexPage = () => {
       <div className="min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300">
         {/* Hero Section with Auto-Scroll Images and Typing Effect */}
         <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
-          {/* Auto-Scrolling Background Images */}
+          {/* Sequential Hero Videos */}
           <div className="absolute inset-0">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={currentImageIndex}
-                initial={{ opacity: 0, scale: 1.1 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 1.05 }}
-                transition={{ duration: 1.5 }}
-                className="absolute inset-0"
-              >
-                <img
-                  src={heroImages[currentImageIndex].image}
-                  alt={heroImages[currentImageIndex].title}
-                  className="w-full h-full object-cover object-top"
-                />
-              </motion.div>
-            </AnimatePresence>
+            <video
+              key={showFirstVideo ? 'video1' : 'video2'}
+              ref={videoRef}
+              src={showFirstVideo ? heroVideos[0] : heroVideos[1]}
+              className="w-full h-full object-cover object-top"
+              autoPlay
+              muted
+              playsInline
+              onEnded={handleVideoEnd}
+            />
             {/* Dark Overlay for text readability */}
             <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-black/40"></div>
           </div>
@@ -444,54 +467,33 @@ const IndexPage = () => {
           {/* Project Info Overlay - Bottom Left (desktop), Top for mobile) */}
           <div>
             <div className="hidden sm:block absolute bottom-20 left-8 z-20">
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={currentImageIndex}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: 20 }}
-                  transition={{ duration: 0.5 }}
-                  className="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-6 max-w-xs"
+              <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-6 max-w-xs">
+                <span 
+                  className="text-orange-400 text-xs font-semibold tracking-wider uppercase"
+                  style={{ fontFamily: 'Google Sans, sans-serif' }}
                 >
-                  <span 
-                    className="text-orange-400 text-xs font-semibold tracking-wider uppercase"
-                    style={{ fontFamily: 'Google Sans, sans-serif' }}
-                  >
-                    {heroImages[currentImageIndex].category}
-                  </span>
-                  <h3 
-                    className="text-white text-xl font-bold mt-1 mb-3"
-                    style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}
-                  >
-                    {heroImages[currentImageIndex].title}
-                  </h3>
-                  <Link 
-                    href={heroImages[currentImageIndex].link}
-                    className="inline-flex items-center gap-2 text-white/80 hover:text-white text-sm font-medium transition-colors"
-                    style={{ fontFamily: 'Google Sans, sans-serif' }}
-                  >
-                    View Case Study <ArrowRight className="w-4 h-4" />
-                  </Link>
-                </motion.div>
-              </AnimatePresence>
+                  {heroImages[currentPortfolioIndex].category}
+                </span>
+                <h3 
+                  className="text-white text-xl font-bold mt-1 mb-3"
+                  style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}
+                >
+                  {heroImages[currentPortfolioIndex].title}
+                </h3>
+                <Link 
+                  href={heroImages[currentPortfolioIndex].link}
+                  className="inline-flex items-center gap-2 text-white/80 hover:text-white text-sm font-medium transition-colors"
+                  style={{ fontFamily: 'Google Sans, sans-serif' }}
+                >
+                  View Case Study <ArrowRight className="w-4 h-4" />
+                </Link>
+              </div>
             </div>
             {/* Mobile overlay edited */}
           </div>
           
           {/* Image Indicators - Below Project Info */}
-          <div className="absolute bottom-6 left-4 sm:left-8 z-30 flex space-x-2 mt-4" style={{ bottom: '1.5rem', left: 'calc(1rem + 280px)' }}>
-            {heroImages.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => setCurrentImageIndex(index)}
-                className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                  index === currentImageIndex 
-                    ? 'w-8 bg-orange-500' 
-                    : 'bg-white/50 hover:bg-white/70'
-                }`}
-              />
-            ))}
-          </div>
+          {/* Removed image indicators since hero is now video */}
           
           {/* Floating Code Elements - Hidden on mobile for cleaner look */}
           <div className="absolute inset-0 overflow-hidden hidden md:block">
@@ -532,7 +534,7 @@ const IndexPage = () => {
             <div className="absolute -bottom-20 -left-20 w-48 h-48 bg-gradient-to-tr from-orange-300/20 to-red-400/20 rounded-full opacity-50 animate-pulse" style={{animationDelay: '2s'}}></div>
           </div>
   
-          <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <div className="relative z-30 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
@@ -608,6 +610,30 @@ const IndexPage = () => {
           </div>
         </section>
 
+
+
+        {/* Happy Clients Section - 4-Grid Kava Style */}
+        <section className="py-16 bg-white dark:bg-gray-900">
+          <div className="max-w-5xl mx-auto px-4">
+            <h3 className="text-xl md:text-2xl font-bold text-center mb-10 text-gray-700 dark:text-gray-200" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>
+              Brands that trust us
+            </h3>
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8 items-center justify-center">
+              {happyClients.map((client, idx) => (
+                <div key={client.name + idx} className="flex items-center justify-center">
+                  <img
+                    src={client.src}
+                    alt={client.name}
+                    className="h-32 w-auto max-w-[280px] object-contain"
+                    loading="lazy"
+                    decoding="async"
+                    style={{ filter: 'none', background: 'none' }}
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
 
         {/* Services Section - Enhanced with Images */}
         <section className="py-24 bg-gray-50 dark:bg-gray-800">
