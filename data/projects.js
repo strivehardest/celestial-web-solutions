@@ -144,7 +144,7 @@ const projects = [
     title: "Celestial Shopping",
     slug: "celestial-shopping",
     category: "E-Commerce",
-    client: "E-Commerce Demo Website",
+    client: "E-Commerce Demo Website - Work in Progress",
     clientCountry: "Ghana",
     description: "An E-Commerce Website built with Next.js/React and Django for seamless shopping experience with cart, checkout, and order tracking.",
     image: "/png/projects/celestial1.png",
@@ -309,6 +309,5 @@ const projects = [
     ]
   }
 ];
-
 
 export default projects;
