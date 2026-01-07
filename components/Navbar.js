@@ -143,7 +143,7 @@ const Navbar = () => {
   // Logo Component - Easy to customize
   const Logo = () => {
     // CONFIGURATION: Set your logo path here
-    const logoImagePath = scrolled ? "/logo1.png" : "/logo1-white.png"; 
+    const logoImagePath = scrolled ? "/logo.png" : "/logo-white.png"; 
     const useImageLogo = true; 
     
     // Optional: Configure logo size

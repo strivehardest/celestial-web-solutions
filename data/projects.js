@@ -1,9 +1,39 @@
 // data/projects.js
 const projects = [
   {
+    title: "Doeman Group",
+    slug: "doeman-group",
+    category: "business & corporate",
+    client: "Doeman Group",
+    clientCountry: "United States",
+    description: "Doeman Group is a group of companies. The website creation is still in progress.",
+    image: "/png/projects/doeman.jpeg",
+    screenshot: "/png/screenshots/doeman-full.png",
+    link: "http://www.doemangroup.com/",
+    tech: ["Next.js", "React", "Tailwind CSS", "Framer Motion", "SEO", "Google Analytics"],
+    techLogos: [
+      { name: "Next.js", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" },
+      { name: "React", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" },
+      { name: "Tailwind CSS", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg" }
+    ],
+    startDate: "2025-12-01",
+    completionDate: "In Progress",
+    duration: "In Progress",
+    features: [
+      "High-Performance Website",
+      "Integrated Digital Marketing",
+      "Lead Generation Optimization",
+      "Conversion Tracking",
+      "Responsive Design",
+      "SEO Optimization",
+      "Google Analytics Setup",
+      "Professional Branding"
+    ]
+  },
+  {
     slug: "myspace-furniture",
     title: "My Space Furniture",
-    category: "Furniture E-Commerce",
+    category: "e-commerce & retail",
     client: "My Space Furniture",
     clientCountry: "United States",
     description: "Modern furniture platform with interactive furniture categories from mattresses, vanities, sectionals, sofas and loveseats, beds, dining sets, and more. .",
@@ -32,6 +62,34 @@ const projects = [
       { name: "Vercel", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vercel/vercel-original.svg" }
     ]
   },
+    {
+      title: "Valyd Homes",
+      slug: "valyd-homes",
+      category: "real estate & construction",
+      client: "Valyd Homes",
+      clientCountry: "Ghana",
+      description: "Valyd Homes is a real estate and construction company. The website creation is still in progress.",
+      image: "/png/projects/valyd.png",
+      screenshot: "",
+      link: "#",
+      tech: ["Next.js", "React", "Tailwind CSS", "Framer Motion"],
+      techLogos: [
+        { name: "Next.js", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" },
+        { name: "React", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" },
+        { name: "Tailwind CSS", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg" }
+      ],
+      startDate: "2026-01-07",
+      completionDate: "In Progress",
+      duration: "In Progress",
+      features: [
+        "Real Estate Listings",
+        "Construction Services Showcase",
+        "Contact Forms",
+        "Responsive Design",
+        "SEO Optimization",
+        "Professional Branding"
+      ]
+    },
   {
     title: "Ghana Updates Online",
     slug: "ghana-updates-online",
@@ -70,7 +128,7 @@ const projects = [
     client: "Elolo Agbleke",
     clientCountry: "Ghana",
     description: "Professional website for a seasoned motivational speaker, chaplain, mentor, and entrepreneur, featuring speaking engagements, testimonials, and booking functionality for events.",
-    image: "/png/projects/elolo1.png",
+    image: "/png/projects/elolo2.jpeg",
     screenshot: "/png/screenshots/elolo-full.png",
     link: "https://eloloagbleke.com",
     tech: ["WordPress", "Node.js", "Next.js", "Framer Motion", "GitHub", "Tailwind CSS", "Vercel"],
@@ -81,8 +139,8 @@ const projects = [
       { name: "Tailwind CSS", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg" }
     ],
     startDate: "2025-10-15",
-    completionDate: "2025-11-30",
-    duration: "1.5 months",
+    completionDate: "In Progress",
+    duration: "In Progress",
     features: [
       "Event Booking System",
       "Speaking Engagements Calendar",

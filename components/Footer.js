@@ -27,6 +27,7 @@ export default function Footer({ darkMode, toggleDarkMode }) {
       { name: 'Google Ads', href: '/services/google-ads-management' }
     ],
     company: [
+      { name: 'Home', href: '/' },
       { name: 'About Us', href: '/about' },
       { name: 'Portfolio', href: '/portfolio' },
       { name: 'Blog', href: '/blog' },
@@ -124,7 +125,7 @@ export default function Footer({ darkMode, toggleDarkMode }) {
           <div className="lg:col-span-2">
             <Link href="/" className="inline-flex items-center gap-4 mb-6">
               <img
-                src="/logo1-white.png"
+                src="/logo-white.png"
                 alt="Celestial Web Solutions"
                 className="w-20 h-20 object-contain"
                 onError={(e) => {
