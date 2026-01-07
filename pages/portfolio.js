@@ -128,75 +128,64 @@ export default function Portfolio() {
     : projects.filter(p => {
         const title = p.title.toLowerCase();
         const description = p.description.toLowerCase();
+        const category = (p.category || '').toLowerCase();
         const searchTerm = filter.toLowerCase();
-        
-        // Custom matching logic for different categories
+        // Match by category field OR by keywords in title/description
+        if (category === searchTerm) return true;
         switch(filter) {
           case "business & corporate":
             return title.includes("business") || title.includes("solutions") || 
                    title.includes("corporate") || title.includes("company") ||
                    description.includes("business") || description.includes("corporate") ||
                    title.includes("web solutions") || title.includes("planner");
-          
           case "finance & banking":
             return title.includes("bank") || title.includes("finance") || 
                    title.includes("financial") || title.includes("investment") ||
                    description.includes("banking") || description.includes("financial");
-          
           case "healthcare & wellness":
             return title.includes("health") || title.includes("medical") || 
                    title.includes("clinic") || title.includes("hospital") ||
                    title.includes("wellness") || description.includes("healthcare") ||
                    description.includes("medical");
-          
           case "real estate & construction":
             return title.includes("real estate") || title.includes("property") || 
                    title.includes("building") || title.includes("construction") ||
                    title.includes("planner") || description.includes("building") ||
                    description.includes("construction") || description.includes("planning");
-          
           case "restaurants & hospitality":
             return title.includes("restaurant") || title.includes("hotel") || 
                    title.includes("cafe") || title.includes("hospitality") ||
                    title.includes("catering") || description.includes("restaurant") ||
                    description.includes("food") || description.includes("hospitality");
-          
           case "educational institutions":
             return title.includes("school") || title.includes("university") || 
                    title.includes("college") || title.includes("education") ||
                    description.includes("educational");
-          
           case "ngos & nonprofits":
             return title.includes("ngo") || title.includes("nonprofit") || 
                    title.includes("foundation") || title.includes("charity") ||
                    description.includes("nonprofit") || description.includes("ngo");
-          
           case "churches & religious":
             return title.includes("church") || title.includes("ministry") || 
                    title.includes("chapel") || title.includes("chaplain") ||
                    description.includes("church") || description.includes("ministry") ||
                    description.includes("chaplain") || description.includes("motivational speaker");
-          
           case "news & media":
             return title.includes("news") || title.includes("media") || 
                    title.includes("updates") || description.includes("news") ||
                    description.includes("radio") || description.includes("streaming");
-          
           case "marketplace & classifieds":
             return title.includes("marketplace") || title.includes("classified") ||
                    title.includes("adbay") || description.includes("marketplace") ||
                    description.includes("buy and sell") || description.includes("classified");
-          
           case "e-commerce & retail":
             return title.includes("commerce") || title.includes("shop") || 
                    title.includes("store") || description.includes("e-commerce") ||
                    description.includes("woocommerce") || description.includes("online booking") ||
                    description.includes("payment");
-          
           case "portfolio & personal":
             return title.includes("portfolio") || description.includes("portfolio") ||
                    title.includes("personal");
-          
           default:
             return title.includes(searchTerm) || description.includes(searchTerm);
         }
@@ -204,30 +193,43 @@ export default function Portfolio() {
 
   // Happy Clients Data
   const happyClients = [
-    { name: "Building Planner Designs", logo: "/png/projects/building.png" },
-    { name: "Ghana Updates Online", logo: "/png/projects/ghanaupdates1.jpg" },
-    { name: "AdBay Store", logo: "/png/projects/Adbay1.png" },
-    { name: "Elolo Agbleke", logo: "/png/projects/elolo2.jpeg" },
-    { name: "Mart Ban Logistics", logo: "/png/projects/martb.png" },
-    { name: "My Space Furniture", logo: "/png/projects/myspace.png" },
-    { name: "Valyd", logo: "/png/projects/valyd.png" },
+    { name: "Building Planner Designs", src: "/png/projects/building.png" },
+    { name: "Ghana Updates Online", src: "/png/projects/ghanaupdates1.jpg" },
+    { name: "AdBay Store", src: "/png/projects/Adbay1.png" },
+    { name: "Elolo Agbleke", src: "/png/projects/elolo2.jpeg" },
+    { name: "Mart Ban Logistics", src: "/png/projects/martb.png" },
+    { name: "My Space Furniture", src: "/png/projects/myspace.png" },
+    { name: "Valyd Homes", src: "/png/projects/valyd.png" },
+    { name: "Doeman Group", src: "/png/projects/doeman.jpeg" },
   ];
-      {/* Happy Clients Section */}
-      <section className="py-10 bg-white dark:bg-gray-900">
-        <div className="max-w-5xl mx-auto px-4">
-          <h3 className="text-xl md:text-2xl font-bold text-center mb-8 text-gray-700 dark:text-gray-200" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>
-            Brands that trust us
-          </h3>
-          <div className="flex flex-wrap justify-center items-center gap-8">
+      {/* Happy Clients Section - Grid like About Us */}
+      <section className="py-12 bg-gradient-to-r from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800">
+        <div className="max-w-7xl mx-auto px-4">
+          <motion.h3
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-2xl md:text-3xl font-bold text-center mb-6 bg-gradient-to-r from-orange-600 to-orange-500 bg-clip-text text-transparent"
+            style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}
+          >
+            Trusted by
+          </motion.h3>
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 md:gap-8 justify-items-center items-center">
             {happyClients.map((client, idx) => (
-              <div key={client.name + idx} className="flex items-center justify-center">
+              <div key={`${client.name}-${idx}`} className="flex items-center justify-center w-full">
                 <img
-                  src={client.logo}
+                  src={client.src}
                   alt={client.name}
-                  className="h-14 w-auto max-w-[120px] object-contain"
+                  className="h-16 sm:h-20 md:h-24 lg:h-32 w-auto max-w-[120px] sm:max-w-[160px] md:max-w-[200px] lg:max-w-[240px] object-contain mx-auto"
                   loading="lazy"
                   decoding="async"
-                  style={{ filter: 'none', background: 'none' }}
+                  style={
+                    client.name === 'Elolo Agbleke'
+                      ? { maxHeight: '60px' }
+                      : client.name === 'Ghana Updates Online'
+                        ? { maxHeight: '80px' }
+                        : {}
+                  }
                 />
               </div>
             ))}
@@ -423,8 +425,8 @@ export default function Portfolio() {
             </motion.div>
           )}
 
-          {/* Happy Clients Section */}
-          <section className="py-16 bg-gradient-to-r from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 overflow-hidden rounded-3xl mt-20 mb-12">
+          {/* Happy Clients Section - Grid like About Us */}
+          <section className="py-12 bg-gradient-to-r from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 rounded-3xl mt-20 mb-12">
             <div className="max-w-7xl mx-auto px-4 mb-8">
               <motion.h2
                 initial={{ opacity: 0, y: 20 }}
@@ -439,55 +441,27 @@ export default function Portfolio() {
                 Trusted by businesses across Ghana
               </p>
             </div>
-
-            {/* Scrolling Container */}
-            <div className="relative">
-              <div className="flex animate-scroll">
-                {/* First set of logos */}
-                {happyClients.map((client, index) => (
-                  <div
-                    key={`client-1-${index}`}
-                    className="flex-shrink-0 mx-8 w-48 h-32 bg-white dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center p-6 border border-gray-200 dark:border-gray-700"
-                  >
-                    <img
-                      src={client.logo}
-                      alt={client.name}
-                      className="max-w-full max-h-full object-contain grayscale hover:grayscale-0 transition-all duration-300"
-                    />
-                  </div>
-                ))}
-                {/* Duplicate set for seamless loop */}
-                {happyClients.map((client, index) => (
-                  <div
-                    key={`client-2-${index}`}
-                    className="flex-shrink-0 mx-8 w-48 h-32 bg-white dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center p-6 border border-gray-200 dark:border-gray-700"
-                  >
-                    <img
-                      src={client.logo}
-                      alt={client.name}
-                      className="max-w-full max-h-full object-contain grayscale hover:grayscale-0 transition-all duration-300"
-                    />
-                  </div>
-                ))}
-              </div>
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 md:gap-8 justify-items-center items-center">
+              {happyClients.map((client, idx) => (
+                <div key={`${client.name}-${idx}`} className="flex flex-col items-center justify-center w-full">
+                  <img
+                    src={client.src}
+                    alt={client.name}
+                    className="h-16 sm:h-20 md:h-24 lg:h-32 w-auto max-w-[120px] sm:max-w-[160px] md:max-w-[200px] lg:max-w-[240px] object-contain mx-auto mb-2"
+                    loading="lazy"
+                    decoding="async"
+                    style={
+                      client.name === 'Elolo Agbleke'
+                        ? { maxHeight: '60px' }
+                        : client.name === 'Ghana Updates Online'
+                          ? { maxHeight: '80px' }
+                          : {}
+                    }
+                  />
+                  <span className="text-xs text-gray-700 dark:text-gray-300 mt-1 text-center" style={{ fontFamily: 'Google Sans, sans-serif' }}>{client.name}</span>
+                </div>
+              ))}
             </div>
-
-            <style jsx>{`
-              @keyframes scroll {
-                0% {
-                  transform: translateX(0);
-                }
-                100% {
-                  transform: translateX(-50%);
-                }
-              }
-              .animate-scroll {
-                animation: scroll 30s linear infinite;
-              }
-              .animate-scroll:hover {
-                animation-play-state: paused;
-              }
-            `}</style>
           </section>
 
           {/* Start a Project CTA Section */}
@@ -555,6 +529,7 @@ export default function Portfolio() {
 
         {/* Bottom Spacing */}
         <div className="pb-20"></div>
+        {/* Footer is handled by the Footer component sitewide */}
       </div>
       <WhatsAppButton />
     </>

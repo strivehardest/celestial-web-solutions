@@ -56,7 +56,7 @@ Payment schedules and methods will be clearly outlined in your project agreement
 • We will communicate any significant delays promptly and work to minimize impact
 • Rush projects may incur additional fees (25-50% surcharge)
 • Project completion is subject to final client approval and payment
-â€¢ We strive to deliver projects on or before the agreed timeline
+• We strive to deliver projects on or before the agreed timeline
 
 Timeline adjustments will be communicated and agreed upon with clients as needed.`
     },
@@ -80,7 +80,6 @@ Delays in client responsibilities may impact project timelines and may incur add
       title: "6. Intellectual Property & Ownership",
       icon: Shield,
       content: `Ownership rights are clearly defined as follows:
-
 • Upon full payment, clients own the final delivered website/application and custom code developed specifically for their project
 • Clients retain ownership of their business content, images, logos, and proprietary information
 • Celestial Web Solutions retains rights to general methodologies, techniques, and any pre-existing intellectual property
@@ -90,9 +89,20 @@ Delays in client responsibilities may impact project timelines and may incur add
 • We may reuse general concepts, layouts, or non-proprietary elements in future projects
 
 Detailed intellectual property terms will be specified in individual project agreements.`
+  },
+    {
+      title: "7. Footer Credit & Attribution",
+      icon: Info,
+      content: `Celestial Web Solutions reserves the right to display our company name and/or a "Developed by Celestial Web Solutions" credit in the footer section of any website we design or develop. This credit may appear as a small text link or logo in the website's footer, typically stating "Developed by Celestial Web Solutions" and linking to our official website.
+
+    This practice is standard in the web development industry and serves as a form of professional recognition and portfolio building. It does not affect the functionality or user experience of your website.
+
+    If a client wishes to remove this credit, a fee of 500 Ghana Cedis (₵500) or the equivalent in another currency will apply. This fee compensates for the loss of public attribution and helps support our business growth. The removal request must be made in writing before the project is completed and delivered. Upon payment of the removal fee, we will ensure the credit is not displayed on your website.
+
+    Exceptions to this policy may be considered for sensitive projects or upon mutual agreement, but must be discussed and confirmed in writing prior to project launch.`
     },
     {
-      title: "7. Warranties & Support",
+      title: "8. Warranties & Support",
       icon: AlertTriangle,
       content: `Our warranty and support terms include:
 
@@ -108,7 +118,7 @@ Detailed intellectual property terms will be specified in individual project agr
 Extended support and maintenance packages are available and recommended for optimal website performance.`
     },
     {
-      title: "8. Limitation of Liability",
+      title: "9. Limitation of Liability",
       icon: Info,
       content: `Celestial Web Solutions' liability is limited as follows:
 
@@ -123,7 +133,7 @@ Extended support and maintenance packages are available and recommended for opti
 These limitations apply to the maximum extent permitted by law in Ghana.`
     },
     {
-      title: "9. Termination",
+      title: "10. Termination",
       icon: AlertTriangle,
       content: `Either party may terminate services under the following conditions:
 
@@ -138,7 +148,7 @@ These limitations apply to the maximum extent permitted by law in Ghana.`
 Termination procedures and any applicable refunds will be handled professionally and promptly.`
     },
     {
-      title: "10. Governing Law & Dispute Resolution",
+      title: "11. Governing Law & Dispute Resolution",
       icon: Shield,
       content: `These terms are governed by the laws of Ghana:
 
@@ -216,7 +226,7 @@ We are committed to resolving any disputes fairly and professionally in accordan
               </p>
               <div className="mt-6 text-orange-100">
                 <p style={{ fontFamily: "Google Sans, sans-serif" }}>
-                  Last Updated: January 15, 2025
+                  Last Updated: January 7, 2026
                 </p>
               </div>
             </motion.div>

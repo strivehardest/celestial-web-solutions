@@ -64,11 +64,11 @@ export default function FAQs() {
       questions: [
         {
           question: "How much does a website cost?",
-          answer: "Our websites start from â‚µ2,500 for basic business websites and can range up to â‚µ25,000+ for complex e-commerce platforms. We offer flexible payment plans and provide detailed quotes based on your specific requirements."
+          answer: "Our websites start from GH₵2,500 for basic business websites and can range up to GH₵25,000+ for complex e-commerce platforms. We offer flexible payment plans and provide detailed quotes based on your specific requirements."
         },
         {
           question: "Do you accept payments in Cedis?",
-          answer: "Yes! We accept payments in Ghana Cedis (â‚µ) through mobile money (MTN, Vodafone, AirtelTigo), bank transfers, and cash payments. We also accept international payments via Flutterwave, DPO Pay and Paystack for overseas clients."
+          answer: "Yes! We accept payments in Ghana Cedis (GH₵) through mobile money (MTN, Vodafone, AirtelTigo), bank transfers, and cash payments. We also accept international payments via Flutterwave, DPO Pay and Paystack for overseas clients."
         },
         {
           question: "Do you offer payment plans?",
@@ -99,7 +99,7 @@ export default function FAQs() {
         },
         {
           question: "Do you provide website maintenance?",
-          answer: "Yes, we offer ongoing maintenance packages starting from â‚µ150/month including security updates, content updates, backup services, and technical support. We also offer one-time maintenance services."
+          answer: "Yes, we offer ongoing maintenance packages starting from GH₵150/month including security updates, content updates, backup services, and technical support. We also offer one-time maintenance services."
         }
       ]
     },

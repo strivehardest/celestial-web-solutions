@@ -39,6 +39,9 @@ const happyClients = [
   ,{
     name: "Valyd",
     src: "/png/projects/valyd.png",
+  },
+  { name: "Doeman",
+    src: "/png/projects/doeman.jpeg",
   }
 ];
 
@@ -71,6 +74,13 @@ function HappyClients({ clients = [], speed = 28, cardWidth = "w-48" }) {
                 className="h-16 sm:h-20 md:h-24 lg:h-32 w-auto max-w-[120px] sm:max-w-[160px] md:max-w-[200px] lg:max-w-[240px] object-contain mx-auto"
                 loading="lazy"
                 decoding="async"
+                style={
+                  client.name === 'Elolo Agbleke'
+                    ? { maxHeight: '60px' }
+                    : client.name === 'Ghana Updates Online'
+                    ? { maxHeight: '80px' }
+                    : {}
+                }
               />
             </div>
           ))}

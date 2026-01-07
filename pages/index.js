@@ -7,6 +7,7 @@ const happyClients = [
   { name: "Mart Ban Logistics", src: "/png/projects/martb.png" },
   { name: "My Space Furniture", src: "/png/projects/myspace.png" },
   { name: "Valyd", src: "/png/projects/valyd.png" },
+  { name: "Doeman", src: "/png/projects/doeman.jpeg" }
 ];
 import { useState, useEffect, useCallback } from 'react';
 import { useRouter } from 'next/router';
@@ -620,14 +621,23 @@ const IndexPage = () => {
             </h3>
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8 items-center justify-center">
               {happyClients.map((client, idx) => (
-                <div key={client.name + idx} className="flex items-center justify-center">
+                <div
+                  key={client.name + idx}
+                  className="flex items-center justify-center transition-colors duration-200 group"
+                >
                   <img
                     src={client.src}
                     alt={client.name}
-                    className="h-32 w-auto max-w-[280px] object-contain"
+                    className="h-32 w-auto max-w-[280px] object-contain transition-colors duration-200 group-hover:bg-black group-hover:grayscale"
                     loading="lazy"
                     decoding="async"
-                    style={{ filter: 'none', background: 'none' }}
+                    style={
+                      client.name === 'Elolo Agbleke'
+                        ? { maxHeight: '60px', filter: 'none', background: 'none' }
+                        : client.name === 'Ghana Updates Online'
+                        ? { maxHeight: '80px', filter: 'none', background: 'none' }
+                        : { filter: 'none', background: 'none' }
+                    }
                   />
                 </div>
               ))}
