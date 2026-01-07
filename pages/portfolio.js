@@ -438,7 +438,7 @@ export default function Portfolio() {
                 Our Happy Clients
               </motion.h2>
               <p className="text-center text-gray-600 dark:text-gray-300 mb-8" style={{ fontFamily: "Google Sans, sans-serif" }}>
-                Trusted by businesses across Ghana
+                Trusted by businesses across Ghana and abroad. We pride ourselves on delivering exceptional web solutions that drive success.
               </p>
             </div>
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 md:gap-8 justify-items-center items-center">

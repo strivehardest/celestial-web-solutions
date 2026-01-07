@@ -260,15 +260,17 @@ export default function Footer({ darkMode, toggleDarkMode }) {
 
       {/* Bottom Bar */}
       <div className="border-t border-gray-800">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-          <div className="flex flex-col items-center gap-4 text-center md:flex-row md:justify-between md:text-left">
-            {/* Copyright */}
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 mt-8">
+          <div className="flex flex-col items-center gap-2 text-center md:text-left">
+            {/* Copyright and Handcrafted */}
             <p className="text-gray-500 text-base w-full md:w-auto" style={{ fontFamily: 'Google Sans, sans-serif' }}>
-              © {currentYear} Celestial Web Solutions. All rights reserved.
+              © 2026 Celestial Web Solutions. All rights reserved.
             </p>
-
+            <p className="text-xs text-gray-400 mb-2" style={{ fontFamily: 'Google Sans, sans-serif' }}>
+              Handcrafted with passion in Ghana.
+            </p>
             {/* Social Links */}
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-4 mt-2">
               {socialLinks.map((social) => (
                 <a
                   key={social.name}
@@ -282,11 +284,6 @@ export default function Footer({ darkMode, toggleDarkMode }) {
                 </a>
               ))}
             </div>
-
-            {/* Handcrafted text */}
-            <p className="text-gray-600 text-sm" style={{ fontFamily: 'Google Sans, sans-serif' }}>
-              Handcrafted by Celestial Web Solutions
-            </p>
           </div>
         </div>
       </div>
