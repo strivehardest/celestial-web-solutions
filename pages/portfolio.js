@@ -247,14 +247,18 @@ export default function Portfolio() {
       </Head>
 
       <div className="min-h-screen bg-white dark:bg-gray-900">
-        {/* Hero Section - Kava Style */}
+        {/* Hero Section with Video Background */}
         <section className="relative min-h-[60vh] flex items-center overflow-hidden">
-          {/* Background Image */}
+          {/* Background Video */}
           <div className="absolute inset-0">
-            <img 
-              src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=90&w=2400&auto=format&fit=crop" 
-              alt="Portfolio Background"
+            <video
               className="w-full h-full object-cover"
+              src="/videos/hero6.mp4"
+              autoPlay
+              loop
+              muted
+              playsInline
+              poster="/hero-bg.jpg"
             />
             <div className="absolute inset-0 bg-gradient-to-r from-gray-900/95 via-gray-900/80 to-gray-900/60"></div>
           </div>
@@ -275,7 +279,6 @@ export default function Portfolio() {
               >
                 OUR PORTFOLIO
               </motion.span>
-              
               <h1
                 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight"
                 style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}
@@ -284,14 +287,12 @@ export default function Portfolio() {
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-orange-600"> {displayText}</span>
                 <span className="text-orange-500 animate-pulse">|</span>
               </h1>
-              
               <p
                 className="text-xl text-gray-300 max-w-2xl leading-relaxed mb-8"
                 style={{ fontFamily: "Google Sans, sans-serif" }}
               >
                 Explore our collection of successful projects. From stunning websites to powerful e-commerce platforms - see how we bring ideas to life.
               </p>
-
               <div className="flex flex-wrap gap-4">
                 <GlassButton href="/contact" variant="light">
                   Start Your Project
