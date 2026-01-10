@@ -17,14 +17,14 @@ export default function Footer({ darkMode, toggleDarkMode }) {
 
   const footerLinks = {
     services: [
-      { name: 'Web Development', href: '/services/web-development' },
-      { name: 'Web Design', href: '/services/web-design' },
-      { name: 'E-Commerce Solutions', href: '/services/ecommerce-solutions' },
-      { name: 'SEO Optimization', href: '/services/seo-optimization' },
-      { name: 'UX/UI Design', href: '/services/ux-ui-design' },
-      { name: 'IT Support', href: '/services/it-support' },
-      { name: 'Google AdSense', href: '/services/google-adsense-management' },
-      { name: 'Google Ads', href: '/services/google-ads-management' }
+      { name: 'Web Development', href: '/web-design-company-in-ghana/web-development-company-in-ghana' },
+      { name: 'Web Design', href: '/web-design-company-in-ghana/web-design-in-ghana' },
+      { name: 'E-Commerce Solutions', href: '/web-design-company-in-ghana/ecommerce-website-development-ghana' },
+      { name: 'SEO Optimization', href: '/web-design-company-in-ghana/seo-services-in-ghana' },
+      { name: 'UX/UI Design', href: '/web-design-company-in-ghana/ux-ui-design-in-ghana' },
+      { name: 'IT Support', href: '/web-design-company-in-ghana/it-support-in-ghana' },
+      { name: 'Google AdSense', href: '/web-design-company-in-ghana/google-adsense-management-in-ghana' },
+      { name: 'Google Ads', href: '/web-design-company-in-ghana/google-ads-management-in-ghana' }
     ],
     company: [
       { name: 'Home', href: '/' },

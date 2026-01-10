@@ -60,7 +60,7 @@ const Navbar = () => {
     },
     { 
       name: 'Our Services', 
-      href: '/services',
+      href: '/web-design-company-in-ghana',
     
     },
     { 

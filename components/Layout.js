@@ -49,7 +49,7 @@ export default function Layout({ children }) {
   const navLinks = [
     { href: '/', label: 'Home' },
     { href: '/about', label: 'About' },
-    { href: '/services', label: 'Services' },
+    { href: '/web-design-company-in-ghana', label: 'Services' },
     { href: '/portfolio', label: 'Portfolio' },
     { href: '/contact', label: 'Contact' },
   ];
