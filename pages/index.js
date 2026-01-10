@@ -12,7 +12,7 @@ const happyClients = [
 import { useState, useEffect, useCallback } from 'react';
 import { useRouter } from 'next/router';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Code, Monitor, Search, ShoppingCart, ArrowRight, Zap, CheckCircle2 } from 'lucide-react';
+import { Code, Monitor, Search, ShoppingCart, ArrowRight, Zap, CheckCircle } from 'lucide-react';
 import Head from 'next/head';
 import Link from 'next/link';
 import WhatsAppButton from '../components/WhatsAppButton';
@@ -48,9 +48,9 @@ const GlassButton = ({ children, href, variant = "light", className = "" }) => {
 const SEOHead = () => {
   return (
     <Head>
-      <title>Celestial Web Solutions | No 1 Best Web Designer in Accra, and Keta, Ghana</title>
-      <meta name="description" content="Best Web Designer in Accra and Keta, Ghana. Professional web development, e-commerce solutions, SEO optimization, and digital marketing services for businesses in Ghana." />
-      <meta name="keywords" content="best web designer in Ghana, web designer Accra, web developer Ghana, website design Ghana, e-commerce Ghana, SEO Ghana, digital marketing Ghana, web solutions Accra, best web designer in Keta, web development Accra, affordable web design Ghana, custom website Ghana, WordPress developer Ghana, React developer Ghana, web agency Ghana, website builder Ghana, online store Ghana, business website Ghana, church website Ghana, NGO website Ghana, school website Ghana, website design Accra, web designer near me Ghana, freelance web designer Ghana, professional web designer Ghana, experienced web developer Ghana, website maintenance Ghana, web hosting Ghana, domain registration Ghana, website optimization Ghana, mobile app development Ghana, software development Ghana, IT services Ghana, web design company Ghana, best web development company Ghana, top web designers Ghana, website designer Ghana, web design services Ghana, e-commerce development Ghana, online marketing Ghana, social media marketing Ghana, content marketing Ghana, brand development Ghana, digital transformation Ghana, web technology Ghana, web platform Ghana, responsive website Ghana, SEO services Ghana, Google ranking Ghana, website traffic Ghana, lead generation Ghana, business growth Ghana, digital presence Ghana, online visibility Ghana, website conversion Ghana, user experience design Ghana, web interface design Ghana, website performance Ghana, fast loading website Ghana, secure website Ghana, SSL certificate Ghana, website security Ghana, cyber security Ghana, data protection Ghana" />
+      <title>Best Web Design Company in Ghana | Celestial Web Solutions</title>
+      <meta name="description" content="Celestial Web Solutions is a leading web design company in Ghana offering professional website design, e-commerce development, SEO, and digital solutions for businesses."/>
+      <meta name="keywords" content="web design company in Ghana, web development company in Ghana, website designers in Ghana, web development company Ghana, SEO services in Ghana, e-commerce website Ghana, web designer in Accra, web designer in Keta, web design company in Accra, web designer in Accra Ghana, web design company in Keta, website design services Ghana, e-commerce website development Ghana, business website design Ghana, affordable web design Ghana" />
       <meta name="author" content="Celestial Web Solutions" />
       <meta name="robots" content="index, follow" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -59,8 +59,8 @@ const SEOHead = () => {
       <meta name="geo.position" content="5.6037;-0.1870" />
       
       {/* Open Graph meta tags */}
-      <meta property="og:title" content="Celestial Web Solutions | No 1 Best Web Designer in Accra, Ghana"/>
-      <meta property="og:description" content="Transform your business with expert web development and design services in Ghana. Custom websites, e-commerce solutions, and digital marketing for Accra, Keta, and beyond." />
+      <meta property="og:title" content="Best Web Design Company in Ghana | Celestial Web Solutions"/>
+      <meta property="og:description" content="Celestial Web Solutions is a leading web design company in Ghana providing professional website design, web development, e-commerce solutions, and SEO services for businesses." />
       <meta property="og:type" content="website" />
       <meta property="og:url" content="https://celestialwebsolutions.net" />
       <meta property="og:image" content="https://celestialwebsolutions.net/og-image.jpg" />
@@ -69,8 +69,8 @@ const SEOHead = () => {
       
       {/* Twitter Card meta tags */}
       <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:title" content="Celestial Web Solutions | Best Web Designer in Accra, Ghana - Web Development & Design Services" />
-      <meta name="twitter:description" content="Professional web development, design, and digital marketing services in Ghana. Best web designer in Accra. Custom websites for businesses, NGOs, churches, and institutions." />
+      <meta name="twitter:title" content="Best Web Design Company in Ghana | Celestial Web Solutions" />
+      <meta name="twitter:description" content="Celestial Web Solutions is a leading web design company in Ghana providing professional website design, web development, e-commerce solutions, and SEO services for businesses." />
       <meta name="twitter:image" content="https://celestialwebsolutions.net/twitter-image.jpg" />
       
       {/* Additional SEO meta tags */}
@@ -88,9 +88,9 @@ const SEOHead = () => {
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
             "@context": "https://schema.org",
-            "@type": "LocalBusiness",
+            "@type": "WebDesignCompany",
             "name": "Celestial Web Solutions",
-            "description": "Best Web Designer and Developer in Accra, Ghana. Professional web development, design, e-commerce, and digital marketing services.",
+            "description": "Celestial Web Solutions is a leading web design company in Ghana providing professional website design, web development, e-commerce solutions, and SEO services for businesses.",
             "url": "https://celestialwebsolutions.net",
             "logo": "https://celestialwebsolutions.net/logo.png",
             "image": "https://celestialwebsolutions.net/og-image.jpg",
@@ -174,7 +174,7 @@ const mainServices = [
     title: "Web Development",
     description: "Modern, responsive websites built with Next.js, React and cutting-edge technologies",
     color: "from-orange-500 to-orange-600",
-    link: "/services/web-development",
+    link: "/web-design-company-in-ghana/web-development-company-in-ghana",
     image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?q=90&w=800&auto=format&fit=crop"
   },
   {
@@ -182,7 +182,7 @@ const mainServices = [
     title: "Web Design",
     description: "Beautiful, user-friendly designs that engage your audience and drive conversions",
     color: "from-orange-500 to-orange-600",
-    link: "/services/web-design",
+    link: "/web-design-company-in-ghana/web-design-in-ghana",
     image: "https://www.ntc.edu/sites/default/files/styles/16_9_1600x900/public/2021-06/web-design-header.jpg?itok=KPytPu7S"
   },
   {
@@ -190,7 +190,7 @@ const mainServices = [
     title: "E-Commerce Solutions",
     description: "Custom online stores with secure payment integration and inventory management",
     color: "from-orange-500 to-orange-600",
-    link: "/services/ecommerce-solutions",
+    link: "/web-design-company-in-ghana/ecommerce-website-development-ghana",
     image: "https://admin.wac.co/uploads/What_is_E_commerce_and_What_are_its_Applications_2_d2eb0d4402.jpg"
   },
   {
@@ -198,7 +198,7 @@ const mainServices = [
     title: "SEO Optimization",
     description: "Improve your visibility and reach with our proven SEO strategies",
     color: "from-orange-500 to-orange-600",
-    link: "/services/seo-optimization",
+    link: "/web-design-company-in-ghana/seo-services-in-ghana",
     image: "https://www.intellibright.com/wp-content/uploads/2025/04/Search-Engine-Optimization.jpg"
   }
 ];
@@ -462,7 +462,7 @@ const IndexPage = () => {
               onEnded={handleVideoEnd}
             />
             {/* Dark Overlay for text readability */}
-            <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-black/40"></div>
+            <div className="absolute inset-0 bg-black/70"></div>
           </div>
           
           {/* Project Info Overlay - Bottom Left (desktop), Top for mobile) */}
@@ -563,23 +563,12 @@ const IndexPage = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3, duration: 0.8 }}
               >
-                <span className="block">We Build</span>
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-300 via-yellow-300 to-red-400 min-h-[1.2em] inline-block">
-                  {displayText}
-                  <span className="animate-pulse">|</span>
-                </span>
+                Best Web Design Company in Ghana
               </motion.h1>
+
+
               
-              <motion.p
-                className="text-sm sm:text-lg md:text-xl lg:text-2xl xl:text-3xl text-white/90 mb-3 sm:mb-4 max-w-4xl mx-auto leading-relaxed drop-shadow-lg px-2"
-                style={{ fontFamily: 'Google Sans, sans-serif' }}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.4, duration: 0.8 }}
-              >
-                Crafting exceptional web experiences with
-                <span className="text-orange-300 font-semibold block sm:inline"> modern technologies</span>
-              </motion.p>
+
               
               <motion.p
                 className="text-sm sm:text-base md:text-lg lg:text-xl text-white/80 mb-6 sm:mb-8 max-w-3xl mx-auto px-2"
@@ -611,7 +600,31 @@ const IndexPage = () => {
           </div>
         </section>
 
-
+        {/* Company Intro Section */}
+        <section className="py-8 bg-white dark:bg-gray-900">
+          <div className="max-w-3xl mx-auto px-4 text-center">
+            <motion.div
+              className="rounded-2xl bg-white dark:bg-gray-900 shadow-lg p-6 sm:p-10 mb-8 border border-orange-100 dark:border-orange-900/30"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+            >
+              <h2 className="text-2xl sm:text-3xl font-bold mb-4 text-orange-600 dark:text-orange-400" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>
+                Grow Your Business Online
+              </h2>
+              <p className="text-lg sm:text-xl text-gray-700 dark:text-gray-200 leading-relaxed mb-2" style={{ fontFamily: 'Google Sans, sans-serif' }}>
+                Celestial Web Solutions is a professional web design and development company in Ghana, helping businesses grow online with modern, responsive, and SEO-friendly websites.
+              </p>
+              <p className="text-base sm:text-lg text-gray-600 dark:text-gray-300 leading-relaxed" style={{ fontFamily: 'Google Sans, sans-serif' }}>
+                We specialize in website design, custom web development, e-commerce solutions, and search engine optimization for businesses across Accra, Keta, and Ghana.
+              </p>
+              <p className="text-base sm:text-lg text-gray-600 dark:text-gray-300 leading-relaxed mt-2" style={{ fontFamily: 'Google Sans, sans-serif' }}>
+                As a trusted website design company in Ghana, we work with startups, SMEs, and established businesses across Accra, Keta, and other parts of Ghana, delivering custom digital solutions that drive growth.
+              </p>
+            </motion.div>
+          </div>
+        </section>
 
         {/* Happy Clients Section - 4-Grid Kava Style */}
         <section className="py-16 bg-white dark:bg-gray-900">
@@ -673,6 +686,9 @@ const IndexPage = () => {
               </p>
             </motion.div>
 
+            {/* Detailed Service Descriptions */}
+            {/* (Removed empty div that caused unclosed tag error) */}
+
             <div className="space-y-16">
               {mainServices.map((service, index) => (
                 <motion.div
@@ -724,10 +740,81 @@ const IndexPage = () => {
                         style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>
                       {service.title}
                     </h3>
-                    <p className="text-gray-600 dark:text-gray-300 text-lg leading-relaxed"
-                       style={{ fontFamily: 'Google Sans, sans-serif' }}>
-                      {service.description}
-                    </p>
+                    {/* Custom detailed descriptions for each service */}
+                    {index === 0 && (
+                      <>
+                        <p className="text-gray-600 dark:text-gray-300 text-lg leading-relaxed mb-2" style={{ fontFamily: 'Google Sans, sans-serif' }}>
+                          We offer professional website design services in Ghana tailored to meet the needs of businesses in different industries. Our websites are dweb design company in Accra
+
+web designer in Accra Ghana
+
+web design company in Keta
+
+website design services Ghana
+
+🛒 SERVICE-BASED KEYWORDS
+
+e-commerce website development Ghana
+
+SEO services in Ghana
+
+business website design Ghana
+
+affordable web design Ghanato be user-friendly, visually engaging, and conversion-focused.
+                        </p>
+                        <p className="text-gray-600 dark:text-gray-300 text-lg leading-relaxed" style={{ fontFamily: 'Google Sans, sans-serif' }}>
+                          Whether you need a business website, portfolio website, or corporate website, Celestial Web Solutions ensures your website reflects your brand and builds trust with your audience.
+                        </p>
+                      </>
+                    )}
+                    {index === 1 && (
+                      <>
+                        <p className="text-gray-600 dark:text-gray-300 text-lg leading-relaxed mb-2" style={{ fontFamily: 'Google Sans, sans-serif' }}>
+                          As a reliable web development company in Ghana, we build custom websites and web applications that are secure, scalable, and performance-driven. Our development process focuses on clean code, fast loading speeds, and seamless user experience.
+                        </p>
+                        <p className="text-gray-600 dark:text-gray-300 text-lg leading-relaxed" style={{ fontFamily: 'Google Sans, sans-serif' }}>
+                          We work with modern technologies to deliver reliable web solutions for businesses looking to grow online in Ghana and beyond.
+                        </p>
+                      </>
+                    )}
+                    {index === 2 && (
+                      <>
+                        <p className="text-gray-600 dark:text-gray-300 text-lg leading-relaxed mb-2" style={{ fontFamily: 'Google Sans, sans-serif' }}>
+                          Looking to sell online? We provide e-commerce website development in Ghana for businesses that want to reach more customers and increase sales.
+                        </p>
+                        <p className="text-gray-600 dark:text-gray-300 text-lg leading-relaxed mb-2" style={{ fontFamily: 'Google Sans, sans-serif' }}>
+                          Our e-commerce solutions include:
+                        </p>
+                        <ul className="list-disc pl-6 text-gray-600 dark:text-gray-300 text-lg mb-2" style={{ fontFamily: 'Google Sans, sans-serif' }}>
+                          <li>Online stores</li>
+                          <li>Secure payment integration</li>
+                          <li>Product management systems</li>
+                          <li>Mobile-friendly shopping experiences</li>
+                        </ul>
+                        <p className="text-gray-600 dark:text-gray-300 text-lg leading-relaxed" style={{ fontFamily: 'Google Sans, sans-serif' }}>
+                          We help businesses launch professional online stores that are easy to manage and optimized for sales.
+                        </p>
+                      </>
+                    )}
+                    {index === 3 && (
+                      <>
+                        <p className="text-gray-600 dark:text-gray-300 text-lg leading-relaxed mb-2" style={{ fontFamily: 'Google Sans, sans-serif' }}>
+                          A great website is useless without visibility. Our SEO services in Ghana help businesses rank higher on Google and attract organic traffic.
+                        </p>
+                        <p className="text-gray-600 dark:text-gray-300 text-lg leading-relaxed mb-2" style={{ fontFamily: 'Google Sans, sans-serif' }}>
+                          Our SEO services include:
+                        </p>
+                        <ul className="list-disc pl-6 text-gray-600 dark:text-gray-300 text-lg mb-2" style={{ fontFamily: 'Google Sans, sans-serif' }}>
+                          <li>On-page SEO optimization</li>
+                          <li>Keyword research</li>
+                          <li>Technical SEO</li>
+                          <li>Local SEO for Ghanaian businesses</li>
+                        </ul>
+                        <p className="text-gray-600 dark:text-gray-300 text-lg leading-relaxed" style={{ fontFamily: 'Google Sans, sans-serif' }}>
+                          We design and optimize websites with SEO in mind, ensuring long-term online growth.
+                        </p>
+                      </>
+                    )}
                     <div className="pt-2">
                       <GlassButton href={service.link} variant="orange">
                         Learn More
@@ -745,7 +832,7 @@ const IndexPage = () => {
               viewport={{ once: true }}
               className="text-center mt-16"
             >
-              <GlassButton href="/services" variant="solid">
+              <GlassButton href="/web-design-company-in-ghana" variant="solid">
                 View All Services
               </GlassButton>
             </motion.div>
@@ -888,6 +975,135 @@ const IndexPage = () => {
             >
               <GlassButton href="/portfolio" variant="solid">
                 View All Projects
+              </GlassButton>
+            </motion.div>
+          </div>
+        </section>
+
+        {/* Blog Section */}
+        <section className="py-24 bg-gray-50 dark:bg-gray-800">
+          <div className="max-w-7xl mx-auto px-4">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-center mb-16"
+            >
+              <motion.span
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="inline-block px-4 py-2 bg-orange-100 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400 rounded-full text-sm font-semibold mb-4"
+                style={{ fontFamily: 'Google Sans, sans-serif' }}
+              >
+                INSIGHTS & TIPS
+              </motion.span>
+              <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-orange-600 to-orange-500 bg-clip-text text-transparent"
+                  style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>
+                Latest Blog Articles
+              </h2>
+              <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed"
+                 style={{ fontFamily: 'Google Sans, sans-serif' }}>
+                Expert insights, tips, and guides to help your business thrive online
+              </p>
+            </motion.div>
+
+            {/* Blog Cards Grid */}
+            <div className="grid md:grid-cols-2 gap-8 mb-12">
+              {[
+                {
+                  title: "Top 15 AI Tools Revolutionizing Web Development in 2026",
+                  excerpt: "Explore the latest AI-powered tools transforming web development. From code generation to design automation, discover how AI is making development faster and more efficient.",
+                  category: "AI & Technology",
+                  date: "January 10, 2026",
+                  readTime: "9 min read",
+                  slug: "ai-tools-web-development-2026",
+                  image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=1200&h=600&fit=crop"
+                },
+                {
+                  title: "How to Choose the Best Web Design Company in Ghana (2026 Guide)",
+                  excerpt: "Learn what to look for when hiring a web design company in Ghana. Discover key factors like experience, SEO optimization, mobile responsiveness, and transparent pricing.",
+                  category: "Web Design",
+                  date: "January 10, 2026",
+                  readTime: "6 min read",
+                  slug: "how-to-choose-best-web-design-company-ghana-2026",
+                  image: "https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?w=1200&h=600&fit=crop"
+                }
+              ].map((article, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 40 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-100px" }}
+                  transition={{ delay: index * 0.15 }}
+                  className="bg-white dark:bg-gray-900 rounded-3xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 group flex flex-col"
+                >
+                  {/* Image */}
+                  <div className="relative h-56 overflow-hidden">
+                    <img
+                      src={article.image}
+                      alt={article.title}
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                      onError={(e) => {
+                        e.target.src = `https://via.placeholder.com/600x300?text=${encodeURIComponent(article.title)}`;
+                      }}
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+                    
+                    {/* Category Badge */}
+                    <div className="absolute top-4 left-4 px-3 py-1 bg-gradient-to-r from-orange-500 to-orange-600 rounded-full text-white text-xs font-semibold">
+                      {article.category}
+                    </div>
+                  </div>
+
+                  {/* Content */}
+                  <div className="p-6 md:p-8 flex flex-col flex-grow">
+                    <h3 className="text-xl md:text-2xl font-bold text-gray-900 dark:text-white mb-3 group-hover:text-orange-600 dark:group-hover:text-orange-400 transition-colors"
+                        style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>
+                      {article.title}
+                    </h3>
+                    
+                    <p className="text-gray-600 dark:text-gray-300 leading-relaxed mb-6 flex-grow"
+                       style={{ fontFamily: 'Google Sans, sans-serif' }}>
+                      {article.excerpt}
+                    </p>
+
+                    {/* Meta Info */}
+                    <div className="flex items-center justify-between pt-4 border-t border-gray-200 dark:border-gray-700">
+                      <div className="flex flex-col gap-1">
+                        <span className="text-xs text-gray-500 dark:text-gray-400"
+                              style={{ fontFamily: 'Google Sans, sans-serif' }}>
+                          {article.date}
+                        </span>
+                        <span className="text-sm text-gray-500 dark:text-gray-400"
+                              style={{ fontFamily: 'Google Sans, sans-serif' }}>
+                          {article.readTime}
+                        </span>
+                      </div>
+                      <Link href={`/blog/${article.slug}`}>
+                        <motion.span
+                          className="inline-flex items-center gap-2 text-orange-600 dark:text-orange-400 font-semibold text-sm hover:gap-3 transition-all"
+                          style={{ fontFamily: 'Google Sans, sans-serif' }}
+                          whileHover={{ x: 5 }}
+                        >
+                          Read More <ArrowRight className="w-4 h-4" />
+                        </motion.span>
+                      </Link>
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+
+            {/* View All Articles CTA */}
+            <motion.div
+              className="text-center"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+            >
+              <GlassButton href="/blog" variant="solid">
+                View All Articles
               </GlassButton>
             </motion.div>
           </div>
@@ -1112,6 +1328,26 @@ const IndexPage = () => {
                 A Website Design & Creative<br />
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-orange-600">Marketing Agency</span> in Ghana
               </h2>
+
+              {/* Why Choose Celestial Web Solutions Section */}
+              <div className="max-w-3xl mx-auto mt-10 mb-12 text-center">
+                <h2 className="text-2xl md:text-3xl font-bold text-orange-600 dark:text-orange-400 mb-4" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>
+                  Why Choose Celestial Web Solutions
+                </h2>
+                <p className="text-lg text-gray-700 dark:text-gray-200 mb-4" style={{ fontFamily: 'Google Sans, sans-serif' }}>
+                  Businesses choose Celestial Web Solutions because we deliver quality, reliability, and results.
+                </p>
+                <ul className="list-none space-y-2 text-left inline-block mx-auto mb-4">
+                  <li className="flex items-center text-base text-gray-700 dark:text-gray-200"><CheckCircle className="w-5 h-5 text-orange-500 mr-2" /> Experienced web designers and developers</li>
+                  <li className="flex items-center text-base text-gray-700 dark:text-gray-200"><CheckCircle className="w-5 h-5 text-orange-500 mr-2" /> Affordable website design packages</li>
+                  <li className="flex items-center text-base text-gray-700 dark:text-gray-200"><CheckCircle className="w-5 h-5 text-orange-500 mr-2" /> SEO-friendly websites</li>
+                  <li className="flex items-center text-base text-gray-700 dark:text-gray-200"><CheckCircle className="w-5 h-5 text-orange-500 mr-2" /> Mobile-responsive designs</li>
+                  <li className="flex items-center text-base text-gray-700 dark:text-gray-200"><CheckCircle className="w-5 h-5 text-orange-500 mr-2" /> Client-focused approach</li>
+                </ul>
+                <p className="text-base text-gray-700 dark:text-gray-200" style={{ fontFamily: 'Google Sans, sans-serif' }}>
+                  We are committed to helping businesses succeed online with professional digital solutions.
+                </p>
+              </div>
             </motion.div>
 
             {/* Content Grid */}
@@ -1224,19 +1460,20 @@ const IndexPage = () => {
                 className="inline-block px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full text-white text-sm font-semibold mb-6"
                 style={{ fontFamily: 'Google Sans, sans-serif' }}
               >
-                GET STARTED
+                Web Design Company Serving Accra, Keta, Ghana and across the Globe
               </span>
               <h2
                 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6"
                 style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}
               >
-                Ready to Transform Your Business?
+                Celestial Web Solutions proudly serves clients across Accra, Keta, and all regions of Ghana.
               </h2>
               <p
                 className="text-lg sm:text-xl text-orange-100 mb-10 max-w-2xl mx-auto"
                 style={{ fontFamily: 'Google Sans, sans-serif' }}
               >
-                Let's discuss your project and create something amazing together. Get started with a free consultation today.
+                No matter your location, we provide professional web design and development services tailored to your business goals.<br /><br />
+                Contact us today to get a professional website that helps your business grow online
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <GlassButton href="/contact" variant="light">

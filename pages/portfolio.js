@@ -1,3 +1,6 @@
+<Head>
+  <meta name="keywords" content="web design company in Ghana, web development company in Ghana, website designers in Ghana, web development company Ghana, SEO services in Ghana, e-commerce website Ghana, web designer in Accra, web designer in Keta, web design company in Accra, web designer in Accra Ghana, web design company in Keta, website design services Ghana, e-commerce website development Ghana, business website design Ghana, affordable web design Ghana" />
+</Head>
 import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
@@ -297,7 +300,7 @@ export default function Portfolio() {
                 <GlassButton href="/contact" variant="light">
                   Start Your Project
                 </GlassButton>
-                <GlassButton href="/services" variant="light">
+                <GlassButton href="/web-design-company-in-ghana" variant="light">
                   Our Services
                 </GlassButton>
               </div>

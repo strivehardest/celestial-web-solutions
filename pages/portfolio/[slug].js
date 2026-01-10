@@ -134,18 +134,43 @@ export default function ProjectDetail() {
     );
   }
 
+  const currentUrl = typeof window !== "undefined" ? window.location.href : `https://celestialwebsolutions.net/portfolio/${slug}`;
+
   return (
     <>
       <Head>
-        <title>{project.title} | Celestial Web Solutions - Project Details</title>
+        <title>{`${project.title} | Celestial Web Solutions Portfolio`}</title>
         <meta name="description" content={project.description} />
-        <meta name="keywords" content={`${project.title}, web development project, Celestial Web Solutions`} />
+        <meta name="keywords" content={`${project.title}, ${project.category || 'web project'}, web development, portfolio, Celestial Web Solutions, ${project.clientCountry || 'Ghana'}`} />
+        <meta name="author" content="Celestial Web Solutions" />
+        <meta name="robots" content="index, follow" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        
+        {/* Open Graph / Facebook */}
+        <meta property="og:type" content="article" />
+        <meta property="og:url" content={currentUrl} />
         <meta property="og:title" content={`${project.title} | Celestial Web Solutions`} />
         <meta property="og:description" content={project.description} />
-        <meta property="og:type" content="article" />
         <meta property="og:image" content={project.image} />
-        <link rel="canonical" href={`https://celestialwebsolutions.net/portfolio/${slug}`} />
-
+        <meta property="og:site_name" content="Celestial Web Solutions" />
+        <meta property="article:published_time" content={project.completionDate || project.date || "2025-01-01"} />
+        <meta property="article:author" content="Celestial Web Solutions" />
+        {project.category && <meta property="article:section" content={project.category} />}
+        {project.tech && project.tech.map((tech, idx) => (
+          <meta key={idx} property="article:tag" content={tech} />
+        ))}
+        
+        {/* Twitter */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:url" content={currentUrl} />
+        <meta name="twitter:title" content={`${project.title} | Celestial Web Solutions`} />
+        <meta name="twitter:description" content={project.description} />
+        <meta name="twitter:image" content={project.image} />
+        
+        {/* Canonical URL */}
+        <link rel="canonical" href={currentUrl} />
+        
+        {/* Structured Data - Project/CreativeWork Schema */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -155,11 +180,57 @@ export default function ProjectDetail() {
               "name": project.title,
               "description": project.description,
               "image": project.image,
+              "url": currentUrl,
+              "datePublished": project.completionDate || project.date || "2025-01-01",
+              "dateModified": project.completionDate || project.date || "2025-01-01",
               "creator": {
                 "@type": "Organization",
-                "name": "Celestial Web Solutions"
+                "name": "Celestial Web Solutions",
+                "url": "https://celestialwebsolutions.net"
               },
-              "datePublished": project.completionDate || project.date || "2025-01-01"
+              "publisher": {
+                "@type": "Organization",
+                "name": "Celestial Web Solutions",
+                "logo": {
+                  "@type": "ImageObject",
+                  "url": "https://celestialwebsolutions.net/logo.png"
+                }
+              },
+              "category": project.category || "Web Development",
+              "keywords": project.tech ? project.tech.join(", ") : "",
+              ...(project.client && { "client": project.client }),
+              ...(project.clientCountry && { "locationCreated": project.clientCountry })
+            })
+          }}
+        />
+        
+        {/* BreadcrumbList Schema */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "BreadcrumbList",
+              "itemListElement": [
+                {
+                  "@type": "ListItem",
+                  "position": 1,
+                  "name": "Home",
+                  "item": "https://celestialwebsolutions.net"
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 2,
+                  "name": "Portfolio",
+                  "item": "https://celestialwebsolutions.net/portfolio"
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 3,
+                  "name": project.title,
+                  "item": currentUrl
+                }
+              ]
             })
           }}
         />

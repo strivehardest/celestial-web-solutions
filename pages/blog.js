@@ -7,34 +7,60 @@ import PremiumCTA from '../components/PremiumCTA';
 import WhatsAppButton from '../components/WhatsAppButton';
 import { image } from "framer-motion/client";
 
-// Blog articles data with external images
+// Blog articles data with external images - sorted by date (newest first)
 export const blogArticles = [
-    {
-      id: 1001,
-      slug: "web-design-trends-ghana-world-2026",
-      title: "Web Design Trends Businesses in Ghana and Worldwide Should Prepare for in 2026",
-      excerpt: "Stay ahead in 2026! Discover the top web design trends for Ghanaian and global businesses: AI-driven personalization, minimal UIs, speed, voice optimization, and accessibility.",
-      category: "Web Design",
-      author: "Celestial Team",
-      date: "December 29, 2025",
-      readTime: "4 min read",
-      image: "https://images.unsplash.com/photo-1635405050330-b0824eb1bf26?q=80&w=1169&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      featured: true,
-      tags: ["web design", "trends", "AI", "accessibility", "2026"]
-    },
-    {
-      id: 1002,
-      slug: "future-ready-website-ghana-international-2026",
-      title: "Building a Future-Ready Website for Ghanaian and International Markets in 2026",
-      excerpt: "Learn how to build a website that grows your business in Ghana and globally in 2026: scalable architecture, security, global payments, SEO, and easy content management.",
-      category: "Web Development",
-      author: "Celestial Team",
-      date: "December 29, 2025",
-      readTime: "4 min read",
-      image: "https://images.unsplash.com/photo-1547658719-da2b51169166?q=80&w=764&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      featured: true,
-      tags: ["future-ready", "global", "Ghana", "website", "2026"]
-    },
+  {
+    id: 5,
+    slug: "ai-tools-web-development-2026",
+    title: "Top 15 AI Tools Revolutionizing Web Development in 2026",
+    excerpt: "Explore the latest AI-powered tools transforming web development. From code generation to design automation, discover how AI is making development faster and more efficient.",
+    category: "AI & Technology",
+    author: "Celestial Team",
+    date: "January 10, 2026",
+    readTime: "9 min read",
+    image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=1200&h=600&fit=crop",
+    featured: true,
+    tags: ["AI", "web development", "automation", "tools"]
+  },
+  {
+    id: 14,
+    slug: "how-to-choose-best-web-design-company-ghana-2026",
+    title: "How to Choose the Best Web Design Company in Ghana (2026 Guide)",
+    excerpt: "Learn what to look for when hiring a web design company in Ghana. Discover key factors like experience, SEO optimization, mobile responsiveness, and transparent pricing.",
+    category: "Web Design",
+    author: "Celestial Team",
+    date: "January 10, 2026",
+    readTime: "6 min read",
+    image: "https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?w=1200&h=600&fit=crop",
+    featured: true,
+    tags: ["web design", "Ghana", "choosing company", "guide", "2026"]
+  },
+  {
+    id: 1001,
+    slug: "web-design-trends-ghana-world-2026",
+    title: "Web Design Trends Businesses in Ghana and Worldwide Should Prepare for in 2026",
+    excerpt: "Stay ahead in 2026! Discover the top web design trends for Ghanaian and global businesses: AI-driven personalization, minimal UIs, speed, voice optimization, and accessibility.",
+    category: "Web Design",
+    author: "Celestial Team",
+    date: "December 29, 2025",
+    readTime: "4 min read",
+    image: "https://images.unsplash.com/photo-1635405050330-b0824eb1bf26?q=80&w=1169&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    featured: true,
+    tags: ["web design", "trends", "AI", "accessibility", "2026"]
+  },
+  {
+    id: 1002,
+    slug: "future-ready-website-ghana-international-2026",
+    title: "Building a Future-Ready Website for Ghanaian and International Markets in 2026",
+    excerpt: "Learn how to build a website that grows your business in Ghana and globally in 2026: scalable architecture, security, global payments, SEO, and easy content management.",
+    category: "Web Development",
+    author: "Celestial Team",
+    date: "December 29, 2025",
+    readTime: "4 min read",
+    image: "https://images.unsplash.com/photo-1547658719-da2b51169166?q=80&w=764&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    featured: true,
+    tags: ["future-ready", "global", "Ghana", "website", "2026"]
+  },
   {
     id: 1,
     slug: "best-web-designers-in-accra-ghana-2025",
@@ -47,6 +73,32 @@ export const blogArticles = [
     image: "https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?w=1200&h=600&fit=crop",
     featured: true,
     tags: ["web design", "Accra", "Ghana", "top agencies"]
+  },
+  {
+    id: 13,
+    slug: "content-marketing-strategies-ghana-2025",
+    title: "Content Marketing Strategies for Ghanaian Businesses in 2025",
+    excerpt: "Boost your online presence with effective content marketing. Learn strategies tailored for Ghanaian audiences to increase engagement and drive sales.",
+    category: "Digital Marketing",
+    author: "Celestial Team",
+    date: "November 3, 2025",
+    readTime: "9 min read",
+    image: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=1200&h=600&fit=crop",
+    featured: false,
+    tags: ["content marketing", "Ghana", "digital strategy", "engagement"]    
+  },
+  {
+    id: 6,
+    slug: "latest-web-development-tools-frameworks-2025",
+    title: "Latest Web Development Tools & Frameworks You Must Know in 2025",
+    excerpt: "Stay ahead of the curve with the newest web development tools and frameworks. A comprehensive guide to React 19, Next.js 15, and other cutting-edge technologies.",
+    category: "Web Development",
+    author: "Celestial Team",
+    date: "October 15, 2025",
+    readTime: "11 min read",
+    image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=1200&h=600&fit=crop",
+    featured: true,
+    tags: ["web development", "frameworks", "tools", "React", "Next.js"]
   },
   {
     id: 2,
@@ -86,32 +138,6 @@ export const blogArticles = [
     image: "https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?w=1200&h=600&fit=crop",
     featured: true,
     tags: ["SEO", "local SEO", "Ghana", "Google ranking"]
-  },
-  {
-    id: 5,
-    slug: "ai-tools-web-development-2025",
-    title: "Top 15 AI Tools Revolutionizing Web Development in 2025",
-    excerpt: "Explore the latest AI-powered tools transforming web development. From code generation to design automation, discover how AI is making development faster and more efficient.",
-    category: "AI & Technology",
-    author: "Celestial Team",
-    date: "February 20, 2025",
-    readTime: "9 min read",
-    image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=1200&h=600&fit=crop",
-    featured: false,
-    tags: ["AI", "web development", "automation", "tools"]
-  },
-  {
-    id: 6,
-    slug: "latest-web-development-tools-frameworks-2025",
-    title: "Latest Web Development Tools & Frameworks You Must Know in 2025",
-    excerpt: "Stay ahead of the curve with the newest web development tools and frameworks. A comprehensive guide to React 19, Next.js 15, and other cutting-edge technologies.",
-    category: "Web Development",
-    author: "Celestial Team",
-    date: "October 15, 2025",
-    readTime: "11 min read",
-    image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=1200&h=600&fit=crop",
-    featured: true,
-    tags: ["web development", "frameworks", "tools", "React", "Next.js"]
   },
   {
     id: 7,
@@ -190,19 +216,6 @@ export const blogArticles = [
     image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=600&fit=crop",
     featured: false,
     tags: ["Google Ads", "SEO", "digital marketing", "Ghana"]
-  },
-  {
-    id: 13,
-    slug: "content-marketing-strategies-ghana-2025",
-    title: "Content Marketing Strategies for Ghanaian Businesses in 2025",
-    excerpt: "Boost your online presence with effective content marketing. Learn strategies tailored for Ghanaian audiences to increase engagement and drive sales.",
-    category: "Digital Marketing",
-    author: "Celestial Team",
-    date: "November 3, 2025",
-    readTime: "9 min read",
-    image: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=1200&h=600&fit=crop",
-    featured: false,
-    tags: ["content marketing", "Ghana", "digital strategy", "engagement"]    
   },
 ];
 
@@ -350,7 +363,7 @@ export default function BlogPage() {
                   >
                     <div className="cursor-pointer">
                       <Link href={`/blog/${article.slug}`} className="block">
-                        <span>
+                        <div>
                           <div className="relative h-64 overflow-hidden">
                             <img
                               src={article.image}
@@ -397,21 +410,23 @@ export default function BlogPage() {
                                 <User className="w-4 h-4" />
                                 {article.author}
                               </span>
-                              <PremiumCTA
-                                href={`/blog/${article.slug}`}
-                                size="small"
-                                variant="primary"
-                                className="!px-4 !py-2 !text-sm"
-                                icon={false}
-                              >
-                                <span className="flex items-center gap-2">
-                                  Read More
-                                  <ArrowRight className="w-5 h-5" />
-                                </span>
-                              </PremiumCTA>
                             </div>
                           </div>
-                        </span>
+                        </div>
+                      </Link>
+                      <Link href={`/blog/${article.slug}`} className="block mt-4">
+                        <PremiumCTA
+                          size="small"
+                          variant="primary"
+                          className="!px-4 !py-2 !text-sm w-full text-center"
+                          icon={false}
+                          href={`/blog/${article.slug}`}
+                        >
+                          <span className="flex items-center gap-2 justify-center">
+                            Read More
+                            <ArrowRight className="w-5 h-5" />
+                          </span>
+                        </PremiumCTA>
                       </Link>
                     </div>
                   </motion.article>
@@ -447,7 +462,7 @@ export default function BlogPage() {
                   >
                     <div className="cursor-pointer">
                       <Link href={`/blog/${article.slug}`} className="block">
-                        <span>
+                        <div>
                           <div className="relative h-48 overflow-hidden">
                             <img
                               src={article.image}
@@ -486,21 +501,22 @@ export default function BlogPage() {
                                 {article.readTime}
                               </span>
                             </div>
-
-                            <PremiumCTA
-                              href={`/blog/${article.slug}`}
-                              size="small"
-                              variant="primary"
-                              className="!px-4 !py-2 !text-sm"
-                              icon={false}
-                            >
-                              <span className="flex items-center gap-2">
-                                Read Article
-                                <ArrowRight className="w-4 h-4" />
-                              </span>
-                            </PremiumCTA>
                           </div>
-                        </span>
+                        </div>
+                      </Link>
+                      <Link href={`/blog/${article.slug}`} className="block px-6 pb-6">
+                        <PremiumCTA
+                          size="small"
+                          variant="primary"
+                          className="!px-4 !py-2 !text-sm w-full text-center"
+                          icon={false}
+                          href={`/blog/${article.slug}`}
+                        >
+                          <span className="flex items-center gap-2 justify-center">
+                            Read Article
+                            <ArrowRight className="w-4 h-4" />
+                          </span>
+                        </PremiumCTA>
                       </Link>
                     </div>
                   </motion.article>
@@ -554,7 +570,7 @@ export default function BlogPage() {
                 <PremiumCTA href="/contact" size="default" variant="primary">
                   Get Started Today
                 </PremiumCTA>
-                <PremiumCTA href="/services" size="default" variant="primary">
+                <PremiumCTA href="/web-design-company-in-ghana" size="default" variant="primary">
                   View Our Services
                 </PremiumCTA>
               </div>

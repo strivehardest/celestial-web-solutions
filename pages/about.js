@@ -155,8 +155,8 @@ export default function AboutUs() {
     <>
       <Head>
         <title>About Celestial Web Solutions | Web Design Company in Ghana</title>
-        <meta name="description" content="Learn about Celestial Web Solutions, a leading web design and development company in Accra, Ghana. Our mission, team, and commitment to delivering exceptional digital solutions." />
-        <meta name="keywords" content="about Celestial Web Solutions, web design company Ghana, web development company Accra, professional web designers Ghana, experienced developers Accra, web solutions company Ghana, best web agency Accra, website design team Ghana, digital agency Accra, company mission, team expertise, web development services, design philosophy, client testimonials, award-winning designers Ghana" />
+        <meta name="description" content="Learn more about Celestial Web Solutions, a professional web design and development company in Ghana committed to helping businesses grow online." />
+        <meta name="keywords" content="web design company in Ghana, professional web designers Ghana, Celestial Web Solutions, Waliu Aforlabi"/>
         <meta name="author" content="Celestial Web Solutions" />
         <meta name="robots" content="index, follow" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -164,16 +164,16 @@ export default function AboutUs() {
         <meta name="geo.placename" content="Accra, Ghana" />
         
         {/* Open Graph */}
-        <meta property="og:title" content="About Celestial Web Solutions | Web Design Company Ghana"/>
-        <meta property="og:description" content="Discover the story behind Celestial Web Solutions, a premier web design and development company in Accra, Ghana." />
+        <meta property="og:title" content="About Celestial Web Solutions | Web Design Company in Ghana"/>
+        <meta property="og:description" content="Learn more about Celestial Web Solutions, a professional web design and development company in Ghana committed to helping businesses grow online." />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://celestialwebsolutions.net/about" />
         <meta property="og:locale" content="en_GH" />
         
         {/* Twitter Card */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="About Celestial Web Solutions | Web Design Company Ghana" />
-        <meta name="twitter:description" content="Learn about our web design and development expertise in Ghana." />
+        <meta name="twitter:title" content="About Celestial Web Solutions | Web Design Company in Ghana" />
+        <meta name="twitter:description" content="Learn more about Celestial Web Solutions, a professional web design and development company in Ghana committed to helping businesses grow online." />
         
         <link rel="canonical" href="https://celestialwebsolutions.net/about" />
       </Head>
@@ -219,17 +219,7 @@ export default function AboutUs() {
                 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight"
                 style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}
               >
-                We Create Premium{" "}
-                <span className="relative">
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-orange-600">
-                    {displayText}
-                  </span>
-                  <motion.span 
-                    className="inline-block w-1 h-10 md:h-12 lg:h-14 bg-orange-500 ml-1 align-middle"
-                    animate={{ opacity: [1, 0] }}
-                    transition={{ duration: 0.5, repeat: Infinity, repeatType: "reverse" }}
-                  />
-                </span>
+                About Celestial Web Solutions
               </h1>
 
               <p
@@ -412,7 +402,7 @@ export default function AboutUs() {
                 </div>
 
                 <div className="mt-10">
-                  <Link href="/services">
+                  <Link href="/web-design-company-in-ghana">
                     <motion.button
                       whileHover={{ scale: 1.02, x: 5 }}
                       whileTap={{ scale: 0.98 }}

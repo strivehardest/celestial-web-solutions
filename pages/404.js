@@ -29,7 +29,7 @@ export default function Custom404() {
         <title>404 - Page Not Found | Celestial Web Solutions</title>
         <meta
           name="description"
-          content="Page not found â€” Celestial Web Solutions. Return home or contact us for help."
+          content="Page not found - Celestial Web Solutions. Return home or contact us for help."
         />
         <link rel="canonical" href="https://celestialwebsolutions.net/404" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -43,20 +43,28 @@ export default function Custom404() {
       <div className="min-h-screen bg-white dark:bg-gray-900 flex flex-col">
         {/* Hero Section (client-only; uses framer-motion inside) */}
         <ClientAnimatedHero>
+          <div className="absolute inset-0 overflow-hidden">
+            <img
+              src="https://images.unsplash.com/photo-1584438784894-089d6a62b8fa?w=1200&h=800&fit=crop&q=80"
+              alt="404 Error Illustration"
+              className="w-full h-full object-cover opacity-20"
+            />
+            <div className="absolute inset-0 bg-gradient-to-br from-orange-500/40 to-orange-600/40"></div>
+          </div>
           <h1
-            className="text-5xl md:text-7xl font-bold text-white mb-4"
+            className="text-5xl md:text-7xl font-bold text-white mb-4 relative z-10"
             style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}
           >
             404
           </h1>
           <h2
-            className="text-2xl md:text-3xl font-semibold text-orange-100 mb-6"
+            className="text-2xl md:text-3xl font-semibold text-orange-100 mb-6 relative z-10"
             style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}
           >
-            Oops â€” Page not found
+            Oops - Page not found
           </h2>
           <p
-            className="text-lg text-orange-100 max-w-3xl mx-auto leading-relaxed"
+            className="text-lg text-orange-100 max-w-3xl mx-auto leading-relaxed relative z-10"
             style={{ fontFamily: "Google Sans, sans-serif" }}
           >
             The page you're looking for might have been moved, does not exists or no longer exists. Try searching
@@ -82,7 +90,7 @@ export default function Custom404() {
                     style={{ fontFamily: "Google Sans, sans-serif" }}
                   >
                     It might be a broken link, a mistyped URL, or the content has moved. Try one of
-                    the quick actions below â€” or use the search to look for keywords (page title,
+                    the quick actions below - or use the search to look for keywords (page title,
                     service name, or topic).
                   </p>
 
@@ -173,7 +181,7 @@ export default function Custom404() {
                   </h4>
                   <ul className="space-y-3 text-gray-600 dark:text-gray-300" style={{ fontFamily: "Google Sans, sans-serif" }}>
                     <li>
-                      <Link href="/services" className="hover:underline">
+                      <Link href="/web-design-company-in-ghana" className="hover:underline">
                         Our Services
                       </Link>
                     </li>

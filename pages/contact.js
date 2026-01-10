@@ -1,3 +1,6 @@
+<Head>
+  <meta name="keywords" content="web design company in Ghana, web development company in Ghana, website designers in Ghana, web development company Ghana, SEO services in Ghana, e-commerce website Ghana, web designer in Accra, web designer in Keta, web design company in Accra, web designer in Accra Ghana, web design company in Keta, website design services Ghana, e-commerce website development Ghana, business website design Ghana, affordable web design Ghana" />
+</Head>
 import { useState, useEffect } from 'react';
 import { motion } from "framer-motion";
 import Head from 'next/head';
@@ -115,8 +118,8 @@ export default function Contact() {
     <>
       <Head>
         <title>Contact Celestial Web Solutions | Web Design Company Ghana</title>
-        <meta name="description" content="Contact Celestial Web Solutions in Accra or Keta, Ghana. Get in touch for web design, development, and digital marketing services. Free consultation available." />
-        <meta name="keywords" content="contact us Ghana, web designer contact, web development inquiries, Celestial Web Solutions contact, email web designer Ghana, phone web developer, consultation Ghana, contact form Ghana, office location Accra, office Keta, business hours Ghana, website inquiry, project quote, free consultation, support contact, customer service Ghana" />
+        <meta name="description" content="Contact Celestial Web Solutions today for professional web design, development, e-commerce, and SEO services in Ghana." />
+        <meta name="keywords" content="contact web designer Ghana, web design company Ghana" />
         <meta name="author" content="Celestial Web Solutions" />
         <meta name="robots" content="index, follow" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -167,7 +170,7 @@ export default function Contact() {
                 className="text-4xl md:text-6xl font-bold text-white mb-6 drop-shadow-lg"
                 style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}
               >
-                Get In Touch
+                Contact Celestial Web Solutions
               </h1>
               <div className="flex flex-col items-center justify-center mb-4 min-h-[2.5em]">
                 <span className="text-lg md:text-2xl text-white bg-black/20 px-4 py-2 rounded-full font-semibold tracking-wide shadow-lg animate-pulse" style={{ fontFamily: 'Google Sans, sans-serif', letterSpacing: '0.04em' }}>
