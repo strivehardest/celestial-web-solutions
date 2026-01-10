@@ -744,23 +744,7 @@ const IndexPage = () => {
                     {index === 0 && (
                       <>
                         <p className="text-gray-600 dark:text-gray-300 text-lg leading-relaxed mb-2" style={{ fontFamily: 'Google Sans, sans-serif' }}>
-                          We offer professional website design services in Ghana tailored to meet the needs of businesses in different industries. Our websites are dweb design company in Accra
-
-web designer in Accra Ghana
-
-web design company in Keta
-
-website design services Ghana
-
-🛒 SERVICE-BASED KEYWORDS
-
-e-commerce website development Ghana
-
-SEO services in Ghana
-
-business website design Ghana
-
-affordable web design Ghanato be user-friendly, visually engaging, and conversion-focused.
+                          We offer professional website design services in Ghana tailored to meet the needs of businesses in different industries. Our websites are designed to be user-friendly, visually engaging, and conversion-focused.
                         </p>
                         <p className="text-gray-600 dark:text-gray-300 text-lg leading-relaxed" style={{ fontFamily: 'Google Sans, sans-serif' }}>
                           Whether you need a business website, portfolio website, or corporate website, Celestial Web Solutions ensures your website reflects your brand and builds trust with your audience.
