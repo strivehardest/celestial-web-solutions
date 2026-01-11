@@ -137,15 +137,6 @@ export default function CustomCursor() {
           )}
         </motion.div>
       </motion.div>
-
-      {/* Global styles to hide default cursor */}
-      <style jsx global>{`
-        @media (min-width: 769px) {
-          * {
-            cursor: none !important;
-          }
-        }
-      `}</style>
     </>
   );
 }
