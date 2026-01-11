@@ -1,6 +1,3 @@
-<Head>
-  <meta name="keywords" content="web design company in Ghana, web development company in Ghana, website designers in Ghana, web development company Ghana, SEO services in Ghana, e-commerce website Ghana, web designer in Accra, web designer in Keta, web design company in Accra, web designer in Accra Ghana, web design company in Keta, website design services Ghana, e-commerce website development Ghana, business website design Ghana, affordable web design Ghana" />
-</Head>
 import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
@@ -349,9 +346,10 @@ export default function Portfolio() {
                       <Image
                         src={project.image}
                         alt={project.title}
-                        layout="fill"
-                        objectFit="cover"
-                        className="group-hover:scale-110 transition-transform duration-500"
+                        fill
+                        sizes="(max-width: 768px) 100vw, 50vw"
+                        className="object-cover group-hover:scale-110 transition-transform duration-500"
+                        priority={index < 2}
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                       

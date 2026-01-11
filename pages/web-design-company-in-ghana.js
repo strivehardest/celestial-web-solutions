@@ -448,7 +448,7 @@ export default function ServicesPage() {
 
 														<div className="pt-4">
 															<GlassButton href={`/web-design-company-in-ghana/${service.slug}`} variant="orange">
-																Learn More
+																Explore {service.title}
 															</GlassButton>
 														</div>
 													</div>

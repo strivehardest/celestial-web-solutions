@@ -33,7 +33,33 @@ const nextConfig = {
         hostname: 'images.unsplash.com',
         pathname: '/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'www.ntc.edu',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'admin.wac.co',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'www.intellibright.com',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'cdn.jsdelivr.net',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'cdn.worldvectorlogo.com',
+        pathname: '/**',
+      },
     ],
+    formats: ['image/avif', 'image/webp'],
   },
 };
 

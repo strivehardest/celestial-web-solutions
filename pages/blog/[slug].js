@@ -2231,7 +2231,9 @@ export default function BlogPost() {
     );
   }
 
-  const currentUrl = typeof window !== "undefined" ? window.location.href : "";
+  const currentUrl = typeof window !== "undefined" 
+    ? window.location.href 
+    : `https://celestialwebsolutions.net/blog/${router.query.slug}`;
 
   const handleShare = (platform) => {
     const shareUrls = {

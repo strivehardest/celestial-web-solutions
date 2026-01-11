@@ -159,6 +159,13 @@ export default function PricingWithCalculator() {
         "Basic SEO Optimization",
         "Contact Form Integration",
         "Social Media Links",
+          "WhatsApp Chat Integration",
+          "Google Map Integration",
+          "Gallery",
+          "Sitemap",
+          "Website Analytics",
+          "Security/Firewall",
+          "Site Backups",
         "Free Domain (.com/.net/.org)",
         "1 Year Free Hosting",
         "Basic SSL Certificate",
@@ -184,6 +191,13 @@ export default function PricingWithCalculator() {
         "Blog/News Section",
         "Newsletter Integration",
         "Social Media Integration",
+          "WhatsApp Chat Integration",
+          "Google Map Integration",
+          "Gallery",
+          "Sitemap",
+          "Contact Form",
+          "Security/Firewall",
+          "Site Backups",
         "Free Domain & 12 Months Hosting",
         "Premium SSL Certificate",
         "Priority Email Support",
@@ -212,6 +226,15 @@ export default function PricingWithCalculator() {
         "Paystack/Flutterwave Setup",
         "Product Search & Filters",
         "Email Notifications",
+          "Social Media Integration",
+          "WhatsApp Chat Integration",
+          "Google Map Integration",
+          "Gallery",
+          "Sitemap",
+          "Contact Form",
+          "Website Analytics",
+          "Security/Firewall",
+          "Site Backups",
         "Free Domain & 1 Year Hosting",
         "Advanced SSL Certificate",
         "Phone & Email Support",
@@ -237,6 +260,15 @@ export default function PricingWithCalculator() {
         "Advanced Security Features",
         "Performance Optimization",
         "Scalable Architecture",
+          "Social Media Integration",
+          "WhatsApp Chat Integration",
+          "Google Map Integration",
+          "Gallery",
+          "Sitemap",
+          "Contact Form",
+          "Website Analytics",
+          "Security/Firewall",
+          "Site Backups",
         "1 Year Free Hosting & Domain",
         "24/7 Priority Support",
         "Dedicated Project Manager",
@@ -265,6 +297,10 @@ export default function PricingWithCalculator() {
 
   // Currency Selector Component - Horizontal Layout
   const CurrencySelector = () => {
+    const handleCurrencyChange = (code) => {
+      setSelectedCurrency(code);
+    };
+
     return (
       <div className="w-full max-w-2xl mx-auto">
         {/* Horizontal currency buttons */}
@@ -272,10 +308,14 @@ export default function PricingWithCalculator() {
           {currencies.map((currency) => (
             <motion.button
               key={currency.code}
-              onClick={() => setSelectedCurrency(currency.code)}
+              onClick={(e) => {
+                e.preventDefault();
+                handleCurrencyChange(currency.code);
+              }}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className={`flex items-center space-x-2 px-3 py-2 sm:px-4 sm:py-2.5 rounded-xl transition-all duration-300 ${
+              type="button"
+              className={`flex items-center space-x-2 px-3 py-2 sm:px-4 sm:py-2.5 rounded-xl transition-all duration-300 cursor-pointer ${
                 selectedCurrency === currency.code 
                   ? 'bg-white text-orange-600 shadow-lg ring-2 ring-orange-400' 
                   : 'bg-white/20 text-white hover:bg-white/30 backdrop-blur-sm'
@@ -361,7 +401,7 @@ export default function PricingWithCalculator() {
   }, [displayText, isDeleting, currentPhraseIndex]);
 
   return (
-    <div className="min-h-screen bg-white dark:bg-gray-900">
+    <div className="min-h-screen bg-white dark:bg-gray-900 font-sans">
       {/* === Dynamic SEO Meta Tags === */}
       <Head>
         <title>{`${currentPlanMeta.name} Package | ${billingPeriod === "monthly" ? "Monthly" : "Yearly"} Pricing | Celestial Web Solutions`}</title>
@@ -445,7 +485,7 @@ export default function PricingWithCalculator() {
                       <p className="text-gray-600 dark:text-gray-400" style={{ fontFamily: "Google Sans, sans-serif" }}>Build your perfect package</p>
                     </div>
                   </div>
-                  <button onClick={resetCalculator} className="text-gray-500 hover:text-orange-600 transition-colors text-sm font-medium" style={{ fontFamily: "Google Sans, sans-serif" }}>Reset</button>
+                  <button onClick={resetCalculator} className="text-gray-600 dark:text-gray-400 hover:text-orange-600 transition-colors text-sm font-medium" style={{ fontFamily: "Google Sans, sans-serif" }}>Reset</button>
                 </div>
 
                 {/* Base Package Selection */}
@@ -606,6 +646,323 @@ export default function PricingWithCalculator() {
                 </PremiumCTA>
               </motion.div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Package Comparison Section */}
+      <section className="py-20 bg-gray-50 dark:bg-gray-800">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4" style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}>
+              Compare Our Packages
+            </h2>
+            <p className="text-gray-600 dark:text-gray-400 text-lg" style={{ fontFamily: "Google Sans, sans-serif" }}>
+              Find the perfect plan that matches your business needs
+            </p>
+          </div>
+
+          {/* Comparison Table */}
+          <div className="overflow-x-auto rounded-2xl shadow-lg">
+            <table className="w-full">
+              <thead>
+                <tr className="bg-gradient-to-r from-orange-500 to-orange-600 text-white">
+                  <th className="px-6 py-4 text-left font-bold" style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}>Features</th>
+                  <th className="px-6 py-4 text-center font-bold" style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}>Starter</th>
+                  <th className="px-6 py-4 text-center font-bold" style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}>Professional</th>
+                  <th className="px-6 py-4 text-center font-bold" style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}>E-Commerce</th>
+                  <th className="px-6 py-4 text-center font-bold" style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}>Enterprise</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-gray-200 dark:divide-gray-700">
+                {/* Price Row */}
+                <tr className="bg-white dark:bg-gray-900 hover:bg-orange-50 dark:hover:bg-gray-700/50 transition-colors">
+                  <td className="px-6 py-4 font-bold text-gray-900 dark:text-white" style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}>Starting Price</td>
+                  <td className="px-6 py-4 text-center">
+                    <span className="text-2xl font-bold text-orange-600" style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}>
+                      {formatPrice(pricingPlans[0].price[billingPeriod])}
+                    </span>
+                    <div className="text-xs text-gray-600 dark:text-gray-400 mt-1">first year</div>
+                  </td>
+                  <td className="px-6 py-4 text-center">
+                    <span className="text-2xl font-bold text-orange-600" style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}>
+                      {formatPrice(pricingPlans[1].price[billingPeriod])}
+                    </span>
+                    <div className="text-xs text-gray-600 dark:text-gray-400 mt-1">first year</div>
+                  </td>
+                  <td className="px-6 py-4 text-center">
+                    <span className="text-2xl font-bold text-orange-600" style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}>
+                      {formatPrice(pricingPlans[2].price[billingPeriod])}
+                    </span>
+                    <div className="text-xs text-gray-600 dark:text-gray-400 mt-1">first year</div>
+                  </td>
+                  <td className="px-6 py-4 text-center">
+                    <span className="text-2xl font-bold text-orange-600" style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}>
+                      {formatPrice(pricingPlans[3].price[billingPeriod])}
+                    </span>
+                    <div className="text-xs text-gray-600 dark:text-gray-400 mt-1">first year</div>
+                  </td>
+                </tr>
+
+                {/* Delivery Time */}
+                <tr className="bg-white dark:bg-gray-900 hover:bg-orange-50 dark:hover:bg-gray-700/50 transition-colors">
+                  <td className="px-6 py-4 font-bold text-gray-900 dark:text-white" style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}>Delivery Time</td>
+                  {pricingPlans.map((plan, idx) => (
+                    <td key={idx} className="px-6 py-4 text-center text-gray-700 dark:text-gray-300" style={{ fontFamily: "Google Sans, sans-serif" }}>
+                      {plan.deliveryTime}
+                    </td>
+                  ))}
+                </tr>
+
+                {/* Number of Pages */}
+                <tr className="bg-white dark:bg-gray-900 hover:bg-orange-50 dark:hover:bg-gray-700/50 transition-colors">
+                  <td className="px-6 py-4 font-bold text-gray-900 dark:text-white" style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}>Pages Included</td>
+                  <td className="px-6 py-4 text-center text-gray-700 dark:text-gray-300">5 Pages</td>
+                  <td className="px-6 py-4 text-center text-gray-700 dark:text-gray-300">10 Pages</td>
+                  <td className="px-6 py-4 text-center text-gray-700 dark:text-gray-300">Unlimited</td>
+                  <td className="px-6 py-4 text-center text-gray-700 dark:text-gray-300">Unlimited</td>
+                </tr>
+
+                {/* Mobile Responsive */}
+                <tr className="bg-white dark:bg-gray-900 hover:bg-orange-50 dark:hover:bg-gray-700/50 transition-colors">
+                  <td className="px-6 py-4 font-bold text-gray-900 dark:text-white" style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}>Mobile Responsive</td>
+                  {[true, true, true, true].map((value, idx) => (
+                    <td key={idx} className="px-6 py-4 text-center">
+                      {value ? <Check size={20} className="mx-auto text-green-500" /> : <X size={20} className="mx-auto text-red-500" />}
+                    </td>
+                  ))}
+                </tr>
+
+                {/* SEO Optimization */}
+                <tr className="bg-white dark:bg-gray-900 hover:bg-orange-50 dark:hover:bg-gray-700/50 transition-colors">
+                  <td className="px-6 py-4 font-bold text-gray-900 dark:text-white" style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}>SEO Optimization</td>
+                  <td className="px-6 py-4 text-center text-sm text-gray-600 dark:text-gray-400">Basic</td>
+                  <td className="px-6 py-4 text-center text-sm text-gray-600 dark:text-gray-400">Advanced</td>
+                  <td className="px-6 py-4 text-center text-sm text-gray-600 dark:text-gray-400">Advanced</td>
+                  <td className="px-6 py-4 text-center text-sm text-gray-600 dark:text-gray-400">Full Custom</td>
+                </tr>
+
+                {/* Email Support */}
+                <tr className="bg-white dark:bg-gray-900 hover:bg-orange-50 dark:hover:bg-gray-700/50 transition-colors">
+                  <td className="px-6 py-4 font-bold text-gray-900 dark:text-white" style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}>Email Support</td>
+                  {[true, true, true, true].map((value, idx) => (
+                    <td key={idx} className="px-6 py-4 text-center">
+                      {value ? <Check size={20} className="mx-auto text-green-500" /> : <X size={20} className="mx-auto text-red-500" />}
+                    </td>
+                  ))}
+                </tr>
+
+                {/* Phone Support */}
+                <tr className="bg-white dark:bg-gray-900 hover:bg-orange-50 dark:hover:bg-gray-700/50 transition-colors">
+                  <td className="px-6 py-4 font-bold text-gray-900 dark:text-white" style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}>Phone Support</td>
+                  {[false, false, true, true].map((value, idx) => (
+                    <td key={idx} className="px-6 py-4 text-center">
+                      {value ? <Check size={20} className="mx-auto text-green-500" /> : <X size={20} className="mx-auto text-red-500" />}
+                    </td>
+                  ))}
+                </tr>
+
+                {/* E-Commerce Features */}
+                <tr className="bg-white dark:bg-gray-900 hover:bg-orange-50 dark:hover:bg-gray-700/50 transition-colors">
+                  <td className="px-6 py-4 font-bold text-gray-900 dark:text-white" style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}>E-Commerce Features</td>
+                  {[false, false, true, true].map((value, idx) => (
+                    <td key={idx} className="px-6 py-4 text-center">
+                      {value ? <Check size={20} className="mx-auto text-green-500" /> : <X size={20} className="mx-auto text-red-500" />}
+                    </td>
+                  ))}
+                </tr>
+
+                {/* Blog Integration */}
+                <tr className="bg-white dark:bg-gray-900 hover:bg-orange-50 dark:hover:bg-gray-700/50 transition-colors">
+                  <td className="px-6 py-4 font-bold text-gray-900 dark:text-white" style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}>Blog/News Section</td>
+                  {[false, true, true, true].map((value, idx) => (
+                    <td key={idx} className="px-6 py-4 text-center">
+                      {value ? <Check size={20} className="mx-auto text-green-500" /> : <X size={20} className="mx-auto text-red-500" />}
+                    </td>
+                  ))}
+                </tr>
+
+                {/* Payment Gateway */}
+                <tr className="bg-white dark:bg-gray-900 hover:bg-orange-50 dark:hover:bg-gray-700/50 transition-colors">
+                  <td className="px-6 py-4 font-bold text-gray-900 dark:text-white" style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}>Payment Integration</td>
+                  {[false, false, true, true].map((value, idx) => (
+                    <td key={idx} className="px-6 py-4 text-center">
+                      {value ? <Check size={20} className="mx-auto text-green-500" /> : <X size={20} className="mx-auto text-red-500" />}
+                    </td>
+                  ))}
+                </tr>
+
+                {/* Database */}
+                <tr className="bg-white dark:bg-gray-900 hover:bg-orange-50 dark:hover:bg-gray-700/50 transition-colors">
+                  <td className="px-6 py-4 font-bold text-gray-900 dark:text-white" style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}>Database Integration</td>
+                  {[false, false, true, true].map((value, idx) => (
+                    <td key={idx} className="px-6 py-4 text-center">
+                      {value ? <Check size={20} className="mx-auto text-green-500" /> : <X size={20} className="mx-auto text-red-500" />}
+                    </td>
+                  ))}
+                </tr>
+
+                {/* Revisions */}
+                <tr className="bg-white dark:bg-gray-900 hover:bg-orange-50 dark:hover:bg-gray-700/50 transition-colors">
+                  <td className="px-6 py-4 font-bold text-gray-900 dark:text-white" style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}>Revisions Included</td>
+                  <td className="px-6 py-4 text-center text-gray-700 dark:text-gray-300">2 Rounds</td>
+                  <td className="px-6 py-4 text-center text-gray-700 dark:text-gray-300">5 Rounds</td>
+                  <td className="px-6 py-4 text-center text-gray-700 dark:text-gray-300">Unlimited</td>
+                  <td className="px-6 py-4 text-center text-gray-700 dark:text-gray-300">Unlimited</td>
+                </tr>
+
+                {/* Hosting & Domain */}
+                <tr className="bg-white dark:bg-gray-900 hover:bg-orange-50 dark:hover:bg-gray-700/50 transition-colors">
+                  <td className="px-6 py-4 font-bold text-gray-900 dark:text-white" style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}>Free Domain & Hosting</td>
+                  <td className="px-6 py-4 text-center text-sm text-gray-600 dark:text-gray-400">1 Year</td>
+                  <td className="px-6 py-4 text-center text-sm text-gray-600 dark:text-gray-400">1 Year</td>
+                  <td className="px-6 py-4 text-center text-sm text-gray-600 dark:text-gray-400">1 Year</td>
+                  <td className="px-6 py-4 text-center text-sm text-gray-600 dark:text-gray-400">1 Year</td>
+                </tr>
+
+                {/* SSL Certificate */}
+                <tr className="bg-white dark:bg-gray-900 hover:bg-orange-50 dark:hover:bg-gray-700/50 transition-colors">
+                  <td className="px-6 py-4 font-bold text-gray-900 dark:text-white" style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}>SSL Certificate</td>
+                  <td className="px-6 py-4 text-center text-sm text-gray-600 dark:text-gray-400">Basic</td>
+                  <td className="px-6 py-4 text-center text-sm text-gray-600 dark:text-gray-400">Premium</td>
+                  <td className="px-6 py-4 text-center text-sm text-gray-600 dark:text-gray-400">Advanced</td>
+                  <td className="px-6 py-4 text-center text-sm text-gray-600 dark:text-gray-400">Advanced</td>
+                </tr>
+
+                {/* Maintenance */}
+                <tr className="bg-white dark:bg-gray-900 hover:bg-orange-50 dark:hover:bg-gray-700/50 transition-colors">
+                  <td className="px-6 py-4 font-bold text-gray-900 dark:text-white" style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}>Free Maintenance</td>
+                  <td className="px-6 py-4 text-center text-sm text-gray-600 dark:text-gray-400">None</td>
+                  <td className="px-6 py-4 text-center text-sm text-gray-600 dark:text-gray-400">None</td>
+                  <td className="px-6 py-4 text-center text-sm text-gray-600 dark:text-gray-400">None</td>
+                  <td className="px-6 py-4 text-center text-sm text-gray-600 dark:text-gray-400">6 Months</td>
+                </tr>
+
+                {/* WhatsApp Chat */}
+                <tr className="bg-white dark:bg-gray-900 hover:bg-orange-50 dark:hover:bg-gray-700/50 transition-colors">
+                  <td className="px-6 py-4 font-bold text-gray-900 dark:text-white" style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}>WhatsApp Chat</td>
+                  {[true, true, true, true].map((value, idx) => (
+                    <td key={idx} className="px-6 py-4 text-center">
+                      {value ? <Check size={20} className="mx-auto text-green-500" /> : <X size={20} className="mx-auto text-red-500" />}
+                    </td>
+                  ))}
+                </tr>
+
+                {/* Social Media Integration */}
+                <tr className="bg-white dark:bg-gray-900 hover:bg-orange-50 dark:hover:bg-gray-700/50 transition-colors">
+                  <td className="px-6 py-4 font-bold text-gray-900 dark:text-white" style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}>Social Media Integration</td>
+                  {[true, true, true, true].map((value, idx) => (
+                    <td key={idx} className="px-6 py-4 text-center">
+                      {value ? <Check size={20} className="mx-auto text-green-500" /> : <X size={20} className="mx-auto text-red-500" />}
+                    </td>
+                  ))}
+                </tr>
+
+                {/* Google Map Integration */}
+                <tr className="bg-white dark:bg-gray-900 hover:bg-orange-50 dark:hover:bg-gray-700/50 transition-colors">
+                  <td className="px-6 py-4 font-bold text-gray-900 dark:text-white" style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}>Google Map Integration</td>
+                  {[true, true, true, true].map((value, idx) => (
+                    <td key={idx} className="px-6 py-4 text-center">
+                      {value ? <Check size={20} className="mx-auto text-green-500" /> : <X size={20} className="mx-auto text-red-500" />}
+                    </td>
+                  ))}
+                </tr>
+
+                {/* Security/Firewall */}
+                <tr className="bg-white dark:bg-gray-900 hover:bg-orange-50 dark:hover:bg-gray-700/50 transition-colors">
+                  <td className="px-6 py-4 font-bold text-gray-900 dark:text-white" style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}>Security/Firewall</td>
+                  {[true, true, true, true].map((value, idx) => (
+                    <td key={idx} className="px-6 py-4 text-center">
+                      {value ? <Check size={20} className="mx-auto text-green-500" /> : <X size={20} className="mx-auto text-red-500" />}
+                    </td>
+                  ))}
+                </tr>
+
+                {/* Gallery */}
+                <tr className="bg-white dark:bg-gray-900 hover:bg-orange-50 dark:hover:bg-gray-700/50 transition-colors">
+                  <td className="px-6 py-4 font-bold text-gray-900 dark:text-white" style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}>Gallery</td>
+                  {[true, true, true, true].map((value, idx) => (
+                    <td key={idx} className="px-6 py-4 text-center">
+                      {value ? <Check size={20} className="mx-auto text-green-500" /> : <X size={20} className="mx-auto text-red-500" />}
+                    </td>
+                  ))}
+                </tr>
+
+                {/* Sitemap */}
+                <tr className="bg-white dark:bg-gray-900 hover:bg-orange-50 dark:hover:bg-gray-700/50 transition-colors">
+                  <td className="px-6 py-4 font-bold text-gray-900 dark:text-white" style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}>Sitemap</td>
+                  {[true, true, true, true].map((value, idx) => (
+                    <td key={idx} className="px-6 py-4 text-center">
+                      {value ? <Check size={20} className="mx-auto text-green-500" /> : <X size={20} className="mx-auto text-red-500" />}
+                    </td>
+                  ))}
+                </tr>
+
+                {/* Contact Form */}
+                <tr className="bg-white dark:bg-gray-900 hover:bg-orange-50 dark:hover:bg-gray-700/50 transition-colors">
+                  <td className="px-6 py-4 font-bold text-gray-900 dark:text-white" style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}>Contact Form</td>
+                  {[true, true, true, true].map((value, idx) => (
+                    <td key={idx} className="px-6 py-4 text-center">
+                      {value ? <Check size={20} className="mx-auto text-green-500" /> : <X size={20} className="mx-auto text-red-500" />}
+                    </td>
+                  ))}
+                </tr>
+
+                {/* Support */}
+                <tr className="bg-white dark:bg-gray-900 hover:bg-orange-50 dark:hover:bg-gray-700/50 transition-colors">
+                  <td className="px-6 py-4 font-bold text-gray-900 dark:text-white" style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}>Support</td>
+                  {[true, true, true, true].map((value, idx) => (
+                    <td key={idx} className="px-6 py-4 text-center">
+                      {value ? <Check size={20} className="mx-auto text-green-500" /> : <X size={20} className="mx-auto text-red-500" />}
+                    </td>
+                  ))}
+                </tr>
+
+                {/* Site Backups */}
+                <tr className="bg-white dark:bg-gray-900 hover:bg-orange-50 dark:hover:bg-gray-700/50 transition-colors">
+                  <td className="px-6 py-4 font-bold text-gray-900 dark:text-white" style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}>Site Backups</td>
+                  {[true, true, true, true].map((value, idx) => (
+                    <td key={idx} className="px-6 py-4 text-center">
+                      {value ? <Check size={20} className="mx-auto text-green-500" /> : <X size={20} className="mx-auto text-red-500" />}
+                    </td>
+                  ))}
+                </tr>
+
+                {/* Website Analytics */}
+                <tr className="bg-white dark:bg-gray-900 hover:bg-orange-50 dark:hover:bg-gray-700/50 transition-colors">
+                  <td className="px-6 py-4 font-bold text-gray-900 dark:text-white" style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}>Website Analytics</td>
+                  {[true, true, true, true].map((value, idx) => (
+                    <td key={idx} className="px-6 py-4 text-center">
+                      {value ? <Check size={20} className="mx-auto text-green-500" /> : <X size={20} className="mx-auto text-red-500" />}
+                    </td>
+                  ))}
+                </tr>
+
+                {/* CTA Row */}
+                <tr className="bg-gradient-to-r from-gray-100 to-orange-50 dark:from-gray-800 dark:to-gray-700">
+                  <td className="px-6 py-6"></td>
+                  {pricingPlans.map((plan, idx) => (
+                    <td key={idx} className="px-6 py-6 text-center">
+                      <PremiumCTA 
+                        href={getWhatsAppLink(plan.name, plan.price[billingPeriod])} 
+                        size="sm" 
+                        variant="primary" 
+                        className="w-full justify-center whitespace-nowrap"
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                      >
+                        Get Started
+                      </PremiumCTA>
+                    </td>
+                  ))}
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          {/* Legend */}
+          <div className="mt-8 text-center text-sm text-gray-600 dark:text-gray-400" style={{ fontFamily: "Google Sans, sans-serif" }}>
+            <p>✓ Feature included • ✗ Feature not included</p>
           </div>
         </div>
       </section>

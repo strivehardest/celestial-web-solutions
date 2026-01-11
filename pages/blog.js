@@ -1,7 +1,7 @@
 import Head from "next/head";
 import { motion } from "framer-motion";
-import { Calendar, Clock, User, ArrowRight, Tag } from "lucide-react";
-import { useEffect, useState } from "react";
+import { Calendar, Clock, User, ArrowRight, Tag, Search, X } from "lucide-react";
+import { useEffect, useState, useMemo } from "react";
 import Link from "next/link";
 import PremiumCTA from '../components/PremiumCTA';
 import WhatsAppButton from '../components/WhatsAppButton';
@@ -219,28 +219,74 @@ export const blogArticles = [
   },
 ];
 
-// Get unique categories
-const categories = ["All", ...new Set(blogArticles.map(article => article.category))];
-
 export default function BlogPage() {
   const [selectedCategory, setSelectedCategory] = useState("All");
-  const [filteredArticles, setFilteredArticles] = useState(blogArticles);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [debouncedSearch, setDebouncedSearch] = useState("");
 
-  useEffect(() => {
-    // Remove document.title manipulation since we'll use Next.js Head
-  }, []);
+  // Get unique categories
+  const categories = ["All", ...new Set(blogArticles.map(article => article.category))];
 
-  // Filter articles by category
+  // Debounce search input for better performance
   useEffect(() => {
-    if (selectedCategory === "All") {
-      setFilteredArticles(blogArticles);
-    } else {
-      setFilteredArticles(blogArticles.filter(article => article.category === selectedCategory));
+    const timer = setTimeout(() => {
+      setDebouncedSearch(searchQuery);
+    }, 300);
+
+    return () => clearTimeout(timer);
+  }, [searchQuery]);
+
+  // Enhanced search function with better matching
+  const searchArticles = (articles, query) => {
+    if (!query.trim()) return articles;
+    
+    const searchTerms = query.toLowerCase().trim().split(' ').filter(term => term.length > 0);
+    
+    return articles.filter(article => {
+      const searchableText = [
+        article.title,
+        article.excerpt,
+        article.category,
+        article.author,
+        ...(article.tags || [])
+      ].join(' ').toLowerCase();
+      
+      // Article matches if it contains all search terms (AND logic)
+      return searchTerms.every(term => searchableText.includes(term));
+    });
+  };
+
+  // Filter articles by category and search query with useMemo for optimization
+  const filteredArticles = useMemo(() => {
+    let filtered = blogArticles;
+    
+    // If searching, search across all articles regardless of category
+    if (debouncedSearch.trim()) {
+      filtered = searchArticles(blogArticles, debouncedSearch);
+    } else if (selectedCategory !== "All") {
+      // Only filter by category if not searching
+      filtered = filtered.filter(article => article.category === selectedCategory);
     }
-  }, [selectedCategory]);
+    
+    return filtered;
+  }, [selectedCategory, debouncedSearch]);
 
-  const featuredArticles = filteredArticles.filter(article => article.featured);
-  const regularArticles = filteredArticles.filter(article => !article.featured);
+  const featuredArticles = blogArticles.filter(article => article.featured).slice(0, 4);
+  const regularArticles = filteredArticles;
+  const popularTags = [...new Set(blogArticles.flatMap(a => a.tags || []))];
+
+  // Clear search
+  const handleClearSearch = () => {
+    setSearchQuery("");
+    setDebouncedSearch("");
+  };
+
+  // Reset all filters
+  const handleResetFilters = () => {
+    setSearchQuery("");
+    setDebouncedSearch("");
+    setSelectedCategory("All");
+  };
 
   return (
     <>
@@ -318,6 +364,36 @@ export default function BlogPage() {
         {/* Category Filter */}
         <section className="py-8 bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-800">
           <div className="max-w-7xl mx-auto px-4">
+            {/* Search Bar */}
+            <div className="max-w-2xl mx-auto mb-8">
+              <div className="relative">
+                <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
+                <input
+                  type="text"
+                  placeholder="Search articles by title, keyword, author, or tag..."
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="w-full pl-12 pr-12 py-4 rounded-full border-2 border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:border-orange-500 dark:focus:border-orange-400 focus:outline-none transition-colors"
+                  style={{ fontFamily: "Google Sans, sans-serif" }}
+                />
+                {searchQuery && (
+                  <button
+                    onClick={handleClearSearch}
+                    className="absolute right-4 top-1/2 transform -translate-y-1/2 p-1 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
+                    aria-label="Clear search"
+                  >
+                    <X className="w-5 h-5 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300" />
+                  </button>
+                )}
+              </div>
+              {searchQuery && debouncedSearch !== searchQuery && (
+                <div className="text-center mt-2 text-sm text-gray-500 dark:text-gray-400">
+                  Searching...
+                </div>
+              )}
+            </div>
+            
+            {/* Category Buttons */}
             <div className="flex flex-wrap gap-3 justify-center">
               {categories.map((category) => (
                 <button
@@ -414,20 +490,18 @@ export default function BlogPage() {
                           </div>
                         </div>
                       </Link>
-                      <Link href={`/blog/${article.slug}`} className="block mt-4">
-                        <PremiumCTA
-                          size="small"
-                          variant="primary"
-                          className="!px-4 !py-2 !text-sm w-full text-center"
-                          icon={false}
-                          href={`/blog/${article.slug}`}
-                        >
-                          <span className="flex items-center gap-2 justify-center">
-                            Read More
-                            <ArrowRight className="w-5 h-5" />
-                          </span>
-                        </PremiumCTA>
-                      </Link>
+                      <PremiumCTA
+                        size="small"
+                        variant="primary"
+                        className="block !px-4 !py-2 !text-sm w-full text-center mt-4"
+                        icon={false}
+                        href={`/blog/${article.slug}`}
+                      >
+                        <span className="flex items-center gap-2 justify-center">
+                          Read More
+                          <ArrowRight className="w-5 h-5" />
+                        </span>
+                      </PremiumCTA>
                     </div>
                   </motion.article>
                 ))}
@@ -437,18 +511,40 @@ export default function BlogPage() {
         )}
 
         {/* All Articles */}
-        {regularArticles.length > 0 && (
+        {regularArticles.length > 0 ? (
           <section className="py-16">
             <div className="max-w-7xl mx-auto px-4">
-              <motion.h2
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                className="text-3xl md:text-4xl font-bold mb-12 text-gray-900 dark:text-white"
-                style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}
-              >
-                {selectedCategory === "All" ? "More Articles" : `${selectedCategory} Articles`}
-              </motion.h2>
+              <div className="flex items-center justify-between mb-12">
+                <motion.h2
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white"
+                  style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}
+                >
+                  {debouncedSearch.trim() 
+                    ? `Search Results` 
+                    : selectedCategory === "All" 
+                    ? "All Articles" 
+                    : `${selectedCategory} Articles`}
+                </motion.h2>
+                {(debouncedSearch.trim() || selectedCategory !== "All") && (
+                  <motion.button
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    onClick={handleResetFilters}
+                    className="px-4 py-2 text-sm font-semibold text-orange-500 hover:text-orange-600 dark:text-orange-400 dark:hover:text-orange-300 transition-colors"
+                    style={{ fontFamily: "Google Sans, sans-serif" }}
+                  >
+                    Clear Filters
+                  </motion.button>
+                )}
+              </div>
+              {debouncedSearch.trim() && (
+                <p className="text-gray-600 dark:text-gray-400 mb-8" style={{ fontFamily: "Google Sans, sans-serif" }}>
+                  Found {regularArticles.length} {regularArticles.length === 1 ? 'article' : 'articles'} matching "{debouncedSearch}"
+                </p>
+              )}
 
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {regularArticles.map((article, index) => (
@@ -504,44 +600,132 @@ export default function BlogPage() {
                           </div>
                         </div>
                       </Link>
-                      <Link href={`/blog/${article.slug}`} className="block px-6 pb-6">
-                        <PremiumCTA
-                          size="small"
-                          variant="primary"
-                          className="!px-4 !py-2 !text-sm w-full text-center"
-                          icon={false}
-                          href={`/blog/${article.slug}`}
-                        >
-                          <span className="flex items-center gap-2 justify-center">
-                            Read Article
-                            <ArrowRight className="w-4 h-4" />
-                          </span>
-                        </PremiumCTA>
-                      </Link>
+                      <PremiumCTA
+                        size="small"
+                        variant="primary"
+                        className="block px-6 pb-6 !py-2 !text-sm w-full text-center"
+                        icon={false}
+                        href={`/blog/${article.slug}`}
+                      >
+                        <span className="flex items-center gap-2 justify-center">
+                          Read Article
+                          <ArrowRight className="w-4 h-4" />
+                        </span>
+                      </PremiumCTA>
                     </div>
                   </motion.article>
                 ))}
               </div>
             </div>
           </section>
-        )}
-
-        {/* No Results Message */}
-        {filteredArticles.length === 0 && (
+        ) : (
           <section className="py-20">
-            <div className="max-w-4xl mx-auto px-4 text-center">
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4" style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}>
-                No articles found in this category
-              </h3>
-              <p className="text-gray-600 dark:text-gray-300 mb-8" style={{ fontFamily: "Google Sans, sans-serif" }}>
-                Try selecting a different category to explore more content.
-              </p>
-              <button
-                onClick={() => setSelectedCategory("All")}
-                className="bg-orange-500 text-white px-8 py-3 rounded-lg font-semibold hover:bg-orange-600 transition-colors"
-              >
-                View All Articles
-              </button>
+            <div className="max-w-7xl mx-auto px-4">
+              <div className="max-w-2xl mx-auto text-center">
+                <div className="flex justify-center mb-6">
+                  <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-orange-500 to-orange-600 flex items-center justify-center shadow-lg">
+                    <Search className="w-8 h-8 text-white" />
+                  </div>
+                </div>
+                <h3 
+                  className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-3"
+                  style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}
+                >
+                  No Results Found
+                </h3>
+                <p 
+                  className="text-gray-600 dark:text-gray-400 mb-6"
+                  style={{ fontFamily: "Google Sans, sans-serif" }}
+                >
+                  {debouncedSearch.trim() 
+                    ? <>We couldn\'t find any matches for <span className="font-semibold">"{debouncedSearch}"</span>. Try a different keyword or pick from suggestions below.</>
+                    : `No articles in this category yet. Browse our featured content below.`}
+                </p>
+
+                {/* Suggestions: Categories */}
+                <div className="mb-6">
+                  <p className="text-sm text-gray-500 dark:text-gray-400 mb-3" style={{ fontFamily: "Google Sans, sans-serif" }}>Browse by category</p>
+                  <div className="flex flex-wrap gap-2 justify-center">
+                    {categories.slice(0, 8).map((cat) => (
+                      <button
+                        key={cat}
+                        onClick={() => setSelectedCategory(cat)}
+                        className="px-4 py-2 rounded-full border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:border-orange-400 hover:text-orange-600 dark:hover:text-orange-400 transition-colors text-sm font-semibold"
+                        style={{ fontFamily: "Google Sans, sans-serif" }}
+                      >
+                        {cat}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Suggestions: Popular tags */}
+                {popularTags.length > 0 && (
+                  <div className="mb-8">
+                    <p className="text-sm text-gray-500 dark:text-gray-400 mb-3" style={{ fontFamily: "Google Sans, sans-serif" }}>Try a popular tag</p>
+                    <div className="flex flex-wrap gap-2 justify-center">
+                      {popularTags.slice(0, 10).map((tag) => (
+                        <button
+                          key={tag}
+                          onClick={() => setSearchQuery(tag)}
+                          className="px-3 py-1.5 rounded-full bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-300 hover:bg-orange-200 dark:hover:bg-orange-800/40 transition-colors text-xs font-semibold"
+                          style={{ fontFamily: "Google Sans, sans-serif" }}
+                        >
+                          #{tag}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {/* Actions */}
+                <div className="flex items-center justify-center gap-3 mb-10">
+                  <button
+                    onClick={handleResetFilters}
+                    className="px-5 py-2.5 rounded-full border border-orange-300 text-orange-600 hover:bg-orange-50 dark:hover:bg-orange-900/20 font-semibold transition-colors"
+                    style={{ fontFamily: "Google Sans, sans-serif" }}
+                  >
+                    Clear Filters
+                  </button>
+                  <Link href="/blog">
+                    <span className="px-5 py-2.5 rounded-full bg-orange-500 hover:bg-orange-600 text-white font-semibold transition-colors inline-block" style={{ fontFamily: "Google Sans, sans-serif" }}>
+                      View All Articles
+                    </span>
+                  </Link>
+                </div>
+              </div>
+
+              {/* Featured suggestions */}
+              {featuredArticles.length > 0 && (
+                <div className="mt-4">
+                  <h4 className="text-lg font-bold text-gray-900 dark:text-white mb-6 text-center" style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}>Featured Articles</h4>
+                  <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    {featuredArticles.slice(0, 3).map((article, index) => (
+                      <motion.article
+                        key={article.id}
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: index * 0.1 }}
+                        className="bg-white dark:bg-gray-900 rounded-2xl overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 group"
+                      >
+                        <Link href={`/blog/${article.slug}`} className="block">
+                          <div className="relative h-40 overflow-hidden">
+                            <img src={article.image} alt={article.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                            <div className="absolute top-3 left-3">
+                              <span className="bg-orange-500 text-white px-3 py-1 rounded-full text-xs font-semibold">{article.category}</span>
+                            </div>
+                          </div>
+                          <div className="p-5">
+                            <h5 className="text-lg font-bold text-gray-900 dark:text-white mb-2 group-hover:text-orange-500 dark:group-hover:text-orange-400 transition-colors" style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}>{article.title}</h5>
+                            <p className="text-gray-600 dark:text-gray-300 text-sm line-clamp-2" style={{ fontFamily: "Google Sans, sans-serif" }}>{article.excerpt}</p>
+                          </div>
+                        </Link>
+                      </motion.article>
+                    ))}
+                  </div>
+                </div>
+              )}
             </div>
           </section>
         )}

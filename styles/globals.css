@@ -46,6 +46,10 @@
 
 /* Orange Scrollbar Styles */
 @layer base {
+  /* Force system font stack helper */
+  .font-system {
+    font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif !important;
+  }
   /* Webkit Browsers (Chrome, Safari, Edge, Opera) */
   ::-webkit-scrollbar {
     width: 13px;  /* ✅ Fixed typo (was 130x) */

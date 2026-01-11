@@ -15,6 +15,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Code, Monitor, Search, ShoppingCart, ArrowRight, Zap, CheckCircle } from 'lucide-react';
 import Head from 'next/head';
 import Link from 'next/link';
+import Image from 'next/image';
 import WhatsAppButton from '../components/WhatsAppButton';
 import PremiumCTA, { TextCTA } from '../components/PremiumCTA';
 import CTASection from '../components/CTASection';
@@ -637,20 +638,18 @@ const IndexPage = () => {
                 <div
                   key={client.name + idx}
                   className="flex items-center justify-center transition-colors duration-200 group"
+                  style={{
+                    height: client.name === 'Elolo Agbleke' ? '60px' : client.name === 'Ghana Updates Online' ? '80px' : '128px'
+                  }}
                 >
-                  <img
+                  <Image
                     src={client.src}
                     alt={client.name}
-                    className="h-32 w-auto max-w-[280px] object-contain transition-colors duration-200 group-hover:bg-black group-hover:grayscale"
-                    loading="lazy"
-                    decoding="async"
-                    style={
-                      client.name === 'Elolo Agbleke'
-                        ? { maxHeight: '60px', filter: 'none', background: 'none' }
-                        : client.name === 'Ghana Updates Online'
-                        ? { maxHeight: '80px', filter: 'none', background: 'none' }
-                        : { filter: 'none', background: 'none' }
-                    }
+                    width={280}
+                    height={client.name === 'Elolo Agbleke' ? 60 : client.name === 'Ghana Updates Online' ? 80 : 128}
+                    quality={75}
+                    className="object-contain transition-colors duration-200 group-hover:grayscale max-w-full h-auto"
+                    style={{ maxHeight: '100%', width: 'auto' }}
                   />
                 </div>
               ))}
@@ -706,10 +705,14 @@ const IndexPage = () => {
                       whileHover={{ scale: 1.02 }}
                       transition={{ duration: 0.3 }}
                     >
-                      <img
+                      <Image
                         src={service.image}
                         alt={service.title}
-                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                        fill
+                        sizes="(max-width: 768px) 100vw, 50vw"
+                        quality={75}
+                        className="object-cover group-hover:scale-110 transition-transform duration-700"
+                        priority={index === 0}
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
                       
@@ -801,7 +804,7 @@ const IndexPage = () => {
                     )}
                     <div className="pt-2">
                       <GlassButton href={service.link} variant="orange">
-                        Learn More
+                        Explore {service.title}
                       </GlassButton>
                     </div>
                   </div>
@@ -868,13 +871,13 @@ const IndexPage = () => {
                       whileHover={{ scale: 1.02 }}
                       transition={{ duration: 0.3 }}
                     >
-                      <img
+                      <Image
                         src={item.images.main}
                         alt={item.title}
-                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                        onError={(e) => {
-                          e.target.src = `https://via.placeholder.com/600x400?text=${encodeURIComponent(item.title)}`;
-                        }}
+                        fill
+                        sizes="(max-width: 768px) 100vw, 50vw"
+                        quality={75}
+                        className="object-cover group-hover:scale-110 transition-transform duration-700"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
                       
@@ -903,10 +906,13 @@ const IndexPage = () => {
                     <div className="relative rounded-3xl overflow-hidden min-h-[400px]">
                       {/* Background Image */}
                       <div className="absolute inset-0">
-                        <img
+                        <Image
                           src={item.images.main}
                           alt={item.title}
-                          className="w-full h-full object-cover"
+                          fill
+                          sizes="(max-width: 768px) 100vw, 50vw"
+                          quality={70}
+                          className="object-cover"
                         />
                         <div className="absolute inset-0 bg-gradient-to-br from-gray-900/80 via-gray-900/70 to-orange-900/60"></div>
                       </div>
@@ -1170,7 +1176,7 @@ const IndexPage = () => {
                             <img
                               src={item.icon}
                               alt={item.name}
-                              className="w-8 h-8 sm:w-10 sm:h-10 group-hover:scale-110 transition-transform duration-300"
+                              className="max-w-8 max-h-8 sm:max-w-10 sm:max-h-10 object-contain group-hover:scale-110 transition-transform duration-300"
                               onError={(e) => {
                                 e.target.style.display = 'none';
                               }}
@@ -1267,10 +1273,10 @@ const IndexPage = () => {
                       />
                     </div>
                     <div>
-                      <h4 className="font-bold text-white text-lg"
+                      <h3 className="font-bold text-white text-lg"
                           style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>
                         {testimonial.name}
-                      </h4>
+                      </h3>
                       <p className="text-orange-400 text-sm font-medium"
                          style={{ fontFamily: 'Google Sans, sans-serif' }}>
                         {testimonial.role}, {testimonial.company}
@@ -1413,10 +1419,14 @@ const IndexPage = () => {
         {/* CTA Section - Glass Style */}
         <section className="relative py-24 overflow-hidden">
           <div className="absolute inset-0">
-            <img 
+            <Image 
               src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=90&w=2400&auto=format&fit=crop" 
               alt="Team collaboration"
-              className="w-full h-full object-cover"
+              fill
+              sizes="100vw"
+              quality={70}
+              className="object-cover"
+              priority={false}
             />
             <div className="absolute inset-0 bg-gradient-to-r from-orange-600/95 via-orange-500/90 to-red-500/95"></div>
             

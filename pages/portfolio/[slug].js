@@ -424,14 +424,12 @@ export default function ProjectDetail() {
                         ref={imageContainerRef}
                         className="relative h-[500px] overflow-hidden bg-gray-100 dark:bg-gray-900"
                       >
-                        <div ref={imageRef}>
-                          <Image
+                        <div ref={imageRef} className="relative w-full">
+                          <img
                             src={project.screenshot}
                             alt={`${project.title} - Full Page Screenshot`}
-                            width={1200}
-                            height={3000}
-                            className="object-contain object-top w-full"
-                            priority
+                            className="w-full h-auto object-contain object-top"
+                            loading="eager"
                           />
                         </div>
                       </div>
