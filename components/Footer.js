@@ -40,6 +40,14 @@ export default function Footer({ darkMode, toggleDarkMode }) {
       url: 'https://www.goodfirms.co/company/celestial-web-solutions',
       logo: null, // Will use Award icon
       color: 'from-purple-500 to-purple-600'
+    },
+    {
+      name: 'Trustpilot',
+      rating: 4.8,
+      reviews: 'Excellent',
+      url: 'https://www.trustpilot.com/review/celestialwebsolutions.net',
+      logo: null,
+      color: 'from-green-500 to-emerald-600'
     }
   ];
 
@@ -157,7 +165,7 @@ export default function Footer({ darkMode, toggleDarkMode }) {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-4xl mx-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 max-w-5xl mx-auto">
             {/* Google Reviews */}
             <a 
               href={reviewPlatforms[0].url}
@@ -237,6 +245,41 @@ export default function Footer({ darkMode, toggleDarkMode }) {
                 </div>
               </div>
               <svg className="w-5 h-5 text-gray-600 group-hover:text-purple-400 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+            </a>
+
+            {/* Trustpilot */}
+            <a 
+              href={reviewPlatforms[3].url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-gray-800 rounded-lg p-4 hover:bg-gray-750 transition-all duration-300 hover:scale-105 flex items-center gap-4 group"
+            >
+              <div className="bg-white rounded-lg p-3 flex-shrink-0">
+                <svg viewBox="0 0 24 24" className="w-8 h-8">
+                  <path
+                    fill="#00b67a"
+                    d="M12 1l3.09 7.92H23l-6.54 4.75 2.5 7.83L12 17.7 5.04 21.5l2.5-7.83L1 8.92h7.91z"
+                  />
+                  <path
+                    fill="#00e59b"
+                    d="M16.9 15.78L12 17.7V1l3.09 7.92H23l-6.54 4.75z"
+                  />
+                </svg>
+              </div>
+              <div className="flex-1">
+                <div className="flex items-center gap-1 mb-1">
+                  <span className="text-yellow-400 text-lg">★★★★★</span>
+                  <span className="font-bold ml-2" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>
+                    {reviewPlatforms[3].rating}
+                  </span>
+                </div>
+                <div className="text-sm text-gray-400" style={{ fontFamily: 'Google Sans, sans-serif' }}>
+                  {reviewPlatforms[3].reviews} on Trustpilot
+                </div>
+              </div>
+              <svg className="w-5 h-5 text-gray-600 group-hover:text-green-400 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
               </svg>
             </a>
