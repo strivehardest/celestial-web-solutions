@@ -28,7 +28,7 @@ export default function Footer({ darkMode, toggleDarkMode }) {
     {
       name: 'Clutch',
       rating: 5.0,
-      reviews: 'Featured',
+      reviews: 'Top Rated',
       url: 'https://clutch.co/profile/celestial-web-solutions',
       logo: './clutch-logo.png',
       color: 'from-red-500 to-red-600'
