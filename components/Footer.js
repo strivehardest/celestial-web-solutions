@@ -48,6 +48,14 @@ export default function Footer({ darkMode, toggleDarkMode }) {
       url: 'https://www.trustpilot.com/review/celestialwebsolutions.net',
       logo: null,
       color: 'from-green-500 to-emerald-600'
+    },
+    {
+      name: 'The Manifest',
+      rating: 5.0,
+      reviews: 'Top 10 in Ghana',
+      url: 'https://themanifest.com/web-designers/ghana',
+      logo: null,
+      color: 'from-indigo-500 to-indigo-600'
     }
   ];
 
@@ -410,6 +418,24 @@ export default function Footer({ darkMode, toggleDarkMode }) {
       <div className="border-t border-gray-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <div className="flex flex-col items-center gap-4">
+            {/* Badges */}
+            <div className="flex flex-col sm:flex-row items-center gap-3">
+              <a 
+                href="https://techbehemoths.com/company/celestial-web-solutions" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="hover:opacity-80 transition-opacity"
+                title="Trusted and Verified by TechBehemoths"
+              >
+                <Image 
+                  src="/images/TB-Trusted-on-black.svg" 
+                  alt="Trusted and Verified by TechBehemoths" 
+                  width={200} 
+                  height={60}
+                />
+              </a>
+            </div>
+            
             <div className="text-center">
               <p className="text-gray-300 text-base" style={{ fontFamily: 'Google Sans, sans-serif' }}>
                 © {currentYear} Celestial Web Solutions. All rights reserved.

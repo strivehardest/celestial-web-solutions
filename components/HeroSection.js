@@ -79,6 +79,7 @@ const HeroSection = () => {
             <span className="hidden sm:inline">Available for Projects</span>
             <span className="sm:hidden">Available</span>
           </motion.div>
+
           
           <motion.h1
             className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold mb-6 sm:mb-8 text-white drop-shadow-2xl leading-tight"

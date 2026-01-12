@@ -344,6 +344,16 @@ const IndexPage = () => {
   const [displayText, setDisplayText] = useState('');
   const [isDeleting, setIsDeleting] = useState(false);
 
+  // Manifest typing effect state
+  const [manifestText, setManifestText] = useState('');
+  const [manifestIsDeleting, setManifestIsDeleting] = useState(false);
+  const manifestFullText = 'Listed Top 10 Web Designers in Ghana on the Manifest';
+
+  // Hero title typing effect state
+  const [heroTitleText, setHeroTitleText] = useState('');
+  const [heroTitleIsDeleting, setHeroTitleIsDeleting] = useState(false);
+  const heroTitleFullText = 'Best Web Design Company in Ghana';
+
   // Handle scroll effect for any scroll-based animations
   useEffect(() => {
     const handleScroll = () => {
@@ -380,6 +390,52 @@ const IndexPage = () => {
     
     return () => clearTimeout(timeout);
   }, [displayText, isDeleting, currentPhraseIndex]);
+
+  // Manifest typing effect with loop
+  useEffect(() => {
+    const typingSpeed = manifestIsDeleting ? 50 : 100;
+    
+    const timeout = setTimeout(() => {
+      if (!manifestIsDeleting) {
+        if (manifestText.length < manifestFullText.length) {
+          setManifestText(manifestFullText.slice(0, manifestText.length + 1));
+        } else {
+          setTimeout(() => setManifestIsDeleting(true), 3000);
+        }
+      } else {
+        if (manifestText.length > 0) {
+          setManifestText(manifestText.slice(0, -1));
+        } else {
+          setManifestIsDeleting(false);
+        }
+      }
+    }, typingSpeed);
+    
+    return () => clearTimeout(timeout);
+  }, [manifestText, manifestIsDeleting]);
+
+  // Hero title typing effect with loop
+  useEffect(() => {
+    const typingSpeed = heroTitleIsDeleting ? 50 : 100;
+    
+    const timeout = setTimeout(() => {
+      if (!heroTitleIsDeleting) {
+        if (heroTitleText.length < heroTitleFullText.length) {
+          setHeroTitleText(heroTitleFullText.slice(0, heroTitleText.length + 1));
+        } else {
+          setTimeout(() => setHeroTitleIsDeleting(true), 3000);
+        }
+      } else {
+        if (heroTitleText.length > 0) {
+          setHeroTitleText(heroTitleText.slice(0, -1));
+        } else {
+          setHeroTitleIsDeleting(false);
+        }
+      }
+    }, typingSpeed);
+    
+    return () => clearTimeout(timeout);
+  }, [heroTitleText, heroTitleIsDeleting]);
 
   // Navigation function using Next.js router
   const handleNavigation = (path) => {
@@ -556,15 +612,16 @@ const IndexPage = () => {
                 <span className="hidden sm:inline">Available for Projects</span>
                 <span className="sm:hidden">Available</span>
               </motion.div>
-              
+
               <motion.h1
-                className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold mb-6 sm:mb-8 text-white drop-shadow-2xl leading-tight"
+                className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold mb-6 sm:mb-8 text-white drop-shadow-2xl leading-tight min-h-[120px] sm:min-h-[160px] flex items-center justify-center"
                 style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3, duration: 0.8 }}
               >
-                Best Web Design Company in Ghana
+                <span>{heroTitleText}</span>
+                <span className="hero-cursor-blink text-white ml-2">|</span>
               </motion.h1>
 
 
@@ -599,6 +656,20 @@ const IndexPage = () => {
               </motion.div>
             </motion.div>
           </div>
+
+          <style jsx>{`
+            .hero-cursor-blink {
+              animation: blink-caret 0.8s step-end infinite;
+            }
+            @keyframes blink-caret {
+              from, to {
+                opacity: 0;
+              }
+              50% {
+                opacity: 1;
+              }
+            }
+          `}</style>
         </section>
 
         {/* Company Intro Section */}
@@ -625,6 +696,58 @@ const IndexPage = () => {
               </p>
             </motion.div>
           </div>
+        </section>
+
+        {/* Manifest Badge Section */}
+        <section className="py-8 bg-gradient-to-r from-orange-50 to-orange-100 dark:from-gray-800 dark:to-gray-900 border-y border-orange-200 dark:border-orange-900/30">
+          <div className="max-w-5xl mx-auto px-4">
+            <motion.div
+              className="flex flex-col items-center justify-center gap-6"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              {/* Logo Badge */}
+              <a
+                href="https://themanifest.com/gh/web-design/agencies"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block px-4 py-2 bg-white dark:bg-gray-800 border-2 border-orange-300 dark:border-orange-600 rounded-xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300"
+                title="Top 10 Web Designer in Ghana on The Manifest"
+              >
+                <Image
+                  src="/images/manifest-logo.png"
+                  alt="The Manifest"
+                  width={120}
+                  height={30}
+                  className="object-contain"
+                />
+              </a>
+
+              {/* Typing Text */}
+              <div className="text-center min-h-[40px] flex items-center justify-center">
+                <div className="text-lg sm:text-xl font-bold text-orange-600 dark:text-orange-400" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>
+                  <span>{manifestText}</span>
+                  <span className="cursor-blink text-orange-500 ml-1">|</span>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+
+          <style jsx>{`
+            .cursor-blink {
+              animation: blink-caret 0.8s step-end infinite;
+            }
+            @keyframes blink-caret {
+              from, to {
+                opacity: 0;
+              }
+              50% {
+                opacity: 1;
+              }
+            }
+          `}</style>
         </section>
 
         {/* Happy Clients Section - 4-Grid Kava Style */}
