@@ -4,7 +4,7 @@
 import Head from "next/head";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Check, Star, Zap, Globe, ShoppingCart, Rocket, Crown, Smartphone, Calculator, Plus, Minus, Info, X } from "lucide-react";
+import { Check, Star, Zap, Globe, ShoppingCart, Rocket, Crown, Smartphone, Calculator, Plus, Minus, Info, X, Gift, Clock, Award, Trophy, TrendingUp, Sparkles, ArrowRight } from "lucide-react";
 import WhatsAppButton from '../components/WhatsAppButton';
 import PremiumCTA from '../components/PremiumCTA';
 
@@ -29,6 +29,7 @@ const typingPhrases = [
 export default function PricingWithCalculator() {
   const [billingPeriod, setBillingPeriod] = useState("yearly");
   const [showCalculator, setShowCalculator] = useState(false);
+  const [showPromo, setShowPromo] = useState(true);
   const [selectedCurrency, setSelectedCurrency] = useState('GHS');
   const [exchangeRates, setExchangeRates] = useState({ GHS: 1, USD: 1, GBP: 1, EUR: 1, NGN: 1 });
   const [ratesLoading, setRatesLoading] = useState(true);
@@ -579,6 +580,157 @@ export default function PricingWithCalculator() {
         )}
       </AnimatePresence>
 
+      {/* January 2026 Launch Promo Banner */}
+      <AnimatePresence>
+        {showPromo && (
+          <motion.section 
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.5 }}
+            className="py-16 px-4 bg-orange-600 relative overflow-hidden"
+          >
+            {/* Animated background elements */}
+            <div className="absolute inset-0 opacity-20">
+              <div className="absolute top-0 left-0 w-64 h-64 bg-white rounded-full blur-3xl animate-pulse"></div>
+              <div className="absolute bottom-0 right-0 w-96 h-96 bg-yellow-300 rounded-full blur-3xl animate-pulse delay-700"></div>
+            </div>
+
+            {/* Close Button */}
+            <button
+              onClick={() => setShowPromo(false)}
+              className="absolute top-4 right-4 z-20 p-2 bg-white/20 hover:bg-white/30 backdrop-blur-md rounded-full transition-all hover:rotate-90 duration-300 group"
+              aria-label="Close promotion"
+            >
+              <X size={24} className="text-white group-hover:text-red-500 transition-colors" />
+            </button>
+
+            <div className="relative z-10 max-w-5xl mx-auto">
+              {/* Limited offer badge */}
+              <motion.div 
+                initial={{ scale: 0 }}
+                animate={{ scale: 1 }}
+                transition={{ type: "spring", duration: 0.6 }}
+                className="flex justify-center mb-6"
+              >
+                <div className="inline-flex items-center gap-2 bg-yellow-400 text-gray-900 px-6 py-2 rounded-full font-bold text-sm shadow-lg animate-bounce" style={{ fontFamily: "Google Sans, sans-serif" }}>
+                  <Zap size={18} className="text-orange-600" />
+                  LIMITED TIME OFFER - FIRST 10 CLIENTS ONLY
+                  <Zap size={18} className="text-orange-600" />
+                </div>
+              </motion.div>
+
+              {/* Main heading */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2 }}
+                className="text-center mb-8"
+              >
+                <h2 className="text-4xl md:text-6xl font-bold text-white mb-3" style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}>
+                  JANUARY 2026 LAUNCH SPECIAL
+                </h2>
+                <p className="text-xl md:text-2xl text-white/90 font-semibold" style={{ fontFamily: "Google Sans, sans-serif" }}>
+                  Book before January 31st and receive incredible bonuses!
+                </p>
+              </motion.div>
+
+              {/* Benefits grid */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.4 }}
+                className="bg-white/10 backdrop-blur-lg rounded-3xl p-8 md:p-10 border border-white/20 shadow-2xl mb-8"
+              >
+                <div className="grid md:grid-cols-2 gap-4 mb-8">
+                  {[
+                    { icon: Trophy, text: "GH₵500 discount", subtext: "(Professional & E-Commerce packages)" },
+                    { icon: Gift, text: "Free logo design", subtext: "(GH₵500 value)" },
+                    { icon: TrendingUp, text: "Free competitor analysis", subtext: "(GH₵800 value)" },
+                    { icon: Rocket, text: "Priority project slot", subtext: "(skip the wait)" },
+                    { icon: Award, text: "1 month free priority support", subtext: "(GH₵500 value)" },
+                  ].map((benefit, idx) => {
+                    const IconComponent = benefit.icon;
+                    return (
+                      <motion.div
+                        key={idx}
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: 0.5 + idx * 0.1 }}
+                        className="flex items-start gap-3 bg-white/5 rounded-xl p-4 border border-white/10"
+                      >
+                        <div className="flex-shrink-0 p-2 bg-white/10 rounded-lg">
+                          <IconComponent size={24} className="text-yellow-300" />
+                        </div>
+                        <div>
+                          <p className="text-white font-bold text-lg" style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}>
+                            {benefit.text}
+                          </p>
+                          <p className="text-white/80 text-sm" style={{ fontFamily: "Google Sans, sans-serif" }}>
+                            {benefit.subtext}
+                          </p>
+                        </div>
+                      </motion.div>
+                    );
+                  })}
+                </div>
+
+                {/* Value summary */}
+                <div className="border-t-2 border-white/20 pt-6">
+                  <div className="flex flex-col md:flex-row justify-between items-center gap-4 mb-6">
+                    <div className="text-center md:text-left">
+                      <p className="text-white/90 text-lg mb-1" style={{ fontFamily: "Google Sans, sans-serif" }}>Total Value:</p>
+                      <p className="text-white font-bold text-3xl md:text-4xl" style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}>GH₵2,300+</p>
+                    </div>
+                    <div className="text-center md:text-right">
+                      <p className="text-white/90 text-lg mb-1" style={{ fontFamily: "Google Sans, sans-serif" }}>Your Investment:</p>
+                      <p className="text-yellow-300 font-bold text-3xl md:text-4xl" style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}>Package Price - GH₵500</p>
+                    </div>
+                  </div>
+
+                  {/* CTA Buttons */}
+                  <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                    <a
+                      href="https://wa.me/233530505031?text=Hi!%20I%20want%20to%20claim%20the%20January%202026%20Launch%20Special%20offer!"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 px-8 py-4 bg-white text-orange-600 rounded-xl font-bold text-lg shadow-xl hover:shadow-2xl hover:scale-105 transition-all"
+                      style={{ fontFamily: "Google Sans, sans-serif" }}
+                    >
+                      <Smartphone size={24} />
+                      Claim Your Spot Now →
+                    </a>
+                    <a
+                      href="/contact"
+                      className="inline-flex items-center gap-2 px-8 py-4 backdrop-blur-md bg-white/20 hover:bg-white/30 text-white rounded-xl font-bold text-lg border-2 border-white/40 hover:border-white/60 shadow-lg hover:shadow-xl transition-all"
+                      style={{ fontFamily: "Google Sans, sans-serif" }}
+                    >
+                      Learn More
+                    </a>
+                  </div>
+                </div>
+              </motion.div>
+
+              {/* Urgency footer */}
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.8 }}
+                className="text-center"
+              >
+                <div className="inline-flex items-center gap-2 text-white font-bold text-lg bg-red-600/80 backdrop-blur-sm px-6 py-3 rounded-full shadow-lg mb-3" style={{ fontFamily: "Google Sans, sans-serif" }}>
+                  <Clock size={20} className="text-yellow-300" />
+                  Limited to first 10 clients who book before Jan 31, 2026
+                </div>
+                <p className="text-white/70 text-sm" style={{ fontFamily: "Google Sans, sans-serif" }}>
+                  * Terms & Conditions apply
+                </p>
+              </motion.div>
+            </div>
+          </motion.section>
+        )}
+      </AnimatePresence>
+
       {/* Pricing Cards Section */}
       <section className="py-20 bg-white dark:bg-gray-900">
         <div className="max-w-6xl mx-auto px-4">
@@ -664,6 +816,15 @@ export default function PricingWithCalculator() {
 
           {/* Comparison Table */}
           <div className="overflow-x-auto rounded-2xl shadow-lg">
+            {/* Scroll indicator for mobile/tablet */}
+            <div className="lg:hidden bg-orange-100 dark:bg-orange-900/20 px-4 py-2 text-center border-b border-orange-200 dark:border-orange-800">
+              <p className="text-sm text-orange-700 dark:text-orange-300 font-semibold flex items-center justify-center gap-2" style={{ fontFamily: "Google Sans, sans-serif" }}>
+                <ArrowRight size={16} className="animate-pulse" />
+                Swipe left to see all features
+                <ArrowRight size={16} className="animate-pulse" />
+              </p>
+            </div>
+            
             <table className="w-full">
               <thead>
                 <tr className="bg-gradient-to-r from-orange-500 to-orange-600 text-white">
@@ -963,6 +1124,66 @@ export default function PricingWithCalculator() {
           {/* Legend */}
           <div className="mt-8 text-center text-sm text-gray-600 dark:text-gray-400" style={{ fontFamily: "Google Sans, sans-serif" }}>
             <p>✓ Feature included • ✗ Feature not included</p>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ Banner */}
+      <section className="py-12 px-4 bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-gray-800 dark:to-gray-700">
+        <div className="max-w-4xl mx-auto text-center">
+          <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4" style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}>
+            Have questions about our pricing or process?
+          </h3>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <a 
+              href="/faqs" 
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-lg font-semibold transition-all backdrop-blur-md bg-white/30 hover:bg-white/50 text-blue-900 dark:text-blue-100 border border-white/40 hover:border-white/60 shadow-lg hover:shadow-xl"
+              style={{ fontFamily: "Google Sans, sans-serif" }}
+            >
+              View All FAQs →
+            </a>
+            <a 
+              href="/contact" 
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-lg font-semibold transition-all backdrop-blur-md bg-white/30 hover:bg-white/50 text-orange-900 dark:text-orange-100 border border-white/40 hover:border-white/60 shadow-lg hover:shadow-xl"
+              style={{ fontFamily: "Google Sans, sans-serif" }}
+            >
+              Book Free Consultation →
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* Payment Methods Section */}
+      <section className="py-12 px-4 bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700">
+        <div className="max-w-4xl mx-auto text-center">
+          <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-8" style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}>
+            We Accept
+          </h3>
+          <div className="flex flex-wrap justify-center gap-6 sm:gap-8 items-center">
+            <div className="h-16 w-32 flex items-center justify-center bg-gray-50 dark:bg-gray-700 rounded-lg p-2 hover:shadow-md transition-shadow">
+              <img src="/mtn-momo-logo.png" alt="MTN MoMo" className="max-h-14 max-w-28 object-contain" />
+            </div>
+            <div className="h-16 w-32 flex items-center justify-center bg-gray-50 dark:bg-gray-700 rounded-lg p-2 hover:shadow-md transition-shadow">
+              <img src="/telecel-logo.webp" alt="Telecel Cash" className="max-h-14 max-w-28 object-contain" />
+            </div>
+            <div className="h-16 w-32 flex items-center justify-center bg-gray-50 dark:bg-gray-700 rounded-lg p-2 hover:shadow-md transition-shadow">
+              <img src="/paystack-logo.png" alt="Paystack" className="max-h-14 max-w-28 object-contain" />
+            </div>
+            <div className="h-16 w-32 flex items-center justify-center bg-gray-50 dark:bg-gray-700 rounded-lg p-2 hover:shadow-md transition-shadow">
+              <img src="/fidelity-bank-logo.jpg" alt="Fidelity Bank" className="max-h-14 max-w-28 object-contain" />
+            </div>
+          </div>
+          <p className="mt-8 text-sm text-gray-600 dark:text-gray-400" style={{ fontFamily: "Google Sans, sans-serif" }}>
+            Flexible payment options to suit your convenience
+          </p>
+          <div className="mt-6">
+            <a 
+              href="/payment" 
+              className="inline-flex items-center gap-2 px-6 py-3 bg-orange-600 hover:bg-orange-700 text-white font-semibold rounded-lg transition-all shadow-lg hover:shadow-xl"
+              style={{ fontFamily: "Google Sans, sans-serif" }}
+            >
+              View Payment Details →
+            </a>
           </div>
         </div>
       </section>
