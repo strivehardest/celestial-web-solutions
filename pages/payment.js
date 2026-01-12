@@ -283,25 +283,38 @@ export default function PaymentPage() {
 
       {/* Contact Section */}
       <section
-        className="py-16 bg-gradient-to-r from-orange-500 to-red-500 text-white text-center transition-colors duration-500"
+        className="relative py-16 text-white text-center overflow-hidden transition-colors duration-500"
         style={{ fontFamily: 'Google Sans, sans-serif' }}
       >
-        <h3
-          className="text-3xl font-bold mb-4"
-          style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}
-        >
-          Need Help with Payment?
-        </h3>
-        <p className="text-orange-100 mb-6">
-          Call or WhatsApp us for instant support on your payment or service confirmation.
-        </p>
-        <div className="flex flex-col sm:flex-row justify-center gap-4">
-          <PremiumCTA href="tel:+233245671832" size="default" variant="outline">
-            Call +233 24 567 1832
-          </PremiumCTA>
-          <PremiumCTA href="https://wa.me/233530505031" size="default" variant="outline" target="_blank" rel="noopener noreferrer">
-            Chat on WhatsApp
-          </PremiumCTA>
+        {/* Background image with overlay */}
+        <div className="absolute inset-0">
+          <img
+            src="/hero-bg.jpg"
+            alt="Payment support background"
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-orange-500/90 to-red-500/90"></div>
+        </div>
+
+        {/* Content */}
+        <div className="relative z-10">
+          <h3
+            className="text-3xl font-bold mb-4"
+            style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}
+          >
+            Need Help with Payment?
+          </h3>
+          <p className="text-orange-100 mb-6 max-w-2xl mx-auto px-4">
+            Call or WhatsApp us for instant support on your payment or service confirmation.
+          </p>
+          <div className="flex flex-col sm:flex-row justify-center gap-4">
+            <PremiumCTA href="tel:+233245671832" size="default" variant="outline">
+              Call +233 24 567 1832
+            </PremiumCTA>
+            <PremiumCTA href="https://wa.me/233530505031" size="default" variant="outline" target="_blank" rel="noopener noreferrer">
+              Chat on WhatsApp
+            </PremiumCTA>
+          </div>
         </div>
       </section>
 
