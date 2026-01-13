@@ -136,7 +136,43 @@ Extended support and maintenance packages are available and recommended for opti
 These limitations apply to the maximum extent permitted by law in Ghana.`
     },
     {
-      title: "10. Termination",
+      title: "10. Online Courses & Educational Services",
+      icon: Users,
+      content: `Celestial Web Solutions offers online courses on various topics including WordPress, Next.js, Web Design, and Excel. The following terms apply:
+
+• All course materials and content are provided "as is" for educational purposes
+• Students must have a valid email address to enroll in courses
+• After successful payment, course access is immediately available
+• Course materials are available for download immediately upon enrollment
+• Courses may be accessed through multiple platforms: online videos, Google Meet, Zoom, Teams, and in-person classes
+• Course content is subject to change at our discretion with appropriate notice
+• Students are expected to respect intellectual property rights; course materials cannot be shared or redistributed
+• Refunds are not available for courses once access has been granted, except in cases of technical issues
+• Course completion certificates are issued upon meeting all course requirements
+• Student progress and data collected during courses are kept confidential and used for course improvement only
+• We reserve the right to remove students who violate course policies or code of conduct
+
+All course enrollments are governed by these terms and the specific course agreement provided at enrollment.`
+    },
+    {
+      title: "11. Payment for Courses & Educational Services",
+      icon: CreditCard,
+      content: `Payment terms for online courses:
+
+• Payments are processed through Paystack, our secure payment processor
+• All prices are displayed in Ghana Cedis (GH₵) unless otherwise noted
+• Payment must be completed before course access is granted
+• All course fees are non-refundable once access has been provided
+• Technical refunds may be issued within 24 hours of enrollment if courses cannot be accessed due to system errors
+• Discounted course pricing may apply for limited periods; prices are subject to change
+• We accept all payment methods available through Paystack
+• Payment confirmation and course access details will be sent to the enrolled email address
+• Students must complete a post-enrollment Google Form with their profile information
+
+All financial transactions are final unless technical issues prevent course access.`
+    },
+    {
+      title: "12. Termination",
       icon: AlertTriangle,
       content: `Either party may terminate services under the following conditions:
 
@@ -144,6 +180,7 @@ These limitations apply to the maximum extent permitted by law in Ghana.`
 • We may terminate services for non-payment, breach of terms, or if client requests violate legal/ethical standards
 • Upon termination, client will receive all completed work upon payment of outstanding invoices
 • Ongoing service subscriptions require 30 days written notice for cancellation
+• Students may request course unenrollment within 24 hours of initial enrollment for technical issues only
 • Refunds for terminated projects will be calculated based on work completed
 • All confidential information must be returned or destroyed upon termination
 • Termination does not relieve either party of obligations that arose before termination
@@ -151,7 +188,7 @@ These limitations apply to the maximum extent permitted by law in Ghana.`
 Termination procedures and any applicable refunds will be handled professionally and promptly.`
     },
     {
-      title: "11. Governing Law & Dispute Resolution",
+      title: "13. Governing Law & Dispute Resolution",
       icon: Shield,
       content: `These terms are governed by the laws of Ghana:
 
@@ -229,7 +266,7 @@ We are committed to resolving any disputes fairly and professionally in accordan
               </p>
               <div className="mt-6 text-orange-100">
                 <p style={{ fontFamily: "Google Sans, sans-serif" }}>
-                  Last Updated: January 7, 2026
+                  Last Updated: January 13, 2026
                 </p>
               </div>
             </motion.div>
