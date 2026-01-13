@@ -13,35 +13,47 @@ export default function Dashboard() {
   const [activeTab, setActiveTab] = useState('my-courses');
   const [enrolledCourses, setEnrolledCourses] = useState([]);
   const [studentProgress, setStudentProgress] = useState({});
-
-  // Mock user data from localStorage
-  const mockUser = {
+  const [mockUser, setMockUser] = useState({
     id: 'user-' + Date.now(),
-    fullName: localStorage.getItem('pendingEnrollment') ? JSON.parse(localStorage.getItem('pendingEnrollment')).fullName : 'Student',
-    email: localStorage.getItem('pendingEnrollment') ? JSON.parse(localStorage.getItem('pendingEnrollment')).email : 'student@example.com',
-    phone: localStorage.getItem('pendingEnrollment') ? JSON.parse(localStorage.getItem('pendingEnrollment')).phone : '+233 XXX XXX XXXX',
+    fullName: 'Student',
+    email: 'student@example.com',
+    phone: '+233 XXX XXX XXXX',
     joinedDate: new Date().toISOString(),
-    totalCoursesEnrolled: 1,
+    totalCoursesEnrolled: 0,
     completedCourses: 0,
-    certificatesEarned: 0
-  };
+    certificatesEarned: 0,
+  });
 
   useEffect(() => {
     // Get enrolled course from localStorage
+    if (typeof window === 'undefined') return;
+
     const enrollment = localStorage.getItem('pendingEnrollment');
     if (enrollment) {
-      const { courseId, courseTitle } = JSON.parse(enrollment);
-      const course = courses.find(c => c.id === courseId);
+      const { courseId, fullName, email, phone } = JSON.parse(enrollment);
+      const course = courses.find((c) => c.id === courseId);
+
+      setMockUser((prev) => ({
+        ...prev,
+        fullName: fullName || prev.fullName,
+        email: email || prev.email,
+        phone: phone || prev.phone,
+        totalCoursesEnrolled: course ? 1 : 0,
+      }));
+
       if (course) {
         setEnrolledCourses([{ ...course, enrollmentDate: new Date().toISOString() }]);
-        
-        // Initialize mock progress
+
+        const totalLessons = course.curriculum
+          ? course.curriculum.reduce((sum, section) => sum + (section.lessons?.length || 0), 0)
+          : 0;
+
         setStudentProgress({
           [courseId]: {
-            completedLessons: Math.floor(Math.random() * 10),
-            totalLessons: course.lessons.length,
-            lastAccessedDate: new Date().toISOString()
-          }
+            completedLessons: Math.min(Math.floor(Math.random() * 10), totalLessons),
+            totalLessons,
+            lastAccessedDate: new Date().toISOString(),
+          },
         });
       }
     }
