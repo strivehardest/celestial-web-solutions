@@ -73,6 +73,7 @@ export default function Footer({ darkMode, toggleDarkMode }) {
     company: [
       { name: 'Home', href: '/' },
       { name: 'About Us', href: '/about' },
+      { name: 'Courses', href: '/courses' },
       { name: 'Portfolio', href: '/portfolio' },
       { name: 'Blog', href: '/blog' },
       { name: 'Pricing', href: '/pricing' },
@@ -369,13 +370,18 @@ export default function Footer({ darkMode, toggleDarkMode }) {
             </h4>
             <ul className="space-y-3">
               {footerLinks.company.map((link) => (
-                <li key={link.name}>
+                <li key={link.name} className="relative">
                   <Link 
                     href={link.href}
-                    className="text-gray-400 hover:text-orange-400 text-sm transition-colors"
+                    className="text-gray-400 hover:text-orange-400 text-sm transition-colors inline-flex items-center gap-2"
                     style={{ fontFamily: 'Google Sans, sans-serif' }}
                   >
                     {link.name}
+                    {link.name === 'Courses' && (
+                      <span className="bg-red-500 text-white text-[9px] font-bold px-1.5 py-0.5 rounded animate-pulse">
+                        New
+                      </span>
+                    )}
                   </Link>
                 </li>
               ))}

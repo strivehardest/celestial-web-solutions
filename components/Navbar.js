@@ -72,6 +72,10 @@ const Navbar = () => {
       href: '/about'
     },
     { 
+      name: 'Courses', 
+      href: '/courses'
+    },
+    { 
       name: 'Resources', 
       href: '/#',
       dropdown: [
@@ -258,7 +262,7 @@ const Navbar = () => {
 
     return (
       <motion.button
-        className={`flex items-center space-x-2 px-4 py-3 text-sm font-medium rounded-xl transition-all duration-300 ${
+        className={`flex items-center space-x-2 px-4 py-3 text-sm font-medium rounded-xl transition-all duration-300 relative ${
           isActive(item.href)
             ? 'text-white bg-gradient-to-r from-orange-500 to-orange-600 shadow-lg shadow-orange-500/25'
             : scrolled
@@ -270,6 +274,11 @@ const Navbar = () => {
         onClick={() => handleNavigation(item.href)}
       >
         <span>{item.name}</span>
+        {item.name === 'Courses' && (
+          <span className="absolute -top-1 -right-1 bg-red-500 text-white text-[10px] font-bold px-1.5 py-0.5 rounded animate-pulse">
+            New
+          </span>
+        )}
       </motion.button>
     );
   };
@@ -423,7 +432,7 @@ const Navbar = () => {
                       transition={{ delay: index * 0.1 }}
                     >
                       <button
-                        className={`w-full flex items-center justify-between px-4 py-3 text-base font-medium rounded-xl transition-all duration-300 ${
+                        className={`w-full flex items-center justify-between px-4 py-3 text-base font-medium rounded-xl transition-all duration-300 relative ${
                           isActive(item.href)
                             ? 'text-white bg-gradient-to-r from-orange-500 to-orange-600 shadow-lg'
                             : 'text-gray-800 dark:text-gray-100 hover:text-orange-600 dark:hover:text-orange-400 hover:bg-orange-50/50 dark:hover:bg-orange-900/20'
@@ -431,7 +440,14 @@ const Navbar = () => {
                         style={{ fontFamily: 'Google Sans, sans-serif' }}
                         onClick={() => item.dropdown ? setActiveDropdown(activeDropdown === item.name ? null : item.name) : handleNavigation(item.href)}
                       >
-                        <span>{item.name}</span>
+                        <span className="flex items-center gap-2">
+                          {item.name}
+                          {item.name === 'Courses' && (
+                            <span className="bg-red-500 text-white text-[10px] font-bold px-1.5 py-0.5 rounded animate-pulse">
+                              New
+                            </span>
+                          )}
+                        </span>
                         {item.dropdown && (
                           <motion.span
                             animate={{ rotate: activeDropdown === item.name ? 180 : 0 }}
