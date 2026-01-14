@@ -2175,6 +2175,110 @@ const blogArticles = {
         </div>
       </article>
     `
+  },
+  "how-to-start-online-store-ghana": {
+    title: "How to Start an Online Store in Ghana: A Quick Guide",
+    category: "E-commerce",
+    author: "Celestial Team",
+    date: "January 14, 2026",
+    readTime: "5 min read",
+    image: "https://images.unsplash.com/photo-1658297063569-162817482fb6?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    excerpt: "Learn the essential steps to launch your online store in Ghana, from choosing a platform to setting up payment methods and driving your first sales.",
+    tags: ["E-commerce", "Ghana", "Online Business", "Startup"],
+    hashtags: ["#OnlineStore", "#GhanaE-commerce", "#EcommerceTips", "#CelestialWebSolutions"],
+    seoKeywords: "online store Ghana, e-commerce Ghana, how to start online store, Shopify Ghana, WooCommerce, digital business, online shop",
+    content: `
+      <article class="space-y-8 text-gray-900 dark:text-gray-100">
+        <p class="text-lg text-gray-800 dark:text-gray-200">Ghana's e-commerce market is booming. With improved internet connectivity, mobile money integration, and growing consumer trust in online shopping, launching an online store in 2026 has never been easier. Whether you're selling products or services, here's everything you need to know to get started.</p>
+
+        <div class="space-y-6">
+          <h2 class="text-3xl font-bold text-gray-900 dark:text-white">Step 1: Choose Your E-Commerce Platform</h2>
+          <p class="text-lg text-gray-800 dark:text-gray-200">The platform you choose will determine how easily you can manage your store. Here are popular options for Ghanaian businesses:</p>
+          <ul class="list-disc list-inside space-y-2 text-lg text-gray-800 dark:text-gray-200">
+            <li><strong><a href="https://www.shopify.com" target="_blank" rel="noopener noreferrer" class="text-orange-600 hover:underline">Shopify</a></strong> – Best for beginners, supports local payment methods, monthly subscription model</li>
+            <li><strong><a href="https://woocommerce.com" target="_blank" rel="noopener noreferrer" class="text-orange-600 hover:underline">WooCommerce</a></strong> – Great if you want more control and customization, integrated with WordPress</li>
+            <li><strong><a href="https://www.wix.com" target="_blank" rel="noopener noreferrer" class="text-orange-600 hover:underline">Wix</a></strong> – Drag-and-drop simplicity with built-in templates, good for small stores</li>
+            <li><strong>Custom Solutions</strong> – Tailored e-commerce solutions for unique business needs</li>
+          </ul>
+
+          <h2 class="text-3xl font-bold text-gray-900 dark:text-white">Step 2: Set Up Payment Methods</h2>
+          <p class="text-lg text-gray-800 dark:text-gray-200">This is crucial for Ghana's market. Your customers expect multiple payment options:</p>
+          <ul class="list-disc list-inside space-y-2 text-lg text-gray-800 dark:text-gray-200">
+            <li><strong>Mobile Money</strong> – MTN Mobile Money, Vodafone Cash, AirtelTigo Money (most popular)</li>
+            <li><strong>Card Payments</strong> – Visa, Mastercard through <a href="https://paystack.com" target="_blank" rel="noopener noreferrer" class="text-orange-600 hover:underline">Paystack</a> or <a href="https://flutterwave.com" target="_blank" rel="noopener noreferrer" class="text-orange-600 hover:underline">Flutterwave</a></li>
+            <li><strong>Bank Transfers</strong> – Direct deposits for wholesale orders</li>
+            <li><strong>Cash on Delivery</strong> – Still popular for local deliveries</li>
+          </ul>
+          <p class="text-lg text-gray-800 dark:text-gray-200"><em>Tip:</em> Start with 2-3 payment options and expand based on customer demand.</p>
+
+          <h2 class="text-3xl font-bold text-gray-900 dark:text-white">Step 3: Add Your Products</h2>
+          <p class="text-lg text-gray-800 dark:text-gray-200">Quality product listings are essential for conversions:</p>
+          <ul class="list-disc list-inside space-y-2 text-lg text-gray-800 dark:text-gray-200">
+            <li>Create clear, high-quality product photos (at least 3-4 angles)</li>
+            <li>Write compelling descriptions with benefits and specifications</li>
+            <li>Price competitively while accounting for shipping and platform fees</li>
+            <li>Start with 20-50 core products rather than hundreds</li>
+          </ul>
+
+          <h2 class="text-3xl font-bold text-gray-900 dark:text-white">Step 4: Optimize for Mobile</h2>
+          <p class="text-lg text-gray-800 dark:text-gray-200">Most of your customers will browse on smartphones:</p>
+          <ul class="list-disc list-inside space-y-2 text-lg text-gray-800 dark:text-gray-200">
+            <li>Ensure fast loading times (under 3 seconds)</li>
+            <li>Use large, clear product images</li>
+            <li>Make the checkout process quick and simple</li>
+            <li>Test on various phone sizes and networks</li>
+          </ul>
+
+          <h2 class="text-3xl font-bold text-gray-900 dark:text-white">Step 5: Set Up Shipping & Delivery</h2>
+          <p class="text-lg text-gray-800 dark:text-gray-200">Logistics make or break e-commerce:</p>
+          <ul class="list-disc list-inside space-y-2 text-lg text-gray-800 dark:text-gray-200">
+            <li>Partner with local delivery services (GTCom, DHL Ghana, ChopLife)</li>
+            <li>Offer flat shipping rates for simplicity</li>
+            <li>Consider free shipping for orders above a threshold</li>
+            <li>Provide tracking information to customers</li>
+          </ul>
+
+          <h2 class="text-3xl font-bold text-gray-900 dark:text-white">Step 6: Launch and Promote</h2>
+          <p class="text-lg text-gray-800 dark:text-gray-200">Getting your first customers:</p>
+          <ul class="list-disc list-inside space-y-2 text-lg text-gray-800 dark:text-gray-200">
+            <li>Announce on social media (Facebook, Instagram, TikTok, WhatsApp)</li>
+            <li>Reach out to your existing customer base</li>
+            <li>Collaborate with local influencers and micro-influencers</li>
+            <li>Run limited-time promotions to drive initial sales</li>
+          </ul>
+
+          <h2 class="text-3xl font-bold text-gray-900 dark:text-white">Common Mistakes to Avoid</h2>
+          <ul class="list-disc list-inside space-y-2 text-lg text-gray-800 dark:text-gray-200">
+            <li>❌ Overcomplicating product listings with too many options</li>
+            <li>❌ Ignoring mobile optimization</li>
+            <li>❌ Poor quality product photography</li>
+            <li>❌ Unclear shipping and return policies</li>
+            <li>❌ No customer support channels (WhatsApp, email, phone)</li>
+            <li>❌ Launching with no marketing plan</li>
+          </ul>
+
+          <h2 class="text-3xl font-bold text-gray-900 dark:text-white">Quick Timeline to Launch</h2>
+          <ul class="list-disc list-inside space-y-2 text-lg text-gray-800 dark:text-gray-200">
+            <li><strong>Days 1-2:</strong> Platform setup and domain registration</li>
+            <li><strong>Days 3-5:</strong> Product uploads and photography</li>
+            <li><strong>Days 6-7:</strong> Payment method configuration and testing</li>
+            <li><strong>Days 8-9:</strong> Shipping setup and customer service channels</li>
+            <li><strong>Day 10:</strong> Soft launch and testing</li>
+            <li><strong>Day 11+:</strong> Full launch and marketing</li>
+          </ul>
+
+          <h2 class="text-3xl font-bold text-gray-900 dark:text-white">Related Resources</h2>
+          <p class="text-lg text-gray-800 dark:text-gray-200">Learn more about specific aspects of starting your online store:</p>
+          <ul class="list-disc list-inside space-y-2 text-lg text-gray-800 dark:text-gray-200">
+            <li><a href="/web-design-company-in-ghana/ecommerce-website-development-ghana.js" class="text-orange-600 hover:underline font-semibold">Our E-commerce Web Development Services</a></li>
+          </ul>
+        </div>
+
+        <h2 class="text-3xl font-bold text-gray-900 dark:text-white">Ready to Launch?</h2>
+        <p class="text-lg text-gray-800 dark:text-gray-200">Starting an online store doesn't have to be overwhelming. We can help you build a custom, fully optimized online store designed specifically for Ghana's market. From platform selection to payment setup to ongoing optimization, Celestial Web Solutions handles everything.</p>
+        <p class="text-lg text-gray-800 dark:text-gray-200"><strong><a href="/contact" class="text-orange-600 hover:underline">Get in touch today to discuss your e-commerce goals →</a></strong></p>
+      </article>
+    `
   }
 };
 
@@ -2184,10 +2288,46 @@ export default function BlogPost() {
   const [nav, setNav] = useState({ prev: null, next: null });
   const [article, setArticle] = useState(null);
   const [copied, setCopied] = useState(false);
+  const [relatedArticles, setRelatedArticles] = useState([]);
 
   useEffect(() => {
     if (slug && blogArticles[slug]) {
       setArticle(blogArticles[slug]);
+      
+      // Get related articles
+      const allArticles = Object.keys(blogArticles).map(key => ({
+        slug: key,
+        ...blogArticles[key]
+      }));
+      
+      const currentArticle = blogArticles[slug];
+      
+      // Filter related articles by category or tags, exclude current article
+      const related = allArticles
+        .filter(a => {
+          if (a.slug === slug) return false;
+          // Match by category
+          if (a.category === currentArticle.category) return true;
+          // Match by tags
+          if (currentArticle.tags && a.tags) {
+            return a.tags.some(tag => currentArticle.tags.includes(tag));
+          }
+          return false;
+        })
+        .slice(0, 3); // Limit to 3 related articles
+      
+      // If no related by category/tags, just pick the 3 most recent
+      if (related.length === 0) {
+        setRelatedArticles(
+          allArticles
+            .filter(a => a.slug !== slug)
+            .sort((a, b) => new Date(b.date) - new Date(a.date))
+            .slice(0, 3)
+        );
+      } else {
+        setRelatedArticles(related);
+      }
+      
       // Defensive: blogList is an array, blogArticles is an object
       if (Array.isArray(blogList)) {
         const idx = blogList.findIndex(a => a.slug === slug);
@@ -2203,6 +2343,7 @@ export default function BlogPost() {
     } else {
       setArticle(null);
       setNav({ prev: null, next: null });
+      setRelatedArticles([]);
     }
   }, [slug]);
 
@@ -2364,7 +2505,10 @@ export default function BlogPost() {
           <img
             src={article.image}
             alt={article.title}
-            className="w-full h-full object-cover opacity-20"
+            className="w-full h-full object-cover opacity-30"
+            onError={(e) => {
+              e.target.style.opacity = '0.1';
+            }}
           />
         </div>
 
@@ -2541,63 +2685,69 @@ export default function BlogPost() {
         </div>
       </section>
 
-      {/* Navigation CTAs */}
-      <section className="py-16 bg-gradient-to-br from-orange-500 via-orange-600 to-red-500 text-white">
-        <div className="container mx-auto px-4 flex flex-col items-center gap-8">
-          <div className="w-full max-w-2xl grid grid-cols-1 md:grid-cols-3 gap-6">
-            {/* Previous Blog CTA */}
-            <div className="min-h-[110px] flex items-stretch">
-              {nav.prev ? (
-                <PremiumCTA
-                  href={`/blog/${nav.prev.slug}`}
-                  size="default"
-                  variant="primary"
-                  icon={false}
-                  className="w-full h-full flex flex-col items-start justify-center px-8 py-6 rounded-3xl md:rounded-2xl"
-                >
-                  <span className="flex items-center gap-2 text-lg font-semibold">
-                    <ArrowLeft className="w-5 h-5" />
-                    Previous Blog
-                  </span>
-                  <span className="block text-sm font-normal mt-2 opacity-80 text-left">{nav.prev.title}</span>
-                </PremiumCTA>
-              ) : <div className="w-full h-full border border-white/20 rounded-3xl md:rounded-2xl bg-white/10" />}
-            </div>
-
-            {/* Back to Blog CTA (centered) */}
-            <div className="min-h-[110px] flex items-stretch">
-              <PremiumCTA
-                href="/blog"
-                size="default"
-                variant="primary"
-                icon={false}
-                className="w-full h-full flex flex-col items-center justify-center px-8 py-6 rounded-3xl md:rounded-2xl"
+      {/* Related Articles Section */}
+      <section className="py-16 bg-gray-50 dark:bg-gray-900">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-12 text-center" style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}>
+            You Might Also Like
+          </h2>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+            {relatedArticles.map((relatedArticle) => (
+              <motion.article
+                key={relatedArticle.slug}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 group"
               >
-                <span className="flex items-center gap-2 text-lg font-semibold">
-                  <ArrowLeft className="w-5 h-5" />
-                  Back to Blog
-                </span>
-              </PremiumCTA>
-            </div>
+                <Link href={`/blog/${relatedArticle.slug}`}>
+                  <div className="relative h-48 overflow-hidden">
+                    <img
+                      src={relatedArticle.image}
+                      alt={relatedArticle.title}
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                    <span className="absolute top-4 left-4 px-3 py-1 bg-orange-500 text-white text-xs font-semibold rounded-full">
+                      {relatedArticle.category}
+                    </span>
+                  </div>
+                  
+                  <div className="p-6 space-y-3">
+                    <h3 className="text-xl font-bold text-gray-900 dark:text-white group-hover:text-orange-500 transition-colors line-clamp-2" style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}>
+                      {relatedArticle.title}
+                    </h3>
+                    
+                    <p className="text-gray-600 dark:text-gray-400 text-sm line-clamp-3" style={{ fontFamily: "Google Sans, sans-serif" }}>
+                      {relatedArticle.excerpt}
+                    </p>
+                    
+                    <div className="flex items-center gap-4 text-sm text-gray-500 dark:text-gray-400 pt-2">
+                      <div className="flex items-center gap-1">
+                        <Clock className="w-4 h-4" />
+                        <span>{relatedArticle.readTime}</span>
+                      </div>
+                      <div className="flex items-center gap-1">
+                        <Calendar className="w-4 h-4" />
+                        <span>{relatedArticle.date}</span>
+                      </div>
+                    </div>
+                  </div>
+                </Link>
+              </motion.article>
+            ))}
+          </div>
 
-            {/* Next Blog CTA */}
-            <div className="min-h-[110px] flex items-stretch">
-              {nav.next ? (
-                <PremiumCTA
-                  href={`/blog/${nav.next.slug}`}
-                  size="default"
-                  variant="primary"
-                  icon={false}
-                  className="w-full h-full flex flex-col items-end justify-center px-8 py-6 rounded-3xl md:rounded-2xl"
-                >
-                  <span className="flex items-center gap-2 text-lg font-semibold">
-                    Next Blog
-                    <ArrowRight className="w-5 h-5" />
-                  </span>
-                  <span className="block text-sm font-normal mt-2 opacity-80 text-right">{nav.next.title}</span>
-                </PremiumCTA>
-              ) : <div className="w-full h-full border border-white/20 rounded-3xl md:rounded-2xl bg-white/10" />}
-            </div>
+          <div className="text-center mt-12">
+            <PremiumCTA
+              href="/blog"
+              size="default"
+              variant="primary"
+              className="inline-flex items-center gap-2"
+            >
+              View All Articles
+            </PremiumCTA>
           </div>
         </div>
       </section>

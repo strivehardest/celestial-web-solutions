@@ -630,8 +630,7 @@ const IndexPage = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.5, duration: 0.8 }}
               >
-                From concept to deployment, we build scalable web applications that drive business growth. 
-                Let's turn your vision into digital reality.
+                From concept to deployment, we build scalable web applications that drive business growth. Let's turn your vision into digital reality. Looking for the best web designer in Accra? <Link href="/best-web-designer-in-accra" className="underline underline-offset-4 hover:text-orange-300">See our Accra page.</Link>
               </motion.p>
               
               {/* Enhanced Call to Action Buttons - GLASS STYLE */}
@@ -649,6 +648,7 @@ const IndexPage = () => {
                   View Our Work
                 </GlassButton>
               </motion.div>
+
             </motion.div>
           </div>
 
@@ -1120,6 +1120,15 @@ const IndexPage = () => {
             <div className="grid md:grid-cols-2 gap-8 mb-12">
               {[
                 {
+                  title: "How to Start an Online Store in Ghana: A Quick Guide",
+                  excerpt: "Learn the essential steps to launch your online store in Ghana, from choosing a platform to setting up payment methods and driving your first sales.",
+                  category: "E-commerce",
+                  date: "January 14, 2026",
+                  readTime: "5 min read",
+                  slug: "how-to-start-online-store-ghana",
+                  image: "https://images.unsplash.com/photo-1658297063569-162817482fb6?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                },
+                {
                   title: "Top 15 AI Tools Revolutionizing Web Development in 2026",
                   excerpt: "Explore the latest AI-powered tools transforming web development. From code generation to design automation, discover how AI is making development faster and more efficient.",
                   category: "AI & Technology",
@@ -1127,15 +1136,6 @@ const IndexPage = () => {
                   readTime: "9 min read",
                   slug: "ai-tools-web-development-2026",
                   image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=1200&h=600&fit=crop"
-                },
-                {
-                  title: "How to Choose the Best Web Design Company in Ghana (2026 Guide)",
-                  excerpt: "Learn what to look for when hiring a web design company in Ghana. Discover key factors like experience, SEO optimization, mobile responsiveness, and transparent pricing.",
-                  category: "Web Design",
-                  date: "January 10, 2026",
-                  readTime: "6 min read",
-                  slug: "how-to-choose-best-web-design-company-ghana-2026",
-                  image: "https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?w=1200&h=600&fit=crop"
                 }
               ].map((article, index) => (
                 <motion.div

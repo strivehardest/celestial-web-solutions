@@ -110,11 +110,17 @@ export default function Courses() {
                    style={{ fontFamily: '"Bricolage Grotesque", sans-serif', fontWeight: 700 }}>
                 Master <span className="border-r-2 border-orange-500 animate-pulse">{displayText}</span>
               </div>
-              <p className="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto"
+              <p className="text-xl md:text-2xl text-gray-300 mb-4 max-w-3xl mx-auto"
                  style={{ fontFamily: '"Google Sans", sans-serif' }}>
                 Master the skills you need to build professional websites and launch your career in tech. 
                 From WordPress to modern frameworks, we've got you covered.
               </p>
+              <div className="inline-flex items-center gap-2 bg-orange-500/20 border border-orange-500/40 rounded-full px-6 py-3 mb-8">
+                <span className="w-2 h-2 rounded-full bg-orange-500 animate-pulse" />
+                <p className="text-white font-semibold" style={{ fontFamily: '"Google Sans", sans-serif' }}>
+                  Courses start February 1, 2026
+                </p>
+              </div>
             </motion.div>
 
             {/* Stats */}

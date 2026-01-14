@@ -217,6 +217,19 @@ export const blogArticles = [
     featured: false,
     tags: ["Google Ads", "SEO", "digital marketing", "Ghana"]
   },
+  {
+    id: 8,
+    slug: "how-to-start-online-store-ghana",
+    title: "How to Start an Online Store in Ghana: A Quick Guide",
+    excerpt: "Learn the essential steps to launch your online store in Ghana, from choosing a platform to setting up payment methods and driving your first sales.",
+    category: "E-commerce",
+    author: "Celestial Team",
+    date: "January 14, 2026",
+    readTime: "5 min read",
+    image: "https://images.unsplash.com/photo-1658297063569-162817482fb6?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    featured: true,
+    tags: ["E-commerce", "Ghana", "Online Business", "Startup"]
+  },
 ];
 
 export default function BlogPage() {
@@ -271,7 +284,10 @@ export default function BlogPage() {
     return filtered;
   }, [selectedCategory, debouncedSearch]);
 
-  const featuredArticles = blogArticles.filter(article => article.featured).slice(0, 4);
+  const featuredArticles = blogArticles
+    .filter(article => article.featured)
+    .sort((a, b) => new Date(b.date) - new Date(a.date))
+    .slice(0, 4);
   const regularArticles = filteredArticles;
   const popularTags = [...new Set(blogArticles.flatMap(a => a.tags || []))];
 

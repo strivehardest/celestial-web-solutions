@@ -293,6 +293,12 @@ export default function Portfolio() {
               >
                 Explore our collection of successful projects. From stunning websites to powerful e-commerce platforms - see how we bring ideas to life.
               </p>
+              <p
+                className="text-base text-gray-200 max-w-2xl leading-relaxed mb-8"
+                style={{ fontFamily: "Google Sans, sans-serif" }}
+              >
+                Looking for the best web designer in Accra? <Link href="/best-web-designer-in-accra" className="text-orange-300 font-semibold underline underline-offset-4 hover:text-orange-200">Learn more</Link>.
+              </p>
               <div className="flex flex-wrap gap-4">
                 <GlassButton href="/contact" variant="light">
                   Start Your Project

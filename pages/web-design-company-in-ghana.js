@@ -237,7 +237,7 @@ export default function ServicesPage() {
 													className="text-xl text-gray-300 max-w-xl leading-relaxed mb-8"
 													style={{ fontFamily: "Google Sans, sans-serif" }}
 												>
-													From concept to deployment, we deliver comprehensive digital solutions that transform businesses and drive measurable growth.
+													From concept to deployment, we deliver comprehensive digital solutions that transform businesses and drive measurable growth. Looking for the best web designer in Accra? <Link href="/best-web-designer-in-accra" className="text-orange-300 font-semibold underline underline-offset-4 hover:text-orange-200">See our Accra-focused page</Link>.
 												</p>
 
 												<div className="flex flex-wrap gap-4 mb-12">
