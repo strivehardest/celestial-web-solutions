@@ -513,7 +513,7 @@ export default function BestWebDesignerInAccraPage() {
                     <div className="rounded-2xl border border-gray-200 dark:border-white/10 bg-white/80 dark:bg-white/5 backdrop-blur overflow-hidden hover:shadow-lg transition-all duration-300 cursor-pointer h-full flex flex-col">
                       <div className="relative h-40 overflow-hidden bg-gradient-to-br from-orange-400 to-orange-600">
                         <img 
-                          src="https://images.unsplash.com/photo-1553531088-d8b1aab64e1f?w=600&h=400&fit=crop&q=80" 
+                          src="https://images.unsplash.com/photo-1658297063569-162817482fb6?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
                           alt="How to Start an Online Store in Ghana"
                           className="w-full h-full object-cover hover:scale-110 transition-transform duration-300"
                         />
@@ -531,7 +531,7 @@ export default function BestWebDesignerInAccraPage() {
 
                   <Link href="/blog/ai-tools-web-development-2026">
                     <div className="rounded-2xl border border-gray-200 dark:border-white/10 bg-white/80 dark:bg-white/5 backdrop-blur overflow-hidden hover:shadow-lg transition-all duration-300 cursor-pointer h-full flex flex-col">
-                      <div className="relative h-40 overflow-hidden bg-gradient-to-br from-purple-400 to-purple-600">
+                      <div className="relative h-40 overflow-hidden bg-gradient-to-br from-orange-400 to-orange-600">
                         <img 
                           src="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=600&h=400&fit=crop&q=80" 
                           alt="Top 15 AI Tools Revolutionizing Web Development in 2026"
@@ -539,14 +539,27 @@ export default function BestWebDesignerInAccraPage() {
                         />
                       </div>
                       <div className="p-6 flex flex-col flex-grow">
-                        <p className="text-xs text-purple-600 dark:text-purple-400 font-semibold uppercase tracking-wide mb-2" style={{ fontFamily: 'Google Sans, sans-serif' }}>AI & Technology</p>
-                        <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2 group-hover:text-purple-600 transition-colors" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>Top 15 AI Tools for Web Development</h3>
+                        <p className="text-xs text-orange-600 dark:text-orange-400 font-semibold uppercase tracking-wide mb-2" style={{ fontFamily: 'Google Sans, sans-serif' }}>AI & Technology</p>
+                        <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2 group-hover:text-orange-600 transition-colors" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>Top 15 AI Tools for Web Development</h3>
                         <p className="text-sm text-gray-700 dark:text-gray-300 flex-grow" style={{ fontFamily: 'Google Sans, sans-serif' }}>Explore the latest AI-powered tools transforming web development and making building websites faster and easier.</p>
-                        <div className="mt-4 flex items-center gap-2 text-purple-600 dark:text-purple-400 font-semibold text-sm">
+                        <div className="mt-4 flex items-center gap-2 text-orange-600 dark:text-orange-400 font-semibold text-sm">
                           Read More →
                         </div>
                       </div>
                     </div>
+                  </Link>
+                </div>
+
+                <div className="text-center mt-8">
+                  <Link
+                    href="/blog"
+                    className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-gradient-to-r from-orange-500 to-orange-600 text-white font-semibold hover:from-orange-600 hover:to-orange-700 transition-all shadow-lg shadow-orange-500/30"
+                    style={{ fontFamily: 'Google Sans, sans-serif' }}
+                  >
+                    View All Articles
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                    </svg>
                   </Link>
                 </div>
               </div>
