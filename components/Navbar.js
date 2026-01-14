@@ -3,7 +3,6 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { MessageCircle, Menu, X, ChevronDown } from 'lucide-react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
-import ThemeToggle from './ThemeToggle';
 
 
 const Navbar = () => {
@@ -11,14 +10,6 @@ const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState(null);
-
-  const [darkMode, setDarkMode] = useState(() => {
-    if (typeof window !== 'undefined') {
-      const savedMode = localStorage.getItem('darkMode');
-      return savedMode ? JSON.parse(savedMode) : window.matchMedia('(prefers-color-scheme: dark)').matches;
-    }
-    return false;
-  });
   const [currentPath, setCurrentPath] = useState('/');
 
   // Handle scroll effect
@@ -34,21 +25,6 @@ const Navbar = () => {
   useEffect(() => {
     setCurrentPath(router.pathname);
   }, [router.pathname]);
-
-  // Modified dark mode effect
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      const root = document.documentElement;
-      if (darkMode) {
-        root.classList.add('dark');
-        document.body.style.backgroundColor = '#111827';
-      } else {
-        root.classList.remove('dark');
-        document.body.style.backgroundColor = '#ffffff';
-      }
-      localStorage.setItem('darkMode', JSON.stringify(darkMode));
-    }
-  }, [darkMode]);
 
 
 
@@ -66,6 +42,10 @@ const Navbar = () => {
     { 
       name: 'Portfolio', 
       href: '/portfolio'
+    },
+    { 
+      name: 'Hire us!', 
+      href: '/best-web-designer-in-accra'
     },
     { 
       name: 'About Us', 
@@ -130,19 +110,6 @@ const Navbar = () => {
       router.events.off('routeChangeStart', handleRouteChange);
     };
   }, [router.events]);
-
-  const toggleDarkMode = () => {
-    setDarkMode(!darkMode);
-  };
-
-
-
-  // Update mobile menu action buttons
-  const MobileActionButtons = () => (
-    <div className="flex items-center justify-center">
-      <ThemeToggle darkMode={darkMode} toggleDarkMode={toggleDarkMode} isMobile={true} />
-    </div>
-  );
 
   // Logo Component - Easy to customize
   const Logo = () => {
@@ -346,7 +313,6 @@ const Navbar = () => {
 
             {/* Right Side Actions */}
             <div className="flex items-center space-x-3">
-              <ThemeToggle darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
               
               {/* Premium WhatsApp Button - Desktop */}
               <motion.a
@@ -490,7 +456,6 @@ const Navbar = () => {
                   
                   {/* Mobile Actions */}
                   <div className="pt-4 border-t border-gray-200 dark:border-gray-700 space-y-3">
-                    <MobileActionButtons />
                     
                     {/* Premium WhatsApp Button - Mobile */}
                     <motion.a

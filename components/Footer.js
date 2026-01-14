@@ -2,6 +2,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { Star, MapPin, Phone, Mail, ArrowRight, Award } from 'lucide-react';
+import ThemeToggle from './ThemeToggle';
 
 const whatsappNumber = '233530505031';
 const whatsappMessage = encodeURIComponent("Hi Celestial, I'm interested in your web development services.");
@@ -73,6 +74,7 @@ export default function Footer({ darkMode, toggleDarkMode }) {
     company: [
       { name: 'Home', href: '/' },
       { name: 'About Us', href: '/about' },
+      { name: 'Best Web Designer in Accra', href: '/best-web-designer-in-accra' },
       { name: 'Courses', href: '/courses' },
       { name: 'Portfolio', href: '/portfolio' },
       { name: 'Blog', href: '/blog' },
@@ -465,6 +467,11 @@ export default function Footer({ darkMode, toggleDarkMode }) {
                   {social.icon}
                 </a>
               ))}
+            </div>
+            
+            {/* Theme Toggle - Below Social Links */}
+            <div className="pt-2">
+              <ThemeToggle darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
             </div>
           </div>
         </div>
