@@ -119,11 +119,6 @@ const SEOHead = () => {
               "https://twitter.com/strivehardest",
               "https://linkedin.com/in/aforlabi"
             ],
-            "aggregateRating": {
-              "@type": "AggregateRating",
-              "ratingValue": "4.9",
-              "reviewCount": "30"
-            },
             "hasOfferCatalog": {
               "@type": "OfferCatalog",
               "name": "Web Services",
