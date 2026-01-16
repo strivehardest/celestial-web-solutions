@@ -234,6 +234,20 @@ export const blogArticles = [
     tags: ["Google Ads", "SEO", "digital marketing", "Ghana"],
     hashtags: ["#GoogleAds", "#SEO", "#DigitalMarketing", "#PPC", "#GhanaMarketing"]
   },
+  {
+    id: 15,
+    slug: "how-to-start-online-store-ghana",
+    title: "How to Start an Online Store in Ghana: A Quick Guide",
+    excerpt: "Learn the essential steps to launch your online store in Ghana, from choosing a platform to setting up payment methods and driving your first sales.",
+    category: "E-Commerce",
+    author: "Celestial Team",
+    date: "January 14, 2026",
+    readTime: "5 min read",
+    image: "https://images.unsplash.com/photo-1658297063569-162817482fb6?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    featured: true,
+    tags: ["E-commerce", "Ghana", "Online Business", "Startup"],
+    hashtags: ["#EcommerceGhana", "#GhanaBusiness", "#OnlineStore", "#StartupTips", "#CelestialWebSolutions"]
+  },
 ];
 
 export default function BlogPage() {
@@ -311,7 +325,8 @@ export default function BlogPage() {
       filtered = filtered.filter(article => article.category === selectedCategory);
     }
     
-    return filtered;
+    // Always show newest first across all views
+    return [...filtered].sort((a, b) => new Date(b.date) - new Date(a.date));
   }, [selectedCategory, debouncedSearch]);
 
   const featuredArticles = useMemo(() => {
