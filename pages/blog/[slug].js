@@ -324,7 +324,7 @@ const blogArticles = {
             <li><strong>SEO Excellence:</strong> Websites optimized to rank on Google from day one</li>
             <li><strong>Local Payment Expertise:</strong> Seamless mobile money and local payment integration</li>
             <li><strong>Post-Launch Commitment:</strong> Comprehensive maintenance and support packages</li>
-            <li><strong>Proven Track Record:</strong> 100+ successful projects with satisfied clients</li>
+            <li><strong>Proven Track Record:</strong> 20+ successful projects with satisfied clients</li>
             <li><strong>Modern Technology:</strong> Latest web development frameworks and tools</li>
           </ul>
         </div>
@@ -2270,7 +2270,7 @@ const blogArticles = {
           <h2 class="text-3xl font-bold text-gray-900 dark:text-white">Related Resources</h2>
           <p class="text-lg text-gray-800 dark:text-gray-200">Learn more about specific aspects of starting your online store:</p>
           <ul class="list-disc list-inside space-y-2 text-lg text-gray-800 dark:text-gray-200">
-            <li><a href="/web-design-company-in-ghana/ecommerce-website-development-ghana.js" class="text-orange-600 hover:underline font-semibold">Our E-commerce Web Development Services</a></li>
+            <li><a href="/web-design-company-in-ghana/ecommerce-website-development-ghana" class="text-orange-600 hover:underline font-semibold">Our E-commerce Web Development Services</a></li>
           </ul>
         </div>
 
@@ -2675,9 +2675,14 @@ export default function BlogPost() {
               />
               <div className="mt-8 flex flex-wrap gap-2">
                 {article.hashtags?.map((hashtag, index) => (
-                  <span key={index} className="text-sm text-orange-500 dark:text-orange-400">
-                    {hashtag}
-                  </span>
+                  <Link
+                    key={index}
+                    href={`/blog?search=${hashtag.replace('#', '')}`}
+                  >
+                    <span className="text-sm text-orange-500 dark:text-orange-400 hover:text-orange-600 dark:hover:text-orange-300 cursor-pointer underline transition-colors">
+                      {hashtag}
+                    </span>
+                  </Link>
                 ))}
               </div>
             </motion.div>

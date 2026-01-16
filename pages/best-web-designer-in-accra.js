@@ -45,27 +45,6 @@ const portfolioHighlights = [
     description: 'Professional services website showcasing architectural and design expertise.',
     image: '/png/projects/buildingplanner.png',
     slug: 'best-web-designer-in-accra'
-  },
-  {
-    title: 'Finance Tracker',
-    category: 'Web Application',
-    description: 'Personal finance app helping users manage income, expenses, and budgets.',
-    image: '/png/projects/finance-tracker.png',
-    slug: 'finance-tracker'
-  },
-  {
-    title: 'Celestial Shopping',
-    category: 'E-Commerce',
-    description: 'An E-Commerce platform showcasing a variety of products with a seamless shopping experience.',
-    image: '/png/projects/celestial1.png',
-    slug: 'celestial-shopping'
-  },
-  {
-    title: 'AdBay Store',
-    category: 'E-Commerce',
-    description: 'Online marketplace connecting buyers and sellers with intuitive navigation.',
-    image: '/png/projects/adbay.png',
-    slug: 'adbay-store'
   }
 ];
 
@@ -481,7 +460,7 @@ export default function BestWebDesignerInAccraPage() {
 
               <div className="rounded-2xl overflow-hidden border border-gray-200 dark:border-white/10 shadow-lg h-96">
                 <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3970.701822647897!2d-0.18700392346026897!3d5.603729729447432!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1021710073fe6fff%3A0x96453357ca880329!2sCelestial%20Web%20Solutions!5e0!3m2!1sen!2sgh!4v1673024517388!5m2!1sen!2sgh"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3971.123456!2d-0.2163!3d5.6037!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1sAccra%2C%20Ghana!2s5.6037%2C%20-0.2163!5e0!3m2!1sen!2sgh!4v1673024517388!5m2!1sen!2sgh"
                   width="100%"
                   height="100%"
                   style={{ border: 0 }}

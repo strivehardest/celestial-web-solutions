@@ -1,5 +1,6 @@
 import Head from "next/head";
 import { motion } from "framer-motion";
+import { useRouter } from "next/router";
 import { Calendar, Clock, User, ArrowRight, Tag, Search, X } from "lucide-react";
 import { useEffect, useState, useMemo } from "react";
 import Link from "next/link";
@@ -20,7 +21,8 @@ export const blogArticles = [
     readTime: "9 min read",
     image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=1200&h=600&fit=crop",
     featured: true,
-    tags: ["AI", "web development", "automation", "tools"]
+    tags: ["AI", "web development", "automation", "tools"],
+    hashtags: ["#AITools", "#WebDev", "#ArtificialIntelligence", "#CodingTools", "#TechGhana"]
   },
   {
     id: 14,
@@ -33,7 +35,8 @@ export const blogArticles = [
     readTime: "6 min read",
     image: "https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?w=1200&h=600&fit=crop",
     featured: true,
-    tags: ["web design", "Ghana", "choosing company", "guide", "2026"]
+    tags: ["web design", "Ghana", "choosing company", "guide", "2026"],
+    hashtags: ["#WebDesignGhana", "#ChooseWebDesigner", "#GhanaDigital", "#TechGuide", "#WebDevelopment"]
   },
   {
     id: 1001,
@@ -46,7 +49,8 @@ export const blogArticles = [
     readTime: "4 min read",
     image: "https://images.unsplash.com/photo-1635405050330-b0824eb1bf26?q=80&w=1169&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     featured: true,
-    tags: ["web design", "trends", "AI", "accessibility", "2026"]
+    tags: ["web design", "trends", "AI", "accessibility", "2026"],
+    hashtags: ["#WebDesign2026", "#GhanaBusiness", "#DigitalTrends", "#CelestialWebSolutions"]
   },
   {
     id: 1002,
@@ -59,7 +63,8 @@ export const blogArticles = [
     readTime: "4 min read",
     image: "https://images.unsplash.com/photo-1547658719-da2b51169166?q=80&w=764&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     featured: true,
-    tags: ["future-ready", "global", "Ghana", "website", "2026"]
+    tags: ["future-ready", "global", "Ghana", "website", "2026"],
+    hashtags: ["#FutureReady", "#GhanaWeb", "#InternationalBusiness", "#CelestialWebSolutions"]
   },
   {
     id: 1,
@@ -72,7 +77,8 @@ export const blogArticles = [
     readTime: "8 min read",
     image: "https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?w=1200&h=600&fit=crop",
     featured: true,
-    tags: ["web design", "Accra", "Ghana", "top agencies"]
+    tags: ["web design", "Accra", "Ghana", "top agencies"],
+    hashtags: ["#WebDesignGhana", "#AccraWebDesigners", "#GhanaDigital", "#WebDesignAccra", "#CelestialWebSolutions"]
   },
   {
     id: 13,
@@ -85,7 +91,8 @@ export const blogArticles = [
     readTime: "9 min read",
     image: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=1200&h=600&fit=crop",
     featured: false,
-    tags: ["content marketing", "Ghana", "digital strategy", "engagement"]    
+    tags: ["content marketing", "Ghana", "digital strategy", "engagement"],
+    hashtags: ["#DigitalMarketingGhana", "#ContentMarketing", "#GhanaBusiness", "#MarketingStrategy"]
   },
   {
     id: 6,
@@ -98,7 +105,8 @@ export const blogArticles = [
     readTime: "11 min read",
     image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=1200&h=600&fit=crop",
     featured: true,
-    tags: ["web development", "frameworks", "tools", "React", "Next.js"]
+    tags: ["web development", "frameworks", "tools", "React", "Next.js"],
+    hashtags: ["#WebDevelopment", "#ReactJS", "#NextJS", "#JavaScript", "#WebDevTools"]
   },
   {
     id: 2,
@@ -111,7 +119,8 @@ export const blogArticles = [
     readTime: "10 min read",
     image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=600&fit=crop",
     featured: true,
-    tags: ["pricing", "web design", "Ghana", "cost guide"]
+    tags: ["pricing", "web design", "Ghana", "cost guide"],
+    hashtags: ["#WebDesignPricing", "#GhanaPrices", "#WebsiteCost", "#AffordableWebDesign", "#GhanaWeb"]
   },
   {
     id: 3,
@@ -124,7 +133,8 @@ export const blogArticles = [
     readTime: "7 min read",
     image: "https://images.unsplash.com/photo-1556761175-b413da4baf72?w=1200&h=600&fit=crop",
     featured: false,
-    tags: ["business growth", "digital presence", "Ghana", "website benefits"]
+    tags: ["business growth", "digital presence", "Ghana", "website benefits"],
+    hashtags: ["#GhanaBusiness", "#DigitalTransformation", "#WebsiteGhana", "#BusinessGrowth", "#OnlinePresence"]
   },
   {
     id: 4,
@@ -137,7 +147,8 @@ export const blogArticles = [
     readTime: "12 min read",
     image: "https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?w=1200&h=600&fit=crop",
     featured: true,
-    tags: ["SEO", "local SEO", "Ghana", "Google ranking"]
+    tags: ["SEO", "local SEO", "Ghana", "Google ranking"],
+    hashtags: ["#SEOGhana", "#LocalSEO", "#GoogleRanking", "#DigitalMarketingGhana", "#SEOTips"]
   },
   {
     id: 7,
@@ -150,7 +161,8 @@ export const blogArticles = [
     readTime: "10 min read",
     image: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=1200&h=600&fit=crop",
     featured: false,
-    tags: ["mobile money", "e-commerce", "Ghana", "payment integration"]
+    tags: ["mobile money", "e-commerce", "Ghana", "payment integration"],
+    hashtags: ["#MobileMoney", "#PaymentGhana", "#MTNMoMo", "#VodafoneCash", "#EcommerceGhana"]
   },
   {
     id: 8,
@@ -163,7 +175,8 @@ export const blogArticles = [
     readTime: "8 min read",
     image: "https://images.unsplash.com/photo-1547658719-da2b51169166?w=1200&h=600&fit=crop",
     featured: false,
-    tags: ["responsive design", "mobile-first", "CSS", "best practices"]
+    tags: ["responsive design", "mobile-first", "CSS", "best practices"],
+    hashtags: ["#ResponsiveDesign", "#MobileFirst", "#WebDesign", "#CSS", "#UXDesign"]
   },
   {
     id: 9,
@@ -176,7 +189,8 @@ export const blogArticles = [
     readTime: "9 min read",
     image: "https://verpex.com/assets/uploads/images/blog/AI-in-Web-Development.webp?v=1675753194",
     featured: false,
-    tags: ["ChatGPT", "AI", "web development", "productivity"]
+    tags: ["ChatGPT", "AI", "web development", "productivity"],
+    hashtags: ["#ChatGPT", "#AIinTech", "#WebDevelopment", "#AIDevelopment", "#CodingAI"]
   },
   {
     id: 10,
@@ -189,7 +203,8 @@ export const blogArticles = [
     readTime: "10 min read",
     image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=1200&h=600&fit=crop",
     featured: false,
-    tags: ["security", "cybersecurity", "Ghana", "website protection"]
+    tags: ["security", "cybersecurity", "Ghana", "website protection"],
+    hashtags: ["#CyberSecurity", "#WebsiteSecurity", "#GhanaTech", "#DataProtection", "#SecureWebsite"]
   },
   {
     id: 11,
@@ -202,7 +217,8 @@ export const blogArticles = [
     readTime: "8 min read",
     image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=1200&h=600&fit=crop",
     featured: false,
-    tags: ["e-commerce", "trends", "Ghana", "online shopping"]
+    tags: ["e-commerce", "trends", "Ghana", "online shopping"],
+    hashtags: ["#EcommerceGhana", "#OnlineShopping", "#DigitalRetail", "#GhanaTrends", "#EcommerceTrends"]
   },
   {
     id: 12,
@@ -215,27 +231,28 @@ export const blogArticles = [
     readTime: "11 min read",
     image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=600&fit=crop",
     featured: false,
-    tags: ["Google Ads", "SEO", "digital marketing", "Ghana"]
-  },
-  {
-    id: 8,
-    slug: "how-to-start-online-store-ghana",
-    title: "How to Start an Online Store in Ghana: A Quick Guide",
-    excerpt: "Learn the essential steps to launch your online store in Ghana, from choosing a platform to setting up payment methods and driving your first sales.",
-    category: "E-commerce",
-    author: "Celestial Team",
-    date: "January 14, 2026",
-    readTime: "5 min read",
-    image: "https://images.unsplash.com/photo-1658297063569-162817482fb6?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    featured: true,
-    tags: ["E-commerce", "Ghana", "Online Business", "Startup"]
+    tags: ["Google Ads", "SEO", "digital marketing", "Ghana"],
+    hashtags: ["#GoogleAds", "#SEO", "#DigitalMarketing", "#PPC", "#GhanaMarketing"]
   },
 ];
 
 export default function BlogPage() {
+  const router = useRouter();
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [searchQuery, setSearchQuery] = useState("");
   const [debouncedSearch, setDebouncedSearch] = useState("");
+
+  // Sync search query from URL when coming from hashtag links
+  useEffect(() => {
+    if (!router.isReady) return;
+
+    const { search } = router.query;
+    if (typeof search === "string" && search.trim()) {
+      const normalized = decodeURIComponent(search).replace(/^#/, "");
+      setSearchQuery(normalized);
+      setDebouncedSearch(normalized);
+    }
+  }, [router.isReady, router.query]);
 
   // Get unique categories
   const categories = ["All", ...new Set(blogArticles.map(article => article.category))];
@@ -256,6 +273,19 @@ export default function BlogPage() {
     const searchTerms = query.toLowerCase().trim().split(' ').filter(term => term.length > 0);
     
     return articles.filter(article => {
+      // Check if searching for a hashtag
+      const isHashtagSearch = searchTerms.length === 1;
+      
+      if (isHashtagSearch) {
+        const searchTerm = searchTerms[0];
+        // For hashtag/tag searches, look for exact matches in tags or hashtags
+        const tags = (article.tags || []).map(t => t.toLowerCase());
+        const hashtags = (article.hashtags || []).map(h => h.toLowerCase().replace('#', ''));
+        
+        return tags.includes(searchTerm) || hashtags.includes(searchTerm);
+      }
+      
+      // For regular text search, search all content
       const searchableText = [
         article.title,
         article.excerpt,
@@ -284,10 +314,20 @@ export default function BlogPage() {
     return filtered;
   }, [selectedCategory, debouncedSearch]);
 
-  const featuredArticles = blogArticles
-    .filter(article => article.featured)
-    .sort((a, b) => new Date(b.date) - new Date(a.date))
-    .slice(0, 4);
+  const featuredArticles = useMemo(() => {
+    let featured = blogArticles
+      .filter(article => article.featured)
+      .sort((a, b) => new Date(b.date) - new Date(a.date))
+      .slice(0, 4);
+    
+    // If searching, filter featured articles by search query too
+    if (debouncedSearch.trim()) {
+      featured = searchArticles(featured, debouncedSearch);
+    }
+    
+    return featured;
+  }, [debouncedSearch]);
+  
   const regularArticles = filteredArticles;
   const popularTags = [...new Set(blogArticles.flatMap(a => a.tags || []))];
 
@@ -743,8 +783,18 @@ export default function BlogPage() {
         )}
 
         {/* CTA Section */}
-        <section className="py-16 bg-gradient-to-br from-orange-500 via-orange-600 to-red-500">
-          <div className="max-w-4xl mx-auto px-4 text-center">
+        <section className="py-16 relative overflow-hidden">
+          {/* Background Image */}
+          <div className="absolute inset-0">
+            <img 
+              src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1920&h=600&fit=crop" 
+              alt="Team collaboration"
+              className="w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-br from-orange-500/90 via-orange-600/90 to-red-500/90"></div>
+          </div>
+          
+          <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
