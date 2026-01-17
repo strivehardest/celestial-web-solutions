@@ -492,6 +492,22 @@ const IndexPage = () => {
       text: "Excellent web development company! Celestial Web Solutions helped me in creating a personal website.",
       rating: 5,
       image: "/testimonials/elolo.jpg"
+    },
+    {
+      name: "Akari Kev",
+      company: "Ghana",
+      role: "Client",
+      text: "Celestial Web Solutions was professional, responsive, and easy to work with. They understood my requirements clearly and delivered quality work on time. Communication was smooth, and any feedback was handled quickly. I'd definitely recommend them to anyone looking for reliable web solutions.",
+      rating: 5,
+      image: "https://ui-avatars.com/api/?name=Akari+Kev&background=FF6B00&color=fff"
+    },
+    {
+      name: "Paul Dickens Doe",
+      company: "My Space Furniture",
+      role: "Client",
+      text: "Celestial Web Solutions team did a great job on our websites. They always finish each project in record time. Their continuous tech support and updating of pages is just excellent. Highly recommended.",
+      rating: 5,
+      image: "https://ui-avatars.com/api/?name=Paul+Dickens+Doe&background=FF6B00&color=fff"
     }
   ];
 
@@ -1313,7 +1329,7 @@ const IndexPage = () => {
           </div>
         </section>
 
-        {/* Testimonials Section */}
+        {/* Testimonials Section - Kava Style Carousel */}
         <section className="py-24 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 relative overflow-hidden">
           {/* Decorative Elements */}
           <div className="absolute inset-0 overflow-hidden">
@@ -1322,92 +1338,127 @@ const IndexPage = () => {
           </div>
           
           <div className="max-w-7xl mx-auto px-4 relative z-10">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="text-center mb-16"
-            >
-              <motion.span
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                className="inline-block px-4 py-2 bg-orange-500/20 backdrop-blur-sm border border-orange-500/30 rounded-full text-orange-400 text-sm font-semibold mb-6"
-                style={{ fontFamily: 'Google Sans, sans-serif' }}
-              >
-                TESTIMONIALS
-              </motion.span>
-              <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white"
-                  style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>
-                What Our Clients Say
-              </h2>
-              <p className="text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed"
-                 style={{ fontFamily: 'Google Sans, sans-serif' }}>
-                Don't just take our word for it - hear from satisfied clients who've experienced transformative results
-              </p>
-            </motion.div>
-            <div className="grid md:grid-cols-3 gap-8">
-              {testimonials.map((testimonial, index) => (
+            <div className="grid lg:grid-cols-5 gap-8 lg:gap-12 items-start lg:items-center">
+              {/* Left Side - Title and Controls */}
+              <div className="lg:col-span-2">
                 <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
+                  initial={{ opacity: 0, x: -30 }}
+                  whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
-                  transition={{ delay: index * 0.15 }}
-                  className="relative bg-white/5 backdrop-blur-md p-8 rounded-3xl border border-white/10 hover:border-orange-500/30 transition-all duration-500 group"
-                  whileHover={{ y: -8 }}
                 >
-                  {/* Large Quote Mark */}
-                  <div className="absolute -top-4 -left-2 text-8xl text-orange-500/20 font-serif leading-none select-none">
-                    "
-                  </div>
+                  <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-8 text-white"
+                      style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>
+                    What our clients say
+                  </h2>
+                </motion.div>
+              </div>
+              
+              {/* Right Side - Testimonial Carousel */}
+              <div className="lg:col-span-3 w-full">
+                <div 
+                  id="testimonials-container"
+                  className="overflow-x-auto scroll-smooth snap-x snap-mandatory hide-scrollbar"
+                  style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+                >
+                  <style jsx>{`
+                    .hide-scrollbar::-webkit-scrollbar {
+                      display: none;
+                    }
+                    @keyframes testimonialAutoScroll {
+                      0%, 10% { transform: translateX(0); }
+                      20%, 30% { transform: translateX(calc(-1 * (85vw + 1rem))); }
+                      40%, 50% { transform: translateX(calc(-2 * (85vw + 1rem))); }
+                      60%, 70% { transform: translateX(calc(-3 * (85vw + 1rem))); }
+                      80%, 90% { transform: translateX(calc(-4 * (85vw + 1rem))); }
+                      100% { transform: translateX(0); }
+                    }
+                    @media (min-width: 640px) {
+                      @keyframes testimonialAutoScroll {
+                        0%, 10% { transform: translateX(0); }
+                        20%, 30% { transform: translateX(calc(-1 * (70vw + 1.5rem))); }
+                        40%, 50% { transform: translateX(calc(-2 * (70vw + 1.5rem))); }
+                        60%, 70% { transform: translateX(calc(-3 * (70vw + 1.5rem))); }
+                        80%, 90% { transform: translateX(calc(-4 * (70vw + 1.5rem))); }
+                        100% { transform: translateX(0); }
+                      }
+                    }
+                    @media (min-width: 1024px) {
+                      @keyframes testimonialAutoScroll {
+                        0%, 10% { transform: translateX(0); }
+                        20%, 30% { transform: translateX(calc(-100% - 2rem)); }
+                        40%, 50% { transform: translateX(calc(-200% - 4rem)); }
+                        60%, 70% { transform: translateX(calc(-300% - 6rem)); }
+                        80%, 90% { transform: translateX(calc(-400% - 8rem)); }
+                        100% { transform: translateX(0); }
+                      }
+                    }
+                    .testimonials-animate {
+                      animation: testimonialAutoScroll 50s ease-in-out infinite;
+                    }
+                    .testimonials-animate:hover {
+                      animation-play-state: paused;
+                    }
+                  `}</style>
                   
-                  {/* Stars */}
-                  <div className="flex mb-6 relative z-10">
-                    {[...Array(testimonial.rating)].map((_, i) => (
-                      <svg key={i} className="w-5 h-5 text-orange-500 fill-current" viewBox="0 0 20 20">
-                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
-                      </svg>
+                  <div className="flex gap-4 sm:gap-6 lg:gap-8 testimonials-animate">
+                    {testimonials.map((testimonial, index) => (
+                      <motion.div
+                        key={index}
+                        initial={{ opacity: 0, x: 50 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: index * 0.1 }}
+                        className="testimonial-slide snap-start flex-shrink-0 w-[85vw] sm:w-[70vw] lg:w-full bg-white/5 backdrop-blur-md p-6 sm:p-8 lg:p-10 rounded-2xl sm:rounded-3xl border border-white/10 relative"
+                      >
+                        {/* Large Quote Mark */}
+                        <div className="absolute -top-4 sm:-top-6 -left-2 sm:-left-4 text-7xl sm:text-8xl lg:text-9xl text-orange-500/20 font-serif leading-none select-none">
+                          "
+                        </div>
+                        
+                        {/* Title */}
+                        <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-white mb-4 sm:mb-6 relative z-10 italic"
+                            style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>
+                          {testimonial.name === 'Akari Kev' ? 'Great service and solid results' : 
+                           testimonial.name === 'Paul Dickens Doe' ? 'Excellent work and support' : 
+                           testimonial.name === 'Rev. Frank Ntow Gyan' ? 'Transformed our online presence' :
+                           testimonial.name === 'Righteous Semahar' ? 'Excellent web development' :
+                           'Great experience'}
+                        </h3>
+                        
+                        {/* Testimonial Text */}
+                        <p className="text-gray-300 text-base sm:text-lg leading-relaxed mb-6 sm:mb-8 relative z-10"
+                           style={{ fontFamily: 'Google Sans, sans-serif' }}>
+                          {testimonial.text}
+                        </p>
+                        
+                        {/* Author Info */}
+                        <div className="relative z-10 space-y-3">
+                          <div className="flex flex-col gap-3">
+                            <h4 className="text-lg sm:text-xl font-bold text-orange-400"
+                                style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>
+                              {testimonial.name.toUpperCase()}
+                            </h4>
+                            <p className="text-gray-300 text-xs sm:text-sm font-medium uppercase tracking-wider"
+                               style={{ fontFamily: 'Google Sans, sans-serif' }}>
+                              {testimonial.role} - {testimonial.company}
+                            </p>
+                          </div>
+                          
+                          {/* Trustpilot Badge */}
+                          {(testimonial.name === 'Akari Kev' || testimonial.name === 'Paul Dickens Doe') && (
+                            <div className="inline-flex items-center gap-2 bg-green-600 px-3 py-2 rounded">
+                              <svg className="w-5 h-5 sm:w-6 sm:h-6 text-white" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 1.5l3.27 6.6 7.23 1.05-5.25 5.1 1.24 7.23-6.49-3.42-6.49 3.42 1.24-7.23-5.25-5.1 7.23-1.05z"/>
+                              </svg>
+                              <span className="text-white text-xs sm:text-sm font-bold">Trustpilot</span>
+                            </div>
+                          )}
+                        </div>
+                      </motion.div>
                     ))}
                   </div>
-                  
-                  {/* Testimonial Text */}
-                  <p className="text-gray-300 text-lg leading-relaxed mb-8 relative z-10"
-                     style={{ fontFamily: 'Google Sans, sans-serif' }}>
-                    {testimonial.text}
-                  </p>
-                  
-                  {/* Author Info */}
-                  <div className="flex items-center relative z-10">
-                    <div className="relative w-14 h-14 mr-4">
-                      <img
-                        src={testimonial.image}
-                        alt={testimonial.name}
-                        className="w-full h-full object-cover rounded-full ring-2 ring-orange-500/50"
-                        onError={(e) => {
-                          e.target.onerror = null;
-                          e.target.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(testimonial.name)}&background=FF6B00&color=fff`;
-                        }}
-                      />
-                    </div>
-                    <div>
-                      <h3 className="font-bold text-white text-lg"
-                          style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>
-                        {testimonial.name}
-                      </h3>
-                      <p className="text-orange-400 text-sm font-medium"
-                         style={{ fontFamily: 'Google Sans, sans-serif' }}>
-                        {testimonial.role}, {testimonial.company}
-                      </p>
-                    </div>
-                  </div>
-                  
-                  {/* Closing Quote */}
-                  <div className="absolute -bottom-6 -right-2 text-8xl text-orange-500/20 font-serif leading-none select-none rotate-180">
-                    "
-                  </div>
-                </motion.div>
-              ))}
+                </div>
+              </div>
             </div>
           </div>
         </section>
