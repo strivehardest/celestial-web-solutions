@@ -158,7 +158,7 @@ export default function ServicesPage() {
 			<Head>
 				<title>Web Design Company in Ghana | Professional Website Designers</title>
 				<meta name="description" content="Looking for a professional web design company in Ghana? Celestial Web Solutions designs modern, responsive, and SEO-friendly websites for businesses." />
-				<meta name="keywords" content="web services Ghana, web development services, web design services Ghana, e-commerce solutions, SEO services Ghana, UX/UI design, IT support Ghana, Google Ads management, Google AdSense management, digital marketing Ghana, web development company, design agency Ghana, full stack development, website maintenance, technical support" />
+				<meta name="keywords" content="web services Ghana, web development services, web design services Ghana, web design companies in accra, e-commerce solutions, SEO services Ghana, UX/UI design, IT support Ghana, Google Ads management, Google AdSense management, digital marketing Ghana, web development company, design agency Ghana, full stack development, website maintenance, technical support" />
 				<meta name="author" content="Celestial Web Solutions" />
 				<meta name="robots" content="index, follow" />
 				<meta name="viewport" content="width=device-width, initial-scale=1.0" />

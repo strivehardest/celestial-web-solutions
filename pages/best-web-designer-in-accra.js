@@ -88,6 +88,7 @@ export default function BestWebDesignerInAccraPage() {
           rel="canonical"
           href="https://celestialwebsolutions.net/best-web-designer-in-accra"
         />
+        <meta name="keywords" content="best web designer in Accra, web design companies in accra, web design company in Ghana, SEO services in Ghana, e-commerce website Ghana, business website design Ghana, affordable web design Ghana" />
       </Head>
 
       <main className="min-h-screen bg-white dark:bg-gray-900 text-gray-900 dark:text-white font-sans transition-colors duration-300">

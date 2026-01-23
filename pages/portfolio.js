@@ -196,7 +196,7 @@ export default function Portfolio() {
     { name: "Building Planner Designs", src: "/png/projects/building.png" },
     { name: "Ghana Updates Online", src: "/png/projects/ghanaupdates1.jpg" },
     { name: "AdBay Store", src: "/png/projects/Adbay1.png" },
-    { name: "Elolo Agbleke", src: "/png/projects/elolo2.jpeg" },
+    { name: "Elolo Agbleke", src: "/png/projects/elolo.jpeg" },
     { name: "Mart Ban Logistics", src: "/png/projects/martb.png" },
     { name: "My Space Furniture", src: "/png/projects/myspace.png" },
     { name: "Valyd Homes", src: "/png/projects/valyd.png" },
