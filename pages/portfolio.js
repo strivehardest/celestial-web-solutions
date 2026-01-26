@@ -196,7 +196,7 @@ export default function Portfolio() {
     { name: "Building Planner Designs", src: "/png/projects/building.png" },
     { name: "Ghana Updates Online", src: "/png/projects/ghanaupdates1.jpg" },
     { name: "AdBay Store", src: "/png/projects/Adbay1.png" },
-    { name: "Elolo Agbleke", src: "/png/projects/elolo.jpeg" },
+    { name: "Elolo Agbleke", src: "/png/projects/elolo2.jpeg" },
     { name: "Mart Ban Logistics", src: "/png/projects/martb.png" },
     { name: "My Space Furniture", src: "/png/projects/myspace.png" },
     { name: "Valyd Homes", src: "/png/projects/valyd.png" },
@@ -242,7 +242,7 @@ export default function Portfolio() {
       <Head>
         <title>Portfolio | Celestial Web Solutions - Our Recent Projects</title>
         <meta name="description" content="Explore our portfolio of successful web development projects. See how we've helped businesses, NGOs, churches, educational institutions and more grow with custom websites, e-commerce solutions, and digital platforms." />
-        <meta name="keywords" content="web development portfolio, website projects, e-commerce websites, Ghana web projects, Celestial Web Solutions work, NGO websites, church websites, educational websites, best web designer in accra" />
+        <meta name="keywords" content="best web design company in ghana, web development portfolio, website projects, e-commerce websites, Ghana web projects, Celestial Web Solutions work, NGO websites, church websites, educational websites, best web designer in accra" />
         <link rel="canonical" href="https://celestialwebsolutions.net/portfolio" />
       </Head>
 

@@ -156,7 +156,7 @@ export default function AboutUs() {
       <Head>
         <title>About Celestial Web Solutions | Web Design Company in Ghana</title>
         <meta name="description" content="Learn more about Celestial Web Solutions, a professional web design and development company in Ghana committed to helping businesses grow online." />
-        <meta name="keywords" content="web design company in Ghana, professional web designers Ghana, Celestial Web Solutions, Waliu Aforlabi"/>
+        <meta name="keywords" content="best web design company in ghana, web design company in Ghana, professional web designers Ghana, Celestial Web Solutions, Waliu Aforlabi"/>
         <meta name="author" content="Celestial Web Solutions" />
         <meta name="robots" content="index, follow" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />

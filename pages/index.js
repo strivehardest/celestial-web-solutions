@@ -51,7 +51,7 @@ const SEOHead = () => {
     <Head>
       <title>Best Web Design Company in Ghana | Celestial Web Solutions</title>
       <meta name="description" content="Celestial Web Solutions is a leading web design company in Ghana offering professional website design, e-commerce development, SEO, and digital solutions for businesses."/>
-      <meta name="keywords" content="web design company in Ghana, web design companies in accra, web development company in Ghana, website designers in Ghana, web development company Ghana, SEO services in Ghana, e-commerce website Ghana, web designer in Accra, web designer in Keta, web design company in Accra, web designer in Accra Ghana, web design company in Keta, website design services Ghana, e-commerce website development Ghana, business website design Ghana, affordable web design Ghana" />
+      <meta name="keywords" content="best web design company in ghana, web design company in Ghana, web design companies in accra, web development company in Ghana, website designers in Ghana, web development company Ghana, SEO services in Ghana, e-commerce website Ghana, web designer in Accra, web designer in Keta, web design company in Accra, web designer in Accra Ghana, web design company in Keta, website design services Ghana, e-commerce website development Ghana, business website design Ghana, affordable web design Ghana" />
       <meta name="author" content="Celestial Web Solutions" />
       <meta name="robots" content="index, follow" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />

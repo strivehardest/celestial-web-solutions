@@ -22,6 +22,12 @@ export default function Document() {
           media="print"
           onLoad="this.media='all'"
         />
+        {/* Google AdSense */}
+        <script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6987345868426841"
+          crossOrigin="anonymous"
+        ></script>
         
         {/* Fallback for no-JS */}
         <noscript>
