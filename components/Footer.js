@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { Star, MapPin, Phone, Mail, ArrowRight, Award } from 'lucide-react';
@@ -9,6 +10,7 @@ const whatsappMessage = encodeURIComponent("Hi Celestial, I'm interested in your
 const whatsappLink = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
 
 export default function Footer({ darkMode, toggleDarkMode }) {
+  const router = useRouter();
   const currentYear = new Date().getFullYear();
 
   const googleRating = {
@@ -355,7 +357,7 @@ export default function Footer({ darkMode, toggleDarkMode }) {
                 <li key={link.name}>
                   <Link 
                     href={link.href}
-                    className="text-gray-400 hover:text-orange-400 text-sm transition-colors"
+                    className={`text-sm transition-colors ${router.pathname === link.href ? 'text-orange-400 font-bold' : 'text-gray-400 hover:text-orange-400'}`}
                     style={{ fontFamily: 'Google Sans, sans-serif' }}
                   >
                     {link.name}
@@ -375,7 +377,7 @@ export default function Footer({ darkMode, toggleDarkMode }) {
                 <li key={link.name} className="relative">
                   <Link 
                     href={link.href}
-                    className="text-gray-400 hover:text-orange-400 text-sm transition-colors inline-flex items-center gap-2"
+                    className={`text-sm transition-colors inline-flex items-center gap-2 ${router.pathname === link.href ? 'text-orange-400 font-bold' : 'text-gray-400 hover:text-orange-400'}`}
                     style={{ fontFamily: 'Google Sans, sans-serif' }}
                   >
                     {link.name}
@@ -400,7 +402,7 @@ export default function Footer({ darkMode, toggleDarkMode }) {
                 <li key={link.name}>
                   <Link 
                     href={link.href}
-                    className="text-gray-400 hover:text-orange-400 text-sm transition-colors"
+                    className={`text-sm transition-colors ${router.pathname === link.href ? 'text-orange-400 font-bold' : 'text-gray-400 hover:text-orange-400'}`}
                     style={{ fontFamily: 'Google Sans, sans-serif' }}
                   >
                     {link.name}
