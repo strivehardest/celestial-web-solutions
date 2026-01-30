@@ -489,7 +489,7 @@ const IndexPage = () => {
       name: "Elolo Agbleke",
       company: "Keta Institute of Technology",
       role: "Program Manager, COO",
-      text: "Excellent web development company! Celestial Web Solutions helped me in creating a personal website.",
+        text: "Great design concepts, always available for quick design changes, open to collaboration and customer-focused. Vast experience easily shows in their output. Good prices as well",
       rating: 5,
       image: "/testimonials/elolo.jpg"
     },

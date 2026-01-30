@@ -60,8 +60,9 @@ const testimonials = [
   {
     name: 'Righteous Semahar',
     company: 'RAK Foundation',
-    role: 'CEO',
     text: 'Expertise in Web Development, their services are excellent.',
+      role: 'CEO',
+      text: 'Expertise in Web Development, their services are excellent.',
     rating: 5,
     image: '/testimonials/righteous.jpg'
   },
@@ -69,7 +70,7 @@ const testimonials = [
     name: 'Elolo Agbleke',
     company: 'Keta Institute of Technology',
     role: 'Program Manager, COO',
-    text: 'Excellent web development company! Celestial Web Solutions helped me in creating a personal website.',
+      text: 'Great design concepts, always available for quick design changes, open to collaboration and customer-focused. Vast experience easily shows in their output. Good prices as well',
     rating: 5,
     image: '/testimonials/elolo.jpg'
   }
@@ -424,7 +425,7 @@ export default function BestWebDesignerInAccraPage() {
 
             <div className="rounded-3xl border border-gray-200 dark:border-white/10 bg-white/85 dark:bg-white/5 backdrop-blur p-8 shadow-xl shadow-orange-500/10 space-y-6">
               <div className="space-y-2">
-                <p className="text-sm uppercase tracking-[0.16em] text-orange-500 font-semibold" style={{ fontFamily: 'Google Sans, sans-serif' }}>FAQs (Bonus Ranking Boost)</p>
+                <p className="text-sm uppercase tracking-[0.16em] text-orange-500 font-semibold" style={{ fontFamily: 'Google Sans, sans-serif' }}></p>
                 <h2 className="text-2xl sm:text-3xl font-display font-bold text-gray-900 dark:text-white">FAQs</h2>
                 <p className="text-base text-gray-700 dark:text-gray-200 max-w-3xl" style={{ fontFamily: 'Google Sans, sans-serif' }}>Quick answers to the most common questions from Accra clients.</p>
               </div>
