@@ -413,11 +413,11 @@ export default function Footer({ darkMode, toggleDarkMode }) {
 
             {/* CTA Button */}
             <Link 
-              href="/contact"
+              href="/schedule-a-call"
               className="inline-flex items-center gap-2 mt-6 px-5 py-2.5 bg-gradient-to-r from-orange-500 to-orange-600 text-white text-sm font-semibold rounded-full hover:from-orange-600 hover:to-orange-700 transition-all"
               style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}
             >
-              Work With Us
+              Schedule a Call
               <ArrowRight size={16} />
             </Link>
           </div>
