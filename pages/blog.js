@@ -187,7 +187,7 @@ export const blogArticles = [
     author: "Celestial Team",
     date: "January 30, 2025",
     readTime: "9 min read",
-    image: "https://verpex.com/assets/uploads/images/blog/AI-in-Web-Development.webp?v=1675753194",
+    image: "https://admin.fruxinfo.com/public/storage/blog/Fruxinfo-1766552749-694b74ad0024c.webp",
     featured: false,
     tags: ["ChatGPT", "AI", "web development", "productivity"],
     hashtags: ["#ChatGPT", "#AIinTech", "#WebDevelopment", "#AIDevelopment", "#CodingAI"]
