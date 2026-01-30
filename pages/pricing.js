@@ -1128,6 +1128,64 @@ export default function PricingWithCalculator() {
         </div>
       </section>
 
+      {/* Why Choose Us Comparison Table */}
+      <section className="py-20 bg-white dark:bg-gray-900">
+        <div className="max-w-5xl mx-auto px-4">
+          <div className="text-center mb-10">
+            <h2 className="text-4xl font-bold mb-4 text-gray-900 dark:text-white" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>
+              Why Choose Us
+            </h2>
+            <p className="text-lg mb-2 text-gray-600 dark:text-gray-400" style={{ fontFamily: 'Google Sans, sans-serif' }}>
+              See how Celestial Web Solutions compares to in-house teams and freelancers
+            </p>
+          </div>
+          <div className="overflow-x-auto rounded-2xl shadow-lg">
+            <table className="w-full text-sm md:text-base">
+              <thead>
+                <tr className="bg-gradient-to-r from-orange-500 to-orange-600 text-white">
+                  <th className="px-6 py-4 text-left font-bold" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>Features</th>
+                  <th className="px-6 py-4 text-center font-bold" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>Celestial Web Solutions</th>
+                  <th className="px-6 py-4 text-center font-bold" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>In-house Team</th>
+                  <th className="px-6 py-4 text-center font-bold" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>Freelancers</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-gray-200 dark:divide-gray-700">
+                <tr className="bg-white dark:bg-gray-900">
+                  <td className="px-6 py-4 font-bold text-gray-900 dark:text-white" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>Cost</td>
+                  <td className="px-6 py-4 text-center font-semibold text-orange-600" style={{ fontFamily: 'Google Sans, sans-serif' }}>Get the power of a team at an individual price.</td>
+                  <td className="px-6 py-4 text-center text-gray-900 dark:text-white" style={{ fontFamily: 'Google Sans, sans-serif' }}>Significant ongoing team expense (salaries + overhead)</td>
+                  <td className="px-6 py-4 text-center text-gray-900 dark:text-white" style={{ fontFamily: 'Google Sans, sans-serif' }}>Hidden costs due management and communication gaps</td>
+                </tr>
+                <tr className="bg-white dark:bg-gray-900">
+                  <td className="px-6 py-4 font-bold text-gray-900 dark:text-white" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>Project Failure Potential</td>
+                  <td className="px-6 py-4 text-center font-semibold text-orange-600" style={{ fontFamily: 'Google Sans, sans-serif' }}>None</td>
+                  <td className="px-6 py-4 text-center text-gray-900 dark:text-white" style={{ fontFamily: 'Google Sans, sans-serif' }}>The effectiveness depends on how you choose the team</td>
+                  <td className="px-6 py-4 text-center text-gray-900 dark:text-white" style={{ fontFamily: 'Google Sans, sans-serif' }}>Freelancers often have multiple clients, which can be a problem</td>
+                </tr>
+                <tr className="bg-white dark:bg-gray-900">
+                  <td className="px-6 py-4 font-bold text-gray-900 dark:text-white" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>Track Record</td>
+                  <td className="px-6 py-4 text-center font-semibold text-orange-600" style={{ fontFamily: 'Google Sans, sans-serif' }}>Experience honed through successful projects</td>
+                  <td className="px-6 py-4 text-center text-gray-900 dark:text-white" style={{ fontFamily: 'Google Sans, sans-serif' }}>No Experience</td>
+                  <td className="px-6 py-4 text-center text-gray-900 dark:text-white" style={{ fontFamily: 'Google Sans, sans-serif' }}>Different experience and only on one field of work</td>
+                </tr>
+                <tr className="bg-white dark:bg-gray-900">
+                  <td className="px-6 py-4 font-bold text-gray-900 dark:text-white" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>Time to Start</td>
+                  <td className="px-6 py-4 text-center font-semibold text-orange-600" style={{ fontFamily: 'Google Sans, sans-serif' }}>Instant</td>
+                  <td className="px-6 py-4 text-center text-gray-900 dark:text-white" style={{ fontFamily: 'Google Sans, sans-serif' }}>Finding the right experts depends on the specific skills needed, potentially taking several months</td>
+                  <td className="px-6 py-4 text-center text-gray-900 dark:text-white" style={{ fontFamily: 'Google Sans, sans-serif' }}>The time it takes to begin working with a freelancer depends on their schedule</td>
+                </tr>
+                <tr className="bg-white dark:bg-gray-900">
+                  <td className="px-6 py-4 font-bold text-gray-900 dark:text-white" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>Cost-effectiveness</td>
+                  <td className="px-6 py-4 text-center font-semibold text-orange-600" style={{ fontFamily: 'Google Sans, sans-serif' }}>Trained team</td>
+                  <td className="px-6 py-4 text-center text-gray-900 dark:text-white" style={{ fontFamily: 'Google Sans, sans-serif' }}>A 3-month training period may be necessary to ensure the team has the necessary skills</td>
+                  <td className="px-6 py-4 text-center text-gray-900 dark:text-white" style={{ fontFamily: 'Google Sans, sans-serif' }}>Building a team and establishing clear communication channels can be a time investment</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
       {/* FAQ Banner */}
       <section className="py-12 px-4 bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-gray-800 dark:to-gray-700">
         <div className="max-w-4xl mx-auto text-center">
@@ -1143,7 +1201,7 @@ export default function PricingWithCalculator() {
               View All FAQs →
             </a>
             <a 
-              href="/contact" 
+              href="/schedule-a-call" 
               className="inline-flex items-center gap-2 px-6 py-3 rounded-lg font-semibold transition-all backdrop-blur-md bg-white/30 hover:bg-white/50 text-orange-900 dark:text-orange-100 border border-white/40 hover:border-white/60 shadow-lg hover:shadow-xl"
               style={{ fontFamily: "Google Sans, sans-serif" }}
             >
