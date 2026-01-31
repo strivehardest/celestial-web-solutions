@@ -1,6 +1,6 @@
-import { blogPosts } from '../lib/blogData';
-import projects from '../../data/projects';
-import { courses } from '../../data/courses';
+import { blogPosts } from '../../lib/blogData.js';
+import projects from '../../data/projects.js';
+import { courses } from '../../data/courses.js';
 
 const BASE_URL = 'https://celestialwebsolutions.net';
 
