@@ -206,7 +206,7 @@ const Navbar = () => {
           }`}
           style={{ fontFamily: 'Google Sans, sans-serif' }}
           whileHover={{ y: -1 }}
-          onMouseEnter={() => setActiveDropdown(item.name)}
+          onMouseOver={() => setActiveDropdown(item.name)}
           onClick={() => handleNavigation(item.href)}
         >
           <span>{item.name}</span>
@@ -280,8 +280,8 @@ const Navbar = () => {
                         exit={{ opacity: 0, y: 10, scale: 0.95 }}
                         transition={{ duration: 0.2 }}
                         className="absolute top-full left-0 mt-2 w-64 bg-white/95 dark:bg-gray-900/95 backdrop-blur-xl rounded-2xl shadow-2xl border border-gray-200/20 dark:border-gray-700/20 overflow-hidden"
-                        onMouseEnter={() => setActiveDropdown(item.name)}
-                        onMouseLeave={() => setActiveDropdown(null)}
+                        onMouseOver={() => setActiveDropdown(item.name)}
+                        onMouseOut={() => setActiveDropdown(null)}
                       >
                         <div className="py-3">
                           {item.dropdown.map((dropItem, index) => (
