@@ -66,6 +66,43 @@ export default function GoogleAdsenseManagementServicePage() {
         <title>{service.title} | Celestial Web Solutions</title>
         <meta name="description" content={service.description} />
         <meta name="keywords" content={service.keywords.join(', ')} />
+        <meta name="author" content="Celestial Web Solutions" />
+        <meta name="robots" content="index, follow" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="canonical" href={`https://celestialwebsolutions.net/web-design-company-in-ghana/google-adsense-management-in-ghana`} />
+        {/* Open Graph / Facebook */}
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={`https://celestialwebsolutions.net/web-design-company-in-ghana/google-adsense-management-in-ghana`} />
+        <meta property="og:title" content={`${service.title} | Celestial Web Solutions`} />
+        <meta property="og:description" content={service.description} />
+        <meta property="og:image" content={service.heroImage} />
+        <meta property="og:site_name" content="Celestial Web Solutions" />
+        {/* Twitter Card */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={`${service.title} | Celestial Web Solutions`} />
+        <meta name="twitter:description" content={service.description} />
+        <meta name="twitter:image" content={service.heroImage} />
+        {/* Structured Data - Service Schema */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Service",
+              "name": `${service.title} | Celestial Web Solutions`,
+              "description": service.description,
+              "provider": {
+                "@type": "Organization",
+                "name": "Celestial Web Solutions",
+                "url": "https://celestialwebsolutions.net"
+              },
+              "areaServed": "Ghana",
+              "image": service.heroImage,
+              "keywords": service.keywords.join(', '),
+              "url": `https://celestialwebsolutions.net/web-design-company-in-ghana/google-adsense-management-in-ghana`
+            })
+          }}
+        />
       </Head>
       <div className="min-h-screen bg-white dark:bg-gray-950">
         {/* Hero Section - Full Width Image Background */}

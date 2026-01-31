@@ -16,9 +16,10 @@ import {
 import Head from "next/head";
 import WhatsAppButton from '../../components/WhatsAppButton';
 import PremiumCTA from '../../components/PremiumCTA';
+import GoogleAd from '../../components/GoogleAd';
 import { useState, useEffect } from 'react';
 
-// Complete blog articles data with formatted content
+// Completed blog articles data with formatted content
 const blogArticles = {
     "web-design-trends-ghana-world-2026": {
       title: "Web Design Trends Businesses in Ghana and Worldwide Should Prepare for in 2026",
@@ -2389,29 +2390,39 @@ export default function BlogPost() {
       navigator.clipboard.writeText(currentUrl);
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
-      return;
+      return;// ✅ Just return, no JSX
     }
-
-    if (platform && shareUrls[platform]) {
-      window.open(shareUrls[platform], "_blank", "noopener,noreferrer");
-    }
-  };
-
+        <>
+          <Head>
+            {/* ...existing code... */}
+          </Head>
+          {/* ...existing code... */}
+          {/* Google AdSense Ad */}
+          <div style={{ margin: '32px 0', display: 'flex', justifyContent: 'center' }}>
+            <GoogleAd />
+          </div>
+          {/* ...existing code... */}
+        </>
+    };
   return (
     <main className="bg-white dark:bg-gray-900 text-gray-900 dark:text-white">
       <Head>
+        {/* SEO Meta Tags */}
         <title>{`${article.title} | Celestial Web Solutions Blog`}</title>
-        <meta name="description" content={article.excerpt} />
-        <meta name="keywords" content={article.seoKeywords} />
+        <meta name="description" content={article.excerpt || article.metaDescription || ''} />
+        <meta name="keywords" content={article.seoKeywords || (article.tags ? article.tags.join(', ') : '')} />
         <meta name="author" content={article.author} />
         <meta name="robots" content="index, follow" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        
+
+        {/* Canonical URL */}
+        <link rel="canonical" href={currentUrl} />
+
         {/* Open Graph / Facebook */}
         <meta property="og:type" content="article" />
         <meta property="og:url" content={currentUrl} />
         <meta property="og:title" content={article.title} />
-        <meta property="og:description" content={article.excerpt} />
+        <meta property="og:description" content={article.excerpt || article.metaDescription || ''} />
         <meta property="og:image" content={article.image} />
         <meta property="og:site_name" content="Celestial Web Solutions" />
         <meta property="article:published_time" content={new Date(article.date).toISOString()} />
@@ -2420,17 +2431,14 @@ export default function BlogPost() {
         {article.tags && article.tags.map((tag, index) => (
           <meta key={index} property="article:tag" content={tag} />
         ))}
-        
-        {/* Twitter */}
+
+        {/* Twitter Card */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:url" content={currentUrl} />
         <meta name="twitter:title" content={article.title} />
-        <meta name="twitter:description" content={article.excerpt} />
+        <meta name="twitter:description" content={article.excerpt || article.metaDescription || ''} />
         <meta name="twitter:image" content={article.image} />
-        
-        {/* Canonical URL */}
-        <link rel="canonical" href={currentUrl} />
-        
+
         {/* Structured Data - Article Schema */}
         <script
           type="application/ld+json"
@@ -2439,7 +2447,7 @@ export default function BlogPost() {
               "@context": "https://schema.org",
               "@type": "BlogPosting",
               "headline": article.title,
-              "description": article.excerpt,
+              "description": article.excerpt || article.metaDescription || '',
               "image": article.image,
               "datePublished": new Date(article.date).toISOString(),
               "dateModified": new Date(article.date).toISOString(),
@@ -2460,13 +2468,13 @@ export default function BlogPost() {
                 "@type": "WebPage",
                 "@id": currentUrl
               },
-              "keywords": article.tags ? article.tags.join(", ") : "",
+              "keywords": article.seoKeywords || (article.tags ? article.tags.join(", ") : ""),
               "articleSection": article.category,
               "articleBody": article.excerpt
             })
           }}
         />
-        
+
         {/* BreadcrumbList Schema */}
         <script
           type="application/ld+json"
@@ -2613,12 +2621,13 @@ export default function BlogPost() {
                   className="p-2.5 bg-blue-700 text-white rounded-lg hover:bg-blue-800 transition"
                   title="Share on LinkedIn"
                 >
-                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M20.447 2.25h3.554v5.569c0 1.328.027 3.037 1.852 3.037 1.853 0 2.136 1.445 2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm.1 1.88c2.33 0 4.51.91 6.16 2.56 1.65 1.65 2.56 3.83 2.56 6.16 0 4.41-3.59 8-8 8-1.52 0-2.98-.43-4.23-1.24l-.3-.18-3.12 1.45.94-3.45-.2-.32C4.15 14.33 3.5 13.2 3.5 11.91 3.5 7.5 7.09 4.2 11.14 3.88z"/>
+                  {/* Official LinkedIn SVG */}
+                  <svg className="w-5 h-5" viewBox="0 0 448 512" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M100.28 448H7.4V148.9h92.88zm-46.44-340.7C24.09 107.3 0 83.2 0 53.6A53.6 53.6 0 0 1 53.6 0a53.6 53.6 0 0 1 53.6 53.6c0 29.6-24.09 53.7-53.36 53.7zM447.8 448h-92.4V302.4c0-34.7-12.4-58.4-43.3-58.4-23.6 0-37.6 15.8-43.7 31.1-2.3 5.6-2.8 13.4-2.8 21.2V448h-92.4s1.2-241.1 0-266.1h92.4v37.7c12.3-19 34.3-46.1 83.5-46.1 60.9 0 106.6 39.7 106.6 125.2V448z"/>
                   </svg>
                 </motion.button>
 
-                {/* WhatsApp - Simple Clean Icon */}
+                {/* WhatsApp - Official Logo */}
                 <motion.button
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.95 }}
@@ -2626,9 +2635,9 @@ export default function BlogPost() {
                   className="p-2.5 bg-green-500 text-white rounded-lg hover:bg-green-600 transition"
                   title="Share on WhatsApp"
                 >
-                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 2.26.67 4.35 1.85 6.12L2 22l4.25-1.98c1.62.88 3.53 1.37 5.54 1.37 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01-1.87-1.87-4.36-2.9-7.01-2.9m.1 1.88c2.33 0 4.51.91 6.16 2.56 1.65 1.65 2.56 3.83 2.56 6.16 0 4.41-3.59 8-8 8-1.52 0-2.98-.43-4.23-1.24l-.3-.18-3.12 1.45.94-3.45-.2-.32C4.15 14.33 3.5 13.2 3.5 11.91 3.5 7.5 7.09 4.2 11.14 3.88z"/>
-                    <path d="M8.91 7.36c-.21 0-.54.1-.82.38-.28.29-.96.94-.96 2.28 0 1.34.98 2.64 1.12 2.82.14.18 1.95 3.09 4.75 4.26 2.35.99 2.83.79 3.34.74.51-.05 1.62-.67 1.85-1.31.23-.64.23-1.18.16-1.31-.07-.13-.27-.2-.56-.35-.29-.15-1.7-.84-1.96-.93-.27-.09-.46-.14-.65.14-.19.28-.74.93-.91 1.11-.16.19-.33.21-.62.07-.29-.15-1.23-.45-2.33-1.43-.86-.77-1.44-1.71-1.6-2-.17-.29 0-.44.13-.58.13-.13.29-.34.43-.51.15-.17.2-.29.29-.48.09-.19.05-.35-.04-.49-.09-.14-.65-1.59-.9-2.17-.24-.56-.49-.49-.65-.5z"/>
+                  {/* Official WhatsApp SVG */}
+                  <svg className="w-5 h-5" viewBox="0 0 32 32" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M16 3C9.373 3 4 8.373 4 15c0 2.385.832 4.584 2.236 6.393L4 29l7.828-2.205C13.584 27.168 15.783 28 18.168 28 24.797 28 30.168 22.627 30.168 16S24.797 3 18.168 3zm0 22.5c-2.01 0-3.93-.586-5.543-1.6l-.393-.236-4.16 1.17 1.113-4.055-.256-.418C6.586 18.93 6 17.01 6 15c0-5.514 4.486-10 10-10s10 4.486 10 10-4.486 10-10 10zm5.543-7.543c-.303-.152-1.797-.887-2.078-.988-.281-.102-.486-.152-.691.152-.205.303-.793.988-.971 1.191-.178.203-.356.229-.659.076-.303-.152-1.277-.47-2.434-1.497-.9-.803-1.508-1.793-1.686-2.096-.178-.303-.019-.466.133-.618.137-.137.305-.356.457-.534.152-.178.203-.305.305-.508.102-.203.051-.381-.025-.534-.076-.152-.691-1.67-.947-2.287-.25-.6-.504-.518-.691-.528-.178-.01-.381-.012-.584-.012-.203 0-.534.076-.813.381-.279.305-1.07 1.045-1.07 2.547 0 1.502 1.094 2.946 1.247 3.15.152.203 2.158 3.43 5.25 4.67 2.33.963 2.8.77 3.303.723.504-.047 1.637-.668 1.87-1.314.234-.646.234-1.197.164-1.314-.07-.117-.266-.188-.57-.34z"/>
                   </svg>
                 </motion.button>
 
@@ -2756,7 +2765,6 @@ export default function BlogPost() {
           </div>
         </div>
       </section>
-
       {/* WhatsApp Floating Button */}
       <WhatsAppButton />
     </main>
