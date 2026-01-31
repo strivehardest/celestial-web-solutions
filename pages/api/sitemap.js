@@ -1,4 +1,4 @@
-import { blogPosts } from '../../lib/blogData.js';
+import { blogArticles } from '../blog.js';
 import projects from '../../data/projects.js';
 import { courses } from '../../data/courses.js';
 
@@ -44,8 +44,8 @@ export default async function handler(req, res) {
     '/web-design-company-in-ghana/ecommerce-website-development-ghana',
   ];
 
-  // Blog posts
-  const blogUrls = blogPosts.map(post => ({
+  // Blog posts (from blog.js)
+  const blogUrls = blogArticles.map(post => ({
     loc: `${BASE_URL}/blog/${post.slug}`,
     lastmod: getDate(post.date),
   }));
