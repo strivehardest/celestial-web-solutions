@@ -3376,35 +3376,77 @@ export default function BlogPost() {
             >
               {/* Table of Contents */}
               {headings.length > 0 && (
-                <div className="mb-10 p-6 bg-orange-50 dark:bg-orange-900/20 border-l-4 border-orange-500 rounded-lg">
-                  <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2" style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}>
-                    <svg className="w-5 h-5 text-orange-500" fill="currentColor" viewBox="0 0 20 20">
-                      <path d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zm0 6a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1v-2zm0 6a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1v-2z"/>
-                    </svg>
-                    Table of Contents
-                  </h3>
-                  <nav className="space-y-2">
-                    {headings.map((heading) => (
-                      <button
+                <motion.div 
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: 0.3, duration: 0.4 }}
+                  className="mb-12 p-8 bg-white/70 dark:bg-gray-900/50 backdrop-blur-xl border border-orange-200/50 dark:border-orange-800/30 rounded-3xl shadow-2xl hover:shadow-3xl transition-all duration-300"
+                >
+                  <div className="flex items-center justify-between mb-6">
+                    <div className="flex items-center gap-3">
+                      <div className="relative">
+                        <div className="absolute inset-0 bg-gradient-to-r from-orange-500 to-red-500 rounded-xl blur-lg opacity-75"></div>
+                        <div className="relative p-3 bg-gradient-to-r from-orange-500 to-red-500 rounded-xl">
+                          <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zm0 6a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1v-2zm0 6a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1v-2z"/>
+                          </svg>
+                        </div>
+                      </div>
+                      <h3 className="text-2xl font-black text-gray-900 dark:text-white bg-clip-text" style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}>
+                        Quick Navigation
+                      </h3>
+                    </div>
+                    <div className="hidden md:block text-xs font-semibold text-orange-600 dark:text-orange-400 bg-orange-100 dark:bg-orange-900/30 px-3 py-1 rounded-full">
+                      {headings.length} sections
+                    </div>
+                  </div>
+                  
+                  <nav className="space-y-1.5">
+                    {headings.map((heading, idx) => (
+                      <motion.button
                         key={heading.id}
+                        initial={{ opacity: 0, x: -15 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: 0.35 + idx * 0.08 }}
+                        whileHover={{ x: 4 }}
                         onClick={() => {
                           const element = document.getElementById(heading.id);
                           if (element) {
                             element.scrollIntoView({ behavior: 'smooth', block: 'start' });
                           }
                         }}
-                        className={`block text-left transition-colors hover:text-orange-600 dark:hover:text-orange-400 ${
+                        className={`w-full text-left px-4 py-3 rounded-2xl transition-all duration-200 flex items-center gap-3 group font-medium ${
                           heading.level === 2
-                            ? 'text-gray-800 dark:text-gray-200 font-semibold'
-                            : 'text-gray-700 dark:text-gray-300 ml-4'
+                            ? 'text-gray-900 dark:text-white text-base hover:bg-gradient-to-r hover:from-orange-100/80 hover:to-red-100/50 dark:hover:from-orange-900/40 dark:hover:to-red-900/30 hover:shadow-md'
+                            : 'text-gray-700 dark:text-gray-300 text-sm ml-2 hover:bg-orange-50/60 dark:hover:bg-orange-900/20 hover:shadow-sm'
                         }`}
                         style={{ fontFamily: "Google Sans, sans-serif" }}
                       >
-                        {heading.text}
-                      </button>
+                        {heading.level === 2 ? (
+                          // H2: Filled checkmark circle
+                          <div className="flex-shrink-0 w-6 h-6 rounded-full bg-gradient-to-r from-orange-500 to-red-500 flex items-center justify-center group-hover:shadow-lg group-hover:shadow-orange-500/50 transition-all">
+                            <svg className="w-3.5 h-3.5 text-white" fill="currentColor" viewBox="0 0 20 20">
+                              <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                            </svg>
+                          </div>
+                        ) : (
+                          // H3: Open checkmark outline
+                          <div className="flex-shrink-0 w-5 h-5 rounded border-2 border-orange-400 group-hover:border-orange-500 flex items-center justify-center transition-colors">
+                            <svg className="w-3 h-3 text-orange-400 group-hover:text-orange-500" fill="currentColor" viewBox="0 0 20 20">
+                              <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                            </svg>
+                          </div>
+                        )}
+                        <span className="flex-grow group-hover:translate-x-0.5 transition-transform">
+                          {heading.text}
+                        </span>
+                        <svg className="w-4 h-4 text-orange-500 opacity-0 group-hover:opacity-100 transition-all transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                        </svg>
+                      </motion.button>
                     ))}
                   </nav>
-                </div>
+                </motion.div>
               )}
 
               <div
