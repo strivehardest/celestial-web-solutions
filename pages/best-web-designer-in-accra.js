@@ -490,19 +490,19 @@ export default function BestWebDesignerInAccraPage() {
                 </div>
 
                 <div className="grid sm:grid-cols-2 gap-6">
-                  <Link href="/blog/how-to-start-online-store-ghana">
+                  <Link href="/blog/wordpress-vs-custom-website-ghana-2026">
                     <div className="rounded-2xl border border-gray-200 dark:border-white/10 bg-white/80 dark:bg-white/5 backdrop-blur overflow-hidden hover:shadow-lg transition-all duration-300 cursor-pointer h-full flex flex-col">
                       <div className="relative h-40 overflow-hidden bg-gradient-to-br from-orange-400 to-orange-600">
                         <img 
-                          src="https://images.unsplash.com/photo-1658297063569-162817482fb6?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
-                          alt="How to Start an Online Store in Ghana"
+                          src="https://images.unsplash.com/photo-1555421689-d68471e189f2?w=1200&h=600&fit=crop" 
+                          alt="WordPress vs Custom Website"
                           className="w-full h-full object-cover hover:scale-110 transition-transform duration-300"
                         />
                       </div>
                       <div className="p-6 flex flex-col flex-grow">
-                        <p className="text-xs text-orange-600 dark:text-orange-400 font-semibold uppercase tracking-wide mb-2" style={{ fontFamily: 'Google Sans, sans-serif' }}>E-commerce</p>
-                        <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2 group-hover:text-orange-600 transition-colors" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>How to Start an Online Store in Ghana</h3>
-                        <p className="text-sm text-gray-700 dark:text-gray-300 flex-grow" style={{ fontFamily: 'Google Sans, sans-serif' }}>Learn the essential steps to launch your online store with the right platform, payment methods, and shipping setup.</p>
+                        <p className="text-xs text-orange-600 dark:text-orange-400 font-semibold uppercase tracking-wide mb-2" style={{ fontFamily: 'Google Sans, sans-serif' }}>Web Development</p>
+                        <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2 group-hover:text-orange-600 transition-colors" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>WordPress vs Custom Website</h3>
+                        <p className="text-sm text-gray-700 dark:text-gray-300 flex-grow" style={{ fontFamily: 'Google Sans, sans-serif' }}>Compare WordPress and custom development to find the best solution for your Ghanaian business in 2026.</p>
                         <div className="mt-4 flex items-center gap-2 text-orange-600 dark:text-orange-400 font-semibold text-sm">
                           Read More →
                         </div>
@@ -510,19 +510,19 @@ export default function BestWebDesignerInAccraPage() {
                     </div>
                   </Link>
 
-                  <Link href="/blog/ai-tools-web-development-2026">
+                  <Link href="/blog/ui-ux-design-principles-ghana-websites-2026">
                     <div className="rounded-2xl border border-gray-200 dark:border-white/10 bg-white/80 dark:bg-white/5 backdrop-blur overflow-hidden hover:shadow-lg transition-all duration-300 cursor-pointer h-full flex flex-col">
                       <div className="relative h-40 overflow-hidden bg-gradient-to-br from-orange-400 to-orange-600">
                         <img 
-                          src="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=600&h=400&fit=crop&q=80" 
-                          alt="Top 15 AI Tools Revolutionizing Web Development in 2026"
+                          src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=1200&h=600&fit=crop" 
+                          alt="UI/UX Design Principles"
                           className="w-full h-full object-cover hover:scale-110 transition-transform duration-300"
                         />
                       </div>
                       <div className="p-6 flex flex-col flex-grow">
-                        <p className="text-xs text-orange-600 dark:text-orange-400 font-semibold uppercase tracking-wide mb-2" style={{ fontFamily: 'Google Sans, sans-serif' }}>AI & Technology</p>
-                        <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2 group-hover:text-orange-600 transition-colors" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>Top 15 AI Tools for Web Development</h3>
-                        <p className="text-sm text-gray-700 dark:text-gray-300 flex-grow" style={{ fontFamily: 'Google Sans, sans-serif' }}>Explore the latest AI-powered tools transforming web development and making building websites faster and easier.</p>
+                        <p className="text-xs text-orange-600 dark:text-orange-400 font-semibold uppercase tracking-wide mb-2" style={{ fontFamily: 'Google Sans, sans-serif' }}>Web Design</p>
+                        <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2 group-hover:text-orange-600 transition-colors" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>UI/UX Design Principles for Ghana</h3>
+                        <p className="text-sm text-gray-700 dark:text-gray-300 flex-grow" style={{ fontFamily: 'Google Sans, sans-serif' }}>Master essential UI/UX principles to create user-friendly websites that convert visitors into customers.</p>
                         <div className="mt-4 flex items-center gap-2 text-orange-600 dark:text-orange-400 font-semibold text-sm">
                           Read More →
                         </div>

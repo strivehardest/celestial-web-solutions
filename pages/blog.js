@@ -248,6 +248,34 @@ export const blogArticles = [
     tags: ["E-commerce", "Ghana", "Online Business", "Startup"],
     hashtags: ["#EcommerceGhana", "#GhanaBusiness", "#OnlineStore", "#StartupTips", "#CelestialWebSolutions"]
   },
+  {
+    id: 16,
+    slug: "wordpress-vs-custom-website-ghana-2026",
+    title: "WordPress vs Custom Website: Which is Best for Your Ghanaian Business in 2026?",
+    excerpt: "Confused about choosing between WordPress and a custom website? This comprehensive guide helps Ghanaian businesses make the right decision based on budget, features, and long-term goals.",
+    category: "Web Development",
+    author: "Celestial Team",
+    date: "February 1, 2026",
+    readTime: "12 min read",
+    image: "https://images.unsplash.com/photo-1555421689-d68471e189f2?w=1200&h=600&fit=crop",
+    featured: true,
+    tags: ["WordPress", "Custom Development", "Web Development", "Ghana", "CMS"],
+    hashtags: ["#WordPressGhana", "#CustomWebsite", "#WebDevelopment", "#GhanaBusiness", "#CelestialWebSolutions"]
+  },
+  {
+    id: 17,
+    slug: "ui-ux-design-principles-ghana-websites-2026",
+    title: "UI/UX Design Principles Every Ghanaian Website Must Follow in 2026",
+    excerpt: "Master the essential UI/UX design principles that make websites successful in Ghana. Learn how to create user-friendly, conversion-focused designs that work for Ghanaian users in 2026.",
+    category: "Web Design",
+    author: "Celestial Team",
+    date: "February 1, 2026",
+    readTime: "11 min read",
+    image: "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=1200&h=600&fit=crop",
+    featured: true,
+    tags: ["UI/UX Design", "User Experience", "Web Design", "Ghana", "Conversion Optimization"],
+    hashtags: ["#UIUXDesign", "#WebDesignGhana", "#UserExperience", "#GhanaWeb", "#CelestialWebSolutions"]
+  },
 ];
 
 export default function BlogPage() {

@@ -11,13 +11,36 @@ import {
   Tag,
   TrendingUp,
   Mail,
-  Send
+  Send,
+  CheckCircle
 } from "lucide-react";
 import Head from "next/head";
 import WhatsAppButton from '../../components/WhatsAppButton';
 import PremiumCTA from '../../components/PremiumCTA';
 import GoogleAd from '../../components/GoogleAd';
 import { useState, useEffect } from 'react';
+
+// Helper function to extract headings from HTML content
+const extractHeadings = (htmlContent) => {
+  if (typeof document === 'undefined') return []; // Server-side rendering safety
+  
+  const parser = new DOMParser();
+  const doc = parser.parseFromString(htmlContent, 'text/html');
+  const headings = [];
+  
+  // Extract h2 and h3 headings
+  doc.querySelectorAll('h2, h3').forEach((heading, index) => {
+    const id = `heading-${index}`;
+    const level = heading.tagName === 'H2' ? 2 : 3;
+    headings.push({
+      id,
+      text: heading.textContent,
+      level
+    });
+  });
+  
+  return headings;
+};
 
 // Completed blog articles data with formatted content
 const blogArticles = {
@@ -2280,6 +2303,680 @@ const blogArticles = {
         <p class="text-lg text-gray-800 dark:text-gray-200"><strong><a href="/contact" class="text-orange-600 hover:underline">Get in touch today to discuss your e-commerce goals →</a></strong></p>
       </article>
     `
+  },
+  "wordpress-vs-custom-website-ghana-2026": {
+    title: "WordPress vs Custom Website: Which is Best for Your Ghanaian Business in 2026?",
+    category: "Web Development",
+    author: "Celestial Team",
+    date: "February 1, 2026",
+    readTime: "12 min read",
+    image: "https://images.unsplash.com/photo-1555421689-d68471e189f2?w=1200&h=600&fit=crop",
+    excerpt: "Confused about choosing between WordPress and a custom website? This comprehensive guide helps Ghanaian businesses make the right decision based on budget, features, and long-term goals.",
+    tags: ["WordPress", "Custom Development", "Web Development", "Ghana", "CMS"],
+    hashtags: ["#WordPressGhana", "#CustomWebsite", "#WebDevelopment", "#GhanaBusiness", "#CelestialWebSolutions"],
+    seoKeywords: "WordPress vs custom website Ghana, best website platform Ghana, WordPress development Ghana, custom web development, website CMS Ghana, affordable website Ghana, professional web development, Ghana web design 2026",
+    content: `
+    <article class="space-y-8 text-gray-900 dark:text-gray-100">
+      <p class="text-lg text-gray-800 dark:text-gray-200">One of the most critical decisions when building a website for your Ghanaian business is choosing between WordPress and a custom-built solution. Both have their strengths, and the right choice depends on your specific needs, budget, and long-term vision. This comprehensive guide breaks down everything you need to know to make an informed decision in 2026.</p>
+
+      <div class="space-y-6">
+        <h2 class="text-3xl font-bold text-gray-900 dark:text-white">Understanding WordPress</h2>
+        <p class="text-lg text-gray-800 dark:text-gray-200">WordPress powers over 43% of all websites globally, making it the world's most popular content management system (CMS). It's an open-source platform that allows you to create and manage websites without extensive coding knowledge.</p>
+        
+        <div class="space-y-4">
+          <h3 class="text-2xl font-bold text-gray-900 dark:text-white">Advantages of WordPress for Ghanaian Businesses</h3>
+          <ul class="list-disc pl-6 space-y-2 text-gray-800 dark:text-gray-200">
+            <li><strong>Cost-Effective:</strong> Lower initial development costs (GH₵ 1,500 - GH₵ 4,000 for basic sites)</li>
+            <li><strong>Quick Deployment:</strong> Websites can be launched in 1-2 weeks</li>
+            <li><strong>User-Friendly:</strong> Easy content management without technical skills</li>
+            <li><strong>Huge Plugin Ecosystem:</strong> 60,000+ plugins for added functionality</li>
+            <li><strong>SEO-Friendly:</strong> Built-in SEO capabilities with plugins like Yoast and RankMath</li>
+            <li><strong>Mobile-Responsive Themes:</strong> Thousands of professional, mobile-friendly designs</li>
+            <li><strong>Large Support Community:</strong> Easy to find local WordPress developers in Ghana</li>
+            <li><strong>Regular Updates:</strong> Automatic security patches and feature updates</li>
+            <li><strong>E-commerce Ready:</strong> WooCommerce integration for online stores</li>
+            <li><strong>Multilingual Support:</strong> Easy translation plugins for local languages</li>
+          </ul>
+        </div>
+
+        <div class="space-y-4">
+          <h3 class="text-2xl font-bold text-gray-900 dark:text-white">Disadvantages of WordPress</h3>
+          <ul class="list-disc pl-6 space-y-2 text-gray-800 dark:text-gray-200">
+            <li><strong>Security Vulnerabilities:</strong> Popular target for hackers; requires regular updates</li>
+            <li><strong>Performance Issues:</strong> Can become slow with too many plugins</li>
+            <li><strong>Limited Customization:</strong> Some unique features may be difficult to implement</li>
+            <li><strong>Maintenance Required:</strong> Regular updates needed for plugins, themes, and core</li>
+            <li><strong>Plugin Conflicts:</strong> Compatibility issues between different plugins</li>
+            <li><strong>Bloated Code:</strong> Themes and plugins can add unnecessary code</li>
+            <li><strong>Scalability Concerns:</strong> May struggle with very high traffic or complex applications</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="space-y-6">
+        <h2 class="text-3xl font-bold text-gray-900 dark:text-white">Understanding Custom Websites</h2>
+        <p class="text-lg text-gray-800 dark:text-gray-200">Custom websites are built from scratch using programming languages like HTML, CSS, JavaScript, PHP, Python, or frameworks like React, Next.js, Django, or Laravel. Every line of code is written specifically for your business needs.</p>
+        
+        <div class="space-y-4">
+          <h3 class="text-2xl font-bold text-gray-900 dark:text-white">Advantages of Custom Websites</h3>
+          <ul class="list-disc pl-6 space-y-2 text-gray-800 dark:text-gray-200">
+            <li><strong>Complete Flexibility:</strong> Build any feature or functionality you need</li>
+            <li><strong>Optimized Performance:</strong> Lightweight, fast-loading code without bloat</li>
+            <li><strong>Enhanced Security:</strong> Unique codebase less vulnerable to common attacks</li>
+            <li><strong>Scalability:</strong> Built to handle growth and high traffic volumes</li>
+            <li><strong>Unique Design:</strong> 100% custom design that stands out from competitors</li>
+            <li><strong>Better SEO Potential:</strong> Clean, optimized code for search engines</li>
+            <li><strong>No Plugin Dependencies:</strong> No third-party code causing conflicts</li>
+            <li><strong>Full Ownership:</strong> Complete control over your codebase</li>
+            <li><strong>Advanced Integration:</strong> Seamlessly connect with any API or service</li>
+            <li><strong>Future-Proof:</strong> Easily adapt to new technologies and trends</li>
+          </ul>
+        </div>
+
+        <div class="space-y-4">
+          <h3 class="text-2xl font-bold text-gray-900 dark:text-white">Disadvantages of Custom Websites</h3>
+          <ul class="list-disc pl-6 space-y-2 text-gray-800 dark:text-gray-200">
+            <li><strong>Higher Initial Cost:</strong> Development costs GH₵ 5,000 - GH₵ 30,000+</li>
+            <li><strong>Longer Development Time:</strong> Can take 1-3 months or more to build</li>
+            <li><strong>Technical Expertise Required:</strong> Need developers for updates and maintenance</li>
+            <li><strong>No Pre-Built Plugins:</strong> Every feature must be coded from scratch</li>
+            <li><strong>Higher Maintenance Costs:</strong> Ongoing developer support needed</li>
+            <li><strong>Steeper Learning Curve:</strong> Content management may require training</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="space-y-6">
+        <h2 class="text-3xl font-bold text-gray-900 dark:text-white">Cost Comparison for Ghanaian Businesses</h2>
+        
+        <div class="bg-gray-50 dark:bg-gray-800 p-6 rounded-xl">
+          <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">WordPress Website Costs</h3>
+          <ul class="space-y-3 text-gray-800 dark:text-gray-200">
+            <li><strong>Basic Website (5-10 pages):</strong> GH₵ 1,500 - GH₵ 3,000</li>
+            <li><strong>Business Website (10-20 pages):</strong> GH₵ 3,000 - GH₵ 6,000</li>
+            <li><strong>E-commerce Store:</strong> GH₵ 4,000 - GH₵ 8,000</li>
+            <li><strong>Annual Hosting:</strong> GH₵ 400 - GH₵ 1,500</li>
+            <li><strong>Premium Themes/Plugins:</strong> GH₵ 300 - GH₵ 2,000/year</li>
+            <li><strong>Maintenance:</strong> GH₵ 300 - GH₵ 800/month</li>
+          </ul>
+        </div>
+
+        <div class="bg-gray-50 dark:bg-gray-800 p-6 rounded-xl mt-4">
+          <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">Custom Website Costs</h3>
+          <ul class="space-y-3 text-gray-800 dark:text-gray-200">
+            <li><strong>Basic Custom Site:</strong> GH₵ 5,000 - GH₵ 10,000</li>
+            <li><strong>Business Website:</strong> GH₵ 10,000 - GH₵ 20,000</li>
+            <li><strong>E-commerce Platform:</strong> GH₵ 15,000 - GH₵ 40,000</li>
+            <li><strong>Complex Web Application:</strong> GH₵ 30,000 - GH₵ 100,000+</li>
+            <li><strong>Annual Hosting:</strong> GH₵ 800 - GH₵ 3,000</li>
+            <li><strong>Maintenance:</strong> GH₵ 800 - GH₵ 2,500/month</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="space-y-6">
+        <h2 class="text-3xl font-bold text-gray-900 dark:text-white">Which Should You Choose?</h2>
+        
+        <div class="space-y-4">
+          <h3 class="text-2xl font-bold text-gray-900 dark:text-white">Choose WordPress If:</h3>
+          <ul class="list-disc pl-6 space-y-2 text-gray-800 dark:text-gray-200">
+            <li>You have a limited budget (under GH₵ 5,000)</li>
+            <li>You need to launch quickly (within 2 weeks)</li>
+            <li>You want to manage content yourself without technical help</li>
+            <li>Your website needs are fairly standard (blog, business site, portfolio)</li>
+            <li>You need a basic e-commerce store with standard features</li>
+            <li>Your traffic is moderate (under 50,000 monthly visitors)</li>
+            <li>You prefer using established plugins over custom development</li>
+            <li>You're a small to medium-sized business or startup</li>
+          </ul>
+        </div>
+
+        <div class="space-y-4">
+          <h3 class="text-2xl font-bold text-gray-900 dark:text-white">Choose Custom Development If:</h3>
+          <ul class="list-disc pl-6 space-y-2 text-gray-800 dark:text-gray-200">
+            <li>You have unique functionality requirements not available in plugins</li>
+            <li>You need maximum performance and speed</li>
+            <li>Security is a top priority (handling sensitive data)</li>
+            <li>You expect high traffic volumes (100,000+ monthly visitors)</li>
+            <li>You want a completely unique design and user experience</li>
+            <li>You need complex integrations with other systems</li>
+            <li>You're building a SaaS platform or web application</li>
+            <li>Long-term scalability is critical</li>
+            <li>You have the budget for higher upfront investment</li>
+          </ul>
+        </div>
+
+        <div class="space-y-4">
+          <h3 class="text-2xl font-bold text-gray-900 dark:text-white">Hybrid Approach: WordPress with Custom Development</h3>
+          <p class="text-lg text-gray-800 dark:text-gray-200">Many successful Ghanaian businesses use a hybrid approach:</p>
+          <ul class="list-disc pl-6 space-y-2 text-gray-800 dark:text-gray-200">
+            <li>Use WordPress as the CMS for easy content management</li>
+            <li>Develop custom plugins for unique functionality</li>
+            <li>Create a custom theme tailored to your brand</li>
+            <li>Integrate custom APIs and third-party services</li>
+            <li>Best of both worlds: ease of use + customization</li>
+            <li>Moderate cost: GH₵ 6,000 - GH₵ 15,000</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="space-y-6">
+        <h2 class="text-3xl font-bold text-gray-900 dark:text-white">Real-World Examples from Ghana</h2>
+        
+        <div class="bg-orange-50 dark:bg-orange-900/20 p-6 rounded-xl">
+          <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">Example 1: Fashion Boutique in Accra</h3>
+          <p class="text-gray-800 dark:text-gray-200"><strong>Solution:</strong> WordPress with WooCommerce</p>
+          <p class="text-gray-800 dark:text-gray-200"><strong>Reason:</strong> Needed quick launch, standard e-commerce features, easy product management</p>
+          <p class="text-gray-800 dark:text-gray-200"><strong>Cost:</strong> GH₵ 4,500 initial + GH₵ 500/month maintenance</p>
+          <p class="text-gray-800 dark:text-gray-200"><strong>Result:</strong> Launched in 10 days, owner manages products independently</p>
+        </div>
+
+        <div class="bg-orange-50 dark:bg-orange-900/20 p-6 rounded-xl mt-4">
+          <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">Example 2: Logistics Company in Kumasi</h3>
+          <p class="text-gray-800 dark:text-gray-200"><strong>Solution:</strong> Custom Web Application</p>
+          <p class="text-gray-800 dark:text-gray-200"><strong>Reason:</strong> Needed real-time tracking, driver apps, complex routing algorithms, API integrations</p>
+          <p class="text-gray-800 dark:text-gray-200"><strong>Cost:</strong> GH₵ 35,000 initial + GH₵ 2,000/month maintenance</p>
+          <p class="text-gray-800 dark:text-gray-200"><strong>Result:</strong> Unique platform that gave competitive advantage</p>
+        </div>
+
+        <div class="bg-orange-50 dark:bg-orange-900/20 p-6 rounded-xl mt-4">
+          <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">Example 3: Educational Institution in Takoradi</h3>
+          <p class="text-gray-800 dark:text-gray-200"><strong>Solution:</strong> WordPress with Custom Features</p>
+          <p class="text-gray-800 dark:text-gray-200"><strong>Reason:</strong> Standard content pages + custom student portal and grade management</p>
+          <p class="text-gray-800 dark:text-gray-200"><strong>Cost:</strong> GH₵ 12,000 initial + GH₵ 1,200/month maintenance</p>
+          <p class="text-gray-800 dark:text-gray-200"><strong>Result:</strong> Easy content updates + powerful custom functionality</p>
+        </div>
+      </div>
+
+      <div class="space-y-6">
+        <h2 class="text-3xl font-bold text-gray-900 dark:text-white">Performance Comparison</h2>
+        
+        <div class="overflow-x-auto">
+          <table class="w-full border-collapse bg-white dark:bg-gray-800 rounded-lg overflow-hidden">
+            <thead>
+              <tr class="bg-orange-500 text-white">
+                <th class="p-4 text-left">Factor</th>
+                <th class="p-4 text-left">WordPress</th>
+                <th class="p-4 text-left">Custom Website</th>
+              </tr>
+            </thead>
+            <tbody class="text-gray-800 dark:text-gray-200">
+              <tr class="border-b border-gray-200 dark:border-gray-700">
+                <td class="p-4 font-semibold">Page Load Speed</td>
+                <td class="p-4">2-4 seconds (optimized)</td>
+                <td class="p-4">0.5-1.5 seconds</td>
+              </tr>
+              <tr class="border-b border-gray-200 dark:border-gray-700">
+                <td class="p-4 font-semibold">Development Time</td>
+                <td class="p-4">1-2 weeks</td>
+                <td class="p-4">4-12 weeks</td>
+              </tr>
+              <tr class="border-b border-gray-200 dark:border-gray-700">
+                <td class="p-4 font-semibold">Customization</td>
+                <td class="p-4">Good (plugins + themes)</td>
+                <td class="p-4">Excellent (unlimited)</td>
+              </tr>
+              <tr class="border-b border-gray-200 dark:border-gray-700">
+                <td class="p-4 font-semibold">Security</td>
+                <td class="p-4">Moderate (requires updates)</td>
+                <td class="p-4">High (unique codebase)</td>
+              </tr>
+              <tr class="border-b border-gray-200 dark:border-gray-700">
+                <td class="p-4 font-semibold">Scalability</td>
+                <td class="p-4">Moderate</td>
+                <td class="p-4">Excellent</td>
+              </tr>
+              <tr class="border-b border-gray-200 dark:border-gray-700">
+                <td class="p-4 font-semibold">SEO Capabilities</td>
+                <td class="p-4">Excellent (with plugins)</td>
+                <td class="p-4">Excellent (built-in)</td>
+              </tr>
+              <tr>
+                <td class="p-4 font-semibold">Content Management</td>
+                <td class="p-4">Excellent (user-friendly)</td>
+                <td class="p-4">Variable (depends on build)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="space-y-6">
+        <h2 class="text-3xl font-bold text-gray-900 dark:text-white">Making Your Decision: Key Questions to Ask</h2>
+        <ol class="list-decimal pl-6 space-y-3 text-gray-800 dark:text-gray-200">
+          <li><strong>What's your budget?</strong> Under GH₵ 5,000 → WordPress; Over GH₵ 10,000 → Consider custom</li>
+          <li><strong>How quickly do you need to launch?</strong> Under 2 weeks → WordPress; Can wait 1-3 months → Custom</li>
+          <li><strong>Do you need unique features?</strong> Standard features → WordPress; Unique functionality → Custom</li>
+          <li><strong>What's your technical expertise?</strong> Non-technical → WordPress; Technical team → Either</li>
+          <li><strong>What's your expected traffic?</strong> Under 50K/month → WordPress; Over 100K/month → Custom</li>
+          <li><strong>How important is performance?</strong> Moderate → WordPress; Critical → Custom</li>
+          <li><strong>What's your long-term vision?</strong> Standard growth → WordPress; Rapid scaling → Custom</li>
+        </ol>
+      </div>
+
+      <div class="space-y-6">
+        <h2 class="text-3xl font-bold text-gray-900 dark:text-white">Conclusion</h2>
+        <p class="text-lg text-gray-800 dark:text-gray-200">There's no one-size-fits-all answer to the WordPress vs custom website debate. For most small to medium-sized Ghanaian businesses, WordPress offers the best balance of cost, features, and ease of use. However, if you have unique requirements, expect high traffic, or need maximum performance and security, investing in a custom solution will pay off in the long run.</p>
+        
+        <p class="text-lg text-gray-800 dark:text-gray-200">The key is to be honest about your needs, budget, and technical capabilities. Don't pay for custom development if WordPress can serve your needs perfectly well. Conversely, don't force WordPress to do something it's not designed for when a custom solution would be more efficient.</p>
+
+        <div class="bg-orange-500 text-white p-6 rounded-xl mt-6">
+          <h3 class="text-2xl font-bold mb-4">Need Expert Advice?</h3>
+          <p class="text-lg mb-4">At Celestial Web Solutions, we're experienced in both WordPress and custom development. We'll honestly assess your needs and recommend the best solution for your business—not the most expensive one.</p>
+          <p class="text-lg font-semibold"> Call us today at +233 245 671 832 for a free consultation!</p>
+        </div>
+
+        <div class="mt-8 pt-6 border-t border-gray-300 dark:border-gray-700">
+          <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-4">Helpful Resources</h3>
+          <ul class="space-y-2 text-gray-800 dark:text-gray-200">
+            <li><a href="https://wordpress.org/" target="_blank" rel="noopener noreferrer" class="text-orange-600 hover:underline">WordPress Official Website</a> - Download and documentation</li>
+            <li><a href="https://woocommerce.com/" target="_blank" rel="noopener noreferrer" class="text-orange-600 hover:underline">WooCommerce</a> - E-commerce plugin for WordPress</li>
+            <li><a href="https://www.cloudflare.com/" target="_blank" rel="noopener noreferrer" class="text-orange-600 hover:underline">Cloudflare</a> - Website security and performance</li>
+            <li><a href="https://developers.google.com/speed/pagespeed/insights" target="_blank" rel="noopener noreferrer" class="text-orange-600 hover:underline">Google PageSpeed Insights</a> - Test website performance</li>
+            <li><a href="https://www.wpbeginner.com/" target="_blank" rel="noopener noreferrer" class="text-orange-600 hover:underline">WPBeginner</a> - WordPress tutorials and guides</li>
+          </ul>
+        </div>
+      </div>
+    </article>
+  `,
+    slug: "wordpress-vs-custom-website-ghana-2026"
+  },
+  "ui-ux-design-principles-ghana-websites-2026": {
+    title: "UI/UX Design Principles Every Ghanaian Website Must Follow in 2026",
+    category: "Web Design",
+    author: "Celestial Team",
+    date: "February 1, 2026",
+    readTime: "11 min read",
+    image: "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=1200&h=600&fit=crop",
+    excerpt: "Master the essential UI/UX design principles that make websites successful in Ghana. Learn how to create user-friendly, conversion-focused designs that work for Ghanaian users in 2026.",
+    tags: ["UI/UX Design", "User Experience", "Web Design", "Ghana", "Conversion Optimization"],
+    hashtags: ["#UIUXDesign", "#WebDesignGhana", "#UserExperience", "#GhanaWeb", "#CelestialWebSolutions"],
+    seoKeywords: "UI UX design Ghana, user experience design Ghana, website usability Ghana, mobile-first design Ghana, conversion optimization Ghana, web design best practices, Ghana web design 2026, user-friendly websites",
+    content: `
+    <article class="space-y-8 text-gray-900 dark:text-gray-100">
+      <p class="text-lg text-gray-800 dark:text-gray-200">In Ghana's competitive digital landscape, having a beautiful website isn't enough—it must be intuitive, fast, and designed with your users in mind. Poor UI/UX design is the #1 reason websites fail to convert visitors into customers. This comprehensive guide covers the essential UI/UX principles every Ghanaian website should implement in 2026.</p>
+
+      <div class="space-y-6">
+        <h2 class="text-3xl font-bold text-gray-900 dark:text-white">What is UI/UX Design?</h2>
+        
+        <div class="bg-gray-50 dark:bg-gray-800 p-6 rounded-xl">
+          <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">UI (User Interface) Design</h3>
+          <p class="text-lg text-gray-800 dark:text-gray-200">UI design focuses on the visual elements users interact with:</p>
+          <ul class="list-disc pl-6 space-y-2 text-gray-800 dark:text-gray-200 mt-3">
+            <li>Layout and spacing</li>
+            <li>Colors and typography</li>
+            <li>Buttons and form elements</li>
+            <li>Icons and imagery</li>
+            <li>Brand consistency</li>
+          </ul>
+        </div>
+
+        <div class="bg-gray-50 dark:bg-gray-800 p-6 rounded-xl mt-4">
+          <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">UX (User Experience) Design</h3>
+          <p class="text-lg text-gray-800 dark:text-gray-200">UX design focuses on how users interact with your website:</p>
+          <ul class="list-disc pl-6 space-y-2 text-gray-800 dark:text-gray-200 mt-3">
+            <li>Navigation and information architecture</li>
+            <li>User flow and journey mapping</li>
+            <li>Page load speed</li>
+            <li>Accessibility and usability</li>
+            <li>Conversion optimization</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="space-y-6">
+        <h2 class="text-3xl font-bold text-gray-900 dark:text-white">Why UI/UX Matters for Ghanaian Websites</h2>
+        <p class="text-lg text-gray-800 dark:text-gray-200">The impact of good UI/UX design on your business:</p>
+        <ul class="list-disc pl-6 space-y-2 text-gray-800 dark:text-gray-200">
+          <li><strong>88% of users</strong> won't return to a website after a bad user experience</li>
+          <li><strong>75% of users</strong> judge a company's credibility based on website design</li>
+          <li><strong>Good UX can increase conversion rates by 200-400%</strong></li>
+          <li><strong>Every $1 invested in UX returns $100</strong> (ROI of 9,900%)</li>
+          <li><strong>52% of users</strong> say slow loading speeds make them less likely to engage</li>
+          <li><strong>Mobile users in Ghana</strong> expect sites optimized for their devices</li>
+        </ul>
+      </div>
+
+      <div class="space-y-6">
+        <h2 class="text-3xl font-bold text-gray-900 dark:text-white">Essential UI/UX Principles for 2026</h2>
+        
+        <div class="space-y-6">
+          <div class="bg-orange-50 dark:bg-orange-900/20 p-6 rounded-xl">
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">1. Mobile-First Design</h3>
+            <p class="text-lg text-gray-800 dark:text-gray-200 mb-3"><strong>Why it matters:</strong> Over 85% of Ghanaians access the internet via smartphones</p>
+            <p class="text-lg text-gray-800 dark:text-gray-200 mb-3"><strong>Best Practices:</strong></p>
+            <ul class="list-disc pl-6 space-y-2 text-gray-800 dark:text-gray-200">
+              <li>Design for small screens first, then scale up</li>
+              <li>Use responsive layouts that adapt to all screen sizes</li>
+              <li>Ensure touch targets are at least 44x44 pixels</li>
+              <li>Optimize images for mobile data speeds</li>
+              <li>Test on actual mobile devices, not just simulators</li>
+              <li>Implement thumb-friendly navigation (bottom navigation bars)</li>
+            </ul>
+            <p class="text-lg text-gray-800 dark:text-gray-200 mt-3"><strong>Ghana-Specific Tip:</strong> Consider data-saving features since many users have limited data plans</p>
+          </div>
+
+          <div class="bg-orange-50 dark:bg-orange-900/20 p-6 rounded-xl">
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">2. Fast Loading Speed</h3>
+            <p class="text-lg text-gray-800 dark:text-gray-200 mb-3"><strong>Why it matters:</strong> 53% of mobile users abandon sites that take over 3 seconds to load</p>
+            <p class="text-lg text-gray-800 dark:text-gray-200 mb-3"><strong>Best Practices:</strong></p>
+            <ul class="list-disc pl-6 space-y-2 text-gray-800 dark:text-gray-200">
+              <li>Compress all images (use WebP format)</li>
+              <li>Minimize JavaScript and CSS files</li>
+              <li>Enable browser caching</li>
+              <li>Use a Content Delivery Network (CDN)</li>
+              <li>Implement lazy loading for images</li>
+              <li>Choose reliable, fast hosting in or near Ghana</li>
+            </ul>
+            <p class="text-lg text-gray-800 dark:text-gray-200 mt-3"><strong>Target:</strong> Page load time under 2 seconds on 3G networks</p>
+          </div>
+
+          <div class="bg-orange-50 dark:bg-orange-900/20 p-6 rounded-xl">
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">3. Clear Visual Hierarchy</h3>
+            <p class="text-lg text-gray-800 dark:text-gray-200 mb-3"><strong>Why it matters:</strong> Users scan pages in F and Z patterns, not reading every word</p>
+            <p class="text-lg text-gray-800 dark:text-gray-200 mb-3"><strong>Best Practices:</strong></p>
+            <ul class="list-disc pl-6 space-y-2 text-gray-800 dark:text-gray-200">
+              <li>Use size and weight to establish importance</li>
+              <li>Limit to 3 heading levels (H1, H2, H3)</li>
+              <li>Use whitespace to separate content sections</li>
+              <li>Highlight important elements with color or contrast</li>
+              <li>Place critical information "above the fold"</li>
+              <li>Use visual cues (arrows, icons) to guide attention</li>
+            </ul>
+          </div>
+
+          <div class="bg-orange-50 dark:bg-orange-900/20 p-6 rounded-xl">
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">4. Intuitive Navigation</h3>
+            <p class="text-lg text-gray-800 dark:text-gray-200 mb-3"><strong>Why it matters:</strong> 37% of users leave due to poor navigation</p>
+            <p class="text-lg text-gray-800 dark:text-gray-200 mb-3"><strong>Best Practices:</strong></p>
+            <ul class="list-disc pl-6 space-y-2 text-gray-800 dark:text-gray-200">
+              <li>Keep main menu to 5-7 items maximum</li>
+              <li>Use descriptive labels (not clever or vague terms)</li>
+              <li>Include a search function for content-heavy sites</li>
+              <li>Show current location with breadcrumbs</li>
+              <li>Make your logo clickable to return home</li>
+              <li>Use a sticky header on mobile for easy access</li>
+              <li>Implement a hamburger menu wisely (with clear icon)</li>
+            </ul>
+            <p class="text-lg text-gray-800 dark:text-gray-200 mt-3"><strong>Rule:</strong> Users should reach any page in 3 clicks or less</p>
+          </div>
+
+          <div class="bg-orange-50 dark:bg-orange-900/20 p-6 rounded-xl">
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">5. Readable Typography</h3>
+            <p class="text-lg text-gray-800 dark:text-gray-200 mb-3"><strong>Why it matters:</strong> Poor typography causes eye strain and high bounce rates</p>
+            <p class="text-lg text-gray-800 dark:text-gray-200 mb-3"><strong>Best Practices:</strong></p>
+            <ul class="list-disc pl-6 space-y-2 text-gray-800 dark:text-gray-200">
+              <li>Minimum font size: 16px for body text (mobile)</li>
+              <li>Use web-safe, legible fonts (avoid decorative fonts for body text)</li>
+              <li>Limit to 2-3 font families maximum</li>
+              <li>Maintain proper line height (1.5x font size)</li>
+              <li>Keep line length between 50-75 characters</li>
+              <li>Ensure high contrast (dark text on light background)</li>
+              <li>Use bold for emphasis, not underlines (reserved for links)</li>
+            </ul>
+          </div>
+
+          <div class="bg-orange-50 dark:bg-orange-900/20 p-6 rounded-xl">
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">6. Strategic Use of Color</h3>
+            <p class="text-lg text-gray-800 dark:text-gray-200 mb-3"><strong>Why it matters:</strong> Color influences 85% of purchasing decisions</p>
+            <p class="text-lg text-gray-800 dark:text-gray-200 mb-3"><strong>Best Practices:</strong></p>
+            <ul class="list-disc pl-6 space-y-2 text-gray-800 dark:text-gray-200">
+              <li>Use your brand colors consistently</li>
+              <li>Limit palette to 3-4 colors (+ black/white)</li>
+              <li>Use contrasting colors for call-to-action buttons</li>
+              <li>Ensure WCAG AAA contrast ratios (7:1 for text)</li>
+              <li>Use color psychology (e.g., orange for urgency, blue for trust)</li>
+              <li>Don't rely on color alone to convey information</li>
+            </ul>
+            <p class="text-lg text-gray-800 dark:text-gray-200 mt-3"><strong>Ghana Insight:</strong> Green, yellow, red, and black resonate with national pride</p>
+          </div>
+
+          <div class="bg-orange-50 dark:bg-orange-900/20 p-6 rounded-xl">
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">7. Clear Call-to-Actions (CTAs)</h3>
+            <p class="text-lg text-gray-800 dark:text-gray-200 mb-3"><strong>Why it matters:</strong> Well-designed CTAs can increase conversions by 161%</p>
+            <p class="text-lg text-gray-800 dark:text-gray-200 mb-3"><strong>Best Practices:</strong></p>
+            <ul class="list-disc pl-6 space-y-2 text-gray-800 dark:text-gray-200">
+              <li>Use action verbs (Get Started, Buy Now, Contact Us)</li>
+              <li>Make buttons large enough (minimum 44x44px on mobile)</li>
+              <li>Use contrasting colors that stand out</li>
+              <li>Create urgency with words like "Now" or "Today"</li>
+              <li>Limit to one primary CTA per page section</li>
+              <li>Ensure CTAs are visible above the fold</li>
+              <li>Add microinteractions (hover effects, animations)</li>
+            </ul>
+            <p class="text-lg text-gray-800 dark:text-gray-200 mt-3"><strong>Example:</strong> "Call Us Now: +233 245 671 832" is better than "Contact"</p>
+          </div>
+
+          <div class="bg-orange-50 dark:bg-orange-900/20 p-6 rounded-xl">
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">8. Form Design Best Practices</h3>
+            <p class="text-lg text-gray-800 dark:text-gray-200 mb-3"><strong>Why it matters:</strong> Poor forms cause 67% of form abandonment</p>
+            <p class="text-lg text-gray-800 dark:text-gray-200 mb-3"><strong>Best Practices:</strong></p>
+            <ul class="list-disc pl-6 space-y-2 text-gray-800 dark:text-gray-200">
+              <li>Only ask for essential information</li>
+              <li>Use single-column layouts for forms</li>
+              <li>Label fields clearly above the input</li>
+              <li>Show password requirements upfront</li>
+              <li>Provide real-time validation feedback</li>
+              <li>Use appropriate input types (tel for phone, email for email)</li>
+              <li>Include a progress indicator for multi-step forms</li>
+              <li>Make error messages specific and helpful</li>
+            </ul>
+            <p class="text-lg text-gray-800 dark:text-gray-200 mt-3"><strong>Ghana-Specific:</strong> Accept both MTN and Vodafone number formats</p>
+          </div>
+
+          <div class="bg-orange-50 dark:bg-orange-900/20 p-6 rounded-xl">
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">9. Accessibility (A11y)</h3>
+            <p class="text-lg text-gray-800 dark:text-gray-200 mb-3"><strong>Why it matters:</strong> 15% of the global population has some form of disability</p>
+            <p class="text-lg text-gray-800 dark:text-gray-200 mb-3"><strong>Best Practices:</strong></p>
+            <ul class="list-disc pl-6 space-y-2 text-gray-800 dark:text-gray-200">
+              <li>Use semantic HTML (header, nav, main, footer)</li>
+              <li>Add alt text to all images</li>
+              <li>Ensure keyboard navigation works perfectly</li>
+              <li>Use ARIA labels for screen readers</li>
+              <li>Maintain proper heading hierarchy (H1 → H2 → H3)</li>
+              <li>Provide captions for videos</li>
+              <li>Avoid relying solely on color to convey information</li>
+              <li>Test with screen readers (NVDA, JAWS)</li>
+            </ul>
+          </div>
+
+          <div class="bg-orange-50 dark:bg-orange-900/20 p-6 rounded-xl">
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">10. Trust Signals and Social Proof</h3>
+            <p class="text-lg text-gray-800 dark:text-gray-200 mb-3"><strong>Why it matters:</strong> 92% of consumers read online reviews before making a decision</p>
+            <p class="text-lg text-gray-800 dark:text-gray-200 mb-3"><strong>Best Practices:</strong></p>
+            <ul class="list-disc pl-6 space-y-2 text-gray-800 dark:text-gray-200">
+              <li>Display customer testimonials prominently</li>
+              <li>Show security badges (SSL, payment methods)</li>
+              <li>Include contact information (phone, email, address)</li>
+              <li>Add team photos and "About Us" page</li>
+              <li>Show real client logos and case studies</li>
+              <li>Display awards, certifications, or press mentions</li>
+              <li>Include a physical address if you have a location</li>
+            </ul>
+            <p class="text-lg text-gray-800 dark:text-gray-200 mt-3"><strong>Ghana Trust Factor:</strong> Local phone numbers (+233) build more trust than international ones</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="space-y-6">
+        <h2 class="text-3xl font-bold text-gray-900 dark:text-white">Ghana-Specific UI/UX Considerations</h2>
+        
+        <div class="space-y-4">
+          <h3 class="text-2xl font-bold text-gray-900 dark:text-white">1. WhatsApp Integration</h3>
+          <p class="text-lg text-gray-800 dark:text-gray-200">WhatsApp is the most popular messaging app in Ghana. Add:</p>
+          <ul class="list-disc pl-6 space-y-2 text-gray-800 dark:text-gray-200">
+            <li>WhatsApp chat button (floating or in header)</li>
+            <li>Click-to-chat functionality with pre-filled messages</li>
+            <li>WhatsApp Business API for customer support</li>
+          </ul>
+        </div>
+
+        <div class="space-y-4">
+          <h3 class="text-2xl font-bold text-gray-900 dark:text-white">2. Mobile Money Payment Options</h3>
+          <p class="text-lg text-gray-800 dark:text-gray-200">Display payment options clearly:</p>
+          <ul class="list-disc pl-6 space-y-2 text-gray-800 dark:text-gray-200">
+            <li>Show MTN Mobile Money, Vodafone Cash, AirtelTigo logos</li>
+            <li>Explain payment process before checkout</li>
+            <li>Provide customer support numbers for payment issues</li>
+          </ul>
+        </div>
+
+        <div class="space-y-4">
+          <h3 class="text-2xl font-bold text-gray-900 dark:text-white">3. Local Language Support</h3>
+          <p class="text-lg text-gray-800 dark:text-gray-200">Consider multilingual options:</p>
+          <ul class="list-disc pl-6 space-y-2 text-gray-800 dark:text-gray-200">
+            <li>Offer Twi, Ga, or Ewe translations for key pages</li>
+            <li>Use culturally appropriate imagery</li>
+            <li>Consider local holidays and events in campaigns</li>
+          </ul>
+        </div>
+
+        <div class="space-y-4">
+          <h3 class="text-2xl font-bold text-gray-900 dark:text-white">4. Data-Conscious Design</h3>
+          <p class="text-lg text-gray-800 dark:text-gray-200">Many users have limited data:</p>
+          <ul class="list-disc pl-6 space-y-2 text-gray-800 dark:text-gray-200">
+            <li>Compress images aggressively</li>
+            <li>Lazy load images and videos</li>
+            <li>Provide low-data mode option</li>
+            <li>Avoid auto-playing videos</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="space-y-6">
+        <h2 class="text-3xl font-bold text-gray-900 dark:text-white">Common UI/UX Mistakes in Ghana (And How to Fix Them)</h2>
+        
+        <div class="overflow-x-auto">
+          <table class="w-full border-collapse bg-white dark:bg-gray-800 rounded-lg overflow-hidden">
+            <thead>
+              <tr class="bg-orange-500 text-white">
+                <th class="p-4 text-left">Mistake</th>
+                <th class="p-4 text-left">Why It's Bad</th>
+                <th class="p-4 text-left">Fix</th>
+              </tr>
+            </thead>
+            <tbody class="text-gray-800 dark:text-gray-200">
+              <tr class="border-b border-gray-200 dark:border-gray-700">
+                <td class="p-4 font-semibold">Cluttered homepage</td>
+                <td class="p-4">Overwhelms users, increases bounce rate</td>
+                <td class="p-4">Use whitespace, limit content to essentials</td>
+              </tr>
+              <tr class="border-b border-gray-200 dark:border-gray-700">
+                <td class="p-4 font-semibold">Slow loading images</td>
+                <td class="p-4">Users leave before page loads</td>
+                <td class="p-4">Compress images, use WebP format</td>
+              </tr>
+              <tr class="border-b border-gray-200 dark:border-gray-700">
+                <td class="p-4 font-semibold">Hidden contact info</td>
+                <td class="p-4">Reduces trust and conversions</td>
+                <td class="p-4">Display phone number in header/footer</td>
+              </tr>
+              <tr class="border-b border-gray-200 dark:border-gray-700">
+                <td class="p-4 font-semibold">Tiny mobile buttons</td>
+                <td class="p-4">Frustrates users, reduces clicks</td>
+                <td class="p-4">Minimum 44x44px touch targets</td>
+              </tr>
+              <tr class="border-b border-gray-200 dark:border-gray-700">
+                <td class="p-4 font-semibold">Confusing navigation</td>
+                <td class="p-4">Users can't find what they need</td>
+                <td class="p-4">Clear labels, logical grouping, search</td>
+              </tr>
+              <tr class="border-b border-gray-200 dark:border-gray-700">
+                <td class="p-4 font-semibold">No mobile optimization</td>
+                <td class="p-4">85% of users on mobile can't use site</td>
+                <td class="p-4">Responsive design, mobile-first approach</td>
+              </tr>
+              <tr>
+                <td class="p-4 font-semibold">Long checkout process</td>
+                <td class="p-4">67% cart abandonment rate</td>
+                <td class="p-4">Guest checkout, progress indicator, autofill</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="space-y-6">
+        <h2 class="text-3xl font-bold text-gray-900 dark:text-white">Testing Your UI/UX</h2>
+        <p class="text-lg text-gray-800 dark:text-gray-200">Regular testing ensures your design actually works for users:</p>
+        
+        <div class="space-y-4">
+          <h3 class="text-2xl font-bold text-gray-900 dark:text-white">Tools to Use:</h3>
+          <ul class="list-disc pl-6 space-y-2 text-gray-800 dark:text-gray-200">
+            <li><strong>Google PageSpeed Insights:</strong> Test loading speed and performance</li>
+            <li><strong>Google Analytics:</strong> Track user behavior and identify drop-off points</li>
+            <li><strong>Hotjar:</strong> Heatmaps show where users click and scroll</li>
+            <li><strong>UserTesting:</strong> Get real user feedback on your design</li>
+            <li><strong>WAVE:</strong> Accessibility checker for compliance</li>
+            <li><strong>BrowserStack:</strong> Test on multiple devices and browsers</li>
+          </ul>
+        </div>
+
+        <div class="space-y-4">
+          <h3 class="text-2xl font-bold text-gray-900 dark:text-white">Questions to Ask:</h3>
+          <ul class="list-disc pl-6 space-y-2 text-gray-800 dark:text-gray-200">
+            <li>Can users complete their primary task in under 3 clicks?</li>
+            <li>Does the site load in under 2 seconds on mobile?</li>
+            <li>Are CTAs clearly visible without scrolling?</li>
+            <li>Can colorblind users navigate the site?</li>
+            <li>Does the site work on both iOS and Android?</li>
+            <li>Are forms easy to fill out on mobile?</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="space-y-6">
+        <h2 class="text-3xl font-bold text-gray-900 dark:text-white">UI/UX Design Checklist</h2>
+        <div class="bg-gray-50 dark:bg-gray-800 p-6 rounded-xl">
+          <ul class="space-y-3 text-gray-800 dark:text-gray-200">
+            <li class="flex items-center gap-2"><svg class="w-5 h-5 text-orange-500 flex-shrink-0" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10"/><path d="M9 12l2 2 4-4" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> Mobile-responsive design that works on all screen sizes</li>
+            <li class="flex items-center gap-2"><svg class="w-5 h-5 text-orange-500 flex-shrink-0" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10"/><path d="M9 12l2 2 4-4" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> Page load time under 3 seconds (ideally under 2)</li>
+            <li class="flex items-center gap-2"><svg class="w-5 h-5 text-orange-500 flex-shrink-0" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10"/><path d="M9 12l2 2 4-4" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> Clear, intuitive navigation with logical structure</li>
+            <li class="flex items-center gap-2"><svg class="w-5 h-5 text-orange-500 flex-shrink-0" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10"/><path d="M9 12l2 2 4-4" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> Readable typography (16px+ body text, proper line height)</li>
+            <li class="flex items-center gap-2"><svg class="w-5 h-5 text-orange-500 flex-shrink-0" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10"/><path d="M9 12l2 2 4-4" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> High contrast colors meeting WCAG standards</li>
+            <li class="flex items-center gap-2"><svg class="w-5 h-5 text-orange-500 flex-shrink-0" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10"/><path d="M9 12l2 2 4-4" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> Clear, actionable CTAs on every page</li>
+            <li class="flex items-center gap-2"><svg class="w-5 h-5 text-orange-500 flex-shrink-0" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10"/><path d="M9 12l2 2 4-4" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> Simple, short forms with real-time validation</li>
+            <li class="flex items-center gap-2"><svg class="w-5 h-5 text-orange-500 flex-shrink-0" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10"/><path d="M9 12l2 2 4-4" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> Accessibility features (alt text, keyboard navigation)</li>
+            <li class="flex items-center gap-2"><svg class="w-5 h-5 text-orange-500 flex-shrink-0" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10"/><path d="M9 12l2 2 4-4" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> Trust signals (testimonials, contact info, security badges)</li>
+            <li class="flex items-center gap-2"><svg class="w-5 h-5 text-orange-500 flex-shrink-0" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10"/><path d="M9 12l2 2 4-4" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> WhatsApp integration for easy communication</li>
+            <li class="flex items-center gap-2"><svg class="w-5 h-5 text-orange-500 flex-shrink-0" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10"/><path d="M9 12l2 2 4-4" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> Mobile Money payment options clearly displayed</li>
+            <li class="flex items-center gap-2"><svg class="w-5 h-5 text-orange-500 flex-shrink-0" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10"/><path d="M9 12l2 2 4-4" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> Compressed, optimized images</li>
+            <li class="flex items-center gap-2"><svg class="w-5 h-5 text-orange-500 flex-shrink-0" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10"/><path d="M9 12l2 2 4-4" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> Working on major browsers (Chrome, Safari, Firefox)</li>
+            <li class="flex items-center gap-2"><svg class="w-5 h-5 text-orange-500 flex-shrink-0" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10"/><path d="M9 12l2 2 4-4" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> SSL certificate installed (HTTPS)</li>
+            <li class="flex items-center gap-2"><svg class="w-5 h-5 text-orange-500 flex-shrink-0" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10"/><path d="M9 12l2 2 4-4" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> 404 error page with helpful navigation</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="space-y-6">
+        <h2 class="text-3xl font-bold text-gray-900 dark:text-white">Conclusion</h2>
+        <p class="text-lg text-gray-800 dark:text-gray-200">Great UI/UX design isn't about following trends—it's about understanding your Ghanaian users and removing every barrier between them and their goals. Every second of load time, every confusing button, every hard-to-read font costs you customers and revenue.</p>
+        
+        <p class="text-lg text-gray-800 dark:text-gray-200">In 2026, users expect websites to be fast, intuitive, and mobile-friendly. By implementing these UI/UX principles, you'll create a website that not only looks professional but actually converts visitors into loyal customers.</p>
+
+        <p class="text-lg text-gray-800 dark:text-gray-200">Remember: Good design is invisible. When users can accomplish their goals without thinking about how to use your website, you've succeeded.</p>
+
+        <div class="bg-orange-500 text-white p-6 rounded-xl mt-6">
+          <h3 class="text-2xl font-bold mb-4">Need Professional UI/UX Design?</h3>
+          <p class="text-lg mb-4">At Celestial Web Solutions, we create user-centered designs that convert. Our team combines beautiful aesthetics with data-driven UX principles to build websites that your Ghanaian customers will love to use.</p>
+          <p class="text-lg font-semibold">Contact us today: +233 245 671 832</p>
+        </div>
+
+        <div class="mt-8 pt-6 border-t border-gray-300 dark:border-gray-700">
+          <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-4">Helpful Resources</h3>
+          <ul class="space-y-2 text-gray-800 dark:text-gray-200">
+            <li><a href="https://www.nngroup.com/" target="_blank" rel="noopener noreferrer" class="text-orange-600 hover:underline">Nielsen Norman Group</a> - UX research and best practices</li>
+            <li><a href="https://www.smashingmagazine.com/" target="_blank" rel="noopener noreferrer" class="text-orange-600 hover:underline">Smashing Magazine</a> - Web design articles and resources</li>
+            <li><a href="https://www.interaction-design.org/" target="_blank" rel="noopener noreferrer" class="text-orange-600 hover:underline">Interaction Design Foundation</a> - UX courses and guides</li>
+            <li><a href="https://www.w3.org/WAI/" target="_blank" rel="noopener noreferrer" class="text-orange-600 hover:underline">W3C Web Accessibility Initiative</a> - Accessibility guidelines</li>
+            <li><a href="https://material.io/design" target="_blank" rel="noopener noreferrer" class="text-orange-600 hover:underline">Material Design</a> - Google's design system</li>
+            <li><a href="https://developers.google.com/speed/pagespeed/insights" target="_blank" rel="noopener noreferrer" class="text-orange-600 hover:underline">PageSpeed Insights</a> - Test your site speed</li>
+          </ul>
+        </div>
+      </div>
+    </article>
+  `,
+    slug: "ui-ux-design-principles-ghana-websites-2026"
   }
 };
 
@@ -2290,18 +2987,27 @@ export default function BlogPost() {
   const [article, setArticle] = useState(null);
   const [copied, setCopied] = useState(false);
   const [relatedArticles, setRelatedArticles] = useState([]);
+  const [headings, setHeadings] = useState([]);
 
   useEffect(() => {
     if (slug && blogArticles[slug]) {
-      setArticle(blogArticles[slug]);
+      const currentArticle = blogArticles[slug];
+      setArticle(currentArticle);
+      
+      // Extract headings from content
+      try {
+        const extractedHeadings = extractHeadings(currentArticle.content);
+        setHeadings(extractedHeadings);
+      } catch (e) {
+        console.log('Could not extract headings');
+        setHeadings([]);
+      }
       
       // Get related articles
       const allArticles = Object.keys(blogArticles).map(key => ({
         slug: key,
         ...blogArticles[key]
       }));
-      
-      const currentArticle = blogArticles[slug];
       
       // Filter related articles by category or tags, exclude current article
       const related = allArticles
@@ -2499,8 +3205,8 @@ export default function BlogPost() {
       </Head>
 
       {/* Hero Section */}
-      <section className="relative h-[60vh] bg-gradient-to-br from-orange-500 via-orange-600 to-red-500">
-        <div className="absolute inset-0">
+      <section className="relative bg-gradient-to-br from-orange-500 via-orange-600 to-red-500 pt-32 md:pt-40 pb-16 md:pb-20">
+        <div className="absolute inset-0 top-0">
           <img
             src={article.image}
             alt={article.title}
@@ -2511,13 +3217,13 @@ export default function BlogPost() {
           />
         </div>
 
-        <div className="relative z-10 container mx-auto px-4 h-full flex flex-col justify-center">
-          <div className="mt-16 md:mt-24 lg:mt-28 flex">
+        <div className="relative z-10 container mx-auto px-4">
+          <div className="flex mb-8">
             <PremiumCTA
               href="/blog"
               size="small"
               variant="primary"
-              className="mb-8 !px-6 !py-3"
+              className="!px-6 !py-3"
               icon={false}
             >
               <span className="flex items-center gap-2">
@@ -2668,7 +3374,54 @@ export default function BlogPost() {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8"
             >
+              {/* Table of Contents */}
+              {headings.length > 0 && (
+                <div className="mb-10 p-6 bg-orange-50 dark:bg-orange-900/20 border-l-4 border-orange-500 rounded-lg">
+                  <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2" style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}>
+                    <svg className="w-5 h-5 text-orange-500" fill="currentColor" viewBox="0 0 20 20">
+                      <path d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zm0 6a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1v-2zm0 6a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1v-2z"/>
+                    </svg>
+                    Table of Contents
+                  </h3>
+                  <nav className="space-y-2">
+                    {headings.map((heading) => (
+                      <button
+                        key={heading.id}
+                        onClick={() => {
+                          const element = document.getElementById(heading.id);
+                          if (element) {
+                            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                          }
+                        }}
+                        className={`block text-left transition-colors hover:text-orange-600 dark:hover:text-orange-400 ${
+                          heading.level === 2
+                            ? 'text-gray-800 dark:text-gray-200 font-semibold'
+                            : 'text-gray-700 dark:text-gray-300 ml-4'
+                        }`}
+                        style={{ fontFamily: "Google Sans, sans-serif" }}
+                      >
+                        {heading.text}
+                      </button>
+                    ))}
+                  </nav>
+                </div>
+              )}
+
               <div
+                ref={(el) => {
+                  if (el && headings.length > 0) {
+                    headings.forEach((heading) => {
+                      const elements = el.querySelectorAll('h2, h3');
+                      let matchIndex = 0;
+                      elements.forEach((elem) => {
+                        if (elem.textContent.trim() === heading.text.trim()) {
+                          elem.id = heading.id;
+                          matchIndex++;
+                        }
+                      });
+                    });
+                  }
+                }}
                 dangerouslySetInnerHTML={{ __html: article.content }}
                 className="prose prose-orange prose-lg dark:prose-invert max-w-none"
                 style={{ fontFamily: "Google Sans, sans-serif" }}

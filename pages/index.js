@@ -1136,22 +1136,22 @@ const IndexPage = () => {
             <div className="grid md:grid-cols-2 gap-8 mb-12">
               {[
                 {
-                  title: "How to Start an Online Store in Ghana: A Quick Guide",
-                  excerpt: "Learn the essential steps to launch your online store in Ghana, from choosing a platform to setting up payment methods and driving your first sales.",
-                  category: "E-commerce",
-                  date: "January 14, 2026",
-                  readTime: "5 min read",
-                  slug: "how-to-start-online-store-ghana",
-                  image: "https://images.unsplash.com/photo-1658297063569-162817482fb6?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                  title: "WordPress vs Custom Website: Which is Best for Your Ghanaian Business in 2026?",
+                  excerpt: "Confused about choosing between WordPress and a custom website? This comprehensive guide helps Ghanaian businesses make the right decision based on budget, features, and long-term goals.",
+                  category: "Web Development",
+                  date: "February 1, 2026",
+                  readTime: "12 min read",
+                  slug: "wordpress-vs-custom-website-ghana-2026",
+                  image: "https://images.unsplash.com/photo-1555421689-d68471e189f2?w=1200&h=600&fit=crop"
                 },
                 {
-                  title: "Top 15 AI Tools Revolutionizing Web Development in 2026",
-                  excerpt: "Explore the latest AI-powered tools transforming web development. From code generation to design automation, discover how AI is making development faster and more efficient.",
-                  category: "AI & Technology",
-                  date: "January 10, 2026",
-                  readTime: "9 min read",
-                  slug: "ai-tools-web-development-2026",
-                  image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=1200&h=600&fit=crop"
+                  title: "UI/UX Design Principles Every Ghanaian Website Must Follow in 2026",
+                  excerpt: "Master the essential UI/UX design principles that make websites successful in Ghana. Learn how to create user-friendly, conversion-focused designs that work for Ghanaian users in 2026.",
+                  category: "Web Design",
+                  date: "February 1, 2026",
+                  readTime: "11 min read",
+                  slug: "ui-ux-design-principles-ghana-websites-2026",
+                  image: "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=1200&h=600&fit=crop"
                 }
               ].map((article, index) => (
                 <motion.div
