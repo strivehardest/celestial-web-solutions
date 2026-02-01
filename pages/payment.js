@@ -122,6 +122,20 @@ export default function PaymentPage() {
         swiftCode: "FBLIGHAC"
       },
       logo: "/fidelity-bank-logo.jpg"
+    },
+    {
+      id: 5,
+      title: "Ecobank Ghana Transfer",
+      subtitle: "Direct bank transfer to Ecobank Ghana",
+      color: "from-green-500 to-green-600",
+      details: {
+        accountNumber: "1441000576414",
+        accountName: "Waliu Ibrahimah Aforlabi",
+        bank: "Ecobank Ghana",
+        swiftCode: "ECOCGHAC",
+        bankAddress: "2 Morocco Lane, Off Independence Ave"
+      },
+      logo: "/ecobank-logo.png"
     }
   ];
 
@@ -131,11 +145,11 @@ export default function PaymentPage() {
         <title>Secure Payment Options | Celestial Web Solutions Ghana</title>
         <meta
           name="description"
-          content="Pay securely for web design, website development, and digital services with Celestial Web Solutions. Accepting MTN MoMo, Telecel Cash, Paystack, and Fidelity Bank transfers."
+          content="Pay securely for web design, website development, and digital services with Celestial Web Solutions. Accepting MTN MoMo, Telecel Cash, Paystack, Fidelity Bank, and Ecobank transfers."
         />
         <meta
           name="keywords"
-          content="Celestial Web Solutions payment, web design Ghana, website payment Ghana, MTN MoMo web design, Telecel Cash website, Paystack Ghana, Fidelity Bank transfer web design, secure payment Ghana"
+          content="Celestial Web Solutions payment, web design Ghana, website payment Ghana, MTN MoMo web design, Telecel Cash website, Paystack Ghana, Fidelity Bank transfer web design, Ecobank transfer web design, secure payment Ghana"
         />
       </Head>
 
@@ -167,7 +181,7 @@ export default function PaymentPage() {
             className="text-lg text-white/90 max-w-3xl mx-auto"
             style={{ fontFamily: 'Google Sans, sans-serif' }}
           >
-            Pay securely for web design, website development, and digital services with Celestial Web Solutions. Accepting MTN MoMo, Telecel Cash, Paystack, and Fidelity Bank transfers.
+            Pay securely for web design, website development, and digital services with Celestial Web Solutions. Accepting MTN MoMo, Telecel Cash, Paystack, Fidelity Bank, and Ecobank transfers.
           </p>
         </div>
       </section>
@@ -258,7 +272,7 @@ export default function PaymentPage() {
                       </PremiumCTA>
                     )}
 
-                    {option.id === 4 && (
+                    {(option.id === 4 || option.id === 5) && (
                       <div className="space-y-3">
                         {Object.entries(option.details).map(([label, value]) => (
                           <div
