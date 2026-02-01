@@ -2390,20 +2390,11 @@ export default function BlogPost() {
       navigator.clipboard.writeText(currentUrl);
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
-      return;// ✅ Just return, no JSX
+      return;
     }
-        <>
-          <Head>
-            {/* ...existing code... */}
-          </Head>
-          {/* ...existing code... */}
-          {/* Google AdSense Ad */}
-          <div style={{ margin: '32px 0', display: 'flex', justifyContent: 'center' }}>
-            <GoogleAd />
-          </div>
-          {/* ...existing code... */}
-        </>
-    };
+
+    window.open(shareUrls[platform], '_blank');
+  };
   return (
     <main className="bg-white dark:bg-gray-900 text-gray-900 dark:text-white">
       <Head>
@@ -2682,6 +2673,12 @@ export default function BlogPost() {
                 className="prose prose-orange prose-lg dark:prose-invert max-w-none"
                 style={{ fontFamily: "Google Sans, sans-serif" }}
               />
+              
+              {/* Google AdSense Ad */}
+              <div className="my-8 flex justify-center">
+                <GoogleAd />
+              </div>
+
               <div className="mt-8 flex flex-wrap gap-2">
                 {article.hashtags?.map((hashtag, index) => (
                   <Link
@@ -2698,6 +2695,11 @@ export default function BlogPost() {
           </div>
         </div>
       </section>
+
+      {/* Google AdSense Ad */}
+      <div className="py-8 bg-white dark:bg-gray-900 flex justify-center">
+        <GoogleAd />
+      </div>
 
       {/* Related Articles Section */}
       <section className="py-16 bg-gray-50 dark:bg-gray-900">
