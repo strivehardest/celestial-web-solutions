@@ -580,7 +580,7 @@ export default function PricingWithCalculator() {
         )}
       </AnimatePresence>
 
-      {/* January 2026 Launch Promo Banner */}
+      {/* February 2026 Launch Promo Banner */}
       <AnimatePresence>
         {showPromo && (
           <motion.section 
@@ -628,10 +628,10 @@ export default function PricingWithCalculator() {
                 className="text-center mb-8"
               >
                 <h2 className="text-4xl md:text-6xl font-bold text-white mb-3" style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}>
-                  JANUARY 2026 LAUNCH SPECIAL
+                  FEBRUARY 2026 LAUNCH SPECIAL
                 </h2>
                 <p className="text-xl md:text-2xl text-white/90 font-semibold" style={{ fontFamily: "Google Sans, sans-serif" }}>
-                  Book before January 31st and receive incredible bonuses!
+                  Book before February 21st and receive incredible bonuses!
                 </p>
               </motion.div>
 
@@ -645,7 +645,7 @@ export default function PricingWithCalculator() {
                 <div className="grid md:grid-cols-2 gap-4 mb-8">
                   {[
                     { icon: Trophy, text: "GH₵500 discount", subtext: "(Professional & E-Commerce packages)" },
-                    { icon: Gift, text: "Free logo design", subtext: "(GH₵500 value)" },
+                    { icon: Gift, text: "Free logo design", subtext: "(GH₵200 value)" },
                     { icon: TrendingUp, text: "Free competitor analysis", subtext: "(GH₵800 value)" },
                     { icon: Rocket, text: "Priority project slot", subtext: "(skip the wait)" },
                     { icon: Award, text: "1 month free priority support", subtext: "(GH₵500 value)" },
@@ -691,7 +691,7 @@ export default function PricingWithCalculator() {
                   {/* CTA Buttons */}
                   <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
                     <a
-                      href="https://wa.me/233530505031?text=Hi!%20I%20want%20to%20claim%20the%20January%202026%20Launch%20Special%20offer!"
+                      href="https://wa.me/233530505031?text=Hi!%20I%20want%20to%20claim%20the%20February%202026%20Launch%20Special%20offer!"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-flex items-center gap-2 px-8 py-4 bg-white text-orange-600 rounded-xl font-bold text-lg shadow-xl hover:shadow-2xl hover:scale-105 transition-all"
@@ -720,7 +720,7 @@ export default function PricingWithCalculator() {
               >
                 <div className="inline-flex items-center gap-2 text-white font-bold text-lg bg-red-600/80 backdrop-blur-sm px-6 py-3 rounded-full shadow-lg mb-3" style={{ fontFamily: "Google Sans, sans-serif" }}>
                   <Clock size={20} className="text-yellow-300" />
-                  Limited to first 10 clients who book before Jan 31, 2026
+                  Limited to first 10 clients who book before Feb 21, 2026
                 </div>
                 <p className="text-white/70 text-sm" style={{ fontFamily: "Google Sans, sans-serif" }}>
                   * Terms & Conditions apply
