@@ -118,7 +118,7 @@ export default function Courses() {
               <div className="inline-flex items-center gap-2 bg-orange-500/20 border border-orange-500/40 rounded-full px-6 py-3 mb-8">
                 <span className="w-2 h-2 rounded-full bg-orange-500 animate-pulse" />
                 <p className="text-white font-semibold" style={{ fontFamily: '"Google Sans", sans-serif' }}>
-                  Courses start February 1, 2026
+                  Courses start March 2, 2026
                 </p>
               </div>
             </motion.div>
