@@ -1230,6 +1230,9 @@ export default function PricingWithCalculator() {
             <div className="h-16 w-32 flex items-center justify-center bg-gray-50 dark:bg-gray-700 rounded-lg p-2 hover:shadow-md transition-shadow">
               <img src="/fidelity-bank-logo.jpg" alt="Fidelity Bank" className="max-h-14 max-w-28 object-contain" />
             </div>
+            <div className="h-16 w-32 flex items-center justify-center bg-gray-50 dark:bg-gray-700 rounded-lg p-2 hover:shadow-md transition-shadow">
+              <img src="/ecobank-logo.png" alt="Ecobank" className="max-h-14 max-w-28 object-contain" />
+            </div>
           </div>
           <p className="mt-8 text-sm text-gray-600 dark:text-gray-400" style={{ fontFamily: "Google Sans, sans-serif" }}>
             Flexible payment options to suit your convenience
