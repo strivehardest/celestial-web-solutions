@@ -1,5 +1,14 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  trailingSlash: false, // Ensure consistent URLs without trailing slashes
+  async rewrites() {
+    return [
+      {
+        source: '/sitemap.xml',
+        destination: '/api/sitemap',
+      },
+    ];
+  },
   async redirects() {
     return [
       {
