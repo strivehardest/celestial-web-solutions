@@ -115,10 +115,10 @@ export default function PricingWithCalculator() {
   });
 
   const basePrices = {
-    starter: 2500,
-    professional: 3500,
-    ecommerce: 4500,
-    enterprise: 8000
+    starter: { monthly: 2500, yearly: 4000 },
+    professional: { monthly: 3500, yearly: 6000 },
+    ecommerce: { monthly: 4500, yearly: 10000 },
+    enterprise: { monthly: 8000, yearly: 20000 }
   };
 
   const addOnPrices = {
@@ -132,7 +132,7 @@ export default function PricingWithCalculator() {
   };
 
   const calculateTotal = () => {
-    let total = basePrices[selectedBase];
+    let total = basePrices[selectedBase][billingPeriod];
 
     total += addOns.extraPages * addOnPrices.extraPages;
     if (addOns.ecommerce && selectedBase !== "ecommerce") total += addOnPrices.ecommerce;
@@ -545,7 +545,7 @@ export default function PricingWithCalculator() {
                     {["starter", "professional", "ecommerce", "enterprise"].map((pkg) => (
                       <button key={pkg} onClick={() => setSelectedBase(pkg)} className={`p-4 rounded-xl border-2 transition-all duration-300 ${selectedBase === pkg ? "border-orange-500 bg-orange-50 dark:bg-orange-900/20 shadow-lg" : "border-gray-200 dark:border-gray-700 hover:border-orange-300 bg-white dark:bg-gray-800"}`}>
                         <div className="font-bold text-gray-900 dark:text-white capitalize mb-1" style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}>{pkg}</div>
-                        <div className="text-orange-600 font-semibold" style={{ fontFamily: "Google Sans, sans-serif" }}>{formatPrice(basePrices[pkg])}</div>
+                        <div className="text-orange-600 font-semibold" style={{ fontFamily: "Google Sans, sans-serif" }}>{formatPrice(basePrices[pkg][billingPeriod])}</div>
                       </button>
                     ))}
                   </div>
@@ -577,7 +577,7 @@ export default function PricingWithCalculator() {
                       { key: "ecommerce", label: "E-commerce Features", price: addOnPrices.ecommerce, disabled: selectedBase === "ecommerce" },
                       { key: "blog", label: "Blog/News Section", price: addOnPrices.blog },
                       { key: "seo", label: "Advanced SEO Package", price: addOnPrices.seo },
-                      { key: "maintenance", label: "Annual Maintenance", price: addOnPrices.maintenance * 12, note: "â‚µ150/month" },
+                      { key: "maintenance", label: "Annual Maintenance", price: addOnPrices.maintenance * 12, note: "GH₵150/month" },
                       { key: "mobileApp", label: "Mobile App Development", price: addOnPrices.mobileApp }
                     ].map((addon) => (
                       <div key={addon.key} className={`flex items-center justify-between p-4 bg-gray-50 dark:bg-gray-700 rounded-xl transition-colors ${addon.disabled ? "opacity-50 cursor-not-allowed" : "cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-600"}`} onClick={() => !addon.disabled && toggleAddOn(addon.key)}>
@@ -616,7 +616,7 @@ export default function PricingWithCalculator() {
                 {/* Total */}
                 <div className="mt-8 p-6 bg-orange-50 dark:bg-orange-900/20 rounded-2xl flex items-center justify-between">
                   <div>
-                    <div className="text-gray-700 dark:text-gray-300 font-semibold" style={{ fontFamily: "Google Sans, sans-serif" }}>Total Price ({billingPeriod === "yearly" ? "Yearly" : "Yearly"}):</div>
+                    <div className="text-gray-700 dark:text-gray-300 font-semibold" style={{ fontFamily: "Google Sans, sans-serif" }}>Total Price ({billingPeriod === "yearly" ? "Full Stack Development" : "CMS Development"}):</div>
                     <div className="text-3xl font-bold text-orange-600" style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}>{formatPrice(calculateTotal())}</div>
                   </div>
                   <PremiumCTA href={getCalculatorWhatsAppLink()} size="default" variant="primary" className="flex items-center space-x-2" target="_blank" rel="noopener noreferrer">
