@@ -104,29 +104,74 @@ export default function CustomCursor() {
         <motion.div
           className="relative flex items-center justify-center"
           animate={{
-            scale: isClicking ? 0.6 : isHovering ? 1.8 : 1,
+            scale: isClicking ? 0.6 : isHovering ? 1.5 : 1,
           }}
           transition={{ duration: 0.3, ease: "easeOut" }}
         >
-          {/* Single orange dot - NO RING */}
+          {/* Main cursor dot */}
           <motion.div
-            className="w-4 h-4 bg-gradient-to-r from-orange-500 to-orange-600 rounded-full absolute"
+            className="w-3 h-3 rounded-full absolute"
             style={{ transform: 'translate(-50%, -50%)' }}
             animate={{
+              background: isHovering 
+                ? 'linear-gradient(to right, #f97316, #ea580c)' 
+                : 'linear-gradient(to right, #f97316, #ea580c)',
               boxShadow: isHovering 
                 ? '0 0 20px rgba(249, 115, 22, 0.8), 0 0 40px rgba(249, 115, 22, 0.4)' 
-                : '0 0 10px rgba(249, 115, 22, 0.5)',
+                : '0 0 8px rgba(249, 115, 22, 0.5)',
             }}
             transition={{ duration: 0.3 }}
           />
 
-          {/* Cursor text */}
+          {/* Outer ring - only shows on hover */}
+          <motion.div
+            className="w-8 h-8 rounded-full absolute border-2 border-orange-500"
+            style={{ transform: 'translate(-50%, -50%)' }}
+            initial={{ opacity: 0, scale: 0.5 }}
+            animate={{
+              opacity: isHovering ? 1 : 0,
+              scale: isHovering ? 1 : 0.5,
+              borderColor: isHovering ? '#f97316' : 'transparent',
+            }}
+            transition={{ duration: 0.3, ease: "easeOut" }}
+          />
+
+          {/* Pointer icon - shows on hover over clickable elements */}
+          {isHovering && !cursorText && (
+            <motion.div
+              initial={{ opacity: 0, scale: 0.5 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.5 }}
+              className="absolute"
+              style={{ 
+                transform: 'translate(-50%, -50%)',
+              }}
+            >
+              <svg 
+                width="18" 
+                height="18" 
+                viewBox="0 0 24 24" 
+                fill="none" 
+                xmlns="http://www.w3.org/2000/svg"
+                className="drop-shadow-lg"
+              >
+                <path 
+                  d="M5.5 3.21V20.79C5.5 21.24 5.99 21.52 6.37 21.27L12.04 17.6L14.26 22.74C14.43 23.12 14.87 23.29 15.25 23.12L17.54 22.12C17.92 21.95 18.09 21.51 17.92 21.13L15.69 15.99L22.04 14.99C22.46 14.92 22.64 14.41 22.35 14.09L6.35 2.99C5.99 2.72 5.5 2.96 5.5 3.21Z" 
+                  fill="#f97316"
+                  stroke="#fff"
+                  strokeWidth="1"
+                />
+              </svg>
+            </motion.div>
+          )}
+
+          {/* Custom cursor text */}
           {cursorText && (
             <motion.span
               initial={{ opacity: 0, scale: 0.5 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.5 }}
-              className="absolute text-orange-600 text-xs font-bold whitespace-nowrap bg-white/90 px-2 py-1 rounded-full shadow-md"
+              className="absolute text-white text-xs font-bold whitespace-nowrap bg-orange-500 px-2 py-1 rounded-full shadow-lg"
               style={{ 
                 transform: 'translate(-50%, -200%)',
                 fontFamily: 'Bricolage Grotesque, sans-serif'

@@ -8,7 +8,7 @@ const projects = [
     clientCountry: "United States",
     description: "Doeman Group is a group of companies. The website creation is still in progress.",
     image: "/png/projects/doeman.jpeg",
-    screenshot: "/png/screenshots/doeman-full.png",
+    screenshot: "",
     link: "http://www.doemangroup.com/",
     tech: ["Next.js", "React", "Tailwind CSS", "Framer Motion", "SEO", "Google Analytics"],
     techLogos: [
