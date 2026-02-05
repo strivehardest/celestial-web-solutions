@@ -7,7 +7,7 @@ import Head from "next/head";
 import projects from "../../data/projects";
 import WhatsAppButton from '../../components/WhatsAppButton';
 import PremiumCTA from '../../components/PremiumCTA';
-import { ArrowRight, ArrowLeft, ExternalLink, Calendar, MapPin, User, Clock, Star, CheckCircle2, Code2, Layers, Rocket, Target } from 'lucide-react';
+import { ArrowRight, ArrowLeft, ExternalLink, Calendar, MapPin, User, Clock, Star, CheckCircle2, Code2, Layers, Rocket, Target, AlertCircle } from 'lucide-react';
 
 // Glass Button Component
 const GlassButton = ({ children, href, variant = 'light', className = '', external = false, onClick }) => {
@@ -34,19 +34,31 @@ export default function ProjectDetail() {
   const router = useRouter();
   const { slug } = router.query;
   const [project, setProject] = useState(null);
+  const [notFound, setNotFound] = useState(false);
   const [isScrolling, setIsScrolling] = useState(false);
   const [showScrollButton, setShowScrollButton] = useState(true);
   const [scrollProgress, setScrollProgress] = useState(0);
   const [imageError, setImageError] = useState({});
+  const [currentIndex, setCurrentIndex] = useState(-1);
   const imageContainerRef = useRef(null);
   const imageRef = useRef(null);
 
   useEffect(() => {
     if (slug) {
-      const foundProject = projects.find((p) => p.slug === slug);
-      setProject(foundProject);
+      const foundIndex = projects.findIndex((p) => p.slug === slug);
+      if (foundIndex !== -1) {
+        setProject(projects[foundIndex]);
+        setCurrentIndex(foundIndex);
+        setNotFound(false);
+      } else {
+        setNotFound(true);
+      }
     }
   }, [slug]);
+
+  // Get previous and next projects
+  const prevProject = currentIndex > 0 ? projects[currentIndex - 1] : null;
+  const nextProject = currentIndex < projects.length - 1 ? projects[currentIndex + 1] : null;
 
   // Auto-scroll the screenshot image
   const handleImageClick = () => {
@@ -119,7 +131,47 @@ export default function ProjectDetail() {
     setImageError(prev => ({ ...prev, [idx]: true }));
   };
 
-  if (!router.isReady || !project) {
+  if (!router.isReady) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 flex items-center justify-center">
+        <motion.div
+          animate={{ opacity: [0.5, 1, 0.5] }}
+          transition={{ duration: 2, repeat: Infinity }}
+          className="text-center"
+        >
+          <div className="w-12 h-12 border-4 border-orange-200 border-t-orange-600 rounded-full animate-spin mx-auto mb-4"></div>
+          <p className="text-lg text-gray-600 dark:text-gray-400">Loading project...</p>
+        </motion.div>
+      </div>
+    );
+  }
+
+  if (notFound) {
+    return (
+      <>
+        <Head>
+          <title>Project Not Found | Celestial Web Solutions</title>
+          <meta name="robots" content="noindex, nofollow" />
+        </Head>
+        <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 flex items-center justify-center px-4">
+          <div className="text-center max-w-md">
+            <AlertCircle className="w-16 h-16 text-orange-500 mx-auto mb-4" />
+            <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-4" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>Project Not Found</h1>
+            <p className="text-gray-600 dark:text-gray-400 mb-8" style={{ fontFamily: 'Google Sans, sans-serif' }}>
+              The project you're looking for doesn't exist or may have been removed.
+            </p>
+            <Link href="/portfolio" className="inline-flex items-center gap-2 px-6 py-3 bg-orange-500 hover:bg-orange-600 text-white rounded-full font-semibold transition-colors" style={{ fontFamily: 'Google Sans, sans-serif' }}>
+              <ArrowLeft size={20} />
+              Back to Portfolio
+            </Link>
+          </div>
+        </div>
+        <WhatsAppButton />
+      </>
+    );
+  }
+
+  if (!project) {
     return (
       <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 flex items-center justify-center">
         <motion.div
@@ -237,6 +289,49 @@ export default function ProjectDetail() {
       </Head>
 
       <div className="min-h-screen bg-white dark:bg-gray-950">
+        {/* Fixed Side Navigation Arrows */}
+        {prevProject && (
+          <Link
+            href={`/portfolio/${prevProject.slug}`}
+            className="fixed left-4 top-1/2 -translate-y-1/2 z-50 group hidden lg:flex"
+          >
+            <div className="flex items-center gap-3">
+              <motion.div
+                className="w-12 h-12 rounded-full bg-white/90 dark:bg-gray-800/90 backdrop-blur-md shadow-lg ring-1 ring-gray-200 dark:ring-gray-700 flex items-center justify-center group-hover:bg-orange-500 group-hover:ring-orange-500 transition-all duration-300"
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <ArrowLeft className="w-5 h-5 text-gray-700 dark:text-gray-300 group-hover:text-white transition-colors" />
+              </motion.div>
+              <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-white/90 dark:bg-gray-800/90 backdrop-blur-md rounded-lg px-3 py-2 shadow-lg ring-1 ring-gray-200 dark:ring-gray-700 max-w-[150px]">
+                <p className="text-xs text-gray-500 dark:text-gray-400 font-medium">Previous</p>
+                <p className="text-sm text-gray-900 dark:text-white font-semibold truncate" style={{ fontFamily: 'Google Sans, sans-serif' }}>{prevProject.title}</p>
+              </div>
+            </div>
+          </Link>
+        )}
+
+        {nextProject && (
+          <Link
+            href={`/portfolio/${nextProject.slug}`}
+            className="fixed right-4 top-1/2 -translate-y-1/2 z-50 group hidden lg:flex"
+          >
+            <div className="flex items-center gap-3">
+              <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-white/90 dark:bg-gray-800/90 backdrop-blur-md rounded-lg px-3 py-2 shadow-lg ring-1 ring-gray-200 dark:ring-gray-700 max-w-[150px] text-right">
+                <p className="text-xs text-gray-500 dark:text-gray-400 font-medium">Next</p>
+                <p className="text-sm text-gray-900 dark:text-white font-semibold truncate" style={{ fontFamily: 'Google Sans, sans-serif' }}>{nextProject.title}</p>
+              </div>
+              <motion.div
+                className="w-12 h-12 rounded-full bg-white/90 dark:bg-gray-800/90 backdrop-blur-md shadow-lg ring-1 ring-gray-200 dark:ring-gray-700 flex items-center justify-center group-hover:bg-orange-500 group-hover:ring-orange-500 transition-all duration-300"
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <ArrowRight className="w-5 h-5 text-gray-700 dark:text-gray-300 group-hover:text-white transition-colors" />
+              </motion.div>
+            </div>
+          </Link>
+        )}
+
         {/* Hero Section - Full Width Image Background */}
         <section className="relative min-h-[70vh] flex items-end overflow-hidden">
           {/* Background Image */}
@@ -400,7 +495,7 @@ export default function ProjectDetail() {
               </motion.div>
 
               {/* Full Page Screenshot Section */}
-              {project.screenshot && (
+              {project.screenshot && !imageError['screenshot'] && (
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -430,6 +525,7 @@ export default function ProjectDetail() {
                             alt={`${project.title} - Full Page Screenshot`}
                             className="w-full h-auto object-contain object-top"
                             loading="eager"
+                            onError={() => handleImageError('screenshot')}
                           />
                         </div>
                       </div>
@@ -710,6 +806,97 @@ export default function ProjectDetail() {
           </div>
         </section>
 
+        {/* Related Projects Section */}
+        {(() => {
+          // Get related projects based on category, excluding current project
+          const relatedProjects = projects
+            .filter(p => p.slug !== project.slug)
+            .sort((a, b) => {
+              // Prioritize same category
+              const aMatch = a.category?.toLowerCase() === project.category?.toLowerCase() ? 1 : 0;
+              const bMatch = b.category?.toLowerCase() === project.category?.toLowerCase() ? 1 : 0;
+              return bMatch - aMatch;
+            })
+            .slice(0, 2);
+
+          if (relatedProjects.length === 0) return null;
+
+          return (
+            <section className="bg-gray-50 dark:bg-gray-900 py-16 lg:py-24">
+              <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6 }}
+                  viewport={{ once: true }}
+                  className="text-center mb-12"
+                >
+                  <h2
+                    className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-4"
+                    style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}
+                  >
+                    Related Projects
+                  </h2>
+                  <p
+                    className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto"
+                    style={{ fontFamily: 'Google Sans, sans-serif' }}
+                  >
+                    Explore more of our work in similar categories
+                  </p>
+                </motion.div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                  {relatedProjects.map((relatedProject, index) => (
+                    <motion.div
+                      key={relatedProject.slug}
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.5, delay: index * 0.1 }}
+                      viewport={{ once: true }}
+                    >
+                      <Link href={`/portfolio/${relatedProject.slug}`} className="group block">
+                        <div className="relative overflow-hidden rounded-2xl bg-white dark:bg-gray-800 shadow-lg ring-1 ring-gray-200 dark:ring-gray-700 transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+                          <div className="relative h-56 overflow-hidden">
+                            <Image
+                              src={relatedProject.image}
+                              alt={relatedProject.title}
+                              fill
+                              className="object-cover transition-transform duration-500 group-hover:scale-105"
+                            />
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                            {relatedProject.category && (
+                              <span className="absolute top-4 left-4 px-3 py-1 bg-orange-500/90 backdrop-blur-sm text-white text-xs font-semibold rounded-full">
+                                {relatedProject.category}
+                              </span>
+                            )}
+                          </div>
+                          <div className="p-6">
+                            <h3
+                              className="text-xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-orange-500 transition-colors"
+                              style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}
+                            >
+                              {relatedProject.title}
+                            </h3>
+                            <p
+                              className="text-gray-600 dark:text-gray-400 text-sm line-clamp-2 mb-4"
+                              style={{ fontFamily: 'Google Sans, sans-serif' }}
+                            >
+                              {relatedProject.description}
+                            </p>
+                            <div className="flex items-center text-orange-500 font-semibold text-sm">
+                              View Project <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                            </div>
+                          </div>
+                        </div>
+                      </Link>
+                    </motion.div>
+                  ))}
+                </div>
+              </div>
+            </section>
+          );
+        })()}
+
         {/* Full Width CTA Section */}
         <section className="relative py-24 overflow-hidden">
           {/* Background Image */}
@@ -753,6 +940,42 @@ export default function ProjectDetail() {
             </motion.div>
           </div>
         </section>
+
+        {/* Mobile Bottom Navigation for Prev/Next */}
+        {(prevProject || nextProject) && (
+          <section className="lg:hidden border-t border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-950">
+            <div className="grid grid-cols-2 divide-x divide-gray-200 dark:divide-gray-800">
+              {prevProject ? (
+                <Link
+                  href={`/portfolio/${prevProject.slug}`}
+                  className="flex items-center gap-3 p-4 hover:bg-gray-50 dark:hover:bg-gray-900 transition-colors"
+                >
+                  <ArrowLeft className="w-5 h-5 text-orange-500 flex-shrink-0" />
+                  <div className="min-w-0">
+                    <p className="text-xs text-gray-500 dark:text-gray-400">Previous</p>
+                    <p className="text-sm font-semibold text-gray-900 dark:text-white truncate" style={{ fontFamily: 'Google Sans, sans-serif' }}>{prevProject.title}</p>
+                  </div>
+                </Link>
+              ) : (
+                <div className="p-4"></div>
+              )}
+              {nextProject ? (
+                <Link
+                  href={`/portfolio/${nextProject.slug}`}
+                  className="flex items-center justify-end gap-3 p-4 hover:bg-gray-50 dark:hover:bg-gray-900 transition-colors text-right"
+                >
+                  <div className="min-w-0">
+                    <p className="text-xs text-gray-500 dark:text-gray-400">Next</p>
+                    <p className="text-sm font-semibold text-gray-900 dark:text-white truncate" style={{ fontFamily: 'Google Sans, sans-serif' }}>{nextProject.title}</p>
+                  </div>
+                  <ArrowRight className="w-5 h-5 text-orange-500 flex-shrink-0" />
+                </Link>
+              ) : (
+                <div className="p-4"></div>
+              )}
+            </div>
+          </section>
+        )}
 
         {/* WhatsApp Button */}
         <WhatsAppButton />

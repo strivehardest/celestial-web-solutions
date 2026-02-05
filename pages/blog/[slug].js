@@ -2985,6 +2985,7 @@ export default function BlogPost() {
   const { slug } = router.query;
   const [nav, setNav] = useState({ prev: null, next: null });
   const [article, setArticle] = useState(null);
+  const [notFound, setNotFound] = useState(false);
   const [copied, setCopied] = useState(false);
   const [relatedArticles, setRelatedArticles] = useState([]);
   const [headings, setHeadings] = useState([]);
@@ -2993,6 +2994,7 @@ export default function BlogPost() {
     if (slug && blogArticles[slug]) {
       const currentArticle = blogArticles[slug];
       setArticle(currentArticle);
+      setNotFound(false);
       
       // Extract headings from content
       try {
@@ -3047,35 +3049,59 @@ export default function BlogPost() {
           setNav({ prev: null, next: null });
         }
       }
-    } else {
+    } else if (slug) {
       setArticle(null);
+      setNotFound(true);
       setNav({ prev: null, next: null });
       setRelatedArticles([]);
     }
   }, [slug]);
 
-  if (!router.isReady || !article) {
+  if (!router.isReady) {
     return (
       <div className="min-h-screen bg-gray-50 dark:bg-gray-900 flex items-center justify-center">
         <div className="text-center">
+          <div className="w-12 h-12 border-4 border-orange-200 border-t-orange-600 rounded-full animate-spin mx-auto mb-4"></div>
           <p className="text-lg text-gray-600 dark:text-gray-400">Loading...</p>
         </div>
       </div>
     );
   }
 
-  if (!article) {
+  if (notFound || !article) {
     return (
-      <div className="min-h-screen bg-gray-50 dark:bg-gray-900 flex items-center justify-center">
-        <div className="text-center">
-          <h1 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
-            Article not found
-          </h1>
-          <Link href="/blog" className="text-orange-500 hover:text-orange-600">
-            Back to Blog
-          </Link>
+      <>
+        <Head>
+          <title>Article Not Found | Celestial Web Solutions Blog</title>
+          <meta name="robots" content="noindex, nofollow" />
+        </Head>
+        <div className="min-h-screen bg-gray-50 dark:bg-gray-900 flex items-center justify-center px-4">
+          <div className="text-center max-w-md">
+            <div className="w-16 h-16 mx-auto mb-6 text-orange-500">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <circle cx="12" cy="12" r="10"/>
+                <line x1="12" y1="8" x2="12" y2="12"/>
+                <line x1="12" y1="16" x2="12.01" y2="16"/>
+              </svg>
+            </div>
+            <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-4" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>
+              Article Not Found
+            </h1>
+            <p className="text-gray-600 dark:text-gray-400 mb-8" style={{ fontFamily: 'Google Sans, sans-serif' }}>
+              The article you're looking for doesn't exist or may have been moved.
+            </p>
+            <Link 
+              href="/blog" 
+              className="inline-flex items-center gap-2 px-6 py-3 bg-orange-500 hover:bg-orange-600 text-white rounded-full font-semibold transition-colors"
+              style={{ fontFamily: 'Google Sans, sans-serif' }}
+            >
+              <ArrowLeft size={20} />
+              Back to Blog
+            </Link>
+          </div>
         </div>
-      </div>
+        <WhatsAppButton />
+      </>
     );
   }
 
@@ -3374,78 +3400,130 @@ export default function BlogPost() {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8"
             >
-              {/* Table of Contents */}
+              {/* Table of Contents - Modern Design */}
               {headings.length > 0 && (
                 <motion.div 
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: 0.3, duration: 0.4 }}
-                  className="mb-12 p-8 bg-white/70 dark:bg-gray-900/50 backdrop-blur-xl border border-orange-200/50 dark:border-orange-800/30 rounded-3xl shadow-2xl hover:shadow-3xl transition-all duration-300"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.3, duration: 0.5 }}
+                  className="mb-12 relative overflow-hidden"
                 >
-                  <div className="flex items-center justify-between mb-6">
-                    <div className="flex items-center gap-3">
-                      <div className="relative">
-                        <div className="absolute inset-0 bg-gradient-to-r from-orange-500 to-red-500 rounded-xl blur-lg opacity-75"></div>
-                        <div className="relative p-3 bg-gradient-to-r from-orange-500 to-red-500 rounded-xl">
-                          <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
-                            <path d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zm0 6a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1v-2zm0 6a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1v-2z"/>
-                          </svg>
+                  {/* Gradient Background Card */}
+                  <div className="relative bg-gradient-to-br from-orange-50 via-white to-red-50 dark:from-gray-800/80 dark:via-gray-900/90 dark:to-gray-800/80 rounded-3xl border border-orange-100/50 dark:border-orange-900/30 shadow-xl">
+                    {/* Decorative Elements */}
+                    <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-orange-400/20 to-red-400/20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
+                    <div className="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-orange-400/15 to-yellow-400/15 rounded-full blur-2xl translate-y-1/2 -translate-x-1/2"></div>
+                    
+                    {/* Header */}
+                    <div className="relative px-6 py-5 border-b border-orange-100/50 dark:border-orange-900/20">
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center gap-4">
+                          <div className="relative">
+                            <div className="w-12 h-12 bg-gradient-to-br from-orange-500 via-orange-600 to-red-500 rounded-2xl flex items-center justify-center shadow-lg shadow-orange-500/30 transform rotate-3 hover:rotate-0 transition-transform duration-300">
+                              <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 10h16M4 14h16M4 18h16" />
+                              </svg>
+                            </div>
+                            <div className="absolute -bottom-1 -right-1 w-4 h-4 bg-green-500 rounded-full border-2 border-white dark:border-gray-800 flex items-center justify-center">
+                              <svg className="w-2.5 h-2.5 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                              </svg>
+                            </div>
+                          </div>
+                          <div>
+                            <h3 className="text-xl font-bold text-gray-900 dark:text-white" style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}>
+                              In This Article
+                            </h3>
+                            <p className="text-sm text-gray-500 dark:text-gray-400" style={{ fontFamily: "Google Sans, sans-serif" }}>
+                              Jump to any section
+                            </p>
+                          </div>
+                        </div>
+                        <div className="flex items-center gap-2 px-3 py-1.5 bg-orange-500/10 dark:bg-orange-500/20 rounded-full">
+                          <div className="w-2 h-2 bg-orange-500 rounded-full animate-pulse"></div>
+                          <span className="text-xs font-semibold text-orange-600 dark:text-orange-400" style={{ fontFamily: "Google Sans, sans-serif" }}>
+                            {headings.length} sections
+                          </span>
                         </div>
                       </div>
-                      <h3 className="text-2xl font-black text-gray-900 dark:text-white bg-clip-text" style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}>
-                        Quick Navigation
-                      </h3>
                     </div>
-                    <div className="hidden md:block text-xs font-semibold text-orange-600 dark:text-orange-400 bg-orange-100 dark:bg-orange-900/30 px-3 py-1 rounded-full">
-                      {headings.length} sections
+                    
+                    {/* Navigation Items */}
+                    <nav className="relative p-4">
+                      <div className="space-y-1">
+                        {headings.map((heading, idx) => (
+                          <motion.button
+                            key={heading.id}
+                            initial={{ opacity: 0, x: -20 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ delay: 0.4 + idx * 0.05 }}
+                            whileHover={{ scale: 1.01 }}
+                            whileTap={{ scale: 0.99 }}
+                            onClick={() => {
+                              const element = document.getElementById(heading.id);
+                              if (element) {
+                                element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                              }
+                            }}
+                            className={`w-full text-left group relative ${
+                              heading.level === 2 ? 'py-3 px-4' : 'py-2.5 px-4 ml-4'
+                            }`}
+                            style={{ fontFamily: "Google Sans, sans-serif" }}
+                          >
+                            {/* Hover Background */}
+                            <div className={`absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-all duration-300 ${
+                              heading.level === 2 
+                                ? 'bg-gradient-to-r from-orange-500/10 via-orange-400/5 to-transparent dark:from-orange-500/20 dark:via-orange-400/10 dark:to-transparent' 
+                                : 'bg-orange-100/50 dark:bg-orange-900/20'
+                            }`}></div>
+                            
+                            {/* Left Accent Line */}
+                            <div className={`absolute left-0 top-1/2 -translate-y-1/2 w-1 rounded-full transition-all duration-300 ${
+                              heading.level === 2 
+                                ? 'h-8 bg-gradient-to-b from-orange-500 to-red-500 opacity-0 group-hover:opacity-100' 
+                                : 'h-6 bg-orange-300 dark:bg-orange-700 opacity-0 group-hover:opacity-100'
+                            }`}></div>
+                            
+                            <div className="relative flex items-center gap-3">
+                              {heading.level === 2 ? (
+                                <div className="flex-shrink-0 w-8 h-8 rounded-lg bg-gradient-to-br from-orange-500 to-red-500 flex items-center justify-center shadow-md group-hover:shadow-lg group-hover:shadow-orange-500/30 transition-all duration-300">
+                                  <span className="text-white text-sm font-bold">{idx + 1}</span>
+                                </div>
+                              ) : (
+                                <div className="flex-shrink-0 w-6 h-6 rounded-md border-2 border-orange-300 dark:border-orange-600 flex items-center justify-center group-hover:border-orange-500 group-hover:bg-orange-500/10 transition-all duration-300">
+                                  <div className="w-2 h-2 rounded-full bg-orange-400 group-hover:bg-orange-500"></div>
+                                </div>
+                              )}
+                              
+                              <span className={`flex-grow transition-colors duration-300 ${
+                                heading.level === 2 
+                                  ? 'text-gray-800 dark:text-gray-200 font-semibold text-base group-hover:text-orange-600 dark:group-hover:text-orange-400' 
+                                  : 'text-gray-600 dark:text-gray-400 font-medium text-sm group-hover:text-orange-500 dark:group-hover:text-orange-300'
+                              }`}>
+                                {heading.text}
+                              </span>
+                              
+                              <svg className={`flex-shrink-0 text-orange-500 opacity-0 group-hover:opacity-100 transform translate-x-0 group-hover:translate-x-1 transition-all duration-300 ${
+                                heading.level === 2 ? 'w-5 h-5' : 'w-4 h-4'
+                              }`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                              </svg>
+                            </div>
+                          </motion.button>
+                        ))}
+                      </div>
+                    </nav>
+                    
+                    {/* Footer Tip */}
+                    <div className="relative px-6 py-3 border-t border-orange-100/50 dark:border-orange-900/20 bg-gradient-to-r from-orange-50/50 to-transparent dark:from-orange-900/10 dark:to-transparent">
+                      <p className="text-xs text-gray-500 dark:text-gray-400 flex items-center gap-2" style={{ fontFamily: "Google Sans, sans-serif" }}>
+                        <svg className="w-4 h-4 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        Click any section to jump directly
+                      </p>
                     </div>
                   </div>
-                  
-                  <nav className="space-y-1.5">
-                    {headings.map((heading, idx) => (
-                      <motion.button
-                        key={heading.id}
-                        initial={{ opacity: 0, x: -15 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: 0.35 + idx * 0.08 }}
-                        whileHover={{ x: 4 }}
-                        onClick={() => {
-                          const element = document.getElementById(heading.id);
-                          if (element) {
-                            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                          }
-                        }}
-                        className={`w-full text-left px-4 py-3 rounded-2xl transition-all duration-200 flex items-center gap-3 group font-medium ${
-                          heading.level === 2
-                            ? 'text-gray-900 dark:text-white text-base hover:bg-gradient-to-r hover:from-orange-100/80 hover:to-red-100/50 dark:hover:from-orange-900/40 dark:hover:to-red-900/30 hover:shadow-md'
-                            : 'text-gray-700 dark:text-gray-300 text-sm ml-2 hover:bg-orange-50/60 dark:hover:bg-orange-900/20 hover:shadow-sm'
-                        }`}
-                        style={{ fontFamily: "Google Sans, sans-serif" }}
-                      >
-                        {heading.level === 2 ? (
-                          // H2: Filled checkmark circle
-                          <div className="flex-shrink-0 w-6 h-6 rounded-full bg-gradient-to-r from-orange-500 to-red-500 flex items-center justify-center group-hover:shadow-lg group-hover:shadow-orange-500/50 transition-all">
-                            <svg className="w-3.5 h-3.5 text-white" fill="currentColor" viewBox="0 0 20 20">
-                              <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                            </svg>
-                          </div>
-                        ) : (
-                          // H3: Open checkmark outline
-                          <div className="flex-shrink-0 w-5 h-5 rounded border-2 border-orange-400 group-hover:border-orange-500 flex items-center justify-center transition-colors">
-                            <svg className="w-3 h-3 text-orange-400 group-hover:text-orange-500" fill="currentColor" viewBox="0 0 20 20">
-                              <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                            </svg>
-                          </div>
-                        )}
-                        <span className="flex-grow group-hover:translate-x-0.5 transition-transform">
-                          {heading.text}
-                        </span>
-                        <svg className="w-4 h-4 text-orange-500 opacity-0 group-hover:opacity-100 transition-all transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                        </svg>
-                      </motion.button>
-                    ))}
-                  </nav>
                 </motion.div>
               )}
 
@@ -3471,7 +3549,7 @@ export default function BlogPost() {
               
               {/* Google AdSense Ad */}
               <div className="my-8 flex justify-center">
-                <GoogleAd />
+                <GoogleAd key="ad-in-content" slot="5430272990" />
               </div>
 
               <div className="mt-8 flex flex-wrap gap-2">
@@ -3493,7 +3571,7 @@ export default function BlogPost() {
 
       {/* Google AdSense Ad */}
       <div className="py-8 bg-white dark:bg-gray-900 flex justify-center">
-        <GoogleAd />
+        <GoogleAd key="ad-below-content" slot="5430272990" />
       </div>
 
       {/* Related Articles Section */}

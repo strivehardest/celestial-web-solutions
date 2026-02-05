@@ -6,6 +6,7 @@ import { useEffect, useState, useMemo } from "react";
 import Link from "next/link";
 import PremiumCTA from '../components/PremiumCTA';
 import WhatsAppButton from '../components/WhatsAppButton';
+import GoogleAd from '../components/GoogleAd';
 import { image } from "framer-motion/client";
 
 // Blog articles data with external images - sorted by date (newest first)
@@ -283,6 +284,7 @@ export default function BlogPage() {
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [searchQuery, setSearchQuery] = useState("");
   const [debouncedSearch, setDebouncedSearch] = useState("");
+  const [visibleCount, setVisibleCount] = useState(9); // Show 9 articles initially
 
   // Sync search query from URL when coming from hashtag links
   useEffect(() => {
@@ -295,6 +297,11 @@ export default function BlogPage() {
       setDebouncedSearch(normalized);
     }
   }, [router.isReady, router.query]);
+
+  // Reset visible count when filters change
+  useEffect(() => {
+    setVisibleCount(9);
+  }, [selectedCategory, debouncedSearch]);
 
   // Get unique categories
   const categories = ["All", ...new Set(blogArticles.map(article => article.category))];
@@ -371,7 +378,15 @@ export default function BlogPage() {
     return featured;
   }, [debouncedSearch]);
   
-  const regularArticles = filteredArticles;
+  // All filtered articles (for counting)
+  const allFilteredArticles = filteredArticles;
+  
+  // Visible articles (limited by visibleCount)
+  const regularArticles = filteredArticles.slice(0, visibleCount);
+  
+  // Check if there are more articles to show
+  const hasMoreArticles = filteredArticles.length > visibleCount;
+  const remainingCount = filteredArticles.length - visibleCount;
   const popularTags = [...new Set(blogArticles.flatMap(a => a.tags || []))];
 
   // Clear search
@@ -605,6 +620,13 @@ export default function BlogPage() {
           </section>
         )}
 
+        {/* Google Ad - After Featured Articles */}
+        <section className="py-8 bg-white dark:bg-gray-900">
+          <div className="max-w-4xl mx-auto px-4">
+            <GoogleAd slot="5430272990" format="horizontal" />
+          </div>
+        </section>
+
         {/* All Articles */}
         {regularArticles.length > 0 ? (
           <section className="py-16">
@@ -637,7 +659,7 @@ export default function BlogPage() {
               </div>
               {debouncedSearch.trim() && (
                 <p className="text-gray-600 dark:text-gray-400 mb-8" style={{ fontFamily: "Google Sans, sans-serif" }}>
-                  Found {regularArticles.length} {regularArticles.length === 1 ? 'article' : 'articles'} matching "{debouncedSearch}"
+                  Found {allFilteredArticles.length} {allFilteredArticles.length === 1 ? 'article' : 'articles'} matching "{debouncedSearch}"
                 </p>
               )}
 
@@ -710,6 +732,50 @@ export default function BlogPage() {
                     </div>
                   </motion.article>
                 ))}
+              </div>
+
+              {/* View Older Posts Button */}
+              {hasMoreArticles && (
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  className="text-center mt-12"
+                >
+                  <button
+                    onClick={() => setVisibleCount(prev => prev + 9)}
+                    className="group inline-flex items-center gap-3 px-8 py-4 bg-white dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-700 rounded-full font-semibold text-gray-700 dark:text-gray-300 hover:border-orange-500 hover:text-orange-500 dark:hover:border-orange-400 dark:hover:text-orange-400 transition-all duration-300 shadow-lg hover:shadow-xl"
+                    style={{ fontFamily: "Google Sans, sans-serif" }}
+                  >
+                    <span>View Older Posts</span>
+                    <span className="px-2 py-1 bg-orange-100 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400 text-sm rounded-full">
+                      {remainingCount} more
+                    </span>
+                    <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                  </button>
+                </motion.div>
+              )}
+
+              {/* Show All / Show Less when all are visible */}
+              {!hasMoreArticles && allFilteredArticles.length > 9 && (
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="text-center mt-12"
+                >
+                  <button
+                    onClick={() => setVisibleCount(9)}
+                    className="inline-flex items-center gap-2 px-6 py-3 text-gray-600 dark:text-gray-400 hover:text-orange-500 dark:hover:text-orange-400 font-semibold transition-colors"
+                    style={{ fontFamily: "Google Sans, sans-serif" }}
+                  >
+                    <span>Show Less</span>
+                  </button>
+                </motion.div>
+              )}
+
+              {/* Google Ad - After Articles Grid */}
+              <div className="mt-12">
+                <GoogleAd slot="5430272990" format="auto" />
               </div>
             </div>
           </section>
