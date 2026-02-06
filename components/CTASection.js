@@ -2,15 +2,21 @@ import { motion } from 'framer-motion';
 import PremiumCTA from './PremiumCTA';
 
 export default function CTASection({ 
-  title = "Ready to Transform Your Business?",
-  subtitle = "Let's discuss your project and create something amazing together.",
-  primaryText = "Start Your Project",
-  secondaryText = "View Our Work",
+  title,
+  subtitle,
+  primaryText,
+  secondaryText,
   primaryHref = "/contact",
   secondaryHref = "/portfolio",
   showSecondary = true,
   variant = 'gradient', // 'gradient' | 'dark' | 'light'
 }) {
+  // Use English defaults
+  const displayTitle = title || 'Ready to Transform Your Business?';
+  const displaySubtitle = subtitle || 'Let us help you build a powerful online presence';
+  const displayPrimaryText = primaryText || 'Start Your Project';
+  const displaySecondaryText = secondaryText || 'View Portfolio';
+  
   const variants = {
     gradient: {
       bg: 'bg-gradient-to-r from-orange-500 via-orange-600 to-red-500',
@@ -70,14 +76,14 @@ export default function CTASection({
             className={`text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight ${style.title}`}
             style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}
           >
-            {title}
+            {displayTitle}
           </h2>
           
           <p
             className={`text-lg md:text-xl mb-12 max-w-2xl mx-auto leading-relaxed ${style.subtitle}`}
             style={{ fontFamily: 'Google Sans, sans-serif' }}
           >
-            {subtitle}
+            {displaySubtitle}
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6">
@@ -86,7 +92,7 @@ export default function CTASection({
               variant={variant === 'light' ? 'primary' : 'secondary'}
               size="large"
             >
-              {primaryText}
+              {displayPrimaryText}
             </PremiumCTA>
 
             {showSecondary && (
@@ -95,7 +101,7 @@ export default function CTASection({
                 variant={variant === 'light' ? 'outline' : 'primary'}
                 size="large"
               >
-                {secondaryText}
+                {displaySecondaryText}
               </PremiumCTA>
             )}
           </div>

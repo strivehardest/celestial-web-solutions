@@ -1,6 +1,38 @@
 // data/projects.js
 const projects = [
   {
+    title: "DL Auto Parts",
+    slug: "dl-auto-parts",
+    category: "e-commerce & retail",
+    client: "DL Auto Parts",
+    clientCountry: "Ghana",
+    description: "DL Auto Parts is a leading auto parts retailer in Ghana, offering a wide range of quality vehicle parts and accessories with secure online payment integration.",
+    image: "/png/projects/dl-auto-parts.png",
+    screenshot: "",
+    link: "https://dlautopartsgh.com/",
+    tech: ["WordPress", "PHP", "WooCommerce", "CSS3", "HTML5", "Paystack"],
+    techLogos: [
+      { name: "WordPress", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/wordpress/wordpress-plain.svg" },
+      { name: "PHP", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg" },
+      { name: "WooCommerce", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/woocommerce/woocommerce-original.svg" },
+      { name: "CSS3", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" },
+      { name: "HTML5", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" }
+    ],
+    startDate: "2026-02-01",
+    completionDate: "2026-02-06",
+    duration: "5 days",
+    features: [
+      "Auto Parts Catalog",
+      "Product Search & Filtering",
+      "WooCommerce E-Commerce",
+      "Paystack Payment Integration",
+      "Responsive Design",
+      "SEO Optimization",
+      "WhatsApp Integration",
+      "Professional Branding"
+    ]
+  },
+  {
     title: "Doeman Group",
     slug: "doeman-group",
     category: "business & corporate",

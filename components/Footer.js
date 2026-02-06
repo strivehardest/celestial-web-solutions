@@ -2,8 +2,9 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { Star, MapPin, Phone, Mail, ArrowRight, Award } from 'lucide-react';
+import { Star, MapPin, Phone, Mail, ArrowRight, Award, Clock } from 'lucide-react';
 import ThemeToggle from './ThemeToggle';
+import { useState, useEffect } from 'react';
 
 const whatsappNumber = '233530505031';
 const whatsappMessage = encodeURIComponent("Hi Celestial, I'm interested in your web development services.");
@@ -12,6 +13,38 @@ const whatsappLink = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
 export default function Footer({ darkMode, toggleDarkMode }) {
   const router = useRouter();
   const currentYear = new Date().getFullYear();
+
+  // Live time zones configuration
+  const timeZones = [
+    { city: 'Accra', country: 'Ghana', timezone: 'Africa/Accra', flagCode: 'gh' },
+    { city: 'Lagos', country: 'Nigeria', timezone: 'Africa/Lagos', flagCode: 'ng' },
+    { city: 'New York', country: 'USA', timezone: 'America/New_York', flagCode: 'us' },
+    { city: 'London', country: 'UK', timezone: 'Europe/London', flagCode: 'gb' },
+  ];
+
+  const [times, setTimes] = useState({});
+
+  useEffect(() => {
+    const updateTimes = () => {
+      const newTimes = {};
+      timeZones.forEach(({ city, timezone }) => {
+        const now = new Date();
+        const formatter = new Intl.DateTimeFormat('en-US', {
+          timeZone: timezone,
+          hour: '2-digit',
+          minute: '2-digit',
+          second: '2-digit',
+          hour12: false,
+        });
+        newTimes[city] = formatter.format(now);
+      });
+      setTimes(newTimes);
+    };
+
+    updateTimes();
+    const interval = setInterval(updateTimes, 1000);
+    return () => clearInterval(interval);
+  }, []);
 
   const googleRating = {
     score: 4.9,
@@ -77,7 +110,7 @@ export default function Footer({ darkMode, toggleDarkMode }) {
       { name: 'Home', href: '/' },
       { name: 'About Us', href: '/about' },
       { name: 'Best Web Designer in Accra', href: '/best-web-designer-in-accra' },
-      { name: 'Courses', href: '/courses' },
+      { name: 'Courses', href: '/courses', isNew: true },
       { name: 'Portfolio', href: '/portfolio' },
       { name: 'Blog', href: '/blog' },
       { name: 'Pricing', href: '/pricing' },
@@ -171,10 +204,10 @@ export default function Footer({ darkMode, toggleDarkMode }) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <div className="text-center mb-6">
             <h3 className="text-lg font-semibold mb-2" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>
-              Trusted By Ghana Businesses
+              Trusted by Ghana Businesses
             </h3>
             <p className="text-gray-400 text-sm" style={{ fontFamily: 'Google Sans, sans-serif' }}>
-              Verified reviews from satisfied clients
+              Verified reviews from happy clients
             </p>
           </div>
 
@@ -228,7 +261,7 @@ export default function Footer({ darkMode, toggleDarkMode }) {
                   </span>
                 </div>
                 <div className="text-sm text-gray-400" style={{ fontFamily: 'Google Sans, sans-serif' }}>
-                  {reviewPlatforms[1].reviews} on Clutch
+                  Top Rated on Clutch
                 </div>
               </div>
               <svg className="w-5 h-5 text-gray-600 group-hover:text-red-400 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -254,7 +287,7 @@ export default function Footer({ darkMode, toggleDarkMode }) {
                   </span>
                 </div>
                 <div className="text-sm text-gray-400" style={{ fontFamily: 'Google Sans, sans-serif' }}>
-                  {reviewPlatforms[2].reviews} on GoodFirms
+                  Top Rated on GoodFirms
                 </div>
               </div>
               <svg className="w-5 h-5 text-gray-600 group-hover:text-purple-400 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -289,7 +322,7 @@ export default function Footer({ darkMode, toggleDarkMode }) {
                   </span>
                 </div>
                 <div className="text-sm text-gray-400" style={{ fontFamily: 'Google Sans, sans-serif' }}>
-                  {reviewPlatforms[3].reviews} on Trustpilot
+                  Excellent on Trustpilot
                 </div>
               </div>
               <svg className="w-5 h-5 text-gray-600 group-hover:text-green-400 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -381,9 +414,9 @@ export default function Footer({ darkMode, toggleDarkMode }) {
                     style={{ fontFamily: 'Google Sans, sans-serif' }}
                   >
                     {link.name}
-                    {link.name === 'Courses' && (
+                    {link.isNew && (
                       <span className="bg-red-500 text-white text-[9px] font-bold px-1.5 py-0.5 rounded animate-pulse">
-                        New
+                        NEW
                       </span>
                     )}
                   </Link>
@@ -420,6 +453,37 @@ export default function Footer({ darkMode, toggleDarkMode }) {
               Schedule a Call
               <ArrowRight size={16} />
             </Link>
+          </div>
+        </div>
+      </div>
+
+      {/* Live Time Zones Section */}
+      <div className="border-t border-gray-800 bg-gray-900/50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+          <div className="flex flex-wrap justify-center items-center gap-6 md:gap-12">
+            {timeZones.map(({ city, country, flagCode }) => (
+              <div key={city} className="flex items-center gap-3 group">
+                <img 
+                  src={`https://flagcdn.com/w40/${flagCode}.png`}
+                  srcSet={`https://flagcdn.com/w80/${flagCode}.png 2x`}
+                  width="32"
+                  height="24"
+                  alt={`${country} flag`}
+                  className="rounded shadow-sm"
+                />
+                <div className="flex flex-col">
+                  <span className="text-xs text-gray-500 uppercase tracking-wider" style={{ fontFamily: 'Google Sans, sans-serif' }}>
+                    {city}, {country}
+                  </span>
+                  <span 
+                    className="text-xl md:text-2xl font-mono text-white tracking-wider group-hover:text-orange-400 transition-colors"
+                    style={{ fontFamily: 'JetBrains Mono, monospace' }}
+                  >
+                    {times[city] || '--:--:--'}
+                  </span>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </div>
@@ -471,8 +535,8 @@ export default function Footer({ darkMode, toggleDarkMode }) {
               ))}
             </div>
             
-            {/* Theme Toggle - Below Social Links */}
-            <div className="pt-2">
+            {/* Theme Toggle */}
+            <div className="flex items-center gap-4 pt-2">
               <ThemeToggle darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
             </div>
           </div>
