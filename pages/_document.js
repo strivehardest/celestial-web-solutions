@@ -17,6 +17,12 @@ export default function Document() {
           rel="stylesheet" 
         />
         
+        {/* JetBrains Mono for clock display */}
+        <link 
+          href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" 
+          rel="stylesheet" 
+        />
+        
         {/* Google Sans with font-display swap and async loading */}
         <link 
           href="https://fonts.cdnfonts.com/css/google-sans?display=swap" 

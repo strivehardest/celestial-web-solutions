@@ -35,13 +35,18 @@ const happyClients = [
   {
     name: "My Space Furniture",
     src: "/png/projects/myspace.png",
-  }
-  ,{
+  },
+  {
     name: "Valyd",
     src: "/png/projects/valyd.png",
   },
-  { name: "Doeman",
+  {
+    name: "Doeman",
     src: "/png/projects/doeman.jpeg",
+  },
+  {
+    name: "DL Auto Parts",
+    src: "/png/projects/dl-auto-parts.png",
   }
 ];
 
@@ -51,8 +56,9 @@ const happyClients = [
  *  - clients: array
  *  - speed: number (seconds per loop)
  *  - cardWidth: tailwind width class
+ *  - trustedByLabel: translated text for "Trusted by"
  */
-function HappyClients({ clients = [], speed = 28, cardWidth = "w-48" }) {
+function HappyClients({ clients = [], speed = 28, cardWidth = "w-48", trustedByLabel = "Trusted by" }) {
   return (
     <section className="py-12 bg-gradient-to-r from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 background">
       <div className="max-w-7xl mx-auto px-4">
@@ -63,7 +69,7 @@ function HappyClients({ clients = [], speed = 28, cardWidth = "w-48" }) {
           className="text-2xl md:text-3xl font-bold text-center mb-6 bg-gradient-to-r from-orange-600 to-orange-500 bg-clip-text text-transparent"
           style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}
         >
-          Trusted by
+          {trustedByLabel}
         </motion.h3>
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 md:gap-8 justify-items-center items-center">
           {clients.map((client, idx) => (
@@ -97,10 +103,10 @@ export default function AboutUs() {
   const [isDeleting, setIsDeleting] = useState(false);
   
   const typingPhrases = [
-    "Web Design",
-    "Development", 
-    "Digital Solutions",
-    "Branding"
+    'Web Design',
+    'Web Development', 
+    'Digital Solutions',
+    'Branding'
   ];
 
   useEffect(() => {
@@ -249,7 +255,7 @@ export default function AboutUs() {
                     className="flex items-center justify-center gap-2 border-2 border-gray-700 hover:border-orange-500/50 text-white px-8 py-4 rounded-xl font-semibold transition-all duration-300"
                     style={{ fontFamily: "Google Sans, sans-serif" }}
                   >
-                    View Our Work
+                    View Portfolio
                   </motion.button>
                 </Link>
               </div>
@@ -932,7 +938,7 @@ export default function AboutUs() {
         </section>
 
         {/* === HAPPY CLIENTS (inserted at the end as requested) === */}
-        <HappyClients clients={happyClients} speed={28} cardWidth="w-48" />
+        <HappyClients clients={happyClients} speed={28} cardWidth="w-48" trustedByLabel="Trusted by" />
 
         <WhatsAppButton />
       </div>

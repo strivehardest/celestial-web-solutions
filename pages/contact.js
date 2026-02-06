@@ -170,7 +170,7 @@ export default function Contact() {
                 className="text-4xl md:text-6xl font-bold text-white mb-6 drop-shadow-lg"
                 style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}
               >
-                Contact Celestial Web Solutions
+                Contact Us
               </h1>
               <div className="flex flex-col items-center justify-center mb-4 min-h-[2.5em]">
                 <span className="text-lg md:text-2xl text-white bg-black/20 px-4 py-2 rounded-full font-semibold tracking-wide shadow-lg animate-pulse" style={{ fontFamily: 'Google Sans, sans-serif', letterSpacing: '0.04em' }}>
@@ -303,7 +303,7 @@ export default function Contact() {
               
               <div className="mb-10 relative z-10">
                 <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-3" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>Send us a Message</h2>
-                <p className="text-gray-600 dark:text-gray-300 text-lg leading-relaxed" style={{ fontFamily: 'Google Sans, sans-serif' }}>Tell us about your project and we'll get back to you within 24 hours.</p>
+                <p className="text-gray-600 dark:text-gray-300 text-lg leading-relaxed" style={{ fontFamily: 'Google Sans, sans-serif' }}>Tell us about your project and we will get back to you within 24 hours.</p>
               </div>
 
               {submitStatus && (

@@ -7,7 +7,8 @@ const happyClients = [
   { name: "Mart Ban Logistics", src: "/png/projects/martb.png" },
   { name: "My Space Furniture", src: "/png/projects/myspace.png" },
   { name: "Valyd", src: "/png/projects/valyd.png" },
-  { name: "Doeman", src: "/png/projects/doeman.jpeg" }
+  { name: "Doeman", src: "/png/projects/doeman.jpeg" },
+  { name: "DL Auto Parts", src: "/png/projects/dl-auto-parts.png" }
 ];
 import { useState, useEffect, useCallback } from 'react';
 import { useRouter } from 'next/router';
@@ -31,16 +32,9 @@ const GlassButton = ({ children, href, variant = "light", className = "" }) => {
   };
 
   return (
-    <Link href={href}>
-      <motion.span
-        className={`${baseClasses} ${variants[variant]} ${className}`}
-        style={{ fontFamily: 'Google Sans, sans-serif' }}
-        whileHover={{ scale: 1.05, y: -2 }}
-        whileTap={{ scale: 0.95 }}
-      >
-        {children}
-        <ArrowRight size={18} />
-      </motion.span>
+    <Link href={href} className={`${baseClasses} ${variants[variant]} ${className}`} style={{ fontFamily: 'Google Sans, sans-serif' }}>
+      {children}
+      <ArrowRight size={18} />
     </Link>
   );
 };
@@ -303,6 +297,9 @@ const typingPhrases = [
 ];
 
 const IndexPage = () => {
+    // Get typing phrases (use default)
+    const localizedTypingPhrases = typingPhrases;
+    
     // Hero overlay portfolio state
     const [currentPortfolioIndex, setCurrentPortfolioIndex] = useState(0);
     useEffect(() => {
@@ -362,7 +359,8 @@ const IndexPage = () => {
 
   // Typing effect
   useEffect(() => {
-    const currentPhrase = typingPhrases[currentPhraseIndex];
+    const phrases = Array.isArray(localizedTypingPhrases) ? localizedTypingPhrases : typingPhrases;
+    const currentPhrase = phrases[currentPhraseIndex];
     const typingSpeed = isDeleting ? 50 : 100;
     
     const timeout = setTimeout(() => {
@@ -378,7 +376,7 @@ const IndexPage = () => {
           setDisplayText(displayText.slice(0, -1));
         } else {
           setIsDeleting(false);
-          setCurrentPhraseIndex((prev) => (prev + 1) % typingPhrases.length);
+          setCurrentPhraseIndex((prev) => (prev + 1) % phrases.length);
         }
       }
     }, typingSpeed);
@@ -618,10 +616,10 @@ const IndexPage = () => {
                 transition={{ delay: 0.2, duration: 0.6 }}
               >
                 <span className="hidden sm:inline">Full Stack Development</span>
-                <span className="sm:hidden">Full Stack Dev</span>
+                <span className="sm:hidden">Full Stack Development</span>
                 <span className="animate-pulse">●</span>
                 <span className="hidden sm:inline">Available for Projects</span>
-                <span className="sm:hidden">Available</span>
+                <span className="sm:hidden">Available for Projects</span>
               </motion.div>
 
               <motion.h1
@@ -815,7 +813,7 @@ const IndexPage = () => {
               </h2>
               <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto text-lg"
                  style={{ fontFamily: 'Google Sans, sans-serif' }}>
-                Comprehensive digital solutions to transform your business presence
+                Comprehensive digital solutions for your business
               </p>
             </motion.div>
 

@@ -26,16 +26,9 @@ const GlassButton = ({ children, href, variant = "light" }) => {
   };
 
   return (
-    <Link href={href}>
-      <motion.span
-        className={`${baseClasses} ${variants[variant]}`}
-        style={{ fontFamily: 'Google Sans, sans-serif' }}
-        whileHover={{ scale: 1.05, y: -2 }}
-        whileTap={{ scale: 0.95 }}
-      >
-        {children}
-        <ArrowRight size={18} />
-      </motion.span>
+    <Link href={href} className={`${baseClasses} ${variants[variant]}`} style={{ fontFamily: 'Google Sans, sans-serif' }}>
+      {children}
+      <ArrowRight size={18} />
     </Link>
   );
 };
@@ -201,41 +194,8 @@ export default function Portfolio() {
     { name: "My Space Furniture", src: "/png/projects/myspace.png" },
     { name: "Valyd Homes", src: "/png/projects/valyd.png" },
     { name: "Doeman Group", src: "/png/projects/doeman.jpeg" },
+    { name: "DL Auto Parts", src: "/png/projects/dl-auto-parts.png" },
   ];
-      {/* Happy Clients Section - Grid like About Us */}
-      <section className="py-12 bg-gradient-to-r from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800">
-        <div className="max-w-7xl mx-auto px-4">
-          <motion.h3
-            initial={{ opacity: 0, y: 12 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-2xl md:text-3xl font-bold text-center mb-6 bg-gradient-to-r from-orange-600 to-orange-500 bg-clip-text text-transparent"
-            style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}
-          >
-            Trusted by
-          </motion.h3>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 md:gap-8 justify-items-center items-center">
-            {happyClients.map((client, idx) => (
-              <div key={`${client.name}-${idx}`} className="flex items-center justify-center w-full">
-                <img
-                  src={client.src}
-                  alt={client.name}
-                  className="h-16 sm:h-20 md:h-24 lg:h-32 w-auto max-w-[120px] sm:max-w-[160px] md:max-w-[200px] lg:max-w-[240px] object-contain mx-auto"
-                  loading="lazy"
-                  decoding="async"
-                  style={
-                    client.name === 'Elolo Agbleke'
-                      ? { maxHeight: '60px' }
-                      : client.name === 'Ghana Updates Online'
-                        ? { maxHeight: '80px' }
-                        : {}
-                  }
-                />
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
   return (
     <>
