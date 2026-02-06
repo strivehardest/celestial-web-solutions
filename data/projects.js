@@ -19,8 +19,8 @@ const projects = [
       { name: "HTML5", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" }
     ],
     startDate: "2026-02-01",
-    completionDate: "2026-02-06",
-    duration: "5 days",
+    completionDate: "In Progress",
+    duration: "In Progress",
     features: [
       "Auto Parts Catalog",
       "Product Search & Filtering",
