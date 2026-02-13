@@ -115,10 +115,10 @@ export default function PricingWithCalculator() {
   });
 
   const basePrices = {
-    starter: { monthly: 2500, yearly: 4000 },
-    professional: { monthly: 3500, yearly: 6000 },
-    ecommerce: { monthly: 4500, yearly: 10000 },
-    enterprise: { monthly: 8000, yearly: 20000 }
+    starter: { monthly: 2500, yearly: 4500 },
+    professional: { monthly: 3500, yearly: 8500 },
+    ecommerce: { monthly: 4500, yearly: 16500 },
+    enterprise: { monthly: 8000, yearly: 28000 }
   };
 
   const addOnPrices = {
@@ -151,7 +151,7 @@ export default function PricingWithCalculator() {
       description: "Perfect for small businesses and startups",
       icon: Globe,
       popular: false,
-      price: { monthly: 2500, yearly: 4000 },
+      price: { monthly: 2500, yearly: 4500 },
       originalPrice: { monthly: 3500, yearly: 5000 },
       features: {
         monthly: [
@@ -203,7 +203,7 @@ export default function PricingWithCalculator() {
       description: "Ideal for growing businesses",
       icon: Rocket,
       popular: true,
-      price: { monthly: 3500, yearly: 6000 },
+      price: { monthly: 3500, yearly: 8500 },
       originalPrice: { monthly: 4500, yearly: 7500 },
       features: {
         monthly: [
@@ -263,7 +263,7 @@ export default function PricingWithCalculator() {
       description: "Complete online store solution",
       icon: ShoppingCart,
       popular: false,
-      price: { monthly: 4500, yearly: 10000 },
+      price: { monthly: 4500, yearly: 16500 },
       originalPrice: { monthly: 6000, yearly: 12000 },
       features: {
         monthly: [
@@ -327,7 +327,7 @@ export default function PricingWithCalculator() {
       description: "Custom solutions for large businesses",
       icon: Crown,
       popular: false,
-      price: { monthly: 8000, yearly: 20000 },
+      price: { monthly: 8000, yearly: 28000 },
       features: {
         monthly: [
           "Custom WordPress Application",
@@ -496,6 +496,13 @@ export default function PricingWithCalculator() {
               <span className="text-lg md:text-2xl text-white bg-black/20 px-4 py-2 rounded-full font-semibold tracking-wide shadow-lg animate-pulse" style={{ fontFamily: 'Google Sans, sans-serif', letterSpacing: '0.04em' }}>
                 {displayText}<span className="animate-pulse">|</span>
               </span>
+            </div>
+            {/* CMS vs Full Stack Description */}
+            <div className="bg-orange-50 rounded-lg p-4 mb-6 shadow-md text-gray-700">
+              <h2 className="text-lg font-bold mb-2">CMS vs Full Stack Websites</h2>
+              <p>
+                A CMS (Content Management System) website uses platforms like WordPress to easily manage content, offering quick setup and user-friendly editing. Full stack websites are custom-built using modern frameworks (like React, Node.js), providing greater flexibility, advanced features, and tailored solutions for complex business needs.
+              </p>
             </div>
             <p className="text-xl text-orange-100 max-w-3xl mx-auto leading-relaxed mb-8" style={{ fontFamily: "Google Sans, sans-serif" }}>
               Quality web development services at affordable rates. No hidden fees, flexible payment plans, and prices in Ghana Cedis.
