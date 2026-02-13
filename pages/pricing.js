@@ -499,8 +499,8 @@ export default function PricingWithCalculator() {
             </div>
             {/* CMS vs Full Stack Description */}
             <div className="bg-orange-50 rounded-lg p-4 mb-6 shadow-md text-gray-700">
-              <h2 className="text-lg font-bold mb-2">CMS vs Full Stack Websites</h2>
-              <p>
+              <h2 className="text-lg font-bold mb-2" style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}>CMS vs Full Stack Websites</h2>
+              <p style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}>
                 A CMS (Content Management System) website uses platforms like WordPress to easily manage content, offering quick setup and user-friendly editing. Full stack websites are custom-built using modern frameworks (like React, Node.js), providing greater flexibility, advanced features, and tailored solutions for complex business needs.
               </p>
             </div>
