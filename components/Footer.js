@@ -540,6 +540,14 @@ export default function Footer({ darkMode, toggleDarkMode }) {
               <ThemeToggle darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
             </div>
           </div>
+          
+          {/* DMCA Badge - Bottom Centered */}
+          <div className="flex justify-center pt-4">
+            <a href="//www.dmca.com/Protection/Status.aspx?ID=a2cdeca7-613e-4377-a477-855d263ffc77" title="DMCA.com Protection Status" className="dmca-badge"> 
+              <img src="https://images.dmca.com/Badges/dmca_protected_sml_120a.png?ID=a2cdeca7-613e-4377-a477-855d263ffc77" alt="DMCA.com Protection Status" />
+            </a>
+          </div>
+          <script src="https://images.dmca.com/Badges/DMCABadgeHelper.min.js"></script>
         </div>
       </div>
     </footer>
