@@ -46,8 +46,8 @@ export default function ScheduleCall() {
               Prefer to contact us directly?
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-4">
-              <a href="tel:+233245671832" className="flex items-center justify-center text-white bg-orange-500 hover:bg-orange-600 font-bold py-2 px-4 rounded-xl transition-all text-sm" style={{ fontFamily: 'Google Sans, sans-serif' }}>Call</a>
-              <a href="https://wa.me/233530505031" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center text-white bg-green-500 hover:bg-green-600 font-bold py-2 px-4 rounded-xl transition-all text-sm" style={{ fontFamily: 'Google Sans, sans-serif' }}>WhatsApp</a>
+              <a href="tel:+233530505031" className="flex items-center justify-center text-white bg-orange-500 hover:bg-orange-600 font-bold py-2 px-4 rounded-xl transition-all text-sm" style={{ fontFamily: 'Google Sans, sans-serif' }}>Call</a>
+              <a href="https://wa.me/233245709341" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center text-white bg-green-500 hover:bg-green-600 font-bold py-2 px-4 rounded-xl transition-all text-sm" style={{ fontFamily: 'Google Sans, sans-serif' }}>WhatsApp</a>
               <a href="mailto:info@celestialwebsolutions.net" className="flex items-center justify-center text-white bg-red-500 hover:bg-red-600 font-bold py-2 px-4 rounded-xl transition-all text-sm" style={{ fontFamily: 'Google Sans, sans-serif' }}>Email</a>
             </div>
           </div>

@@ -23,8 +23,8 @@ const typingPhrases = [
   'Pay securely via Paystack',
   'Pay with Fidelity Bank Transfer',
   'Fast, Secure, Trusted Payments',
-  'Contact: +233 24 567 1832',
-  'Chat on WhatsApp: +233 53 050 5031',
+  'Contact: +233 53 050 5031',
+  'Chat on WhatsApp: +233 245 709 341',
   'info@celestialwebsolutions.net',
 ];
 
@@ -80,10 +80,22 @@ export default function PaymentPage() {
       icon: Smartphone,
       color: "from-yellow-400 to-yellow-500",
       details: {
-        number: "705992",
+        number: "705992", 
         name: "Celestial Web Solutions"
       },
       logo: "/mtn-momo-logo.png"
+    },
+    {
+      id: 1,
+      title: "MTN Mobile Money",
+      subtitle: "Pay instantly with MTN MoMo",
+      icon: Smartphone,
+      color: "from-yellow-400 to-yellow-500",
+      details: {
+        number: "435991",
+        name: "Celestial Web Solutions"
+      },
+      logo: "/mtn-momo-logo.png"  
     },
     {
       id: 2,
@@ -322,10 +334,10 @@ export default function PaymentPage() {
             Call or WhatsApp us for instant support on your payment or service confirmation.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <PremiumCTA href="tel:+233245671832" size="default" variant="outline">
-              Call +233 24 567 1832
+            <PremiumCTA href="tel:+233530505031" size="default" variant="outline">
+              Call +233 53 050 5031
             </PremiumCTA>
-            <PremiumCTA href="https://wa.me/233530505031" size="default" variant="outline" target="_blank" rel="noopener noreferrer">
+            <PremiumCTA href="https://wa.me/233245709341" size="default" variant="outline" target="_blank" rel="noopener noreferrer">
               Chat on WhatsApp
             </PremiumCTA>
           </div>

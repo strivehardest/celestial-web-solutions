@@ -344,8 +344,8 @@ We encourage you to review this privacy policy periodically to stay informed abo
 
 Primary Contact:
 • Email: info@celestialwebsolutions.net
-• Phone: +233 245 671 832
-• WhatsApp: +233 530 505 031
+• Phone: +233 530 505 031
+• WhatsApp: +233 245 709 341
 
 Physical Address:
 • Celestial Web Solutions, 235 Agblor Link, Keta, Ghana
@@ -572,7 +572,7 @@ We take privacy seriously and are committed to addressing your concerns promptly
                   Email: info@celestialwebsolutions.net
                 </p>
                 <p style={{ fontFamily: "Google Sans, sans-serif" }}>
-                  Phone: +233 245 671 832
+                  Phone: +233 530 505 031
                 </p>
                 <p style={{ fontFamily: "Google Sans, sans-serif" }}>
                   Address: 235 Agblor Link, Keta, Ghana

@@ -8,8 +8,8 @@ import WhatsAppButton from '../components/WhatsAppButton';
 import PremiumCTA from '../components/PremiumCTA';
 
 const typingPhrases = [
-  'Call us: +233 24 567 1832',
-  'WhatsApp us: +233 53 050 5031',
+  'Call us: +233 53 050 5031',
+  'WhatsApp us: +233 245 709 341',
   'Email: info@celestialwebsolutions.net',
   'Located in Keta & Accra, Ghana',
   'Free Consultation Available',
@@ -212,7 +212,7 @@ export default function Contact() {
                     </div>
                   </div>
                   <h3 className="font-bold text-gray-900 dark:text-white mb-2 text-lg" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>Phone</h3>
-                  <p className="text-gray-600 dark:text-gray-300 font-medium" style={{ fontFamily: 'Google Sans, sans-serif' }}>+233 24 567 1832</p>
+                  <p className="text-gray-600 dark:text-gray-300 font-medium" style={{ fontFamily: 'Google Sans, sans-serif' }}>+233 53 050 5031</p>
                 </motion.div>
 
                 {/* WhatsApp */}
@@ -228,7 +228,7 @@ export default function Contact() {
                     </div>
                   </div>
                   <h3 className="font-bold text-gray-900 dark:text-white mb-2 text-lg" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>WhatsApp</h3>
-                  <p className="text-gray-600 dark:text-gray-300 font-medium" style={{ fontFamily: 'Google Sans, sans-serif' }}>+233 53 050 5031</p>
+                  <p className="text-gray-600 dark:text-gray-300 font-medium" style={{ fontFamily: 'Google Sans, sans-serif' }}>+233 245 709 341</p>
                 </motion.div>
 
                 {/* Email */}
@@ -368,7 +368,7 @@ export default function Contact() {
                       onChange={handleInputChange}
                       className="w-full px-5 py-3 border-2 border-gray-200 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-2xl focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-all duration-300"
                       style={{ fontFamily: 'Google Sans, sans-serif' }}
-                      placeholder="+233 24 567 1832"
+                      placeholder="+233 50 505 031"
                     />
                   </div>
                 </div>
@@ -460,7 +460,7 @@ export default function Contact() {
                 <p className="text-sm text-gray-600 dark:text-gray-300 mb-4 font-medium" style={{ fontFamily: 'Google Sans, sans-serif' }}>Prefer to contact us directly?</p>
                 <div className="grid grid-cols-3 gap-3">
                   <motion.a 
-                    href="tel:+233245671832" 
+                    href="tel:+233530505031" 
                     whileHover={{ scale: 1.05 }}
                     className="flex items-center justify-center text-white bg-orange-500 hover:bg-orange-600 font-bold py-2 px-3 rounded-xl transition-all text-sm"
                     style={{ fontFamily: 'Google Sans, sans-serif' }}
@@ -469,7 +469,7 @@ export default function Contact() {
                   </motion.a>
                   
                   <motion.a 
-                    href="https://wa.me/233530505031" 
+                    href="https://wa.me/233245709341" 
                     whileHover={{ scale: 1.05 }}
                     className="flex items-center justify-center text-white bg-green-500 hover:bg-green-600 font-bold py-2 px-3 rounded-xl transition-all text-sm"
                     style={{ fontFamily: 'Google Sans, sans-serif' }}

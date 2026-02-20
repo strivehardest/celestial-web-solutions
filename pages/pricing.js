@@ -22,7 +22,7 @@ const typingPhrases = [
   'E-Commerce Website Pricing',
   'Custom Web App Quotes',
   'Flexible Payment Plans',
-  'Contact us: +233 24 567 1832',
+  'Contact us: +233 53 050 5031',
   'Email: info@celestialwebsolutions.net',
 ];
 
@@ -423,7 +423,7 @@ export default function PricingWithCalculator() {
     const ghsPrice = `₵${new Intl.NumberFormat('en-GH', { minimumFractionDigits: 0, maximumFractionDigits: 0 }).format(priceInGHS)}`;
     const message = `Hi Celestial Web Solutions! I'm interested in your ${planName} package priced at ${formattedPrice} (${ghsPrice} GHS). Can you provide more details?`;
     const encodedMessage = encodeURIComponent(message);
-    return `https://wa.me/233530505031?text=${encodedMessage}`;
+    return `https://wa.me/233245709341?text=${encodedMessage}`;
   };
 
   const getCalculatorWhatsAppLink = () => {
@@ -432,7 +432,7 @@ export default function PricingWithCalculator() {
     const ghsPrice = `₵${new Intl.NumberFormat('en-GH', { minimumFractionDigits: 0, maximumFractionDigits: 0 }).format(total)}`;
     const message = `Hi! I calculated a custom quote using your calculator: ${formattedPrice} (${ghsPrice} GHS). Can we discuss this package?`;
     const encodedMessage = encodeURIComponent(message);
-    return `https://wa.me/233530505031?text=${encodedMessage}`;
+    return `https://wa.me/233245709341?text=${encodedMessage}`;
   };
 
   // Typing effect logic

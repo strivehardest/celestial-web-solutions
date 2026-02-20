@@ -158,7 +158,7 @@ const blogArticles = {
             </ul>
           </div>
 
-          <p class="text-lg text-gray-800 dark:text-gray-200"><strong>Contact:</strong> +233 245 671 832</p>
+          <p class="text-lg text-gray-800 dark:text-gray-200"><strong>Contact:</strong> +233 530 505 031</p>
           <p class="text-lg text-gray-800 dark:text-gray-200"><strong>Location:</strong> Accra, Ghana</p>
           <p class="text-lg text-gray-800 dark:text-gray-200"><strong>Services:</strong> Web Design, E-Commerce Development, SEO Services, Web Development, Digital Marketing, IT Support, Web Hosting</p>
           <p class="text-lg text-gray-800 dark:text-gray-200"><strong>Notable Clients:</strong> Small to large businesses across Ghana, NGOs, educational institutions, and e-commerce stores</p>
@@ -356,7 +356,7 @@ const blogArticles = {
         <div class="space-y-6">
           <h2 class="text-3xl font-bold text-gray-900 dark:text-white">Conclusion</h2>
           <p class="text-lg text-gray-800 dark:text-gray-200">Choosing the right web designer in Accra is crucial for your business success in 2025. While all the agencies listed offer quality services, Celestial Web Solutions stands out for its unbeatable combination of affordability, speed, quality, and customer support. Whether you're a startup, SME, or established business, having a professionally designed website is essential for reaching your target audience and growing your revenue.</p>
-          <p class="text-lg text-gray-800 dark:text-gray-200"><strong>Ready to launch your website?</strong> Contact Celestial Web Solutions at +233 245 671 832 for a free consultation and quote. Let's bring your vision to life with a stunning, high-performing website that drives results!</p>
+          <p class="text-lg text-gray-800 dark:text-gray-200"><strong>Ready to launch your website?</strong> Contact Celestial Web Solutions at +233 530 505 031 for a free consultation and quote. Let's bring your vision to life with a stunning, high-performing website that drives results!</p>
           <div class="mt-8 pt-6 border-t border-gray-300 dark:border-gray-700">
             <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-4">External Resources</h3>
             <ul class="space-y-2 text-gray-800 dark:text-gray-200">
@@ -2563,7 +2563,7 @@ const blogArticles = {
         <div class="bg-orange-500 text-white p-6 rounded-xl mt-6">
           <h3 class="text-2xl font-bold mb-4">Need Expert Advice?</h3>
           <p class="text-lg mb-4">At Celestial Web Solutions, we're experienced in both WordPress and custom development. We'll honestly assess your needs and recommend the best solution for your business—not the most expensive one.</p>
-          <p class="text-lg font-semibold"> Call us today at +233 245 671 832 for a free consultation!</p>
+          <p class="text-lg font-semibold"> Call us today at +233 530 505 031 for a free consultation!</p>
         </div>
 
         <div class="mt-8 pt-6 border-t border-gray-300 dark:border-gray-700">
@@ -2744,7 +2744,7 @@ const blogArticles = {
               <li>Ensure CTAs are visible above the fold</li>
               <li>Add microinteractions (hover effects, animations)</li>
             </ul>
-            <p class="text-lg text-gray-800 dark:text-gray-200 mt-3"><strong>Example:</strong> "Call Us Now: +233 245 671 832" is better than "Contact"</p>
+            <p class="text-lg text-gray-800 dark:text-gray-200 mt-3"><strong>Example:</strong> "Call Us Now: +233 530 505 031" is better than "Contact"</p>
           </div>
 
           <div class="bg-orange-50 dark:bg-orange-900/20 p-6 rounded-xl">
@@ -2959,7 +2959,7 @@ const blogArticles = {
         <div class="bg-orange-500 text-white p-6 rounded-xl mt-6">
           <h3 class="text-2xl font-bold mb-4">Need Professional UI/UX Design?</h3>
           <p class="text-lg mb-4">At Celestial Web Solutions, we create user-centered designs that convert. Our team combines beautiful aesthetics with data-driven UX principles to build websites that your Ghanaian customers will love to use.</p>
-          <p class="text-lg font-semibold">Contact us today: +233 245 671 832</p>
+          <p class="text-lg font-semibold">Contact us today: +233 530 505 031</p>
         </div>
 
         <div class="mt-8 pt-6 border-t border-gray-300 dark:border-gray-700">

@@ -89,13 +89,13 @@ const SEOHead = () => {
             "url": "https://celestialwebsolutions.net",
             "logo": "https://celestialwebsolutions.net/logo.png",
             "image": "https://celestialwebsolutions.net/og-image.jpg",
-            "telephone": "+233-245671832",
+            "telephone": "+233-530-505-031",
             "email": "info@celestialwebsolutions.net",
             "areaServed": ["Accra", "Keta", "Ghana", "West Africa"],
             "priceRange": "GHC",
             "contactPoint": {
               "@type": "ContactPoint",
-              "telephone": "+233-245671832",
+              "telephone": "+233-530-505-031",
               "contactType": "Customer Service",
               "areaServed": "GH",
               "availableLanguage": "English"

@@ -405,7 +405,7 @@ We are committed to resolving any disputes fairly and professionally in accordan
                 </p>
                 <p className="flex items-center justify-center space-x-2" style={{ fontFamily: "Google Sans, sans-serif" }}>
                   <Phone size={18} />
-                  <span>Phone: +233 245 671 832</span>
+                  <span>Phone: +233 530 505 031</span>
                 </p>
                 <p className="flex items-center justify-center space-x-2" style={{ fontFamily: "Google Sans, sans-serif" }}>
                   <MapPin size={18} />

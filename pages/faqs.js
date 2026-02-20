@@ -339,7 +339,7 @@ export default function FAQs() {
                 <PremiumCTA href="/contact" size="large" variant="secondary">
                   Contact Us
                 </PremiumCTA>
-                <PremiumCTA href="tel:+233245671832" size="large" variant="primary">
+                <PremiumCTA href="tel:+233530505031" size="large" variant="primary">
                   <span>Call Us</span>
                 </PremiumCTA>
               </div>
