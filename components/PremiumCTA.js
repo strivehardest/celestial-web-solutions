@@ -1,4 +1,5 @@
 import { useState, useRef } from 'react';
+import { useRouter } from 'next/router';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 
@@ -12,6 +13,7 @@ export default function PremiumCTA({
   external = false,
   ...props 
 }) {
+  const router = useRouter();
   const [isHovered, setIsHovered] = useState(false);
   const buttonRef = useRef(null);
   const [ripplePosition, setRipplePosition] = useState({ x: 0, y: 0 });
@@ -33,6 +35,11 @@ export default function PremiumCTA({
     });
     setShowRipple(true);
     setTimeout(() => setShowRipple(false), 600);
+
+    // Navigate for internal links (unless it's a submit button or external link)
+    if (props.type !== 'submit' && !external && href && !props.onClick) {
+      router.push(href);
+    }
   };
 
   const sizeClasses = {
@@ -123,9 +130,7 @@ export default function PremiumCTA({
     );
   }
   return (
-    <Link href={href}>
-      <ButtonContent />
-    </Link>
+    <ButtonContent />
   );
 }
 
