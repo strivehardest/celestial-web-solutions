@@ -313,8 +313,8 @@ const IndexPage = () => {
   
   // Hero video state
   const heroVideos = [
-    '/videos/hero1.mp4', 
-    '/videos/hero2.mp4', 
+    '/videos/hero11.mp4', 
+    '/videos/hero12.mp4', 
   ];
   const [showFirstVideo, setShowFirstVideo] = useState(true);
   const videoRef = useCallback((node) => {
