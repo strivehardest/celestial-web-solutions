@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 import { useState, useEffect } from "react";
@@ -6,8 +6,6 @@ import Head from "next/head";
 import { ArrowRight, ExternalLink } from "lucide-react";
 import projects from "../data/projects";
 import WhatsAppButton from '../components/WhatsAppButton';
-
-const typingPhrases = ['Websites', 'E-Commerce Stores', 'Web Applications', 'Digital Platforms', 'Business Solutions'];
 
 const GlassButton = ({ children, href, variant = "light" }) => {
   const baseClasses = "inline-flex items-center gap-2 px-6 py-3 rounded-full font-semibold transition-all duration-300 backdrop-blur-md border cursor-pointer";
@@ -39,33 +37,130 @@ const CountryFlag = ({ country }) => {
   );
 };
 
-export default function Portfolio() {
-  const [filter, setFilter] = useState("all");
-  const [displayText, setDisplayText] = useState('');
-  const [phraseIndex, setPhraseIndex] = useState(0);
-  const [isDeleting, setIsDeleting] = useState(false);
+// ✅ NEW: Clean hover-reveal portfolio card
+const PortfolioCard = ({ project, image, index }) => {
+  const [hovered, setHovered] = useState(false);
 
-  useEffect(() => {
-    const currentPhrase = typingPhrases[phraseIndex];
-    const typingSpeed = isDeleting ? 50 : 100;
-    const timeout = setTimeout(() => {
-      if (!isDeleting) {
-        if (displayText.length < currentPhrase.length) {
-          setDisplayText(currentPhrase.slice(0, displayText.length + 1));
-        } else {
-          setTimeout(() => setIsDeleting(true), 2000);
-        }
-      } else {
-        if (displayText.length > 0) {
-          setDisplayText(currentPhrase.slice(0, displayText.length - 1));
-        } else {
-          setIsDeleting(false);
-          setPhraseIndex((prev) => (prev + 1) % typingPhrases.length);
-        }
-      }
-    }, typingSpeed);
-    return () => clearTimeout(timeout);
-  }, [displayText, isDeleting, phraseIndex]);
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ delay: index * 0.06, duration: 0.5 }}
+    >
+      <Link href={`/portfolio/${project.slug}`}>
+        <div
+          className="relative overflow-hidden rounded-xl cursor-pointer group"
+          style={{ aspectRatio: '4/3' }}
+          onMouseEnter={() => setHovered(true)}
+          onMouseLeave={() => setHovered(false)}
+        >
+          {/* Project Image */}
+          <Image
+            src={image}
+            alt={project.title}
+            fill
+            sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 33vw"
+            className="object-cover transition-transform duration-700 group-hover:scale-110"
+            priority={index < 6}
+          />
+
+          {/* In Progress Badge */}
+          {project.completionDate === "In Progress" && (
+            <div className="absolute top-3 left-3 z-20 px-2.5 py-1 bg-yellow-500 text-white text-[10px] font-bold rounded-full flex items-center gap-1 shadow-md">
+              <svg className="w-2.5 h-2.5" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M6 2v6l4 4-4 4v6h12v-6l-4-4 4-4V2H6zm10 14.5V20H8v-3.5l4-4 4 4zm-4-5l-4-4V4h8v3.5l-4 4z"/>
+              </svg>
+              In Progress
+            </div>
+          )}
+
+          {/* Hover Overlay */}
+          <AnimatePresence>
+            {hovered && (
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.25 }}
+                className="absolute inset-0 z-10 flex flex-col justify-end"
+                style={{
+                  background: 'linear-gradient(to top, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.5) 50%, rgba(0,0,0,0.1) 100%)'
+                }}
+              >
+                <motion.div
+                  initial={{ y: 16, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  exit={{ y: 10, opacity: 0 }}
+                  transition={{ duration: 0.3, delay: 0.05 }}
+                  className="p-5"
+                >
+                  {/* Country flag */}
+                  {project.clientCountry && (
+                    <div className="flex items-center gap-1.5 mb-2">
+                      <CountryFlag country={project.clientCountry} />
+                      <span className="text-white/60 text-xs" style={{ fontFamily: 'Google Sans, sans-serif' }}>
+                        {project.clientCountry}
+                      </span>
+                    </div>
+                  )}
+
+                  {/* Title */}
+                  <h3
+                    className="text-white text-lg font-bold leading-tight mb-3"
+                    style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}
+                  >
+                    {project.title}
+                  </h3>
+
+                  {/* View button */}
+                  <div className="flex items-center gap-2">
+                    <span
+                      className="inline-flex items-center gap-1.5 text-xs font-semibold text-white bg-orange-500 hover:bg-orange-600 px-3 py-1.5 rounded-full transition-colors"
+                      style={{ fontFamily: 'Google Sans, sans-serif' }}
+                    >
+                      View Project <ArrowRight size={12} />
+                    </span>
+                    {project.link && project.link !== "#" && project.completionDate !== "In Progress" && (
+                      <a
+                        href={project.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={(e) => e.stopPropagation()}
+                        className="inline-flex items-center gap-1 text-xs text-white/70 hover:text-white transition-colors"
+                        style={{ fontFamily: 'Google Sans, sans-serif' }}
+                      >
+                        <ExternalLink size={11} /> Live Site
+                      </a>
+                    )}
+                  </div>
+                </motion.div>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </div>
+      </Link>
+    </motion.div>
+  );
+};
+
+export default function Portfolio() {
+  const portfolioImages = {
+    'building-planner-designs': '/portfolio/desktop/building.png',
+    'celestial-shopping': '/portfolio/desktop/celestial-shopping.png',
+    'celestial-web-solutions': '/portfolio/desktop/celestial-web.png',
+    'dl-auto-parts': '/portfolio/desktop/dlautos.png',
+    'doeman-group': '/portfolio/desktop/doeman.jpeg',
+    'adbay-store': '/portfolio/desktop/adbay.png',
+    'elolo-agbleke-website': '/portfolio/desktop/elolo.png',
+    'finance-tracker': '/portfolio/desktop/finance.png',
+    'ghana-updates-online': '/portfolio/desktop/ghanaupdates.png',
+    'myspace-furniture': '/portfolio/desktop/myspace.png',
+    'valyd-homes': '/portfolio/desktop/valyd.png',
+    'personal-portfolio-website': '/portfolio/desktop/waliu.png',
+  };
+
+  const [filter, setFilter] = useState("all");
 
   const categories = [
     "all", "business & corporate", "e-commerce & retail", "portfolio & personal",
@@ -146,7 +241,7 @@ export default function Portfolio() {
           <div className="absolute inset-0">
             <video className="w-full h-full object-cover" src="/videos/hero6.mp4"
               autoPlay loop muted playsInline poster="/hero-bg.jpg" />
-            <div className="absolute inset-0 bg-gradient-to-r from-gray-900/95 via-gray-900/80 to-gray-900/60"></div>
+            <div className="absolute inset-0 bg-gradient-to-r from-gray-900/95 via-gray-900/80 to-gray-900/60" />
           </div>
 
           <div className="relative z-10 max-w-7xl mx-auto px-4 py-32">
@@ -168,7 +263,7 @@ export default function Portfolio() {
 
               <p className="text-xl text-gray-300 max-w-2xl leading-relaxed mb-4"
                 style={{ fontFamily: "Google Sans, sans-serif" }}>
-                From sleek corporate websites to powerful e-commerce platforms — explore how we've helped businesses across Ghana, the U.S., and beyond establish a powerful online presence. Every project tells a story of growth, creativity, and results.
+                From sleek corporate websites to powerful e-commerce platforms — explore how we've helped businesses across Ghana, the U.S., and beyond establish a powerful online presence.
               </p>
 
               <p className="text-base text-gray-200 max-w-2xl leading-relaxed mb-8"
@@ -190,112 +285,43 @@ export default function Portfolio() {
 
         {/* ── Filter + Grid ── */}
         <div className="max-w-7xl mx-auto px-4 py-12">
-          <div className="flex flex-wrap justify-center gap-3 mb-12">
+
+          {/* Category Filters */}
+          <div className="flex flex-wrap justify-center gap-2 mb-12">
             {categories.map((category) => (
               <motion.button key={category} onClick={() => setFilter(category)}
-                whileHover={{ scale: 1.05, y: -2 }} whileTap={{ scale: 0.95 }}
-                className={`px-4 py-2.5 rounded-xl font-semibold transition-all duration-300 text-sm ${
+                whileHover={{ scale: 1.05, y: -1 }} whileTap={{ scale: 0.95 }}
+                className={`px-4 py-2 rounded-full font-semibold transition-all duration-300 text-xs ${
                   filter === category
                     ? "bg-gradient-to-r from-orange-500 to-orange-600 text-white shadow-lg"
-                    : "bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-orange-50 dark:hover:bg-gray-700 border border-gray-200 dark:border-gray-700"
-                }`} style={{ fontFamily: "Google Sans, sans-serif" }}>
+                    : "bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-orange-50 dark:hover:bg-gray-700 border border-gray-200 dark:border-gray-700"
+                }`}
+                style={{ fontFamily: "Google Sans, sans-serif" }}>
                 {category.split(' ').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ')}
               </motion.button>
             ))}
           </div>
 
-          {/* Projects Grid */}
-          <div className="grid md:grid-cols-2 gap-8">
-            {filteredProjects.map((project, index) => (
-              <motion.div key={project.slug} initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}>
-                <Link href={`/portfolio/${project.slug}`}>
-                  <motion.div
-                    className="bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 group cursor-pointer border border-gray-100 dark:border-gray-700"
-                    whileHover={{ y: -5 }}>
-
-                    {/* Image */}
-                    <div className="relative h-64 overflow-hidden">
-                      <Image src={project.image} alt={project.title} fill
-                        sizes="(max-width: 768px) 100vw, 50vw"
-                        className="object-cover group-hover:scale-110 transition-transform duration-500"
-                        priority={index < 2} />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-
-                      {/* In Progress Badge */}
-                      {project.completionDate === "In Progress" && (
-                        <div className="absolute top-3 left-3 px-3 py-1 bg-yellow-500 text-white text-xs font-semibold rounded-full z-10 shadow-md flex items-center gap-1.5">
-                          <svg xmlns="http://www.w3.org/2000/svg" className="w-3 h-3" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M6 2v6l4 4-4 4v6h12v-6l-4-4 4-4V2H6zm10 14.5V20H8v-3.5l4-4 4 4zm-4-5l-4-4V4h8v3.5l-4 4z"/>
-                          </svg>
-                          In Progress
-                        </div>
-                      )}
-
-                      {/* View Project Hover Badge */}
-                      <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        <span className="bg-white text-orange-600 px-6 py-3 rounded-full font-semibold shadow-lg flex items-center gap-2">
-                          View Project <ArrowRight size={18} />
-                        </span>
-                      </div>
-                    </div>
-
-                    {/* Info */}
-                    <div className="p-6">
-                      <div className="flex items-center justify-between mb-3">
-                        <h3 className="text-2xl font-bold text-gray-900 dark:text-white group-hover:text-orange-500 dark:group-hover:text-orange-400 transition-colors"
-                          style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}>
-                          {project.title}
-                        </h3>
-                        {project.clientCountry && (
-                          <div className="flex items-center gap-2 text-xs text-gray-500 dark:text-gray-400">
-                            <CountryFlag country={project.clientCountry} />
-                            <span>{project.clientCountry}</span>
-                          </div>
-                        )}
-                      </div>
-
-                      <p className="text-gray-600 dark:text-gray-300 mb-4 line-clamp-2"
-                        style={{ fontFamily: "Google Sans, sans-serif" }}>
-                        {project.description}
-                      </p>
-
-                      {/* Tech Tags */}
-                      <div className="flex flex-wrap gap-2">
-                        {project.tech && project.tech.slice(0, 3).map((tech, idx) => (
-                          <span key={idx}
-                            className="text-xs px-3 py-1 bg-orange-100 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400 rounded-full font-medium"
-                            style={{ fontFamily: "Google Sans, sans-serif" }}>
-                            {tech}
-                          </span>
-                        ))}
-                        {project.tech && project.tech.length > 3 && (
-                          <span className="text-xs px-3 py-1 bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-400 rounded-full font-medium"
-                            style={{ fontFamily: "Google Sans, sans-serif" }}>
-                            +{project.tech.length - 3} more
-                          </span>
-                        )}
-                      </div>
-
-                      {/* Live Site Link */}
-                      {project.link && project.link !== "#" && project.completionDate !== "In Progress" && (
-                        <div className="mt-4 pt-4 border-t border-gray-100 dark:border-gray-700">
-                          <a href={project.link} target="_blank" rel="noopener noreferrer"
-                            onClick={(e) => e.stopPropagation()}
-                            className="inline-flex items-center gap-1.5 text-xs text-orange-500 hover:text-orange-600 font-semibold transition-colors"
-                            style={{ fontFamily: 'Google Sans, sans-serif' }}>
-                            <ExternalLink size={12} />
-                            Visit Live Site
-                          </a>
-                        </div>
-                      )}
-                    </div>
-                  </motion.div>
-                </Link>
-              </motion.div>
-            ))}
-          </div>
+          {/* ✅ NEW: 3-col desktop/tablet, 2-col mobile grid — no card details, hover to reveal */}
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={filter}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.3 }}
+              className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4"
+            >
+              {filteredProjects.map((project, index) => (
+                <PortfolioCard
+                  key={project.slug}
+                  project={project}
+                  image={portfolioImages[project.slug]}
+                  index={index}
+                />
+              ))}
+            </motion.div>
+          </AnimatePresence>
 
           {/* Empty State */}
           {filteredProjects.length === 0 && (
@@ -315,10 +341,10 @@ export default function Portfolio() {
                 Our Happy Clients
               </motion.h2>
               <p className="text-center text-gray-600 dark:text-gray-300 mb-8" style={{ fontFamily: "Google Sans, sans-serif" }}>
-                Trusted by businesses across Ghana and abroad. We pride ourselves on delivering exceptional web solutions that drive success.
+                Trusted by businesses across Ghana and abroad.
               </p>
             </div>
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 md:gap-8 justify-items-center items-center">
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 md:gap-8 justify-items-center items-center px-4">
               {happyClients.map((client, idx) => (
                 <div key={`${client.name}-${idx}`} className="flex flex-col items-center justify-center w-full">
                   <img src={client.src} alt={client.name} loading="lazy" decoding="async"
@@ -336,7 +362,7 @@ export default function Portfolio() {
             <div className="absolute inset-0">
               <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=90&w=2400&auto=format&fit=crop"
                 alt="CTA Background" className="w-full h-full object-cover" />
-              <div className="absolute inset-0 bg-gradient-to-r from-orange-600/95 via-orange-500/90 to-red-600/95"></div>
+              <div className="absolute inset-0 bg-gradient-to-r from-orange-600/95 via-orange-500/90 to-red-600/95" />
             </div>
 
             <div className="relative z-10 text-center px-4">
@@ -366,7 +392,7 @@ export default function Portfolio() {
           </motion.section>
         </div>
 
-        <div className="pb-20"></div>
+        <div className="pb-20" />
       </div>
       <WhatsAppButton />
     </>

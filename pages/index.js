@@ -312,24 +312,13 @@ const IndexPage = () => {
   const router = useRouter();
   
   // Hero video state
-  const heroVideos = [
-    '/videos/hero11.mp4', 
-    '/videos/hero12.mp4', 
-  ];
-  const [showFirstVideo, setShowFirstVideo] = useState(true);
+  const heroVideo = '/videos/hero12.mp4';
   const videoRef = useCallback((node) => {
     if (node) {
       node.currentTime = 0;
       node.play();
     }
-  }, [showFirstVideo]);
-  const handleVideoEnd = () => {
-    if (showFirstVideo) {
-      setShowFirstVideo(false);
-    } else {
-      setShowFirstVideo(true); // Loop back to the first video
-    }
-  };
+  }, []);
   
   // Typing effect state
   const [currentPhraseIndex, setCurrentPhraseIndex] = useState(0);
@@ -518,16 +507,13 @@ const IndexPage = () => {
           {/* Sequential Hero Videos */}
           <div className="absolute inset-0">
             <video
-              key={showFirstVideo ? 'video1' : 'video2'}
               ref={videoRef}
-              src={showFirstVideo ? heroVideos[0] : heroVideos[1]}
+              src={heroVideo}
               className="w-full h-full object-cover object-top"
               autoPlay
               muted
               playsInline
-              onEnded={handleVideoEnd}
             />
-            {/* Dark Overlay for text readability */}
             <div className="absolute inset-0 bg-black/70"></div>
           </div>
           

@@ -6,7 +6,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import Head from "next/head";
 import projects from "../../data/projects";
 import WhatsAppButton from '../../components/WhatsAppButton';
-import { ArrowRight, ArrowLeft, ExternalLink, Calendar, MapPin, User, Clock, Star, CheckCircle2, Code2, Layers, Rocket, Target, AlertCircle } from 'lucide-react';
+import { ArrowRight, ArrowLeft, ExternalLink, Calendar, MapPin, User, Clock, Star, CheckCircle2, Code2, Layers, Rocket, Target, AlertCircle, Monitor, Smartphone } from 'lucide-react';
 
 const GlassButton = ({ children, href, variant = 'light', className = '', external = false, onClick }) => {
   const baseStyles = "inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full font-semibold text-sm transition-all duration-300 backdrop-blur-md border";
@@ -22,6 +22,195 @@ const GlassButton = ({ children, href, variant = 'light', className = '', extern
     <Component {...props} className={`${baseStyles} ${variants[variant]} ${className}`} style={{ fontFamily: 'Google Sans, sans-serif' }}>
       {children}
     </Component>
+  );
+};
+
+// ✅ Desktop + Mobile Mockup Showcase
+const DeviceMockup = ({ project }) => {
+  const hasDesktop = project.desktopImage;
+  const hasMobile = project.mobileImage;
+
+  if (!hasDesktop && !hasMobile) return null;
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6, delay: 0.15 }}
+    >
+      <div className="flex items-center gap-3 mb-6">
+        <h2
+          className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white"
+          style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}
+        >
+          Device Preview
+        </h2>
+        <div className="flex items-center gap-2">
+          {hasDesktop && (
+            <span className="flex items-center gap-1 px-2.5 py-1 bg-orange-100 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400 text-xs font-semibold rounded-full">
+              <Monitor size={11} /> Desktop
+            </span>
+          )}
+          {hasMobile && (
+            <span className="flex items-center gap-1 px-2.5 py-1 bg-orange-100 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400 text-xs font-semibold rounded-full">
+              <Smartphone size={11} /> Mobile
+            </span>
+          )}
+        </div>
+      </div>
+
+      {/* Both desktop and mobile */}
+      {hasDesktop && hasMobile ? (
+        <div className="relative flex items-end gap-4">
+
+          {/* Desktop Mockup */}
+          <div className="flex-1 relative">
+            {/* Screen */}
+            <div className="relative rounded-t-xl overflow-hidden border-4 border-gray-800 dark:border-gray-600 bg-gray-800 shadow-2xl">
+              {/* Browser bar */}
+              <div className="bg-gray-800 dark:bg-gray-700 px-3 py-2 flex items-center gap-2">
+                <div className="flex gap-1.5">
+                  <div className="w-2.5 h-2.5 rounded-full bg-red-500" />
+                  <div className="w-2.5 h-2.5 rounded-full bg-yellow-500" />
+                  <div className="w-2.5 h-2.5 rounded-full bg-green-500" />
+                </div>
+                <div className="flex-1 bg-gray-700 dark:bg-gray-600 rounded-full h-4 mx-2 flex items-center px-2">
+                  <span className="text-gray-400 text-[9px] truncate">
+                    {project.link && project.link !== '#' ? project.link.replace('https://', '') : 'celestialwebsolutions.net'}
+                  </span>
+                </div>
+              </div>
+              {/* Screenshot */}
+              <div className="relative w-full" style={{ paddingBottom: '62.5%' }}>
+                <div className="absolute inset-0">
+                  <Image
+                    src={project.desktopImage}
+                    alt={`${project.title} - Desktop`}
+                    fill
+                    className="object-cover object-top"
+                    sizes="(max-width: 768px) 100vw, 70vw"
+                  />
+                </div>
+              </div>
+            </div>
+            {/* Stand */}
+            <div className="flex justify-center">
+              <div className="w-16 h-3 bg-gray-700 dark:bg-gray-600" />
+            </div>
+            <div className="flex justify-center">
+              <div className="w-28 h-1.5 bg-gray-600 dark:bg-gray-500 rounded-full" />
+            </div>
+            {/* Label */}
+            <div className="flex items-center justify-center gap-1.5 mt-3">
+              <Monitor size={14} className="text-gray-500" />
+              <span className="text-xs text-gray-500 font-medium" style={{ fontFamily: 'Google Sans, sans-serif' }}>Desktop</span>
+            </div>
+          </div>
+
+          {/* Mobile Mockup */}
+          <div className="w-28 sm:w-36 relative flex-shrink-0" style={{ marginBottom: '28px' }}>
+            {/* Phone frame */}
+            <div className="relative rounded-2xl overflow-hidden border-4 border-gray-800 dark:border-gray-600 bg-gray-800 shadow-2xl">
+              {/* Notch */}
+              <div className="bg-gray-800 dark:bg-gray-700 flex justify-center py-1.5">
+                <div className="w-12 h-2 bg-gray-900 rounded-full" />
+              </div>
+              {/* Screenshot */}
+              <div className="relative w-full" style={{ paddingBottom: '177%' }}>
+                <div className="absolute inset-0">
+                  <Image
+                    src={project.mobileImage}
+                    alt={`${project.title} - Mobile`}
+                    fill
+                    className="object-cover object-top"
+                    sizes="(max-width: 768px) 30vw, 15vw"
+                  />
+                </div>
+              </div>
+              {/* Home bar */}
+              <div className="bg-gray-800 dark:bg-gray-700 flex justify-center py-2">
+                <div className="w-10 h-1 bg-gray-500 rounded-full" />
+              </div>
+            </div>
+            {/* Label */}
+            <div className="flex items-center justify-center gap-1.5 mt-3">
+              <Smartphone size={13} className="text-gray-500" />
+              <span className="text-xs text-gray-500 font-medium" style={{ fontFamily: 'Google Sans, sans-serif' }}>Mobile</span>
+            </div>
+          </div>
+        </div>
+
+      ) : hasDesktop ? (
+        /* Desktop only */
+        <div className="relative max-w-2xl">
+          <div className="relative rounded-t-xl overflow-hidden border-4 border-gray-800 dark:border-gray-600 bg-gray-800 shadow-2xl">
+            <div className="bg-gray-800 dark:bg-gray-700 px-3 py-2 flex items-center gap-2">
+              <div className="flex gap-1.5">
+                <div className="w-2.5 h-2.5 rounded-full bg-red-500" />
+                <div className="w-2.5 h-2.5 rounded-full bg-yellow-500" />
+                <div className="w-2.5 h-2.5 rounded-full bg-green-500" />
+              </div>
+              <div className="flex-1 bg-gray-700 rounded-full h-4 mx-2 flex items-center px-2">
+                <span className="text-gray-400 text-[9px] truncate">
+                  {project.link && project.link !== '#' ? project.link.replace('https://', '') : 'celestialwebsolutions.net'}
+                </span>
+              </div>
+            </div>
+            <div className="relative w-full" style={{ paddingBottom: '62.5%' }}>
+              <div className="absolute inset-0">
+                <Image
+                  src={project.desktopImage}
+                  alt={`${project.title} - Desktop`}
+                  fill
+                  className="object-cover object-top"
+                  sizes="(max-width: 768px) 100vw, 60vw"
+                />
+              </div>
+            </div>
+          </div>
+          <div className="flex justify-center">
+            <div className="w-16 h-3 bg-gray-700" />
+          </div>
+          <div className="flex justify-center">
+            <div className="w-28 h-1.5 bg-gray-600 rounded-full" />
+          </div>
+          <div className="flex items-center justify-center gap-1.5 mt-3">
+            <Monitor size={14} className="text-gray-500" />
+            <span className="text-xs text-gray-500 font-medium" style={{ fontFamily: 'Google Sans, sans-serif' }}>Desktop</span>
+          </div>
+        </div>
+
+      ) : (
+        /* Mobile only */
+        <div className="flex justify-center">
+          <div className="w-48 sm:w-56">
+            <div className="relative rounded-3xl overflow-hidden border-4 border-gray-800 dark:border-gray-600 bg-gray-800 shadow-2xl">
+              <div className="bg-gray-800 dark:bg-gray-700 flex justify-center py-2">
+                <div className="w-16 h-2.5 bg-gray-900 rounded-full" />
+              </div>
+              <div className="relative w-full" style={{ paddingBottom: '177%' }}>
+                <div className="absolute inset-0">
+                  <Image
+                    src={project.mobileImage}
+                    alt={`${project.title} - Mobile`}
+                    fill
+                    className="object-cover object-top"
+                    sizes="(max-width: 768px) 50vw, 25vw"
+                  />
+                </div>
+              </div>
+              <div className="bg-gray-800 dark:bg-gray-700 flex justify-center py-2">
+                <div className="w-12 h-1 bg-gray-500 rounded-full" />
+              </div>
+            </div>
+            <div className="flex items-center justify-center gap-1.5 mt-3">
+              <Smartphone size={14} className="text-gray-500" />
+              <span className="text-xs text-gray-500 font-medium" style={{ fontFamily: 'Google Sans, sans-serif' }}>Mobile</span>
+            </div>
+          </div>
+        </div>
+      )}
+    </motion.div>
   );
 };
 
@@ -228,8 +417,21 @@ export default function ProjectDetail() {
         {/* ── Hero Section ── */}
         <section className="relative min-h-[70vh] flex items-end overflow-hidden">
           <div className="absolute inset-0">
-            <Image src={project.image} alt={project.title} fill className="object-cover" priority />
-            <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-black/20"></div>
+            <Image
+              src={project.desktopImage || project.image}
+              alt={project.title}
+              fill
+              className="object-cover hidden md:block"
+              priority
+            />
+            <Image
+              src={project.mobileImage || project.desktopImage || project.image}
+              alt={project.title}
+              fill
+              className="object-cover md:hidden"
+              priority
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-black/20" />
           </div>
 
           <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 pt-32">
@@ -244,7 +446,6 @@ export default function ProjectDetail() {
                   <span className="inline-block px-4 py-1.5 bg-orange-500/90 backdrop-blur-sm text-white text-xs font-semibold rounded-full mb-6">
                     {project.category}
                   </span>
-                  {/* In Progress Badge on hero */}
                   {project.completionDate === "In Progress" && (
                     <span className="inline-flex items-center gap-1.5 ml-2 px-4 py-1.5 bg-yellow-500/90 backdrop-blur-sm text-white text-xs font-semibold rounded-full mb-6">
                       <svg xmlns="http://www.w3.org/2000/svg" className="w-3 h-3" viewBox="0 0 24 24" fill="currentColor">
@@ -351,6 +552,9 @@ export default function ProjectDetail() {
                 className="rounded-2xl overflow-hidden shadow-2xl ring-1 ring-gray-200 dark:ring-gray-800">
                 <Image src={project.image} alt={project.title} width={1000} height={600} className="w-full h-auto object-cover" priority />
               </motion.div>
+
+              {/* ✅ Device Mockup Section — Desktop + Mobile */}
+              <DeviceMockup project={project} />
 
               {/* Full Page Screenshot */}
               {project.screenshot && !imageError['screenshot'] && (
@@ -585,7 +789,7 @@ export default function ProjectDetail() {
                           <div className="relative h-56 overflow-hidden">
                             <Image src={relatedProject.image} alt={relatedProject.title} fill
                               className="object-cover transition-transform duration-500 group-hover:scale-105" />
-                            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                             {relatedProject.category && (
                               <span className="absolute top-4 left-4 px-3 py-1 bg-orange-500/90 backdrop-blur-sm text-white text-xs font-semibold rounded-full">
                                 {relatedProject.category}
@@ -626,7 +830,7 @@ export default function ProjectDetail() {
           <div className="absolute inset-0">
             <Image src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=90&w=2400&auto=format&fit=crop"
               alt="Team collaboration" fill className="object-cover" />
-            <div className="absolute inset-0 bg-gradient-to-r from-orange-600/95 via-orange-500/90 to-red-500/95"></div>
+            <div className="absolute inset-0 bg-gradient-to-r from-orange-600/95 via-orange-500/90 to-red-500/95" />
           </div>
           <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} viewport={{ once: true }}>
@@ -656,7 +860,7 @@ export default function ProjectDetail() {
                     <p className="text-sm font-semibold text-gray-900 dark:text-white truncate" style={{ fontFamily: 'Google Sans, sans-serif' }}>{prevProject.title}</p>
                   </div>
                 </Link>
-              ) : <div className="p-4"></div>}
+              ) : <div className="p-4" />}
               {nextProject ? (
                 <Link href={`/portfolio/${nextProject.slug}`} className="flex items-center justify-end gap-3 p-4 hover:bg-gray-50 dark:hover:bg-gray-900 transition-colors text-right">
                   <div className="min-w-0">
@@ -665,7 +869,7 @@ export default function ProjectDetail() {
                   </div>
                   <ArrowRight className="w-5 h-5 text-orange-500 flex-shrink-0" />
                 </Link>
-              ) : <div className="p-4"></div>}
+              ) : <div className="p-4" />}
             </div>
           </section>
         )}
