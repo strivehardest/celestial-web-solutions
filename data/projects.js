@@ -186,13 +186,15 @@ const projects = [
     mobileImage: "/portfolio/mobile/elolo.png",
     screenshot: "/png/screenshots/elolo-full.png",
     link: "https://eloloagbleke.com",
-    tech: ["WordPress", "Node.js", "Next.js", "Framer Motion", "GitHub", "Tailwind CSS", "Vercel"],
+    tech: ["WordPress", "Node.js", "Next.js", "Framer Motion", "JavaScript", "GitHub", "Tailwind CSS", "Vercel"],
     techLogos: [
       { name: "Vercel", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vercel/vercel-original.svg" },
       { name: "Next.js", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" },
       { name: "React", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" },
+      { name: "Framer Motion", logo: "https://cdn.worldvectorlogo.com/logos/framer-motion.svg" },
+      { name: "Javascript", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" },
       { name: "Node.js", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" },
-      { name: "Tailwind CSS", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-plain.svg" }
+      { name: "Tailwind CSS", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg" }
     ],
     startDate: "2026-01-16",
     completionDate: "2026-01-30",
@@ -226,7 +228,7 @@ const projects = [
     techLogos: [
       { name: "Next.js", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" },
       { name: "React", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" },
-      { name: "Tailwind CSS", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-plain.svg" }
+      { name: "Tailwind CSS", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg" }
     ],
     startDate: "2025-12-01",
     completionDate: "In Progress",
@@ -254,11 +256,13 @@ const projects = [
     mobileImage: "/portfolio/mobile/valyd.png",
     screenshot: "",
     link: "https://valydhomes.com",
-    tech: ["Next.js", "React", "Tailwind CSS", "Framer Motion"],
+    tech: ["Next.js", "React", "Tailwind CSS", "Javascript", "Framer Motion"],
     techLogos: [
       { name: "Next.js", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" },
       { name: "React", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" },
-      { name: "Tailwind CSS", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-plain.svg" }
+      { name: "Tailwind CSS", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg" },
+      { name: "Framer Motion", logo: "https://cdn.worldvectorlogo.com/logos/framer-motion.svg" },
+      { name: "Javascript", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" }
     ],
     startDate: "2026-01-07",
     completionDate: "In Progress",
@@ -288,7 +292,7 @@ const projects = [
     techLogos: [
       { name: "Next.js", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" },
       { name: "React", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" },
-      { name: "Tailwind CSS", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-plain.svg" },
+      { name: "Tailwind CSS", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg" },
       { name: "Framer Motion", logo: "https://cdn.worldvectorlogo.com/logos/framer-motion.svg" },
       { name: "Django", logo: "https://cdn.worldvectorlogo.com/logos/django.svg" }
     ],
@@ -327,6 +331,7 @@ const projects = [
       { name: "HTML5", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" },
       { name: "CSS3", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" },
       { name: "Django", logo: "https://cdn.worldvectorlogo.com/logos/django.svg" },
+      { name: "GitHub", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" },
       { name: "Python", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" }
     ],
     startDate: "2025-11-06",
@@ -366,10 +371,12 @@ const projects = [
     mobileImage: "/portfolio/mobile/waliu.png",
     screenshot: "/png/screenshots/waliu-portfolio-full.png",
     link: "https://waliu-portfolio-sage.vercel.app",
-    tech: ["Next.js", "Tailwind CSS", "Framer Motion", "GitHub", "Vercel"],
+    tech: ["Next.js", "Tailwind CSS", "Framer Motion", "Javascript", "React", "GitHub", "Vercel"],
     techLogos: [
       { name: "Next.js", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" },
       { name: "Tailwind CSS", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg" },
+      { name: "React", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" },
+      { name: "Javascript", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" },
       { name: "Framer Motion", logo: "https://cdn.worldvectorlogo.com/logos/framer-motion.svg" },
       { name: "GitHub", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" },
       { name: "Vercel", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vercel/vercel-original.svg" }
@@ -400,12 +407,13 @@ const projects = [
     mobileImage: "/portfolio/mobile/celestial-web.png",
     screenshot: "/png/screenshots/celestial-full.png",
     link: "https://celestialwebsolutions.net",
-    tech: ["Next.js", "Tailwind CSS", "Vercel", "Paystack", "Node.js"],
+    tech: ["Next.js", "Tailwind CSS", "Vercel", "Paystack", "React", "Node.js"],
     techLogos: [
       { name: "Next.js", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" },
       { name: "Tailwind CSS", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg" },
-      {name: "React", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" },
+       { name: "React", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" },
       { name: "Vercel", logo: "https://www.svgrepo.com/show/354513/vercel-icon.svg" },
+      { name: "Javascript", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" },
       { name: "Node.js", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" }
     ],
     startDate: "2024-08-01",
