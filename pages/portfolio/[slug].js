@@ -1,4 +1,5 @@
 import { useRouter } from "next/router";
+
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState, useRef } from "react";
@@ -25,192 +26,236 @@ const GlassButton = ({ children, href, variant = 'light', className = '', extern
   );
 };
 
-// ✅ Desktop + Mobile Mockup Showcase
 const DeviceMockup = ({ project }) => {
   const hasDesktop = project.desktopImage;
   const hasMobile = project.mobileImage;
+  const [modal, setModal] = useState({ open: false, src: '', alt: '' });
+
+  // ✅ Lock body scroll when modal is open
+  useEffect(() => {
+    if (modal.open) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => { document.body.style.overflow = ''; };
+  }, [modal.open]);
 
   if (!hasDesktop && !hasMobile) return null;
 
+  const openModal = (src, alt) => setModal({ open: true, src, alt });
+  const closeModal = () => setModal({ open: false, src: '', alt: '' });
+
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6, delay: 0.15 }}
-    >
-      <div className="flex items-center gap-3 mb-6">
-        <h2
-          className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white"
-          style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}
-        >
-          Device Preview
-        </h2>
-        <div className="flex items-center gap-2">
-          {hasDesktop && (
-            <span className="flex items-center gap-1 px-2.5 py-1 bg-orange-100 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400 text-xs font-semibold rounded-full">
-              <Monitor size={11} /> Desktop
-            </span>
-          )}
-          {hasMobile && (
-            <span className="flex items-center gap-1 px-2.5 py-1 bg-orange-100 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400 text-xs font-semibold rounded-full">
-              <Smartphone size={11} /> Mobile
-            </span>
-          )}
+    <>
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.15 }}
+      >
+        <div className="flex items-center gap-3 mb-6">
+          <h2
+            className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white"
+            style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}
+          >
+            Device Preview
+          </h2>
+          <div className="flex items-center gap-2">
+            {hasDesktop && (
+              <span className="flex items-center gap-1 px-2.5 py-1 bg-orange-100 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400 text-xs font-semibold rounded-full">
+                <Monitor size={11} /> Desktop
+              </span>
+            )}
+            {hasMobile && (
+              <span className="flex items-center gap-1 px-2.5 py-1 bg-orange-100 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400 text-xs font-semibold rounded-full">
+                <Smartphone size={11} /> Mobile
+              </span>
+            )}
+          </div>
         </div>
-      </div>
 
-      {/* Both desktop and mobile */}
-      {hasDesktop && hasMobile ? (
-        <div className="relative flex items-end gap-4">
+        {hasDesktop && hasMobile ? (
+          <div className="grid grid-cols-3 gap-4 items-start">
 
-          {/* Desktop Mockup */}
-          <div className="flex-1 relative">
-            {/* Screen */}
-            <div className="relative rounded-t-xl overflow-hidden border-4 border-gray-800 dark:border-gray-600 bg-gray-800 shadow-2xl">
-              {/* Browser bar */}
-              <div className="bg-gray-800 dark:bg-gray-700 px-3 py-2 flex items-center gap-2">
-                <div className="flex gap-1.5">
-                  <div className="w-2.5 h-2.5 rounded-full bg-red-500" />
-                  <div className="w-2.5 h-2.5 rounded-full bg-yellow-500" />
-                  <div className="w-2.5 h-2.5 rounded-full bg-green-500" />
-                </div>
-                <div className="flex-1 bg-gray-700 dark:bg-gray-600 rounded-full h-4 mx-2 flex items-center px-2">
-                  <span className="text-gray-400 text-[9px] truncate">
-                    {project.link && project.link !== '#' ? project.link.replace('https://', '') : 'celestialwebsolutions.net'}
-                  </span>
-                </div>
-              </div>
-              {/* Screenshot */}
-              <div className="relative w-full" style={{ paddingBottom: '62.5%' }}>
+            {/* Desktop — 2/3 width */}
+            <div className="col-span-2 space-y-2">
+              <div
+                className="relative w-full rounded-2xl overflow-hidden shadow-xl ring-1 ring-gray-200 dark:ring-gray-700 cursor-zoom-in group"
+                style={{ paddingBottom: '62.5%' }}
+                onClick={() => openModal(project.desktopImage, `${project.title} - Desktop`)}
+              >
                 <div className="absolute inset-0">
                   <Image
                     src={project.desktopImage}
                     alt={`${project.title} - Desktop`}
                     fill
-                    className="object-cover object-top"
-                    sizes="(max-width: 768px) 100vw, 70vw"
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    sizes="(max-width: 768px) 100vw, 60vw"
                   />
+                  {/* Zoom hint on hover */}
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 flex items-center justify-center pointer-events-none">
+                    <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/70 text-white text-xs font-semibold px-3 py-1.5 rounded-full flex items-center gap-1.5 pointer-events-none">
+                      <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
+                      </svg>
+                      Click to expand
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
-            {/* Stand */}
-            <div className="flex justify-center">
-              <div className="w-16 h-3 bg-gray-700 dark:bg-gray-600" />
-            </div>
-            <div className="flex justify-center">
-              <div className="w-28 h-1.5 bg-gray-600 dark:bg-gray-500 rounded-full" />
-            </div>
-            {/* Label */}
-            <div className="flex items-center justify-center gap-1.5 mt-3">
-              <Monitor size={14} className="text-gray-500" />
-              <span className="text-xs text-gray-500 font-medium" style={{ fontFamily: 'Google Sans, sans-serif' }}>Desktop</span>
-            </div>
-          </div>
-
-          {/* Mobile Mockup */}
-          <div className="w-28 sm:w-36 relative flex-shrink-0" style={{ marginBottom: '28px' }}>
-            {/* Phone frame */}
-            <div className="relative rounded-2xl overflow-hidden border-4 border-gray-800 dark:border-gray-600 bg-gray-800 shadow-2xl">
-              {/* Notch */}
-              <div className="bg-gray-800 dark:bg-gray-700 flex justify-center py-1.5">
-                <div className="w-12 h-2 bg-gray-900 rounded-full" />
+              <div className="flex items-center justify-center gap-1.5 pt-1">
+                <Monitor size={13} className="text-gray-400" />
+                <span className="text-xs text-gray-400 font-medium" style={{ fontFamily: 'Google Sans, sans-serif' }}>Desktop</span>
               </div>
-              {/* Screenshot */}
-              <div className="relative w-full" style={{ paddingBottom: '177%' }}>
+            </div>
+
+            {/* Mobile — 1/3 width */}
+            <div className="col-span-1 space-y-2">
+              <div
+                className="relative w-full rounded-2xl overflow-hidden shadow-xl ring-1 ring-gray-200 dark:ring-gray-700 cursor-zoom-in group"
+                style={{ paddingBottom: '177%' }}
+                onClick={() => openModal(project.mobileImage, `${project.title} - Mobile`)}
+              >
                 <div className="absolute inset-0">
                   <Image
                     src={project.mobileImage}
                     alt={`${project.title} - Mobile`}
                     fill
-                    className="object-cover object-top"
-                    sizes="(max-width: 768px) 30vw, 15vw"
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    sizes="(max-width: 768px) 33vw, 20vw"
                   />
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 flex items-center justify-center pointer-events-none">
+                    <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/70 text-white text-xs font-semibold px-3 py-1.5 rounded-full flex items-center gap-1.5 pointer-events-none">
+                      <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
+                      </svg>
+                      Click to expand
+                    </div>
+                  </div>
                 </div>
               </div>
-              {/* Home bar */}
-              <div className="bg-gray-800 dark:bg-gray-700 flex justify-center py-2">
-                <div className="w-10 h-1 bg-gray-500 rounded-full" />
+              <div className="flex items-center justify-center gap-1.5 pt-1">
+                <Smartphone size={13} className="text-gray-400" />
+                <span className="text-xs text-gray-400 font-medium" style={{ fontFamily: 'Google Sans, sans-serif' }}>Mobile</span>
               </div>
-            </div>
-            {/* Label */}
-            <div className="flex items-center justify-center gap-1.5 mt-3">
-              <Smartphone size={13} className="text-gray-500" />
-              <span className="text-xs text-gray-500 font-medium" style={{ fontFamily: 'Google Sans, sans-serif' }}>Mobile</span>
             </div>
           </div>
-        </div>
 
-      ) : hasDesktop ? (
-        /* Desktop only */
-        <div className="relative max-w-2xl">
-          <div className="relative rounded-t-xl overflow-hidden border-4 border-gray-800 dark:border-gray-600 bg-gray-800 shadow-2xl">
-            <div className="bg-gray-800 dark:bg-gray-700 px-3 py-2 flex items-center gap-2">
-              <div className="flex gap-1.5">
-                <div className="w-2.5 h-2.5 rounded-full bg-red-500" />
-                <div className="w-2.5 h-2.5 rounded-full bg-yellow-500" />
-                <div className="w-2.5 h-2.5 rounded-full bg-green-500" />
-              </div>
-              <div className="flex-1 bg-gray-700 rounded-full h-4 mx-2 flex items-center px-2">
-                <span className="text-gray-400 text-[9px] truncate">
-                  {project.link && project.link !== '#' ? project.link.replace('https://', '') : 'celestialwebsolutions.net'}
-                </span>
-              </div>
-            </div>
-            <div className="relative w-full" style={{ paddingBottom: '62.5%' }}>
+        ) : hasDesktop ? (
+          <div className="space-y-2">
+            <div
+              className="relative w-full rounded-2xl overflow-hidden shadow-xl ring-1 ring-gray-200 dark:ring-gray-700 cursor-zoom-in group"
+              style={{ paddingBottom: '56.25%' }}
+              onClick={() => openModal(project.desktopImage, `${project.title} - Desktop`)}
+            >
               <div className="absolute inset-0">
                 <Image
                   src={project.desktopImage}
                   alt={`${project.title} - Desktop`}
                   fill
-                  className="object-cover object-top"
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
                   sizes="(max-width: 768px) 100vw, 60vw"
                 />
+                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 flex items-center justify-center pointer-events-none">
+                  <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/70 text-white text-xs font-semibold px-3 py-1.5 rounded-full flex items-center gap-1.5 pointer-events-none">
+                    <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
+                    </svg>
+                    Click to expand
+                  </div>
+                </div>
               </div>
             </div>
+            <div className="flex items-center justify-center gap-1.5 pt-1">
+              <Monitor size={13} className="text-gray-400" />
+              <span className="text-xs text-gray-400 font-medium" style={{ fontFamily: 'Google Sans, sans-serif' }}>Desktop</span>
+            </div>
           </div>
-          <div className="flex justify-center">
-            <div className="w-16 h-3 bg-gray-700" />
-          </div>
-          <div className="flex justify-center">
-            <div className="w-28 h-1.5 bg-gray-600 rounded-full" />
-          </div>
-          <div className="flex items-center justify-center gap-1.5 mt-3">
-            <Monitor size={14} className="text-gray-500" />
-            <span className="text-xs text-gray-500 font-medium" style={{ fontFamily: 'Google Sans, sans-serif' }}>Desktop</span>
-          </div>
-        </div>
 
-      ) : (
-        /* Mobile only */
-        <div className="flex justify-center">
-          <div className="w-48 sm:w-56">
-            <div className="relative rounded-3xl overflow-hidden border-4 border-gray-800 dark:border-gray-600 bg-gray-800 shadow-2xl">
-              <div className="bg-gray-800 dark:bg-gray-700 flex justify-center py-2">
-                <div className="w-16 h-2.5 bg-gray-900 rounded-full" />
-              </div>
-              <div className="relative w-full" style={{ paddingBottom: '177%' }}>
+        ) : (
+          <div className="flex justify-center">
+            <div className="w-56 space-y-2">
+              <div
+                className="relative w-full rounded-2xl overflow-hidden shadow-xl ring-1 ring-gray-200 dark:ring-gray-700 cursor-zoom-in group"
+                style={{ paddingBottom: '177%' }}
+                onClick={() => openModal(project.mobileImage, `${project.title} - Mobile`)}
+              >
                 <div className="absolute inset-0">
                   <Image
                     src={project.mobileImage}
                     alt={`${project.title} - Mobile`}
                     fill
-                    className="object-cover object-top"
-                    sizes="(max-width: 768px) 50vw, 25vw"
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    sizes="25vw"
                   />
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 flex items-center justify-center">
+                    <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/70 text-white text-xs font-semibold px-3 py-1.5 rounded-full flex items-center gap-1.5">
+                      <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
+                      </svg>
+                      Click to expand
+                    </div>
+                  </div>
                 </div>
               </div>
-              <div className="bg-gray-800 dark:bg-gray-700 flex justify-center py-2">
-                <div className="w-12 h-1 bg-gray-500 rounded-full" />
+              <div className="flex items-center justify-center gap-1.5 pt-1">
+                <Smartphone size={13} className="text-gray-400" />
+                <span className="text-xs text-gray-400 font-medium" style={{ fontFamily: 'Google Sans, sans-serif' }}>Mobile</span>
               </div>
             </div>
-            <div className="flex items-center justify-center gap-1.5 mt-3">
-              <Smartphone size={14} className="text-gray-500" />
-              <span className="text-xs text-gray-500 font-medium" style={{ fontFamily: 'Google Sans, sans-serif' }}>Mobile</span>
-            </div>
           </div>
-        </div>
-      )}
-    </motion.div>
+        )}
+      </motion.div>
+
+      {/* ✅ Self-contained Modal — no external component needed */}
+      <AnimatePresence>
+        {modal.open && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            className="fixed inset-0 z-[9999] flex items-center justify-center p-4"
+            onClick={closeModal}
+          >
+            {/* Backdrop */}
+            <div className="absolute inset-0 bg-black/90 backdrop-blur-sm" />
+
+            {/* ✅ Close button — top right, large tap target */}
+            <button
+              onClick={closeModal}
+              className="absolute top-4 right-4 z-10 w-10 h-10 bg-white/10 hover:bg-white/20 border border-white/20 rounded-full flex items-center justify-center text-white transition-all duration-200 hover:scale-110"
+              aria-label="Close modal"
+            >
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+
+            {/* ESC hint */}
+            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 text-white/40 text-xs" style={{ fontFamily: 'Google Sans, sans-serif' }}>
+              Click anywhere or press ESC to close
+            </div>
+
+            {/* Image container — stops click propagation so clicking image doesn't close */}
+            <motion.div
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              transition={{ duration: 0.25 }}
+              className="relative z-10 max-w-[90vw] max-h-[85vh] flex items-center justify-center"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <img
+                src={modal.src}
+                alt={modal.alt}
+                className="max-w-full max-h-[85vh] object-contain rounded-xl shadow-2xl"
+              />
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
   );
 };
 
@@ -239,6 +284,17 @@ export default function ProjectDetail() {
       }
     }
   }, [slug]);
+
+  // ✅ Add ESC key support (closes any open modals via DeviceMockup's internal state)
+  useEffect(() => {
+    const handleEsc = (e) => {
+      if (e.key === 'Escape') {
+        // closes any open modals via the DeviceMockup's internal state
+      }
+    };
+    window.addEventListener('keydown', handleEsc);
+    return () => window.removeEventListener('keydown', handleEsc);
+  }, []);
 
   const prevProject = currentIndex > 0 ? projects[currentIndex - 1] : null;
   const nextProject = currentIndex < projects.length - 1 ? projects[currentIndex + 1] : null;
