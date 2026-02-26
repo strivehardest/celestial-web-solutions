@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { CheckCircle, Award, Users, Code, TrendingUp } from 'lucide-react';
 import WhatsAppButton from '../components/WhatsAppButton';
 import Image from 'next/image';
+import TestimonialsSection from '../components/TestimonialsSection';
 
 const highlights = [
   'Pixel-perfect, responsive layouts for every device',
@@ -377,50 +378,7 @@ export default function BestWebDesignerInAccraPage() {
             </div>
 
             <div className="rounded-3xl border border-gray-200 dark:border-white/10 bg-white/85 dark:bg-white/5 backdrop-blur p-8 shadow-xl shadow-orange-500/10 space-y-6">
-              <div className="space-y-2">
-                <p className="text-sm uppercase tracking-[0.16em] text-orange-500 font-semibold" style={{ fontFamily: 'Google Sans, sans-serif' }}>Testimonials</p>
-                <h2 className="text-2xl sm:text-3xl font-display font-bold text-gray-900 dark:text-white">What Our Clients Say</h2>
-                <p className="text-base text-gray-700 dark:text-gray-200 max-w-3xl" style={{ fontFamily: 'Google Sans, sans-serif' }}>Real feedback from businesses we've helped succeed online in Accra and beyond.</p>
-              </div>
-
-              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                {testimonials.map((testimonial, idx) => (
-                  <div key={idx} className="rounded-2xl border border-gray-200 dark:border-white/10 bg-white/80 dark:bg-white/5 backdrop-blur p-6 shadow-lg hover:shadow-xl transition-all duration-300 flex flex-col h-full text-center">
-                    <div className="flex justify-center mb-4">
-                      <div className="relative w-20 h-20 rounded-full overflow-hidden border-3 border-orange-500 shadow-lg">
-                        <img
-                          src={testimonial.image}
-                          alt={testimonial.name}
-                          className="w-full h-full object-cover"
-                          onError={(e) => {
-                            e.target.style.display = 'none';
-                            e.target.nextSibling.style.display = 'flex';
-                          }}
-                        />
-                        <div className="hidden w-full h-full bg-gradient-to-br from-orange-400 to-orange-600 items-center justify-center text-white font-bold text-xl">
-                          {testimonial.name.charAt(0)}
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="mb-3">
-                      <p className="font-semibold text-gray-900 dark:text-white" style={{ fontFamily: 'Google Sans, sans-serif' }}>{testimonial.name}</p>
-                      <p className="text-xs text-orange-500 font-medium" style={{ fontFamily: 'Google Sans, sans-serif' }}>{testimonial.company}</p>
-                      <p className="text-xs text-gray-600 dark:text-gray-400" style={{ fontFamily: 'Google Sans, sans-serif' }}>{testimonial.role}</p>
-                    </div>
-                    
-                    <div className="flex gap-1 mb-3 justify-center">
-                      {Array.from({ length: testimonial.rating }).map((_, i) => (
-                        <span key={i} className="text-orange-400">★</span>
-                      ))}
-                    </div>
-                    
-                    <p className="text-sm text-gray-700 dark:text-gray-300 flex-grow italic" style={{ fontFamily: 'Google Sans, sans-serif' }}>
-                      "{testimonial.text}"
-                    </p>
-                  </div>
-                ))}
-              </div>
+              <TestimonialsSection />
             </div>
 
             <div className="rounded-3xl border border-gray-200 dark:border-white/10 bg-white/85 dark:bg-white/5 backdrop-blur p-8 shadow-xl shadow-orange-500/10 space-y-6">

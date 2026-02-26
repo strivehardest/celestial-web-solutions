@@ -1,3 +1,4 @@
+'use client';
 // Happy Clients data (same as About/Portfolio)
 const happyClients = [
   { name: "Building Planner Designs", src: "/png/projects/building.png" },
@@ -10,7 +11,9 @@ const happyClients = [
   { name: "Doeman", src: "/png/projects/doeman.jpeg" },
   { name: "DL Auto Parts", src: "/png/projects/dl-auto-parts.png" }
 ];
-import { useState, useEffect, useCallback } from 'react';
+
+import { useState, useEffect, useRef } from 'react';
+import TestimonialsSection from '../components/TestimonialsSection';
 import { useRouter } from 'next/router';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Code, Monitor, Search, ShoppingCart, ArrowRight, Zap, CheckCircle } from 'lucide-react';
@@ -52,8 +55,6 @@ const SEOHead = () => {
       <meta name="geo.region" content="GH" />
       <meta name="geo.placename" content="Accra, Ghana" />
       <meta name="geo.position" content="5.6037;-0.1870" />
-      
-      {/* Open Graph meta tags */}
       <meta property="og:title" content="Best Web Design Company in Ghana | Celestial Web Solutions"/>
       <meta property="og:description" content="Celestial Web Solutions is a leading web design company in Ghana providing professional website design, web development, e-commerce solutions, and SEO services for businesses." />
       <meta property="og:type" content="website" />
@@ -61,23 +62,12 @@ const SEOHead = () => {
       <meta property="og:image" content="https://celestialwebsolutions.net/og-image.jpg" />
       <meta property="og:site_name" content="Celestial Web Solutions" />
       <meta property="og:locale" content="en_GH" />
-      
-      {/* Twitter Card meta tags */}
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content="Best Web Design Company in Ghana | Celestial Web Solutions" />
       <meta name="twitter:description" content="Celestial Web Solutions is a leading web design company in Ghana providing professional website design, web development, e-commerce solutions, and SEO services for businesses." />
       <meta name="twitter:image" content="https://celestialwebsolutions.net/twitter-image.jpg" />
-      
-      {/* Additional SEO meta tags */}
       <meta name="theme-color" content="#FF6B00" />
-      <meta name="ICBM" content="5.6037, -0.1870" />
-      <meta name="language" content="en-GH" />
-      <meta name="country" content="GH" />
-      
       <link rel="canonical" href="https://celestialwebsolutions.net" />
-      <link rel="alternate" hrefLang="en-GH" href="https://celestialwebsolutions.net" />
-      
-      {/* Structured Data */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -87,19 +77,9 @@ const SEOHead = () => {
             "name": "Celestial Web Solutions",
             "description": "Celestial Web Solutions is a leading web design company in Ghana providing professional website design, web development, e-commerce solutions, and SEO services for businesses.",
             "url": "https://celestialwebsolutions.net",
-            "logo": "https://celestialwebsolutions.net/logo.png",
-            "image": "https://celestialwebsolutions.net/og-image.jpg",
             "telephone": "+233-530-505-031",
             "email": "info@celestialwebsolutions.net",
             "areaServed": ["Accra", "Keta", "Ghana", "West Africa"],
-            "priceRange": "GHC",
-            "contactPoint": {
-              "@type": "ContactPoint",
-              "telephone": "+233-530-505-031",
-              "contactType": "Customer Service",
-              "areaServed": "GH",
-              "availableLanguage": "English"
-            },
             "address": {
               "@type": "PostalAddress",
               "streetAddress": "235 Agblor Link, Keta",
@@ -107,49 +87,6 @@ const SEOHead = () => {
               "addressRegion": "Greater Accra",
               "postalCode": "DS 1742",
               "addressCountry": "GH"
-            },
-            "sameAs": [
-              "https://facebook.com/celestialwebsolutions",
-              "https://twitter.com/strivehardest",
-              "https://linkedin.com/in/aforlabi"
-            ],
-            "hasOfferCatalog": {
-              "@type": "OfferCatalog",
-              "name": "Web Services",
-              "itemListElement": [
-                {
-                  "@type": "Offer",
-                  "itemOffered": {
-                    "@type": "Service",
-                    "name": "Web Development",
-                    "description": "Custom web development services in Ghana"
-                  }
-                },
-                {
-                  "@type": "Offer",
-                  "itemOffered": {
-                    "@type": "Service",
-                    "name": "Web Design",
-                    "description": "Professional web design services in Accra and Ghana"
-                  }
-                },
-                {
-                  "@type": "Offer",
-                  "itemOffered": {
-                    "@type": "Service",
-                    "name": "E-Commerce Solutions",
-                    "description": "E-commerce development and online store creation in Ghana"
-                  }
-                },
-                {
-                  "@type": "Offer",
-                  "itemOffered": {
-                    "@type": "Service",
-                    "name": "SEO Optimization",
-                    "description": "SEO services and digital marketing in Ghana"
-                  }
-                }
-              ]
             }
           })
         }}
@@ -212,21 +149,10 @@ const techStackCategories = [
     description: "Complete e-commerce solutions with secure payment integrations",
     color: "from-purple-500 to-purple-600",
     items: [
-      {
-  name: 'WooCommerce', 
-  icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/woocommerce/woocommerce-original.svg' 
-},
-{ 
-  name: 'Shopify', 
-  icon: 'https://cdn.worldvectorlogo.com/logos/shopify.svg' 
-},
-{ name: 'Paystack', icon: 'https://website-v3-assets.s3.amazonaws.com/assets/img/hero/Paystack-mark-white-twitter.png' },
-{ 
-  name: 'Flutterwave', 
-  icon: 'https://play-lh.googleusercontent.com/qIVVU7H--GiVAPbvasD1kIdmiDaRroK3J5g5uYdd-O8XHlC_MwSro1JhZRe06l18FIc=w480-h960-rw' 
-}
-
-
+      { name: 'WooCommerce', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/woocommerce/woocommerce-original.svg' },
+      { name: 'Shopify', icon: 'https://cdn.worldvectorlogo.com/logos/shopify.svg' },
+      { name: 'Paystack', icon: 'https://website-v3-assets.s3.amazonaws.com/assets/img/hero/Paystack-mark-white-twitter.png' },
+      { name: 'Flutterwave', icon: 'https://play-lh.googleusercontent.com/qIVVU7H--GiVAPbvasD1kIdmiDaRroK3J5g5uYdd-O8XHlC_MwSro1JhZRe06l18FIc=w480-h960-rw' }
     ]
   },
   {
@@ -253,40 +179,6 @@ const techStackCategories = [
   }
 ];
 
-// Hero slideshow images - Featuring actual project screenshots
-const heroImages = [
-  {
-    image: '/png/screenshots/myspace-furniture-full.png',
-    title: 'My Space Furniture',
-    category: 'E-Commerce',
-    link: '/portfolio/myspace-furniture'
-  },
-  {
-    image: '/png/screenshots/ghanaupdates-full.png',
-    title: 'Ghana Updates Online',
-    category: 'News & Media',
-    link: '/portfolio/ghana-updates-online'
-  },
-  {
-    image: '/png/screenshots/elolo-full.png',
-    title: 'Elolo Agbleke Portfolio',
-    category: 'Personal Website',
-    link: '/portfolio/elolo-agbleke-website'
-  },
-  {
-    image: '/png/screenshots/finance-tracker-full.png',
-    title: 'Finance Tracker',
-    category: 'Web Application',
-    link: '/portfolio/finance-tracker'
-  },
-  {
-    image: '/png/screenshots/celestial-shopping.png',
-    title: 'Celestial Shopping',
-    category: 'E-Commerce',
-    link: '/portfolio/celestial-shopping'
-  }
-];
-
 // Typing effect phrases
 const typingPhrases = [
   'Websites',
@@ -296,30 +188,313 @@ const typingPhrases = [
   'Digital Solutions'
 ];
 
-const IndexPage = () => {
-    // Get typing phrases (use default)
-    const localizedTypingPhrases = typingPhrases;
-    
-    // Hero overlay portfolio state
-    const [currentPortfolioIndex, setCurrentPortfolioIndex] = useState(0);
-    useEffect(() => {
-      const interval = setInterval(() => {
-        setCurrentPortfolioIndex((prev) => (prev + 1) % heroImages.length);
-      }, 5000); // Change every 5 seconds
-      return () => clearInterval(interval);
-    }, []);
-  const [scrolled, setScrolled] = useState(false);
-  const router = useRouter();
-  
-  // Hero video state
-  const heroVideo = '/videos/hero12.mp4';
-  const videoRef = useCallback((node) => {
-    if (node) {
-      node.currentTime = 0;
-      node.play();
+// ─────────────────────────────────────────────
+// Portfolio data
+// ─────────────────────────────────────────────
+const portfolioItems = [
+  {
+    title: "My Space Furniture",
+    category: "Furniture E-Commerce",
+    description: "Modern furniture e-commerce with mattresses, sofas, chairs, tables, and home decor.",
+    tech: ["Next.js", "TypeScript", "Framer Motion", "Tailwind CSS"],
+    link: "/portfolio/myspace-furniture",
+    image: "/portfolio/desktop/myspace.png",
+    accent: "#f97316"
+  },
+  {
+    title: "Finance Tracker",
+    category: "Web Application",
+    description: "Personal finance tracking app with income, expense management and visual reporting.",
+    tech: ["Django", "Python", "HTML5", "CSS3"],
+    link: "/portfolio/finance-tracker",
+    image: "/portfolio/desktop/finance.png",
+    accent: "#3b82f6"
+  },
+  {
+    title: "Ghana Updates Online",
+    category: "News & Media",
+    description: "A leading Ghanaian news platform delivering real-time updates and editorial content.",
+    tech: ["WordPress", "Custom Theme", "SEO"],
+    link: "/portfolio/ghana-updates-online",
+    image: "/portfolio/desktop/ghanaupdates.png",
+    accent: "#10b981"
+  },
+  {
+    title: "Elolo Agbleke Portfolio",
+    category: "Personal Website",
+    description: "Sleek personal brand website for a tech leader and program manager.",
+    tech: ["Next.js", "Tailwind CSS", "Framer Motion"],
+    link: "/portfolio/elolo-agbleke-website",
+    image: "/portfolio/desktop/elolo.png",
+    accent: "#8b5cf6"
+  },
+  {
+    title: "Valyd",
+    category: "Real Estate",
+    description: "A real estate company website showcasing properties and services.",
+    tech: ["Next.js", "Tailwind CSS", "Framer Motion", "React"],
+    link: "/portfolio/valyd",
+    image: "/portfolio/desktop/valyd.png",
+    accent: "#ec4899"
+  },
+  {
+    title: "DL Auto Parts",
+    category: "Auto Parts Store",
+    description: "Professional auto parts e-commerce store for a Ghanaian automotive business.",
+    tech: ["WooCommerce", "WordPress", "Paystack Integration"],
+    link: "/portfolio/dl-auto-parts",
+    image: "/portfolio/desktop/dlautos.png",
+    accent: "#f59e0b"
+  }
+];
+
+// ─────────────────────────────────────────────
+// Portfolio Carousel with Dots
+// ─────────────────────────────────────────────
+const HorizontalScrollPortfolio = () => {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [isDragging, setIsDragging] = useState(false);
+  const [dragStartX, setDragStartX] = useState(0);
+  const trackRef = useRef(null);
+  const total = portfolioItems.length;
+
+  const goTo = (index) => {
+    const clamped = Math.max(0, Math.min(total - 1, index));
+    setActiveIndex(clamped);
+  };
+
+  // Keyboard navigation
+  useEffect(() => {
+    const handleKey = (e) => {
+      if (e.key === 'ArrowLeft') goTo(activeIndex - 1);
+      if (e.key === 'ArrowRight') goTo(activeIndex + 1);
+    };
+    window.addEventListener('keydown', handleKey);
+    return () => window.removeEventListener('keydown', handleKey);
+  }, [activeIndex]);
+
+  // Touch / mouse drag
+  const handleDragStart = (clientX) => {
+    setIsDragging(true);
+    setDragStartX(clientX);
+  };
+  const handleDragEnd = (clientX) => {
+    if (!isDragging) return;
+    setIsDragging(false);
+    const diff = dragStartX - clientX;
+    if (Math.abs(diff) > 50) {
+      goTo(diff > 0 ? activeIndex + 1 : activeIndex - 1);
     }
-  }, []);
-  
+  };
+
+  return (
+    <section className="py-24 bg-white dark:bg-gray-900 overflow-hidden">
+      <style jsx>{`
+        .card-track { transition: transform 0.55s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+        .dot-active { width: 28px !important; }
+      `}</style>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Header row */}
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-12">
+          <div>
+            <span
+              className="inline-block px-4 py-2 bg-orange-100 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400 rounded-full text-sm font-semibold mb-4"
+              style={{ fontFamily: 'Google Sans, sans-serif' }}
+            >
+              OUR WORK
+            </span>
+            <h2
+              className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-orange-600 to-orange-500 bg-clip-text text-transparent"
+              style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}
+            >
+              Featured Projects
+            </h2>
+          </div>
+
+          {/* Prev / Next arrows */}
+          <div className="flex items-center gap-3">
+            <button
+              onClick={() => goTo(activeIndex - 1)}
+              disabled={activeIndex === 0}
+              aria-label="Previous project"
+              className="w-11 h-11 rounded-full border-2 border-gray-200 dark:border-gray-700 flex items-center justify-center text-gray-600 dark:text-gray-300 hover:border-orange-500 hover:text-orange-500 disabled:opacity-30 disabled:cursor-not-allowed transition-all duration-200"
+            >
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+            </button>
+            <button
+              onClick={() => goTo(activeIndex + 1)}
+              disabled={activeIndex === total - 1}
+              aria-label="Next project"
+              className="w-11 h-11 rounded-full border-2 border-gray-200 dark:border-gray-700 flex items-center justify-center text-gray-600 dark:text-gray-300 hover:border-orange-500 hover:text-orange-500 disabled:opacity-30 disabled:cursor-not-allowed transition-all duration-200"
+            >
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+            </button>
+            <GlassButton href="/portfolio" variant="solid" className="hidden md:inline-flex ml-2">
+              View All
+            </GlassButton>
+          </div>
+        </div>
+
+        {/* Carousel viewport */}
+        <div
+          className="relative overflow-hidden cursor-grab active:cursor-grabbing select-none"
+          onMouseDown={(e) => handleDragStart(e.clientX)}
+          onMouseUp={(e) => handleDragEnd(e.clientX)}
+          onMouseLeave={(e) => { if (isDragging) handleDragEnd(e.clientX); }}
+          onTouchStart={(e) => handleDragStart(e.touches[0].clientX)}
+          onTouchEnd={(e) => handleDragEnd(e.changedTouches[0].clientX)}
+        >
+          {/* The sliding track — shows 1 main card + peeks on sides */}
+          <div
+            ref={trackRef}
+            className="card-track flex gap-6"
+            style={{
+              // On desktop: show 1 full card + 0.35 peek on the right
+              // Card width ≈ calc(100% - 80px) on mobile, calc(58%) on md+
+              transform: `translateX(calc(-${activeIndex} * (min(100vw - 48px, 680px) + 24px)))`
+            }}
+          >
+            {portfolioItems.map((item, index) => {
+              const isActive = index === activeIndex;
+              return (
+                <motion.div
+                  key={index}
+                  animate={{ scale: isActive ? 1 : 0.95, opacity: isActive ? 1 : 0.55 }}
+                  transition={{ duration: 0.4, ease: 'easeOut' }}
+                  className="flex-shrink-0 group"
+                  style={{ width: 'min(calc(100vw - 48px), 680px)' }}
+                >
+                  <Link href={item.link} className="block">
+                    {/* Card */}
+                    <div
+                      className="relative rounded-3xl overflow-hidden shadow-2xl bg-gray-900"
+                      style={{ height: 'clamp(340px, 48vw, 500px)' }}
+                    >
+                      {/* Background image */}
+                      <img
+                        src={item.image}
+                        alt={item.title}
+                        draggable={false}
+                        className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                        onError={(e) => { e.target.src = `https://placehold.co/680x500/1a1a1a/ffffff?text=${encodeURIComponent(item.title)}`; }}
+                      />
+                      {/* Gradient */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent" />
+
+                      {/* Top row */}
+                      <div className="absolute top-6 left-6 right-6 flex items-start justify-between">
+                        <span
+                          className="px-3 py-1.5 rounded-full text-xs font-bold text-white uppercase tracking-wider backdrop-blur-sm"
+                          style={{ background: `${item.accent}cc` }}
+                        >
+                          {item.category}
+                        </span>
+                        <span
+                          className="text-5xl font-black leading-none select-none"
+                          style={{ color: 'rgba(255,255,255,0.08)', fontFamily: 'Bricolage Grotesque, sans-serif' }}
+                        >
+                          {String(index + 1).padStart(2, '0')}
+                        </span>
+                      </div>
+
+                      {/* Bottom content */}
+                      <div className="absolute bottom-0 left-0 right-0 p-7">
+                        <h3
+                          className="text-2xl md:text-3xl font-bold text-white mb-2 group-hover:text-orange-300 transition-colors duration-300"
+                          style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}
+                        >
+                          {item.title}
+                        </h3>
+                        <p
+                          className="text-white/70 text-sm leading-relaxed mb-4 line-clamp-2"
+                          style={{ fontFamily: 'Google Sans, sans-serif' }}
+                        >
+                          {item.description}
+                        </p>
+
+                        <div className="flex items-center justify-between">
+                          {/* Tech tags */}
+                          <div className="flex flex-wrap gap-2">
+                            {item.tech.slice(0, 3).map((t, ti) => (
+                              <span
+                                key={ti}
+                                className="px-3 py-1 rounded-full text-xs font-medium bg-white/15 backdrop-blur-sm text-white border border-white/20"
+                                style={{ fontFamily: 'Google Sans, sans-serif' }}
+                              >
+                                {t}
+                              </span>
+                            ))}
+                          </div>
+
+                          {/* Arrow CTA */}
+                          <motion.span
+                            className="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0 ml-4 group-hover:scale-110 transition-transform duration-300"
+                            style={{ background: item.accent }}
+                          >
+                            <ArrowRight size={16} className="text-white" />
+                          </motion.span>
+                        </div>
+                      </div>
+
+                      {/* Active glow border */}
+                      {isActive && (
+                        <div
+                          className="absolute inset-0 rounded-3xl pointer-events-none"
+                          style={{ boxShadow: `inset 0 0 0 2px ${item.accent}80` }}
+                        />
+                      )}
+                    </div>
+                  </Link>
+                </motion.div>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Dot pagination + counter — Nuxt.com style */}
+        <div className="flex items-center justify-center gap-4 mt-10">
+          {/* Dots */}
+          <div className="flex items-center gap-2">
+            {portfolioItems.map((item, i) => (
+              <button
+                key={i}
+                onClick={() => goTo(i)}
+                aria-label={`Go to project ${i + 1}`}
+                className="relative h-2 rounded-full transition-all duration-300 focus:outline-none"
+                style={{
+                  width: i === activeIndex ? '28px' : '8px',
+                  background: i === activeIndex ? portfolioItems[activeIndex].accent : '#d1d5db',
+                }}
+              />
+            ))}
+          </div>
+
+          {/* Counter */}
+          <span
+            className="text-sm text-gray-400 dark:text-gray-500 ml-2 tabular-nums"
+            style={{ fontFamily: 'Google Sans, sans-serif' }}
+          >
+            {String(activeIndex + 1).padStart(2, '0')} / {String(total).padStart(2, '0')}
+          </span>
+        </div>
+
+        {/* Mobile View All */}
+        <div className="flex justify-center mt-8 md:hidden">
+          <GlassButton href="/portfolio" variant="solid">View All Projects</GlassButton>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+// ─────────────────────────────────────────────
+// Main Page
+// ─────────────────────────────────────────────
+const IndexPage = () => {
+  const router = useRouter();
+  const [scrolled, setScrolled] = useState(false);
+
   // Typing effect state
   const [currentPhraseIndex, setCurrentPhraseIndex] = useState(0);
   const [displayText, setDisplayText] = useState('');
@@ -335,29 +510,21 @@ const IndexPage = () => {
   const [heroTitleIsDeleting, setHeroTitleIsDeleting] = useState(false);
   const heroTitleFullText = 'Best Web Design Company in Ghana';
 
-  // Handle scroll effect for any scroll-based animations
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
-    };
+    const handleScroll = () => setScrolled(window.scrollY > 50);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Removed auto-scroll images effect
-
   // Typing effect
   useEffect(() => {
-    const phrases = Array.isArray(localizedTypingPhrases) ? localizedTypingPhrases : typingPhrases;
-    const currentPhrase = phrases[currentPhraseIndex];
+    const currentPhrase = typingPhrases[currentPhraseIndex];
     const typingSpeed = isDeleting ? 50 : 100;
-    
     const timeout = setTimeout(() => {
       if (!isDeleting) {
         if (displayText.length < currentPhrase.length) {
           setDisplayText(currentPhrase.slice(0, displayText.length + 1));
         } else {
-          // Pause before deleting
           setTimeout(() => setIsDeleting(true), 2000);
         }
       } else {
@@ -365,18 +532,16 @@ const IndexPage = () => {
           setDisplayText(displayText.slice(0, -1));
         } else {
           setIsDeleting(false);
-          setCurrentPhraseIndex((prev) => (prev + 1) % phrases.length);
+          setCurrentPhraseIndex((prev) => (prev + 1) % typingPhrases.length);
         }
       }
     }, typingSpeed);
-    
     return () => clearTimeout(timeout);
   }, [displayText, isDeleting, currentPhraseIndex]);
 
-  // Manifest typing effect with loop
+  // Manifest typing effect
   useEffect(() => {
     const typingSpeed = manifestIsDeleting ? 50 : 100;
-    
     const timeout = setTimeout(() => {
       if (!manifestIsDeleting) {
         if (manifestText.length < manifestFullText.length) {
@@ -392,14 +557,12 @@ const IndexPage = () => {
         }
       }
     }, typingSpeed);
-    
     return () => clearTimeout(timeout);
   }, [manifestText, manifestIsDeleting]);
 
-  // Hero title typing effect with loop
+  // Hero title typing effect
   useEffect(() => {
     const typingSpeed = heroTitleIsDeleting ? 50 : 100;
-    
     const timeout = setTimeout(() => {
       if (!heroTitleIsDeleting) {
         if (heroTitleText.length < heroTitleFullText.length) {
@@ -415,185 +578,53 @@ const IndexPage = () => {
         }
       }
     }, typingSpeed);
-    
     return () => clearTimeout(timeout);
   }, [heroTitleText, heroTitleIsDeleting]);
-
-  // Navigation function using Next.js router
-  const handleNavigation = (path) => {
-    router.push(path);
-  };
-
-  // Portfolio data
-  const portfolioItems = [
-    { 
-      title: "My Space Furniture", 
-      category: "Furniture E-Commerce", 
-      description: "Modern furniture with various categories like mattresses, sofas, chairs, tables, and home decor items.",
-      tech: ["Next.js", "TypeScript", "Framer Motion", "Tailwind CSS"],
-      link: "/portfolio/myspace-furniture",
-      images: {
-        main: "/png/projects/myspace-furniture.png",
-        gallery: [
-          "/png/screenshots/myspace-furniture-full.png"
-        ]
-      }
-    },
-    { 
-      title: "Finance Tracker", 
-      category: "Personal Projects", 
-      description: "A personal finance tracking web application that helps users manage their income, expenses, and budgets with intuitive visualizations and reporting features",
-      tech: ["Django", "Python", "HTML5", "CSS3"],
-      link: "/portfolio/finance-tracker",
-      images: {
-        main: "/png/projects/finance-tracker.png",
-        gallery: [
-          "/png/screenshots/finance-tracker-full.png"
-        ]
-      }
-    }
-  ];
-
-  // Testimonials data
-  const testimonials = [
-    {
-      name: "Rev. Frank Ntow Gyan",
-      company: "Building Planner Designs Limited",
-      role: "CEO",
-      text: "Working with Celestial Web Solutions was incredible! They transformed our outdated website into a modern, user-friendly platform. Our online sales have increased by 200% since the launch.",
-      rating: 5,
-      image: "/testimonials/frank.jpg"
-    },
-    {
-      name: "Righteous Semahar",
-      company: "RAK Foundation",
-      role: "CEO",
-      text: "Expertise in Web Development, their services are excellent.",
-      rating: 5,
-      image: "/testimonials/righteous.jpg"
-    },
-    {
-      name: "Elolo Agbleke",
-      company: "Keta Institute of Technology",
-      role: "Program Manager, COO",
-        text: "Great design concepts, always available for quick design changes, open to collaboration and customer-focused. Vast experience easily shows in their output. Good prices as well",
-      rating: 5,
-      image: "/testimonials/elolo.jpg"
-    },
-    {
-      name: "Akari Kev",
-      company: "Ghana",
-      role: "Client",
-      text: "Celestial Web Solutions was professional, responsive, and easy to work with. They understood my requirements clearly and delivered quality work on time. Communication was smooth, and any feedback was handled quickly. I'd definitely recommend them to anyone looking for reliable web solutions.",
-      rating: 5,
-      image: "https://ui-avatars.com/api/?name=Akari+Kev&background=FF6B00&color=fff"
-    },
-    {
-      name: "Paul Dickens Doe",
-      company: "My Space Furniture",
-      role: "Client",
-      text: "Celestial Web Solutions team did a great job on our websites. They always finish each project in record time. Their continuous tech support and updating of pages is just excellent. Highly recommended.",
-      rating: 5,
-      image: "https://ui-avatars.com/api/?name=Paul+Dickens+Doe&background=FF6B00&color=fff"
-    }
-  ];
 
   return (
     <>
       <SEOHead />
       <div className="min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300">
-        {/* Hero Section with Auto-Scroll Images and Typing Effect */}
+
+        {/* ── HERO SECTION — Static Image (no video, no auto-scroll) ── */}
         <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
-          {/* Sequential Hero Videos */}
+          {/* Static hero background image */}
           <div className="absolute inset-0">
-            <video
-              ref={videoRef}
-              src={heroVideo}
-              className="w-full h-full object-cover object-top"
-              autoPlay
-              muted
-              playsInline
+            <Image
+              src="/celestial.png"
+              alt="Celestial Web Solutions – Best Web Design Company in Ghana"
+              fill
+              sizes="100vw"
+              quality={85}
+              priority
+              className="object-cover object-top"
             />
-            <div className="absolute inset-0 bg-black/70"></div>
+            <div className="absolute inset-0 bg-black/70" />
           </div>
-          
-          {/* Project Info Overlay - Bottom Left (desktop), Top for mobile) */}
-          <div>
-            <div className="hidden sm:block absolute bottom-20 left-8 z-20">
-              <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-6 max-w-xs">
-                <span 
-                  className="text-orange-400 text-xs font-semibold tracking-wider uppercase"
-                  style={{ fontFamily: 'Google Sans, sans-serif' }}
-                >
-                  {heroImages[currentPortfolioIndex].category}
-                </span>
-                <h3 
-                  className="text-white text-xl font-bold mt-1 mb-3"
-                  style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}
-                >
-                  {heroImages[currentPortfolioIndex].title}
-                </h3>
-                <Link 
-                  href={heroImages[currentPortfolioIndex].link}
-                  className="inline-flex items-center gap-2 text-white/80 hover:text-white text-sm font-medium transition-colors"
-                  style={{ fontFamily: 'Google Sans, sans-serif' }}
-                >
-                  View Case Study <ArrowRight className="w-4 h-4" />
-                </Link>
-              </div>
-            </div>
-            {/* Mobile overlay edited */}
+
+          {/* Floating Code Elements – desktop only */}
+          <div className="absolute inset-0 overflow-hidden hidden md:block pointer-events-none">
+            <div className="absolute top-20 left-10 text-orange-300/30 text-sm font-mono animate-pulse">const company = "Celestial Web Solutions";</div>
+            <div className="absolute top-40 right-20 text-orange-400/40 text-xs font-mono animate-pulse" style={{animationDelay:'1s'}}>NextJS.createApp()</div>
+            <div className="absolute bottom-32 left-32 text-orange-200/30 text-sm font-mono animate-pulse" style={{animationDelay:'2s'}}>{'function buildWebsite() {'}</div>
+            <div className="absolute bottom-52 right-16 text-orange-300/35 text-xs font-mono animate-pulse" style={{animationDelay:'3s'}}>Django.models.create()</div>
+            <div className="absolute top-60 left-1/4 text-orange-400/30 text-xs font-mono animate-pulse" style={{animationDelay:'4s'}}>React.render(solution)</div>
+            <div className="absolute bottom-40 right-1/3 text-orange-200/35 text-sm font-mono animate-pulse" style={{animationDelay:'5s'}}>return success;</div>
+            <div className="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-br from-orange-400/30 to-orange-600/30 rounded-full opacity-50 animate-pulse" />
+            <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-gradient-to-tr from-orange-300/30 to-red-400/30 rounded-full opacity-50 animate-pulse" style={{animationDelay:'2s'}} />
+            <div className="absolute top-0 left-1/4 w-0.5 h-full bg-gradient-to-b from-orange-400/20 via-orange-500/10 to-transparent animate-pulse" />
+            <div className="absolute top-0 right-1/3 w-0.5 h-full bg-gradient-to-b from-orange-300/20 via-orange-400/10 to-transparent animate-pulse" style={{animationDelay:'1.5s'}} />
           </div>
-          
-          {/* Image Indicators - Below Project Info */}
-          {/* Removed image indicators since hero is now video */}
-          
-          {/* Floating Code Elements - Hidden on mobile for cleaner look */}
-          <div className="absolute inset-0 overflow-hidden hidden md:block">
-            {/* Animated Code Snippets */}
-            <div className="absolute top-20 left-10 text-orange-300/30 text-sm font-mono animate-pulse">
-              const company = "Celestial Web Solutions";
-            </div>
-            <div className="absolute top-40 right-20 text-orange-400/40 text-xs font-mono animate-pulse" style={{animationDelay: '1s'}}>
-              NextJS.createApp()
-            </div>
-            <div className="absolute bottom-32 left-32 text-orange-200/30 text-sm font-mono animate-pulse" style={{animationDelay: '2s'}}>
-              function buildWebsite() {"{"}
-            </div>
-            <div className="absolute bottom-52 right-16 text-orange-300/35 text-xs font-mono animate-pulse" style={{animationDelay: '3s'}}>
-              Django.models.create()
-            </div>
-            <div className="absolute top-60 left-1/4 text-orange-400/30 text-xs font-mono animate-pulse" style={{animationDelay: '4s'}}>
-              React.render(solution)
-            </div>
-            <div className="absolute bottom-40 right-1/3 text-orange-200/35 text-sm font-mono animate-pulse" style={{animationDelay: '5s'}}>
-              return success;
-            </div>
-    
-            {/* Animated Background Elements */}
-            <div className="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-br from-orange-400/30 to-orange-600/30 rounded-full opacity-50 animate-pulse"></div>
-            <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-gradient-to-tr from-orange-300/30 to-red-400/30 rounded-full opacity-50 animate-pulse" style={{animationDelay: '2s'}}></div>
-            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-gradient-to-r from-orange-500/20 to-red-500/20 rounded-full opacity-30 animate-spin" style={{animationDuration: '20s'}}></div>
-    
-            {/* Binary Code Rain Effect */}
-            <div className="absolute top-0 left-1/4 w-0.5 h-full bg-gradient-to-b from-orange-400/20 via-orange-500/10 to-transparent animate-pulse"></div>
-            <div className="absolute top-0 right-1/3 w-0.5 h-full bg-gradient-to-b from-orange-300/20 via-orange-400/10 to-transparent animate-pulse" style={{animationDelay: '1.5s'}}></div>
-            <div className="absolute top-0 left-1/2 w-0.5 h-full bg-gradient-to-b from-orange-500/15 via-orange-400/8 to-transparent animate-pulse" style={{animationDelay: '3s'}}></div>
+
+          {/* Mobile simplified bg */}
+          <div className="absolute inset-0 overflow-hidden md:hidden pointer-events-none">
+            <div className="absolute -top-20 -right-20 w-40 h-40 bg-gradient-to-br from-orange-400/20 to-orange-600/20 rounded-full opacity-50 animate-pulse" />
+            <div className="absolute -bottom-20 -left-20 w-48 h-48 bg-gradient-to-tr from-orange-300/20 to-red-400/20 rounded-full opacity-50 animate-pulse" style={{animationDelay:'2s'}} />
           </div>
-  
-          {/* Mobile-only simplified background elements */}
-          <div className="absolute inset-0 overflow-hidden md:hidden">
-            <div className="absolute -top-20 -right-20 w-40 h-40 bg-gradient-to-br from-orange-400/20 to-orange-600/20 rounded-full opacity-50 animate-pulse"></div>
-            <div className="absolute -bottom-20 -left-20 w-48 h-48 bg-gradient-to-tr from-orange-300/20 to-red-400/20 rounded-full opacity-50 animate-pulse" style={{animationDelay: '2s'}}></div>
-          </div>
-  
+
           <div className="relative z-30 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-            >
-              {/* Developer Badge - Responsive text and padding */}
+            <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
+              {/* Badge */}
               <motion.div
                 className="inline-flex items-center space-x-2 bg-white/20 backdrop-blur-sm border border-orange-300/30 text-white px-3 py-2 sm:px-6 sm:py-3 rounded-full mb-6 sm:mb-8 text-xs sm:text-sm font-semibold"
                 style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}
@@ -601,11 +632,9 @@ const IndexPage = () => {
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 0.2, duration: 0.6 }}
               >
-                <span className="hidden sm:inline">Full Stack Development</span>
-                <span className="sm:hidden">Full Stack Development</span>
+                <span>Full Stack Development</span>
                 <span className="animate-pulse">●</span>
-                <span className="hidden sm:inline">Available for Projects</span>
-                <span className="sm:hidden">Available for Projects</span>
+                <span>Available for Projects</span>
               </motion.div>
 
               <motion.h1
@@ -619,10 +648,6 @@ const IndexPage = () => {
                 <span className="hero-cursor-blink text-white ml-2">|</span>
               </motion.h1>
 
-
-              
-
-              
               <motion.p
                 className="text-sm sm:text-base md:text-lg lg:text-xl text-white/80 mb-6 sm:mb-8 max-w-3xl mx-auto px-2"
                 style={{ fontFamily: 'Google Sans, sans-serif' }}
@@ -630,40 +655,27 @@ const IndexPage = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.5, duration: 0.8 }}
               >
-                From concept to deployment, we build scalable web applications that drive business growth. Let's turn your vision into digital reality. Looking for the best web designer in Accra? <Link href="/best-web-designer-in-accra" className="underline underline-offset-4 hover:text-orange-300">See our Accra page.</Link>
+                From concept to deployment, we build scalable web applications that drive business growth. Let's turn your vision into digital reality.{' '}
+                <Link href="/best-web-designer-in-accra" className="underline underline-offset-4 hover:text-orange-300">
+                  See our Accra page.
+                </Link>
               </motion.p>
-              
-              {/* Enhanced Call to Action Buttons - GLASS STYLE */}
+
               <motion.div
                 className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 px-4 pb-24"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.6, duration: 0.8 }}
               >
-                <GlassButton href="/contact" variant="solid">
-                  Let's Build Together
-                </GlassButton>
-
-                <GlassButton href="/portfolio" variant="light">
-                  View Our Work
-                </GlassButton>
+                <GlassButton href="/contact" variant="solid">Let's Build Together</GlassButton>
+                <GlassButton href="/portfolio" variant="light">View Our Work</GlassButton>
               </motion.div>
-
             </motion.div>
           </div>
 
           <style jsx>{`
-            .hero-cursor-blink {
-              animation: blink-caret 0.8s step-end infinite;
-            }
-            @keyframes blink-caret {
-              from, to {
-                opacity: 0;
-              }
-              50% {
-                opacity: 1;
-              }
-            }
+            .hero-cursor-blink { animation: blink-caret 0.8s step-end infinite; }
+            @keyframes blink-caret { from, to { opacity: 0; } 50% { opacity: 1; } }
           `}</style>
         </section>
 
@@ -683,9 +695,6 @@ const IndexPage = () => {
               <p className="text-lg sm:text-xl text-gray-700 dark:text-gray-200 leading-relaxed mb-2" style={{ fontFamily: 'Google Sans, sans-serif' }}>
                 Celestial Web Solutions is a professional web design and development company in Ghana, helping businesses grow online with modern, responsive, and SEO-friendly websites.
               </p>
-              <p className="text-base sm:text-lg text-gray-600 dark:text-gray-300 leading-relaxed" style={{ fontFamily: 'Google Sans, sans-serif' }}>
-                We specialize in website design, custom web development, e-commerce solutions, and search engine optimization for businesses across Accra, Keta, and Ghana.
-              </p>
               <p className="text-base sm:text-lg text-gray-600 dark:text-gray-300 leading-relaxed mt-2" style={{ fontFamily: 'Google Sans, sans-serif' }}>
                 As a trusted website design company in Ghana, we work with startups, SMEs, and established businesses across Accra, Keta, and other parts of Ghana, delivering custom digital solutions that drive growth.
               </p>
@@ -703,24 +712,14 @@ const IndexPage = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              {/* Logo Badge */}
               <a
                 href="https://themanifest.com/gh/web-design/agencies"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-block px-4 py-2 bg-white dark:bg-gray-800 border-2 border-orange-300 dark:border-orange-600 rounded-xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300"
-                title="Top 10 Web Designer in Ghana on The Manifest"
               >
-                <Image
-                  src="/images/manifest-logo.png"
-                  alt="The Manifest"
-                  width={120}
-                  height={30}
-                  className="object-contain"
-                />
+                <Image src="/images/manifest-logo.png" alt="The Manifest" width={120} height={30} className="object-contain" />
               </a>
-
-              {/* Typing Text */}
               <div className="text-center min-h-[40px] flex items-center justify-center">
                 <div className="text-lg sm:text-xl font-bold text-orange-600 dark:text-orange-400" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>
                   <span>{manifestText}</span>
@@ -729,23 +728,13 @@ const IndexPage = () => {
               </div>
             </motion.div>
           </div>
-
           <style jsx>{`
-            .cursor-blink {
-              animation: blink-caret 0.8s step-end infinite;
-            }
-            @keyframes blink-caret {
-              from, to {
-                opacity: 0;
-              }
-              50% {
-                opacity: 1;
-              }
-            }
+            .cursor-blink { animation: blink-caret 0.8s step-end infinite; }
+            @keyframes blink-caret { from, to { opacity: 0; } 50% { opacity: 1; } }
           `}</style>
         </section>
 
-        {/* Happy Clients Section - 4-Grid Kava Style */}
+        {/* Happy Clients Section */}
         <section className="py-16 bg-white dark:bg-gray-900">
           <div className="max-w-5xl mx-auto px-4">
             <h3 className="text-xl md:text-2xl font-bold text-center mb-10 text-gray-700 dark:text-gray-200" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>
@@ -756,9 +745,7 @@ const IndexPage = () => {
                 <div
                   key={client.name + idx}
                   className="flex items-center justify-center transition-colors duration-200 group"
-                  style={{
-                    height: client.name === 'Elolo Agbleke' ? '60px' : client.name === 'Ghana Updates Online' ? '80px' : '128px'
-                  }}
+                  style={{ height: client.name === 'Elolo Agbleke' ? '60px' : client.name === 'Ghana Updates Online' ? '80px' : '128px' }}
                 >
                   <Image
                     src={client.src}
@@ -775,15 +762,10 @@ const IndexPage = () => {
           </div>
         </section>
 
-        {/* Services Section - Enhanced with Images */}
+        {/* Services Section */}
         <section className="py-24 bg-gray-50 dark:bg-gray-800">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="text-center mb-16"
-            >
+            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-16">
               <motion.span
                 initial={{ opacity: 0, y: 10 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -793,18 +775,13 @@ const IndexPage = () => {
               >
                 WHAT WE DO
               </motion.span>
-              <h2 className="text-3xl md:text-5xl font-bold bg-gradient-to-r from-orange-600 to-orange-500 bg-clip-text text-transparent mb-4"
-                  style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>
+              <h2 className="text-3xl md:text-5xl font-bold bg-gradient-to-r from-orange-600 to-orange-500 bg-clip-text text-transparent mb-4" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>
                 Our Core Services
               </h2>
-              <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto text-lg"
-                 style={{ fontFamily: 'Google Sans, sans-serif' }}>
+              <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto text-lg" style={{ fontFamily: 'Google Sans, sans-serif' }}>
                 Comprehensive digital solutions for your business
               </p>
             </motion.div>
-
-            {/* Detailed Service Descriptions */}
-            {/* (Removed empty div that caused unclosed tag error) */}
 
             <div className="space-y-16">
               {mainServices.map((service, index) => (
@@ -816,287 +793,45 @@ const IndexPage = () => {
                   transition={{ delay: index * 0.1 }}
                   className={`flex flex-col ${index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'} gap-8 lg:gap-12 items-center`}
                 >
-                  {/* Image */}
                   <div className="w-full lg:w-1/2">
-                    <motion.div
-                      className="relative h-72 lg:h-96 rounded-3xl overflow-hidden shadow-2xl group"
-                      whileHover={{ scale: 1.02 }}
-                      transition={{ duration: 0.3 }}
-                    >
-                      <Image
-                        src={service.image}
-                        alt={service.title}
-                        fill
-                        sizes="(max-width: 768px) 100vw, 50vw"
-                        quality={75}
-                        className="object-cover group-hover:scale-110 transition-transform duration-700"
-                        priority={index === 0}
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
-                      
-                      {/* Service Icon Badge */}
-                      <motion.div 
-                        className="absolute top-6 left-6 w-14 h-14 bg-gradient-to-br from-orange-500 to-orange-600 rounded-2xl flex items-center justify-center shadow-xl shadow-orange-500/30"
-                        whileHover={{ rotate: 10, scale: 1.1 }}
-                      >
+                    <motion.div className="relative h-72 lg:h-96 rounded-3xl overflow-hidden shadow-2xl group" whileHover={{ scale: 1.02 }} transition={{ duration: 0.3 }}>
+                      <Image src={service.image} alt={service.title} fill sizes="(max-width: 768px) 100vw, 50vw" quality={75} className="object-cover group-hover:scale-110 transition-transform duration-700" priority={index === 0} />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
+                      <motion.div className="absolute top-6 left-6 w-14 h-14 bg-gradient-to-br from-orange-500 to-orange-600 rounded-2xl flex items-center justify-center shadow-xl shadow-orange-500/30" whileHover={{ rotate: 10, scale: 1.1 }}>
                         <service.icon className="w-7 h-7 text-white" />
                       </motion.div>
-
-                      {/* Service Number */}
-                      <div className="absolute bottom-6 right-6 text-7xl font-bold text-white/10" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>
-                        0{index + 1}
-                      </div>
+                      <div className="absolute bottom-6 right-6 text-7xl font-bold text-white/10" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>0{index + 1}</div>
                     </motion.div>
                   </div>
 
-                  {/* Content */}
                   <div className="w-full lg:w-1/2 space-y-5">
-                    <span 
-                      className="text-orange-500 font-semibold text-sm tracking-wider"
-                      style={{ fontFamily: 'Google Sans, sans-serif' }}
-                    >
-                      SERVICE 0{index + 1}
-                    </span>
-                    <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white"
-                        style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>
-                      {service.title}
-                    </h3>
-                    {/* Custom detailed descriptions for each service */}
-                    {index === 0 && (
-                      <>
-                        <p className="text-gray-600 dark:text-gray-300 text-lg leading-relaxed mb-2" style={{ fontFamily: 'Google Sans, sans-serif' }}>
-                          We offer professional website design services in Ghana tailored to meet the needs of businesses in different industries. Our websites are designed to be user-friendly, visually engaging, and conversion-focused.
-                        </p>
-                        <p className="text-gray-600 dark:text-gray-300 text-lg leading-relaxed" style={{ fontFamily: 'Google Sans, sans-serif' }}>
-                          Whether you need a business website, portfolio website, or corporate website, Celestial Web Solutions ensures your website reflects your brand and builds trust with your audience.
-                        </p>
-                      </>
-                    )}
-                    {index === 1 && (
-                      <>
-                        <p className="text-gray-600 dark:text-gray-300 text-lg leading-relaxed mb-2" style={{ fontFamily: 'Google Sans, sans-serif' }}>
-                          As a reliable web development company in Ghana, we build custom websites and web applications that are secure, scalable, and performance-driven. Our development process focuses on clean code, fast loading speeds, and seamless user experience.
-                        </p>
-                        <p className="text-gray-600 dark:text-gray-300 text-lg leading-relaxed" style={{ fontFamily: 'Google Sans, sans-serif' }}>
-                          We work with modern technologies to deliver reliable web solutions for businesses looking to grow online in Ghana and beyond.
-                        </p>
-                      </>
-                    )}
-                    {index === 2 && (
-                      <>
-                        <p className="text-gray-600 dark:text-gray-300 text-lg leading-relaxed mb-2" style={{ fontFamily: 'Google Sans, sans-serif' }}>
-                          Looking to sell online? We provide e-commerce website development in Ghana for businesses that want to reach more customers and increase sales.
-                        </p>
-                        <p className="text-gray-600 dark:text-gray-300 text-lg leading-relaxed mb-2" style={{ fontFamily: 'Google Sans, sans-serif' }}>
-                          Our e-commerce solutions include:
-                        </p>
-                        <ul className="list-disc pl-6 text-gray-600 dark:text-gray-300 text-lg mb-2" style={{ fontFamily: 'Google Sans, sans-serif' }}>
-                          <li>Online stores</li>
-                          <li>Secure payment integration</li>
-                          <li>Product management systems</li>
-                          <li>Mobile-friendly shopping experiences</li>
-                        </ul>
-                        <p className="text-gray-600 dark:text-gray-300 text-lg leading-relaxed" style={{ fontFamily: 'Google Sans, sans-serif' }}>
-                          We help businesses launch professional online stores that are easy to manage and optimized for sales.
-                        </p>
-                      </>
-                    )}
-                    {index === 3 && (
-                      <>
-                        <p className="text-gray-600 dark:text-gray-300 text-lg leading-relaxed mb-2" style={{ fontFamily: 'Google Sans, sans-serif' }}>
-                          A great website is useless without visibility. Our SEO services in Ghana help businesses rank higher on Google and attract organic traffic.
-                        </p>
-                        <p className="text-gray-600 dark:text-gray-300 text-lg leading-relaxed mb-2" style={{ fontFamily: 'Google Sans, sans-serif' }}>
-                          Our SEO services include:
-                        </p>
-                        <ul className="list-disc pl-6 text-gray-600 dark:text-gray-300 text-lg mb-2" style={{ fontFamily: 'Google Sans, sans-serif' }}>
-                          <li>On-page SEO optimization</li>
-                          <li>Keyword research</li>
-                          <li>Technical SEO</li>
-                          <li>Local SEO for Ghanaian businesses</li>
-                        </ul>
-                        <p className="text-gray-600 dark:text-gray-300 text-lg leading-relaxed" style={{ fontFamily: 'Google Sans, sans-serif' }}>
-                          We design and optimize websites with SEO in mind, ensuring long-term online growth.
-                        </p>
-                      </>
-                    )}
+                    <span className="text-orange-500 font-semibold text-sm tracking-wider" style={{ fontFamily: 'Google Sans, sans-serif' }}>SERVICE 0{index + 1}</span>
+                    <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>{service.title}</h3>
+                    {index === 0 && (<><p className="text-gray-600 dark:text-gray-300 text-lg leading-relaxed mb-2" style={{ fontFamily: 'Google Sans, sans-serif' }}>We offer professional website design services in Ghana tailored to meet the needs of businesses in different industries. Our websites are designed to be user-friendly, visually engaging, and conversion-focused.</p><p className="text-gray-600 dark:text-gray-300 text-lg leading-relaxed" style={{ fontFamily: 'Google Sans, sans-serif' }}>Whether you need a business website, portfolio website, or corporate website, Celestial Web Solutions ensures your website reflects your brand and builds trust with your audience.</p></>)}
+                    {index === 1 && (<><p className="text-gray-600 dark:text-gray-300 text-lg leading-relaxed mb-2" style={{ fontFamily: 'Google Sans, sans-serif' }}>As a reliable web development company in Ghana, we build custom websites and web applications that are secure, scalable, and performance-driven.</p><p className="text-gray-600 dark:text-gray-300 text-lg leading-relaxed" style={{ fontFamily: 'Google Sans, sans-serif' }}>We work with modern technologies to deliver reliable web solutions for businesses looking to grow online in Ghana and beyond.</p></>)}
+                    {index === 2 && (<><p className="text-gray-600 dark:text-gray-300 text-lg leading-relaxed mb-2" style={{ fontFamily: 'Google Sans, sans-serif' }}>Looking to sell online? We provide e-commerce website development in Ghana for businesses that want to reach more customers and increase sales.</p><ul className="list-disc pl-6 text-gray-600 dark:text-gray-300 text-lg mb-2" style={{ fontFamily: 'Google Sans, sans-serif' }}><li>Online stores</li><li>Secure payment integration</li><li>Product management systems</li><li>Mobile-friendly shopping experiences</li></ul></>)}
+                    {index === 3 && (<><p className="text-gray-600 dark:text-gray-300 text-lg leading-relaxed mb-2" style={{ fontFamily: 'Google Sans, sans-serif' }}>A great website is useless without visibility. Our SEO services in Ghana help businesses rank higher on Google and attract organic traffic.</p><ul className="list-disc pl-6 text-gray-600 dark:text-gray-300 text-lg mb-2" style={{ fontFamily: 'Google Sans, sans-serif' }}><li>On-page SEO optimization</li><li>Keyword research</li><li>Technical SEO</li><li>Local SEO for Ghanaian businesses</li></ul></>)}
                     <div className="pt-2">
-                      <GlassButton href={service.link} variant="orange">
-                        Explore {service.title}
-                      </GlassButton>
+                      <GlassButton href={service.link} variant="orange">Explore {service.title}</GlassButton>
                     </div>
                   </div>
                 </motion.div>
               ))}
             </div>
 
-            {/* View All Services CTA */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="text-center mt-16"
-            >
-              <GlassButton href="/web-design-company-in-ghana" variant="solid">
-                View All Services
-              </GlassButton>
+            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mt-16">
+              <GlassButton href="/web-design-company-in-ghana" variant="solid">View All Services</GlassButton>
             </motion.div>
           </div>
         </section>
 
-        {/* Portfolio Section - Enhanced */}
-        <section className="py-24 bg-white dark:bg-gray-900">
-          <div className="max-w-7xl mx-auto px-4">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="text-center mb-16"
-            >
-              <motion.span
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                className="inline-block px-4 py-2 bg-orange-100 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400 rounded-full text-sm font-semibold mb-4"
-                style={{ fontFamily: 'Google Sans, sans-serif' }}
-              >
-                OUR WORK
-              </motion.span>
-              <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-orange-600 to-orange-500 bg-clip-text text-transparent"
-                  style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>
-                Featured Projects
-              </h2>
-              <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed"
-                 style={{ fontFamily: 'Google Sans, sans-serif' }}>
-                Showcasing our latest work and the innovative solutions we've created for our clients
-              </p>
-            </motion.div>
-            
-            <div className="space-y-16">
-              {portfolioItems.slice(0, 2).map((item, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 40 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-100px" }}
-                  transition={{ delay: index * 0.15 }}
-                  className={`flex flex-col ${index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'} gap-8 lg:gap-12 items-center`}
-                >
-                  {/* Image Column */}
-                  <div className="w-full lg:w-1/2">
-                    <motion.div
-                      className="relative h-72 md:h-96 rounded-3xl overflow-hidden shadow-2xl group"
-                      whileHover={{ scale: 1.02 }}
-                      transition={{ duration: 0.3 }}
-                    >
-                      <Image
-                        src={item.images.main}
-                        alt={item.title}
-                        fill
-                        sizes="(max-width: 768px) 100vw, 50vw"
-                        quality={75}
-                        className="object-cover group-hover:scale-110 transition-transform duration-700"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
-                      
-                      {/* Category Badge */}
-                      <div className="absolute top-6 left-6 px-4 py-2 bg-gradient-to-r from-orange-500 to-orange-600 rounded-full text-white text-sm font-semibold shadow-lg">
-                        {item.category}
-                      </div>
-
-                      {/* Hover Overlay with View Button */}
-                      <div className="absolute inset-0 bg-orange-600/0 group-hover:bg-orange-600/20 transition-colors duration-500 flex items-center justify-center opacity-0 group-hover:opacity-100">
-                        <Link href={item.link}>
-                          <motion.span 
-                            className="px-6 py-3 bg-white text-gray-900 rounded-full font-semibold inline-flex items-center gap-2"
-                            style={{ fontFamily: 'Google Sans, sans-serif' }}
-                            whileHover={{ scale: 1.05 }}
-                          >
-                            View Project <ArrowRight className="w-4 h-4" />
-                          </motion.span>
-                        </Link>
-                      </div>
-                    </motion.div>
-                  </div>
-                  
-                  {/* Content Column */}
-                  <div className="w-full lg:w-1/2 relative">
-                    <div className="relative rounded-3xl overflow-hidden min-h-[400px]">
-                      {/* Background Image */}
-                      <div className="absolute inset-0">
-                        <Image
-                          src={item.images.main}
-                          alt={item.title}
-                          fill
-                          sizes="(max-width: 768px) 100vw, 50vw"
-                          quality={70}
-                          className="object-cover"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-br from-gray-900/80 via-gray-900/70 to-orange-900/60"></div>
-                      </div>
-                      
-                      {/* Content */}
-                      <div className="relative p-8 md:p-10 space-y-5 h-full flex flex-col justify-center">
-                        <span 
-                          className="text-orange-400 font-semibold text-sm tracking-wider"
-                          style={{ fontFamily: 'Google Sans, sans-serif' }}
-                        >
-                          PROJECT 0{index + 1}
-                        </span>
-                        <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white"
-                            style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>
-                          {item.title}
-                        </h3>
-                        <p className="text-gray-200 text-lg leading-relaxed"
-                           style={{ fontFamily: 'Google Sans, sans-serif' }}>
-                          {item.description}
-                        </p>
-                        <div className="flex flex-wrap gap-2">
-                          {item.tech.map((tech, techIndex) => (
-                            <motion.span 
-                              key={techIndex} 
-                              className="px-4 py-2 bg-white/15 backdrop-blur-sm rounded-full text-sm font-medium text-white border border-white/30 hover:border-orange-400/50 transition-colors"
-                              style={{ fontFamily: 'Google Sans, sans-serif' }}
-                              whileHover={{ scale: 1.05, y: -2 }}
-                            >
-                              {tech}
-                            </motion.span>
-                          ))}
-                        </div>
-                        <div className="pt-2">
-                          <GlassButton href={item.link} variant="light">
-                            View Project
-                          </GlassButton>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-            
-            <motion.div 
-              className="text-center mt-16"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-            >
-              <GlassButton href="/portfolio" variant="solid">
-                View All Projects
-              </GlassButton>
-            </motion.div>
-          </div>
-        </section>
+        {/* ── HORIZONTAL SCROLL PORTFOLIO (Nuxt.com style) ── */}
+        <HorizontalScrollPortfolio />
 
         {/* Blog Section */}
         <section className="py-24 bg-gray-50 dark:bg-gray-800">
           <div className="max-w-7xl mx-auto px-4">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="text-center mb-16"
-            >
+            <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-16">
               <motion.span
                 initial={{ opacity: 0, y: 10 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -1106,17 +841,14 @@ const IndexPage = () => {
               >
                 INSIGHTS & TIPS
               </motion.span>
-              <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-orange-600 to-orange-500 bg-clip-text text-transparent"
-                  style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>
+              <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-orange-600 to-orange-500 bg-clip-text text-transparent" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>
                 Latest Blog Articles
               </h2>
-              <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed"
-                 style={{ fontFamily: 'Google Sans, sans-serif' }}>
+              <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed" style={{ fontFamily: 'Google Sans, sans-serif' }}>
                 Expert insights, tips, and guides to help your business thrive online
               </p>
             </motion.div>
 
-            {/* Blog Cards Grid */}
             <div className="grid md:grid-cols-2 gap-8 mb-12">
               {[
                 {
@@ -1146,54 +878,21 @@ const IndexPage = () => {
                   transition={{ delay: index * 0.15 }}
                   className="bg-white dark:bg-gray-900 rounded-3xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 group flex flex-col"
                 >
-                  {/* Image */}
                   <div className="relative h-56 overflow-hidden">
-                    <img
-                      src={article.image}
-                      alt={article.title}
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                      onError={(e) => {
-                        e.target.src = `https://via.placeholder.com/600x300?text=${encodeURIComponent(article.title)}`;
-                      }}
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
-                    
-                    {/* Category Badge */}
-                    <div className="absolute top-4 left-4 px-3 py-1 bg-gradient-to-r from-orange-500 to-orange-600 rounded-full text-white text-xs font-semibold">
-                      {article.category}
-                    </div>
+                    <img src={article.image} alt={article.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+                    <div className="absolute top-4 left-4 px-3 py-1 bg-gradient-to-r from-orange-500 to-orange-600 rounded-full text-white text-xs font-semibold">{article.category}</div>
                   </div>
-
-                  {/* Content */}
                   <div className="p-6 md:p-8 flex flex-col flex-grow">
-                    <h3 className="text-xl md:text-2xl font-bold text-gray-900 dark:text-white mb-3 group-hover:text-orange-600 dark:group-hover:text-orange-400 transition-colors"
-                        style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>
-                      {article.title}
-                    </h3>
-                    
-                    <p className="text-gray-600 dark:text-gray-300 leading-relaxed mb-6 flex-grow"
-                       style={{ fontFamily: 'Google Sans, sans-serif' }}>
-                      {article.excerpt}
-                    </p>
-
-                    {/* Meta Info */}
+                    <h3 className="text-xl md:text-2xl font-bold text-gray-900 dark:text-white mb-3 group-hover:text-orange-600 dark:group-hover:text-orange-400 transition-colors" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>{article.title}</h3>
+                    <p className="text-gray-600 dark:text-gray-300 leading-relaxed mb-6 flex-grow" style={{ fontFamily: 'Google Sans, sans-serif' }}>{article.excerpt}</p>
                     <div className="flex items-center justify-between pt-4 border-t border-gray-200 dark:border-gray-700">
                       <div className="flex flex-col gap-1">
-                        <span className="text-xs text-gray-500 dark:text-gray-400"
-                              style={{ fontFamily: 'Google Sans, sans-serif' }}>
-                          {article.date}
-                        </span>
-                        <span className="text-sm text-gray-500 dark:text-gray-400"
-                              style={{ fontFamily: 'Google Sans, sans-serif' }}>
-                          {article.readTime}
-                        </span>
+                        <span className="text-xs text-gray-500 dark:text-gray-400" style={{ fontFamily: 'Google Sans, sans-serif' }}>{article.date}</span>
+                        <span className="text-sm text-gray-500 dark:text-gray-400" style={{ fontFamily: 'Google Sans, sans-serif' }}>{article.readTime}</span>
                       </div>
                       <Link href={`/blog/${article.slug}`}>
-                        <motion.span
-                          className="inline-flex items-center gap-2 text-orange-600 dark:text-orange-400 font-semibold text-sm hover:gap-3 transition-all"
-                          style={{ fontFamily: 'Google Sans, sans-serif' }}
-                          whileHover={{ x: 5 }}
-                        >
+                        <motion.span className="inline-flex items-center gap-2 text-orange-600 dark:text-orange-400 font-semibold text-sm hover:gap-3 transition-all" style={{ fontFamily: 'Google Sans, sans-serif' }} whileHover={{ x: 5 }}>
                           Read More <ArrowRight className="w-4 h-4" />
                         </motion.span>
                       </Link>
@@ -1203,16 +902,8 @@ const IndexPage = () => {
               ))}
             </div>
 
-            {/* View All Articles CTA */}
-            <motion.div
-              className="text-center"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-            >
-              <GlassButton href="/blog" variant="solid">
-                View All Articles
-              </GlassButton>
+            <motion.div className="text-center" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
+              <GlassButton href="/blog" variant="solid">View All Articles</GlassButton>
             </motion.div>
           </div>
         </section>
@@ -1220,89 +911,43 @@ const IndexPage = () => {
         {/* Tech Stack Section */}
         <section className="py-20 bg-white dark:bg-gray-900">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="text-center mb-16"
-            >
-              <h2 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-orange-600 to-orange-500 bg-clip-text text-transparent mb-4"
-                  style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>
+            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-16">
+              <h2 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-orange-600 to-orange-500 bg-clip-text text-transparent mb-4" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>
                 Our Technology Stack
               </h2>
-              <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto"
-                 style={{ fontFamily: 'Google Sans, sans-serif' }}>
+              <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto" style={{ fontFamily: 'Google Sans, sans-serif' }}>
                 Modern tools and technologies we use to build exceptional digital experiences
               </p>
             </motion.div>
 
-            {/* Tech Stack Categories */}
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-8 mb-12">
               {techStackCategories.map((category, index) => (
-                <motion.div
-                  key={category.title}
-                  className="text-center"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
-                >
-                  <div className={`h-1 w-full bg-gradient-to-r ${category.color} rounded-full mb-4`}></div>
-                  <h3 className="text-sm font-semibold text-gray-900 dark:text-white mb-2"
-                      style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>
-                    {category.title}
-                  </h3>
+                <motion.div key={category.title} className="text-center" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: index * 0.1 }}>
+                  <div className={`h-1 w-full bg-gradient-to-r ${category.color} rounded-full mb-4`} />
+                  <h3 className="text-sm font-semibold text-gray-900 dark:text-white mb-2" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>{category.title}</h3>
                 </motion.div>
               ))}
             </div>
 
-            {/* Scrolling Tech Stack */}
             <div className="relative w-full overflow-hidden">
               <div className="absolute left-0 top-0 w-16 sm:w-32 h-full bg-gradient-to-r from-white dark:from-gray-900 to-transparent z-10 pointer-events-none" />
               <div className="absolute right-0 top-0 w-16 sm:w-32 h-full bg-gradient-to-l from-white dark:from-gray-900 to-transparent z-10 pointer-events-none" />
-              
               <style jsx>{`
-                @keyframes scroll {
-                  0% { transform: translateX(0); }
-                  100% { transform: translateX(-50%); }
-                }
-                .animate-scroll {
-                  animation: scroll 30s linear infinite;
-                }
-                .animate-scroll:hover {
-                  animation-play-state: paused;
-                }
-                @media (max-width: 640px) {
-                  .animate-scroll {
-                    animation-duration: 20s;
-                  }
-                }
+                @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+                .animate-scroll { animation: scroll 30s linear infinite; }
+                .animate-scroll:hover { animation-play-state: paused; }
+                @media (max-width: 640px) { .animate-scroll { animation-duration: 20s; } }
               `}</style>
-              
               <div className="flex space-x-4 sm:space-x-12 overflow-hidden py-8">
                 <div className="flex space-x-4 sm:space-x-12 animate-scroll">
                   {[...techStackCategories, ...techStackCategories].map((category, index) => (
                     <div key={`${category.title}-${index}`} className="flex space-x-4 sm:space-x-8 flex-shrink-0">
                       {category.items.map((item, itemIndex) => (
-                        <motion.div
-                          key={`${item.name}-${index}-${itemIndex}`}
-                          className="flex flex-col items-center w-16 sm:w-20 flex-shrink-0"
-                          whileHover={{ y: -5, scale: 1.05 }}
-                          transition={{ duration: 0.2 }}
-                        >
+                        <motion.div key={`${item.name}-${index}-${itemIndex}`} className="flex flex-col items-center w-16 sm:w-20 flex-shrink-0" whileHover={{ y: -5, scale: 1.05 }} transition={{ duration: 0.2 }}>
                           <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-xl bg-gray-100 dark:bg-gray-800 p-2 sm:p-3 flex items-center justify-center hover:shadow-xl hover:bg-orange-50 dark:hover:bg-gray-700 transition-all duration-300 group">
-                            <img
-                              src={item.icon}
-                              alt={item.name}
-                              className="max-w-8 max-h-8 sm:max-w-10 sm:max-h-10 object-contain group-hover:scale-110 transition-transform duration-300"
-                              onError={(e) => {
-                                e.target.style.display = 'none';
-                              }}
-                            />
+                            <img src={item.icon} alt={item.name} className="max-w-8 max-h-8 sm:max-w-10 sm:max-h-10 object-contain group-hover:scale-110 transition-transform duration-300" onError={(e) => { e.target.style.display = 'none'; }} />
                           </div>
-                          <span className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 mt-2 font-medium text-center">
-                            {item.name}
-                          </span>
+                          <span className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 mt-2 font-medium text-center">{item.name}</span>
                         </motion.div>
                       ))}
                     </div>
@@ -1313,150 +958,13 @@ const IndexPage = () => {
           </div>
         </section>
 
-        {/* Testimonials Section - Kava Style Carousel */}
-        <section className="py-24 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 relative overflow-hidden">
-          {/* Decorative Elements */}
-          <div className="absolute inset-0 overflow-hidden">
-            <div className="absolute top-0 left-1/4 w-96 h-96 bg-orange-500/10 rounded-full blur-3xl"></div>
-            <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-orange-600/10 rounded-full blur-3xl"></div>
-          </div>
-          
-          <div className="max-w-7xl mx-auto px-4 relative z-10">
-            <div className="grid lg:grid-cols-5 gap-8 lg:gap-12 items-start lg:items-center">
-              {/* Left Side - Title and Controls */}
-              <div className="lg:col-span-2">
-                <motion.div
-                  initial={{ opacity: 0, x: -30 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                >
-                  <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-8 text-white"
-                      style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>
-                    What our clients say
-                  </h2>
-                </motion.div>
-              </div>
-              
-              {/* Right Side - Testimonial Carousel */}
-              <div className="lg:col-span-3 w-full">
-                <div 
-                  id="testimonials-container"
-                  className="overflow-x-auto scroll-smooth snap-x snap-mandatory hide-scrollbar"
-                  style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
-                >
-                  <style jsx>{`
-                    .hide-scrollbar::-webkit-scrollbar {
-                      display: none;
-                    }
-                    @keyframes testimonialAutoScroll {
-                      0%, 10% { transform: translateX(0); }
-                      20%, 30% { transform: translateX(calc(-1 * (85vw + 1rem))); }
-                      40%, 50% { transform: translateX(calc(-2 * (85vw + 1rem))); }
-                      60%, 70% { transform: translateX(calc(-3 * (85vw + 1rem))); }
-                      80%, 90% { transform: translateX(calc(-4 * (85vw + 1rem))); }
-                      100% { transform: translateX(0); }
-                    }
-                    @media (min-width: 640px) {
-                      @keyframes testimonialAutoScroll {
-                        0%, 10% { transform: translateX(0); }
-                        20%, 30% { transform: translateX(calc(-1 * (70vw + 1.5rem))); }
-                        40%, 50% { transform: translateX(calc(-2 * (70vw + 1.5rem))); }
-                        60%, 70% { transform: translateX(calc(-3 * (70vw + 1.5rem))); }
-                        80%, 90% { transform: translateX(calc(-4 * (70vw + 1.5rem))); }
-                        100% { transform: translateX(0); }
-                      }
-                    }
-                    @media (min-width: 1024px) {
-                      @keyframes testimonialAutoScroll {
-                        0%, 10% { transform: translateX(0); }
-                        20%, 30% { transform: translateX(calc(-100% - 2rem)); }
-                        40%, 50% { transform: translateX(calc(-200% - 4rem)); }
-                        60%, 70% { transform: translateX(calc(-300% - 6rem)); }
-                        80%, 90% { transform: translateX(calc(-400% - 8rem)); }
-                        100% { transform: translateX(0); }
-                      }
-                    }
-                    .testimonials-animate {
-                      animation: testimonialAutoScroll 50s ease-in-out infinite;
-                    }
-                    .testimonials-animate:hover {
-                      animation-play-state: paused;
-                    }
-                  `}</style>
-                  
-                  <div className="flex gap-4 sm:gap-6 lg:gap-8 testimonials-animate">
-                    {testimonials.map((testimonial, index) => (
-                      <motion.div
-                        key={index}
-                        initial={{ opacity: 0, x: 50 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: index * 0.1 }}
-                        className="testimonial-slide snap-start flex-shrink-0 w-[85vw] sm:w-[70vw] lg:w-full bg-white/5 backdrop-blur-md p-6 sm:p-8 lg:p-10 rounded-2xl sm:rounded-3xl border border-white/10 relative"
-                      >
-                        {/* Large Quote Mark */}
-                        <div className="absolute -top-4 sm:-top-6 -left-2 sm:-left-4 text-7xl sm:text-8xl lg:text-9xl text-orange-500/20 font-serif leading-none select-none">
-                          "
-                        </div>
-                        
-                        {/* Title */}
-                        <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-white mb-4 sm:mb-6 relative z-10 italic"
-                            style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>
-                          {testimonial.name === 'Akari Kev' ? 'Great service and solid results' : 
-                           testimonial.name === 'Paul Dickens Doe' ? 'Excellent work and support' : 
-                           testimonial.name === 'Rev. Frank Ntow Gyan' ? 'Transformed our online presence' :
-                           testimonial.name === 'Righteous Semahar' ? 'Excellent web development' :
-                           'Great experience'}
-                        </h3>
-                        
-                        {/* Testimonial Text */}
-                        <p className="text-gray-300 text-base sm:text-lg leading-relaxed mb-6 sm:mb-8 relative z-10"
-                           style={{ fontFamily: 'Google Sans, sans-serif' }}>
-                          {testimonial.text}
-                        </p>
-                        
-                        {/* Author Info */}
-                        <div className="relative z-10 space-y-3">
-                          <div className="flex flex-col gap-3">
-                            <h4 className="text-lg sm:text-xl font-bold text-orange-400"
-                                style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>
-                              {testimonial.name.toUpperCase()}
-                            </h4>
-                            <p className="text-gray-300 text-xs sm:text-sm font-medium uppercase tracking-wider"
-                               style={{ fontFamily: 'Google Sans, sans-serif' }}>
-                              {testimonial.role} - {testimonial.company}
-                            </p>
-                          </div>
-                          
-                          {/* Trustpilot Badge */}
-                          {(testimonial.name === 'Akari Kev' || testimonial.name === 'Paul Dickens Doe') && (
-                            <div className="inline-flex items-center gap-2 bg-green-600 px-3 py-2 rounded">
-                              <svg className="w-5 h-5 sm:w-6 sm:h-6 text-white" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M12 1.5l3.27 6.6 7.23 1.05-5.25 5.1 1.24 7.23-6.49-3.42-6.49 3.42 1.24-7.23-5.25-5.1 7.23-1.05z"/>
-                              </svg>
-                              <span className="text-white text-xs sm:text-sm font-bold">Trustpilot</span>
-                            </div>
-                          )}
-                        </div>
-                      </motion.div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
+        {/* Testimonials */}
+        <TestimonialsSection />
 
-        {/* About Us Section - Kava Style */}
+        {/* About Us Section */}
         <section className="py-24 bg-gray-50 dark:bg-gray-900 relative overflow-hidden">
           <div className="max-w-7xl mx-auto px-4 relative z-10">
-            {/* Section Header */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="text-center mb-16"
-            >
+            <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-16">
               <motion.span
                 initial={{ opacity: 0, y: 10 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -1466,93 +974,40 @@ const IndexPage = () => {
               >
                 Best in Web Design in Ghana
               </motion.span>
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-gray-900 dark:text-white"
-                  style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-gray-900 dark:text-white" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>
                 A Website Design & Creative<br />
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-orange-600">Marketing Agency</span> in Ghana
               </h2>
-
-              {/* Why Choose Celestial Web Solutions Section */}
               <div className="max-w-3xl mx-auto mt-10 mb-12 text-center">
-                <h2 className="text-2xl md:text-3xl font-bold text-orange-600 dark:text-orange-400 mb-4" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>
-                  Why Choose Celestial Web Solutions
-                </h2>
-                <p className="text-lg text-gray-700 dark:text-gray-200 mb-4" style={{ fontFamily: 'Google Sans, sans-serif' }}>
-                  Businesses choose Celestial Web Solutions because we deliver quality, reliability, and results.
-                </p>
+                <h2 className="text-2xl md:text-3xl font-bold text-orange-600 dark:text-orange-400 mb-4" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>Why Choose Celestial Web Solutions</h2>
+                <p className="text-lg text-gray-700 dark:text-gray-200 mb-4" style={{ fontFamily: 'Google Sans, sans-serif' }}>Businesses choose Celestial Web Solutions because we deliver quality, reliability, and results.</p>
                 <ul className="list-none space-y-2 text-left inline-block mx-auto mb-4">
-                  <li className="flex items-center text-base text-gray-700 dark:text-gray-200"><CheckCircle className="w-5 h-5 text-orange-500 mr-2" /> Experienced web designers and developers</li>
-                  <li className="flex items-center text-base text-gray-700 dark:text-gray-200"><CheckCircle className="w-5 h-5 text-orange-500 mr-2" /> Affordable website design packages</li>
-                  <li className="flex items-center text-base text-gray-700 dark:text-gray-200"><CheckCircle className="w-5 h-5 text-orange-500 mr-2" /> SEO-friendly websites</li>
-                  <li className="flex items-center text-base text-gray-700 dark:text-gray-200"><CheckCircle className="w-5 h-5 text-orange-500 mr-2" /> Mobile-responsive designs</li>
-                  <li className="flex items-center text-base text-gray-700 dark:text-gray-200"><CheckCircle className="w-5 h-5 text-orange-500 mr-2" /> Client-focused approach</li>
+                  {["Experienced web designers and developers","Affordable website design packages","SEO-friendly websites","Mobile-responsive designs","Client-focused approach"].map((item) => (
+                    <li key={item} className="flex items-center text-base text-gray-700 dark:text-gray-200"><CheckCircle className="w-5 h-5 text-orange-500 mr-2" />{item}</li>
+                  ))}
                 </ul>
-                <p className="text-base text-gray-700 dark:text-gray-200" style={{ fontFamily: 'Google Sans, sans-serif' }}>
-                  We are committed to helping businesses succeed online with professional digital solutions.
-                </p>
               </div>
             </motion.div>
 
-            {/* Content Grid */}
             <div className="grid lg:grid-cols-2 gap-16 items-start mb-20">
-              {/* Left Column - Text Content */}
-              <motion.div
-                initial={{ opacity: 0, x: -30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-              >
-                <p className="text-gray-600 dark:text-gray-300 text-lg mb-6 leading-relaxed"
-                   style={{ fontFamily: 'Google Sans, sans-serif' }}>
-                  Celestial Web Solutions based in Accra, Ghana is a website design and digital marketing 
-                  company with years of experience on the Ghanaian market. We have had the privilege of 
-                  working with award winning clients and international prestigious companies as well as start-up companies.
+              <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
+                <p className="text-gray-600 dark:text-gray-300 text-lg mb-6 leading-relaxed" style={{ fontFamily: 'Google Sans, sans-serif' }}>
+                  Celestial Web Solutions based in Accra, Ghana is a website design and digital marketing company with years of experience on the Ghanaian market. We have had the privilege of working with award winning clients and international prestigious companies as well as start-up companies.
                 </p>
-                <p className="text-gray-600 dark:text-gray-300 text-lg mb-8 leading-relaxed"
-                   style={{ fontFamily: 'Google Sans, sans-serif' }}>
-                  Our dedication in crafting custom professional websites that meet industry standards with 
-                  the latest and innovative technologies has positioned us as one of the leading and best 
-                  web design companies in Accra, Ghana to work with.
+                <p className="text-gray-600 dark:text-gray-300 text-lg mb-8 leading-relaxed" style={{ fontFamily: 'Google Sans, sans-serif' }}>
+                  Our dedication in crafting custom professional websites that meet industry standards with the latest and innovative technologies has positioned us as one of the leading and best web design companies in Accra, Ghana to work with.
                 </p>
-                <p className="text-gray-600 dark:text-gray-300 text-lg mb-8 leading-relaxed"
-                   style={{ fontFamily: 'Google Sans, sans-serif' }}>
-                  Our design and development teams never stop learning. We are committed to continuous 
-                  learning and improvement to better solve complex challenges for our clients with measurable results.
-                </p>
-                
                 <div className="flex flex-wrap gap-4">
-                  <GlassButton href="/about" variant="solid">
-                    More About Us
-                  </GlassButton>
-                  <GlassButton href="/contact" variant="orange">
-                    Work With Us
-                  </GlassButton>
+                  <GlassButton href="/about" variant="solid">More About Us</GlassButton>
+                  <GlassButton href="/contact" variant="orange">Work With Us</GlassButton>
                 </div>
               </motion.div>
-              
-              {/* Right Column - Image */}
-              <motion.div
-                initial={{ opacity: 0, x: 30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                className="relative"
-              >
+              <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="relative">
                 <div className="relative rounded-3xl overflow-hidden shadow-2xl">
-                  <img 
-                    src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=90&w=1200&auto=format&fit=crop"
-                    alt="Celestial Web Solutions Team"
-                    className="w-full h-[400px] object-cover"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-orange-600/40 to-transparent"></div>
+                  <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=90&w=1200&auto=format&fit=crop" alt="Celestial Web Solutions Team" className="w-full h-[400px] object-cover" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-orange-600/40 to-transparent" />
                 </div>
-                
-                {/* Floating Badge */}
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.3 }}
-                  className="absolute -bottom-6 -left-6 bg-white dark:bg-gray-800 rounded-2xl p-4 shadow-xl border border-gray-100 dark:border-gray-700"
-                >
+                <motion.div initial={{ opacity: 0, scale: 0.8 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ delay: 0.3 }} className="absolute -bottom-6 -left-6 bg-white dark:bg-gray-800 rounded-2xl p-4 shadow-xl border border-gray-100 dark:border-gray-700">
                   <div className="flex items-center gap-3">
                     <div className="w-12 h-12 bg-gradient-to-br from-orange-500 to-red-500 rounded-xl flex items-center justify-center">
                       <Zap className="w-6 h-6 text-white" />
@@ -1565,70 +1020,32 @@ const IndexPage = () => {
                 </motion.div>
               </motion.div>
             </div>
-
           </div>
         </section>
 
-        {/* CTA Section - Glass Style */}
+        {/* CTA Section */}
         <section className="relative py-24 overflow-hidden">
           <div className="absolute inset-0">
-            <Image 
-              src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=90&w=2400&auto=format&fit=crop" 
-              alt="Team collaboration"
-              fill
-              sizes="100vw"
-              quality={70}
-              className="object-cover"
-              priority={false}
-            />
-            <div className="absolute inset-0 bg-gradient-to-r from-orange-600/95 via-orange-500/90 to-red-500/95"></div>
-            
-            {/* Decorative Elements */}
-            <motion.div 
-              className="absolute -top-20 -right-20 w-64 h-64 bg-white/10 rounded-full"
-              animate={{ scale: [1, 1.2, 1], rotate: [0, 90, 0] }}
-              transition={{ duration: 10, repeat: Infinity }}
-            />
-            <motion.div 
-              className="absolute -bottom-20 -left-20 w-80 h-80 bg-white/5 rounded-full"
-              animate={{ scale: [1.2, 1, 1.2], rotate: [0, -90, 0] }}
-              transition={{ duration: 12, repeat: Infinity }}
-            />
+            <Image src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=90&w=2400&auto=format&fit=crop" alt="Team collaboration" fill sizes="100vw" quality={70} className="object-cover" />
+            <div className="absolute inset-0 bg-gradient-to-r from-orange-600/95 via-orange-500/90 to-red-500/95" />
+            <motion.div className="absolute -top-20 -right-20 w-64 h-64 bg-white/10 rounded-full" animate={{ scale: [1,1.2,1], rotate: [0,90,0] }} transition={{ duration: 10, repeat: Infinity }} />
+            <motion.div className="absolute -bottom-20 -left-20 w-80 h-80 bg-white/5 rounded-full" animate={{ scale: [1.2,1,1.2], rotate: [0,-90,0] }} transition={{ duration: 12, repeat: Infinity }} />
           </div>
-
           <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
-            >
-              <span 
-                className="inline-block px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full text-white text-sm font-semibold mb-6"
-                style={{ fontFamily: 'Google Sans, sans-serif' }}
-              >
+            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} viewport={{ once: true }}>
+              <span className="inline-block px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full text-white text-sm font-semibold mb-6" style={{ fontFamily: 'Google Sans, sans-serif' }}>
                 Web Design Company Serving Accra, Keta, Ghana and across the Globe
               </span>
-              <h2
-                className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6"
-                style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}
-              >
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>
                 Celestial Web Solutions proudly serves clients across Accra, Keta, and all regions of Ghana.
               </h2>
-              <p
-                className="text-lg sm:text-xl text-orange-100 mb-10 max-w-2xl mx-auto"
-                style={{ fontFamily: 'Google Sans, sans-serif' }}
-              >
+              <p className="text-lg sm:text-xl text-orange-100 mb-10 max-w-2xl mx-auto" style={{ fontFamily: 'Google Sans, sans-serif' }}>
                 No matter your location, we provide professional web design and development services tailored to your business goals.<br /><br />
                 Contact us today to get a professional website that helps your business grow online
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <GlassButton href="/contact" variant="light">
-                  Start Your Project
-                </GlassButton>
-                <GlassButton href="/portfolio" variant="light">
-                  View Our Work
-                </GlassButton>
+                <GlassButton href="/contact" variant="light">Start Your Project</GlassButton>
+                <GlassButton href="/portfolio" variant="light">View Our Work</GlassButton>
               </div>
             </motion.div>
           </div>

@@ -6,7 +6,7 @@ import { Star, MapPin, Phone, Mail, ArrowRight, Award, Clock } from 'lucide-reac
 import ThemeToggle from './ThemeToggle';
 import { useState, useEffect } from 'react';
 
-const whatsappNumber = '233245709341'; // WhatsApp number without the plus sign
+const whatsappNumber = '233245709341';
 const whatsappMessage = encodeURIComponent("Hi Celestial, I'm interested in your web development services.");
 const whatsappLink = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
 
@@ -14,7 +14,6 @@ export default function Footer({ darkMode, toggleDarkMode }) {
   const router = useRouter();
   const currentYear = new Date().getFullYear();
 
-  // Live time zones configuration
   const timeZones = [
     { city: 'Accra', country: 'Ghana', timezone: 'Africa/Accra', flagCode: 'gh' },
     { city: 'Lagos', country: 'Nigeria', timezone: 'Africa/Lagos', flagCode: 'ng' },
@@ -58,41 +57,25 @@ export default function Footer({ darkMode, toggleDarkMode }) {
       rating: 4.9,
       reviews: 30,
       url: googleRating.googleBusinessUrl,
-      logo: 'https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_74x24dp.png',
-      color: 'from-blue-500 to-blue-600'
     },
     {
       name: 'Clutch',
       rating: 5.0,
       reviews: 'Top Rated',
       url: 'https://clutch.co/profile/celestial-web-solutions',
-      logo: './clutch-logo.png',
-      color: 'from-red-500 to-red-600'
     },
     {
       name: 'GoodFirms',
       rating: 5.0,
       reviews: 'Top Rated',
       url: 'https://www.goodfirms.co/company/celestial-web-solutions',
-      logo: null, // Will use Award icon
-      color: 'from-purple-500 to-purple-600'
     },
     {
       name: 'Trustpilot',
       rating: 4.8,
       reviews: 'Excellent',
       url: 'https://www.trustpilot.com/review/celestialwebsolutions.net',
-      logo: null,
-      color: 'from-green-500 to-emerald-600'
     },
-    {
-      name: 'The Manifest',
-      rating: 5.0,
-      reviews: 'Top 10 in Ghana',
-      url: 'https://themanifest.com/web-designers/ghana',
-      logo: null,
-      color: 'from-indigo-500 to-indigo-600'
-    }
   ];
 
   const footerLinks = {
@@ -125,7 +108,7 @@ export default function Footer({ darkMode, toggleDarkMode }) {
   };
 
   const socialLinks = [
-    { 
+    {
       name: 'Twitter',
       icon: (
         <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -134,7 +117,7 @@ export default function Footer({ darkMode, toggleDarkMode }) {
       ),
       href: 'https://x.com/strivehardest'
     },
-    { 
+    {
       name: 'WhatsApp',
       icon: (
         <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -143,7 +126,7 @@ export default function Footer({ darkMode, toggleDarkMode }) {
       ),
       href: 'https://wa.me/233245709341'
     },
-    { 
+    {
       name: 'Facebook',
       icon: (
         <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -152,7 +135,7 @@ export default function Footer({ darkMode, toggleDarkMode }) {
       ),
       href: 'https://facebook.com/celestialwebsolutions'
     },
-    { 
+    {
       name: 'Instagram',
       icon: (
         <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -161,7 +144,7 @@ export default function Footer({ darkMode, toggleDarkMode }) {
       ),
       href: 'https://instagram.com/celestialwebsolutions'
     },
-    { 
+    {
       name: 'LinkedIn',
       icon: (
         <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -170,7 +153,7 @@ export default function Footer({ darkMode, toggleDarkMode }) {
       ),
       href: 'https://linkedin.com/in/aforlabi'
     },
-    { 
+    {
       name: 'YouTube',
       icon: (
         <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -181,43 +164,31 @@ export default function Footer({ darkMode, toggleDarkMode }) {
     }
   ];
 
-  const StarRating = ({ rating }) => (
-    <div className="flex items-center gap-0.5">
-      {[1, 2, 3, 4, 5].map((star) => (
-        <Star
-          key={star}
-          size={14}
-          className={`${
-            star <= Math.floor(rating)
-              ? 'fill-yellow-400 text-yellow-400'
-              : 'fill-gray-300 text-gray-300'
-          }`}
-        />
-      ))}
-    </div>
-  );
-
   return (
-    <footer className="bg-gray-900 text-white">
+    // ✅ Uses Tailwind dark: variants — ThemeToggle already manages the `dark`
+    // class on <html>, so these respond automatically without needing the darkMode prop.
+    <footer className="bg-white dark:bg-gray-900 text-gray-900 dark:text-white transition-colors duration-300">
+
       {/* Trust Badges Section */}
-      <div className="border-b border-gray-800">
+      <div className="border-b border-gray-200 dark:border-gray-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <div className="text-center mb-6">
-            <h3 className="text-lg font-semibold mb-2" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>
+            <h3 className="text-lg font-semibold mb-2 text-gray-900 dark:text-white" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>
               Trusted by Ghana Businesses
             </h3>
-            <p className="text-gray-400 text-sm" style={{ fontFamily: 'Google Sans, sans-serif' }}>
+            <p className="text-gray-500 dark:text-gray-400 text-sm" style={{ fontFamily: 'Google Sans, sans-serif' }}>
               Verified reviews from happy clients
             </p>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 max-w-5xl mx-auto">
+
             {/* Google Reviews */}
-            <a 
+            <a
               href={reviewPlatforms[0].url}
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-gray-800 rounded-lg p-4 hover:bg-gray-750 transition-all duration-300 hover:scale-105 flex items-center gap-4 group"
+              className="bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-lg p-4 transition-all duration-300 hover:scale-105 flex items-center gap-4 group"
             >
               <div className="bg-white rounded-lg p-3 flex-shrink-0">
                 <svg className="w-8 h-8" viewBox="0 0 24 24">
@@ -230,25 +201,25 @@ export default function Footer({ darkMode, toggleDarkMode }) {
               <div className="flex-1">
                 <div className="flex items-center gap-1 mb-1">
                   <span className="text-yellow-400 text-lg">★★★★★</span>
-                  <span className="font-bold ml-2" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>
+                  <span className="font-bold ml-2 text-gray-900 dark:text-white" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>
                     {reviewPlatforms[0].rating}
                   </span>
                 </div>
-                <div className="text-sm text-gray-400" style={{ fontFamily: 'Google Sans, sans-serif' }}>
+                <div className="text-sm text-gray-500 dark:text-gray-400" style={{ fontFamily: 'Google Sans, sans-serif' }}>
                   {reviewPlatforms[0].reviews} Google Reviews
                 </div>
               </div>
-              <svg className="w-5 h-5 text-gray-600 group-hover:text-blue-400 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-5 h-5 text-gray-400 dark:text-gray-600 group-hover:text-blue-400 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
               </svg>
             </a>
 
             {/* Clutch */}
-            <a 
+            <a
               href={reviewPlatforms[1].url}
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-gray-800 rounded-lg p-4 hover:bg-gray-750 transition-all duration-300 hover:scale-105 flex items-center gap-4 group"
+              className="bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-lg p-4 transition-all duration-300 hover:scale-105 flex items-center gap-4 group"
             >
               <div className="bg-white rounded-lg p-3 flex-shrink-0">
                 <img src="/clutch-logo.png" alt="Clutch" className="w-8 h-8 object-contain" />
@@ -256,25 +227,25 @@ export default function Footer({ darkMode, toggleDarkMode }) {
               <div className="flex-1">
                 <div className="flex items-center gap-1 mb-1">
                   <span className="text-yellow-400 text-lg">★★★★★</span>
-                  <span className="font-bold ml-2" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>
+                  <span className="font-bold ml-2 text-gray-900 dark:text-white" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>
                     {reviewPlatforms[1].rating}
                   </span>
                 </div>
-                <div className="text-sm text-gray-400" style={{ fontFamily: 'Google Sans, sans-serif' }}>
+                <div className="text-sm text-gray-500 dark:text-gray-400" style={{ fontFamily: 'Google Sans, sans-serif' }}>
                   Top Rated on Clutch
                 </div>
               </div>
-              <svg className="w-5 h-5 text-gray-600 group-hover:text-red-400 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-5 h-5 text-gray-400 dark:text-gray-600 group-hover:text-red-400 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
               </svg>
             </a>
 
             {/* GoodFirms */}
-            <a 
+            <a
               href={reviewPlatforms[2].url}
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-gray-800 rounded-lg p-4 hover:bg-gray-750 transition-all duration-300 hover:scale-105 flex items-center gap-4 group"
+              className="bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-lg p-4 transition-all duration-300 hover:scale-105 flex items-center gap-4 group"
             >
               <div className="bg-white rounded-lg p-3 flex-shrink-0">
                 <img src="/goodfirms-logo.png" alt="GoodFirms" className="w-8 h-8 object-contain" />
@@ -282,50 +253,44 @@ export default function Footer({ darkMode, toggleDarkMode }) {
               <div className="flex-1">
                 <div className="flex items-center gap-1 mb-1">
                   <span className="text-yellow-400 text-lg">★★★★★</span>
-                  <span className="font-bold ml-2" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>
+                  <span className="font-bold ml-2 text-gray-900 dark:text-white" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>
                     {reviewPlatforms[2].rating}
                   </span>
                 </div>
-                <div className="text-sm text-gray-400" style={{ fontFamily: 'Google Sans, sans-serif' }}>
+                <div className="text-sm text-gray-500 dark:text-gray-400" style={{ fontFamily: 'Google Sans, sans-serif' }}>
                   Top Rated on GoodFirms
                 </div>
               </div>
-              <svg className="w-5 h-5 text-gray-600 group-hover:text-purple-400 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-5 h-5 text-gray-400 dark:text-gray-600 group-hover:text-purple-400 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
               </svg>
             </a>
 
             {/* Trustpilot */}
-            <a 
+            <a
               href={reviewPlatforms[3].url}
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-gray-800 rounded-lg p-4 hover:bg-gray-750 transition-all duration-300 hover:scale-105 flex items-center gap-4 group"
+              className="bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-lg p-4 transition-all duration-300 hover:scale-105 flex items-center gap-4 group"
             >
               <div className="bg-white rounded-lg p-3 flex-shrink-0">
                 <svg viewBox="0 0 24 24" className="w-8 h-8">
-                  <path
-                    fill="#00b67a"
-                    d="M12 1l3.09 7.92H23l-6.54 4.75 2.5 7.83L12 17.7 5.04 21.5l2.5-7.83L1 8.92h7.91z"
-                  />
-                  <path
-                    fill="#00e59b"
-                    d="M16.9 15.78L12 17.7V1l3.09 7.92H23l-6.54 4.75z"
-                  />
+                  <path fill="#00b67a" d="M12 1l3.09 7.92H23l-6.54 4.75 2.5 7.83L12 17.7 5.04 21.5l2.5-7.83L1 8.92h7.91z"/>
+                  <path fill="#00e59b" d="M16.9 15.78L12 17.7V1l3.09 7.92H23l-6.54 4.75z"/>
                 </svg>
               </div>
               <div className="flex-1">
                 <div className="flex items-center gap-1 mb-1">
                   <span className="text-yellow-400 text-lg">★★★★★</span>
-                  <span className="font-bold ml-2" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>
+                  <span className="font-bold ml-2 text-gray-900 dark:text-white" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>
                     {reviewPlatforms[3].rating}
                   </span>
                 </div>
-                <div className="text-sm text-gray-400" style={{ fontFamily: 'Google Sans, sans-serif' }}>
+                <div className="text-sm text-gray-500 dark:text-gray-400" style={{ fontFamily: 'Google Sans, sans-serif' }}>
                   Excellent on Trustpilot
                 </div>
               </div>
-              <svg className="w-5 h-5 text-gray-600 group-hover:text-green-400 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-5 h-5 text-gray-400 dark:text-gray-600 group-hover:text-green-400 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
               </svg>
             </a>
@@ -336,44 +301,51 @@ export default function Footer({ darkMode, toggleDarkMode }) {
       {/* Main Footer Content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12">
-          
+
           {/* Brand Column */}
           <div className="lg:col-span-2">
             <Link href="/" className="inline-flex items-center gap-4 mb-6">
               <div className="relative w-20 h-20">
+                {/* White logo for dark mode, dark logo for light mode */}
                 <Image
                   src="/logo-white.png"
                   alt="Celestial Web Solutions"
                   fill
                   quality={80}
-                  className="object-contain"
+                  className="object-contain hidden dark:block"
+                />
+                <Image
+                  src="/logo.png"
+                  alt="Celestial Web Solutions"
+                  fill
+                  quality={80}
+                  className="object-contain block dark:hidden"
                 />
               </div>
               <div>
-                <div className="text-3xl font-bold text-white" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>
+                <div className="text-3xl font-bold text-gray-900 dark:text-white" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>
                   Celestial
                 </div>
-                <div className="text-base text-gray-400" style={{ fontFamily: 'Google Sans, sans-serif' }}>
+                <div className="text-base text-gray-500 dark:text-gray-400" style={{ fontFamily: 'Google Sans, sans-serif' }}>
                   Web Solutions
                 </div>
               </div>
             </Link>
 
-            <p className="text-gray-400 text-base mb-6 max-w-sm leading-relaxed" style={{ fontFamily: 'Google Sans, sans-serif' }}>
+            <p className="text-gray-500 dark:text-gray-400 text-base mb-6 max-w-sm leading-relaxed" style={{ fontFamily: 'Google Sans, sans-serif' }}>
               A focused web design and development company in Ghana, delivering exceptional digital experiences for businesses across Africa.
             </p>
 
-            {/* Contact Info */}
             <div className="space-y-3 mb-6">
-              <a href="tel:+233530505031" className="flex items-center gap-3 text-gray-400 hover:text-orange-400 transition-colors text-base" style={{ fontFamily: 'Google Sans, sans-serif' }}>
+              <a href="tel:+233530505031" className="flex items-center gap-3 text-gray-500 dark:text-gray-400 hover:text-orange-500 dark:hover:text-orange-400 transition-colors text-base" style={{ fontFamily: 'Google Sans, sans-serif' }}>
                 <Phone size={16} className="text-orange-500" />
                 +233 530 505 031
               </a>
-              <a href="mailto:info@celestialwebsolutions.net" className="flex items-center gap-3 text-gray-400 hover:text-orange-400 transition-colors text-base" style={{ fontFamily: 'Google Sans, sans-serif' }}>
+              <a href="mailto:info@celestialwebsolutions.net" className="flex items-center gap-3 text-gray-500 dark:text-gray-400 hover:text-orange-500 dark:hover:text-orange-400 transition-colors text-base" style={{ fontFamily: 'Google Sans, sans-serif' }}>
                 <Mail size={16} className="text-orange-500" />
                 info@celestialwebsolutions.net
               </a>
-              <div className="flex items-start gap-3 text-gray-400 text-base" style={{ fontFamily: 'Google Sans, sans-serif' }}>
+              <div className="flex items-start gap-3 text-gray-500 dark:text-gray-400 text-base" style={{ fontFamily: 'Google Sans, sans-serif' }}>
                 <MapPin size={16} className="text-orange-500 flex-shrink-0 mt-0.5" />
                 <span>Keta & Accra, Ghana</span>
               </div>
@@ -382,15 +354,15 @@ export default function Footer({ darkMode, toggleDarkMode }) {
 
           {/* Services Links */}
           <div>
-            <h4 className="text-sm font-semibold text-white mb-4 uppercase tracking-wider" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>
+            <h4 className="text-sm font-semibold text-gray-900 dark:text-white mb-4 uppercase tracking-wider" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>
               Services
             </h4>
             <ul className="space-y-3">
               {footerLinks.services.map((link) => (
                 <li key={link.name}>
-                  <Link 
+                  <Link
                     href={link.href}
-                    className={`text-sm transition-colors ${router.pathname === link.href ? 'text-orange-400 font-bold' : 'text-gray-400 hover:text-orange-400'}`}
+                    className={`text-sm transition-colors ${router.pathname === link.href ? 'text-orange-500 font-bold' : 'text-gray-500 dark:text-gray-400 hover:text-orange-500 dark:hover:text-orange-400'}`}
                     style={{ fontFamily: 'Google Sans, sans-serif' }}
                   >
                     {link.name}
@@ -402,15 +374,15 @@ export default function Footer({ darkMode, toggleDarkMode }) {
 
           {/* Company Links */}
           <div>
-            <h4 className="text-sm font-semibold text-white mb-4 uppercase tracking-wider" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>
+            <h4 className="text-sm font-semibold text-gray-900 dark:text-white mb-4 uppercase tracking-wider" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>
               Company
             </h4>
             <ul className="space-y-3">
               {footerLinks.company.map((link) => (
                 <li key={link.name} className="relative">
-                  <Link 
+                  <Link
                     href={link.href}
-                    className={`text-sm transition-colors inline-flex items-center gap-2 ${router.pathname === link.href ? 'text-orange-400 font-bold' : 'text-gray-400 hover:text-orange-400'}`}
+                    className={`text-sm transition-colors inline-flex items-center gap-2 ${router.pathname === link.href ? 'text-orange-500 font-bold' : 'text-gray-500 dark:text-gray-400 hover:text-orange-500 dark:hover:text-orange-400'}`}
                     style={{ fontFamily: 'Google Sans, sans-serif' }}
                   >
                     {link.name}
@@ -427,15 +399,15 @@ export default function Footer({ darkMode, toggleDarkMode }) {
 
           {/* Support Links */}
           <div>
-            <h4 className="text-sm font-semibold text-white mb-4 uppercase tracking-wider" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>
+            <h4 className="text-sm font-semibold text-gray-900 dark:text-white mb-4 uppercase tracking-wider" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>
               Support
             </h4>
             <ul className="space-y-3">
               {footerLinks.support.map((link) => (
                 <li key={link.name}>
-                  <Link 
+                  <Link
                     href={link.href}
-                    className={`text-sm transition-colors ${router.pathname === link.href ? 'text-orange-400 font-bold' : 'text-gray-400 hover:text-orange-400'}`}
+                    className={`text-sm transition-colors ${router.pathname === link.href ? 'text-orange-500 font-bold' : 'text-gray-500 dark:text-gray-400 hover:text-orange-500 dark:hover:text-orange-400'}`}
                     style={{ fontFamily: 'Google Sans, sans-serif' }}
                   >
                     {link.name}
@@ -444,8 +416,7 @@ export default function Footer({ darkMode, toggleDarkMode }) {
               ))}
             </ul>
 
-            {/* CTA Button */}
-            <Link 
+            <Link
               href="/schedule-a-call"
               className="inline-flex items-center gap-2 mt-6 px-5 py-2.5 bg-gradient-to-r from-orange-500 to-orange-600 text-white text-sm font-semibold rounded-full hover:from-orange-600 hover:to-orange-700 transition-all"
               style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}
@@ -458,12 +429,12 @@ export default function Footer({ darkMode, toggleDarkMode }) {
       </div>
 
       {/* Live Time Zones Section */}
-      <div className="border-t border-gray-800 bg-gray-900/50">
+      <div className="border-t border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-900/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <div className="flex flex-wrap justify-center items-center gap-6 md:gap-12">
             {timeZones.map(({ city, country, flagCode }) => (
               <div key={city} className="flex items-center gap-3 group">
-                <img 
+                <img
                   src={`https://flagcdn.com/w40/${flagCode}.png`}
                   srcSet={`https://flagcdn.com/w80/${flagCode}.png 2x`}
                   width="32"
@@ -472,11 +443,11 @@ export default function Footer({ darkMode, toggleDarkMode }) {
                   className="rounded shadow-sm"
                 />
                 <div className="flex flex-col">
-                  <span className="text-xs text-gray-500 uppercase tracking-wider" style={{ fontFamily: 'Google Sans, sans-serif' }}>
+                  <span className="text-xs text-gray-400 dark:text-gray-500 uppercase tracking-wider" style={{ fontFamily: 'Google Sans, sans-serif' }}>
                     {city}, {country}
                   </span>
-                  <span 
-                    className="text-xl md:text-2xl font-mono text-white tracking-wider group-hover:text-orange-400 transition-colors"
+                  <span
+                    className="text-xl md:text-2xl font-mono text-gray-900 dark:text-white tracking-wider group-hover:text-orange-500 dark:group-hover:text-orange-400 transition-colors"
                     style={{ fontFamily: 'JetBrains Mono, monospace' }}
                   >
                     {times[city] || '--:--:--'}
@@ -489,36 +460,45 @@ export default function Footer({ darkMode, toggleDarkMode }) {
       </div>
 
       {/* Bottom Bar */}
-      <div className="border-t border-gray-800">
+      <div className="border-t border-gray-200 dark:border-gray-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <div className="flex flex-col items-center gap-4">
-            {/* Badges */}
+
+            {/* TechBehemoths Badge — swap variant based on dark class */}
             <div className="flex flex-col sm:flex-row items-center gap-3">
-              <a 
-                href="https://techbehemoths.com/company/celestial-web-solutions" 
-                target="_blank" 
+              <a
+                href="https://techbehemoths.com/company/celestial-web-solutions"
+                target="_blank"
                 rel="noopener noreferrer"
                 className="hover:opacity-80 transition-opacity"
                 title="Trusted and Verified by TechBehemoths"
               >
-                <Image 
-                  src="/images/TB-Trusted-on-black.svg" 
-                  alt="Trusted and Verified by TechBehemoths" 
-                  width={200} 
+                <Image
+                  src="/images/TB-Trusted-on-black.svg"
+                  alt="Trusted and Verified by TechBehemoths"
+                  width={200}
                   height={60}
+                  className="hidden dark:block"
+                />
+                <Image
+                  src="/images/TB-Trusted-on-white.svg"
+                  alt="Trusted and Verified by TechBehemoths"
+                  width={200}
+                  height={60}
+                  className="block dark:hidden"
                 />
               </a>
             </div>
-            
+
             <div className="text-center">
-              <p className="text-gray-300 text-base" style={{ fontFamily: 'Google Sans, sans-serif' }}>
+              <p className="text-gray-600 dark:text-gray-300 text-base" style={{ fontFamily: 'Google Sans, sans-serif' }}>
                 © {currentYear} Celestial Web Solutions. All rights reserved.
               </p>
-              <p className="text-xs text-gray-400 mt-1" style={{ fontFamily: 'Google Sans, sans-serif' }}>
+              <p className="text-xs text-gray-400 dark:text-gray-500 mt-1" style={{ fontFamily: 'Google Sans, sans-serif' }}>
                 Handcrafted with passion in Ghana.
               </p>
             </div>
-            
+
             {/* Social Links */}
             <div className="flex items-center gap-4">
               {socialLinks.map((social) => (
@@ -527,23 +507,23 @@ export default function Footer({ darkMode, toggleDarkMode }) {
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-gray-300 hover:text-orange-400 transition-colors"
+                  className="text-gray-500 dark:text-gray-300 hover:text-orange-500 dark:hover:text-orange-400 transition-colors"
                   title={social.name}
                 >
                   {social.icon}
                 </a>
               ))}
             </div>
-            
+
             {/* Theme Toggle */}
             <div className="flex items-center gap-4 pt-2">
               <ThemeToggle darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
             </div>
           </div>
-          
-          {/* DMCA Badge - Bottom Centered */}
+
+          {/* DMCA Badge */}
           <div className="flex justify-center pt-4">
-            <a href="https://www.dmca.com/compliance/celestialwebsolutions.net" title="DMCA.com Protection Status" className="dmca-badge" target="_blank" rel="noopener noreferrer"> 
+            <a href="https://www.dmca.com/compliance/celestialwebsolutions.net" title="DMCA.com Protection Status" className="dmca-badge" target="_blank" rel="noopener noreferrer">
               <img src="https://images.dmca.com/Badges/dmca_protected_sml_120a.png?ID=a2cdeca7-613e-4377-a477-855d263ffc77" alt="DMCA.com Protection Status" />
             </a>
           </div>

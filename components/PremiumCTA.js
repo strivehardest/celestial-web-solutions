@@ -122,16 +122,26 @@ export default function PremiumCTA({
       </button>
     );
   }
-  if (external) {
+
+  // Always render <a> for external links or if target/rel is set
+  if (external || props.target === '_blank' || props.rel) {
     return (
-      <a href={href} target="_blank" rel="noopener noreferrer">
+      <a
+        href={href}
+        target={props.target || (external ? '_blank' : undefined)}
+        rel={props.rel || (external ? 'noopener noreferrer' : undefined)}
+        className={className}
+        style={props.style}
+        onClick={handleClick}
+        {...props}
+      >
         <ButtonContent />
       </a>
     );
   }
-  return (
-    <ButtonContent />
-  );
+
+  // Default: render as span (button-like)
+  return <ButtonContent />;
 }
 
 // Secondary CTA with different style
