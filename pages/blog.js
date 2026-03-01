@@ -275,6 +275,34 @@ export const blogArticles = [
     tags: ["UI/UX Design", "User Experience", "Web Design", "Ghana", "Conversion Optimization"],
     hashtags: ["#UIUXDesign", "#WebDesignGhana", "#UserExperience", "#GhanaWeb", "#CelestialWebSolutions"]
   },
+  {
+    id: 18,
+    slug: "complete-guide-to-web-design-agencies-ghana",
+    title: "The Complete Guide to Web Design Agencies in Ghana",
+    excerpt: "Everything you need to know about choosing a web design agency in Ghana.",
+    category: "Web Design",
+    author: "Celestial Team",
+    date: "January 10, 2025",
+    readTime: "10 min read",
+    image: "https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?w=1200&h=600&fit=crop",
+    featured: false,
+    tags: ["web design", "Ghana", "web development", "digital agencies"],
+    hashtags: ["#WebDesignGhana", "#GhanaWebAgencies", "#DigitalMarketingGhana", "#WebDevelopment", "#CelestialWebSolutions"]
+  },
+  {
+    id: 19,
+    slug: "ultimate-guide-to-digital-marketing-ghana-2025",
+    title: "The Ultimate Guide to Digital Marketing in Ghana 2025",
+    excerpt: "Master digital marketing in Ghana with our comprehensive guide. Strategies, tips, and tools for success.",
+    category: "Digital Marketing",
+    author: "Celestial Team",
+    date: "January 5, 2025",
+    readTime: "12 min read",
+    image: "https://images.unsplash.com/photo-1518779578993b195f8e2318078c8a7?w=1200&h=600&fit=crop",
+    featured: false,
+    tags: ["digital marketing", "Ghana", "SEO", "social media", "email marketing"],
+    hashtags: ["#DigitalMarketingGhana", "#SEOGhana", "#SocialMediaGhana", "#CelestialWebSolutions"]
+  },
 ];
 
 export default function BlogPage() {
