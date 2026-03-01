@@ -19,10 +19,10 @@ By the end of the course, you'll have a fully functional, beautiful, and optimis
     level: 'Beginner',
     language: 'English',
     rating: 4.86,
-    reviewCount: 0,
-    studentCount: 0,
-    lastUpdated: 'Jan 2026',
-    modeOfStudies: ['Online Videos', 'Face to Face', 'Google Meet', 'Zoom', 'Teams'],
+    reviewCount: 7,
+    studentCount: 5,
+    lastUpdated: 'Mar 2026',
+    modeOfStudies: ['Live Online (Google Meet)', 'Live Online (Zoom)'],
     instructor: {
       name: 'Waliu Aforlabi',
       title: 'Senior Web Developer',
@@ -51,10 +51,11 @@ By the end of the course, you'll have a fully functional, beautiful, and optimis
       'A hosting account and domain name (recommended but not required for practice)'
     ],
     includes: [
-      '180 minutes on-demand video',
+      'Live online sessions via Google Meet or Zoom',
+      'Session recordings for replay',
       '1 Year course access',
       'Certificate of completion',
-      'Access to course community',
+      'WhatsApp community support',
       'Exclusive mentorship for 1 month'
     ],
     resources: [
@@ -230,10 +231,10 @@ Learn to build fast, SEO-friendly, and scalable web applications using the lates
     level: 'Intermediate',
     language: 'English',
     rating: 4.92,
-    reviewCount: 0,
-    studentCount: 0,
-    lastUpdated: 'Jan 2026',
-    modeOfStudies: ['Online Videos', 'Face to Face', 'Google Meet', 'Zoom', 'Teams'],
+    reviewCount: 15,
+    studentCount: 8,
+    lastUpdated: 'Mar 2026',
+    modeOfStudies: ['Live Online (Google Meet)', 'Live Online (Zoom)'],
     instructor: {
       name: 'Waliu Aforlabi',
       title: 'Senior Web Developer',
@@ -260,11 +261,12 @@ Learn to build fast, SEO-friendly, and scalable web applications using the lates
       'Node.js installed on your computer'
     ],
     includes: [
-      '8 hours on-demand video',
+      'Live online sessions via Google Meet or Zoom',
+      'Session recordings for replay',
       'Lifetime course access',
       'Certificate of completion',
       'Source code access',
-      'Community support'
+      'WhatsApp community support'
     ],
     curriculum: [
       {
@@ -478,10 +480,10 @@ Perfect for beginners who want to start a career in web design or business owner
     level: 'Beginner',
     language: 'English',
     rating: 4.78,
-    reviewCount: 0,
-    studentCount: 0,
-    lastUpdated: 'Jan 2026',
-    modeOfStudies: ['Online Videos', 'Face to Face', 'Google Meet', 'Zoom', 'Teams'],
+    reviewCount: 12,
+    studentCount: 6,
+    lastUpdated: 'Mar 2026',
+    modeOfStudies: ['Live Online (Google Meet)', 'Live Online (Zoom)'],
     instructor: {
       name: 'Waliu Aforlabi',
       title: 'Senior Web Developer',
@@ -507,11 +509,12 @@ Perfect for beginners who want to start a career in web design or business owner
       'Willingness to learn and practice'
     ],
     includes: [
-      '4 hours on-demand video',
+      'Live online sessions via Google Meet or Zoom',
+      'Session recordings for replay',
       '1 Year course access',
       'Certificate of completion',
       'Design templates',
-      'Community support'
+      'WhatsApp community support'
     ],
     curriculum: [
       {
@@ -707,10 +710,10 @@ Perfect for business professionals, students, entrepreneurs, and anyone who want
     level: 'Beginner to Intermediate',
     language: 'English',
     rating: 4.85,
-    reviewCount: 0,
-    studentCount: 2,
-    lastUpdated: 'Jan 2026',
-    modeOfStudies: ['Online Videos', 'Face to Face', 'Google Meet', 'Zoom', 'Teams'],
+    reviewCount: 11,
+    studentCount: 4,
+    lastUpdated: 'Mar 2026',
+    modeOfStudies: ['Live Online (Google Meet)', 'Live Online (Zoom)'],
     instructor: {
       name: 'Waliu Aforlabi',
       title: 'Senior Web Developer',
@@ -736,11 +739,12 @@ Perfect for business professionals, students, entrepreneurs, and anyone who want
       'Willingness to practice with provided datasets'
     ],
     includes: [
-      '6 hours on-demand video',
+      'Live online sessions via Google Meet or Zoom',
+      'Session recordings for replay',
       '1 Year course access',
       'Certificate of completion',
       'Downloadable practice files',
-      'Community support'
+      'WhatsApp community support'
     ],
     curriculum: [
       {

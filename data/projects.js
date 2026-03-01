@@ -79,10 +79,10 @@ const projects = [
     client: "DL Auto Parts",
     clientCountry: "Ghana",
     description: "DL Auto Parts needed a reliable online store to serve Ghana's growing auto market. We delivered a fully functional WooCommerce store with secure payment integration, an organized product catalog, and a mobile-friendly shopping experience that makes finding the right part fast and effortless.",
-    image: "/png/projects/dl-auto-parts.png",
+    image: "/png/projects/dlautos.png",
     desktopImage: "/portfolio/desktop/dlautos.png",
     mobileImage: "/portfolio/mobile/dlauto.png",
-    screenshot: "",
+    screenshot: "/png/screenshots/dlautos-full.png",
     link: "https://dlautopartsgh.com/",
     tech: ["WordPress", "PHP", "WooCommerce", "CSS3", "HTML5", "Paystack"],
     techLogos: [
@@ -90,11 +90,11 @@ const projects = [
       { name: "PHP", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg" },
       { name: "WooCommerce", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/woocommerce/woocommerce-original.svg" },
       { name: "CSS3", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" },
-      { name: "HTML5", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" }
+      { name: "HTML5", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" },
     ],
-    startDate: "2026-02-01",
-    completionDate: "In Progress",
-    duration: "In Progress",
+    startDate: "2026-02-13",
+    completionDate: "2026-02-20",
+    duration: "7 days",
     features: [
       "Auto Parts Catalog",
       "Product Search & Filtering",
@@ -103,7 +103,13 @@ const projects = [
       "Responsive Design",
       "SEO Optimization",
       "WhatsApp Integration",
-      "Professional Branding"
+      "Professional Branding",
+      "Google Analytics Setup",
+      "Social Media Integration",
+      "Contact Forms",
+      "Customer Reviews & Ratings",
+      "Inventory Management",
+      "Order Tracking System",    
     ]
   },
   {
