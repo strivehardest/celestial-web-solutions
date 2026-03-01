@@ -12,6 +12,11 @@ const nextConfig = {
   async redirects() {
     return [
       {
+        source: '/api/sitemap',
+        destination: '/sitemap.xml',
+        permanent: true,
+      },
+      {
         source: '/web-design-company-in-ghana/web-development',
         destination: '/web-design-company-in-ghana/web-development-company-in-ghana',
         permanent: true,
@@ -30,6 +35,11 @@ const nextConfig = {
       {
         protocol: 'https',
         hostname: 'images.seeklogo.com',
+        pathname: '/**'
+      },
+      {
+        protocol: 'https',
+        hostname: 'seeklogo.com',
         pathname: '/**'
       },
       {
