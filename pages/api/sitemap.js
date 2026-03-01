@@ -39,7 +39,6 @@ const staticPaths = [
   // Service pages
   { path: '/web-design-company-in-ghana/web-design-in-ghana',                        priority: 0.9, changefreq: 'monthly' },
   { path: '/web-design-company-in-ghana/web-development-company-in-ghana',           priority: 0.9, changefreq: 'monthly' },
-  { path: '/web-design-company-in-ghana/web-development-in-ghana',                   priority: 0.9, changefreq: 'monthly' },
   { path: '/web-design-company-in-ghana/ecommerce-website-development-ghana',        priority: 0.9, changefreq: 'monthly' },
   { path: '/web-design-company-in-ghana/seo-services-in-ghana',                      priority: 0.8, changefreq: 'monthly' },
   { path: '/web-design-company-in-ghana/ux-ui-design-in-ghana',                      priority: 0.8, changefreq: 'monthly' },

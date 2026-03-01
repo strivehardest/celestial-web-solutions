@@ -61,6 +61,59 @@ export default function CourseDetail() {
         <meta name="description" content={course.subtitle} />
         <meta name="keywords" content={`${course.title}, online course, web development, Ghana`} />
         <link rel="canonical" href={`https://celestialwebsolutions.net/courses/${course.slug}`} />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Course",
+              "name": course.title,
+              "description": course.subtitle,
+              "url": `https://celestialwebsolutions.net/courses/${course.slug}`,
+              "provider": {
+                "@type": "Organization",
+                "name": "Celestial Web Solutions",
+                "url": "https://celestialwebsolutions.net",
+                "sameAs": [
+                  "https://www.instagram.com/celestialwebsolutions",
+                  "https://www.facebook.com/celestialwebsolutions"
+                ]
+              },
+              "instructor": {
+                "@type": "Person",
+                "name": course.instructor.name,
+                "jobTitle": course.instructor.title
+              },
+              "inLanguage": course.language,
+              "courseMode": "Online",
+              "educationalLevel": course.level,
+              "image": `https://celestialwebsolutions.net${course.thumbnail}`,
+              "offers": {
+                "@type": "Offer",
+                "price": course.price,
+                "priceCurrency": "GHS",
+                "availability": "https://schema.org/InStock",
+                "url": `https://celestialwebsolutions.net/courses/enroll/${course.slug}`
+              },
+              "aggregateRating": {
+                "@type": "AggregateRating",
+                "ratingValue": course.rating,
+                "reviewCount": course.reviewCount,
+                "bestRating": 5,
+                "worstRating": 1
+              },
+              "hasCourseInstance": {
+                "@type": "CourseInstance",
+                "courseMode": "Online",
+                "duration": course.duration,
+                "instructor": {
+                  "@type": "Person",
+                  "name": course.instructor.name
+                }
+              }
+            })
+          }}
+        />
       </Head>
 
       <div className="min-h-screen bg-white dark:bg-gray-900">
@@ -498,40 +551,18 @@ export default function CourseDetail() {
                       
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         {course.modeOfStudies && course.modeOfStudies.map((mode, index) => (
-                          <div key={index} className="flex items-center gap-4 p-6 border-2 border-gray-200 dark:border-gray-700 rounded-xl hover:border-orange-500 hover:bg-orange-50 dark:hover:bg-gray-700 transition-all">
+                          <div key={index} className="flex items-center gap-4 p-6 border-2 border-orange-200 dark:border-orange-800/40 rounded-xl bg-orange-50/50 dark:bg-orange-900/10">
                             <div className="flex-shrink-0 w-16 h-16 rounded-xl flex items-center justify-center bg-white dark:bg-gray-700 shadow-md">
-                              {mode === 'Online Videos' && (
-                                <svg className="w-10 h-10" viewBox="0 0 24 24" fill="none">
-                                  <path d="M8 5v14l11-7z" fill="#FF0000"/>
-                                </svg>
-                              )}
-                              {mode === 'Face to Face' && (
-                                <svg className="w-10 h-10" viewBox="0 0 24 24" fill="none">
-                                  <circle cx="9" cy="7" r="4" fill="#FF6B35"/>
-                                  <path d="M3 20c0-3.314 2.686-6 6-6s6 2.686 6 6" stroke="#FF6B35" strokeWidth="2"/>
-                                  <circle cx="17" cy="7" r="3" fill="#FF9966"/>
-                                  <path d="M20 20c0-2.21-1.79-4-4-4" stroke="#FF9966" strokeWidth="2"/>
-                                </svg>
-                              )}
-                              {mode === 'Google Meet' && (
+                              {mode.includes('Google Meet') && (
                                 <svg className="w-10 h-10" viewBox="0 0 24 24" fill="none">
                                   <path d="M15 12.5V8c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1v8c0 .55.45 1 1 1h10c.55 0 1-.45 1-1v-4.5l4 4v-9l-4 4z" fill="#00AC47"/>
                                   <path d="M19 15.5l-4-4v8l4-4z" fill="#0066DA"/>
                                 </svg>
                               )}
-                              {mode === 'Zoom' && (
+                              {mode.includes('Zoom') && (
                                 <svg className="w-10 h-10" viewBox="0 0 24 24" fill="none">
                                   <rect x="2" y="5" width="14" height="14" rx="2" fill="#2D8CFF"/>
                                   <path d="M17 8l4-2v12l-4-2V8z" fill="#2D8CFF"/>
-                                </svg>
-                              )}
-                              {mode === 'Teams' && (
-                                <svg className="w-10 h-10" viewBox="0 0 24 24" fill="none">
-                                  <rect x="3" y="3" width="9" height="9" rx="1" fill="#5059C9"/>
-                                  <rect x="13" y="3" width="8" height="9" rx="1" fill="#7B83EB"/>
-                                  <rect x="3" y="13" width="9" height="8" rx="1" fill="#7B83EB"/>
-                                  <circle cx="17" cy="17" r="4" fill="#5059C9"/>
-                                  <text x="17" y="19" textAnchor="middle" fill="white" fontSize="5" fontWeight="bold">T</text>
                                 </svg>
                               )}
                             </div>
@@ -540,11 +571,8 @@ export default function CourseDetail() {
                                 {mode}
                               </p>
                               <p className="text-sm text-gray-600 dark:text-gray-400" style={{ fontFamily: '"Google Sans", sans-serif' }}>
-                                {mode === 'Online Videos' && 'Self-paced video content'}
-                                {mode === 'Face to Face' && 'In-person classes'}
-                                {mode === 'Google Meet' && 'Live sessions & support'}
-                                {mode === 'Zoom' && 'Interactive classes'}
-                                {mode === 'Teams' && 'Collaborative learning'}
+                                {mode.includes('Google Meet') && 'Live instructor-led sessions with screen sharing'}
+                                {mode.includes('Zoom') && 'Interactive live classes with Q&A'}
                               </p>
                             </div>
                           </div>
@@ -554,16 +582,24 @@ export default function CourseDetail() {
                       <div className="mt-8 space-y-4">
                         <div className="p-6 bg-blue-50 dark:bg-blue-900/20 rounded-xl border border-blue-200 dark:border-blue-800">
                           <h3 className="text-lg font-bold text-blue-900 dark:text-blue-100 mb-2" style={{ fontFamily: '"Bricolage Grotesque", sans-serif', fontWeight: 700 }}>How It Works</h3>
-                          <p className="text-blue-800 dark:text-blue-200" style={{ fontFamily: '"Google Sans", sans-serif' }}>
-                            This course combines multiple learning methods to provide flexibility and engagement. You can learn at your own pace with video content, join live sessions for real-time interaction, or attend in-person classes. Choose the format that works best for your schedule!
-                          </p>
+                          <ul className="space-y-2 text-blue-800 dark:text-blue-200" style={{ fontFamily: '"Google Sans", sans-serif' }}>
+                            <li className="flex items-start gap-2"><span className="text-blue-500 font-bold">1.</span> Enroll and complete payment via Paystack</li>
+                            <li className="flex items-start gap-2"><span className="text-blue-500 font-bold">2.</span> Receive your Google Meet or Zoom session link via WhatsApp</li>
+                            <li className="flex items-start gap-2"><span className="text-blue-500 font-bold">3.</span> Join scheduled live sessions with your instructor</li>
+                            <li className="flex items-start gap-2"><span className="text-blue-500 font-bold">4.</span> Ask questions in real-time and get hands-on guidance</li>
+                            <li className="flex items-start gap-2"><span className="text-blue-500 font-bold">5.</span> Access session recordings to review at your own pace</li>
+                          </ul>
                         </div>
 
                         <div className="p-6 bg-green-50 dark:bg-green-900/20 rounded-xl border border-green-200 dark:border-green-800">
-                          <h3 className="text-lg font-bold text-green-900 dark:text-green-100 mb-2" style={{ fontFamily: '"Bricolage Grotesque", sans-serif', fontWeight: 700 }}>Course Materials</h3>
-                          <p className="text-green-800 dark:text-green-200" style={{ fontFamily: '"Google Sans", sans-serif' }}>
-                            All course materials, resources, and content will be available to you immediately after successful enrollment. Download and access them anytime during your course journey!
-                          </p>
+                          <h3 className="text-lg font-bold text-green-900 dark:text-green-100 mb-2" style={{ fontFamily: '"Bricolage Grotesque", sans-serif', fontWeight: 700 }}>What You Get</h3>
+                          <ul className="space-y-2 text-green-800 dark:text-green-200" style={{ fontFamily: '"Google Sans", sans-serif' }}>
+                            <li>&#10003; Live instructor-led sessions (small group or 1-on-1)</li>
+                            <li>&#10003; Session recordings sent after each class</li>
+                            <li>&#10003; WhatsApp group for ongoing support</li>
+                            <li>&#10003; Course materials and resources</li>
+                            <li>&#10003; Certificate of completion</li>
+                          </ul>
                         </div>
                       </div>
                     </motion.div>

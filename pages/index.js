@@ -249,238 +249,77 @@ const portfolioItems = [
 ];
 
 // ─────────────────────────────────────────────
-// Portfolio Carousel with Dots
+// Portfolio Showcase — Nuxt.com style grid
 // ─────────────────────────────────────────────
-const HorizontalScrollPortfolio = () => {
-  const [activeIndex, setActiveIndex] = useState(0);
-  const [isDragging, setIsDragging] = useState(false);
-  const [dragStartX, setDragStartX] = useState(0);
-  const trackRef = useRef(null);
-  const total = portfolioItems.length;
-
-  const goTo = (index) => {
-    const clamped = Math.max(0, Math.min(total - 1, index));
-    setActiveIndex(clamped);
-  };
-
-  // Keyboard navigation
-  useEffect(() => {
-    const handleKey = (e) => {
-      if (e.key === 'ArrowLeft') goTo(activeIndex - 1);
-      if (e.key === 'ArrowRight') goTo(activeIndex + 1);
-    };
-    window.addEventListener('keydown', handleKey);
-    return () => window.removeEventListener('keydown', handleKey);
-  }, [activeIndex]);
-
-  // Touch / mouse drag
-  const handleDragStart = (clientX) => {
-    setIsDragging(true);
-    setDragStartX(clientX);
-  };
-  const handleDragEnd = (clientX) => {
-    if (!isDragging) return;
-    setIsDragging(false);
-    const diff = dragStartX - clientX;
-    if (Math.abs(diff) > 50) {
-      goTo(diff > 0 ? activeIndex + 1 : activeIndex - 1);
-    }
-  };
-
+const PortfolioShowcase = () => {
   return (
-    <section className="py-24 bg-white dark:bg-gray-900 overflow-hidden">
-      <style jsx>{`
-        .card-track { transition: transform 0.55s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
-        .dot-active { width: 28px !important; }
-      `}</style>
-
+    <section className="py-24 bg-white dark:bg-gray-950 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header row */}
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-12">
+        {/* Header */}
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-14">
           <div>
             <span
-              className="inline-block px-4 py-2 bg-orange-100 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400 rounded-full text-sm font-semibold mb-4"
+              className="inline-block px-4 py-1.5 rounded-full text-xs font-semibold tracking-wider uppercase bg-orange-500/10 text-orange-500 dark:text-orange-400 border border-orange-500/20 mb-5"
               style={{ fontFamily: 'Google Sans, sans-serif' }}
             >
-              OUR WORK
+              Showcase
             </span>
             <h2
-              className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-orange-600 to-orange-500 bg-clip-text text-transparent"
+              className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white"
               style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}
             >
-              Featured Projects
+              Real-world websites we&rsquo;ve built
             </h2>
           </div>
-
-          {/* Prev / Next arrows */}
-          <div className="flex items-center gap-3">
-            <button
-              onClick={() => goTo(activeIndex - 1)}
-              disabled={activeIndex === 0}
-              aria-label="Previous project"
-              className="w-11 h-11 rounded-full border-2 border-gray-200 dark:border-gray-700 flex items-center justify-center text-gray-600 dark:text-gray-300 hover:border-orange-500 hover:text-orange-500 disabled:opacity-30 disabled:cursor-not-allowed transition-all duration-200"
-            >
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
-            </button>
-            <button
-              onClick={() => goTo(activeIndex + 1)}
-              disabled={activeIndex === total - 1}
-              aria-label="Next project"
-              className="w-11 h-11 rounded-full border-2 border-gray-200 dark:border-gray-700 flex items-center justify-center text-gray-600 dark:text-gray-300 hover:border-orange-500 hover:text-orange-500 disabled:opacity-30 disabled:cursor-not-allowed transition-all duration-200"
-            >
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
-            </button>
-            <GlassButton href="/portfolio" variant="solid" className="hidden md:inline-flex ml-2">
-              View All
-            </GlassButton>
-          </div>
-        </div>
-
-        {/* Carousel viewport */}
-        <div
-          className="relative overflow-hidden cursor-grab active:cursor-grabbing select-none"
-          onMouseDown={(e) => handleDragStart(e.clientX)}
-          onMouseUp={(e) => handleDragEnd(e.clientX)}
-          onMouseLeave={(e) => { if (isDragging) handleDragEnd(e.clientX); }}
-          onTouchStart={(e) => handleDragStart(e.touches[0].clientX)}
-          onTouchEnd={(e) => handleDragEnd(e.changedTouches[0].clientX)}
-        >
-          {/* The sliding track — shows 1 main card + peeks on sides */}
-          <div
-            ref={trackRef}
-            className="card-track flex gap-6"
-            style={{
-              // On desktop: show 1 full card + 0.35 peek on the right
-              // Card width ≈ calc(100% - 80px) on mobile, calc(58%) on md+
-              transform: `translateX(calc(-${activeIndex} * (min(100vw - 48px, 680px) + 24px)))`
-            }}
-          >
-            {portfolioItems.map((item, index) => {
-              const isActive = index === activeIndex;
-              return (
-                <motion.div
-                  key={index}
-                  animate={{ scale: isActive ? 1 : 0.95, opacity: isActive ? 1 : 0.55 }}
-                  transition={{ duration: 0.4, ease: 'easeOut' }}
-                  className="flex-shrink-0 group"
-                  style={{ width: 'min(calc(100vw - 48px), 680px)' }}
-                >
-                  <Link href={item.link} className="block">
-                    {/* Card */}
-                    <div
-                      className="relative rounded-3xl overflow-hidden shadow-2xl bg-gray-900"
-                      style={{ height: 'clamp(340px, 48vw, 500px)' }}
-                    >
-                      {/* Background image */}
-                      <img
-                        src={item.image}
-                        alt={item.title}
-                        draggable={false}
-                        className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                        onError={(e) => { e.target.src = `https://placehold.co/680x500/1a1a1a/ffffff?text=${encodeURIComponent(item.title)}`; }}
-                      />
-                      {/* Gradient */}
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent" />
-
-                      {/* Top row */}
-                      <div className="absolute top-6 left-6 right-6 flex items-start justify-between">
-                        <span
-                          className="px-3 py-1.5 rounded-full text-xs font-bold text-white uppercase tracking-wider backdrop-blur-sm"
-                          style={{ background: `${item.accent}cc` }}
-                        >
-                          {item.category}
-                        </span>
-                        <span
-                          className="text-5xl font-black leading-none select-none"
-                          style={{ color: 'rgba(255,255,255,0.08)', fontFamily: 'Bricolage Grotesque, sans-serif' }}
-                        >
-                          {String(index + 1).padStart(2, '0')}
-                        </span>
-                      </div>
-
-                      {/* Bottom content */}
-                      <div className="absolute bottom-0 left-0 right-0 p-7">
-                        <h3
-                          className="text-2xl md:text-3xl font-bold text-white mb-2 group-hover:text-orange-300 transition-colors duration-300"
-                          style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}
-                        >
-                          {item.title}
-                        </h3>
-                        <p
-                          className="text-white/70 text-sm leading-relaxed mb-4 line-clamp-2"
-                          style={{ fontFamily: 'Google Sans, sans-serif' }}
-                        >
-                          {item.description}
-                        </p>
-
-                        <div className="flex items-center justify-between">
-                          {/* Tech tags */}
-                          <div className="flex flex-wrap gap-2">
-                            {item.tech.slice(0, 3).map((t, ti) => (
-                              <span
-                                key={ti}
-                                className="px-3 py-1 rounded-full text-xs font-medium bg-white/15 backdrop-blur-sm text-white border border-white/20"
-                                style={{ fontFamily: 'Google Sans, sans-serif' }}
-                              >
-                                {t}
-                              </span>
-                            ))}
-                          </div>
-
-                          {/* Arrow CTA */}
-                          <motion.span
-                            className="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0 ml-4 group-hover:scale-110 transition-transform duration-300"
-                            style={{ background: item.accent }}
-                          >
-                            <ArrowRight size={16} className="text-white" />
-                          </motion.span>
-                        </div>
-                      </div>
-
-                      {/* Active glow border */}
-                      {isActive && (
-                        <div
-                          className="absolute inset-0 rounded-3xl pointer-events-none"
-                          style={{ boxShadow: `inset 0 0 0 2px ${item.accent}80` }}
-                        />
-                      )}
-                    </div>
-                  </Link>
-                </motion.div>
-              );
-            })}
-          </div>
-        </div>
-
-        {/* Dot pagination + counter — Nuxt.com style */}
-        <div className="flex items-center justify-center gap-4 mt-10">
-          {/* Dots */}
-          <div className="flex items-center gap-2">
-            {portfolioItems.map((item, i) => (
-              <button
-                key={i}
-                onClick={() => goTo(i)}
-                aria-label={`Go to project ${i + 1}`}
-                className="relative h-2 rounded-full transition-all duration-300 focus:outline-none"
-                style={{
-                  width: i === activeIndex ? '28px' : '8px',
-                  background: i === activeIndex ? portfolioItems[activeIndex].accent : '#d1d5db',
-                }}
-              />
-            ))}
-          </div>
-
-          {/* Counter */}
-          <span
-            className="text-sm text-gray-400 dark:text-gray-500 ml-2 tabular-nums"
+          <Link
+            href="/portfolio"
+            className="group inline-flex items-center gap-2 text-sm font-semibold text-orange-500 hover:text-orange-600 dark:text-orange-400 dark:hover:text-orange-300 transition-colors shrink-0"
             style={{ fontFamily: 'Google Sans, sans-serif' }}
           >
-            {String(activeIndex + 1).padStart(2, '0')} / {String(total).padStart(2, '0')}
-          </span>
+            View all projects
+            <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+          </Link>
         </div>
 
-        {/* Mobile View All */}
-        <div className="flex justify-center mt-8 md:hidden">
+        {/* Grid — 2 cols on mobile, 3 on md, 5 on lg (first row 3, second row 3) */}
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4 md:gap-5">
+          {portfolioItems.map((item, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-40px" }}
+              transition={{ duration: 0.4, delay: index * 0.06 }}
+            >
+              <Link href={item.link} className="group block">
+                <div className="relative rounded-2xl overflow-hidden bg-gray-100 dark:bg-gray-800 aspect-[16/10] shadow-sm hover:shadow-xl transition-shadow duration-300">
+                  {/* Screenshot */}
+                  <img
+                    src={item.image}
+                    alt={item.title}
+                    className="w-full h-full object-cover group-hover:scale-[1.04] transition-transform duration-500"
+                    onError={(e) => { e.target.src = `https://placehold.co/680x425/1a1a1a/ffffff?text=${encodeURIComponent(item.title)}`; }}
+                  />
+                  {/* Bottom gradient overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-80 group-hover:opacity-90 transition-opacity duration-300" />
+
+                  {/* Title overlay at bottom */}
+                  <div className="absolute bottom-0 left-0 right-0 p-4 md:p-5">
+                    <h3
+                      className="text-sm md:text-base font-semibold text-white leading-snug"
+                      style={{ fontFamily: 'Google Sans, sans-serif' }}
+                    >
+                      {item.title}
+                    </h3>
+                  </div>
+                </div>
+              </Link>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* Mobile CTA */}
+        <div className="flex justify-center mt-10 sm:hidden">
           <GlassButton href="/portfolio" variant="solid">View All Projects</GlassButton>
         </div>
       </div>
@@ -825,8 +664,8 @@ const IndexPage = () => {
           </div>
         </section>
 
-        {/* ── HORIZONTAL SCROLL PORTFOLIO (Nuxt.com style) ── */}
-        <HorizontalScrollPortfolio />
+        {/* ── PORTFOLIO SHOWCASE (Nuxt.com style grid) ── */}
+        <PortfolioShowcase />
 
         {/* Blog Section */}
         <section className="py-24 bg-gray-50 dark:bg-gray-800">

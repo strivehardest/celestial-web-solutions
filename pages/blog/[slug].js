@@ -2980,93 +2980,92 @@ const blogArticles = {
   }
 };
 
-export default function BlogPost() {
+// --- SSG: Pre-render all blog posts at build time ---
+export async function getStaticPaths() {
+  const paths = Object.keys(blogArticles).map((slug) => ({
+    params: { slug },
+  }));
+  return { paths, fallback: false };
+}
+
+export async function getStaticProps({ params }) {
+  const { slug } = params;
+  const articleData = blogArticles[slug] || null;
+
+  if (!articleData) {
+    return { notFound: true };
+  }
+
+  // Compute related articles server-side
+  const allArticles = Object.keys(blogArticles).map((key) => ({
+    slug: key,
+    title: blogArticles[key].title,
+    category: blogArticles[key].category,
+    date: blogArticles[key].date,
+    readTime: blogArticles[key].readTime,
+    image: blogArticles[key].image,
+    excerpt: blogArticles[key].excerpt,
+    tags: blogArticles[key].tags || [],
+  }));
+
+  let related = allArticles.filter((a) => {
+    if (a.slug === slug) return false;
+    if (a.category === articleData.category) return true;
+    if (articleData.tags && a.tags) {
+      return a.tags.some((tag) => articleData.tags.includes(tag));
+    }
+    return false;
+  }).slice(0, 3);
+
+  if (related.length === 0) {
+    related = allArticles
+      .filter((a) => a.slug !== slug)
+      .sort((a, b) => new Date(b.date) - new Date(a.date))
+      .slice(0, 3);
+  }
+
+  // Compute prev/next navigation
+  let nav = { prev: null, next: null };
+  if (Array.isArray(blogList)) {
+    const idx = blogList.findIndex((a) => a.slug === slug);
+    if (idx !== -1) {
+      nav = {
+        prev: idx > 0 ? { slug: blogList[idx - 1].slug, title: blogList[idx - 1].title } : null,
+        next: idx < blogList.length - 1 ? { slug: blogList[idx + 1].slug, title: blogList[idx + 1].title } : null,
+      };
+    }
+  }
+
+  return {
+    props: {
+      slug,
+      article: articleData,
+      relatedArticles: related,
+      nav,
+    },
+  };
+}
+
+export default function BlogPost({ slug, article, relatedArticles: initialRelated, nav: initialNav }) {
   const router = useRouter();
-  const { slug } = router.query;
-  const [nav, setNav] = useState({ prev: null, next: null });
-  const [article, setArticle] = useState(null);
-  const [notFound, setNotFound] = useState(false);
+  const [nav, setNav] = useState(initialNav || { prev: null, next: null });
+  const [notFound, setNotFound] = useState(!article);
   const [copied, setCopied] = useState(false);
-  const [relatedArticles, setRelatedArticles] = useState([]);
+  const [relatedArticles, setRelatedArticles] = useState(initialRelated || []);
   const [headings, setHeadings] = useState([]);
 
+  // Extract headings client-side (needs DOM parser)
   useEffect(() => {
-    if (slug && blogArticles[slug]) {
-      const currentArticle = blogArticles[slug];
-      setArticle(currentArticle);
-      setNotFound(false);
-      
-      // Extract headings from content
+    if (article && article.content) {
       try {
-        const extractedHeadings = extractHeadings(currentArticle.content);
+        const extractedHeadings = extractHeadings(article.content);
         setHeadings(extractedHeadings);
       } catch (e) {
         console.log('Could not extract headings');
         setHeadings([]);
       }
-      
-      // Get related articles
-      const allArticles = Object.keys(blogArticles).map(key => ({
-        slug: key,
-        ...blogArticles[key]
-      }));
-      
-      // Filter related articles by category or tags, exclude current article
-      const related = allArticles
-        .filter(a => {
-          if (a.slug === slug) return false;
-          // Match by category
-          if (a.category === currentArticle.category) return true;
-          // Match by tags
-          if (currentArticle.tags && a.tags) {
-            return a.tags.some(tag => currentArticle.tags.includes(tag));
-          }
-          return false;
-        })
-        .slice(0, 3); // Limit to 3 related articles
-      
-      // If no related by category/tags, just pick the 3 most recent
-      if (related.length === 0) {
-        setRelatedArticles(
-          allArticles
-            .filter(a => a.slug !== slug)
-            .sort((a, b) => new Date(b.date) - new Date(a.date))
-            .slice(0, 3)
-        );
-      } else {
-        setRelatedArticles(related);
-      }
-      
-      // Defensive: blogList is an array, blogArticles is an object
-      if (Array.isArray(blogList)) {
-        const idx = blogList.findIndex(a => a.slug === slug);
-        if (idx !== -1) {
-          setNav({
-            prev: idx > 0 ? blogList[idx - 1] : null,
-            next: idx < blogList.length - 1 ? blogList[idx + 1] : null
-          });
-        } else {
-          setNav({ prev: null, next: null });
-        }
-      }
-    } else if (slug) {
-      setArticle(null);
-      setNotFound(true);
-      setNav({ prev: null, next: null });
-      setRelatedArticles([]);
     }
-  }, [slug]);
-
-  if (!router.isReady) {
-    return (
-      <div className="min-h-screen bg-gray-50 dark:bg-gray-900 flex items-center justify-center">
-        <div className="text-center">
-          <div className="w-12 h-12 border-4 border-orange-200 border-t-orange-600 rounded-full animate-spin mx-auto mb-4"></div>
-          <p className="text-lg text-gray-600 dark:text-gray-400">Loading...</p>
-        </div>
-      </div>
-    );
-  }
+  }, [article]);
 
   if (notFound || !article) {
     return (
@@ -3105,9 +3104,7 @@ export default function BlogPost() {
     );
   }
 
-  const currentUrl = typeof window !== "undefined" 
-    ? window.location.href 
-    : `https://celestialwebsolutions.net/blog/${router.query.slug}`;
+  const currentUrl = `https://celestialwebsolutions.net/blog/${slug}`;
 
   const handleShare = (platform) => {
     const shareUrls = {

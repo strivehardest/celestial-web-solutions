@@ -1,13 +1,11 @@
 import Head from "next/head";
 import { motion } from "framer-motion";
 import { useRouter } from "next/router";
-import { Calendar, Clock, User, ArrowRight, Tag, Search, X } from "lucide-react";
+import { Calendar, Clock, User, ArrowRight, Search, X } from "lucide-react";
 import { useEffect, useState, useMemo } from "react";
 import Link from "next/link";
-import PremiumCTA from '../components/PremiumCTA';
 import WhatsAppButton from '../components/WhatsAppButton';
 import GoogleAd from '../components/GoogleAd';
-import { image } from "framer-motion/client";
 
 // Blog articles data with external images - sorted by date (newest first)
 export const blogArticles = [
@@ -281,15 +279,14 @@ export const blogArticles = [
 
 export default function BlogPage() {
   const router = useRouter();
-  const [selectedCategory, setSelectedCategory] = useState("All");
   const [searchQuery, setSearchQuery] = useState("");
   const [debouncedSearch, setDebouncedSearch] = useState("");
-  const [visibleCount, setVisibleCount] = useState(9); // Show 9 articles initially
+  const [selectedCategory, setSelectedCategory] = useState("All");
+  const [visibleCount, setVisibleCount] = useState(12);
 
   // Sync search query from URL when coming from hashtag links
   useEffect(() => {
     if (!router.isReady) return;
-
     const { search } = router.query;
     if (typeof search === "string" && search.trim()) {
       const normalized = decodeURIComponent(search).replace(/^#/, "");
@@ -298,122 +295,71 @@ export default function BlogPage() {
     }
   }, [router.isReady, router.query]);
 
-  // Reset visible count when filters change
+  useEffect(() => { setVisibleCount(12); }, [selectedCategory, debouncedSearch]);
+
   useEffect(() => {
-    setVisibleCount(9);
-  }, [selectedCategory, debouncedSearch]);
-
-  // Get unique categories
-  const categories = ["All", ...new Set(blogArticles.map(article => article.category))];
-
-  // Debounce search input for better performance
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setDebouncedSearch(searchQuery);
-    }, 300);
-
+    const timer = setTimeout(() => setDebouncedSearch(searchQuery), 300);
     return () => clearTimeout(timer);
   }, [searchQuery]);
 
-  // Enhanced search function with better matching
-  const searchArticles = (articles, query) => {
-    if (!query.trim()) return articles;
-    
-    const searchTerms = query.toLowerCase().trim().split(' ').filter(term => term.length > 0);
-    
-    return articles.filter(article => {
-      // Check if searching for a hashtag
-      const isHashtagSearch = searchTerms.length === 1;
-      
-      if (isHashtagSearch) {
-        const searchTerm = searchTerms[0];
-        // For hashtag/tag searches, look for exact matches in tags or hashtags
-        const tags = (article.tags || []).map(t => t.toLowerCase());
-        const hashtags = (article.hashtags || []).map(h => h.toLowerCase().replace('#', ''));
-        
-        return tags.includes(searchTerm) || hashtags.includes(searchTerm);
-      }
-      
-      // For regular text search, search all content
-      const searchableText = [
-        article.title,
-        article.excerpt,
-        article.category,
-        article.author,
-        ...(article.tags || [])
-      ].join(' ').toLowerCase();
-      
-      // Article matches if it contains all search terms (AND logic)
-      return searchTerms.every(term => searchableText.includes(term));
-    });
-  };
+  // Get unique categories
+  const categories = useMemo(() => 
+    ["All", ...new Set(blogArticles.map(a => a.category))], 
+  []);
 
-  // Filter articles by category and search query with useMemo for optimization
+  // Sort all articles by date (newest first)
+  const sortedArticles = useMemo(() => 
+    [...blogArticles].sort((a, b) => new Date(b.date) - new Date(a.date)),
+  []);
+
+  // Filter articles
   const filteredArticles = useMemo(() => {
-    let filtered = blogArticles;
-    
-    // If searching, search across all articles regardless of category
+    let filtered = sortedArticles;
+
     if (debouncedSearch.trim()) {
-      filtered = searchArticles(blogArticles, debouncedSearch);
+      const terms = debouncedSearch.toLowerCase().trim().split(' ').filter(t => t.length > 0);
+      filtered = filtered.filter(article => {
+        if (terms.length === 1) {
+          const term = terms[0];
+          const tags = (article.tags || []).map(t => t.toLowerCase());
+          const hashtags = (article.hashtags || []).map(h => h.toLowerCase().replace('#', ''));
+          if (tags.includes(term) || hashtags.includes(term)) return true;
+        }
+        const text = [article.title, article.excerpt, article.category, ...(article.tags || [])].join(' ').toLowerCase();
+        return terms.every(term => text.includes(term));
+      });
     } else if (selectedCategory !== "All") {
-      // Only filter by category if not searching
-      filtered = filtered.filter(article => article.category === selectedCategory);
+      filtered = filtered.filter(a => a.category === selectedCategory);
     }
-    
-    // Always show newest first across all views
-    return [...filtered].sort((a, b) => new Date(b.date) - new Date(a.date));
-  }, [selectedCategory, debouncedSearch]);
 
-  const featuredArticles = useMemo(() => {
-    let featured = blogArticles
-      .filter(article => article.featured)
-      .sort((a, b) => new Date(b.date) - new Date(a.date))
-      .slice(0, 4);
-    
-    // If searching, filter featured articles by search query too
-    if (debouncedSearch.trim()) {
-      featured = searchArticles(featured, debouncedSearch);
-    }
-    
-    return featured;
-  }, [debouncedSearch]);
-  
-  // All filtered articles (for counting)
-  const allFilteredArticles = filteredArticles;
-  
-  // Visible articles (limited by visibleCount)
-  const regularArticles = filteredArticles.slice(0, visibleCount);
-  
-  // Check if there are more articles to show
-  const hasMoreArticles = filteredArticles.length > visibleCount;
-  const remainingCount = filteredArticles.length - visibleCount;
-  const popularTags = [...new Set(blogArticles.flatMap(a => a.tags || []))];
+    return filtered;
+  }, [sortedArticles, selectedCategory, debouncedSearch]);
 
-  // Clear search
-  const handleClearSearch = () => {
-    setSearchQuery("");
-    setDebouncedSearch("");
+  // Format date for display
+  const formatDate = (dateStr) => {
+    try {
+      return new Date(dateStr).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+    } catch { return dateStr; }
   };
 
-  // Reset all filters
-  const handleResetFilters = () => {
-    setSearchQuery("");
-    setDebouncedSearch("");
-    setSelectedCategory("All");
-  };
+  // The hero article is the latest one
+  const heroArticle = filteredArticles[0] || null;
+  const remainingArticles = filteredArticles.slice(1, visibleCount + 1);
+  const hasMore = filteredArticles.length > visibleCount + 1;
+  const totalFiltered = filteredArticles.length;
 
   return (
     <>
       <Head>
-        <title>Expert Web Design & Digital Marketing Blog | Celestial Web Solutions Ghana</title>
-        <meta name="description" content="Explore expert insights on web design, SEO, digital marketing, and technology trends. Ghana's leading resource for business growth and online success." />
-        <meta name="keywords" content="ghana web design blog, accra web development, ghana seo tips, digital marketing ghana, web design prices ghana, mobile money integration, e-commerce ghana, website security ghana, content marketing ghana, best web designer accra, web development tutorials, AI technology ghana, web design trends 2025, affordable web design ghana" />
-        <meta property="og:title" content="Web Design & Digital Marketing Blog | Celestial Web Solutions Ghana" />
+        <title>Blog | Celestial Web Solutions — Web Design, SEO & Digital Marketing</title>
+        <meta name="description" content="Read expert insights on web design, SEO, digital marketing, and technology trends. Ghana's leading resource for business growth and online success." />
+        <meta name="keywords" content="ghana web design blog, accra web development, ghana seo tips, digital marketing ghana, web design prices ghana, mobile money integration, e-commerce ghana, website security ghana, best web designer accra, web development tutorials, AI technology ghana" />
+        <meta property="og:title" content="Blog | Celestial Web Solutions" />
         <meta property="og:description" content="Expert insights on web design, SEO, digital marketing, and technology trends from Ghana's leading web agency." />
         <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://celestialwebsolutions.net/blog" />
         <meta name="twitter:card" content="summary_large_image" />
-        <link rel="canonical" href="https://celestialwebsolutions.com/blog" />
-        {/* CollectionPage Schema for blog listing */}
+        <link rel="canonical" href="https://celestialwebsolutions.net/blog" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -426,510 +372,347 @@ export default function BlogPage() {
               "publisher": {
                 "@type": "Organization",
                 "name": "Celestial Web Solutions",
-                "logo": {
-                  "@type": "ImageObject",
-                  "url": "https://celestialwebsolutions.net/logo.png"
-                }
+                "logo": { "@type": "ImageObject", "url": "https://celestialwebsolutions.net/logo.png" }
               }
             })
           }}
         />
       </Head>
 
-      <div className="min-h-screen bg-white dark:bg-gray-900">
-        {/* Hero Section */}
-        <section className="relative py-20 bg-gradient-to-br from-orange-500 via-orange-600 to-red-500 overflow-hidden">
-          {/* Background Image */}
-          <div className="absolute inset-0 overflow-hidden">
-            <img 
-              src="https://www.expandgh.com/wp-content/uploads/2017/11/blog-1.jpg" 
-              alt="Portfolio Background"
+      <div className="min-h-screen bg-white dark:bg-gray-950">
+
+        {/* ─── Hero Section ─── */}
+        <section className="relative bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 overflow-hidden">
+          {/* Background image */}
+          <div className="absolute inset-0">
+            <img
+              src="https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?w=1920&h=800&fit=crop&q=80"
+              alt=""
               className="w-full h-full object-cover opacity-20"
             />
-            <div className="absolute inset-0 bg-gradient-to-br from-orange-300/80 via-orange-500/60 to-red-500/60"></div>
+            <div className="absolute inset-0 bg-gradient-to-b from-gray-900/60 via-gray-900/80 to-gray-900" />
           </div>
 
-          <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-            >
-              <h1
-                className="text-4xl md:text-6xl font-bold text-white mb-6"
-                style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}
+          {/* Decorative elements */}
+          <div className="absolute inset-0 overflow-hidden pointer-events-none">
+            <div className="absolute -top-24 -right-24 w-96 h-96 bg-orange-500/10 rounded-full blur-3xl" />
+            <div className="absolute -bottom-32 -left-32 w-[500px] h-[500px] bg-orange-600/5 rounded-full blur-3xl" />
+          </div>
+
+          <div className="relative max-w-6xl mx-auto px-4 sm:px-6 pt-32 md:pt-40 pb-16 md:pb-24">
+            <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
+              {/* Text */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
               >
-                Our Blog
-              </h1>
-              <p
-                className="text-xl text-orange-100 max-w-3xl mx-auto leading-relaxed"
-                style={{ fontFamily: "Google Sans, sans-serif" }}
+                <span
+                  className="inline-block px-4 py-1.5 rounded-full text-xs font-semibold tracking-wider uppercase bg-orange-500/10 text-orange-400 border border-orange-500/20 mb-6"
+                  style={{ fontFamily: "Google Sans, sans-serif" }}
+                >
+                  Our Blog
+                </span>
+                <h1
+                  className="text-4xl md:text-5xl lg:text-6xl font-bold text-white tracking-tight"
+                  style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}
+                >
+                  The Celestial Blog
+                </h1>
+                <p
+                  className="mt-4 text-lg md:text-xl text-gray-400 max-w-xl"
+                  style={{ fontFamily: "Google Sans, sans-serif" }}
+                >
+                  Insights on web design, development, SEO, and digital trends — from our team in Accra to the world.
+                </p>
+              </motion.div>
+
+              {/* Hero Image */}
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                className="hidden md:block"
               >
-                Expert insights on web design, development, SEO, and the latest technology trends in Ghana and beyond.
-              </p>
-            </motion.div>
+                <div className="relative rounded-2xl overflow-hidden shadow-2xl shadow-orange-500/10 border border-white/10">
+                  <img
+                    src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&h=500&fit=crop&q=80"
+                    alt="Person reading coding blog on laptop"
+                    className="w-full h-72 lg:h-80 object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-gray-900/40 to-transparent" />
+                </div>
+              </motion.div>
+            </div>
           </div>
         </section>
 
-        {/* Category Filter */}
-        <section className="py-8 bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-800">
-          <div className="max-w-7xl mx-auto px-4">
-            {/* Search Bar */}
-            <div className="max-w-2xl mx-auto mb-8">
-              <div className="relative">
-                <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
+        {/* ─── Search + Filters Bar ─── */}
+        <section className="sticky top-[72px] md:top-[80px] z-30 bg-white/95 dark:bg-gray-950/95 backdrop-blur-lg border-b border-gray-200 dark:border-gray-800">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 py-4">
+            <div className="flex flex-col sm:flex-row sm:items-center gap-4">
+              {/* Search */}
+              <div className="relative max-w-sm w-full">
+                <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
                 <input
                   type="text"
-                  placeholder="Search articles by title, keyword, author, or tag..."
+                  placeholder="Search articles..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full pl-12 pr-12 py-4 rounded-full border-2 border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:border-orange-500 dark:focus:border-orange-400 focus:outline-none transition-colors"
+                  className="w-full pl-10 pr-10 py-2.5 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-900 dark:text-white text-sm focus:border-orange-500 focus:ring-1 focus:ring-orange-500 dark:focus:border-orange-400 outline-none transition-all"
                   style={{ fontFamily: "Google Sans, sans-serif" }}
                 />
                 {searchQuery && (
-                  <button
-                    onClick={handleClearSearch}
-                    className="absolute right-4 top-1/2 transform -translate-y-1/2 p-1 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
-                    aria-label="Clear search"
-                  >
-                    <X className="w-5 h-5 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300" />
+                  <button onClick={() => { setSearchQuery(""); setDebouncedSearch(""); }} className="absolute right-3 top-1/2 -translate-y-1/2 p-0.5 rounded hover:bg-gray-100 dark:hover:bg-gray-800">
+                    <X className="w-4 h-4 text-gray-400" />
                   </button>
                 )}
               </div>
-              {searchQuery && debouncedSearch !== searchQuery && (
-                <div className="text-center mt-2 text-sm text-gray-500 dark:text-gray-400">
-                  Searching...
-                </div>
-              )}
-            </div>
-            
-            {/* Category Buttons */}
-            <div className="flex flex-wrap gap-3 justify-center">
-              {categories.map((category) => (
-                <button
-                  key={category}
-                  onClick={() => setSelectedCategory(category)}
-                  className={`px-6 py-3 rounded-full font-semibold transition-all duration-300 ${
-                    selectedCategory === category
-                      ? 'bg-orange-500 text-white shadow-lg scale-105'
-                      : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-orange-100 dark:hover:bg-gray-700'
-                  }`}
-                  style={{ fontFamily: "Google Sans, sans-serif" }}
-                >
-                  {category}
-                </button>
-              ))}
-            </div>
-          </div>
-        </section>
 
-        {/* Featured Articles */}
-        {featuredArticles.length > 0 && (
-          <section className="py-16 bg-gray-50 dark:bg-gray-800">
-            <div className="max-w-7xl mx-auto px-4">
-              <motion.h2
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                className="text-3xl md:text-4xl font-bold mb-12 text-gray-900 dark:text-white"
-                style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}
-              >
-                Featured Articles
-              </motion.h2>
-
-              <div className="grid md:grid-cols-2 gap-8">
-                {featuredArticles.map((article, index) => (
-                  <motion.article
-                    key={article.id}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: index * 0.1 }}
-                    className="bg-white dark:bg-gray-900 rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 group"
-                  >
-                    <div className="cursor-pointer">
-                      <Link href={`/blog/${article.slug}`} className="block">
-                        <div>
-                          <div className="relative h-64 overflow-hidden">
-                            <img
-                              src={article.image}
-                              alt={article.title}
-                              className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                            />
-                            <div className="absolute top-4 left-4">
-                              <span className="bg-orange-500 text-white px-4 py-2 rounded-full text-sm font-semibold">
-                                {article.category}
-                              </span>
-                            </div>
-                          </div>
-
-                          <div className="p-8">
-                            <h3 
-                              className="text-2xl font-bold text-gray-900 dark:text-white mb-4 group-hover:text-orange-500 dark:group-hover:text-orange-400 transition-colors"
-                              style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}
-                            >
-                              {article.title}
-                            </h3>
-
-                            <p 
-                              className="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed"
-                              style={{ fontFamily: 'Google Sans, sans-serif' }}
-                            >
-                              {article.excerpt}
-                            </p>
-
-                            <div className="flex items-center justify-between text-sm text-gray-500 dark:text-gray-400 mb-6">
-                              <div className="flex items-center gap-4">
-                                <span className="flex items-center gap-1">
-                                  <Calendar className="w-4 h-4" />
-                                  {article.date}
-                                </span>
-                                <span className="flex items-center gap-1">
-                                  <Clock className="w-4 h-4" />
-                                  {article.readTime}
-                                </span>
-                              </div>
-                            </div>
-
-                            <div className="flex items-center justify-between">
-                              <span className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
-                                <User className="w-4 h-4" />
-                                {article.author}
-                              </span>
-                            </div>
-                          </div>
-                        </div>
-                      </Link>
-                      <PremiumCTA
-                        size="small"
-                        variant="primary"
-                        className="block !px-4 !py-2 !text-sm w-full text-center mt-4"
-                        icon={false}
-                        href={`/blog/${article.slug}`}
-                      >
-                        <span className="flex items-center gap-2 justify-center">
-                          Read More
-                          <ArrowRight className="w-5 h-5" />
-                        </span>
-                      </PremiumCTA>
-                    </div>
-                  </motion.article>
-                ))}
-              </div>
-            </div>
-          </section>
-        )}
-
-        {/* Google Ad - After Featured Articles */}
-        <section className="py-8 bg-white dark:bg-gray-900">
-          <div className="max-w-4xl mx-auto px-4">
-            <GoogleAd slot="5430272990" format="horizontal" />
-          </div>
-        </section>
-
-        {/* All Articles */}
-        {regularArticles.length > 0 ? (
-          <section className="py-16">
-            <div className="max-w-7xl mx-auto px-4">
-              <div className="flex items-center justify-between mb-12">
-                <motion.h2
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white"
-                  style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}
-                >
-                  {debouncedSearch.trim() 
-                    ? `Search Results` 
-                    : selectedCategory === "All" 
-                    ? "All Articles" 
-                    : `${selectedCategory} Articles`}
-                </motion.h2>
-                {(debouncedSearch.trim() || selectedCategory !== "All") && (
-                  <motion.button
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    onClick={handleResetFilters}
-                    className="px-4 py-2 text-sm font-semibold text-orange-500 hover:text-orange-600 dark:text-orange-400 dark:hover:text-orange-300 transition-colors"
-                    style={{ fontFamily: "Google Sans, sans-serif" }}
-                  >
-                    Clear Filters
-                  </motion.button>
-                )}
-              </div>
-              {debouncedSearch.trim() && (
-                <p className="text-gray-600 dark:text-gray-400 mb-8" style={{ fontFamily: "Google Sans, sans-serif" }}>
-                  Found {allFilteredArticles.length} {allFilteredArticles.length === 1 ? 'article' : 'articles'} matching "{debouncedSearch}"
-                </p>
-              )}
-
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {regularArticles.map((article, index) => (
-                  <motion.article
-                    key={article.id}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: index * 0.1 }}
-                    className="bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 group"
-                  >
-                    <div className="cursor-pointer">
-                      <Link href={`/blog/${article.slug}`} className="block">
-                        <div>
-                          <div className="relative h-48 overflow-hidden">
-                            <img
-                              src={article.image}
-                              alt={article.title}
-                              className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                            />
-                            <div className="absolute top-4 left-4">
-                              <span className="bg-white/20 backdrop-blur-sm text-white px-3 py-1 rounded-full text-sm font-semibold">
-                                {article.category}
-                              </span>
-                            </div>
-                          </div>
-
-                          <div className="p-6">
-                            <h3 
-                              className="text-xl font-bold text-gray-900 dark:text-white mb-3 group-hover:text-orange-500 dark:group-hover:text-orange-400 transition-colors line-clamp-2"
-                              style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}
-                            >
-                              {article.title}
-                            </h3>
-
-                            <p 
-                              className="text-gray-600 dark:text-gray-300 mb-4 leading-relaxed line-clamp-3"
-                              style={{ fontFamily: 'Google Sans, sans-serif' }}
-                            >
-                              {article.excerpt}
-                            </p>
-
-                            <div className="flex items-center justify-between text-xs text-gray-500 dark:text-gray-400 mb-4">
-                              <span className="flex items-center gap-1">
-                                <Calendar className="w-3 h-3" />
-                                {article.date}
-                              </span>
-                              <span className="flex items-center gap-1">
-                                <Clock className="w-3 h-3" />
-                                {article.readTime}
-                              </span>
-                            </div>
-                          </div>
-                        </div>
-                      </Link>
-                      <PremiumCTA
-                        size="small"
-                        variant="primary"
-                        className="block px-6 pb-6 !py-2 !text-sm w-full text-center"
-                        icon={false}
-                        href={`/blog/${article.slug}`}
-                      >
-                        <span className="flex items-center gap-2 justify-center">
-                          Read Article
-                          <ArrowRight className="w-4 h-4" />
-                        </span>
-                      </PremiumCTA>
-                    </div>
-                  </motion.article>
-                ))}
-              </div>
-
-              {/* View Older Posts Button */}
-              {hasMoreArticles && (
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  className="text-center mt-12"
-                >
+              {/* Category pills */}
+              <div className="flex flex-wrap gap-2">
+                {categories.map((cat) => (
                   <button
-                    onClick={() => setVisibleCount(prev => prev + 9)}
-                    className="group inline-flex items-center gap-3 px-8 py-4 bg-white dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-700 rounded-full font-semibold text-gray-700 dark:text-gray-300 hover:border-orange-500 hover:text-orange-500 dark:hover:border-orange-400 dark:hover:text-orange-400 transition-all duration-300 shadow-lg hover:shadow-xl"
+                    key={cat}
+                    onClick={() => setSelectedCategory(cat)}
+                    className={`px-3.5 py-1.5 rounded-full text-sm font-medium transition-all duration-200 ${
+                      selectedCategory === cat
+                        ? 'bg-gray-900 dark:bg-white text-white dark:text-gray-900'
+                        : 'bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700'
+                    }`}
                     style={{ fontFamily: "Google Sans, sans-serif" }}
                   >
-                    <span>View Older Posts</span>
-                    <span className="px-2 py-1 bg-orange-100 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400 text-sm rounded-full">
-                      {remainingCount} more
-                    </span>
-                    <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                    {cat}
                   </button>
-                </motion.div>
-              )}
+                ))}
+              </div>
+            </div>
 
-              {/* Show All / Show Less when all are visible */}
-              {!hasMoreArticles && allFilteredArticles.length > 9 && (
+            {debouncedSearch.trim() && (
+              <p className="mt-3 text-sm text-gray-500 dark:text-gray-400" style={{ fontFamily: "Google Sans, sans-serif" }}>
+                {totalFiltered} {totalFiltered === 1 ? 'result' : 'results'} for &ldquo;{debouncedSearch}&rdquo;
+              </p>
+            )}
+          </div>
+        </section>
+
+        {/* ─── Hero / Featured Article ─── */}
+        {heroArticle && (
+          <section className="py-10 md:py-16">
+            <div className="max-w-6xl mx-auto px-4 sm:px-6">
+              <Link href={`/blog/${heroArticle.slug}`} className="group block">
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="text-center mt-12"
+                  transition={{ duration: 0.5, delay: 0.1 }}
+                  className="grid md:grid-cols-2 gap-8 md:gap-12 items-center"
                 >
-                  <button
-                    onClick={() => setVisibleCount(9)}
-                    className="inline-flex items-center gap-2 px-6 py-3 text-gray-600 dark:text-gray-400 hover:text-orange-500 dark:hover:text-orange-400 font-semibold transition-colors"
-                    style={{ fontFamily: "Google Sans, sans-serif" }}
-                  >
-                    <span>Show Less</span>
-                  </button>
-                </motion.div>
-              )}
-
-              {/* Google Ad - After Articles Grid */}
-              <div className="mt-12">
-                <GoogleAd slot="5430272990" format="auto" />
-              </div>
-            </div>
-          </section>
-        ) : (
-          <section className="py-20">
-            <div className="max-w-7xl mx-auto px-4">
-              <div className="max-w-2xl mx-auto text-center">
-                <div className="flex justify-center mb-6">
-                  <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-orange-500 to-orange-600 flex items-center justify-center shadow-lg">
-                    <Search className="w-8 h-8 text-white" />
+                  {/* Image */}
+                  <div className="relative aspect-[16/9] rounded-2xl overflow-hidden bg-gray-100 dark:bg-gray-800">
+                    <img
+                      src={heroArticle.image}
+                      alt={heroArticle.title}
+                      className="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-500"
+                    />
                   </div>
-                </div>
-                <h3 
-                  className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-3"
-                  style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}
-                >
-                  No Results Found
-                </h3>
-                <p 
-                  className="text-gray-600 dark:text-gray-400 mb-6"
-                  style={{ fontFamily: "Google Sans, sans-serif" }}
-                >
-                  {debouncedSearch.trim() 
-                    ? <>We couldn\'t find any matches for <span className="font-semibold">"{debouncedSearch}"</span>. Try a different keyword or pick from suggestions below.</>
-                    : `No articles in this category yet. Browse our featured content below.`}
-                </p>
 
-                {/* Suggestions: Categories */}
-                <div className="mb-6">
-                  <p className="text-sm text-gray-500 dark:text-gray-400 mb-3" style={{ fontFamily: "Google Sans, sans-serif" }}>Browse by category</p>
-                  <div className="flex flex-wrap gap-2 justify-center">
-                    {categories.slice(0, 8).map((cat) => (
-                      <button
-                        key={cat}
-                        onClick={() => setSelectedCategory(cat)}
-                        className="px-4 py-2 rounded-full border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:border-orange-400 hover:text-orange-600 dark:hover:text-orange-400 transition-colors text-sm font-semibold"
-                        style={{ fontFamily: "Google Sans, sans-serif" }}
-                      >
-                        {cat}
-                      </button>
-                    ))}
-                  </div>
-                </div>
+                  {/* Content */}
+                  <div className="flex flex-col justify-center">
+                    <div className="flex items-center gap-3 mb-4">
+                      <span className="px-3 py-1 rounded-full text-xs font-semibold bg-orange-100 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400" style={{ fontFamily: "Google Sans, sans-serif" }}>
+                        {heroArticle.category}
+                      </span>
+                      <span className="text-sm text-gray-400 dark:text-gray-500" style={{ fontFamily: "Google Sans, sans-serif" }}>
+                        {formatDate(heroArticle.date)}
+                      </span>
+                    </div>
 
-                {/* Suggestions: Popular tags */}
-                {popularTags.length > 0 && (
-                  <div className="mb-8">
-                    <p className="text-sm text-gray-500 dark:text-gray-400 mb-3" style={{ fontFamily: "Google Sans, sans-serif" }}>Try a popular tag</p>
-                    <div className="flex flex-wrap gap-2 justify-center">
-                      {popularTags.slice(0, 10).map((tag) => (
-                        <button
-                          key={tag}
-                          onClick={() => setSearchQuery(tag)}
-                          className="px-3 py-1.5 rounded-full bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-300 hover:bg-orange-200 dark:hover:bg-orange-800/40 transition-colors text-xs font-semibold"
-                          style={{ fontFamily: "Google Sans, sans-serif" }}
-                        >
-                          #{tag}
-                        </button>
-                      ))}
+                    <h2
+                      className="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white group-hover:text-orange-500 dark:group-hover:text-orange-400 transition-colors leading-tight"
+                      style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}
+                    >
+                      {heroArticle.title}
+                    </h2>
+
+                    <p
+                      className="mt-4 text-gray-600 dark:text-gray-400 text-base md:text-lg leading-relaxed line-clamp-3"
+                      style={{ fontFamily: "Google Sans, sans-serif" }}
+                    >
+                      {heroArticle.excerpt}
+                    </p>
+
+                    <div className="mt-6 flex items-center gap-4 text-sm text-gray-500 dark:text-gray-400" style={{ fontFamily: "Google Sans, sans-serif" }}>
+                      <span className="flex items-center gap-1.5">
+                        <User className="w-4 h-4" />
+                        {heroArticle.author}
+                      </span>
+                      <span className="flex items-center gap-1.5">
+                        <Clock className="w-4 h-4" />
+                        {heroArticle.readTime}
+                      </span>
                     </div>
                   </div>
-                )}
+                </motion.div>
+              </Link>
+            </div>
+          </section>
+        )}
 
-                {/* Actions */}
-                <div className="flex items-center justify-center gap-3 mb-10">
-                  <button
-                    onClick={handleResetFilters}
-                    className="px-5 py-2.5 rounded-full border border-orange-300 text-orange-600 hover:bg-orange-50 dark:hover:bg-orange-900/20 font-semibold transition-colors"
-                    style={{ fontFamily: "Google Sans, sans-serif" }}
+        {/* ─── Article Grid ─── */}
+        {remainingArticles.length > 0 && (
+          <section className="pb-16">
+            <div className="max-w-6xl mx-auto px-4 sm:px-6">
+              {/* Divider */}
+              <div className="border-t border-gray-100 dark:border-gray-800 mb-10" />
+
+              <div className="space-y-0">
+                {remainingArticles.map((article, index) => (
+                  <motion.div
+                    key={article.id}
+                    initial={{ opacity: 0, y: 16 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: "-40px" }}
+                    transition={{ duration: 0.4, delay: Math.min(index * 0.05, 0.3) }}
                   >
-                    Clear Filters
-                  </button>
-                  <Link href="/blog">
-                    <span className="px-5 py-2.5 rounded-full bg-orange-500 hover:bg-orange-600 text-white font-semibold transition-colors inline-block" style={{ fontFamily: "Google Sans, sans-serif" }}>
-                      View All Articles
-                    </span>
-                  </Link>
-                </div>
+                    <Link href={`/blog/${article.slug}`} className="group block">
+                      <article className="grid md:grid-cols-[1fr_280px] gap-6 md:gap-8 py-8 border-b border-gray-100 dark:border-gray-800 items-center">
+                        {/* Text */}
+                        <div className="order-2 md:order-1">
+                          <div className="flex items-center gap-3 mb-3">
+                            <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400" style={{ fontFamily: "Google Sans, sans-serif" }}>
+                              {article.category}
+                            </span>
+                            <span className="text-sm text-gray-400 dark:text-gray-500" style={{ fontFamily: "Google Sans, sans-serif" }}>
+                              {formatDate(article.date)}
+                            </span>
+                          </div>
+
+                          <h3
+                            className="text-xl md:text-2xl font-bold text-gray-900 dark:text-white group-hover:text-orange-500 dark:group-hover:text-orange-400 transition-colors leading-snug"
+                            style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}
+                          >
+                            {article.title}
+                          </h3>
+
+                          <p
+                            className="mt-2.5 text-gray-500 dark:text-gray-400 text-sm md:text-base leading-relaxed line-clamp-2"
+                            style={{ fontFamily: "Google Sans, sans-serif" }}
+                          >
+                            {article.excerpt}
+                          </p>
+
+                          <div className="mt-4 flex items-center gap-4 text-xs text-gray-400 dark:text-gray-500" style={{ fontFamily: "Google Sans, sans-serif" }}>
+                            <span className="flex items-center gap-1">
+                              <User className="w-3.5 h-3.5" />
+                              {article.author}
+                            </span>
+                            <span className="flex items-center gap-1">
+                              <Clock className="w-3.5 h-3.5" />
+                              {article.readTime}
+                            </span>
+                          </div>
+                        </div>
+
+                        {/* Thumbnail */}
+                        <div className="order-1 md:order-2">
+                          <div className="relative aspect-[16/9] rounded-xl overflow-hidden bg-gray-100 dark:bg-gray-800">
+                            <img
+                              src={article.image}
+                              alt={article.title}
+                              className="w-full h-full object-cover group-hover:scale-[1.04] transition-transform duration-500"
+                            />
+                          </div>
+                        </div>
+                      </article>
+                    </Link>
+
+                    {/* Inject Google Ad after every 6th article */}
+                    {(index + 1) % 6 === 0 && (
+                      <div className="py-6 border-b border-gray-100 dark:border-gray-800">
+                        <GoogleAd slot="5430272990" format="horizontal" />
+                      </div>
+                    )}
+                  </motion.div>
+                ))}
               </div>
 
-              {/* Featured suggestions */}
-              {featuredArticles.length > 0 && (
-                <div className="mt-4">
-                  <h4 className="text-lg font-bold text-gray-900 dark:text-white mb-6 text-center" style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}>Featured Articles</h4>
-                  <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    {featuredArticles.slice(0, 3).map((article, index) => (
-                      <motion.article
-                        key={article.id}
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: index * 0.1 }}
-                        className="bg-white dark:bg-gray-900 rounded-2xl overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 group"
-                      >
-                        <Link href={`/blog/${article.slug}`} className="block">
-                          <div className="relative h-40 overflow-hidden">
-                            <img src={article.image} alt={article.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-                            <div className="absolute top-3 left-3">
-                              <span className="bg-orange-500 text-white px-3 py-1 rounded-full text-xs font-semibold">{article.category}</span>
-                            </div>
-                          </div>
-                          <div className="p-5">
-                            <h5 className="text-lg font-bold text-gray-900 dark:text-white mb-2 group-hover:text-orange-500 dark:group-hover:text-orange-400 transition-colors" style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}>{article.title}</h5>
-                            <p className="text-gray-600 dark:text-gray-300 text-sm line-clamp-2" style={{ fontFamily: "Google Sans, sans-serif" }}>{article.excerpt}</p>
-                          </div>
-                        </Link>
-                      </motion.article>
-                    ))}
-                  </div>
+              {/* Load more */}
+              {hasMore && (
+                <div className="text-center mt-12">
+                  <button
+                    onClick={() => setVisibleCount(prev => prev + 12)}
+                    className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-700 dark:text-gray-300 text-sm font-semibold hover:border-orange-400 hover:text-orange-500 dark:hover:border-orange-500 dark:hover:text-orange-400 transition-all duration-200"
+                    style={{ fontFamily: "Google Sans, sans-serif" }}
+                  >
+                    Load more articles
+                    <ArrowRight className="w-4 h-4" />
+                  </button>
                 </div>
               )}
             </div>
           </section>
         )}
 
-        {/* CTA Section */}
-        <section className="py-16 relative overflow-hidden">
-          {/* Background Image */}
-          <div className="absolute inset-0">
-            <img 
-              src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1920&h=600&fit=crop" 
-              alt="Team collaboration"
-              className="w-full h-full object-cover"
-            />
-            <div className="absolute inset-0 bg-gradient-to-br from-orange-500/90 via-orange-600/90 to-red-500/90"></div>
-          </div>
-          
-          <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-            >
-              <h2 
-                className="text-3xl md:text-4xl font-bold text-white mb-6"
-                style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}
-              >
-                Ready to Start Your Project?
-              </h2>
-              <p
-                className="text-xl text-orange-100 mb-8"
+        {/* ─── Empty State ─── */}
+        {filteredArticles.length === 0 && (
+          <section className="py-24">
+            <div className="max-w-md mx-auto px-4 text-center">
+              <div className="w-14 h-14 mx-auto mb-5 bg-gray-100 dark:bg-gray-800 rounded-2xl flex items-center justify-center">
+                <Search className="w-6 h-6 text-gray-400" />
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2" style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}>
+                No articles found
+              </h3>
+              <p className="text-gray-500 dark:text-gray-400 text-sm mb-6" style={{ fontFamily: "Google Sans, sans-serif" }}>
+                {debouncedSearch.trim()
+                  ? <>No results for &ldquo;{debouncedSearch}&rdquo;. Try a different search term.</>
+                  : "No articles in this category yet."}
+              </p>
+              <button
+                onClick={() => { setSearchQuery(""); setDebouncedSearch(""); setSelectedCategory("All"); }}
+                className="px-5 py-2.5 rounded-full bg-gray-900 dark:bg-white text-white dark:text-gray-900 text-sm font-semibold hover:opacity-90 transition-opacity"
                 style={{ fontFamily: "Google Sans, sans-serif" }}
               >
-                Let's create something amazing together. Contact us for a free consultation.
+                View all articles
+              </button>
+            </div>
+          </section>
+        )}
+
+        {/* ─── Newsletter / CTA ─── */}
+        <section className="border-t border-gray-100 dark:border-gray-800">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 py-16 md:py-20">
+            <div className="max-w-2xl mx-auto text-center">
+              <h2
+                className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white"
+                style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}
+              >
+                Ready to build something great?
+              </h2>
+              <p
+                className="mt-3 text-gray-500 dark:text-gray-400 text-base"
+                style={{ fontFamily: "Google Sans, sans-serif" }}
+              >
+                Let&rsquo;s create a fast, beautiful website that grows your business. Get a free consultation today.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <PremiumCTA href="/contact" size="default" variant="primary">
-                  Get Started Today
-                </PremiumCTA>
-                <PremiumCTA href="/web-design-company-in-ghana" size="default" variant="primary">
-                  View Our Services
-                </PremiumCTA>
+              <div className="mt-8 flex flex-col sm:flex-row gap-3 justify-center">
+                <Link
+                  href="/contact"
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-orange-500 hover:bg-orange-600 text-white text-sm font-semibold transition-colors"
+                  style={{ fontFamily: "Google Sans, sans-serif" }}
+                >
+                  Get Started
+                  <ArrowRight className="w-4 h-4" />
+                </Link>
+                <Link
+                  href="/web-design-company-in-ghana"
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full border border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-300 text-sm font-semibold hover:border-gray-400 dark:hover:border-gray-500 transition-colors"
+                  style={{ fontFamily: "Google Sans, sans-serif" }}
+                >
+                  View Services
+                </Link>
               </div>
-            </motion.div>
+            </div>
           </div>
         </section>
 

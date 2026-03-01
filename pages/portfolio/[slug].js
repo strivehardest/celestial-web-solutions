@@ -31,20 +31,27 @@ const DeviceMockup = ({ project }) => {
   const hasMobile = project.mobileImage;
   const [modal, setModal] = useState({ open: false, src: '', alt: '' });
 
-  // ✅ Lock body scroll when modal is open
+  const openModal = (src, alt) => setModal({ open: true, src, alt });
+  const closeModal = () => setModal({ open: false, src: '', alt: '' });
+
+  // ✅ Lock body scroll + ESC key handler when modal is open
   useEffect(() => {
     if (modal.open) {
       document.body.style.overflow = 'hidden';
+      const handleKeyDown = (e) => {
+        if (e.key === 'Escape') closeModal();
+      };
+      window.addEventListener('keydown', handleKeyDown);
+      return () => {
+        document.body.style.overflow = '';
+        window.removeEventListener('keydown', handleKeyDown);
+      };
     } else {
       document.body.style.overflow = '';
     }
-    return () => { document.body.style.overflow = ''; };
   }, [modal.open]);
 
   if (!hasDesktop && !hasMobile) return null;
-
-  const openModal = (src, alt) => setModal({ open: true, src, alt });
-  const closeModal = () => setModal({ open: false, src: '', alt: '' });
 
   return (
     <>
@@ -207,7 +214,7 @@ const DeviceMockup = ({ project }) => {
         )}
       </motion.div>
 
-      {/* ✅ Self-contained Modal — no external component needed */}
+      {/* ✅ Self-contained Modal — click anywhere (including image) to close */}
       <AnimatePresence>
         {modal.open && (
           <motion.div
@@ -215,43 +222,51 @@ const DeviceMockup = ({ project }) => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-0 z-[9999] flex items-center justify-center p-4"
+            className="fixed inset-0 z-[9999] flex items-center justify-center p-4 cursor-pointer"
             onClick={closeModal}
           >
             {/* Backdrop */}
             <div className="absolute inset-0 bg-black/90 backdrop-blur-sm" />
 
-            {/* ✅ Close button — top right, large tap target */}
+            {/* ✅ Close button — top right, large & clearly visible */}
             <button
               onClick={closeModal}
-              className="absolute top-4 right-4 z-10 w-10 h-10 bg-white/10 hover:bg-white/20 border border-white/20 rounded-full flex items-center justify-center text-white transition-all duration-200 hover:scale-110"
+              className="absolute top-5 right-5 z-20 w-12 h-12 bg-white/20 hover:bg-red-500 border-2 border-white/40 hover:border-red-400 rounded-full flex items-center justify-center text-white transition-all duration-200 hover:scale-110 shadow-lg hover:shadow-red-500/30"
               aria-label="Close modal"
             >
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M6 18L18 6M6 6l12 12" />
               </svg>
             </button>
 
-            {/* ESC hint */}
-            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 text-white/40 text-xs" style={{ fontFamily: 'Google Sans, sans-serif' }}>
-              Click anywhere or press ESC to close
-            </div>
-
-            {/* Image container — stops click propagation so clicking image doesn't close */}
+            {/* Image container — clicking image also closes modal */}
             <motion.div
               initial={{ scale: 0.9, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.9, opacity: 0 }}
               transition={{ duration: 0.25 }}
-              className="relative z-10 max-w-[90vw] max-h-[85vh] flex items-center justify-center"
-              onClick={(e) => e.stopPropagation()}
+              className="relative z-10 max-w-[90vw] max-h-[85vh] flex items-center justify-center group cursor-pointer"
             >
               <img
                 src={modal.src}
                 alt={modal.alt}
-                className="max-w-full max-h-[85vh] object-contain rounded-xl shadow-2xl"
+                className="max-w-full max-h-[85vh] object-contain rounded-xl shadow-2xl transition-transform duration-300 group-hover:scale-[0.98]"
               />
+              {/* Hover overlay on image with close hint */}
+              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 rounded-xl flex items-center justify-center pointer-events-none">
+                <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/70 text-white text-sm font-semibold px-4 py-2 rounded-full flex items-center gap-2 shadow-lg">
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                  Click to close
+                </div>
+              </div>
             </motion.div>
+
+            {/* ESC hint */}
+            <div className="absolute bottom-5 left-1/2 -translate-x-1/2 z-20 text-white/60 text-sm font-medium" style={{ fontFamily: 'Google Sans, sans-serif' }}>
+              Click anywhere or press ESC to close
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
@@ -259,31 +274,37 @@ const DeviceMockup = ({ project }) => {
   );
 };
 
-export default function ProjectDetail() {
+// --- SSG: Pre-render all portfolio pages at build time ---
+export async function getStaticPaths() {
+  const paths = projects.map((p) => ({ params: { slug: p.slug } }));
+  return { paths, fallback: false };
+}
+
+export async function getStaticProps({ params }) {
+  const { slug } = params;
+  const foundIndex = projects.findIndex((p) => p.slug === slug);
+  if (foundIndex === -1) {
+    return { notFound: true };
+  }
+  return {
+    props: {
+      project: projects[foundIndex],
+      currentIndex: foundIndex,
+      prevProject: foundIndex > 0 ? { slug: projects[foundIndex - 1].slug, title: projects[foundIndex - 1].title } : null,
+      nextProject: foundIndex < projects.length - 1 ? { slug: projects[foundIndex + 1].slug, title: projects[foundIndex + 1].title } : null,
+    },
+  };
+}
+
+export default function ProjectDetail({ project, currentIndex, prevProject: prevProjectNav, nextProject: nextProjectNav }) {
   const router = useRouter();
-  const { slug } = router.query;
-  const [project, setProject] = useState(null);
-  const [notFound, setNotFound] = useState(false);
+  const [notFound, setNotFound] = useState(!project);
   const [isScrolling, setIsScrolling] = useState(false);
   const [showScrollButton, setShowScrollButton] = useState(true);
   const [scrollProgress, setScrollProgress] = useState(0);
   const [imageError, setImageError] = useState({});
-  const [currentIndex, setCurrentIndex] = useState(-1);
   const imageContainerRef = useRef(null);
   const imageRef = useRef(null);
-
-  useEffect(() => {
-    if (slug) {
-      const foundIndex = projects.findIndex((p) => p.slug === slug);
-      if (foundIndex !== -1) {
-        setProject(projects[foundIndex]);
-        setCurrentIndex(foundIndex);
-        setNotFound(false);
-      } else {
-        setNotFound(true);
-      }
-    }
-  }, [slug]);
 
   // ✅ Add ESC key support (closes any open modals via DeviceMockup's internal state)
   useEffect(() => {
@@ -296,8 +317,8 @@ export default function ProjectDetail() {
     return () => window.removeEventListener('keydown', handleEsc);
   }, []);
 
-  const prevProject = currentIndex > 0 ? projects[currentIndex - 1] : null;
-  const nextProject = currentIndex < projects.length - 1 ? projects[currentIndex + 1] : null;
+  const prevProject = prevProjectNav || (currentIndex > 0 ? projects[currentIndex - 1] : null);
+  const nextProject = nextProjectNav || (currentIndex < projects.length - 1 ? projects[currentIndex + 1] : null);
 
   const handleImageClick = () => {
     if (!imageRef.current || !imageContainerRef.current || isScrolling) return;
@@ -340,17 +361,6 @@ export default function ProjectDetail() {
 
   const handleImageError = (idx) => setImageError(prev => ({ ...prev, [idx]: true }));
 
-  if (!router.isReady) {
-    return (
-      <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 flex items-center justify-center">
-        <motion.div animate={{ opacity: [0.5, 1, 0.5] }} transition={{ duration: 2, repeat: Infinity }} className="text-center">
-          <div className="w-12 h-12 border-4 border-orange-200 border-t-orange-600 rounded-full animate-spin mx-auto mb-4"></div>
-          <p className="text-lg text-gray-600 dark:text-gray-400">Loading project...</p>
-        </motion.div>
-      </div>
-    );
-  }
-
   if (notFound) {
     return (
       <>
@@ -373,18 +383,7 @@ export default function ProjectDetail() {
     );
   }
 
-  if (!project) {
-    return (
-      <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 flex items-center justify-center">
-        <motion.div animate={{ opacity: [0.5, 1, 0.5] }} transition={{ duration: 2, repeat: Infinity }} className="text-center">
-          <div className="w-12 h-12 border-4 border-orange-200 border-t-orange-600 rounded-full animate-spin mx-auto mb-4"></div>
-          <p className="text-lg text-gray-600 dark:text-gray-400">Loading project...</p>
-        </motion.div>
-      </div>
-    );
-  }
-
-  const currentUrl = typeof window !== "undefined" ? window.location.href : `https://celestialwebsolutions.net/portfolio/${slug}`;
+  const currentUrl = `https://celestialwebsolutions.net/portfolio/${project.slug}`;
 
   return (
     <>

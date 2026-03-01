@@ -76,7 +76,7 @@ export default function EnrollCourse() {
         paystackUrl = 'https://paystack.shop/pay/web-design-fundamentals';
       } else if (course.slug === 'microsoft-excel-mastery') {
         paystackUrl = 'https://paystack.shop/pay/excel-mastery-course';
-      } else if (course.slug === 'learn-nextjs-course') {
+      } else if (course.slug === 'nextjs-complete-guide') {
         paystackUrl = 'https://paystack.shop/pay/nextjs-course';
       } else if (course.slug === 'learn-wordpress-course') {
         paystackUrl = 'https://paystack.shop/pay/wordpress-course';
