@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -9,6 +9,8 @@ import {
   Calendar, Clock, Shield, Award, ArrowLeft, Smartphone, Copy, ExternalLink 
 } from 'lucide-react';
 import { getCourseBySlug, getAllCourseSlugs } from '../../../data/courses';
+
+const TURNSTILE_SITE_KEY = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY || '1x00000000000000000000AA';
 
 export default function EnrollCourse() {
   const router = useRouter();
@@ -26,6 +28,49 @@ export default function EnrollCourse() {
 
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
+  const [turnstileToken, setTurnstileToken] = useState(null);
+  const turnstileRef = useRef(null);
+  const turnstileWidgetId = useRef(null);
+
+  // Render Cloudflare Turnstile widget
+  useEffect(() => {
+    const renderWidget = () => {
+      if (!turnstileRef.current || !window.turnstile) return;
+      if (turnstileWidgetId.current !== null) {
+        try { window.turnstile.remove(turnstileWidgetId.current); } catch (e) {}
+      }
+      turnstileWidgetId.current = window.turnstile.render(turnstileRef.current, {
+        sitekey: TURNSTILE_SITE_KEY,
+        callback: (token) => setTurnstileToken(token),
+        'expired-callback': () => setTurnstileToken(null),
+        'error-callback': () => setTurnstileToken(null),
+        theme: 'auto',
+        size: 'normal',
+      });
+    };
+
+    const timer = setTimeout(() => {
+      if (window.turnstile) {
+        renderWidget();
+      } else {
+        const check = setInterval(() => {
+          if (window.turnstile) {
+            clearInterval(check);
+            renderWidget();
+          }
+        }, 200);
+        setTimeout(() => clearInterval(check), 10000);
+      }
+    }, 500);
+
+    return () => {
+      clearTimeout(timer);
+      if (turnstileWidgetId.current !== null && window.turnstile) {
+        try { window.turnstile.remove(turnstileWidgetId.current); } catch (e) {}
+        turnstileWidgetId.current = null;
+      }
+    };
+  }, []);
 
   if (!course) {
     return (
@@ -52,6 +97,12 @@ export default function EnrollCourse() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    
+    if (!turnstileToken) {
+      alert('Please complete the security verification.');
+      return;
+    }
+    
     setLoading(true);
 
     // Store enrollment data in localStorage
@@ -413,10 +464,15 @@ export default function EnrollCourse() {
                     </label>
                   </div>
 
+                  {/* Cloudflare Turnstile CAPTCHA */}
+                  <div className="pt-4">
+                    <div ref={turnstileRef} />
+                  </div>
+
                   {/* Submit Button */}
                   <motion.button
                     type="submit"
-                    disabled={loading || !formData.agreeTerms}
+                    disabled={loading || !formData.agreeTerms || !turnstileToken}
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                     className="w-full bg-orange-500 hover:bg-orange-600 text-white py-4 rounded-xl font-bold text-lg shadow-lg hover:shadow-xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed" style={{ fontFamily: '"Google Sans", sans-serif', fontWeight: 700 }}

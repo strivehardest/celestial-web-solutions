@@ -691,6 +691,15 @@ const IndexPage = () => {
             <div className="grid md:grid-cols-2 gap-8 mb-12">
               {[
                 {
+                  title: "12 Best Web Design Companies in Ghana (2026) — Reviewed & Ranked",
+                  excerpt: "Looking for the best web design company in Ghana? We ranked and reviewed the top 12 agencies based on portfolio quality, client reviews, SEO expertise, and industry recognition on Clutch, DesignRush, and Sortlist.",
+                  category: "Web Design",
+                  date: "March 3, 2026",
+                  readTime: "14 min read",
+                  slug: "best-web-design-companies-in-ghana-2026",
+                  image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1200&h=600&fit=crop"
+                },
+                {
                   title: "WordPress vs Custom Website: Which is Best for Your Ghanaian Business in 2026?",
                   excerpt: "Confused about choosing between WordPress and a custom website? This comprehensive guide helps Ghanaian businesses make the right decision based on budget, features, and long-term goals.",
                   category: "Web Development",
@@ -698,15 +707,6 @@ const IndexPage = () => {
                   readTime: "12 min read",
                   slug: "wordpress-vs-custom-website-ghana-2026",
                   image: "https://images.unsplash.com/photo-1555421689-d68471e189f2?w=1200&h=600&fit=crop"
-                },
-                {
-                  title: "UI/UX Design Principles Every Ghanaian Website Must Follow in 2026",
-                  excerpt: "Master the essential UI/UX design principles that make websites successful in Ghana. Learn how to create user-friendly, conversion-focused designs that work for Ghanaian users in 2026.",
-                  category: "Web Design",
-                  date: "February 1, 2026",
-                  readTime: "11 min read",
-                  slug: "ui-ux-design-principles-ghana-websites-2026",
-                  image: "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=1200&h=600&fit=crop"
                 }
               ].map((article, index) => (
                 <motion.div

@@ -16,7 +16,7 @@ const heroVideo = '/videos/hero1.mp4';
 const stats = [
   { label: 'Projects delivered', value: '20+' },
   { label: 'Average launch time', value: '2-4 weeks' },
-  { label: 'Average client rating', value: '4.9 / 5' },
+  { label: 'Average client rating', value: '5.0 / 5' },
 ];
 
 const serviceFocus = [
@@ -448,6 +448,26 @@ export default function BestWebDesignerInAccraPage() {
                 </div>
 
                 <div className="grid sm:grid-cols-2 gap-6">
+                  <Link href="/blog/best-web-design-companies-in-ghana-2026">
+                    <div className="rounded-2xl border border-gray-200 dark:border-white/10 bg-white/80 dark:bg-white/5 backdrop-blur overflow-hidden hover:shadow-lg transition-all duration-300 cursor-pointer h-full flex flex-col">
+                      <div className="relative h-40 overflow-hidden bg-gradient-to-br from-orange-400 to-orange-600">
+                        <img 
+                          src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1200&h=600&fit=crop" 
+                          alt="12 Best Web Design Companies in Ghana"
+                          className="w-full h-full object-cover hover:scale-110 transition-transform duration-300"
+                        />
+                      </div>
+                      <div className="p-6 flex flex-col flex-grow">
+                        <p className="text-xs text-orange-600 dark:text-orange-400 font-semibold uppercase tracking-wide mb-2" style={{ fontFamily: 'Google Sans, sans-serif' }}>Web Design</p>
+                        <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2 group-hover:text-orange-600 transition-colors" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>12 Best Web Design Companies in Ghana (2026)</h3>
+                        <p className="text-sm text-gray-700 dark:text-gray-300 flex-grow" style={{ fontFamily: 'Google Sans, sans-serif' }}>We ranked and reviewed the top 12 agencies based on portfolio quality, client reviews, SEO expertise, and industry recognition.</p>
+                        <div className="mt-4 flex items-center gap-2 text-orange-600 dark:text-orange-400 font-semibold text-sm">
+                          Read More →
+                        </div>
+                      </div>
+                    </div>
+                  </Link>
+
                   <Link href="/blog/wordpress-vs-custom-website-ghana-2026">
                     <div className="rounded-2xl border border-gray-200 dark:border-white/10 bg-white/80 dark:bg-white/5 backdrop-blur overflow-hidden hover:shadow-lg transition-all duration-300 cursor-pointer h-full flex flex-col">
                       <div className="relative h-40 overflow-hidden bg-gradient-to-br from-orange-400 to-orange-600">
@@ -461,26 +481,6 @@ export default function BestWebDesignerInAccraPage() {
                         <p className="text-xs text-orange-600 dark:text-orange-400 font-semibold uppercase tracking-wide mb-2" style={{ fontFamily: 'Google Sans, sans-serif' }}>Web Development</p>
                         <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2 group-hover:text-orange-600 transition-colors" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>WordPress vs Custom Website</h3>
                         <p className="text-sm text-gray-700 dark:text-gray-300 flex-grow" style={{ fontFamily: 'Google Sans, sans-serif' }}>Compare WordPress and custom development to find the best solution for your Ghanaian business in 2026.</p>
-                        <div className="mt-4 flex items-center gap-2 text-orange-600 dark:text-orange-400 font-semibold text-sm">
-                          Read More →
-                        </div>
-                      </div>
-                    </div>
-                  </Link>
-
-                  <Link href="/blog/ui-ux-design-principles-ghana-websites-2026">
-                    <div className="rounded-2xl border border-gray-200 dark:border-white/10 bg-white/80 dark:bg-white/5 backdrop-blur overflow-hidden hover:shadow-lg transition-all duration-300 cursor-pointer h-full flex flex-col">
-                      <div className="relative h-40 overflow-hidden bg-gradient-to-br from-orange-400 to-orange-600">
-                        <img 
-                          src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=1200&h=600&fit=crop" 
-                          alt="UI/UX Design Principles"
-                          className="w-full h-full object-cover hover:scale-110 transition-transform duration-300"
-                        />
-                      </div>
-                      <div className="p-6 flex flex-col flex-grow">
-                        <p className="text-xs text-orange-600 dark:text-orange-400 font-semibold uppercase tracking-wide mb-2" style={{ fontFamily: 'Google Sans, sans-serif' }}>Web Design</p>
-                        <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2 group-hover:text-orange-600 transition-colors" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>UI/UX Design Principles for Ghana</h3>
-                        <p className="text-sm text-gray-700 dark:text-gray-300 flex-grow" style={{ fontFamily: 'Google Sans, sans-serif' }}>Master essential UI/UX principles to create user-friendly websites that convert visitors into customers.</p>
                         <div className="mt-4 flex items-center gap-2 text-orange-600 dark:text-orange-400 font-semibold text-sm">
                           Read More →
                         </div>

@@ -44,6 +44,8 @@ export default function Document() {
         </noscript>
             {/* Calendly Widget Script for Schedule a Call page */}
             <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
+            {/* Cloudflare Turnstile CAPTCHA */}
+            <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
       </Head>
       <body>
         <Main />

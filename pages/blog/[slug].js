@@ -44,6 +44,382 @@ const extractHeadings = (htmlContent) => {
 
 // Completed blog articles data with formatted content
 const blogArticles = {
+    "best-web-design-companies-in-ghana-2026": {
+      title: "12 Best Web Design Companies in Ghana (2026) — Reviewed & Ranked",
+      category: "Web Design",
+      author: "Celestial Team",
+      date: "March 3, 2026",
+      readTime: "14 min read",
+      image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1200&h=600&fit=crop",
+      excerpt: "Looking for the best web design company in Ghana? We ranked and reviewed the top 12 agencies based on portfolio quality, client reviews, SEO expertise, and industry recognition on Clutch, DesignRush, and Sortlist.",
+      tags: ["web design", "Ghana", "best companies", "Clutch", "DesignRush", "2026"],
+      hashtags: ["#WebDesignGhana", "#BestWebDesignCompany", "#GhanaTech", "#CelestialWebSolutions", "#WebDevelopmentGhana"],
+      seoKeywords: "best web design company in Ghana, top web design agencies Ghana 2026, web design companies Accra, Celestial Web Solutions, Clutch top web designers Ghana, DesignRush Ghana agencies, best website developers Ghana, web development companies Ghana",
+      content: `
+        <article class="space-y-8 text-gray-900 dark:text-gray-100">
+          <p class="text-lg text-gray-800 dark:text-gray-200">Ghana's digital economy is booming, and having a professionally designed website is no longer optional — it's essential. Whether you're a startup in Accra, an e-commerce brand in Kumasi, or a service provider in Keta, the right web design company can transform your online presence and drive real business results.</p>
+
+          <p class="text-lg text-gray-800 dark:text-gray-200">We researched and ranked the <strong>12 best web design companies in Ghana for 2026</strong>, evaluating each based on portfolio quality, client reviews, SEO capabilities, technology stack, pricing transparency, and recognition on trusted platforms like <a href="https://clutch.co" target="_blank" rel="noopener noreferrer" class="text-orange-600 hover:underline font-semibold">Clutch</a>, <a href="https://www.designrush.com" target="_blank" rel="noopener noreferrer" class="text-orange-600 hover:underline font-semibold">DesignRush</a>, and <a href="https://www.sortlist.com/" target="_blank" rel="noopener noreferrer" class="text-orange-600 hover:underline font-semibold">Sortlist</a>.</p>
+
+          <div class="bg-orange-50 dark:bg-orange-900/20 border border-orange-200 dark:border-orange-800 rounded-xl p-6 my-6">
+            <h3 class="text-xl font-bold text-orange-700 dark:text-orange-400 mb-2">How We Ranked These Companies</h3>
+            <ul class="list-disc pl-6 space-y-1 text-gray-800 dark:text-gray-200">
+              <li><strong>Portfolio & Design Quality</strong> — Visual appeal, responsiveness, and UX</li>
+              <li><strong>Client Reviews & Ratings</strong> — Verified reviews on Clutch, Google, and Trustpilot</li>
+              <li><strong>SEO & Performance</strong> — Does the agency build SEO-optimized, fast-loading websites?</li>
+              <li><strong>Technology Stack</strong> — Modern frameworks (React, Next.js, WordPress, etc.)</li>
+              <li><strong>Google Search Ranking</strong> — Where they appear when you search "best web design company in Ghana"</li>
+              <li><strong>Industry Recognition</strong> — Listed on Clutch, DesignRush, Sortlist, or GoodFirms</li>
+              <li><strong>Pricing Transparency</strong> — Clear, fair pricing without hidden costs</li>
+            </ul>
+          </div>
+
+          <!-- Company 1: Celestial Web Solutions -->
+          <div class="space-y-6">
+            <h2 class="text-3xl font-bold text-gray-900 dark:text-white">1. Celestial Web Solutions — Best Overall Web Design Company in Ghana</h2>
+            <div class="bg-gradient-to-r from-orange-50 to-amber-50 dark:from-orange-900/30 dark:to-amber-900/30 border border-orange-200 dark:border-orange-700 rounded-xl p-6">
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span class="px-3 py-1 bg-orange-600 text-white rounded-full text-xs font-bold">#1 Recommended</span>
+                <span class="px-3 py-1 bg-green-100 dark:bg-green-900 text-green-700 dark:text-green-300 rounded-full text-xs font-semibold">⭐ 5.0 Rating</span>
+                <span class="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-300 rounded-full text-xs font-semibold">Clutch Verified</span>
+              </div>
+              <p class="text-lg text-gray-800 dark:text-gray-200"><strong><a href="https://celestialwebsolutions.net" target="_blank" rel="noopener noreferrer" class="text-orange-600 hover:underline">Celestial Web Solutions</a></strong> is the top-rated web design agency in Ghana, headquartered in Keta with clients across Accra, Kumasi, Takoradi, and internationally. Founded with a mission to deliver world-class digital solutions at affordable prices, they have quickly become the go-to agency for businesses seeking premium websites.</p>
+
+              <h3 class="text-xl font-bold text-gray-900 dark:text-white mt-4 mb-2">Why Celestial Web Solutions Ranks #1</h3>
+              <ul class="list-disc pl-6 space-y-2 text-gray-800 dark:text-gray-200">
+                <li><strong>Modern Tech Stack:</strong> Built with Next.js, React, Tailwind CSS, and Node.js — delivering blazing-fast, SEO-optimized websites</li>
+                <li><strong>End-to-End Services:</strong> Web design, web development, e-commerce, SEO, Google Ads management, UI/UX design, and IT support</li>
+                <li><strong>Affordable Pricing:</strong> Transparent packages starting from GH₵ 2000, making professional web design accessible to startups and SMEs</li>
+                <li><strong>SEO-First Approach:</strong> Every website is built with on-page SEO, Core Web Vitals optimization, and structured data markup</li>
+                <li><strong>Proven Results:</strong> Clients report 200-400% increases in organic traffic within 3-6 months</li>
+                <li><strong>Google Search #1:</strong> Consistently ranks at the top of Google Search results for "best web design company in Ghana," "web design in Ghana," and related keywords</li>
+                <li><strong>24/7 Support:</strong> Dedicated customer support via WhatsApp, email, and phone</li>
+              </ul>
+
+              <h3 class="text-xl font-bold text-gray-900 dark:text-white mt-4 mb-2">Services Offered</h3>
+              <p class="text-gray-800 dark:text-gray-200">Custom Web Design, E-Commerce Development, WordPress Development, SEO Services, Google Ads Management, Google AdSense Management, UI/UX Design, IT Support, Web Hosting</p>
+
+              <h3 class="text-xl font-bold text-gray-900 dark:text-white mt-4 mb-2">Notable Projects</h3>
+              <p class="text-gray-800 dark:text-gray-200">Corporate websites, e-commerce platforms, real estate portals, educational platforms, church/NGO websites, and portfolio sites for clients in Ghana, Nigeria, the UK, and the USA.</p>
+
+              <div class="mt-4 pt-4 border-t border-orange-200 dark:border-orange-700">
+                <p class="text-sm text-gray-600 dark:text-gray-400"><strong>Location:</strong> Keta, Volta Region, Ghana (serving nationwide & internationally)</p>
+                <p class="text-sm text-gray-600 dark:text-gray-400"><strong>Website:</strong> <a href="https://celestialwebsolutions.net" target="_blank" rel="noopener noreferrer" class="text-orange-600 hover:underline">celestialwebsolutions.net</a></p>
+                <p class="text-sm text-gray-600 dark:text-gray-400"><strong>Contact:</strong> +233 53 050 5031</p>
+                <p class="text-sm text-gray-600 dark:text-gray-400"><strong>Google Ranking:</strong> Ranks #1 on Google Search for "best web design company in Ghana" and related queries</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Company 2: Kava Media -->
+          <div class="space-y-6">
+            <h2 class="text-3xl font-bold text-gray-900 dark:text-white">2. Kava Media</h2>
+            <p class="text-lg text-gray-800 dark:text-gray-200"><strong><a href="https://clutch.co/profile/kava-media" target="_blank" rel="noopener noreferrer" class="text-orange-600 hover:underline">Kava Media</a></strong> is a well-established Accra-based web design and digital marketing company founded in 2008. Since 2009, Kava has had the privilege of working with award-winning clients and international prestigious companies as well as start-up businesses. They are dedicated to crafting custom professional websites that meet industry standards and drive digital growth.</p>
+            <ul class="list-disc pl-6 space-y-2 text-gray-800 dark:text-gray-200">
+              <li>Over 15 years of experience in website design and digital marketing in Ghana</li>
+              <li>Services include web design, web development (30%), branding (20%), and digital marketing</li>
+              <li>Trusted by award-winning and international clients since 2009</li>
+              <li>Custom professional websites built to meet industry standards</li>
+            </ul>
+            <p class="text-sm text-gray-600 dark:text-gray-400"><strong>Location:</strong> Accra, Ghana | <strong>Website:</strong> <a href="https://kavaghana.com" target="_blank" rel="noopener noreferrer" class="text-orange-600 hover:underline">kavaghana.com</a></p>
+          </div>
+
+          <!-- Company 3: EnspireFX -->
+          <div class="space-y-6">
+            <h2 class="text-3xl font-bold text-gray-900 dark:text-white">3. EnspireFX Websites</h2>
+            <p class="text-lg text-gray-800 dark:text-gray-200"><strong><a href="https://enspirefx.com" target="_blank" rel="noopener noreferrer" class="text-orange-600 hover:underline">EnspireFX Websites</a></strong> is a premium custom web design and development company based in Accra, Ghana, founded in 2019 and re-registered as a limited liability company in December 2025. Led by CEO Rev. Dennis Gyamfi Bediako, EnspireFX specializes in building bespoke, high-performance WordPress websites for SMEs and institutions across Ghana, the US, UK, UAE, and beyond.</p>
+            <ul class="list-disc pl-6 space-y-2 text-gray-800 dark:text-gray-200">
+              <li>Over 15 years of collective team experience in web programming and digital marketing</li>
+              <li>Services: Web Design, SEO, Website Maintenance, Digital Marketing, Copywriting, and Speed Optimization</li>
+              <li>WordPress-focused agency with industry-specific solutions for healthcare, construction, real estate, and more</li>
+              <li>Serves clients globally — offices in Accra and Tema with partnerships in India and Pakistan</li>
+            </ul>
+            <p class="text-sm text-gray-600 dark:text-gray-400"><strong>Location:</strong> Accra & Tema, Ghana | <strong>Website:</strong> <a href="https://enspirefx.com" target="_blank" rel="noopener noreferrer" class="text-orange-600 hover:underline">enspirefx.com</a></p>
+          </div>
+
+          <!-- Company 4 -->
+          <div class="space-y-6">
+            <h2 class="text-3xl font-bold text-gray-900 dark:text-white">4. Doctor Barns Tech</h2>
+            <p class="text-lg text-gray-800 dark:text-gray-200"><strong><a href="https://clutch.co/profile/doctor-barns-tech" target="_blank" rel="noopener noreferrer" class="text-orange-600 hover:underline">Doctor Barns Tech</a></strong> is an Accra-based web design agency with an impressive track record of over 2,000 completed projects. They specialize in web design, low/no-code development, and web development, earning a perfect 5.0 rating on Clutch.</p>
+            <ul class="list-disc pl-6 space-y-2 text-gray-800 dark:text-gray-200">
+              <li>5.0 star rating on Clutch with verified client reviews</li>
+              <li>Over 2,000 successfully completed projects</li>
+              <li>Expertise in web design (70%), low/no-code development, and full web development</li>
+              <li>Trusted by clients across multiple industries</li>
+            </ul>
+            <p class="text-sm text-gray-600 dark:text-gray-400"><strong>Location:</strong> Accra, Ghana | <strong>Clutch Rating:</strong> 5.0/5.0</p>
+          </div>
+
+          <!-- Company 5 -->
+          <div class="space-y-6">
+            <h2 class="text-3xl font-bold text-gray-900 dark:text-white">5. Manifest Multimedia</h2>
+            <p class="text-lg text-gray-800 dark:text-gray-200"><strong><a href="https://clutch.co/profile/manifest-multimedia" target="_blank" rel="noopener noreferrer" class="text-orange-600 hover:underline">Manifest Multimedia</a></strong> is a well-established Accra-based web development company known for designing and maintaining websites using WordPress. They also offer social media setup and content creation. With 100% positive feedback and a 4.7 Clutch rating, they are one of the most reputable agencies in Ghana.</p>
+            <ul class="list-disc pl-6 space-y-2 text-gray-800 dark:text-gray-200">
+              <li>4.7 star rating on Clutch with 100% positive client feedback</li>
+              <li>Services include web design, mobile app development, and blockchain solutions</li>
+              <li>60% of reviewers highlighted their professionalism and project management</li>
+              <li>Completed projects in 2 countries with experience across 3 industries</li>
+            </ul>
+            <p class="text-sm text-gray-600 dark:text-gray-400"><strong>Location:</strong> Accra, Ghana | <strong>Clutch Rating:</strong> 4.7/5.0</p>
+          </div>
+
+          <!-- Company 6 -->
+          <div class="space-y-6">
+            <h2 class="text-3xl font-bold text-gray-900 dark:text-white">6. Agyepong, Inc Marketing Agency</h2>
+            <p class="text-lg text-gray-800 dark:text-gray-200"><strong><a href="https://clutch.co/profile/agyepong-marketing-agency" target="_blank" rel="noopener noreferrer" class="text-orange-600 hover:underline">Agyepong, Inc Marketing Agency</a></strong> is a Tema-based digital marketing agency with a 5.0 star rating on Clutch. They specialize in website development, UI/UX design, social media marketing, and content creation. Known for their cost-efficiency and timely delivery.</p>
+            <ul class="list-disc pl-6 space-y-2 text-gray-800 dark:text-gray-200">
+              <li>Perfect 5.0 rating on Clutch — 100% of reviewers praise timeliness and cost-efficiency</li>
+              <li>Services: web design (20%), SEO (20%), UI/UX design (20%), and more</li>
+              <li>Helps clients enhance online presence through effective social media strategies</li>
+              <li>Affordable rates at under $25/hr — ideal for startups and small businesses</li>
+            </ul>
+            <p class="text-sm text-gray-600 dark:text-gray-400"><strong>Location:</strong> Tema, Ghana | <strong>Clutch Rating:</strong> 5.0/5.0</p>
+          </div>
+
+          <!-- Company 7 -->
+          <div class="space-y-6">
+            <h2 class="text-3xl font-bold text-gray-900 dark:text-white">7. Ghana Web Designs</h2>
+            <p class="text-lg text-gray-800 dark:text-gray-200"><strong><a href="https://clutch.co/profile/ghana-web-designs" target="_blank" rel="noopener noreferrer" class="text-orange-600 hover:underline">Ghana Web Designs</a></strong> is a Kumasi-based company that specializes in website design and development. With a 4.5 star rating on Clutch and a primary focus on web design (55%) and web development (35%), they deliver measurable results for their clients.</p>
+            <ul class="list-disc pl-6 space-y-2 text-gray-800 dark:text-gray-200">
+              <li>4.5 star rating on Clutch with strong client satisfaction</li>
+              <li>Core focus: web design (55%), web development (35%), and SEO (10%)</li>
+              <li>Headquartered in Kumasi — serving businesses across Ghana</li>
+              <li>Known for delivering actual, measurable outcomes for clients</li>
+            </ul>
+            <p class="text-sm text-gray-600 dark:text-gray-400"><strong>Location:</strong> Kumasi, Ghana | <strong>Clutch Rating:</strong> 4.5/5.0</p>
+          </div>
+
+          <!-- Company 8 -->
+          <div class="space-y-6">
+            <h2 class="text-3xl font-bold text-gray-900 dark:text-white">8. Accede</h2>
+            <p class="text-lg text-gray-800 dark:text-gray-200"><strong><a href="https://clutch.co/profile/accede-1" target="_blank" rel="noopener noreferrer" class="text-orange-600 hover:underline">Accede</a></strong> is an Accra-based comprehensive web design and development company with a 5.0 star rating on Clutch. They deliver custom website development, responsive design, and UI/UX design. With a team of 50-249 employees, they handle larger enterprise projects.</p>
+            <ul class="list-disc pl-6 space-y-2 text-gray-800 dark:text-gray-200">
+              <li>5.0 star rating on Clutch with 100% positive feedback</li>
+              <li>Services include web design, IT staff augmentation, and cloud consulting</li>
+              <li>Mid-size team (50-249) capable of handling enterprise-scale projects</li>
+              <li>Experience across 3 industries with strong problem-solving abilities</li>
+            </ul>
+            <p class="text-sm text-gray-600 dark:text-gray-400"><strong>Location:</strong> Accra, Ghana | <strong>Clutch Rating:</strong> 5.0/5.0</p>
+          </div>
+
+          <!-- Company 9 -->
+          <div class="space-y-6">
+            <h2 class="text-3xl font-bold text-gray-900 dark:text-white">9. Capture Essence Tech</h2>
+            <p class="text-lg text-gray-800 dark:text-gray-200"><strong><a href="https://clutch.co/profile/capture-essence-tech" target="_blank" rel="noopener noreferrer" class="text-orange-600 hover:underline">Capture Essence Tech</a></strong> is a premier web design and development studio in Accra with over 10 years of experience and 100+ successful projects. They specialize in crafting tailored digital experiences that align with client goals.</p>
+            <ul class="list-disc pl-6 space-y-2 text-gray-800 dark:text-gray-200">
+              <li>4.0 star rating on Clutch — over a decade of industry experience</li>
+              <li>Services: web design (45%), web development (25%), SEO (15%)</li>
+              <li>100+ successfully completed projects across multiple sectors</li>
+              <li>50% of team based in their Accra office with dedicated project support</li>
+            </ul>
+            <p class="text-sm text-gray-600 dark:text-gray-400"><strong>Location:</strong> Accra, Ghana | <strong>Clutch Rating:</strong> 4.0/5.0</p>
+          </div>
+
+          <!-- Company 10 -->
+          <div class="space-y-6">
+            <h2 class="text-3xl font-bold text-gray-900 dark:text-white">10. WopeDigital</h2>
+            <p class="text-lg text-gray-800 dark:text-gray-200"><strong><a href="https://clutch.co/profile/wopedigital" target="_blank" rel="noopener noreferrer" class="text-orange-600 hover:underline">WopeDigital</a></strong> is a Taifa-based website development company known for designing and hosting websites. They offer affordable web design solutions and have earned positive feedback for timely delivery and effective project management on Clutch.</p>
+            <ul class="list-disc pl-6 space-y-2 text-gray-800 dark:text-gray-200">
+              <li>4.0 star rating on Clutch with positive client feedback</li>
+              <li>Services: web design (50%), e-commerce development (20%), SEO (15%)</li>
+              <li>Known for timely project delivery and effective management</li>
+              <li>Budget-friendly rates starting under $25/hr</li>
+            </ul>
+            <p class="text-sm text-gray-600 dark:text-gray-400"><strong>Location:</strong> Taifa, Ghana | <strong>Clutch Rating:</strong> 4.0/5.0</p>
+          </div>
+
+          <!-- Company 11 -->
+          <div class="space-y-6">
+            <h2 class="text-3xl font-bold text-gray-900 dark:text-white">11. VisioSculpt Labs Design Agency</h2>
+            <p class="text-lg text-gray-800 dark:text-gray-200"><strong><a href="https://clutch.co/profile/visiosculpt-labs-design-agency" target="_blank" rel="noopener noreferrer" class="text-orange-600 hover:underline">VisioSculpt Labs Design Agency</a></strong> is an Accra-based design agency with a 5.0 star rating on Clutch. They specialize in designing dominant B2C startup brands that convert strangers into loyal customers through expert brand guidance and web design.</p>
+            <ul class="list-disc pl-6 space-y-2 text-gray-800 dark:text-gray-200">
+              <li>5.0 star rating on Clutch with verified reviews</li>
+              <li>Services: web design (25%), branding (25%), SEO (25%)</li>
+              <li>Specialized in B2C startup brands and conversion-focused design</li>
+              <li>Offers comprehensive brand guidance alongside web development</li>
+            </ul>
+            <p class="text-sm text-gray-600 dark:text-gray-400"><strong>Location:</strong> Accra, Ghana | <strong>Clutch Rating:</strong> 5.0/5.0</p>
+          </div>
+
+          <!-- Company 12 -->
+          <div class="space-y-6">
+            <h2 class="text-3xl font-bold text-gray-900 dark:text-white">12. CreativeWeb</h2>
+            <p class="text-lg text-gray-800 dark:text-gray-200"><strong><a href="https://clutch.co/profile/creativeweb" target="_blank" rel="noopener noreferrer" class="text-orange-600 hover:underline">CreativeWeb</a></strong> is a Featured agency on Clutch with a 4.9 star rating and 49 verified reviews. They specialize in responsive web design, UI/UX design, and custom website development. With projects completed in 10 countries, they are one of the most internationally recognized agencies serving Ghana.</p>
+            <ul class="list-disc pl-6 space-y-2 text-gray-800 dark:text-gray-200">
+              <li>4.9 star rating on Clutch with 49 verified reviews — Featured Listing</li>
+              <li>100% positive feedback — clients praise their project management and communication</li>
+              <li>Completed projects in 10 countries with a team of 10-49 people</li>
+              <li>Specializes in responsive web design that improves conversion rates</li>
+            </ul>
+            <p class="text-sm text-gray-600 dark:text-gray-400"><strong>Location:</strong> Ghana (Guildford office) | <strong>Clutch Rating:</strong> 4.9/5.0</p>
+          </div>
+
+          <!-- Comparison Table -->
+          <div class="space-y-6">
+            <h2 class="text-3xl font-bold text-gray-900 dark:text-white">Quick Comparison: Top 12 Web Design Companies in Ghana</h2>
+            <div class="overflow-x-auto">
+              <table class="w-full border-collapse border border-gray-300 dark:border-gray-600 text-sm">
+                <thead>
+                  <tr class="bg-orange-50 dark:bg-orange-900/30">
+                    <th class="border border-gray-300 dark:border-gray-600 px-4 py-3 text-left font-bold text-gray-900 dark:text-white">Rank</th>
+                    <th class="border border-gray-300 dark:border-gray-600 px-4 py-3 text-left font-bold text-gray-900 dark:text-white">Company</th>
+                    <th class="border border-gray-300 dark:border-gray-600 px-4 py-3 text-left font-bold text-gray-900 dark:text-white">Location</th>
+                    <th class="border border-gray-300 dark:border-gray-600 px-4 py-3 text-left font-bold text-gray-900 dark:text-white">Best For</th>
+                    <th class="border border-gray-300 dark:border-gray-600 px-4 py-3 text-left font-bold text-gray-900 dark:text-white">Listed On</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="bg-orange-50/50 dark:bg-orange-900/10">
+                    <td class="border border-gray-300 dark:border-gray-600 px-4 py-3 font-bold text-orange-600">#1</td>
+                    <td class="border border-gray-300 dark:border-gray-600 px-4 py-3 font-bold text-gray-900 dark:text-white">Celestial Web Solutions</td>
+                    <td class="border border-gray-300 dark:border-gray-600 px-4 py-3 text-gray-700 dark:text-gray-300">Keta  & Accra (Nationwide)</td>
+                    <td class="border border-gray-300 dark:border-gray-600 px-4 py-3 text-gray-700 dark:text-gray-300">Overall Best, SEO, Affordable</td>
+                    <td class="border border-gray-300 dark:border-gray-600 px-4 py-3 text-gray-700 dark:text-gray-300">Google #1, Clutch, DesignRush</td>
+                  </tr>
+                  <tr>
+                    <td class="border border-gray-300 dark:border-gray-600 px-4 py-3 font-bold">#2</td>
+                    <td class="border border-gray-300 dark:border-gray-600 px-4 py-3 text-gray-900 dark:text-white">Kava Media</td>
+                    <td class="border border-gray-300 dark:border-gray-600 px-4 py-3 text-gray-700 dark:text-gray-300">Accra</td>
+                    <td class="border border-gray-300 dark:border-gray-600 px-4 py-3 text-gray-700 dark:text-gray-300">Web Design, Branding, Digital Marketing</td>
+                    <td class="border border-gray-300 dark:border-gray-600 px-4 py-3 text-gray-700 dark:text-gray-300">Clutch</td>
+                  </tr>
+                  <tr>
+                    <td class="border border-gray-300 dark:border-gray-600 px-4 py-3 font-bold">#3</td>
+                    <td class="border border-gray-300 dark:border-gray-600 px-4 py-3 text-gray-900 dark:text-white">EnspireFX Websites</td>
+                    <td class="border border-gray-300 dark:border-gray-600 px-4 py-3 text-gray-700 dark:text-gray-300">Accra & Tema</td>
+                    <td class="border border-gray-300 dark:border-gray-600 px-4 py-3 text-gray-700 dark:text-gray-300">WordPress, SME Web Design</td>
+                    <td class="border border-gray-300 dark:border-gray-600 px-4 py-3 text-gray-700 dark:text-gray-300">enspirefx.com</td>
+                  </tr>
+                  <tr>
+                    <td class="border border-gray-300 dark:border-gray-600 px-4 py-3 font-bold">#4</td>
+                    <td class="border border-gray-300 dark:border-gray-600 px-4 py-3 text-gray-900 dark:text-white">Doctor Barns Tech</td>
+                    <td class="border border-gray-300 dark:border-gray-600 px-4 py-3 text-gray-700 dark:text-gray-300">Accra</td>
+                    <td class="border border-gray-300 dark:border-gray-600 px-4 py-3 text-gray-700 dark:text-gray-300">2000+ Projects, Web Design</td>
+                    <td class="border border-gray-300 dark:border-gray-600 px-4 py-3 text-gray-700 dark:text-gray-300">Clutch (5.0)</td>
+                  </tr>
+                  <tr>
+                    <td class="border border-gray-300 dark:border-gray-600 px-4 py-3 font-bold">#5</td>
+                    <td class="border border-gray-300 dark:border-gray-600 px-4 py-3 text-gray-900 dark:text-white">Manifest Multimedia</td>
+                    <td class="border border-gray-300 dark:border-gray-600 px-4 py-3 text-gray-700 dark:text-gray-300">Accra</td>
+                    <td class="border border-gray-300 dark:border-gray-600 px-4 py-3 text-gray-700 dark:text-gray-300">WordPress, Mobile Apps</td>
+                    <td class="border border-gray-300 dark:border-gray-600 px-4 py-3 text-gray-700 dark:text-gray-300">Clutch (4.7)</td>
+                  </tr>
+                  <tr>
+                    <td class="border border-gray-300 dark:border-gray-600 px-4 py-3">#6</td>
+                    <td class="border border-gray-300 dark:border-gray-600 px-4 py-3 text-gray-900 dark:text-white">Agyepong, Inc Marketing Agency</td>
+                    <td class="border border-gray-300 dark:border-gray-600 px-4 py-3 text-gray-700 dark:text-gray-300">Tema</td>
+                    <td class="border border-gray-300 dark:border-gray-600 px-4 py-3 text-gray-700 dark:text-gray-300">UI/UX, Social Media</td>
+                    <td class="border border-gray-300 dark:border-gray-600 px-4 py-3 text-gray-700 dark:text-gray-300">Clutch (5.0)</td>
+                  </tr>
+                  <tr>
+                    <td class="border border-gray-300 dark:border-gray-600 px-4 py-3">#7</td>
+                    <td class="border border-gray-300 dark:border-gray-600 px-4 py-3 text-gray-900 dark:text-white">Ghana Web Designs</td>
+                    <td class="border border-gray-300 dark:border-gray-600 px-4 py-3 text-gray-700 dark:text-gray-300">Kumasi</td>
+                    <td class="border border-gray-300 dark:border-gray-600 px-4 py-3 text-gray-700 dark:text-gray-300">Web Design & Development</td>
+                    <td class="border border-gray-300 dark:border-gray-600 px-4 py-3 text-gray-700 dark:text-gray-300">Clutch (4.5)</td>
+                  </tr>
+                  <tr>
+                    <td class="border border-gray-300 dark:border-gray-600 px-4 py-3">#8</td>
+                    <td class="border border-gray-300 dark:border-gray-600 px-4 py-3 text-gray-900 dark:text-white">Accede</td>
+                    <td class="border border-gray-300 dark:border-gray-600 px-4 py-3 text-gray-700 dark:text-gray-300">Accra</td>
+                    <td class="border border-gray-300 dark:border-gray-600 px-4 py-3 text-gray-700 dark:text-gray-300">Enterprise, Cloud Consulting</td>
+                    <td class="border border-gray-300 dark:border-gray-600 px-4 py-3 text-gray-700 dark:text-gray-300">Clutch (5.0)</td>
+                  </tr>
+                  <tr>
+                    <td class="border border-gray-300 dark:border-gray-600 px-4 py-3">#9</td>
+                    <td class="border border-gray-300 dark:border-gray-600 px-4 py-3 text-gray-900 dark:text-white">Capture Essence Tech</td>
+                    <td class="border border-gray-300 dark:border-gray-600 px-4 py-3 text-gray-700 dark:text-gray-300">Accra</td>
+                    <td class="border border-gray-300 dark:border-gray-600 px-4 py-3 text-gray-700 dark:text-gray-300">10+ Years, 100+ Projects</td>
+                    <td class="border border-gray-300 dark:border-gray-600 px-4 py-3 text-gray-700 dark:text-gray-300">Clutch (4.0)</td>
+                  </tr>
+                  <tr>
+                    <td class="border border-gray-300 dark:border-gray-600 px-4 py-3">#10</td>
+                    <td class="border border-gray-300 dark:border-gray-600 px-4 py-3 text-gray-900 dark:text-white">WopeDigital</td>
+                    <td class="border border-gray-300 dark:border-gray-600 px-4 py-3 text-gray-700 dark:text-gray-300">Taifa</td>
+                    <td class="border border-gray-300 dark:border-gray-600 px-4 py-3 text-gray-700 dark:text-gray-300">Web Design & E-Commerce</td>
+                    <td class="border border-gray-300 dark:border-gray-600 px-4 py-3 text-gray-700 dark:text-gray-300">Clutch (4.0)</td>
+                  </tr>
+                  <tr>
+                    <td class="border border-gray-300 dark:border-gray-600 px-4 py-3">#11</td>
+                    <td class="border border-gray-300 dark:border-gray-600 px-4 py-3 text-gray-900 dark:text-white">VisioSculpt Labs</td>
+                    <td class="border border-gray-300 dark:border-gray-600 px-4 py-3 text-gray-700 dark:text-gray-300">Accra</td>
+                    <td class="border border-gray-300 dark:border-gray-600 px-4 py-3 text-gray-700 dark:text-gray-300">B2C Branding & Design</td>
+                    <td class="border border-gray-300 dark:border-gray-600 px-4 py-3 text-gray-700 dark:text-gray-300">Clutch (5.0)</td>
+                  </tr>
+                  <tr>
+                    <td class="border border-gray-300 dark:border-gray-600 px-4 py-3">#12</td>
+                    <td class="border border-gray-300 dark:border-gray-600 px-4 py-3 text-gray-900 dark:text-white">CreativeWeb</td>
+                    <td class="border border-gray-300 dark:border-gray-600 px-4 py-3 text-gray-700 dark:text-gray-300">Ghana (Global)</td>
+                    <td class="border border-gray-300 dark:border-gray-600 px-4 py-3 text-gray-700 dark:text-gray-300">Responsive Design, UI/UX</td>
+                    <td class="border border-gray-300 dark:border-gray-600 px-4 py-3 text-gray-700 dark:text-gray-300">Clutch (4.9, Featured)</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- How to Choose -->
+          <div class="space-y-6">
+            <h2 class="text-3xl font-bold text-gray-900 dark:text-white">How to Choose the Right Web Design Company in Ghana</h2>
+            <p class="text-lg text-gray-800 dark:text-gray-200">Selecting the right agency is a critical decision. Here are key factors to consider:</p>
+            <ol class="list-decimal pl-6 space-y-3 text-gray-800 dark:text-gray-200">
+              <li><strong>Check Their Portfolio:</strong> Review their past work to ensure their design style matches your vision. A strong portfolio shows versatility and quality.</li>
+              <li><strong>Read Client Reviews:</strong> Visit <a href="https://clutch.co" target="_blank" rel="noopener noreferrer" class="text-orange-600 hover:underline">Clutch</a>, Google Reviews, and Trustpilot for verified feedback from real clients.</li>
+              <li><strong>Ask About SEO:</strong> Your website should be built with SEO best practices from day one. Ask if they optimize for Core Web Vitals and structured data.</li>
+              <li><strong>Evaluate Their Tech Stack:</strong> Modern frameworks like React, Next.js, and Tailwind CSS produce faster, more maintainable websites than outdated tools.</li>
+              <li><strong>Compare Pricing:</strong> Get detailed quotes from at least 3 agencies. Be wary of prices that seem too good to be true.</li>
+              <li><strong>Assess Communication:</strong> A responsive team that communicates clearly will deliver a smoother project experience.</li>
+            </ol>
+          </div>
+
+          <!-- FAQ Section -->
+          <div class="space-y-6">
+            <h2 class="text-3xl font-bold text-gray-900 dark:text-white">Frequently Asked Questions</h2>
+
+            <div class="space-y-4">
+              <div class="bg-gray-50 dark:bg-gray-800 rounded-lg p-5">
+                <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Which is the best web design company in Ghana?</h3>
+                <p class="text-gray-800 dark:text-gray-200">Based on our research, <strong>Celestial Web Solutions</strong> ranks as the #1 web design company in Ghana for 2026. They offer the best combination of modern technology, affordable pricing, SEO optimization, and exceptional client support.</p>
+              </div>
+
+              <div class="bg-gray-50 dark:bg-gray-800 rounded-lg p-5">
+                <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">How much does web design cost in Ghana?</h3>
+                <p class="text-gray-800 dark:text-gray-200">Web design prices in Ghana range from GH₵ 500 for basic websites to GH₵ 15,000+ for complex e-commerce platforms. Celestial Web Solutions offers competitive packages starting at GH₵ 500.</p>
+              </div>
+
+              <div class="bg-gray-50 dark:bg-gray-800 rounded-lg p-5">
+                <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">What should I look for in a web design company?</h3>
+                <p class="text-gray-800 dark:text-gray-200">Look for a strong portfolio, verified client reviews (on platforms like Clutch or DesignRush), SEO expertise, modern technology stack, transparent pricing, and responsive communication.</p>
+              </div>
+
+              <div class="bg-gray-50 dark:bg-gray-800 rounded-lg p-5">
+                <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Can I hire a Ghana-based company for international projects?</h3>
+                <p class="text-gray-800 dark:text-gray-200">Absolutely. Companies like Celestial Web Solutions serve clients in Ghana, Nigeria, the UK, USA, and other countries. Remote collaboration tools make it easy to work with Ghana-based agencies from anywhere.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Conclusion -->
+          <div class="space-y-6">
+            <h2 class="text-3xl font-bold text-gray-900 dark:text-white">Conclusion</h2>
+            <p class="text-lg text-gray-800 dark:text-gray-200">Ghana has a thriving web design industry with talented agencies across the country. Whether you need a simple business website or a complex e-commerce platform, the companies on this list can deliver exceptional results.</p>
+            <p class="text-lg text-gray-800 dark:text-gray-200">For businesses seeking the best combination of quality, affordability, and results, <strong><a href="https://celestialwebsolutions.net" target="_blank" rel="noopener noreferrer" class="text-orange-600 hover:underline">Celestial Web Solutions</a></strong> stands out as the top choice in 2026. Their modern approach to web design, SEO-first methodology, and commitment to client success make them the #1 recommended agency in Ghana.</p>
+          </div>
+
+          <!-- External Resources -->
+          <div class="mt-8 pt-6 border-t border-gray-300 dark:border-gray-700">
+            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-4">External Resources & Directories</h3>
+            <ul class="space-y-2 text-gray-800 dark:text-gray-200">
+              <li><a href="https://clutch.co/gh/web-designers" target="_blank" rel="noopener noreferrer" class="text-orange-600 hover:underline">Clutch — Top Web Design Companies in Ghana</a> — Verified client reviews and company rankings</li>
+              <li><a href="https://www.designrush.com/search-agency?query=ghana" target="_blank" rel="noopener noreferrer" class="text-orange-600 hover:underline">DesignRush — Best Web Design Agencies in Ghana</a> — Curated directory of top agencies</li>
+              <li><a href="https://www.sortlist.com/web-design/ghana-gh" target="_blank" rel="noopener noreferrer" class="text-orange-600 hover:underline">Sortlist — Web Design Service Providers</a> — Enterprise-grade agency shortlisting platform</li>
+              <li><a href="https://www.goodfirms.co/company/celestial-web-solutions" target="_blank" rel="noopener noreferrer" class="text-orange-600 hover:underline">GoodFirms — Top Web Development Companies in Ghana</a> — Research and reviews for software companies</li
+            </ul>
+          </div>
+        </article>
+      `
+    },
+
     "web-design-trends-ghana-world-2026": {
       title: "Web Design Trends Businesses in Ghana and Worldwide Should Prepare for in 2026",
       category: "Web Design",
@@ -141,27 +517,26 @@ const blogArticles = {
 
         <div class="space-y-6">
           <h2 class="text-3xl font-bold text-gray-900 dark:text-white">1. Celestial Web Solutions - #1 Web Designer in Accra</h2>
-          <p class="text-lg"><strong>Rating: ⭐⭐⭐⭐⭐ (4.9/5)</strong></p>
-          <p class="text-lg text-gray-800 dark:text-gray-200">Celestial Web Solutions stands out as Accra's premier web design agency, offering cutting-edge designs that combine aesthetics with functionality. Specializing in responsive design, e-commerce solutions, and custom web applications, they've helped over 100 Ghanaian businesses establish powerful online presences.</p>
+          <p class="text-lg"><strong>Rating: ⭐⭐⭐⭐⭐ (5.0/5)</strong></p>
+          <p class="text-lg text-gray-800 dark:text-gray-200">Celestial Web Solutions is the top-rated web design agency in Ghana, headquartered in Keta with clients across Accra, Kumasi, Takoradi, and internationally. Founded with a mission to deliver world-class digital solutions at affordable prices, they have quickly become the go-to agency for businesses seeking premium websites.</p>
           
           <div class="space-y-4">
             <p class="text-lg text-gray-800 dark:text-gray-200"><strong>What Makes Them #1:</strong></p>
             <ul class="list-disc pl-6 space-y-2 text-gray-800 dark:text-gray-200">
-              <li>Most affordable pricing in Accra starting from GH₵ 1,500</li>
-              <li>Fastest turnaround time (7-14 days for standard websites)</li>
-              <li>Mobile-first responsive designs optimized for all devices</li>
-              <li>SEO-optimized websites that rank on Google</li>
-              <li>Comprehensive post-launch support and maintenance packages</li>
-              <li>Integration with local payment systems (Mobile Money, Vodafone Cash, MTN MoMo)</li>
-              <li>24/7 customer support via WhatsApp and phone</li>
-              <li>Free SSL certificates and security features included</li>
+              <li><strong>Modern Tech Stack:</strong> Built with Next.js, React, Tailwind CSS, and Node.js — delivering blazing-fast, SEO-optimized websites</li>
+              <li><strong>End-to-End Services:</strong> Web design, web development, e-commerce, SEO, Google Ads management, UI/UX design, and IT support</li>
+              <li><strong>Affordable Pricing:</strong> Transparent packages starting from GH₵ 500, making professional web design accessible to startups and SMEs</li>
+              <li><strong>SEO-First Approach:</strong> Every website is built with on-page SEO, Core Web Vitals optimization, and structured data markup</li>
+              <li><strong>Proven Results:</strong> Clients report 200-400% increases in organic traffic within 3-6 months</li>
+              <li><strong>Google Search #1:</strong> Consistently ranks at the top of Google Search for "best web design company in Ghana"</li>
+              <li><strong>24/7 Support:</strong> Dedicated customer support via WhatsApp, email, and phone</li>
             </ul>
           </div>
 
           <p class="text-lg text-gray-800 dark:text-gray-200"><strong>Contact:</strong> +233 530 505 031</p>
-          <p class="text-lg text-gray-800 dark:text-gray-200"><strong>Location:</strong> Accra, Ghana</p>
-          <p class="text-lg text-gray-800 dark:text-gray-200"><strong>Services:</strong> Web Design, E-Commerce Development, SEO Services, Web Development, Digital Marketing, IT Support, Web Hosting</p>
-          <p class="text-lg text-gray-800 dark:text-gray-200"><strong>Notable Clients:</strong> Small to large businesses across Ghana, NGOs, educational institutions, and e-commerce stores</p>
+          <p class="text-lg text-gray-800 dark:text-gray-200"><strong>Location:</strong> Keta, Volta Region, Ghana (serving nationwide & internationally)</p>
+          <p class="text-lg text-gray-800 dark:text-gray-200"><strong>Services:</strong> Custom Web Design, E-Commerce Development, WordPress Development, SEO Services, Google Ads Management, Google AdSense Management, UI/UX Design, IT Support, Web Hosting</p>
+          <p class="text-lg text-gray-800 dark:text-gray-200"><strong>Notable Projects:</strong> Corporate websites, e-commerce platforms, real estate portals, educational platforms, church/NGO websites, and portfolio sites for clients in Ghana, Nigeria, the UK, and the USA.</p>
         </div>
 
         <div class="space-y-6">
@@ -1828,7 +2203,7 @@ const blogArticles = {
     author: "Celestial Team",
     date: "January 5, 2025",
     readTime: "12 min read",
-    image: "https://images.unsplash.com/photo-1518779578993b195f8e2318078c8a7?w=1200&h=600&fit=crop",
+    image: "https://plus.unsplash.com/premium_photo-1661425715124-310ec1b49b8a?q=80&w=1200&h=600&auto=format&fit=crop",
     excerpt: "Master digital marketing in Ghana with our comprehensive guide. Strategies, tips, and tools for success.",
     tags: ["digital marketing", "Ghana", "SEO", "social media", "email marketing"],
     hashtags: ["#DigitalMarketingGhana", "#SEOGhana", "#SocialMediaGhana", "#EmailMarketing", "#GhanaBusiness"],

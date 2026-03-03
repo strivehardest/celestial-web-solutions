@@ -10,6 +10,20 @@ import GoogleAd from '../components/GoogleAd';
 // Blog articles data with external images - sorted by date (newest first)
 export const blogArticles = [
   {
+    id: 1020,
+    slug: "best-web-design-companies-in-ghana-2026",
+    title: "12 Best Web Design Companies in Ghana (2026) — Reviewed & Ranked",
+    excerpt: "Looking for the best web design company in Ghana? We ranked and reviewed the top 12 agencies based on portfolio quality, client reviews, SEO expertise, and industry recognition on Clutch, DesignRush, and Shortlister.",
+    category: "Web Design",
+    author: "Celestial Team",
+    date: "March 3, 2026",
+    readTime: "14 min read",
+    image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1200&h=600&fit=crop",
+    featured: true,
+    tags: ["web design", "Ghana", "best companies", "Clutch", "DesignRush", "2026"],
+    hashtags: ["#WebDesignGhana", "#BestWebDesignCompany", "#GhanaTech", "#CelestialWebSolutions", "#WebDevelopmentGhana"]
+  },
+  {
     id: 5,
     slug: "ai-tools-web-development-2026",
     title: "Top 15 AI Tools Revolutionizing Web Development in 2026",
@@ -298,7 +312,7 @@ export const blogArticles = [
     author: "Celestial Team",
     date: "January 5, 2025",
     readTime: "12 min read",
-    image: "https://images.unsplash.com/photo-1518779578993b195f8e2318078c8a7?w=1200&h=600&fit=crop",
+    image: "https://plus.unsplash.com/premium_photo-1661425715124-310ec1b49b8a?q=80&w=1200&h=600&auto=format&fit=crop",
     featured: false,
     tags: ["digital marketing", "Ghana", "SEO", "social media", "email marketing"],
     hashtags: ["#DigitalMarketingGhana", "#SEOGhana", "#SocialMediaGhana", "#CelestialWebSolutions"]

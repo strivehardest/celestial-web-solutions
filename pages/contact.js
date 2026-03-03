@@ -1,11 +1,13 @@
 <Head>
   <meta name="keywords" content="best web design company in ghana, web design company in Ghana, web development company in Ghana, website designers in Ghana, web development company Ghana, SEO services in Ghana, e-commerce website Ghana, web designer in Accra, web designer in Keta, web design company in Accra, web designer in Accra Ghana, web design company in Keta, website design services Ghana, e-commerce website development Ghana, business website design Ghana, affordable web design Ghana" />
 </Head>
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { motion } from "framer-motion";
 import Head from 'next/head';
 import WhatsAppButton from '../components/WhatsAppButton';
 import PremiumCTA from '../components/PremiumCTA';
+
+const TURNSTILE_SITE_KEY = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY || '1x00000000000000000000AA';
 
 const typingPhrases = [
   'Call us: +233 53 050 5031',
@@ -28,6 +30,9 @@ export default function Contact() {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null);
+  const [turnstileToken, setTurnstileToken] = useState(null);
+  const turnstileRef = useRef(null);
+  const turnstileWidgetId = useRef(null);
 
   // Typing effect state
   const [currentPhraseIndex, setCurrentPhraseIndex] = useState(0);
@@ -45,6 +50,46 @@ export default function Contact() {
       // Cleanup script on unmount
       if (document.body.contains(script)) {
         document.body.removeChild(script);
+      }
+    };
+  }, []);
+
+  // Render Cloudflare Turnstile widget
+  useEffect(() => {
+    const renderWidget = () => {
+      if (!turnstileRef.current || !window.turnstile) return;
+      if (turnstileWidgetId.current !== null) {
+        try { window.turnstile.remove(turnstileWidgetId.current); } catch (e) {}
+      }
+      turnstileWidgetId.current = window.turnstile.render(turnstileRef.current, {
+        sitekey: TURNSTILE_SITE_KEY,
+        callback: (token) => setTurnstileToken(token),
+        'expired-callback': () => setTurnstileToken(null),
+        'error-callback': () => setTurnstileToken(null),
+        theme: 'auto',
+        size: 'normal',
+      });
+    };
+
+    const timer = setTimeout(() => {
+      if (window.turnstile) {
+        renderWidget();
+      } else {
+        const check = setInterval(() => {
+          if (window.turnstile) {
+            clearInterval(check);
+            renderWidget();
+          }
+        }, 200);
+        setTimeout(() => clearInterval(check), 10000);
+      }
+    }, 500);
+
+    return () => {
+      clearTimeout(timer);
+      if (turnstileWidgetId.current !== null && window.turnstile) {
+        try { window.turnstile.remove(turnstileWidgetId.current); } catch (e) {}
+        turnstileWidgetId.current = null;
       }
     };
   }, []);
@@ -85,14 +130,19 @@ export default function Contact() {
     setIsSubmitting(true);
     setSubmitStatus(null);
 
+    if (!turnstileToken) {
+      setSubmitStatus('error');
+      setIsSubmitting(false);
+      return;
+    }
+
     try {
-      const response = await fetch('https://formspree.io/f/mdklokaq', {
+      const response = await fetch('/api/contact', {
         method: 'POST',
         headers: {
-          'Accept': 'application/json',
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({ ...formData, turnstileToken }),
       });
 
       if (response.ok) {
@@ -104,6 +154,11 @@ export default function Contact() {
           subject: '',
           message: ''
         });
+        setTurnstileToken(null);
+        // Reset Turnstile widget
+        if (turnstileWidgetId.current !== null && window.turnstile) {
+          window.turnstile.reset(turnstileWidgetId.current);
+        }
       } else {
         setSubmitStatus('error');
       }
@@ -432,6 +487,11 @@ export default function Contact() {
                   />
                 </div>
 
+                {/* Cloudflare Turnstile CAPTCHA */}
+                <div className="flex justify-center">
+                  <div ref={turnstileRef} />
+                </div>
+
                 <div>
                   <PremiumCTA
                     type="submit"
@@ -439,7 +499,7 @@ export default function Contact() {
                     variant="primary"
                     icon
                     className="w-full"
-                    disabled={isSubmitting}
+                    disabled={isSubmitting || !turnstileToken}
                   >
                     {isSubmitting ? (
                       <span className="flex items-center justify-center">

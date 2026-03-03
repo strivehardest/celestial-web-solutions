@@ -3,10 +3,10 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
-  const { name, email, phone, subject, message, turnstileToken } = req.body;
+  const { firstName, lastName, email, phone, company, service, budget, message, turnstileToken } = req.body;
 
   // Validate required fields
-  if (!name || !email || !subject || !message) {
+  if (!firstName || !lastName || !email || !phone || !company || !service) {
     return res.status(400).json({ error: 'Missing required fields' });
   }
 
@@ -38,7 +38,8 @@ export default async function handler(req, res) {
   }
 
   try {
-    // Forward to Formspree
+    // Send via Formspree (same endpoint pattern as contact form)
+    // This sends to info@celestialwebsolutions.net
     const formspreeResponse = await fetch('https://formspree.io/f/mdklokaq', {
       method: 'POST',
       headers: {
@@ -46,14 +47,16 @@ export default async function handler(req, res) {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        _subject: `Contact Form — ${subject} from ${name}`,
+        _subject: `Talk to an Expert — ${firstName} ${lastName} from ${company}`,
         _replyto: email,
-        name,
+        name: `${firstName} ${lastName}`,
         email,
         phone: phone || 'Not provided',
-        subject,
-        message,
-        _source: 'Contact Page',
+        company,
+        service,
+        budget: budget || 'Not specified',
+        message: message || 'No additional message',
+        _source: 'Talk to an Expert Modal',
       }),
     });
 
@@ -65,7 +68,7 @@ export default async function handler(req, res) {
       return res.status(500).json({ error: 'Failed to send message' });
     }
   } catch (error) {
-    console.error('Contact form error:', error);
+    console.error('Talk to expert form error:', error);
     return res.status(500).json({ error: 'Internal server error' });
   }
 }

@@ -8,6 +8,7 @@ import CustomCursor from '../components/CustomCursor';
 import MouseTrail from '../components/MouseTrail';
 import ScrollToTop from '../components/ScrollToTop';
 import SpinningLogoLoader from '../components/SpinningLogoLoader';
+import TalkToExpertModal from '../components/TalkToExpertModal';
 
 const GA_TRACKING_ID = 'G-73D6Q2P389';
 const TIKTOK_PIXEL_ID = 'D6E4AVRC77UAAN008960';
@@ -15,6 +16,7 @@ const TIKTOK_PIXEL_ID = 'D6E4AVRC77UAAN008960';
 function MyApp({ Component, pageProps }) {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
+  const [showExpertPopup, setShowExpertPopup] = useState(false);
 
   useEffect(() => {
     const handleRouteChangeStart = () => {
@@ -47,6 +49,20 @@ function MyApp({ Component, pageProps }) {
       router.events.off('routeChangeError', handleRouteChangeError);
     };
   }, [router.events]);
+
+  // Auto-show Talk to Expert popup once per session after 5 seconds
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const alreadyShown = sessionStorage.getItem('expertPopupShown');
+    if (alreadyShown) return;
+
+    const timer = setTimeout(() => {
+      setShowExpertPopup(true);
+      sessionStorage.setItem('expertPopupShown', 'true');
+    }, 5000);
+
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
     <>
@@ -99,6 +115,12 @@ function MyApp({ Component, pageProps }) {
       <ScrollToTop />
       <Component {...pageProps} />
       <Footer />
+
+      {/* Auto-popup: Talk to an Expert */}
+      <TalkToExpertModal
+        isOpen={showExpertPopup}
+        onClose={() => setShowExpertPopup(false)}
+      />
     </>
   );
 }

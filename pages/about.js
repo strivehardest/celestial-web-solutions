@@ -367,7 +367,7 @@ export default function AboutUs() {
 
                 <div className="space-y-6 text-gray-600 dark:text-gray-300" style={{ fontFamily: "Google Sans, sans-serif" }}>
                   <p className="text-lg leading-relaxed">
-                    <span className="text-orange-500 font-semibold">Celestial Web Solutions</span> is a premier web design and development agency based in Accra, Ghana. We specialize in creating beautiful, functional, and user-centered digital experiences that help businesses establish a powerful online presence.
+                    <span className="text-orange-500 font-semibold">Celestial Web Solutions</span> is the top-rated web design and development agency in Ghana, headquartered in Keta with clients across Accra, Kumasi, Takoradi, and internationally. We specialize in creating beautiful, functional, and user-centered digital experiences that help businesses establish a powerful online presence.
                   </p>
                   
                   <p className="leading-relaxed">
