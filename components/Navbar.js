@@ -453,7 +453,7 @@ const Navbar = () => {
                 animate={{ opacity: 1, height: 'auto', y: 0 }}
                 exit={{ opacity: 0, height: 0, y: -20 }}
                 transition={{ duration: 0.3, ease: "easeInOut" }}
-                className="md:hidden overflow-hidden bg-white/95 dark:bg-gray-900/95 backdrop-blur-xl rounded-2xl mt-4 shadow-2xl border border-gray-200/20 dark:border-gray-700/20"
+                className="md:hidden bg-white/95 dark:bg-gray-900/95 backdrop-blur-xl rounded-2xl mt-4 shadow-2xl border border-gray-200/20 dark:border-gray-700/20 max-h-[calc(100vh-100px)] overflow-y-auto"
               >
                 <div className="p-6 space-y-2">
                   {navigation.map((item, index) => (
@@ -464,13 +464,21 @@ const Navbar = () => {
                       transition={{ delay: index * 0.1 }}
                     >
                       <button
-                        className={`w-full flex items-center justify-between px-4 py-3 text-base font-medium rounded-xl transition-all duration-300 relative ${
+                        className={`w-full flex items-center justify-between px-4 py-3.5 text-base font-medium rounded-xl transition-all duration-300 relative active:scale-[0.98] ${
                           isActive(item.href)
                             ? 'text-white bg-gradient-to-r from-orange-500 to-orange-600 shadow-lg'
                             : 'text-gray-800 dark:text-gray-100 hover:text-orange-600 dark:hover:text-orange-400 hover:bg-orange-50/50 dark:hover:bg-orange-900/20'
                         }`}
                         style={{ fontFamily: 'Google Sans, sans-serif' }}
-                        onClick={() => item.dropdown ? setActiveDropdown(activeDropdown === item.name ? null : item.name) : handleNavigation(item.href)}
+                        onClick={(e) => {
+                          e.preventDefault();
+                          e.stopPropagation();
+                          if (item.dropdown) {
+                            setActiveDropdown(activeDropdown === item.name ? null : item.name);
+                          } else {
+                            handleNavigation(item.href);
+                          }
+                        }}
                       >
                         <span className="flex items-center gap-2">
                           {item.name}
@@ -492,7 +500,8 @@ const Navbar = () => {
                             animate={{ opacity: 1, height: 'auto' }}
                             exit={{ opacity: 0, height: 0 }}
                             transition={{ duration: 0.25 }}
-                            className="mt-2 overflow-hidden"
+                            className="mt-2"
+                            style={{ overflow: 'hidden' }}
                           >
                             {/* Section header for mobile mega menu */}
                             {item.megaMenu && (
@@ -507,7 +516,7 @@ const Navbar = () => {
                                   initial={{ opacity: 0, x: -10 }}
                                   animate={{ opacity: 1, x: 0 }}
                                   transition={{ delay: dropIndex * 0.05 }}
-                                  className="w-full flex items-start gap-3 px-4 py-2.5 text-left hover:bg-orange-50/50 dark:hover:bg-orange-900/15 rounded-xl transition-all duration-200 group"
+                                  className="w-full flex items-start gap-3 px-4 py-3.5 text-left hover:bg-orange-50/50 dark:hover:bg-orange-900/15 rounded-xl transition-all duration-200 group active:bg-orange-100 dark:active:bg-orange-900/30"
                                   style={{ fontFamily: 'Google Sans, sans-serif' }}
                                   onClick={() => handleNavigation(dropItem.href)}
                                 >
