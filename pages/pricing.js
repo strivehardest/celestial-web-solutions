@@ -4,7 +4,7 @@
 import Head from "next/head";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Check, Star, Zap, Globe, ShoppingCart, Rocket, Crown, Smartphone, Calculator, Plus, Minus, Info, X, Clock, Sparkles, ArrowRight } from "lucide-react";
+import { Check, Star, Zap, Globe, ShoppingCart, Rocket, Crown, Smartphone, Calculator, Plus, Minus, Info, X, Clock, Sparkles, ArrowRight, Copy, Building2, CreditCard } from "lucide-react";
 import WhatsAppButton from '../components/WhatsAppButton';
 import PremiumCTA from '../components/PremiumCTA';
 
@@ -26,6 +26,74 @@ const typingPhrases = [
   'Email: info@celestialwebsolutions.net',
 ];
 
+const paymentMethods = [
+  {
+    id: 'mtn1',
+    title: 'MTN Mobile Money',
+    subtitle: 'Merchant Number',
+    icon: Smartphone,
+    color: 'from-yellow-400 to-yellow-500',
+    details: { number: '705992', name: 'Celestial Web Solutions' },
+    logo: '/mtn-momo-logo.png',
+  },
+  {
+    id: 'mtn2',
+    title: 'MTN Mobile Money',
+    subtitle: 'Merchant Number',
+    icon: Smartphone,
+    color: 'from-yellow-400 to-yellow-500',
+    details: { number: '435991', name: 'Celestial Web Solutions' },
+    logo: '/mtn-momo-logo.png',
+  },
+  {
+    id: 'telecel',
+    title: 'Telecel Cash',
+    subtitle: 'Pay with Telecel Money',
+    icon: Smartphone,
+    color: 'from-red-500 to-red-600',
+    details: { number: '0209044550', name: 'Waliu Ibrahimah Aforlabi' },
+    logo: '/telecel-logo.webp',
+  },
+  {
+    id: 'paystack',
+    title: 'Paystack Payment',
+    subtitle: 'Secure online payment',
+    icon: CreditCard,
+    color: 'from-blue-500 to-blue-600',
+    details: { link: 'paystack.shop/pay/payment-for-celestial' },
+    logo: '/paystack-logo.png',
+  },
+  {
+    id: 'fidelity',
+    title: 'Fidelity Bank',
+    subtitle: 'Bank transfer',
+    icon: Building2,
+    color: 'from-orange-500 to-orange-600',
+    details: {
+      accountNumber: '2400251299814',
+      accountName: 'Waliu Ibrahimah Aforlabi',
+      bank: 'Fidelity Bank',
+      branch: 'Ho Branch',
+      swiftCode: 'FBLIGHAC',
+    },
+    logo: '/fidelity-bank-logo.jpg',
+  },
+  {
+    id: 'ecobank',
+    title: 'Ecobank Ghana',
+    subtitle: 'Bank transfer',
+    icon: Building2,
+    color: 'from-green-500 to-green-600',
+    details: {
+      accountNumber: '1441000576414',
+      accountName: 'Waliu Ibrahimah Aforlabi',
+      bank: 'Ecobank Ghana',
+      swiftCode: 'ECOCGHAC',
+    },
+    logo: '/ecobank-logo.png',
+  },
+];
+
 export default function PricingWithCalculator() {
   const [billingPeriod, setBillingPeriod] = useState("yearly");
   const [showCalculator, setShowCalculator] = useState(false);
@@ -33,6 +101,8 @@ export default function PricingWithCalculator() {
   const [exchangeRates, setExchangeRates] = useState({ GHS: 1, USD: 1, GBP: 1, EUR: 1, NGN: 1 });
   const [ratesLoading, setRatesLoading] = useState(true);
   const [lastUpdated, setLastUpdated] = useState(null);
+  const [selectedPayment, setSelectedPayment] = useState(null);
+  const [copiedText, setCopiedText] = useState('');
 
   // Typing effect state
   const [currentPhraseIndex, setCurrentPhraseIndex] = useState(0);
@@ -196,7 +266,7 @@ export default function PricingWithCalculator() {
       cta: "Choose Starter",
       tag: "Good for Portfolios & Startups",
       deliveryTime: { monthly: "7-10 days", yearly: "14-21 days" },
-      renewalPrice: { monthly: 800, yearly: 1200 }
+      renewalPrice: { monthly: 800, yearly: 2500 }
     },
     {
       name: "Professional",
@@ -204,7 +274,7 @@ export default function PricingWithCalculator() {
       icon: Rocket,
       popular: true,
       price: { monthly: 3500, yearly: 8500 },
-      originalPrice: { monthly: 4500, yearly: 7500 },
+      originalPrice: { monthly: 4500, yearly: 12000 },
       features: {
         monthly: [
           "10-Page WordPress Website",
@@ -256,7 +326,7 @@ export default function PricingWithCalculator() {
       cta: "Choose Professional",
       tag: "For Real Estate & Businesses",
       deliveryTime: { monthly: "10-14 days", yearly: "21-30 days" },
-      renewalPrice: { monthly: 1200, yearly: 1800 }
+      renewalPrice: { monthly: 1200, yearly: 4000 }
     },
     {
       name: "E-Commerce",
@@ -264,7 +334,7 @@ export default function PricingWithCalculator() {
       icon: ShoppingCart,
       popular: false,
       price: { monthly: 4500, yearly: 16500 },
-      originalPrice: { monthly: 6000, yearly: 12000 },
+      originalPrice: { monthly: 6000, yearly: 22000 },
       features: {
         monthly: [
           "WooCommerce Online Store",
@@ -320,7 +390,7 @@ export default function PricingWithCalculator() {
       cta: "Choose E-Commerce",
       tag: "For Online Shops",
       deliveryTime: { monthly: "15-21 days", yearly: "30-45 days" },
-      renewalPrice: { monthly: 1500, yearly: 2500 }
+      renewalPrice: { monthly: 1500, yearly: 6500 }
     },
     {
       name: "Enterprise",
@@ -392,7 +462,7 @@ export default function PricingWithCalculator() {
       cta: "Choose Enterprise",
       tag: "For Large Businesses",
       deliveryTime: { monthly: "30-45 days", yearly: "60-90 days" },
-      renewalPrice: { monthly: 2500, yearly: 4000 }
+      renewalPrice: { monthly: 2500, yearly: 8500 }
     }
   ];
 
@@ -1170,37 +1240,160 @@ export default function PricingWithCalculator() {
 
       {/* Payment Methods Section */}
       <section className="py-12 px-4 bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700">
-        <div className="max-w-4xl mx-auto text-center">
-          <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-8" style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}>
+        <div className="max-w-5xl mx-auto text-center">
+          <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2" style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}>
             We Accept
           </h3>
-          <div className="flex flex-wrap justify-center gap-6 sm:gap-8 items-center">
-            <div className="h-16 w-32 flex items-center justify-center bg-gray-50 dark:bg-gray-700 rounded-lg p-2 hover:shadow-md transition-shadow">
-              <img src="/mtn-momo-logo.png" alt="MTN MoMo" className="max-h-14 max-w-28 object-contain" />
-            </div>
-            <div className="h-16 w-32 flex items-center justify-center bg-gray-50 dark:bg-gray-700 rounded-lg p-2 hover:shadow-md transition-shadow">
-              <img src="/telecel-logo.webp" alt="Telecel Cash" className="max-h-14 max-w-28 object-contain" />
-            </div>
-            <div className="h-16 w-32 flex items-center justify-center bg-gray-50 dark:bg-gray-700 rounded-lg p-2 hover:shadow-md transition-shadow">
-              <img src="/paystack-logo.png" alt="Paystack" className="max-h-14 max-w-28 object-contain" />
-            </div>
-            <div className="h-16 w-32 flex items-center justify-center bg-gray-50 dark:bg-gray-700 rounded-lg p-2 hover:shadow-md transition-shadow">
-              <img src="/fidelity-bank-logo.jpg" alt="Fidelity Bank" className="max-h-14 max-w-28 object-contain" />
-            </div>
-            <div className="h-16 w-32 flex items-center justify-center bg-gray-50 dark:bg-gray-700 rounded-lg p-2 hover:shadow-md transition-shadow">
-              <img src="/ecobank-logo.png" alt="Ecobank" className="max-h-14 max-w-28 object-contain" />
-            </div>
+          <p className="text-sm text-gray-600 dark:text-gray-400 mb-8" style={{ fontFamily: "Google Sans, sans-serif" }}>
+            Click a payment method to view details
+          </p>
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4">
+            {paymentMethods.map((method) => (
+              <button
+                key={method.id}
+                onClick={() => setSelectedPayment(selectedPayment === method.id ? null : method.id)}
+                className={`relative h-20 flex flex-col items-center justify-center rounded-xl p-2 transition-all duration-200 cursor-pointer border-2 ${
+                  selectedPayment === method.id
+                    ? 'border-orange-500 bg-orange-50 dark:bg-orange-900/20 shadow-lg scale-105'
+                    : 'border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-700 hover:border-orange-300 hover:shadow-md'
+                }`}
+              >
+                <img src={method.logo} alt={method.title} className="max-h-10 max-w-24 object-contain" />
+                <span className="text-[10px] mt-1 text-gray-500 dark:text-gray-400 font-medium" style={{ fontFamily: "Google Sans, sans-serif" }}>
+                  {method.id === 'mtn1' ? 'MoMo (Merchant 1)' : method.id === 'mtn2' ? 'MoMo (Merchant 2)' : method.title}
+                </span>
+                {selectedPayment === method.id && (
+                  <motion.div
+                    layoutId="paymentIndicator"
+                    className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-3 h-3 bg-orange-500 rotate-45 rounded-sm"
+                  />
+                )}
+              </button>
+            ))}
           </div>
+
+          {/* Payment Details Panel */}
+          <AnimatePresence mode="wait">
+            {selectedPayment && (() => {
+              const method = paymentMethods.find(m => m.id === selectedPayment);
+              if (!method) return null;
+              const copyToClipboard = (text, label) => {
+                if (navigator.clipboard) {
+                  navigator.clipboard.writeText(text);
+                  setCopiedText(label);
+                  setTimeout(() => setCopiedText(''), 2000);
+                }
+              };
+              return (
+                <motion.div
+                  key={method.id}
+                  initial={{ opacity: 0, y: -10, height: 0 }}
+                  animate={{ opacity: 1, y: 0, height: 'auto' }}
+                  exit={{ opacity: 0, y: -10, height: 0 }}
+                  transition={{ duration: 0.3, ease: 'easeInOut' }}
+                  className="mt-6 overflow-hidden"
+                >
+                  <div className={`max-w-md mx-auto rounded-2xl p-6 bg-gradient-to-br ${method.color} text-white shadow-xl`}>
+                    <div className="flex items-center gap-3 mb-4">
+                      <method.icon size={24} />
+                      <div className="text-left">
+                        <h4 className="font-bold text-lg" style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}>{method.title}</h4>
+                        <p className="text-sm text-white/80" style={{ fontFamily: "Google Sans, sans-serif" }}>{method.subtitle}</p>
+                      </div>
+                    </div>
+                    <div className="bg-white/20 backdrop-blur-sm rounded-xl p-4 space-y-3 text-left">
+                      {/* Mobile Money Details */}
+                      {method.details.number && (
+                        <>
+                          <div className="flex items-center justify-between">
+                            <div>
+                              <p className="text-xs text-white/70 uppercase tracking-wide" style={{ fontFamily: "Google Sans, sans-serif" }}>Number</p>
+                              <p className="font-bold text-lg tracking-wider" style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}>{method.details.number}</p>
+                            </div>
+                            <button
+                              onClick={() => copyToClipboard(method.details.number, `${method.id}-number`)}
+                              className="p-2 rounded-lg bg-white/20 hover:bg-white/30 transition-colors"
+                              title="Copy number"
+                            >
+                              {copiedText === `${method.id}-number` ? <Check size={16} /> : <Copy size={16} />}
+                            </button>
+                          </div>
+                          <div>
+                            <p className="text-xs text-white/70 uppercase tracking-wide" style={{ fontFamily: "Google Sans, sans-serif" }}>Name</p>
+                            <p className="font-semibold" style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}>{method.details.name}</p>
+                          </div>
+                        </>
+                      )}
+                      {/* Paystack Details */}
+                      {method.details.link && (
+                        <div>
+                          <p className="text-xs text-white/70 uppercase tracking-wide mb-2" style={{ fontFamily: "Google Sans, sans-serif" }}>Payment Link</p>
+                          <a
+                            href={`https://${method.details.link}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-2 px-4 py-2 bg-white text-blue-600 font-semibold rounded-lg hover:bg-gray-100 transition-colors text-sm"
+                            style={{ fontFamily: "Google Sans, sans-serif" }}
+                          >
+                            Pay with Paystack <ArrowRight size={14} />
+                          </a>
+                        </div>
+                      )}
+                      {/* Bank Transfer Details */}
+                      {method.details.accountNumber && (
+                        <>
+                          <div className="flex items-center justify-between">
+                            <div>
+                              <p className="text-xs text-white/70 uppercase tracking-wide" style={{ fontFamily: "Google Sans, sans-serif" }}>Account Number</p>
+                              <p className="font-bold text-lg tracking-wider" style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}>{method.details.accountNumber}</p>
+                            </div>
+                            <button
+                              onClick={() => copyToClipboard(method.details.accountNumber, `${method.id}-acct`)}
+                              className="p-2 rounded-lg bg-white/20 hover:bg-white/30 transition-colors"
+                              title="Copy account number"
+                            >
+                              {copiedText === `${method.id}-acct` ? <Check size={16} /> : <Copy size={16} />}
+                            </button>
+                          </div>
+                          <div>
+                            <p className="text-xs text-white/70 uppercase tracking-wide" style={{ fontFamily: "Google Sans, sans-serif" }}>Account Name</p>
+                            <p className="font-semibold" style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}>{method.details.accountName}</p>
+                          </div>
+                          <div className="flex gap-4">
+                            <div>
+                              <p className="text-xs text-white/70 uppercase tracking-wide" style={{ fontFamily: "Google Sans, sans-serif" }}>Bank</p>
+                              <p className="font-semibold text-sm" style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}>{method.details.bank}</p>
+                            </div>
+                            {method.details.branch && (
+                              <div>
+                                <p className="text-xs text-white/70 uppercase tracking-wide" style={{ fontFamily: "Google Sans, sans-serif" }}>Branch</p>
+                                <p className="font-semibold text-sm" style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}>{method.details.branch}</p>
+                              </div>
+                            )}
+                            <div>
+                              <p className="text-xs text-white/70 uppercase tracking-wide" style={{ fontFamily: "Google Sans, sans-serif" }}>SWIFT</p>
+                              <p className="font-semibold text-sm" style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}>{method.details.swiftCode}</p>
+                            </div>
+                          </div>
+                        </>
+                      )}
+                    </div>
+                  </div>
+                </motion.div>
+              );
+            })()}
+          </AnimatePresence>
+
           <p className="mt-8 text-sm text-gray-600 dark:text-gray-400" style={{ fontFamily: "Google Sans, sans-serif" }}>
             Flexible payment options to suit your convenience
           </p>
-          <div className="mt-6">
+          <div className="mt-4">
             <a 
               href="/payment" 
               className="inline-flex items-center gap-2 px-6 py-3 bg-orange-600 hover:bg-orange-700 text-white font-semibold rounded-lg transition-all shadow-lg hover:shadow-xl"
               style={{ fontFamily: "Google Sans, sans-serif" }}
             >
-              View Payment Details →
+              View Full Payment Page →
             </a>
           </div>
         </div>

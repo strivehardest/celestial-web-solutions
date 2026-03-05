@@ -95,7 +95,7 @@ export default function CustomCursor() {
     <>
       {/* Main cursor dot - ORANGE */}
       <motion.div
-        className="fixed top-0 left-0 pointer-events-none z-[9999]"
+        className="fixed top-0 left-0 pointer-events-none z-[99999]"
         style={{
           x: cursorXSpring,
           y: cursorYSpring,
