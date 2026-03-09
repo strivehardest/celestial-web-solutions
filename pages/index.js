@@ -23,6 +23,9 @@ import Image from 'next/image';
 import WhatsAppButton from '../components/WhatsAppButton';
 import PremiumCTA, { TextCTA } from '../components/PremiumCTA';
 import CTASection from '../components/CTASection';
+import dynamic from 'next/dynamic';
+
+const HeroSwiper = dynamic(() => import('../components/HeroSwiper'), { ssr: false });
 
 // Glass Button Component
 const GlassButton = ({ children, href, variant = "light", className = "" }) => {
@@ -249,7 +252,7 @@ const portfolioItems = [
 ];
 
 // ─────────────────────────────────────────────
-// Portfolio Showcase — Nuxt.com style grid
+// Portfolio Showcase 
 // ─────────────────────────────────────────────
 const PortfolioShowcase = () => {
   return (
@@ -403,50 +406,25 @@ const IndexPage = () => {
       <SEOHead />
       <div className="min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300">
 
-        {/* ── HERO SECTION — Static Image (no video, no auto-scroll) ── */}
-        <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
-          {/* Static hero background image */}
-          <div className="absolute inset-0">
-            <Image
-              src="/celestial.png"
-              alt="Celestial Web Solutions – Best Web Design Company in Ghana"
-              fill
-              sizes="100vw"
-              quality={85}
-              priority
-              className="object-cover object-top"
-            />
-            <div className="absolute inset-0 bg-black/70" />
-          </div>
+        {/* ── HERO SECTION — Kava-style Swiper Slider ── */}
+        <HeroSwiper />
 
-          {/* Floating Code Elements – desktop only */}
-          <div className="absolute inset-0 overflow-hidden hidden md:block pointer-events-none">
-            <div className="absolute top-20 left-10 text-orange-300/30 text-sm font-mono animate-pulse">const company = "Celestial Web Solutions";</div>
-            <div className="absolute top-40 right-20 text-orange-400/40 text-xs font-mono animate-pulse" style={{animationDelay:'1s'}}>NextJS.createApp()</div>
-            <div className="absolute bottom-32 left-32 text-orange-200/30 text-sm font-mono animate-pulse" style={{animationDelay:'2s'}}>{'function buildWebsite() {'}</div>
-            <div className="absolute bottom-52 right-16 text-orange-300/35 text-xs font-mono animate-pulse" style={{animationDelay:'3s'}}>Django.models.create()</div>
-            <div className="absolute top-60 left-1/4 text-orange-400/30 text-xs font-mono animate-pulse" style={{animationDelay:'4s'}}>React.render(solution)</div>
-            <div className="absolute bottom-40 right-1/3 text-orange-200/35 text-sm font-mono animate-pulse" style={{animationDelay:'5s'}}>return success;</div>
-            <div className="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-br from-orange-400/30 to-orange-600/30 rounded-full opacity-50 animate-pulse" />
-            <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-gradient-to-tr from-orange-300/30 to-red-400/30 rounded-full opacity-50 animate-pulse" style={{animationDelay:'2s'}} />
-            <div className="absolute top-0 left-1/4 w-0.5 h-full bg-gradient-to-b from-orange-400/20 via-orange-500/10 to-transparent animate-pulse" />
-            <div className="absolute top-0 right-1/3 w-0.5 h-full bg-gradient-to-b from-orange-300/20 via-orange-400/10 to-transparent animate-pulse" style={{animationDelay:'1.5s'}} />
-          </div>
-
-          {/* Mobile simplified bg */}
-          <div className="absolute inset-0 overflow-hidden md:hidden pointer-events-none">
-            <div className="absolute -top-20 -right-20 w-40 h-40 bg-gradient-to-br from-orange-400/20 to-orange-600/20 rounded-full opacity-50 animate-pulse" />
-            <div className="absolute -bottom-20 -left-20 w-48 h-48 bg-gradient-to-tr from-orange-300/20 to-red-400/20 rounded-full opacity-50 animate-pulse" style={{animationDelay:'2s'}} />
-          </div>
-
-          <div className="relative z-30 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
-              {/* Badge */}
+        {/* ── Hero Text Section ── */}
+        <section className="relative py-16 sm:py-20 bg-white dark:bg-gray-900 overflow-hidden">
+          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="text-center"
+            >
               <motion.div
-                className="inline-flex items-center space-x-2 bg-white/20 backdrop-blur-sm border border-orange-300/30 text-white px-3 py-2 sm:px-6 sm:py-3 rounded-full mb-6 sm:mb-8 text-xs sm:text-sm font-semibold"
-                style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}
+                className="inline-flex items-center space-x-2 bg-orange-100 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400 px-4 py-2 rounded-full mb-6 text-xs sm:text-sm font-semibold"
+                style={{ fontFamily: 'Google Sans, sans-serif' }}
                 initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
                 transition={{ delay: 0.2, duration: 0.6 }}
               >
                 <span>Full Stack Development</span>
@@ -454,45 +432,29 @@ const IndexPage = () => {
                 <span>Available for Projects</span>
               </motion.div>
 
-              <motion.h1
-                className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold mb-6 sm:mb-8 text-white drop-shadow-2xl leading-tight min-h-[120px] sm:min-h-[160px] flex items-center justify-center"
+              <h2
+                className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-gray-900 dark:text-white leading-tight"
                 style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.3, duration: 0.8 }}
               >
-                <span>{heroTitleText}</span>
-              </motion.h1>
+                Best Web Design Company in Ghana
+              </h2>
 
-              <motion.p
-                className="text-sm sm:text-base md:text-lg lg:text-xl text-white/80 mb-6 sm:mb-8 max-w-3xl mx-auto px-2"
+              <p
+                className="text-base sm:text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed mb-8"
                 style={{ fontFamily: 'Google Sans, sans-serif' }}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.5, duration: 0.8 }}
               >
-                From concept to deployment, we build scalable web applications that drive business growth. Let's turn your vision into digital reality.{' '}
-                <Link href="/best-web-designer-in-accra" className="underline underline-offset-4 hover:text-orange-300">
+                From concept to deployment, we build scalable web applications that drive business growth. Let&rsquo;s turn your vision into digital reality.{' '}
+                <Link href="/best-web-designer-in-accra" className="text-orange-500 hover:text-orange-600 underline underline-offset-4 font-semibold">
                   See our Accra page.
                 </Link>
-              </motion.p>
+              </p>
 
-              <motion.div
-                className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 px-4 pb-24"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.6, duration: 0.8 }}
-              >
-                <GlassButton href="/contact" variant="solid">Let's Build Together</GlassButton>
-                <GlassButton href="/portfolio" variant="light">View Our Work</GlassButton>
-              </motion.div>
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <GlassButton href="/contact" variant="solid">Let&rsquo;s Build Together</GlassButton>
+                <GlassButton href="/portfolio" variant="orange">View Our Work</GlassButton>
+              </div>
             </motion.div>
           </div>
-
-          <style jsx>{`
-            .hero-cursor-blink { animation: blink-caret 0.8s step-end infinite; }
-            @keyframes blink-caret { from, to { opacity: 0; } 50% { opacity: 1; } }
-          `}</style>
         </section>
 
         {/* Company Intro Section */}

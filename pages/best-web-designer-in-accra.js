@@ -1,10 +1,16 @@
 import Head from 'next/head';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
+import { useState, useRef, useCallback } from 'react';
 import { CheckCircle, Award, Users, Code, TrendingUp } from 'lucide-react';
 import WhatsAppButton from '../components/WhatsAppButton';
 import Image from 'next/image';
 import TestimonialsSection from '../components/TestimonialsSection';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { EffectFade, Autoplay } from 'swiper/modules';
+import PremiumCTA from '../components/PremiumCTA';
+import 'swiper/css';
+import 'swiper/css/effect-fade';
 
 const Map = dynamic(() => import('../components/Map'), {
   ssr: false,
@@ -19,10 +25,13 @@ const highlights = [
 
 const heroVideo = '/videos/hero1.mp4';
 
-const stats = [
-  { label: 'Projects delivered', value: '20+' },
-  { label: 'Average launch time', value: '2-4 weeks' },
-  { label: 'Average client rating', value: '5.0 / 5' },
+const heroProjects = [
+  { image: '/portfolio/desktop/building.png', title: 'Building Planner Designs', bgColor: 'from-blue-950 via-blue-900 to-amber-900' },
+  { image: '/portfolio/desktop/myspace.png', title: 'My Space Furniture', bgColor: 'from-gray-950 via-neutral-900 to-stone-900' },
+  { image: '/portfolio/desktop/elolo.png', title: 'Elolo Agbleke', bgColor: 'from-slate-950 via-blue-950 to-indigo-950' },
+  { image: '/portfolio/desktop/ghanaupdates.png', title: 'Ghana Updates Online', bgColor: 'from-red-950 via-red-900 to-red-800' },
+  { image: '/portfolio/desktop/dlautos.png', title: 'DL Auto Parts', bgColor: 'from-green-950 via-green-900 to-emerald-900' },
+  { image: '/portfolio/desktop/valyd.png', title: 'Valyd Homes', bgColor: 'from-emerald-950 via-teal-900 to-green-950' },
 ];
 
 const serviceFocus = [
@@ -100,112 +109,142 @@ export default function BestWebDesignerInAccraPage() {
       </Head>
 
       <main className="min-h-screen bg-white dark:bg-gray-900 text-gray-900 dark:text-white font-sans transition-colors duration-300">
-        {/* Dark navbar background strip for text visibility */}
-        <div className="fixed top-0 left-0 right-0 h-20 md:h-24 bg-black/30 backdrop-blur-sm z-40 pointer-events-none" />
-        <div className="max-w-6xl mx-auto px-6 pt-24 sm:pt-28 md:pt-32 pb-16 sm:pb-20 space-y-14">
-          <section className="relative overflow-hidden rounded-3xl border border-gray-200/80 dark:border-white/10 bg-gray-50/80 dark:bg-black/40 backdrop-blur-lg shadow-2xl">
-            <div className="absolute inset-0">
-              <video
-                key={heroVideo}
-                src={heroVideo}
-                className="h-full w-full object-cover object-center"
-                autoPlay
-                muted
-                loop
-                playsInline
-              />
-              <div className="absolute inset-0 bg-gradient-to-b from-white/85 via-white/75 to-white/70 dark:from-black/80 dark:via-black/78 dark:to-black/85" />
-            </div>
 
-            <div className="relative z-10 max-w-6xl mx-auto px-6 sm:px-10 py-16 sm:py-24">
-              <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
-                <div className="space-y-6 text-left">
-                  <div className="inline-flex items-center gap-2 bg-orange-500/10 border border-orange-500/30 rounded-full px-4 py-2">
-                    <span className="w-2 h-2 rounded-full bg-orange-500 animate-pulse" />
-                    <span className="text-orange-500 text-xs sm:text-sm font-semibold tracking-wide" style={{ fontFamily: 'Google Sans, sans-serif' }}>
-                      BEST WEB DESIGN IN ACCRA
-                    </span>
-                  </div>
+        {/* ─── Hero Section with Project Slider ─── */}
+        <section className="relative w-full h-screen min-h-[750px] lg:min-h-[650px] max-h-[920px] overflow-hidden">
+          <Swiper
+            modules={[EffectFade, Autoplay]}
+            effect="fade"
+            fadeEffect={{ crossFade: true }}
+            speed={1200}
+            autoplay={{ delay: 5000, disableOnInteraction: false }}
+            loop
+            simulateTouch={true}
+            threshold={30}
+            touchStartPreventDefault={false}
+            className="w-full h-full"
+          >
+            {heroProjects.map((project, index) => (
+              <SwiperSlide key={index}>
+                {/* Background gradient */}
+                <div className={`absolute inset-0 bg-gradient-to-br ${project.bgColor}`} />
+                <div className="absolute inset-0 bg-black/40" />
 
-                  <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight font-display text-gray-900 dark:text-white">
-                    Best Web Designer in Accra
-                  </h1>
+                {/* Slide content */}
+                <div className="relative z-10 w-full h-full max-w-[1440px] mx-auto px-6 sm:px-8 lg:px-16">
+                  <div className="flex flex-col lg:flex-row items-stretch h-full">
 
-                  <p className="text-lg sm:text-xl text-gray-700 dark:text-gray-200 max-w-2xl leading-relaxed">
-                    As a professional web designer in Accra, we craft conversion-focused websites that help Ghanaian brands launch fast and stand out online.
-                  </p>
-
-                  <div className="space-y-3">
-                    {serviceFocus.map((item) => (
-                      <div key={item} className="flex items-start gap-3 text-base text-gray-800 dark:text-gray-100">
-                        <CheckCircle className="w-5 h-5 text-orange-500 mt-0.5" />
-                        <span>{item}</span>
+                    {/* ─── LEFT SIDE: Text Content ─── */}
+                    <div className="w-full lg:w-[45%] flex flex-col justify-center z-20 pt-28 sm:pt-32 lg:pt-24 pb-4 lg:pb-0">
+                      <div className="inline-flex items-center gap-2 bg-orange-500/15 border border-orange-500/30 rounded-full px-4 py-2 w-fit mb-5">
+                        <span className="w-2 h-2 rounded-full bg-orange-500 animate-pulse" />
+                        <span className="text-orange-400 text-xs font-bold tracking-[0.2em] uppercase" style={{ fontFamily: 'Google Sans, sans-serif' }}>
+                          BEST WEB DESIGN IN ACCRA
+                        </span>
                       </div>
-                    ))}
-                  </div>
 
-                  <div className="flex flex-col sm:flex-row items-center sm:items-start gap-4 pt-2">
-                    <Link
-                      href="/contact"
-                      className="inline-flex items-center justify-center rounded-full bg-orange-500 px-6 py-3 text-base font-semibold text-white transition hover:bg-orange-600 shadow-lg shadow-orange-500/20"
-                    >
-                      Book a project call
-                    </Link>
-                    <Link
-                      href="/portfolio"
-                      className="inline-flex items-center justify-center rounded-full border border-gray-900/15 dark:border-white/25 px-6 py-3 text-base font-semibold text-gray-900 dark:text-white transition hover:border-orange-500 hover:text-orange-500 dark:hover:border-orange-400 dark:hover:text-orange-300 bg-white/70 dark:bg-white/5 backdrop-blur"
-                    >
-                      View recent work
-                    </Link>
-                  </div>
+                      <h1
+                        className="text-[2.5rem] sm:text-5xl md:text-6xl lg:text-[4.2rem] xl:text-7xl font-black text-white leading-[1.02] mb-6"
+                        style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}
+                      >
+                        Best Web Designer in Accra
+                      </h1>
 
-                  <div className="flex flex-wrap items-center gap-3 text-xs sm:text-sm text-gray-600 dark:text-gray-300 pt-2" style={{ fontFamily: 'Google Sans, sans-serif' }}>
-                    <span className="inline-flex items-center gap-1.5">
-                      <CheckCircle className="w-4 h-4 text-orange-500" />
-                      Fast response
-                    </span>
-                    <span className="inline-flex items-center gap-1.5">
-                      <CheckCircle className="w-4 h-4 text-orange-500" />
-                      Accra-based
-                    </span>
-                    <span className="inline-flex items-center gap-1.5">
-                      <CheckCircle className="w-4 h-4 text-orange-500" />
-                      MoMo & Paystack
-                    </span>
-                  </div>
+                      <p
+                        className="text-base sm:text-lg md:text-xl text-white/75 max-w-md mb-8 leading-relaxed"
+                        style={{ fontFamily: 'Google Sans, sans-serif' }}
+                      >
+                        We craft conversion-focused websites that help Ghanaian brands launch fast and stand out online.
+                      </p>
 
-                  <div className="pt-4 border-t border-gray-200/50 dark:border-white/10">
-                    <p className="text-base text-gray-700 dark:text-gray-200" style={{ fontFamily: 'Google Sans, sans-serif' }}>
-                      We're a trusted web design company in Accra specializing in business websites, e-commerce platforms, and SEO-optimized solutions for website design in Ghana.
-                    </p>
-                  </div>
-                </div>
+                      <div className="space-y-2.5 mb-8">
+                        {serviceFocus.map((item) => (
+                          <div key={item} className="flex items-start gap-3 text-base text-white/90">
+                            <CheckCircle className="w-5 h-5 text-orange-400 mt-0.5 flex-shrink-0" />
+                            <span style={{ fontFamily: 'Google Sans, sans-serif' }}>{item}</span>
+                          </div>
+                        ))}
+                      </div>
 
-                <div className="space-y-4">
-                  <div className="rounded-2xl border border-gray-200 dark:border-white/10 bg-white/85 dark:bg-white/5 backdrop-blur p-6 shadow-xl shadow-orange-500/10">
-                    <p className="text-sm uppercase tracking-[0.18em] text-orange-500 font-semibold mb-4">Project outcomes</p>
-                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                      {stats.map((stat) => (
-                        <div key={stat.label} className="rounded-xl border border-gray-200 dark:border-white/10 bg-white/70 dark:bg-white/5 p-4 text-center">
-                          <div className="text-2xl font-display text-gray-900 dark:text-white">{stat.value}</div>
-                          <div className="text-xs uppercase tracking-wide text-gray-600 dark:text-gray-300">{stat.label}</div>
-                        </div>
-                      ))}
+                      <div className="flex flex-wrap items-center gap-4 mb-6">
+                        <PremiumCTA href="/contact" variant="primary" size="default">
+                          Book a project call
+                        </PremiumCTA>
+                        <PremiumCTA href="/portfolio" variant="secondary" size="default">
+                          View recent work
+                        </PremiumCTA>
+                      </div>
+
+                      <div className="flex flex-wrap items-center gap-3 text-xs sm:text-sm text-white/50" style={{ fontFamily: 'Google Sans, sans-serif' }}>
+                        <span className="inline-flex items-center gap-1.5">
+                          <CheckCircle className="w-4 h-4 text-orange-400" />
+                          Fast response
+                        </span>
+                        <span className="inline-flex items-center gap-1.5">
+                          <CheckCircle className="w-4 h-4 text-orange-400" />
+                          Accra-based
+                        </span>
+                        <span className="inline-flex items-center gap-1.5">
+                          <CheckCircle className="w-4 h-4 text-orange-400" />
+                          MoMo & Paystack
+                        </span>
+                      </div>
                     </div>
-                  </div>
 
-                  <div className="rounded-2xl border border-gray-200 dark:border-white/10 bg-white/80 dark:bg-white/5 backdrop-blur p-6">
-                    <h3 className="text-lg font-semibold font-display text-gray-900 dark:text-white mb-3">What you get</h3>
-                    <ul className="space-y-2 text-sm text-gray-700 dark:text-gray-200">
-                      <li>• Strategy, copy, and design aligned to your goals</li>
-                      <li>• Speed, SEO, and analytics baked in from day one</li>
-                      <li>• Ongoing support and growth-focused iterations</li>
-                    </ul>
+                    {/* ─── RIGHT SIDE: Project Image (Desktop) ─── */}
+                    <div className="hidden lg:block w-[55%] relative z-10">
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        <div className="relative w-[90%] h-[80%] rounded-xl overflow-hidden shadow-2xl shadow-black/40 border border-white/10">
+                          <div className="bg-gray-900/95 backdrop-blur-sm px-4 py-2 flex items-center gap-1.5 border-b border-white/5 flex-shrink-0">
+                            <span className="w-2.5 h-2.5 rounded-full bg-red-500" />
+                            <span className="w-2.5 h-2.5 rounded-full bg-yellow-500" />
+                            <span className="w-2.5 h-2.5 rounded-full bg-green-500" />
+                            <span className="ml-3 text-[10px] text-white/30 font-mono truncate">{project.title}</span>
+                          </div>
+                          <div className="relative bg-gray-800" style={{ height: 'calc(100% - 34px)' }}>
+                            <Image
+                              src={project.image}
+                              alt={project.title}
+                              fill
+                              sizes="50vw"
+                              className="object-cover object-top"
+                              priority={index === 0}
+                            />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Mobile: Project Image */}
+                    <div className="lg:hidden w-full px-3 mt-4 mb-20">
+                      <div className="relative w-full max-w-md mx-auto rounded-xl overflow-hidden shadow-2xl shadow-black/50 border border-white/15">
+                        <div className="bg-gray-900 px-3 py-2 flex items-center gap-1.5 border-b border-white/10">
+                          <span className="w-2.5 h-2.5 rounded-full bg-red-500" />
+                          <span className="w-2.5 h-2.5 rounded-full bg-yellow-500" />
+                          <span className="w-2.5 h-2.5 rounded-full bg-green-500" />
+                          <span className="ml-2 text-[10px] text-white/30 font-mono">{project.title}</span>
+                        </div>
+                        <div className="relative w-full aspect-[16/10] bg-gray-800">
+                          <Image
+                            src={project.image}
+                            alt={project.title}
+                            fill
+                            sizes="(max-width: 640px) 95vw, 450px"
+                            className="object-cover object-top"
+                            priority={index === 0}
+                          />
+                        </div>
+                      </div>
+                    </div>
+
                   </div>
                 </div>
-              </div>
-            </div>
-          </section>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </section>
+
+        <div className="max-w-6xl mx-auto px-6 pt-16 pb-16 sm:pb-20 space-y-14">
 
           <section className="space-y-8">
             <div className="grid gap-4 sm:grid-cols-2">
