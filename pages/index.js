@@ -344,10 +344,7 @@ const IndexPage = () => {
   const [manifestIsDeleting, setManifestIsDeleting] = useState(false);
   const manifestFullText = 'Listed Top 10 Web Designers in Ghana on the Manifest';
 
-  // Hero title typing effect state
-  const [heroTitleText, setHeroTitleText] = useState('');
-  const [heroTitleIsDeleting, setHeroTitleIsDeleting] = useState(false);
-  const heroTitleFullText = 'Best Web Design Company in Ghana';
+  const heroTitleText = 'Best Web Design Company in Ghana';
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
@@ -399,26 +396,7 @@ const IndexPage = () => {
     return () => clearTimeout(timeout);
   }, [manifestText, manifestIsDeleting]);
 
-  // Hero title typing effect
-  useEffect(() => {
-    const typingSpeed = heroTitleIsDeleting ? 50 : 100;
-    const timeout = setTimeout(() => {
-      if (!heroTitleIsDeleting) {
-        if (heroTitleText.length < heroTitleFullText.length) {
-          setHeroTitleText(heroTitleFullText.slice(0, heroTitleText.length + 1));
-        } else {
-          setTimeout(() => setHeroTitleIsDeleting(true), 3000);
-        }
-      } else {
-        if (heroTitleText.length > 0) {
-          setHeroTitleText(heroTitleText.slice(0, -1));
-        } else {
-          setHeroTitleIsDeleting(false);
-        }
-      }
-    }, typingSpeed);
-    return () => clearTimeout(timeout);
-  }, [heroTitleText, heroTitleIsDeleting]);
+
 
   return (
     <>
@@ -484,7 +462,6 @@ const IndexPage = () => {
                 transition={{ delay: 0.3, duration: 0.8 }}
               >
                 <span>{heroTitleText}</span>
-                <span className="hero-cursor-blink text-white ml-2">|</span>
               </motion.h1>
 
               <motion.p

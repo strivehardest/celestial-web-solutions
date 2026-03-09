@@ -1,11 +1,14 @@
-<Head>
-  <meta name="keywords" content="best web design company in ghana, web design company in Ghana, web development company in Ghana, website designers in Ghana, web development company Ghana, SEO services in Ghana, e-commerce website Ghana, web designer in Accra, web designer in Keta, web design company in Accra, web designer in Accra Ghana, web design company in Keta, website design services Ghana, e-commerce website development Ghana, business website design Ghana, affordable web design Ghana" />
-</Head>
 import { useState, useEffect, useRef } from 'react';
 import { motion } from "framer-motion";
 import Head from 'next/head';
+import dynamic from 'next/dynamic';
 import WhatsAppButton from '../components/WhatsAppButton';
 import PremiumCTA from '../components/PremiumCTA';
+
+const Map = dynamic(() => import('../components/Map'), {
+  ssr: false,
+  loading: () => <p className="text-center py-8 text-gray-500">Loading map...</p>,
+});
 
 const TURNSTILE_SITE_KEY = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY || '1x00000000000000000000AA';
 
@@ -332,17 +335,7 @@ export default function Contact() {
                   <p className="text-gray-600 dark:text-gray-300 font-medium" style={{ fontFamily: 'Google Sans, sans-serif' }}> Our Main Office is located in the beautiful coastal city of Keta, Ghana</p>
                 </div>
                 <div className="h-64 bg-gray-200 relative">
-                  <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d992.20014921396!2d0.9828871000000039!3d5.883621700000006!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1021710073fe6fff%3A0x96453357ca880329!2sCelestial%20Web%20Solutions!5e0!3m2!1sen!2sgh!4v1756050482259!5m2!1sen!2sgh"
-                    width="100%"
-                    height="100%"
-                    style={{ border: 0 }}
-                    allowFullScreen=""
-                    loading="lazy"
-                    referrerPolicy="no-referrer-when-downgrade"
-                    className="grayscale hover:grayscale-0 transition-all duration-500"
-                    title="Celestial Web Solutions Location - Keta, Ghana"
-                  />
+                  <Map center={[5.8836217, 0.9828871]} zoom={15} markerText="Celestial Web Solutions - Keta, Ghana" height="256px" useCustomIcon={false} showCircle={false} />
                 </div>
               </motion.div>
             </motion.div>

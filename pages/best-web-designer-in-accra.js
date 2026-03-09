@@ -1,9 +1,15 @@
 import Head from 'next/head';
 import Link from 'next/link';
+import dynamic from 'next/dynamic';
 import { CheckCircle, Award, Users, Code, TrendingUp } from 'lucide-react';
 import WhatsAppButton from '../components/WhatsAppButton';
 import Image from 'next/image';
 import TestimonialsSection from '../components/TestimonialsSection';
+
+const Map = dynamic(() => import('../components/Map'), {
+  ssr: false,
+  loading: () => <p className="text-center py-8 text-gray-500">Loading map...</p>,
+});
 
 const highlights = [
   'Pixel-perfect, responsive layouts for every device',
@@ -419,16 +425,7 @@ export default function BestWebDesignerInAccraPage() {
               </div>
 
               <div className="rounded-2xl overflow-hidden border border-gray-200 dark:border-white/10 shadow-lg h-96">
-                <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3971.123456!2d-0.2163!3d5.6037!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1sAccra%2C%20Ghana!2s5.6037%2C%20-0.2163!5e0!3m2!1sen!2sgh!4v1673024517388!5m2!1sen!2sgh"
-                  width="100%"
-                  height="100%"
-                  style={{ border: 0 }}
-                  allowFullScreen=""
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                  className="w-full h-full"
-                />
+                <Map center={[5.6037, -0.2163]} zoom={13} markerText="Celestial Web Solutions - Accra, Ghana" height="100%" useCustomIcon={false} />
               </div>
 
               <div className="grid sm:grid-cols-2 gap-4 justify-center">
