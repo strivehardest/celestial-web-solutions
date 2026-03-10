@@ -432,12 +432,12 @@ const IndexPage = () => {
                 <span>Available for Projects</span>
               </motion.div>
 
-              <h2
+              <h1
                 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-gray-900 dark:text-white leading-tight"
                 style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}
               >
                 Best Web Design Company in Ghana
-              </h2>
+              </h1>
 
               <p
                 className="text-base sm:text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed mb-8"
