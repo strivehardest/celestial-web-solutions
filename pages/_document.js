@@ -6,6 +6,10 @@ export default function Document() {
       <Head>
         {/* AdSense verification */}
         <meta name="google-adsense-account" content="ca-pub-6987345868426841" />
+        {/* PWA manifest and theme color */}
+        <link rel="manifest" href="/manifest.json" />
+        <meta name="theme-color" content="#4f8ef7" />
+        <link rel="apple-touch-icon" href="/icons/icon-192x192.png" />
         {/* Preconnect to font origins for faster loading */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
