@@ -35,6 +35,34 @@ const nextConfig = {
       },
     ];
   },
+  async headers() {
+    return [
+      {
+        // Cache all static assets in /public for 1 year
+        source: '/(images|fonts|portfolio|png)/(.*)',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable',
+          },
+        ],
+      },
+      {
+        // Cache SVG tech icons for 1 year
+        source: '/images/tech/:path*',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable',
+          },
+        ],
+      },
+    ];
+  },
+  experimental: {
+    browsersListForSwc: true,
+    legacyBrowsers: false,
+  },
   reactStrictMode: true,
   swcMinify: true,
   images: {
