@@ -9,7 +9,8 @@ const happyClients = [
   { name: "My Space Furniture", src: "/png/projects/myspace.png" },
   { name: "Valyd", src: "/png/projects/valyd.png" },
   { name: "Doeman", src: "/png/projects/doeman.jpeg" },
-  { name: "DL Auto Parts", src: "/png/projects/dl-auto-parts.png" }
+  { name: "DL Auto Parts", src: "/png/projects/dl-auto-parts.png" },
+  { name: "Tru Seeds Africa", src: "/png/projects/truseeds.webp" },
 ];
 
 import { useState, useEffect, useRef } from 'react';
@@ -195,6 +196,15 @@ const typingPhrases = [
 // Portfolio data
 // ─────────────────────────────────────────────
 const portfolioItems = [
+  {
+    title: "Tru Seeds Africa",
+    category: "Agriculture",
+    description: "A modern, responsive website for a leading agricultural company in Ghana specializing in high-quality seeds.",
+    tech: ["Next.js", "React", "Tailwind CSS", "Framer Motion", "TypeScript"],
+    link: "/portfolio/tru-seeds-africa",
+    image: "/portfolio/desktop/trueseeds.png",
+    accent: "#f97316"
+      },
   {
     title: "My Space Furniture",
     category: "Furniture E-Commerce",
