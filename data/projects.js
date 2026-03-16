@@ -1,6 +1,46 @@
 // data/projects.js
 const projects = [
   {
+    title: "Tru Seeds Africa",
+    slug: "tru-seeds-africa",
+    category: "agriculture & farming",
+    client: "Tru Seeds Africa",
+    clientCountry: "Ghana",
+    description: "Tru Seeds Africa is a leading agricultural company in Ghana specializing in high-quality seeds. We built a modern, responsive website that showcases their product catalog, provides detailed information about their seed varieties, and includes an easy-to-use contact form to connect with farmers and distributors across the country.",
+    image: "/png/projects/truseeds.png",
+    desktopImage: "/portfolio/desktop/trueseeds.png",
+    mobileImage: "/portfolio/mobile/trueseeds.png",
+    screenshot: "/png/screenshots/truseeds.png",
+    link: "https://truseedsafrica.com",
+    tech: ["Next.js", "React", "Tailwind CSS", "Framer Motion", "TypeScript",],
+    techLogos: [
+      { name: "Next.js", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" },
+      { name: "React", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" },
+      { name: "Tailwind CSS", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg" },
+      { name: "Framer Motion", logo: "https://cdn.worldvectorlogo.com/logos/framer-motion.svg" },
+      { name: "TypeScript", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" }
+    ],
+    startDate: "2026-03-10",
+    completionDate: "2026-03-17",
+    duration: "7 days",
+    features: [
+      "Responsive Design",
+      "SEO optimized",
+      "Accessibility features",
+      "Contact Form",
+      "WhatsApp Integration",
+      "Google Analytics Setup",
+      "Professional Branding",
+      "Fast Loading Performance",
+      "Progressive Web App (PWA) Features",
+      "Social Media Integration",
+      "Google Maps Integration for Location",
+      "Mobile-First Design Approach",
+      "Clean and Modern UI/UX Design",
+      "Cross-Browser Compatibility",
+    ]
+  },  
+  {
     title: "My Space Furniture",
     slug: "myspace-furniture",
     category: "e-commerce & retail",

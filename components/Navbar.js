@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { MessageCircle, Menu, X, ChevronDown, FileText, Shield, HelpCircle, CreditCard, BookOpen, DollarSign } from 'lucide-react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
+import Image from 'next/image';
 import TalkToExpertModal from './TalkToExpertModal';
 
 
@@ -76,7 +77,7 @@ const Navbar = () => {
   }, [router.events]);
 
   const Logo = () => {
-    const logoImagePath = scrolled ? "/logo.png" : "/logo-white.png";
+    const logoImagePath = scrolled ? "/logo.png" : "/logo-white.webp";
     const useImageLogo = true;
     const logoSize = "w-20 h-20";
 
@@ -89,11 +90,13 @@ const Navbar = () => {
           whileTap={{ scale: 0.98 }}
         >
           <div className="relative">
-            <motion.img
+            <Image
               src={logoImagePath}
               alt="Celestial Web Solutions Logo"
-              className={`${logoSize} object-contain`}
-              whileHover={{ rotate: 5 }}
+              width={80}
+              height={80}
+              className={logoSize + " object-contain"}
+              priority={!scrolled} // logo-white.webp is above the fold
               onError={(e) => { e.target.style.display = 'none'; }}
             />
           </div>
