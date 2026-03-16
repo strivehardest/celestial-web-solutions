@@ -7,6 +7,12 @@ import { ArrowRight, ExternalLink } from "lucide-react";
 import projects from "../data/projects";
 import WhatsAppButton from '../components/WhatsAppButton';
 
+// Helper to convert .png/.jpg to .webp if available
+const toWebp = (src) => {
+  if (!src) return src;
+  return src.replace(/\.(png|jpg|jpeg)$/i, '.webp');
+};
+
 const GlassButton = ({ children, href, variant = "light" }) => {
   const baseClasses = "inline-flex items-center gap-2 px-6 py-3 rounded-full font-semibold transition-all duration-300 backdrop-blur-md border cursor-pointer";
   const variants = {
@@ -349,9 +355,16 @@ export default function Portfolio() {
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 md:gap-8 justify-items-center items-center px-4">
               {happyClients.map((client, idx) => (
                 <div key={`${client.name}-${idx}`} className="flex flex-col items-center justify-center w-full">
-                  <img src={client.src} alt={client.name} loading="lazy" decoding="async"
+                  <Image
+                    src={toWebp(client.src)}
+                    alt={client.name}
+                    width={200}
+                    height={120}
+                    loading="lazy"
                     className="h-16 sm:h-20 md:h-24 lg:h-32 w-auto max-w-[120px] sm:max-w-[160px] md:max-w-[200px] lg:max-w-[240px] object-contain mx-auto mb-2"
-                    style={client.name === 'Elolo Agbleke' ? { maxHeight: '60px' } : client.name === 'Ghana Updates Online' ? { maxHeight: '80px' } : {}} />
+                    style={client.name === 'Elolo Agbleke' ? { maxHeight: '60px' } : client.name === 'Ghana Updates Online' ? { maxHeight: '80px' } : {}}
+                    unoptimized={false}
+                  />
                   <span className="text-xs text-gray-700 dark:text-gray-300 mt-1 text-center" style={{ fontFamily: 'Google Sans, sans-serif' }}>{client.name}</span>
                 </div>
               ))}
