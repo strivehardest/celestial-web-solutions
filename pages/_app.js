@@ -116,6 +116,13 @@ function MyApp({ Component, pageProps }) {
       <Component {...pageProps} />
       <Footer />
 
+      {/* AdSense — lazyOnload means it loads after everything else */}
+      <Script
+        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6987345868426841"
+        strategy="lazyOnload"
+        crossOrigin="anonymous"
+      />
+
       {/* Auto-popup: Talk to an Expert */}
       <TalkToExpertModal
         isOpen={showExpertPopup}

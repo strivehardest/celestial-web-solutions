@@ -13,7 +13,6 @@ export default function Document() {
         {/* Preconnect to font origins for faster loading */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link rel="preconnect" href="https://fonts.cdnfonts.com" />
         
         {/* Bricolage Grotesque – load immediately to avoid missing headings */}
         <link 
@@ -50,6 +49,8 @@ export default function Document() {
             <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
             {/* Cloudflare Turnstile CAPTCHA */}
             <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+            {/* DMCA Badge Helper — deferred for performance */}
+            <script defer src="https://images.dmca.com/Badges/DMCABadgeHelper.min.js"></script>
       </Head>
       <body>
         <Main />

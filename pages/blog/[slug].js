@@ -4013,7 +4013,7 @@ export default function BlogPost({ slug, article, relatedArticles: initialRelate
               variant="primary"
               className="inline-flex items-center gap-2"
             >
-              View All Articles
+              <span className="text-orange-600 dark:text-orange-400">View All Articles</span>
             </PremiumCTA>
           </div>
         </div>

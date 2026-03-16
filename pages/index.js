@@ -140,12 +140,12 @@ const techStackCategories = [
     description: "Building modern web interfaces with HTML, CSS, JavaScript, and React",
     color: "from-blue-500 to-blue-600",
     items: [
-      { name: 'React', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg' },
-      { name: 'Next.js', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg' },
-      { name: 'JavaScript', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg' },
-      { name: 'CSS3', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg' },
-      { name: 'HTML5', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg' },
-      { name: 'TypeScript', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg' }
+      { name: 'React', icon: '/images/tech/react.svg' },
+      { name: 'Next.js', icon: '/images/tech/nextjs.svg' },
+      { name: 'JavaScript', icon: '/images/tech/javascript.svg' },
+      { name: 'CSS3', icon: '/images/tech/css3.svg' },
+      { name: 'HTML5', icon: '/images/tech/html5.svg' },
+      { name: 'TypeScript', icon: '/images/tech/typescript.svg' }
     ]
   },
   {
@@ -153,10 +153,10 @@ const techStackCategories = [
     description: "Complete e-commerce solutions with secure payment integrations",
     color: "from-purple-500 to-purple-600",
     items: [
-      { name: 'WooCommerce', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/woocommerce/woocommerce-original.svg' },
-      { name: 'Shopify', icon: 'https://cdn.worldvectorlogo.com/logos/shopify.svg' },
-      { name: 'Paystack', icon: 'https://website-v3-assets.s3.amazonaws.com/assets/img/hero/Paystack-mark-white-twitter.png' },
-      { name: 'Flutterwave', icon: 'https://play-lh.googleusercontent.com/qIVVU7H--GiVAPbvasD1kIdmiDaRroK3J5g5uYdd-O8XHlC_MwSro1JhZRe06l18FIc=w480-h960-rw' }
+      { name: 'WooCommerce', icon: '/images/tech/woocommerce.svg' },
+      { name: 'Shopify', icon: '/images/shopify-logo.png' },
+      { name: 'Paystack', icon: '/images/paystack-logo.png' },
+      { name: 'Flutterwave', icon: '/images/flutterwave-logo.png' }
     ]
   },
   {
@@ -164,10 +164,10 @@ const techStackCategories = [
     description: "Robust server solutions with Node.js, Python, and databases",
     color: "from-blue-600 to-blue-700",
     items: [
-      { name: 'Node.js', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg' },
-      { name: 'Python', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg' },
-      { name: 'MongoDB', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg' },
-      { name: 'Django', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/django/django-plain.svg' }
+      { name: 'Node.js', icon: '/images/tech/nodejs.svg' },
+      { name: 'Python', icon: '/images/tech/python.svg' },
+      { name: 'MongoDB', icon: '/images/tech/mongodb.svg' },
+      { name: 'Django', icon: '/images/tech/django.svg' }
     ]
   },
   {
@@ -175,10 +175,10 @@ const techStackCategories = [
     description: "Modern design and development tools for optimal workflow",
     color: "from-orange-500 to-orange-600",
     items: [
-      { name: 'Figma', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg' },
-      { name: 'TailwindCSS', icon: 'https://getlogovector.com/wp-content/uploads/2021/01/tailwind-css-logo-vector.png' },
-      { name: 'Bootstrap', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg' },
-      { name: 'WordPress', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/wordpress/wordpress-plain.svg' }
+      { name: 'Figma', icon: '/images/tech/figma.svg' },
+      { name: 'TailwindCSS', icon: '/images/tailwindcss-logo.png' },
+      { name: 'Bootstrap', icon: '/images/tech/bootstrap.svg' },
+      { name: 'WordPress', icon: '/images/tech/wordpress.svg' }
     ]
   }
 ];
@@ -286,6 +286,7 @@ const PortfolioShowcase = () => {
           </div>
           <Link
             href="/portfolio"
+            aria-label="View all our web design projects"
             className="group inline-flex items-center gap-2 text-sm font-semibold text-orange-500 hover:text-orange-600 dark:text-orange-400 dark:hover:text-orange-300 transition-colors shrink-0"
             style={{ fontFamily: 'Google Sans, sans-serif' }}
           >
@@ -542,10 +543,10 @@ const IndexPage = () => {
                     src={client.src}
                     alt={client.name}
                     width={280}
-                    height={client.name === 'Elolo Agbleke' ? 60 : client.name === 'Ghana Updates Online' ? 80 : 128}
+                    height={client.name === 'Elolo Agbleke' ? 60 : client.name === 'Ghana Updates Online' ? 80 : client.name === 'Tru Seeds Africa' ? 50 : 128}
                     quality={75}
                     className="object-contain transition-colors duration-200 group-hover:grayscale max-w-full h-auto"
-                    style={{ maxHeight: '100%', width: 'auto' }}
+                    style={{ maxHeight: client.name === 'Tru Seeds Africa' ? '50px' : '100%', width: 'auto' }}
                   />
                 </div>
               ))}
@@ -682,9 +683,14 @@ const IndexPage = () => {
                         <span className="text-xs text-gray-500 dark:text-gray-400" style={{ fontFamily: 'Google Sans, sans-serif' }}>{article.date}</span>
                         <span className="text-sm text-gray-500 dark:text-gray-400" style={{ fontFamily: 'Google Sans, sans-serif' }}>{article.readTime}</span>
                       </div>
-                      <Link href={`/blog/${article.slug}`}>
+                      <Link
+                        href={`/blog/${article.slug}`}
+                        aria-label={`Read More about ${article.title}`}
+                      >
                         <motion.span className="inline-flex items-center gap-2 text-orange-600 dark:text-orange-400 font-semibold text-sm hover:gap-3 transition-all" style={{ fontFamily: 'Google Sans, sans-serif' }} whileHover={{ x: 5 }}>
-                          Read More <ArrowRight className="w-4 h-4" />
+                          Read More
+                          <span className="sr-only">about {article.title}</span>
+                          <ArrowRight className="w-4 h-4" />
                         </motion.span>
                       </Link>
                     </div>

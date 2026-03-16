@@ -48,6 +48,10 @@ const happyClients = [
   {
     name: "DL Auto Parts",
     src: "/png/projects/dl-auto-parts.png",
+  },
+  {
+    name: "Tru Seeds Africa",
+    src: "/png/projects/truseeds.webp",
   }
 ];
 
@@ -86,6 +90,8 @@ function HappyClients({ clients = [], speed = 28, cardWidth = "w-48", trustedByL
                     ? { maxHeight: '60px' }
                     : client.name === 'Ghana Updates Online'
                     ? { maxHeight: '80px' }
+                    : client.name === 'Tru Seeds Africa'
+                    ? { maxHeight: '50px' }
                     : {}
                 }
               />

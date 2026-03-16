@@ -238,7 +238,7 @@ export default function Portfolio() {
       <Head>
         <title>Portfolio | Celestial Web Solutions - Our Recent Projects</title>
         <meta name="description" content="Explore our portfolio of successful web development projects. See how we've helped businesses, NGOs, churches, educational institutions and more grow with custom websites, e-commerce solutions, and digital platforms." />
-        <meta name="keywords" content="best web designer in ghana, web development portfolio, website projects, e-commerce websites, Ghana web projects, Celestial Web Solutions work, NGO websites, church websites, educational websites, best web designer in accra" />
+        <meta name="keywords" content="best web designer in accra and ghana, web development portfolio, website projects, e-commerce websites, Ghana web projects, Celestial Web Solutions work, NGO websites, church websites, educational websites, best web designer in accra" />
         <link rel="canonical" href="https://celestialwebsolutions.net/portfolio" />
       </Head>
 
@@ -356,13 +356,14 @@ export default function Portfolio() {
               {happyClients.map((client, idx) => (
                 <div key={`${client.name}-${idx}`} className="flex flex-col items-center justify-center w-full">
                   <Image
-                    src={toWebp(client.src)}
+                    src={client.src}
                     alt={client.name}
                     width={200}
                     height={120}
                     loading="lazy"
                     className="h-16 sm:h-20 md:h-24 lg:h-32 w-auto max-w-[120px] sm:max-w-[160px] md:max-w-[200px] lg:max-w-[240px] object-contain mx-auto mb-2"
                     style={client.name === 'Elolo Agbleke' ? { maxHeight: '60px' } : client.name === 'Ghana Updates Online' ? { maxHeight: '80px' } : {}}
+                    style={client.name === 'Elolo Agbleke' ? { maxHeight: '60px' } : client.name === 'Ghana Updates Online' ? { maxHeight: '80px' } : client.name === 'Tru Seeds Africa' ? { maxHeight: '50px' } : {}}
                     unoptimized={false}
                   />
                   <span className="text-xs text-gray-700 dark:text-gray-300 mt-1 text-center" style={{ fontFamily: 'Google Sans, sans-serif' }}>{client.name}</span>
