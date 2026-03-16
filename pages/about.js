@@ -6,6 +6,7 @@ import WhatsAppButton from '../components/WhatsAppButton';
 import Link from "next/link";
 import PremiumCTA from '../components/PremiumCTA';
 import CTASection from '../components/CTASection';
+import Image from "next/image";
 
 /**
  * HappyClients data (place images under public/png/projects/)
@@ -431,11 +432,14 @@ export default function AboutUs() {
                 className="space-y-6"
               >
                 {/* Main Image */}
-                <div className="relative rounded-3xl overflow-hidden shadow-2xl">
-                  <img 
-                    src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=600&fit=crop" 
-                    alt="Our team at work"
-                    className="w-full h-[300px] object-cover"
+                <div className="relative rounded-3xl overflow-hidden shadow-2xl h-[400px]">
+                  <Image
+                    src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=90&w=1200&auto=format&fit=crop"
+                    alt="Celestial Web Solutions Team"
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                    className="object-cover"
+                    loading="lazy"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-gray-900/50 to-transparent"></div>
                   <div className="absolute bottom-4 left-4 right-4">

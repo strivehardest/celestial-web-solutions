@@ -202,16 +202,16 @@ const portfolioItems = [
     description: "A modern, responsive website for a leading agricultural company in Ghana specializing in high-quality seeds.",
     tech: ["Next.js", "React", "Tailwind CSS", "Framer Motion", "TypeScript"],
     link: "/portfolio/tru-seeds-africa",
-    image: "/portfolio/desktop/trueseeds.png",
+    image: "/portfolio/desktop/trueseeds.webp",
     accent: "#f97316"
-      },
+  },
   {
     title: "My Space Furniture",
     category: "Furniture E-Commerce",
     description: "Modern furniture e-commerce with mattresses, sofas, chairs, tables, and home decor.",
     tech: ["Next.js", "TypeScript", "Framer Motion", "Tailwind CSS"],
     link: "/portfolio/myspace-furniture",
-    image: "/portfolio/desktop/myspace.png",
+    image: "/portfolio/desktop/myspace.webp",
     accent: "#f97316"
   },
   {
@@ -220,7 +220,7 @@ const portfolioItems = [
     description: "Personal finance tracking app with income, expense management and visual reporting.",
     tech: ["Django", "Python", "HTML5", "CSS3"],
     link: "/portfolio/finance-tracker",
-    image: "/portfolio/desktop/finance.png",
+    image: "/portfolio/desktop/finance.webp",
     accent: "#3b82f6"
   },
   {
@@ -229,7 +229,7 @@ const portfolioItems = [
     description: "A leading Ghanaian news platform delivering real-time updates and editorial content.",
     tech: ["WordPress", "Custom Theme", "SEO"],
     link: "/portfolio/ghana-updates-online",
-    image: "/portfolio/desktop/ghanaupdates.png",
+    image: "/portfolio/desktop/ghanaupdates.webp",
     accent: "#10b981"
   },
   {
@@ -238,7 +238,7 @@ const portfolioItems = [
     description: "Sleek personal brand website for a tech leader and program manager.",
     tech: ["Next.js", "Tailwind CSS", "Framer Motion"],
     link: "/portfolio/elolo-agbleke-website",
-    image: "/portfolio/desktop/elolo.png",
+    image: "/portfolio/desktop/elolo.webp",
     accent: "#8b5cf6"
   },
   {
@@ -247,7 +247,7 @@ const portfolioItems = [
     description: "A real estate company website showcasing properties and services.",
     tech: ["Next.js", "Tailwind CSS", "Framer Motion", "React"],
     link: "/portfolio/valyd",
-    image: "/portfolio/desktop/valyd.png",
+    image: "/portfolio/desktop/valyd.webp",
     accent: "#ec4899"
   },
   {
@@ -256,7 +256,7 @@ const portfolioItems = [
     description: "Professional auto parts e-commerce store for a Ghanaian automotive business.",
     tech: ["WooCommerce", "WordPress", "Paystack Integration"],
     link: "/portfolio/dl-auto-parts",
-    image: "/portfolio/desktop/dlautos.png",
+    image: "/portfolio/desktop/dlautos.webp",
     accent: "#f59e0b"
   }
 ];
@@ -307,10 +307,13 @@ const PortfolioShowcase = () => {
               <Link href={item.link} className="group block">
                 <div className="relative rounded-2xl overflow-hidden bg-gray-100 dark:bg-gray-800 aspect-[16/10] shadow-sm hover:shadow-xl transition-shadow duration-300">
                   {/* Screenshot */}
-                  <img
+                  <Image
                     src={item.image}
                     alt={item.title}
-                    className="w-full h-full object-cover group-hover:scale-[1.04] transition-transform duration-500"
+                    fill
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    priority={index === 0}
+                    className="object-cover group-hover:scale-[1.04] transition-transform duration-500"
                     onError={(e) => { e.target.src = `https://placehold.co/680x425/1a1a1a/ffffff?text=${encodeURIComponent(item.title)}`; }}
                   />
                   {/* Bottom gradient overlay */}
@@ -667,7 +670,7 @@ const IndexPage = () => {
                   className="bg-white dark:bg-gray-900 rounded-3xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 group flex flex-col"
                 >
                   <div className="relative h-56 overflow-hidden">
-                    <img src={article.image} alt={article.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                    <Image src={article.image} alt={article.title} fill sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" className="object-cover group-hover:scale-110 transition-transform duration-700" />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
                     <div className="absolute top-4 left-4 px-3 py-1 bg-gradient-to-r from-orange-500 to-orange-600 rounded-full text-white text-xs font-semibold">{article.category}</div>
                   </div>
