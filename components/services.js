@@ -58,14 +58,14 @@ const Services = ({ services }) => {
                       <IconComponent className="w-8 h-8 text-white" aria-hidden="true" />
                     </motion.div>
                     <motion.h2 
-                      className="text-2xl font-bold text-gray-800 dark:text-white group-hover:text-orange-600 dark:group-hover:text-orange-400 transition-colors duration-300"
+                      className="text-2xl font-bold text-gray-800 dark:text-white group-hover:text-orange-700 dark:group-hover:text-orange-300 transition-colors duration-300"
                       style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}
                     >
                       {service.title}
                     </motion.h2>
                   </div>
 
-                  <p className="text-gray-600 dark:text-gray-300 leading-relaxed group-hover:text-gray-700 dark:group-hover:text-gray-200 transition-colors duration-300" 
+                  <p className="text-gray-700 dark:text-gray-200 leading-relaxed group-hover:text-gray-800 dark:group-hover:text-gray-100 transition-colors duration-300" 
                      style={{ fontFamily: 'Google Sans, sans-serif' }}>
                     {service.description}
                   </p>
@@ -74,7 +74,7 @@ const Services = ({ services }) => {
                     {service.keywords.map((keyword, idx) => (
                       <span 
                         key={idx} 
-                        className="text-sm px-3 py-1 bg-orange-100 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400 rounded-full"
+                        className="text-sm px-3 py-1 bg-orange-100 dark:bg-orange-900/40 text-orange-700 dark:text-orange-300 rounded-full"
                       >
                         {keyword}
                       </span>

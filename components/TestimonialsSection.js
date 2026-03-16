@@ -203,7 +203,7 @@ export default function TestimonialsSection() {
       {/* Section label */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">
         <span
-          className="inline-block px-4 py-2 bg-orange-100 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400 rounded-full text-sm font-semibold uppercase tracking-wider transition-colors duration-300"
+          className="inline-block px-4 py-2 bg-orange-100 dark:bg-orange-900/40 text-orange-700 dark:text-orange-300 rounded-full text-sm font-semibold uppercase tracking-wider transition-colors duration-300"
           style={{ fontFamily: 'Google Sans, sans-serif' }}
         >
           What our clients say
@@ -268,13 +268,13 @@ export default function TestimonialsSection() {
                 <Avatar src={t.image} initials={t.initials} name={t.name} />
                 <div>
                   <p
-                    className="text-orange-500 dark:text-orange-400 font-bold text-lg uppercase tracking-wide transition-colors duration-300"
+                    className="text-orange-600 dark:text-orange-300 font-bold text-lg uppercase tracking-wide transition-colors duration-300"
                     style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}
                   >
                     {t.name}
                   </p>
                   <p
-                    className="text-gray-500 dark:text-gray-400 text-sm uppercase tracking-wider transition-colors duration-300"
+                    className="text-gray-600 dark:text-gray-400 text-sm uppercase tracking-wider transition-colors duration-300"
                     style={{ fontFamily: 'Google Sans, sans-serif' }}
                   >
                     {t.role}
@@ -285,7 +285,7 @@ export default function TestimonialsSection() {
               {/* Company — left-bordered */}
               <div className="border-l-2 border-orange-500/50 pl-4">
                 <p
-                  className="text-gray-600 dark:text-gray-300 text-sm font-medium transition-colors duration-300"
+                  className="text-gray-700 dark:text-gray-200 text-sm font-medium transition-colors duration-300"
                   style={{ fontFamily: 'Google Sans, sans-serif' }}
                 >
                   {t.company}
@@ -372,7 +372,7 @@ export default function TestimonialsSection() {
                 key={i}
                 onClick={() => goTo(i)}
                 aria-label={`Go to testimonial ${i + 1}`}
-                className={`rounded-full transition-all duration-300 ${
+                className={`relative rounded-full transition-all duration-300 after:absolute after:content-[''] after:inset-[-18px] ${
                   i === current
                     ? 'w-5 h-2 bg-orange-500'
                     : 'w-2 h-2 bg-gray-300 dark:bg-white/20 hover:bg-orange-300 dark:hover:bg-white/40'

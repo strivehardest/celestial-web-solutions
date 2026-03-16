@@ -220,7 +220,7 @@ export default function HeroSwiper() {
           <button
             key={i}
             onClick={() => swiperRef.current?.slideToLoop(i)}
-            className={`transition-all duration-400 rounded-full ${
+            className={`relative transition-all duration-400 rounded-full after:absolute after:content-[''] after:inset-[-17px] ${
               activeIndex === i
                 ? 'w-10 h-2.5 bg-orange-500 shadow-lg shadow-orange-500/40'
                 : 'w-2.5 h-2.5 bg-white/30 hover:bg-white/60'

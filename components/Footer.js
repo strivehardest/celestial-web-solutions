@@ -308,18 +308,22 @@ export default function Footer({ darkMode, toggleDarkMode }) {
               <div className="relative w-20 h-20">
                 {/* White logo for dark mode, dark logo for light mode */}
                 <Image
-                  src="/logo-white.png"
-                  alt="Celestial Web Solutions"
-                  fill
+                  src="/logo-white.webp"
+                  alt="Celestial Web Solutions logo white"
+                  width={80}
+                  height={80}
                   quality={80}
                   className="object-contain hidden dark:block"
+                  priority
                 />
                 <Image
                   src="/logo.png"
-                  alt="Celestial Web Solutions"
-                  fill
+                  alt="Celestial Web Solutions logo"
+                  width={80}
+                  height={80}
                   quality={80}
                   className="object-contain block dark:hidden"
+                  priority
                 />
               </div>
               <div>
