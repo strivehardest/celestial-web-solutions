@@ -1,8 +1,8 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
-import { motion } from 'framer-motion';
-import { Star, MapPin, Phone, Mail, ArrowRight, Award, Clock } from 'lucide-react';
+import Script from 'next/script';
+import { MapPin, Phone, Mail, ArrowRight } from 'lucide-react';
 import ThemeToggle from './ThemeToggle';
 import { useState, useEffect } from 'react';
 
@@ -45,38 +45,56 @@ export default function Footer({ darkMode, toggleDarkMode }) {
     return () => clearInterval(interval);
   }, []);
 
-  const googleRating = {
-    score: 4.9,
-    totalReviews: 30,
-    googleBusinessUrl: "https://www.google.com/maps/place/Celestial+Web+Solutions/@5.883579,0.9829622,17z/data=!4m6!3m5!1s0x1021710073fe6fff:0x96453357ca880329!8m2!3d5.8836217!4d0.9828871!16s%2Fg%2F11lf36fzj1?entry=ttu&g_ep=EgoyMDI1MTEwMi4wIKXMDSoASAFQAw%3D%3D"
-  };
-
+  // 4 platforms in the scrolling marquee (DesignRush removed — shown as widget below)
   const reviewPlatforms = [
     {
       name: 'Google',
       rating: 4.9,
-      reviews: 30,
-      url: googleRating.googleBusinessUrl,
+      label: '30 Reviews',
+      url: 'https://www.google.com/maps/place/Celestial+Web+Solutions/@5.883579,0.9829622,17z/data=!4m6!3m5!1s0x1021710073fe6fff:0x96453357ca880329!8m2!3d5.8836217!4d0.9828871!16s%2Fg%2F11lf36fzj1?entry=ttu&g_ep=EgoyMDI1MTEwMi4wIKXMDSoASAFQAw%3D%3D',
+      logo: (
+        <svg className="w-7 h-7 flex-shrink-0" viewBox="0 0 24 24">
+          <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+          <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+          <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+          <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+        </svg>
+      ),
+      hoverColor: 'group-hover:text-blue-500',
     },
     {
       name: 'Clutch',
       rating: 5.0,
-      reviews: 'Top Rated',
+      label: 'Top Rated',
       url: 'https://clutch.co/profile/celestial-web-solutions',
+      logo: <img src="/clutch-logo.png" alt="Clutch" className="w-7 h-7 object-contain flex-shrink-0" />,
+      hoverColor: 'group-hover:text-red-500',
     },
     {
       name: 'GoodFirms',
       rating: 5.0,
-      reviews: 'Top Rated',
+      label: 'Top Rated',
       url: 'https://www.goodfirms.co/company/celestial-web-solutions',
+      logo: <img src="/goodfirms-logo.png" alt="GoodFirms" className="w-7 h-7 object-contain flex-shrink-0" />,
+      hoverColor: 'group-hover:text-purple-500',
     },
     {
       name: 'Trustpilot',
       rating: 4.8,
-      reviews: 'Excellent',
+      label: 'Excellent',
       url: 'https://www.trustpilot.com/review/celestialwebsolutions.net',
+      logo: (
+        <svg viewBox="0 0 24 24" className="w-7 h-7 flex-shrink-0">
+          <path fill="#00b67a" d="M12 1l3.09 7.92H23l-6.54 4.75 2.5 7.83L12 17.7 5.04 21.5l2.5-7.83L1 8.92h7.91z"/>
+          <path fill="#00e59b" d="M16.9 15.78L12 17.7V1l3.09 7.92H23l-6.54 4.75z"/>
+        </svg>
+      ),
+      hoverColor: 'group-hover:text-green-500',
     },
   ];
+
+  // Duplicate for seamless infinite loop
+  const marqueeItems = [...reviewPlatforms, ...reviewPlatforms];
 
   const footerLinks = {
     services: [
@@ -165,311 +183,274 @@ export default function Footer({ darkMode, toggleDarkMode }) {
   ];
 
   return (
-    // ✅ Uses Tailwind dark: variants — ThemeToggle already manages the `dark`
-    // class on <html>, so these respond automatically without needing the darkMode prop.
-    <footer className="bg-white dark:bg-gray-900 text-gray-900 dark:text-white transition-colors duration-300">
+    <>
+      {/* Marquee animation keyframes */}
+      <style>{`
+        @keyframes marquee-rtl {
+          0%   { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
+        }
+        .marquee-track {
+          display: flex;
+          width: max-content;
+          animation: marquee-rtl 24s linear infinite;
+        }
+        .marquee-track:hover {
+          animation-play-state: paused;
+        }
+      `}</style>
 
-      {/* Trust Badges Section */}
-      <div className="border-b border-gray-200 dark:border-gray-800">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-          <div className="text-center mb-6">
-            <h3 className="text-lg font-semibold mb-2 text-gray-900 dark:text-white" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>
-              Trusted by Ghana Businesses
-            </h3>
-            <p className="text-gray-500 dark:text-gray-400 text-sm" style={{ fontFamily: 'Google Sans, sans-serif' }}>
-              Verified reviews from happy clients
-            </p>
-          </div>
+      <footer className="bg-white dark:bg-gray-900 text-gray-900 dark:text-white transition-colors duration-300">
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 max-w-5xl mx-auto">
+        {/* ── Scrolling Review Badges Strip ────────────────────────────────── */}
+        <div className="border-b border-gray-200 dark:border-gray-800">
+          <div className="py-6">
 
-            {/* Google Reviews */}
-            <a
-              href={reviewPlatforms[0].url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-lg p-4 transition-all duration-300 hover:scale-105 flex items-center gap-4 group"
+            {/* Section label */}
+            <p
+              className="text-center text-xs text-gray-400 dark:text-gray-500 uppercase tracking-widest mb-5"
+              style={{ fontFamily: 'Google Sans, sans-serif' }}
             >
-              <div className="bg-white rounded-lg p-3 flex-shrink-0">
-                <svg className="w-8 h-8" viewBox="0 0 24 24">
-                  <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
-                  <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
-                  <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
-                  <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
-                </svg>
-              </div>
-              <div className="flex-1">
-                <div className="flex items-center gap-1 mb-1">
-                  <span className="text-yellow-400 text-lg">★★★★★</span>
-                  <span className="font-bold ml-2 text-gray-900 dark:text-white" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>
-                    {reviewPlatforms[0].rating}
-                  </span>
-                </div>
-                <div className="text-sm text-gray-500 dark:text-gray-400" style={{ fontFamily: 'Google Sans, sans-serif' }}>
-                  {reviewPlatforms[0].reviews} Google Reviews
-                </div>
-              </div>
-              <svg className="w-5 h-5 text-gray-400 dark:text-gray-600 group-hover:text-blue-400 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-              </svg>
-            </a>
-
-            {/* Clutch */}
-            <a
-              href={reviewPlatforms[1].url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-lg p-4 transition-all duration-300 hover:scale-105 flex items-center gap-4 group"
-            >
-              <div className="bg-white rounded-lg p-3 flex-shrink-0">
-                <img src="/clutch-logo.png" alt="Clutch" className="w-8 h-8 object-contain" />
-              </div>
-              <div className="flex-1">
-                <div className="flex items-center gap-1 mb-1">
-                  <span className="text-yellow-400 text-lg">★★★★★</span>
-                  <span className="font-bold ml-2 text-gray-900 dark:text-white" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>
-                    {reviewPlatforms[1].rating}
-                  </span>
-                </div>
-                <div className="text-sm text-gray-500 dark:text-gray-400" style={{ fontFamily: 'Google Sans, sans-serif' }}>
-                  Top Rated on Clutch
-                </div>
-              </div>
-              <svg className="w-5 h-5 text-gray-400 dark:text-gray-600 group-hover:text-red-400 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-              </svg>
-            </a>
-
-            {/* GoodFirms */}
-            <a
-              href={reviewPlatforms[2].url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-lg p-4 transition-all duration-300 hover:scale-105 flex items-center gap-4 group"
-            >
-              <div className="bg-white rounded-lg p-3 flex-shrink-0">
-                <img src="/goodfirms-logo.png" alt="GoodFirms" className="w-8 h-8 object-contain" />
-              </div>
-              <div className="flex-1">
-                <div className="flex items-center gap-1 mb-1">
-                  <span className="text-yellow-400 text-lg">★★★★★</span>
-                  <span className="font-bold ml-2 text-gray-900 dark:text-white" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>
-                    {reviewPlatforms[2].rating}
-                  </span>
-                </div>
-                <div className="text-sm text-gray-500 dark:text-gray-400" style={{ fontFamily: 'Google Sans, sans-serif' }}>
-                  Top Rated on GoodFirms
-                </div>
-              </div>
-              <svg className="w-5 h-5 text-gray-400 dark:text-gray-600 group-hover:text-purple-400 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-              </svg>
-            </a>
-
-            {/* Trustpilot */}
-            <a
-              href={reviewPlatforms[3].url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-lg p-4 transition-all duration-300 hover:scale-105 flex items-center gap-4 group"
-            >
-              <div className="bg-white rounded-lg p-3 flex-shrink-0">
-                <svg viewBox="0 0 24 24" className="w-8 h-8">
-                  <path fill="#00b67a" d="M12 1l3.09 7.92H23l-6.54 4.75 2.5 7.83L12 17.7 5.04 21.5l2.5-7.83L1 8.92h7.91z"/>
-                  <path fill="#00e59b" d="M16.9 15.78L12 17.7V1l3.09 7.92H23l-6.54 4.75z"/>
-                </svg>
-              </div>
-              <div className="flex-1">
-                <div className="flex items-center gap-1 mb-1">
-                  <span className="text-yellow-400 text-lg">★★★★★</span>
-                  <span className="font-bold ml-2 text-gray-900 dark:text-white" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>
-                    {reviewPlatforms[3].rating}
-                  </span>
-                </div>
-                <div className="text-sm text-gray-500 dark:text-gray-400" style={{ fontFamily: 'Google Sans, sans-serif' }}>
-                  Excellent on Trustpilot
-                </div>
-              </div>
-              <svg className="w-5 h-5 text-gray-400 dark:text-gray-600 group-hover:text-green-400 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-              </svg>
-            </a>
-          </div>
-        </div>
-      </div>
-
-      {/* Main Footer Content */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12">
-
-          {/* Brand Column */}
-          <div className="lg:col-span-2">
-            <Link href="/" className="inline-flex items-center gap-4 mb-6">
-              <div className="relative w-20 h-20">
-                {/* White logo for dark mode, dark logo for light mode */}
-                <Image
-                  src="/logo-white.webp"
-                  alt="Celestial Web Solutions logo white"
-                  width={80}
-                  height={80}
-                  quality={80}
-                  className="object-contain hidden dark:block"
-                  priority
-                />
-                <Image
-                  src="/logo.png"
-                  alt="Celestial Web Solutions logo"
-                  width={80}
-                  height={80}
-                  quality={80}
-                  className="object-contain block dark:hidden"
-                  priority
-                />
-              </div>
-              <div>
-                <div className="text-3xl font-bold text-gray-900 dark:text-white" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>
-                  Celestial
-                </div>
-                <div className="text-base text-gray-500 dark:text-gray-400" style={{ fontFamily: 'Google Sans, sans-serif' }}>
-                  Web Solutions
-                </div>
-              </div>
-            </Link>
-
-            <p className="text-gray-500 dark:text-gray-400 text-base mb-6 max-w-sm leading-relaxed" style={{ fontFamily: 'Google Sans, sans-serif' }}>
-              A focused web design and development company in Ghana, delivering exceptional digital experiences for businesses across Africa.
+              Trusted &amp; Reviewed On
             </p>
 
-            <div className="space-y-3 mb-6">
-              <a href="tel:+233530505031" className="flex items-center gap-3 text-gray-500 dark:text-gray-400 hover:text-orange-500 dark:hover:text-orange-400 transition-colors text-base" style={{ fontFamily: 'Google Sans, sans-serif' }}>
-                <Phone size={16} className="text-orange-500" />
-                +233 530 505 031
-              </a>
-              <a href="mailto:info@celestialwebsolutions.net" className="flex items-center gap-3 text-gray-500 dark:text-gray-400 hover:text-orange-500 dark:hover:text-orange-400 transition-colors text-base" style={{ fontFamily: 'Google Sans, sans-serif' }}>
-                <Mail size={16} className="text-orange-500" />
-                info@celestialwebsolutions.net
-              </a>
-              <div className="flex items-start gap-3 text-gray-500 dark:text-gray-400 text-base" style={{ fontFamily: 'Google Sans, sans-serif' }}>
-                <MapPin size={16} className="text-orange-500 flex-shrink-0 mt-0.5" />
-                <span>Keta & Accra, Ghana</span>
+            {/* Marquee with fade edges */}
+            <div className="relative overflow-hidden">
+
+              {/* Left fade */}
+              <div
+                className="pointer-events-none absolute left-0 top-0 h-full w-20 z-10"
+                style={{
+                  background: darkMode
+                    ? 'linear-gradient(to right, #111827, transparent)'
+                    : 'linear-gradient(to right, #ffffff, transparent)'
+                }}
+              />
+              {/* Right fade */}
+              <div
+                className="pointer-events-none absolute right-0 top-0 h-full w-20 z-10"
+                style={{
+                  background: darkMode
+                    ? 'linear-gradient(to left, #111827, transparent)'
+                    : 'linear-gradient(to left, #ffffff, transparent)'
+                }}
+              />
+
+              <div className="marquee-track">
+                {marqueeItems.map((platform, index) => (
+                  <a
+                    key={`${platform.name}-${index}`}
+                    href={platform.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group flex items-center gap-3 mx-4 px-5 py-3 rounded-xl bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-all duration-300 hover:scale-105 flex-shrink-0"
+                    style={{ minWidth: '190px' }}
+                  >
+                    {/* Logo box */}
+                    <div className="bg-white dark:bg-gray-900 rounded-lg p-1.5 flex-shrink-0 shadow-sm">
+                      {platform.logo}
+                    </div>
+                    {/* Text */}
+                    <div>
+                      <div className="flex items-center gap-1.5">
+                        <span
+                          className={`text-sm font-semibold text-gray-900 dark:text-white transition-colors ${platform.hoverColor}`}
+                          style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}
+                        >
+                          {platform.name}
+                        </span>
+                        <span className="text-yellow-400 text-xs leading-none">★</span>
+                        <span
+                          className="text-xs font-bold text-gray-700 dark:text-gray-300"
+                          style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}
+                        >
+                          {platform.rating}
+                        </span>
+                      </div>
+                      <div
+                        className="text-xs text-gray-400 dark:text-gray-500 mt-0.5"
+                        style={{ fontFamily: 'Google Sans, sans-serif' }}
+                      >
+                        {platform.label}
+                      </div>
+                    </div>
+                  </a>
+                ))}
               </div>
             </div>
           </div>
-
-          {/* Services Links */}
-          <div>
-            <h4 className="text-sm font-semibold text-gray-900 dark:text-white mb-4 uppercase tracking-wider" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>
-              Services
-            </h4>
-            <ul className="space-y-3">
-              {footerLinks.services.map((link) => (
-                <li key={link.name}>
-                  <Link
-                    href={link.href}
-                    className={`text-sm transition-colors ${router.pathname === link.href ? 'text-orange-500 font-bold' : 'text-gray-500 dark:text-gray-400 hover:text-orange-500 dark:hover:text-orange-400'}`}
-                    style={{ fontFamily: 'Google Sans, sans-serif' }}
-                  >
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Company Links */}
-          <div>
-            <h4 className="text-sm font-semibold text-gray-900 dark:text-white mb-4 uppercase tracking-wider" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>
-              Company
-            </h4>
-            <ul className="space-y-3">
-              {footerLinks.company.map((link) => (
-                <li key={link.name} className="relative">
-                  <Link
-                    href={link.href}
-                    className={`text-sm transition-colors inline-flex items-center gap-2 ${router.pathname === link.href ? 'text-orange-500 font-bold' : 'text-gray-500 dark:text-gray-400 hover:text-orange-500 dark:hover:text-orange-400'}`}
-                    style={{ fontFamily: 'Google Sans, sans-serif' }}
-                  >
-                    {link.name}
-                    {link.isNew && (
-                      <span className="bg-red-500 text-white text-[9px] font-bold px-1.5 py-0.5 rounded animate-pulse">
-                        NEW
-                      </span>
-                    )}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Support Links */}
-          <div>
-            <h4 className="text-sm font-semibold text-gray-900 dark:text-white mb-4 uppercase tracking-wider" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>
-              Support
-            </h4>
-            <ul className="space-y-3">
-              {footerLinks.support.map((link) => (
-                <li key={link.name}>
-                  <Link
-                    href={link.href}
-                    className={`text-sm transition-colors ${router.pathname === link.href ? 'text-orange-500 font-bold' : 'text-gray-500 dark:text-gray-400 hover:text-orange-500 dark:hover:text-orange-400'}`}
-                    style={{ fontFamily: 'Google Sans, sans-serif' }}
-                  >
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-
-            <Link
-              href="/schedule-a-call"
-              className="inline-flex items-center gap-2 mt-6 px-5 py-2.5 bg-gradient-to-r from-orange-500 to-orange-600 text-white text-sm font-semibold rounded-full hover:from-orange-600 hover:to-orange-700 transition-all"
-              style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}
-            >
-              Schedule a Call
-              <ArrowRight size={16} />
-            </Link>
-          </div>
         </div>
-      </div>
 
-      {/* Live Time Zones Section */}
-      <div className="border-t border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-900/50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-          <div className="flex flex-wrap justify-center items-center gap-6 md:gap-12">
-            {timeZones.map(({ city, country, flagCode }) => (
-              <div key={city} className="flex items-center gap-3 group">
-                <img
-                  src={`https://flagcdn.com/w40/${flagCode}.png`}
-                  srcSet={`https://flagcdn.com/w80/${flagCode}.png 2x`}
-                  width="32"
-                  height="24"
-                  alt={`${country} flag`}
-                  className="rounded shadow-sm"
-                />
-                <div className="flex flex-col">
-                  <span className="text-xs text-gray-400 dark:text-gray-500 uppercase tracking-wider" style={{ fontFamily: 'Google Sans, sans-serif' }}>
-                    {city}, {country}
-                  </span>
-                  <span
-                    className="text-xl md:text-2xl font-mono text-gray-900 dark:text-white tracking-wider group-hover:text-orange-500 dark:group-hover:text-orange-400 transition-colors"
-                    style={{ fontFamily: 'JetBrains Mono, monospace' }}
-                  >
-                    {times[city] || '--:--:--'}
-                  </span>
+        {/* ── Main Footer Content ───────────────────────────────────────────── */}
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12">
+
+            {/* Brand Column */}
+            <div className="lg:col-span-2">
+              <Link href="/" className="inline-flex items-center gap-4 mb-6">
+                <div className="relative w-20 h-20">
+                  <Image
+                    src="/logo-white.webp"
+                    alt="Celestial Web Solutions logo white"
+                    width={80}
+                    height={80}
+                    quality={80}
+                    className="object-contain hidden dark:block"
+                    priority
+                  />
+                  <Image
+                    src="/logo.png"
+                    alt="Celestial Web Solutions logo"
+                    width={80}
+                    height={80}
+                    quality={80}
+                    className="object-contain block dark:hidden"
+                    priority
+                  />
+                </div>
+                <div>
+                  <div className="text-3xl font-bold text-gray-900 dark:text-white" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>
+                    Celestial
+                  </div>
+                  <div className="text-base text-gray-500 dark:text-gray-400" style={{ fontFamily: 'Google Sans, sans-serif' }}>
+                    Web Solutions
+                  </div>
+                </div>
+              </Link>
+
+              <p className="text-gray-500 dark:text-gray-400 text-base mb-6 max-w-sm leading-relaxed" style={{ fontFamily: 'Google Sans, sans-serif' }}>
+                A focused web design and development company in Ghana, delivering exceptional digital experiences for businesses across Africa.
+              </p>
+
+              <div className="space-y-3 mb-6">
+                <a href="tel:+233530505031" className="flex items-center gap-3 text-gray-500 dark:text-gray-400 hover:text-orange-500 dark:hover:text-orange-400 transition-colors text-base" style={{ fontFamily: 'Google Sans, sans-serif' }}>
+                  <Phone size={16} className="text-orange-500" />
+                  +233 530 505 031
+                </a>
+                <a href="mailto:info@celestialwebsolutions.net" className="flex items-center gap-3 text-gray-500 dark:text-gray-400 hover:text-orange-500 dark:hover:text-orange-400 transition-colors text-base" style={{ fontFamily: 'Google Sans, sans-serif' }}>
+                  <Mail size={16} className="text-orange-500" />
+                  info@celestialwebsolutions.net
+                </a>
+                <div className="flex items-start gap-3 text-gray-500 dark:text-gray-400 text-base" style={{ fontFamily: 'Google Sans, sans-serif' }}>
+                  <MapPin size={16} className="text-orange-500 flex-shrink-0 mt-0.5" />
+                  <span>Keta & Accra, Ghana</span>
                 </div>
               </div>
-            ))}
+            </div>
+
+            {/* Services Links */}
+            <div>
+              <h4 className="text-sm font-semibold text-gray-900 dark:text-white mb-4 uppercase tracking-wider" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>
+                Services
+              </h4>
+              <ul className="space-y-3">
+                {footerLinks.services.map((link) => (
+                  <li key={link.name}>
+                    <Link
+                      href={link.href}
+                      className={`text-sm transition-colors ${router.pathname === link.href ? 'text-orange-500 font-bold' : 'text-gray-500 dark:text-gray-400 hover:text-orange-500 dark:hover:text-orange-400'}`}
+                      style={{ fontFamily: 'Google Sans, sans-serif' }}
+                    >
+                      {link.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Company Links */}
+            <div>
+              <h4 className="text-sm font-semibold text-gray-900 dark:text-white mb-4 uppercase tracking-wider" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>
+                Company
+              </h4>
+              <ul className="space-y-3">
+                {footerLinks.company.map((link) => (
+                  <li key={link.name} className="relative">
+                    <Link
+                      href={link.href}
+                      className={`text-sm transition-colors inline-flex items-center gap-2 ${router.pathname === link.href ? 'text-orange-500 font-bold' : 'text-gray-500 dark:text-gray-400 hover:text-orange-500 dark:hover:text-orange-400'}`}
+                      style={{ fontFamily: 'Google Sans, sans-serif' }}
+                    >
+                      {link.name}
+                      {link.isNew && (
+                        <span className="bg-red-500 text-white text-[9px] font-bold px-1.5 py-0.5 rounded animate-pulse">
+                          NEW
+                        </span>
+                      )}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Support Links */}
+            <div>
+              <h4 className="text-sm font-semibold text-gray-900 dark:text-white mb-4 uppercase tracking-wider" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>
+                Support
+              </h4>
+              <ul className="space-y-3">
+                {footerLinks.support.map((link) => (
+                  <li key={link.name}>
+                    <Link
+                      href={link.href}
+                      className={`text-sm transition-colors ${router.pathname === link.href ? 'text-orange-500 font-bold' : 'text-gray-500 dark:text-gray-400 hover:text-orange-500 dark:hover:text-orange-400'}`}
+                      style={{ fontFamily: 'Google Sans, sans-serif' }}
+                    >
+                      {link.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+
+              <Link
+                href="/schedule-a-call"
+                className="inline-flex items-center gap-2 mt-6 px-5 py-2.5 bg-gradient-to-r from-orange-500 to-orange-600 text-white text-sm font-semibold rounded-full hover:from-orange-600 hover:to-orange-700 transition-all"
+                style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}
+              >
+                Schedule a Call
+                <ArrowRight size={16} />
+              </Link>
+            </div>
           </div>
         </div>
-      </div>
 
-      {/* Bottom Bar */}
-      <div className="border-t border-gray-200 dark:border-gray-800">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-          <div className="flex flex-col items-center gap-4">
+        {/* ── Live Time Zones ───────────────────────────────────────────────── */}
+        <div className="border-t border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-900/50">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+            <div className="flex flex-wrap justify-center items-center gap-6 md:gap-12">
+              {timeZones.map(({ city, country, flagCode }) => (
+                <div key={city} className="flex items-center gap-3 group">
+                  <img
+                    src={`https://flagcdn.com/w40/${flagCode}.png`}
+                    srcSet={`https://flagcdn.com/w80/${flagCode}.png 2x`}
+                    width="32"
+                    height="24"
+                    alt={`${country} flag`}
+                    className="rounded shadow-sm"
+                  />
+                  <div className="flex flex-col">
+                    <span className="text-xs text-gray-400 dark:text-gray-500 uppercase tracking-wider" style={{ fontFamily: 'Google Sans, sans-serif' }}>
+                      {city}, {country}
+                    </span>
+                    <span
+                      className="text-xl md:text-2xl font-mono text-gray-900 dark:text-white tracking-wider group-hover:text-orange-500 dark:group-hover:text-orange-400 transition-colors"
+                      style={{ fontFamily: 'JetBrains Mono, monospace' }}
+                    >
+                      {times[city] || '--:--:--'}
+                    </span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
 
-            {/* TechBehemoths Badge — swap variant based on dark class */}
-            <div className="flex flex-col sm:flex-row items-center gap-3">
+        {/* ── Bottom Bar ────────────────────────────────────────────────────── */}
+        <div className="border-t border-gray-200 dark:border-gray-800">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <div className="flex flex-col items-center gap-6">
+
+              {/* TechBehemoths Badge */}
               <a
                 href="https://techbehemoths.com/company/celestial-web-solutions"
                 target="_blank"
@@ -492,48 +473,95 @@ export default function Footer({ darkMode, toggleDarkMode }) {
                   className="block dark:hidden"
                 />
               </a>
-            </div>
 
-            <div className="text-center">
-              <p className="text-gray-600 dark:text-gray-300 text-base" style={{ fontFamily: 'Google Sans, sans-serif' }}>
-                © {currentYear} Celestial Web Solutions. All rights reserved.
-              </p>
-              <p className="text-xs text-gray-400 dark:text-gray-500 mt-1" style={{ fontFamily: 'Google Sans, sans-serif' }}>
-                Handcrafted with passion in Ghana.
-              </p>
-            </div>
-
-            {/* Social Links */}
-            <div className="flex items-center gap-4">
-              {socialLinks.map((social) => (
-                <a
-                  key={social.name}
-                  href={social.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-gray-500 dark:text-gray-300 hover:text-orange-500 dark:hover:text-orange-400 transition-colors"
-                  title={social.name}
+              {/* ── DesignRush Widget ─────────────────────────────────────── */}
+              <div className="w-full max-w-2xl border-t border-b border-gray-200 dark:border-gray-700 py-6">
+                <p
+                  className="text-center text-xs text-gray-400 dark:text-gray-500 uppercase tracking-widest mb-4"
+                  style={{ fontFamily: 'Google Sans, sans-serif' }}
                 >
-                  {social.icon}
-                </a>
-              ))}
+                  Also on DesignRush
+                </p>
+                <div
+                  data-designrush-widget
+                  data-agency-id="93631"
+                  data-style={darkMode ? 'dark' : 'light'}
+                  aria-label="DesignRush agency reviews section"
+                  className="w-full"
+                />
+                <noscript>
+                  <div className="text-center">
+                    <a
+                      href="https://www.designrush.com/agency/profile/celestial-web-solutions#reviews"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-sm text-orange-500 hover:underline"
+                      style={{ fontFamily: 'Google Sans, sans-serif' }}
+                    >
+                      Review us on DesignRush →
+                    </a>
+                  </div>
+                </noscript>
+              </div>
+
+              {/* Copyright */}
+              <div className="text-center">
+                <p className="text-gray-600 dark:text-gray-300 text-base" style={{ fontFamily: 'Google Sans, sans-serif' }}>
+                  © {currentYear} Celestial Web Solutions. All rights reserved.
+                </p>
+                <p className="text-xs text-gray-400 dark:text-gray-500 mt-1" style={{ fontFamily: 'Google Sans, sans-serif' }}>
+                  Handcrafted with passion in Ghana.
+                </p>
+              </div>
+
+              {/* Social Links */}
+              <div className="flex items-center gap-4">
+                {socialLinks.map((social) => (
+                  <a
+                    key={social.name}
+                    href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-gray-500 dark:text-gray-300 hover:text-orange-500 dark:hover:text-orange-400 transition-colors"
+                    title={social.name}
+                  >
+                    {social.icon}
+                  </a>
+                ))}
+              </div>
+
+              {/* Theme Toggle */}
+              <div className="flex items-center gap-4">
+                <ThemeToggle darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
+              </div>
             </div>
 
-            {/* Theme Toggle */}
-            <div className="flex items-center gap-4 pt-2">
-              <ThemeToggle darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
+            {/* DMCA Badge */}
+            <div className="flex justify-center pt-4">
+              <a
+                href="https://www.dmca.com/compliance/celestialwebsolutions.net"
+                title="DMCA.com Protection Status"
+                className="dmca-badge"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <img
+                  src="https://images.dmca.com/Badges/dmca_protected_sml_120a.png?ID=a2cdeca7-613e-4377-a477-855d263ffc77"
+                  alt="DMCA.com Protection Status"
+                />
+              </a>
             </div>
+            <script src="https://images.dmca.com/Badges/DMCABadgeHelper.min.js"></script>
           </div>
-
-          {/* DMCA Badge */}
-          <div className="flex justify-center pt-4">
-            <a href="https://www.dmca.com/compliance/celestialwebsolutions.net" title="DMCA.com Protection Status" className="dmca-badge" target="_blank" rel="noopener noreferrer">
-              <img src="https://images.dmca.com/Badges/dmca_protected_sml_120a.png?ID=a2cdeca7-613e-4377-a477-855d263ffc77" alt="DMCA.com Protection Status" />
-            </a>
-          </div>
-          <script src="https://images.dmca.com/Badges/DMCABadgeHelper.min.js"></script>
         </div>
-      </div>
-    </footer>
+
+        {/* ── External Scripts ──────────────────────────────────────────────── */}
+       <Script
+  src="https://www.designrush.com/topbest/js/widgets/agency-reviews.js"
+  strategy="afterInteractive"
+/>
+
+      </footer>
+    </>
   );
 }
