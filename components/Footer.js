@@ -1,7 +1,6 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
-import Script from 'next/script';
 import { MapPin, Phone, Mail, ArrowRight } from 'lucide-react';
 import ThemeToggle from './ThemeToggle';
 import { useState, useEffect } from 'react';
@@ -13,6 +12,21 @@ const whatsappLink = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
 export default function Footer({ darkMode, toggleDarkMode }) {
   const router = useRouter();
   const currentYear = new Date().getFullYear();
+    useEffect(() => {
+      const existing = document.querySelector('script[src*="designrush.com"]');
+      if (existing) existing.remove();
+
+      const script = document.createElement('script');
+      script.src = 'https://www.designrush.com/topbest/js/widgets/agency-reviews.js';
+      script.type = 'text/javascript';
+      script.async = false; // run synchronously
+      document.body.appendChild(script);
+
+      return () => {
+        const s = document.querySelector('script[src*="designrush.com"]');
+        if (s) s.remove();
+      };
+    }, [darkMode]);
 
   const timeZones = [
     { city: 'Accra', country: 'Ghana', timezone: 'Africa/Accra', flagCode: 'gh' },
@@ -476,32 +490,23 @@ export default function Footer({ darkMode, toggleDarkMode }) {
 
               {/* ── DesignRush Widget ─────────────────────────────────────── */}
               <div className="w-full max-w-2xl border-t border-b border-gray-200 dark:border-gray-700 py-6">
-                <p
-                  className="text-center text-xs text-gray-400 dark:text-gray-500 uppercase tracking-widest mb-4"
-                  style={{ fontFamily: 'Google Sans, sans-serif' }}
-                >
-                  Also on DesignRush
-                </p>
-                <div
-                  data-designrush-widget
-                  data-agency-id="93631"
-                  data-style={darkMode ? 'dark' : 'light'}
-                  aria-label="DesignRush agency reviews section"
-                  className="w-full"
-                />
-                <noscript>
-                  <div className="text-center">
-                    <a
-                      href="https://www.designrush.com/agency/profile/celestial-web-solutions#reviews"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-sm text-orange-500 hover:underline"
-                      style={{ fontFamily: 'Google Sans, sans-serif' }}
-                    >
-                      Review us on DesignRush →
-                    </a>
-                  </div>
-                </noscript>
+                  {/* Use Tailwind dark: classes to switch iframes */}
+                  <iframe
+                    src="/designrush-widget-dark.html"
+                    title="DesignRush Reviews"
+                    scrolling="no"
+                    frameBorder="0"
+                    className="w-full rounded-xl dark:block hidden"
+                    style={{ height: '120px', border: 'none' }}
+                  />
+                  <iframe
+                    src="/designrush-widget.html"
+                    title="DesignRush Reviews"
+                    scrolling="no"
+                    frameBorder="0"
+                    className="w-full rounded-xl dark:hidden block"
+                    style={{ height: '120px', border: 'none' }}
+                  />
               </div>
 
               {/* Copyright */}
@@ -555,11 +560,6 @@ export default function Footer({ darkMode, toggleDarkMode }) {
           </div>
         </div>
 
-        {/* ── External Scripts ──────────────────────────────────────────────── */}
-       <Script
-  src="https://www.designrush.com/topbest/js/widgets/agency-reviews.js"
-  strategy="afterInteractive"
-/>
 
       </footer>
     </>
