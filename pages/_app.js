@@ -9,6 +9,7 @@ import MouseTrail from '../components/MouseTrail';
 import ScrollToTop from '../components/ScrollToTop';
 import SpinningLogoLoader from '../components/SpinningLogoLoader';
 import TalkToExpertModal from '../components/TalkToExpertModal';
+import ReadingProgressBar from '../components/ui/ReadingProgressBar'; // moved to top, correct path
 
 const GA_TRACKING_ID = 'G-73D6Q2P389';
 const TIKTOK_PIXEL_ID = 'D6E4AVRC77UAAN008960';
@@ -66,6 +67,7 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <>
+        <ReadingProgressBar />
       {/* Show loader during page transitions — fixed duplicate */}
       {isLoading && <SpinningLogoLoader />}
 
