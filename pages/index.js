@@ -424,7 +424,7 @@ const IndexPage = () => {
         <HeroSwiper />
 
         {/* ── Hero Text Section ── */}
-        <section className="relative py-16 sm:py-20 bg-white dark:bg-gray-900 overflow-hidden">
+        <section className="relative py-16 sm:py-20 bg-white dark:bg-gray-900 overflow-hidden min-h-[420px]">
           <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
