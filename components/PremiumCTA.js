@@ -49,9 +49,9 @@ export default function PremiumCTA({
   };
 
   const variantClasses = {
-    primary: 'bg-gradient-to-r from-orange-500 via-orange-500 to-red-500 border border-orange-400/50 shadow-lg shadow-orange-500/25 text-white',
+    primary: 'bg-gradient-to-r from-orange-500 via-orange-500 to-red-500 border border-orange-400/50 shadow-lg shadow-orange-500/25 text-orange-600 dark:text-white',
     secondary: 'bg-white border border-white/80 shadow-lg text-orange-600',
-    outline: 'bg-transparent text-white border-2 border-white hover:bg-white/10',
+    outline: 'bg-transparent text-orange-600 dark:text-white border-2 border-white hover:bg-white/10',
   };
 
   const ButtonContent = () => (

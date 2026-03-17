@@ -580,17 +580,17 @@ export default function PricingWithCalculator() {
 
             {/* Billing Toggle */}
             <div className="inline-flex items-center justify-center space-x-4 bg-white/20 backdrop-blur-sm rounded-2xl p-2 flex-wrap">
-              <button onClick={() => setBillingPeriod("monthly")} className={`px-6 py-2 rounded-xl font-medium transition-all duration-300 ${billingPeriod === "monthly" ? "bg-white text-orange-600 shadow-lg" : "text-white hover:bg-white/10"}`} style={{ fontFamily: "Google Sans, sans-serif" }}>
+              <button onClick={() => setBillingPeriod("monthly")} className={`px-6 py-2 rounded-xl font-medium transition-all duration-300 ${billingPeriod === "monthly" ? "bg-white text-orange-800 shadow-lg" : "text-white hover:bg-white/10"}`} style={{ fontFamily: "Google Sans, sans-serif" }}>
                 CMS Development
               </button>
-              <button onClick={() => setBillingPeriod("yearly")} className={`px-6 py-2 rounded-xl font-medium transition-all duration-300 relative ${billingPeriod === "yearly" ? "bg-white text-orange-600 shadow-lg" : "text-white hover:bg-white/10"}`} style={{ fontFamily: "Google Sans, sans-serif" }}>
+              <button onClick={() => setBillingPeriod("yearly")} className={`px-6 py-2 rounded-xl font-medium transition-all duration-300 relative ${billingPeriod === "yearly" ? "bg-white text-orange-800 shadow-lg" : "text-white hover:bg-white/10"}`} style={{ fontFamily: "Google Sans, sans-serif" }}>
                 Full Stack Development
-                <span className="absolute -top-2 -right-2 bg-yellow-400 text-orange-800 text-xs px-2 py-1 rounded-full font-bold" style={{ fontFamily: "Google Sans, sans-serif" }}>Pro</span>
+                <span className="absolute -top-2 -right-2 bg-yellow-400 text-orange-900 text-xs px-2 py-1 rounded-full font-bold" style={{ fontFamily: "Google Sans, sans-serif" }}>Pro</span>
               </button>
             </div>
 
             {/* Calculator Toggle Button */}
-            <motion.button onClick={() => setShowCalculator(!showCalculator)} whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="mt-6 inline-flex items-center space-x-2 bg-white text-orange-600 px-6 py-3 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300" style={{ fontFamily: "Google Sans, sans-serif" }}>
+            <motion.button onClick={() => setShowCalculator(!showCalculator)} whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="mt-6 inline-flex items-center space-x-2 bg-white text-orange-800 px-6 py-3 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300" style={{ fontFamily: "Google Sans, sans-serif" }}>
               <Calculator size={20} />
               <span>{showCalculator ? "Hide Calculator" : "Calculate Your Price"}</span>
             </motion.button>
@@ -775,7 +775,7 @@ export default function PricingWithCalculator() {
                   ))}
                 </ul>
                 <PremiumCTA href={getWhatsAppLink(plan.name, plan.price[billingPeriod])} size="default" variant="primary" className="w-full justify-center" target="_blank" rel="noopener noreferrer">
-                  {plan.cta}
+                  {plan.cta || 'Order Now'}
                 </PremiumCTA>
                 {plan.renewalPrice && (
                   <div className="mt-4 pt-4 border-t border-gray-200 dark:border-gray-700 text-center">
@@ -802,12 +802,12 @@ export default function PricingWithCalculator() {
             
             {/* Package Type Toggle */}
             <div className="inline-flex items-center justify-center space-x-4 bg-gray-200 dark:bg-gray-700 rounded-2xl p-2 flex-wrap">
-              <button onClick={() => setBillingPeriod("monthly")} className={`px-6 py-2 rounded-xl font-medium transition-all duration-300 ${billingPeriod === "monthly" ? "bg-orange-500 text-white shadow-lg" : "text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600"}`} style={{ fontFamily: "Google Sans, sans-serif" }}>
+              <button onClick={() => setBillingPeriod("monthly")} className={`px-6 py-2 rounded-xl font-medium transition-all duration-300 ${billingPeriod === "monthly" ? "bg-orange-500 text-white shadow-lg" : "text-gray-800 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600"}`} style={{ fontFamily: "Google Sans, sans-serif" }}>
                 CMS Development
               </button>
-              <button onClick={() => setBillingPeriod("yearly")} className={`px-6 py-2 rounded-xl font-medium transition-all duration-300 relative ${billingPeriod === "yearly" ? "bg-orange-500 text-white shadow-lg" : "text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600"}`} style={{ fontFamily: "Google Sans, sans-serif" }}>
+              <button onClick={() => setBillingPeriod("yearly")} className={`px-6 py-2 rounded-xl font-medium transition-all duration-300 relative ${billingPeriod === "yearly" ? "bg-orange-500 text-white shadow-lg" : "text-gray-800 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600"}`} style={{ fontFamily: "Google Sans, sans-serif" }}>
                 Full Stack Development
-                <span className="absolute -top-2 -right-2 bg-yellow-400 text-orange-800 text-xs px-2 py-1 rounded-full font-bold" style={{ fontFamily: "Google Sans, sans-serif" }}>Pro</span>
+                <span className="absolute -top-2 -right-2 bg-yellow-400 text-orange-900 text-xs px-2 py-1 rounded-full font-bold" style={{ fontFamily: "Google Sans, sans-serif" }}>Pro</span>
               </button>
             </div>
           </div>
