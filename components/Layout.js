@@ -1,4 +1,5 @@
 import Footer from './Footer';
+import ReadingProgressBar from '@/components/ui/ReadingProgressBar';
 import Head from 'next/head';
 import PromoPopup from './PromoPopup';
 import { useState, useEffect } from 'react';
@@ -64,6 +65,7 @@ export default function Layout({ children }) {
 
   return (
     <div className="min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300">
+      <ReadingProgressBar />
       <Head>
         {/* Favicon */}
         <link rel="icon" href="/favicon.ico" sizes="any" />
