@@ -3,12 +3,13 @@ import { useRouter } from 'next/router';
 import Script from 'next/script';
 import '../styles/globals.css';
 import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
-import CustomCursor from '../components/CustomCursor';
-import MouseTrail from '../components/MouseTrail';
-import ScrollToTop from '../components/ScrollToTop';
-import SpinningLogoLoader from '../components/SpinningLogoLoader';
-import TalkToExpertModal from '../components/TalkToExpertModal';
+import dynamic from 'next/dynamic';
+const Footer = dynamic(() => import('../components/Footer'), { ssr: false });
+const CustomCursor = dynamic(() => import('../components/CustomCursor'), { ssr: false });
+const MouseTrail = dynamic(() => import('../components/MouseTrail'), { ssr: false });
+const ScrollToTop = dynamic(() => import('../components/ScrollToTop'), { ssr: false });
+const SpinningLogoLoader = dynamic(() => import('../components/SpinningLogoLoader'), { ssr: false });
+const TalkToExpertModal = dynamic(() => import('../components/TalkToExpertModal'), { ssr: false });
 import ReadingProgressBar from '../components/ui/ReadingProgressBar'; // moved to top, correct path
 
 const GA_TRACKING_ID = 'G-73D6Q2P389';
@@ -118,12 +119,14 @@ function MyApp({ Component, pageProps }) {
       <Component {...pageProps} />
       <Footer />
 
-      {/* AdSense — lazyOnload means it loads after everything else */}
-      <Script
-        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6987345868426841"
-        strategy="lazyOnload"
-        crossOrigin="anonymous"
-      />
+      {/* AdSense — lazyOnload means it loads after everything else, only on homepage */}
+      {router.pathname === '/' && (
+        <Script
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6987345868426841"
+          strategy="lazyOnload"
+          crossOrigin="anonymous"
+        />
+      )}
 
       {/* Auto-popup: Talk to an Expert */}
       <TalkToExpertModal

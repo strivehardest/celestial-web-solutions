@@ -14,15 +14,16 @@ const happyClients = [
 ];
 
 import { useState, useEffect, useRef } from 'react';
-import TestimonialsSection from '../components/TestimonialsSection';
+const TestimonialsSection = dynamic(() => import('../components/TestimonialsSection'), { ssr: false });
 import { useRouter } from 'next/router';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Code, Monitor, Search, ShoppingCart, ArrowRight, Zap, CheckCircle } from 'lucide-react';
 import Head from 'next/head';
 import Link from 'next/link';
 import Image from 'next/image';
-import WhatsAppButton from '../components/WhatsAppButton';
-import PremiumCTA, { TextCTA } from '../components/PremiumCTA';
+const WhatsAppButton = dynamic(() => import('../components/WhatsAppButton'), { ssr: false });
+const PremiumCTA = dynamic(() => import('../components/PremiumCTA'), { ssr: false });
+import { TextCTA } from '../components/PremiumCTA';
 import CTASection from '../components/CTASection';
 import dynamic from 'next/dynamic';
 
@@ -311,9 +312,10 @@ const PortfolioShowcase = () => {
                   <Image
                     src={item.image}
                     alt={item.title}
-                    fill
+                    width={680}
+                    height={425}
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                    priority={index === 0}
+                    priority={index < 3}
                     className="object-cover group-hover:scale-[1.04] transition-transform duration-500"
                     onError={(e) => { e.target.src = `https://placehold.co/680x425/1a1a1a/ffffff?text=${encodeURIComponent(item.title)}`; }}
                   />
@@ -421,10 +423,12 @@ const IndexPage = () => {
       <div className="min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300">
 
         {/* ── HERO SECTION — Kava-style Swiper Slider ── */}
-        <HeroSwiper />
+        <div className="min-h-[320px] w-full">
+          <HeroSwiper />
+        </div>
 
         {/* ── Hero Text Section ── */}
-        <section className="relative py-16 sm:py-20 bg-white dark:bg-gray-900 overflow-hidden min-h-[420px]">
+        <section className="relative py-16 sm:py-20 bg-white dark:bg-gray-900 overflow-hidden min-h-[520px]">
           <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -670,7 +674,7 @@ const IndexPage = () => {
                   transition={{ delay: index * 0.15 }}
                   className="bg-white dark:bg-gray-900 rounded-3xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 group flex flex-col"
                 >
-                  <div className="relative h-56 overflow-hidden">
+                  <div className="relative h-56 min-h-[224px] overflow-hidden">
                     <Image src={article.image} alt={article.title} fill sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" className="object-cover group-hover:scale-110 transition-transform duration-700" />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
                     <div className="absolute top-4 left-4 px-3 py-1 bg-gradient-to-r from-orange-500 to-orange-600 rounded-full text-white text-xs font-semibold">{article.category}</div>
@@ -742,7 +746,7 @@ const IndexPage = () => {
                       {category.items.map((item, itemIndex) => (
                         <motion.div key={`${item.name}-${index}-${itemIndex}`} className="flex flex-col items-center w-16 sm:w-20 flex-shrink-0" whileHover={{ y: -5, scale: 1.05 }} transition={{ duration: 0.2 }}>
                           <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-xl bg-gray-100 dark:bg-gray-800 p-2 sm:p-3 flex items-center justify-center hover:shadow-xl hover:bg-orange-50 dark:hover:bg-gray-700 transition-all duration-300 group">
-                            <img src={item.icon} alt={item.name} className="max-w-8 max-h-8 sm:max-w-10 sm:max-h-10 object-contain group-hover:scale-110 transition-transform duration-300" onError={(e) => { e.target.style.display = 'none'; }} />
+                            <Image src={item.icon} alt={item.name} width={40} height={40} className="max-w-8 max-h-8 sm:max-w-10 sm:max-h-10 object-contain group-hover:scale-110 transition-transform duration-300" onError={(e) => { e.target.style.display = 'none'; }} />
                           </div>
                           <span className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 mt-2 font-medium text-center">{item.name}</span>
                         </motion.div>

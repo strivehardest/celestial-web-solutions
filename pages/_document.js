@@ -14,7 +14,12 @@ export default function Document() {
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         
-        {/* Bricolage Grotesque – load immediately to avoid missing headings */}
+        {/* Preload Bricolage Grotesque for headings */}
+        <link
+          rel="preload"
+          as="style"
+          href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap"
+        />
         <link 
           href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap" 
           rel="stylesheet" 
@@ -26,12 +31,10 @@ export default function Document() {
           rel="stylesheet" 
         />
         
-        {/* Google Sans with font-display swap and async loading */}
+        {/* Google Sans with font-display swap, loaded eagerly */}
         <link 
           href="https://fonts.cdnfonts.com/css/google-sans?display=swap" 
           rel="stylesheet" 
-          media="print"
-          onLoad="this.media='all'"
         />
         {/* Google AdSense */}
         <script
