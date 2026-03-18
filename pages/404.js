@@ -35,7 +35,7 @@ export default function Custom404() {
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link
-          href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@300;400;500;600;700;800&family=Google Sans:wght@300;400;500;600;700&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@300;400;500;600;700;800&family=Albert+Sans:wght@300;400;500;600;700&display=swap"
           rel="stylesheet"
         />
       </Head>
@@ -65,7 +65,7 @@ export default function Custom404() {
           </h2>
           <p
             className="text-lg text-orange-100 max-w-3xl mx-auto leading-relaxed relative z-10"
-            style={{ fontFamily: "Google Sans, sans-serif" }}
+            style={{ fontFamily: "Albert Sans, sans-serif" }}
           >
             The page you're looking for might have been moved, does not exists or no longer exists. Try searching
             our site, return home, or contact us and we'll help you find what you need.
@@ -87,7 +87,7 @@ export default function Custom404() {
                   </h3>
                   <p
                     className="text-gray-600 dark:text-gray-300 mb-6"
-                    style={{ fontFamily: "Google Sans, sans-serif" }}
+                    style={{ fontFamily: "Albert Sans, sans-serif" }}
                   >
                     It might be a broken link, a mistyped URL, or the content has moved. Try one of
                     the quick actions below - or use the search to look for keywords (page title,
@@ -102,13 +102,13 @@ export default function Custom404() {
                       onChange={(e) => setQuery(e.target.value)}
                       placeholder="Search the site (e.g. 'pricing', 'portfolio')"
                       className="flex-1 px-4 py-3 rounded-xl border border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-400"
-                      style={{ fontFamily: "Google Sans, sans-serif" }}
+                      style={{ fontFamily: "Albert Sans, sans-serif" }}
                       aria-label="Search the site"
                     />
                     <button
                       type="submit"
                       className="inline-flex items-center space-x-2 bg-gradient-to-r from-orange-500 to-orange-600 text-white px-4 py-3 rounded-xl font-semibold shadow hover:shadow-lg transition-all duration-200"
-                      style={{ fontFamily: "Google Sans, sans-serif" }}
+                      style={{ fontFamily: "Albert Sans, sans-serif" }}
                     >
                       <span>Search</span>
                     </button>
@@ -118,7 +118,7 @@ export default function Custom404() {
                     <Link
                       href="/"
                       className="inline-flex items-center justify-center bg-gradient-to-r from-orange-500 to-orange-600 text-white px-6 py-3 rounded-2xl font-semibold shadow hover:shadow-xl transition-all duration-300"
-                      style={{ fontFamily: "Google Sans, sans-serif" }}
+                      style={{ fontFamily: "Albert Sans, sans-serif" }}
                     >
                       <span>Back to Home</span>
                       <ArrowRight className="ml-3" size={16} />
@@ -127,7 +127,7 @@ export default function Custom404() {
                     <Link
                       href="/contact"
                       className="inline-flex items-center justify-center border-2 border-orange-500 text-orange-600 px-6 py-3 rounded-2xl font-semibold hover:bg-orange-50 transition-all duration-300"
-                      style={{ fontFamily: "Google Sans, sans-serif" }}
+                      style={{ fontFamily: "Albert Sans, sans-serif" }}
                     >
                       <span>Contact Support</span>
                     </Link>
@@ -135,7 +135,7 @@ export default function Custom404() {
                     <a
                       href="tel:+233245671832"
                       className="inline-flex items-center justify-center text-white bg-green-600 px-6 py-3 rounded-2xl font-semibold hover:bg-green-700 transition-all duration-300"
-                      style={{ fontFamily: "Google Sans, sans-serif" }}
+                      style={{ fontFamily: "Albert Sans, sans-serif" }}
                     >
                       <span>Call Us</span>
                     </a>
@@ -179,7 +179,7 @@ export default function Custom404() {
                   >
                     Quick links
                   </h4>
-                  <ul className="space-y-3 text-gray-600 dark:text-gray-300" style={{ fontFamily: "Google Sans, sans-serif" }}>
+                  <ul className="space-y-3 text-gray-600 dark:text-gray-300" style={{ fontFamily: "Albert Sans, sans-serif" }}>
                     <li>
                       <Link href="/web-design-company-in-ghana" className="hover:underline">
                         Our Services
@@ -208,7 +208,7 @@ export default function Custom404() {
                   </ul>
 
                   <div className="mt-6">
-                    <p className="text-sm text-gray-500 dark:text-gray-400" style={{ fontFamily: "Google Sans, sans-serif" }}>
+                    <p className="text-sm text-gray-500 dark:text-gray-400" style={{ fontFamily: "Albert Sans, sans-serif" }}>
                       Prefer direct help?
                     </p>
                     <div className="mt-3">
@@ -217,7 +217,7 @@ export default function Custom404() {
                         target="_blank"
                         rel="noopener noreferrer"
                         className="inline-flex items-center px-4 py-2 bg-green-500 text-white rounded-lg shadow hover:bg-green-600 transition-all duration-200"
-                        style={{ fontFamily: "Google Sans, sans-serif" }}
+                        style={{ fontFamily: "Albert Sans, sans-serif" }}
                       >
                         Message us on WhatsApp
                       </a>
@@ -228,7 +228,7 @@ export default function Custom404() {
             </div>
 
             {/* Small helper note */}
-            <div className="mt-8 text-center text-sm text-gray-500 dark:text-gray-400" style={{ fontFamily: "Google Sans, sans-serif" }}>
+            <div className="mt-8 text-center text-sm text-gray-500 dark:text-gray-400" style={{ fontFamily: "Albert Sans, sans-serif" }}>
               If you think this is a mistake, please <Link href="/contact" className="underline">contact us</Link> and mention the broken link.
             </div>
           </div>

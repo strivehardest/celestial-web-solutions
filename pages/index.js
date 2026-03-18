@@ -40,7 +40,7 @@ const GlassButton = ({ children, href, variant = "light", className = "" }) => {
   };
 
   return (
-    <Link href={href} className={`${baseClasses} ${variants[variant]} ${className}`} style={{ fontFamily: 'Google Sans, sans-serif' }}>
+    <Link href={href} className={`${baseClasses} ${variants[variant]} ${className}`} style={{ fontFamily: 'Albert Sans, sans-serif', fontWeight: 400 }}>
       {children}
       <ArrowRight size={18} />
     </Link>
@@ -274,7 +274,7 @@ const PortfolioShowcase = () => {
           <div>
             <span
               className="inline-block px-4 py-1.5 rounded-full text-xs font-semibold tracking-wider uppercase bg-orange-500/10 text-orange-500 dark:text-orange-400 border border-orange-500/20 mb-5"
-              style={{ fontFamily: 'Google Sans, sans-serif' }}
+              style={{ fontFamily: 'Albert Sans, sans-serif' }}
             >
               Showcase
             </span>
@@ -289,7 +289,7 @@ const PortfolioShowcase = () => {
             href="/portfolio"
             aria-label="View all our web design projects"
             className="group inline-flex items-center gap-2 text-sm font-semibold text-orange-500 hover:text-orange-600 dark:text-orange-400 dark:hover:text-orange-300 transition-colors shrink-0"
-            style={{ fontFamily: 'Google Sans, sans-serif' }}
+            style={{ fontFamily: 'Albert Sans, sans-serif' }}
           >
             View all projects
             <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
@@ -326,7 +326,7 @@ const PortfolioShowcase = () => {
                   <div className="absolute bottom-0 left-0 right-0 p-4 md:p-5">
                     <h3
                       className="text-sm md:text-base font-semibold text-white leading-snug"
-                      style={{ fontFamily: 'Google Sans, sans-serif' }}
+                      style={{ fontFamily: 'Albert Sans, sans-serif' }}
                     >
                       {item.title}
                     </h3>
@@ -439,7 +439,7 @@ const IndexPage = () => {
             >
               <motion.div
                 className="inline-flex items-center space-x-2 bg-orange-100 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400 px-4 py-2 rounded-full mb-6 text-xs sm:text-sm font-semibold"
-                style={{ fontFamily: 'Google Sans, sans-serif' }}
+                style={{ fontFamily: 'Albert Sans, sans-serif' }}
                 initial={{ opacity: 0, scale: 0.8 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
@@ -459,7 +459,7 @@ const IndexPage = () => {
 
               <p
                 className="text-base sm:text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed mb-8"
-                style={{ fontFamily: 'Google Sans, sans-serif' }}
+                style={{ fontFamily: 'Albert Sans, sans-serif' }}
               >
                 From concept to deployment, we build scalable web applications that drive business growth. Let&rsquo;s turn your vision into digital reality.{' '}
                 <Link href="/best-web-designer-in-accra" className="text-orange-500 hover:text-orange-600 underline underline-offset-4 font-semibold">
@@ -488,10 +488,10 @@ const IndexPage = () => {
               <h2 className="text-2xl sm:text-3xl font-bold mb-4 text-orange-600 dark:text-orange-400" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>
                 Grow Your Business Online
               </h2>
-              <p className="text-lg sm:text-xl text-gray-700 dark:text-gray-200 leading-relaxed mb-2" style={{ fontFamily: 'Google Sans, sans-serif' }}>
+              <p className="text-lg sm:text-xl text-gray-700 dark:text-gray-200 leading-relaxed mb-2" style={{ fontFamily: 'Albert Sans, sans-serif' }}>
                 Celestial Web Solutions is a professional web design and development company in Ghana, helping businesses grow online with modern, responsive, and SEO-friendly websites.
               </p>
-              <p className="text-base sm:text-lg text-gray-600 dark:text-gray-300 leading-relaxed mt-2" style={{ fontFamily: 'Google Sans, sans-serif' }}>
+              <p className="text-base sm:text-lg text-gray-600 dark:text-gray-300 leading-relaxed mt-2" style={{ fontFamily: 'Albert Sans, sans-serif' }}>
                 As a trusted website design company in Ghana, we work with startups, SMEs, and established businesses across Accra, Keta, and other parts of Ghana, delivering custom digital solutions that drive growth.
               </p>
             </motion.div>
@@ -567,14 +567,14 @@ const IndexPage = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 className="inline-block px-4 py-2 bg-orange-100 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400 rounded-full text-sm font-semibold mb-4"
-                style={{ fontFamily: 'Google Sans, sans-serif' }}
+                style={{ fontFamily: 'Albert Sans, sans-serif' }}
               >
                 WHAT WE DO
               </motion.span>
               <h2 className="text-3xl md:text-5xl font-bold bg-gradient-to-r from-orange-600 to-orange-500 bg-clip-text text-transparent mb-4" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>
                 Our Core Services
               </h2>
-              <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto text-lg" style={{ fontFamily: 'Google Sans, sans-serif' }}>
+              <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto text-lg" style={{ fontFamily: 'Albert Sans, sans-serif' }}>
                 Comprehensive digital solutions for your business
               </p>
             </motion.div>
@@ -601,12 +601,12 @@ const IndexPage = () => {
                   </div>
 
                   <div className="w-full lg:w-1/2 space-y-5">
-                    <span className="text-orange-500 font-semibold text-sm tracking-wider" style={{ fontFamily: 'Google Sans, sans-serif' }}>SERVICE 0{index + 1}</span>
+                    <span className="text-orange-500 font-semibold text-sm tracking-wider" style={{ fontFamily: 'Albert Sans, sans-serif' }}>SERVICE 0{index + 1}</span>
                     <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>{service.title}</h3>
-                    {index === 0 && (<><p className="text-gray-600 dark:text-gray-300 text-lg leading-relaxed mb-2" style={{ fontFamily: 'Google Sans, sans-serif' }}>We offer professional website design services in Ghana tailored to meet the needs of businesses in different industries. Our websites are designed to be user-friendly, visually engaging, and conversion-focused.</p><p className="text-gray-600 dark:text-gray-300 text-lg leading-relaxed" style={{ fontFamily: 'Google Sans, sans-serif' }}>Whether you need a business website, portfolio website, or corporate website, Celestial Web Solutions ensures your website reflects your brand and builds trust with your audience.</p></>)}
-                    {index === 1 && (<><p className="text-gray-600 dark:text-gray-300 text-lg leading-relaxed mb-2" style={{ fontFamily: 'Google Sans, sans-serif' }}>As a reliable web development company in Ghana, we build custom websites and web applications that are secure, scalable, and performance-driven.</p><p className="text-gray-600 dark:text-gray-300 text-lg leading-relaxed" style={{ fontFamily: 'Google Sans, sans-serif' }}>We work with modern technologies to deliver reliable web solutions for businesses looking to grow online in Ghana and beyond.</p></>)}
-                    {index === 2 && (<><p className="text-gray-600 dark:text-gray-300 text-lg leading-relaxed mb-2" style={{ fontFamily: 'Google Sans, sans-serif' }}>Looking to sell online? We provide e-commerce website development in Ghana for businesses that want to reach more customers and increase sales.</p><ul className="list-disc pl-6 text-gray-600 dark:text-gray-300 text-lg mb-2" style={{ fontFamily: 'Google Sans, sans-serif' }}><li>Online stores</li><li>Secure payment integration</li><li>Product management systems</li><li>Mobile-friendly shopping experiences</li></ul></>)}
-                    {index === 3 && (<><p className="text-gray-600 dark:text-gray-300 text-lg leading-relaxed mb-2" style={{ fontFamily: 'Google Sans, sans-serif' }}>A great website is useless without visibility. Our SEO services in Ghana help businesses rank higher on Google and attract organic traffic.</p><ul className="list-disc pl-6 text-gray-600 dark:text-gray-300 text-lg mb-2" style={{ fontFamily: 'Google Sans, sans-serif' }}><li>On-page SEO optimization</li><li>Keyword research</li><li>Technical SEO</li><li>Local SEO for Ghanaian businesses</li></ul></>)}
+                    {index === 0 && (<><p className="text-gray-600 dark:text-gray-300 text-lg leading-relaxed mb-2" style={{ fontFamily: 'Albert Sans, sans-serif' }}>We offer professional website design services in Ghana tailored to meet the needs of businesses in different industries. Our websites are designed to be user-friendly, visually engaging, and conversion-focused.</p><p className="text-gray-600 dark:text-gray-300 text-lg leading-relaxed" style={{ fontFamily: 'Albert Sans, sans-serif' }}>Whether you need a business website, portfolio website, or corporate website, Celestial Web Solutions ensures your website reflects your brand and builds trust with your audience.</p></>)}
+                    {index === 1 && (<><p className="text-gray-600 dark:text-gray-300 text-lg leading-relaxed mb-2" style={{ fontFamily: 'Albert Sans, sans-serif' }}>As a reliable web development company in Ghana, we build custom websites and web applications that are secure, scalable, and performance-driven.</p><p className="text-gray-600 dark:text-gray-300 text-lg leading-relaxed" style={{ fontFamily: 'Albert Sans, sans-serif' }}>We work with modern technologies to deliver reliable web solutions for businesses looking to grow online in Ghana and beyond.</p></>)}
+                    {index === 2 && (<><p className="text-gray-600 dark:text-gray-300 text-lg leading-relaxed mb-2" style={{ fontFamily: 'Albert Sans, sans-serif' }}>Looking to sell online? We provide e-commerce website development in Ghana for businesses that want to reach more customers and increase sales.</p><ul className="list-disc pl-6 text-gray-600 dark:text-gray-300 text-lg mb-2" style={{ fontFamily: 'Albert Sans, sans-serif' }}><li>Online stores</li><li>Secure payment integration</li><li>Product management systems</li><li>Mobile-friendly shopping experiences</li></ul></>)}
+                    {index === 3 && (<><p className="text-gray-600 dark:text-gray-300 text-lg leading-relaxed mb-2" style={{ fontFamily: 'Albert Sans, sans-serif' }}>A great website is useless without visibility. Our SEO services in Ghana help businesses rank higher on Google and attract organic traffic.</p><ul className="list-disc pl-6 text-gray-600 dark:text-gray-300 text-lg mb-2" style={{ fontFamily: 'Albert Sans, sans-serif' }}><li>On-page SEO optimization</li><li>Keyword research</li><li>Technical SEO</li><li>Local SEO for Ghanaian businesses</li></ul></>)}
                     <div className="pt-2">
                       <GlassButton href={service.link} variant="orange">Explore {service.title}</GlassButton>
                     </div>
@@ -633,14 +633,14 @@ const IndexPage = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 className="inline-block px-4 py-2 bg-orange-100 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400 rounded-full text-sm font-semibold mb-4"
-                style={{ fontFamily: 'Google Sans, sans-serif' }}
+                style={{ fontFamily: 'Albert Sans, sans-serif' }}
               >
                 INSIGHTS & TIPS
               </motion.span>
               <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-orange-600 to-orange-500 bg-clip-text text-transparent" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>
                 Latest Blog Articles
               </h2>
-              <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed" style={{ fontFamily: 'Google Sans, sans-serif' }}>
+              <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed" style={{ fontFamily: 'Albert Sans, sans-serif' }}>
                 Expert insights, tips, and guides to help your business thrive online
               </p>
             </motion.div>
@@ -681,17 +681,17 @@ const IndexPage = () => {
                   </div>
                   <div className="p-6 md:p-8 flex flex-col flex-grow">
                     <h3 className="text-xl md:text-2xl font-bold text-gray-900 dark:text-white mb-3 group-hover:text-orange-600 dark:group-hover:text-orange-400 transition-colors" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>{article.title}</h3>
-                    <p className="text-gray-600 dark:text-gray-300 leading-relaxed mb-6 flex-grow" style={{ fontFamily: 'Google Sans, sans-serif' }}>{article.excerpt}</p>
+                    <p className="text-gray-600 dark:text-gray-300 leading-relaxed mb-6 flex-grow" style={{ fontFamily: 'Albert Sans, sans-serif' }}>{article.excerpt}</p>
                     <div className="flex items-center justify-between pt-4 border-t border-gray-200 dark:border-gray-700">
                       <div className="flex flex-col gap-1">
-                        <span className="text-xs text-gray-500 dark:text-gray-400" style={{ fontFamily: 'Google Sans, sans-serif' }}>{article.date}</span>
-                        <span className="text-sm text-gray-500 dark:text-gray-400" style={{ fontFamily: 'Google Sans, sans-serif' }}>{article.readTime}</span>
+                        <span className="text-xs text-gray-500 dark:text-gray-400" style={{ fontFamily: 'Albert Sans, sans-serif' }}>{article.date}</span>
+                        <span className="text-sm text-gray-500 dark:text-gray-400" style={{ fontFamily: 'Albert Sans, sans-serif' }}>{article.readTime}</span>
                       </div>
                       <Link
                         href={`/blog/${article.slug}`}
                         aria-label={`Read More about ${article.title}`}
                       >
-                        <motion.span className="inline-flex items-center gap-2 text-orange-600 dark:text-orange-400 font-semibold text-sm hover:gap-3 transition-all" style={{ fontFamily: 'Google Sans, sans-serif' }} whileHover={{ x: 5 }}>
+                        <motion.span className="inline-flex items-center gap-2 text-orange-600 dark:text-orange-400 font-semibold text-sm hover:gap-3 transition-all" style={{ fontFamily: 'Albert Sans, sans-serif' }} whileHover={{ x: 5 }}>
                           Read More
                           <span className="sr-only">about {article.title}</span>
                           <ArrowRight className="w-4 h-4" />
@@ -716,7 +716,7 @@ const IndexPage = () => {
               <h2 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-orange-600 to-orange-500 bg-clip-text text-transparent mb-4" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>
                 Our Technology Stack
               </h2>
-              <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto" style={{ fontFamily: 'Google Sans, sans-serif' }}>
+              <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto" style={{ fontFamily: 'Albert Sans, sans-serif' }}>
                 Modern tools and technologies we use to build exceptional digital experiences
               </p>
             </motion.div>
@@ -771,7 +771,7 @@ const IndexPage = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 className="inline-block px-4 py-2 bg-orange-100 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400 rounded-full text-sm font-semibold mb-6 uppercase tracking-wider"
-                style={{ fontFamily: 'Google Sans, sans-serif' }}
+                style={{ fontFamily: 'Albert Sans, sans-serif' }}
               >
                 Best in Web Design in Ghana
               </motion.span>
@@ -781,7 +781,7 @@ const IndexPage = () => {
               </h2>
               <div className="max-w-3xl mx-auto mt-10 mb-12 text-center">
                 <h2 className="text-2xl md:text-3xl font-bold text-orange-600 dark:text-orange-400 mb-4" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>Why Choose Celestial Web Solutions</h2>
-                <p className="text-lg text-gray-700 dark:text-gray-200 mb-4" style={{ fontFamily: 'Google Sans, sans-serif' }}>Businesses choose Celestial Web Solutions because we deliver quality, reliability, and results.</p>
+                <p className="text-lg text-gray-700 dark:text-gray-200 mb-4" style={{ fontFamily: 'Albert Sans, sans-serif' }}>Businesses choose Celestial Web Solutions because we deliver quality, reliability, and results.</p>
                 <ul className="list-none space-y-2 text-left inline-block mx-auto mb-4">
                   {["Experienced web designers and developers","Affordable website design packages","SEO-friendly websites","Mobile-responsive designs","Client-focused approach"].map((item) => (
                     <li key={item} className="flex items-center text-base text-gray-700 dark:text-gray-200"><CheckCircle className="w-5 h-5 text-orange-500 mr-2" />{item}</li>
@@ -792,10 +792,10 @@ const IndexPage = () => {
 
             <div className="grid lg:grid-cols-2 gap-16 items-start mb-20">
               <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
-                <p className="text-gray-600 dark:text-gray-300 text-lg mb-6 leading-relaxed" style={{ fontFamily: 'Google Sans, sans-serif' }}>
+                <p className="text-gray-600 dark:text-gray-300 text-lg mb-6 leading-relaxed" style={{ fontFamily: 'Albert Sans, sans-serif' }}>
                   Celestial Web Solutions based in Accra, Ghana is a website design and digital marketing company with years of experience on the Ghanaian market. We have had the privilege of working with award winning clients and international prestigious companies as well as start-up companies.
                 </p>
-                <p className="text-gray-600 dark:text-gray-300 text-lg mb-8 leading-relaxed" style={{ fontFamily: 'Google Sans, sans-serif' }}>
+                <p className="text-gray-600 dark:text-gray-300 text-lg mb-8 leading-relaxed" style={{ fontFamily: 'Albert Sans, sans-serif' }}>
                   Our dedication in crafting custom professional websites that meet industry standards with the latest and innovative technologies has positioned us as one of the leading and best web design companies in Accra, Ghana to work with.
                 </p>
                 <div className="flex flex-wrap gap-4">
@@ -815,7 +815,7 @@ const IndexPage = () => {
                     </div>
                     <div>
                       <p className="text-2xl font-bold text-gray-900 dark:text-white" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>3+</p>
-                      <p className="text-sm text-gray-500 dark:text-gray-400" style={{ fontFamily: 'Google Sans, sans-serif' }}>Years Experience</p>
+                      <p className="text-sm text-gray-500 dark:text-gray-400" style={{ fontFamily: 'Albert Sans, sans-serif' }}>Years Experience</p>
                     </div>
                   </div>
                 </motion.div>
@@ -834,13 +834,13 @@ const IndexPage = () => {
           </div>
           <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} viewport={{ once: true }}>
-              <span className="inline-block px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full text-white text-sm font-semibold mb-6" style={{ fontFamily: 'Google Sans, sans-serif' }}>
+              <span className="inline-block px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full text-white text-sm font-semibold mb-6" style={{ fontFamily: 'Albert Sans, sans-serif' }}>
                 Web Design Company Serving Accra, Keta, Ghana and across the Globe
               </span>
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>
                 Celestial Web Solutions proudly serves clients across Accra, Keta, and all regions of Ghana.
               </h2>
-              <p className="text-lg sm:text-xl text-orange-100 mb-10 max-w-2xl mx-auto" style={{ fontFamily: 'Google Sans, sans-serif' }}>
+              <p className="text-lg sm:text-xl text-orange-100 mb-10 max-w-2xl mx-auto" style={{ fontFamily: 'Albert Sans, sans-serif' }}>
                 No matter your location, we provide professional web design and development services tailored to your business goals.<br /><br />
                 Contact us today to get a professional website that helps your business grow online
               </p>

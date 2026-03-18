@@ -204,7 +204,7 @@ export default function TestimonialsSection() {
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">
         <span
           className="inline-block px-4 py-2 bg-orange-100 dark:bg-orange-900/40 text-orange-700 dark:text-orange-300 rounded-full text-sm font-semibold uppercase tracking-wider transition-colors duration-300"
-          style={{ fontFamily: 'Google Sans, sans-serif' }}
+          style={{ fontFamily: 'Albert Sans, sans-serif' }}
         >
           What our clients say
         </span>
@@ -275,7 +275,7 @@ export default function TestimonialsSection() {
                   </p>
                   <p
                     className="text-gray-600 dark:text-gray-400 text-sm uppercase tracking-wider transition-colors duration-300"
-                    style={{ fontFamily: 'Google Sans, sans-serif' }}
+                    style={{ fontFamily: 'Albert Sans, sans-serif' }}
                   >
                     {t.role}
                   </p>
@@ -286,7 +286,7 @@ export default function TestimonialsSection() {
               <div className="border-l-2 border-orange-500/50 pl-4">
                 <p
                   className="text-gray-700 dark:text-gray-200 text-sm font-medium transition-colors duration-300"
-                  style={{ fontFamily: 'Google Sans, sans-serif' }}
+                  style={{ fontFamily: ' Albert Sans, sans-serif' }}
                 >
                   {t.company}
                 </p>

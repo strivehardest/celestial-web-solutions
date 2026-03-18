@@ -223,7 +223,7 @@ export default function AboutUs() {
                 className="inline-flex items-center gap-2 bg-orange-500/10 border border-orange-500/30 rounded-full px-4 py-2 mb-6"
               >
                 <span className="w-2 h-2 rounded-full bg-orange-500 animate-pulse"></span>
-                <span className="text-orange-400 text-sm font-medium" style={{ fontFamily: "Google Sans, sans-serif" }}>
+                <span className="text-orange-400 text-sm font-medium" style={{ fontFamily: "Albert Sans, sans-serif" }}>
                   BEST IN WEB DESIGN IN GHANA
                 </span>
               </motion.div>
@@ -237,7 +237,7 @@ export default function AboutUs() {
 
               <p
                 className="text-gray-400 text-lg md:text-xl leading-relaxed mb-8 max-w-xl"
-                style={{ fontFamily: "Google Sans, sans-serif" }}
+                style={{ fontFamily: "Albert Sans, sans-serif" }}
               >
                 At <span className="text-orange-400 font-semibold">Celestial Web Solutions</span>, we specialize in building modern, responsive, and user-friendly digital experiences that help businesses grow and thrive online.
               </p>
@@ -249,7 +249,7 @@ export default function AboutUs() {
                     whileHover={{ scale: 1.02, y: -2 }}
                     whileTap={{ scale: 0.98 }}
                     className="group flex items-center justify-center gap-2 bg-gradient-to-r from-orange-500 to-orange-600 text-white px-8 py-4 rounded-xl font-semibold shadow-lg shadow-orange-500/25 hover:shadow-orange-500/40 transition-all duration-300"
-                    style={{ fontFamily: "Google Sans, sans-serif" }}
+                    style={{ fontFamily: "Albert Sans, sans-serif" }}
                   >
                     Work With Us
                     <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
@@ -260,7 +260,7 @@ export default function AboutUs() {
                     whileHover={{ scale: 1.02, y: -2 }}
                     whileTap={{ scale: 0.98 }}
                     className="flex items-center justify-center gap-2 border-2 border-gray-700 hover:border-orange-500/50 text-white px-8 py-4 rounded-xl font-semibold transition-all duration-300"
-                    style={{ fontFamily: "Google Sans, sans-serif" }}
+                    style={{ fontFamily: "Albert Sans, sans-serif" }}
                   >
                     View Portfolio
                   </motion.button>
@@ -295,7 +295,7 @@ export default function AboutUs() {
                     <div className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-1" style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}>
                       {stat.value}
                     </div>
-                    <div className="text-gray-400 text-sm md:text-base" style={{ fontFamily: "Google Sans, sans-serif" }}>
+                    <div className="text-gray-400 text-sm md:text-base" style={{ fontFamily: "Albert Sans, sans-serif" }}>
                       {stat.label}
                     </div>
                   </motion.div>
@@ -316,11 +316,11 @@ export default function AboutUs() {
                       <Phone size={24} className="text-white" />
                     </div>
                     <div>
-                      <p className="text-white/80 text-sm" style={{ fontFamily: "Google Sans, sans-serif" }}>Ready to start?</p>
+                      <p className="text-white/80 text-sm" style={{ fontFamily: "Albert Sans, sans-serif" }}>Ready to start?</p>
                       <p className="text-white font-bold text-lg" style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}>Let's Talk</p>
                     </div>
                   </div>
-                  <p className="text-white/90 text-sm mb-4" style={{ fontFamily: "Google Sans, sans-serif" }}>
+                  <p className="text-white/90 text-sm mb-4" style={{ fontFamily: "Albert Sans, sans-serif" }}>
                     Get a free consultation and quote for your next project
                   </p>
                   <Link href="/contact">
@@ -328,7 +328,7 @@ export default function AboutUs() {
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
                       className="w-full bg-white text-orange-600 font-semibold py-3 rounded-xl hover:bg-gray-100 transition-colors"
-                      style={{ fontFamily: "Google Sans, sans-serif" }}
+                      style={{ fontFamily: "Albert Sans, sans-serif" }}
                     >
                       Contact Us Now
                     </motion.button>
@@ -357,7 +357,7 @@ export default function AboutUs() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   className="inline-block text-orange-500 font-semibold text-sm tracking-wider uppercase mb-4"
-                  style={{ fontFamily: "Google Sans, sans-serif" }}
+                  style={{ fontFamily: "Albert Sans, sans-serif" }}
                 >
                   About Celestial
                 </motion.span>
@@ -372,7 +372,7 @@ export default function AboutUs() {
                   </span>
                 </h2>
 
-                <div className="space-y-6 text-gray-600 dark:text-gray-300" style={{ fontFamily: "Google Sans, sans-serif" }}>
+                <div className="space-y-6 text-gray-600 dark:text-gray-300" style={{ fontFamily: "Albert Sans, sans-serif" }}>
                   <p className="text-lg leading-relaxed">
                     <span className="text-orange-500 font-semibold">Celestial Web Solutions</span> is the top-rated web design and development agency in Ghana, headquartered in Keta with clients across Accra, Kumasi, Takoradi, and internationally. We specialize in creating beautiful, functional, and user-centered digital experiences that help businesses establish a powerful online presence.
                   </p>
@@ -407,7 +407,7 @@ export default function AboutUs() {
                       <div className="w-6 h-6 rounded-full bg-orange-500 flex items-center justify-center flex-shrink-0">
                         <CheckCircle size={14} className="text-white" />
                       </div>
-                      <span className="text-gray-700 dark:text-gray-300 font-medium" style={{ fontFamily: "Google Sans, sans-serif" }}>
+                      <span className="text-gray-700 dark:text-gray-300 font-medium" style={{ fontFamily: "Albert Sans, sans-serif" }}>
                         {feature}
                       </span>
                     </motion.div>
@@ -420,7 +420,7 @@ export default function AboutUs() {
                       whileHover={{ scale: 1.02, x: 5 }}
                       whileTap={{ scale: 0.98 }}
                       className="group flex items-center gap-2 text-orange-500 font-semibold text-lg hover:text-orange-600 transition-colors"
-                      style={{ fontFamily: "Google Sans, sans-serif" }}
+                      style={{ fontFamily: "Albert Sans, sans-serif" }}
                     >
                       View All Services
                       <ArrowRight size={20} className="group-hover:translate-x-2 transition-transform" />
@@ -478,7 +478,7 @@ export default function AboutUs() {
                       <h4 className="font-bold text-gray-900 dark:text-white mb-1" style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}>
                         {service.title}
                       </h4>
-                      <p className="text-gray-500 dark:text-gray-400 text-sm" style={{ fontFamily: "Google Sans, sans-serif" }}>
+                      <p className="text-gray-500 dark:text-gray-400 text-sm" style={{ fontFamily: "Albert Sans, sans-serif" }}>
                         {service.desc}
                       </p>
                     </motion.div>
@@ -507,7 +507,7 @@ export default function AboutUs() {
               </h2>
               <p
                 className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto"
-                style={{ fontFamily: "Google Sans, sans-serif" }}
+                style={{ fontFamily: "Albert Sans, sans-serif" }}
               >
                 The visionary behind Celestial Web Solutions
               </p>
@@ -576,7 +576,7 @@ export default function AboutUs() {
                   
                   <p
                     className="text-lg text-orange-600 dark:text-orange-400 font-semibold mb-6"
-                    style={{ fontFamily: "Google Sans, sans-serif" }}
+                    style={{ fontFamily: "Albert Sans, sans-serif" }}
                   >
                     Full Stack Web Developer
                   </p>
@@ -584,14 +584,14 @@ export default function AboutUs() {
                   <div className="space-y-4 mb-6">
                     <p
                       className="text-gray-700 dark:text-gray-300 leading-relaxed"
-                      style={{ fontFamily: "Google Sans, sans-serif" }}
+                      style={{ fontFamily: "Albert Sans, sans-serif" }}
                     >
                       With a passion for creating innovative digital solutions, Waliu founded Celestial Web Solutions to help businesses transform their online presence and achieve their digital goals.
                     </p>
                     
                     <p
                       className="text-gray-700 dark:text-gray-300 leading-relaxed"
-                      style={{ fontFamily: "Google Sans, sans-serif" }}
+                      style={{ fontFamily: "Albert Sans, sans-serif" }}
                     >
                       As a Graduate of ALX Backend Engineering, he brings expertise in both frontend and backend technologies, ensuring every project is built with precision, scalability, and user experience in mind.
                     </p>
@@ -627,7 +627,7 @@ export default function AboutUs() {
                               }}
                             />
                           </div>
-                          <span className="text-xs sm:text-xs md:text-sm font-medium text-gray-700 dark:text-gray-300 text-center group-hover:text-orange-600 dark:group-hover:text-orange-400 transition-colors duration-300 line-clamp-2" style={{ fontFamily: "Google Sans, sans-serif" }}>
+                          <span className="text-xs sm:text-xs md:text-sm font-medium text-gray-700 dark:text-gray-300 text-center group-hover:text-orange-600 dark:group-hover:text-orange-400 transition-colors duration-300 line-clamp-2" style={{ fontFamily: "Albert Sans, sans-serif" }}>
                             {tech.name}
                           </span>
                         </motion.div>
@@ -728,7 +728,7 @@ export default function AboutUs() {
               </div>
               <p
                 className="text-gray-700 dark:text-gray-300 leading-relaxed"
-                style={{ fontFamily: "Google Sans, sans-serif" }}
+                style={{ fontFamily: "Albert Sans, sans-serif" }}
               >
                 To deliver innovative, secure, and scalable digital solutions that empower businesses to achieve their full potential in the digital era.
               </p>
@@ -755,7 +755,7 @@ export default function AboutUs() {
               </div>
               <p
                 className="text-gray-700 dark:text-gray-300 leading-relaxed"
-                style={{ fontFamily: "Google Sans, sans-serif" }}
+                style={{ fontFamily: "Albert Sans, sans-serif" }}
               >
                 To become Ghana & Africa's most trusted digital solutions provider, enabling businesses to succeed through technology, creativity, and innovation.
               </p>
@@ -818,7 +818,7 @@ export default function AboutUs() {
                   </div>
                   <p
                     className="text-gray-700 dark:text-gray-300 text-base md:text-lg leading-relaxed"
-                    style={{ fontFamily: "Google Sans, sans-serif" }}
+                    style={{ fontFamily: "Albert Sans, sans-serif" }}
                   >
                     {value.desc}
                   </p>
@@ -883,7 +883,7 @@ export default function AboutUs() {
                   </h3>
                   <p
                     className="text-gray-600 dark:text-gray-300 text-base md:text-lg"
-                    style={{ fontFamily: "Google Sans, sans-serif" }}
+                    style={{ fontFamily: "Albert Sans, sans-serif" }}
                   >
                     {feature.desc}
                   </p>
@@ -921,7 +921,7 @@ export default function AboutUs() {
               </h3>
               <p
                 className="text-orange-100 mb-8 max-w-2xl mx-auto leading-relaxed"
-                style={{ fontFamily: "Google Sans, sans-serif" }}
+                style={{ fontFamily: "Albert Sans, sans-serif" }}
               >
                 Let's discuss your project and create something amazing together. Get started with a free consultation today.
               </p>

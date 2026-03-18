@@ -16,7 +16,7 @@ const GlassButton = ({ children, href, variant = 'light', external = false }) =>
   const Component = external ? 'a' : Link;
   const props = external ? { href, target: "_blank", rel: "noopener noreferrer" } : { href };
   return (
-    <Component {...props} className={`${baseStyles} ${variants[variant]}`} style={{ fontFamily: 'Google Sans, sans-serif' }}>
+    <Component {...props} className={`${baseStyles} ${variants[variant]}`} style={{ fontFamily: 'Albert Sans, sans-serif' }}>
       {children}
     </Component>
   );
@@ -86,7 +86,7 @@ export default function GoogleAdsManagementServicePage() {
               <Link 
                 href="/best-web-design-company-in-ghana" 
                 className="text-white/80 hover:text-white mb-8 inline-flex items-center gap-2 transition font-medium group"
-                style={{ fontFamily: 'Google Sans, sans-serif' }}
+                style={{ fontFamily: 'Albert Sans, sans-serif' }}
               >
                 <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" />
                 Back to All Services
@@ -107,7 +107,7 @@ export default function GoogleAdsManagementServicePage() {
               </h1>
               <p
                 className="text-lg sm:text-xl text-gray-300 max-w-2xl leading-relaxed mb-8"
-                style={{ fontFamily: "Google Sans, sans-serif" }}
+                style={{ fontFamily: "Albert Sans, sans-serif" }}
               >
                 {service.description}
               </p>
@@ -132,7 +132,7 @@ export default function GoogleAdsManagementServicePage() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.1 + idx * 0.05 }}
                   className="text-sm px-4 py-2 bg-white dark:bg-gray-800 text-orange-600 dark:text-orange-400 rounded-full font-medium border border-orange-200 dark:border-orange-800/50 shadow-sm"
-                  style={{ fontFamily: 'Google Sans, sans-serif' }}
+                  style={{ fontFamily: 'Albert Sans, sans-serif' }}
                 >
                   {keyword}
                 </motion.span>
@@ -167,7 +167,7 @@ export default function GoogleAdsManagementServicePage() {
                           whileHover={{ scale: 1.05, y: -5 }}
                         >
                           <img src={tech.url} alt={tech.name} className="w-12 h-12 object-contain mb-2" loading="lazy" />
-                          <span className="text-sm font-medium text-gray-700 dark:text-gray-200" style={{ fontFamily: 'Google Sans, sans-serif' }}>{tech.name}</span>
+                          <span className="text-sm font-medium text-gray-700 dark:text-gray-200" style={{ fontFamily: 'Albert Sans, sans-serif' }}>{tech.name}</span>
                         </motion.div>
                       ))}
                     </div>
@@ -181,7 +181,7 @@ export default function GoogleAdsManagementServicePage() {
                           viewport={{ once: true }}
                           transition={{ delay: i * 0.05 }}
                           className="flex items-start gap-3 text-gray-700 dark:text-gray-200"
-                          style={{ fontFamily: "Google Sans, sans-serif" }}
+                          style={{ fontFamily: "Albert Sans, sans-serif" }}
                         >
                           <CheckCircle2 className="w-5 h-5 text-orange-500 flex-shrink-0 mt-0.5" />
                           <span>{item}</span>
@@ -221,7 +221,7 @@ export default function GoogleAdsManagementServicePage() {
                           <Zap className="w-5 h-5" />
                         </div>
                         <div>
-                          <p className="font-semibold" style={{ fontFamily: 'Google Sans, sans-serif' }}>Fast Delivery</p>
+                          <p className="font-semibold" style={{ fontFamily: 'Albert Sans, sans-serif' }}>Fast Delivery</p>
                           <p className="text-orange-200 text-sm">2-4 weeks turnaround</p>
                         </div>
                       </div>
@@ -230,7 +230,7 @@ export default function GoogleAdsManagementServicePage() {
                           <Users className="w-5 h-5" />
                         </div>
                         <div>
-                          <p className="font-semibold" style={{ fontFamily: 'Google Sans, sans-serif' }}>20+ Happy Clients</p>
+                          <p className="font-semibold" style={{ fontFamily: 'Albert Sans, sans-serif' }}>20+ Happy Clients</p>
                           <p className="text-orange-200 text-sm">Trusted globally</p>
                         </div>
                       </div>
@@ -239,7 +239,7 @@ export default function GoogleAdsManagementServicePage() {
                           <Clock className="w-5 h-5" />
                         </div>
                         <div>
-                          <p className="font-semibold" style={{ fontFamily: 'Google Sans, sans-serif' }}>24/7 Support</p>
+                          <p className="font-semibold" style={{ fontFamily: 'Albert Sans, sans-serif' }}>24/7 Support</p>
                           <p className="text-orange-200 text-sm">Always here to help</p>
                         </div>
                       </div>
@@ -248,7 +248,7 @@ export default function GoogleAdsManagementServicePage() {
                           <Award className="w-5 h-5" />
                         </div>
                         <div>
-                          <p className="font-semibold" style={{ fontFamily: 'Google Sans, sans-serif' }}>Quality Guaranteed</p>
+                          <p className="font-semibold" style={{ fontFamily: 'Albert Sans, sans-serif' }}>Quality Guaranteed</p>
                           <p className="text-orange-200 text-sm">100% satisfaction</p>
                         </div>
                       </div>
@@ -269,7 +269,7 @@ export default function GoogleAdsManagementServicePage() {
                   </h3>
                   <p 
                     className="text-gray-600 dark:text-gray-400 text-sm mb-6"
-                    style={{ fontFamily: 'Google Sans, sans-serif' }}
+                    style={{ fontFamily: 'Albert Sans, sans-serif' }}
                   >
                     Get a free consultation and custom quote for your project.
                   </p>
@@ -299,7 +299,7 @@ export default function GoogleAdsManagementServicePage() {
                       </div>
                       <span 
                         className="text-gray-700 dark:text-gray-300 font-medium group-hover:text-orange-600 dark:group-hover:text-orange-400 transition-colors"
-                        style={{ fontFamily: 'Google Sans, sans-serif' }}
+                        style={{ fontFamily: 'Albert Sans, sans-serif' }}
                       >
                         SEO Optimization
                       </span>
@@ -313,7 +313,7 @@ export default function GoogleAdsManagementServicePage() {
                       </div>
                       <span 
                         className="text-gray-700 dark:text-gray-300 font-medium group-hover:text-orange-600 dark:group-hover:text-orange-400 transition-colors"
-                        style={{ fontFamily: 'Google Sans, sans-serif' }}
+                        style={{ fontFamily: 'Albert Sans, sans-serif' }}
                       >
                         IT Support
                       </span>
@@ -327,7 +327,7 @@ export default function GoogleAdsManagementServicePage() {
                       </div>
                       <span 
                         className="text-gray-700 dark:text-gray-300 font-medium group-hover:text-orange-600 dark:group-hover:text-orange-400 transition-colors"
-                        style={{ fontFamily: 'Google Sans, sans-serif' }}
+                        style={{ fontFamily: 'Albert Sans, sans-serif' }}
                       >
                         Web Design
                       </span>
@@ -341,7 +341,7 @@ export default function GoogleAdsManagementServicePage() {
                       </div>
                       <span 
                         className="text-gray-700 dark:text-gray-300 font-medium group-hover:text-orange-600 dark:group-hover:text-orange-400 transition-colors"
-                        style={{ fontFamily: 'Google Sans, sans-serif' }}
+                        style={{ fontFamily: 'Albert Sans, sans-serif' }}
                       >
                         E-Commerce Solutions
                       </span>
@@ -370,13 +370,13 @@ export default function GoogleAdsManagementServicePage() {
             >
               <h2
                 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6"
-                style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}
+                style={{ fontFamily: 'Albert Sans, sans-serif' }}
               >
                 Let's Build Something Amazing
               </h2>
               <p
                 className="text-lg sm:text-xl text-orange-100 mb-10 max-w-2xl mx-auto"
-                style={{ fontFamily: 'Google Sans, sans-serif' }}
+                style={{ fontFamily: 'Albert Sans, sans-serif' }}
               >
                 Ready to transform your business with our {service.title.toLowerCase()} expertise? Get started today.
               </p>

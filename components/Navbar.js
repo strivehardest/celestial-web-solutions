@@ -111,7 +111,7 @@ const Navbar = () => {
             </div>
             <div
               className={scrolled ? "text-xs text-gray-500 dark:text-gray-400 -mt-1" : "text-xs text-white -mt-1"}
-              style={{ fontFamily: 'Google Sans, sans-serif' }}
+              style={{ fontFamily: 'Albert Sans, sans-serif' }}
             >
               Web Solutions
             </div>
@@ -134,7 +134,7 @@ const Navbar = () => {
           <div className="text-xl font-bold bg-gradient-to-r from-orange-600 via-orange-500 to-red-500 bg-clip-text text-transparent" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>
             Celestial
           </div>
-          <div className="text-xs text-gray-500 dark:text-gray-400 -mt-1" style={{ fontFamily: 'Google Sans, sans-serif' }}>
+          <div className="text-xs text-gray-500 dark:text-gray-400 -mt-1" style={{ fontFamily: 'Albert Sans, sans-serif' }}>
             Web Solutions
           </div>
         </div>
@@ -277,7 +277,7 @@ const Navbar = () => {
                 ? 'text-gray-700 dark:text-gray-300 hover:text-orange-600 dark:hover:text-orange-400 hover:bg-gray-100/50 dark:hover:bg-gray-800/50'
                 : 'text-white hover:text-orange-100 hover:bg-white/10'
           }`}
-          style={{ fontFamily: 'Google Sans, sans-serif' }}
+          style={{ fontFamily: 'Albert Sans, sans-serif' }}
           whileHover={{ y: -1 }}
           onClick={() => handleNavigation(item.href)}
         >
@@ -302,7 +302,7 @@ const Navbar = () => {
               ? 'text-gray-700 dark:text-gray-300 hover:text-orange-600 dark:hover:text-orange-400 hover:bg-gray-100/50 dark:hover:bg-gray-800/50'
               : 'text-white hover:text-orange-100 hover:bg-white/10'
         }`}
-        style={{ fontFamily: 'Google Sans, sans-serif' }}
+        style={{ fontFamily: 'Albert Sans, sans-serif' }}
         whileHover={{ y: -1 }}
         onClick={() => handleNavigation(item.href)}
       >
@@ -352,7 +352,7 @@ const Navbar = () => {
                         <div className="bg-white dark:bg-gray-900 backdrop-blur-xl rounded-2xl shadow-[0_20px_60px_-15px_rgba(0,0,0,0.2)] dark:shadow-[0_20px_60px_-15px_rgba(0,0,0,0.5)] border border-gray-200/60 dark:border-gray-700/40 overflow-hidden">
                           {/* Header */}
                           <div className="px-6 pt-5 pb-3 border-b border-gray-100 dark:border-gray-800">
-                            <h3 className="text-xs font-semibold uppercase tracking-widest text-gray-400 dark:text-gray-500" style={{ fontFamily: 'Google Sans, sans-serif' }}>Resources</h3>
+                            <h3 className="text-xs font-semibold uppercase tracking-widest text-gray-400 dark:text-gray-500" style={{ fontFamily: 'Albert Sans, sans-serif' }}>Resources</h3>
                           </div>
 
                           {/* 2-column grid */}
@@ -361,7 +361,7 @@ const Navbar = () => {
                               <motion.button
                                 key={dropItem.name}
                                 className="flex items-start gap-3 px-4 py-3.5 rounded-xl text-left hover:bg-orange-50/70 dark:hover:bg-orange-900/15 transition-all duration-200 group"
-                                style={{ fontFamily: 'Google Sans, sans-serif' }}
+                                style={{ fontFamily: 'Albert Sans, sans-serif' }}
                                 initial={{ opacity: 0, y: 8 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ delay: index * 0.04 }}
@@ -382,7 +382,7 @@ const Navbar = () => {
                           <div className="px-6 py-3.5 bg-gray-50/80 dark:bg-gray-800/50 border-t border-gray-100 dark:border-gray-800">
                             <motion.button
                               className="flex items-center gap-2 text-sm font-medium text-orange-600 dark:text-orange-400 hover:text-orange-700 dark:hover:text-orange-300 transition-colors duration-200"
-                              style={{ fontFamily: 'Google Sans, sans-serif' }}
+                              style={{ fontFamily: 'Albert Sans, sans-serif' }}
                               whileHover={{ x: 3 }}
                               onClick={() => handleNavigation('/contact')}
                             >
@@ -409,7 +409,7 @@ const Navbar = () => {
                               <motion.button
                                 key={dropItem.name}
                                 className="w-full flex items-center px-4 py-3 text-sm text-gray-700 dark:text-gray-300 hover:text-orange-600 dark:hover:text-orange-400 hover:bg-orange-50/50 dark:hover:bg-orange-900/20 transition-all duration-200 text-left"
-                                style={{ fontFamily: 'Google Sans, sans-serif' }}
+                                style={{ fontFamily: 'Albert Sans, sans-serif' }}
                                 whileHover={{ x: 4 }}
                                 initial={{ opacity: 0, x: -10 }}
                                 animate={{ opacity: 1, x: 0 }}
@@ -472,7 +472,7 @@ const Navbar = () => {
                             ? 'text-white bg-gradient-to-r from-orange-500 to-orange-600 shadow-lg'
                             : 'text-gray-800 dark:text-gray-100 hover:text-orange-600 dark:hover:text-orange-400 hover:bg-orange-50/50 dark:hover:bg-orange-900/20'
                         }`}
-                        style={{ fontFamily: 'Google Sans, sans-serif' }}
+                        style={{ fontFamily: 'Albert Sans, sans-serif' }}
                         onClick={(e) => {
                           e.preventDefault();
                           e.stopPropagation();
@@ -509,7 +509,7 @@ const Navbar = () => {
                             {/* Section header for mobile mega menu */}
                             {item.megaMenu && (
                               <div className="px-4 py-2 mb-1">
-                                <span className="text-[10px] font-semibold uppercase tracking-widest text-gray-400 dark:text-gray-500">Resources</span>
+                                <span className="text-[10px] font-semibold uppercase tracking-widest text-gray-400 dark:text-gray-500" style={{ fontFamily: 'Albert Sans, sans-serif' }}>Resources</span>
                               </div>
                             )}
                             <div className={item.megaMenu ? 'space-y-0.5 ml-2' : 'space-y-1 ml-4'}>
@@ -520,7 +520,7 @@ const Navbar = () => {
                                   animate={{ opacity: 1, x: 0 }}
                                   transition={{ delay: dropIndex * 0.05 }}
                                   className="w-full flex items-start gap-3 px-4 py-3.5 text-left hover:bg-orange-50/50 dark:hover:bg-orange-900/15 rounded-xl transition-all duration-200 group active:bg-orange-100 dark:active:bg-orange-900/30"
-                                  style={{ fontFamily: 'Google Sans, sans-serif' }}
+                                  style={{ fontFamily: 'Albert Sans, sans-serif' }}
                                   onClick={() => handleNavigation(dropItem.href)}
                                 >
                                   {item.megaMenu && dropItem.icon && (

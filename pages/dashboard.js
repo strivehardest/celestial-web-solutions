@@ -76,7 +76,7 @@ export default function Dashboard() {
                 <h1 className="text-4xl font-bold mb-2" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>
                   Welcome back, {mockUser.fullName}!
                 </h1>
-                <p className="text-lg opacity-90" style={{ fontFamily: 'Google Sans, sans-serif' }}>
+                <p className="text-lg opacity-90" style={{ fontFamily: 'Albert Sans, sans-serif', fontWeight: 400 }}>
                   Continue your learning journey
                 </p>
               </div>
@@ -87,7 +87,7 @@ export default function Dashboard() {
                     <div className="text-2xl font-bold" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>
                       {enrolledCourses.length}
                     </div>
-                    <div className="text-xs opacity-80" style={{ fontFamily: 'Google Sans, sans-serif' }}>
+                    <div className="text-xs opacity-80" style={{ fontFamily: 'Albert Sans, sans-serif' }}>
                       Active Courses
                     </div>
                   </div>
@@ -114,7 +114,7 @@ export default function Dashboard() {
                       {mockUser.fullName}
                     </h3>
                     <p className="text-sm text-gray-600 dark:text-gray-400"
-                       style={{ fontFamily: 'Google Sans, sans-serif' }}>
+                       style={{ fontFamily: 'Albert Sans, sans-serif' }}>
                       {mockUser.email}
                     </p>
                   </div>
@@ -130,7 +130,7 @@ export default function Dashboard() {
                       }`}
                     >
                       <BookOpen className="w-5 h-5" />
-                      <span className="font-semibold" style={{ fontFamily: 'Google Sans, sans-serif' }}>
+                      <span className="font-semibold" style={{ fontFamily: 'Albert Sans, sans-serif' }}>
                         My Courses
                       </span>
                     </button>
@@ -144,7 +144,7 @@ export default function Dashboard() {
                       }`}
                     >
                       <Award className="w-5 h-5" />
-                      <span className="font-semibold">Certificates</span>
+                      <span className="font-semibold" style={{ fontFamily: 'Albert Sans, sans-serif' }}>Certificates</span>
                     </button>
 
                     <button
@@ -156,7 +156,7 @@ export default function Dashboard() {
                       }`}
                     >
                       <Settings className="w-5 h-5" />
-                      <span className="font-semibold">Profile Settings</span>
+                      <span className="font-semibold" style={{ fontFamily: 'Albert Sans, sans-serif' }}>Profile Settings</span>
                     </button>
 
                     <Link href="/courses">
@@ -234,7 +234,7 @@ export default function Dashboard() {
                                         {course.title}
                                       </h3>
                                       <p className="text-sm text-gray-600 dark:text-gray-400"
-                                         style={{ fontFamily: 'Google Sans, sans-serif' }}>
+                                         style={{ fontFamily: 'Albert Sans, sans-serif' }}>
                                         by {course.instructor}
                                       </p>
                                     </div>
@@ -249,7 +249,7 @@ export default function Dashboard() {
                                   {/* Progress */}
                                   <div className="mb-4">
                                     <div className="flex items-center justify-between mb-2">
-                                      <span className="text-sm font-semibold text-gray-700 dark:text-gray-300">
+                                      <span className="text-sm font-semibold text-gray-700 dark:text-gray-300" style={{ fontFamily: 'Albert Sans, sans-serif' }}>
                                         Progress: {course.progress}%
                                       </span>
                                       <span className="text-sm text-gray-600 dark:text-gray-400">

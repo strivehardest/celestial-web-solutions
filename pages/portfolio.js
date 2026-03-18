@@ -15,7 +15,7 @@ const GlassButton = ({ children, href, variant = "light" }) => {
     orange: "bg-orange-500/20 hover:bg-orange-500/30 border-orange-500/30 text-orange-600 dark:text-orange-400 hover:shadow-lg hover:shadow-orange-500/20"
   };
   return (
-    <Link href={href} className={`${baseClasses} ${variants[variant]}`} style={{ fontFamily: 'Google Sans, sans-serif' }}>
+    <Link href={href} className={`${baseClasses} ${variants[variant]}`} style={{ fontFamily: 'Albert Sans, sans-serif' }}>
       {children}
       <ArrowRight size={18} />
     </Link>
@@ -67,7 +67,7 @@ const PortfolioCard = ({ project, image, index }) => {
 
           {/* In Progress badge */}
           {project.completionDate === "In Progress" && (
-            <div className="absolute top-3 left-3 z-20 px-2.5 py-1 bg-yellow-500 text-white text-[10px] font-bold rounded-full flex items-center gap-1 shadow-md">
+            <div className="absolute top-3 left-3 z-20 px-2.5 py-1 bg-yellow-500 text-white text-[10px] font-bold rounded-full flex items-center gap-1 shadow-md" style={{ fontFamily: 'Albert Sans, sans-serif' }}>
               <svg className="w-2.5 h-2.5" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M6 2v6l4 4-4 4v6h12v-6l-4-4 4-4V2H6zm10 14.5V20H8v-3.5l4-4 4 4zm-4-5l-4-4V4h8v3.5l-4 4z"/>
               </svg>
@@ -106,7 +106,7 @@ const PortfolioCard = ({ project, image, index }) => {
               <CountryFlag country={project.clientCountry} />
               <span
                 className="text-xs text-gray-400 dark:text-gray-500"
-                style={{ fontFamily: 'Google Sans, sans-serif' }}
+                style={{ fontFamily: 'Albert Sans, sans-serif' }}
               >
                 {project.clientCountry}
               </span>
@@ -123,7 +123,7 @@ const PortfolioCard = ({ project, image, index }) => {
           {project.category && (
             <p
               className="text-xs text-gray-400 dark:text-gray-500 mt-0.5 capitalize"
-              style={{ fontFamily: 'Google Sans, sans-serif' }}
+              style={{ fontFamily: 'Albert Sans, sans-serif' }}
             >
               {project.category}
             </p>
@@ -245,7 +245,7 @@ export default function Portfolio() {
               <motion.span
                 className="inline-block px-4 py-2 bg-orange-500/20 backdrop-blur-sm border border-orange-500/30 rounded-full text-orange-400 text-sm font-semibold mb-6"
                 initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.2 }} style={{ fontFamily: 'Google Sans, sans-serif' }}>
+                transition={{ delay: 0.2 }} style={{ fontFamily: 'Albert Sans, sans-serif' }}>
                 OUR PORTFOLIO
               </motion.span>
 
@@ -256,12 +256,12 @@ export default function Portfolio() {
               </h1>
 
               <p className="text-xl text-gray-300 max-w-2xl leading-relaxed mb-4"
-                style={{ fontFamily: "Google Sans, sans-serif" }}>
+                style={{ fontFamily: "Albert Sans, sans-serif" }}>
                 From sleek corporate websites to powerful e-commerce platforms — explore how we've helped businesses across Ghana, the U.S., and beyond establish a powerful online presence.
               </p>
 
               <p className="text-base text-gray-200 max-w-2xl leading-relaxed mb-8"
-                style={{ fontFamily: "Google Sans, sans-serif" }}>
+                style={{ fontFamily: "Albert Sans, sans-serif" }}>
                 Looking for the best web designer in Accra?{" "}
                 <Link href="/best-web-designer-in-accra"
                   className="text-orange-300 font-semibold underline underline-offset-4 hover:text-orange-200">
@@ -290,7 +290,7 @@ export default function Portfolio() {
                     ? "bg-gradient-to-r from-orange-500 to-orange-600 text-white shadow-lg"
                     : "bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-orange-50 dark:hover:bg-gray-700 border border-gray-200 dark:border-gray-700"
                 }`}
-                style={{ fontFamily: "Google Sans, sans-serif" }}>
+                style={{ fontFamily: "Albert Sans, sans-serif" }}>
                 {category.split(' ').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ')}
               </motion.button>
             ))}
@@ -320,7 +320,7 @@ export default function Portfolio() {
           {/* Empty state */}
           {filteredProjects.length === 0 && (
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-center py-20">
-              <p className="text-gray-500 dark:text-gray-400 text-lg" style={{ fontFamily: "Google Sans, sans-serif" }}>
+              <p className="text-gray-500 dark:text-gray-400 text-lg" style={{ fontFamily: "Albert Sans, sans-serif" }}>
                 No projects found in this category yet. Check back soon!
               </p>
             </motion.div>
@@ -334,7 +334,7 @@ export default function Portfolio() {
                 style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}>
                 Our Happy Clients
               </motion.h2>
-              <p className="text-center text-gray-600 dark:text-gray-300 mb-8" style={{ fontFamily: "Google Sans, sans-serif" }}>
+              <p className="text-center text-gray-600 dark:text-gray-300 mb-8" style={{ fontFamily: "Albert Sans, sans-serif" }}>
                 Trusted by businesses across Ghana and abroad.
               </p>
             </div>
@@ -350,7 +350,7 @@ export default function Portfolio() {
                     className="h-16 sm:h-20 md:h-24 lg:h-32 w-auto max-w-[120px] sm:max-w-[160px] md:max-w-[200px] lg:max-w-[240px] object-contain mx-auto mb-2"
                     unoptimized={false}
                   />
-                  <span className="text-xs text-gray-700 dark:text-gray-300 mt-1 text-center" style={{ fontFamily: 'Google Sans, sans-serif' }}>{client.name}</span>
+                  <span className="text-xs text-gray-700 dark:text-gray-300 mt-1 text-center" style={{ fontFamily: 'Albert Sans, sans-serif' }}>{client.name}</span>
                 </div>
               ))}
             </div>
@@ -370,14 +370,14 @@ export default function Portfolio() {
                 Ready to Start Your Project?
               </h2>
               <p className="text-orange-100 mb-10 max-w-2xl mx-auto leading-relaxed text-lg"
-                style={{ fontFamily: "Google Sans, sans-serif" }}>
+                style={{ fontFamily: "Albert Sans, sans-serif" }}>
                 Let's create something amazing together. Whether it's a website, e-commerce platform, or custom web application, we're here to bring your vision to life.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <GlassButton href="/contact" variant="light">Start a Project</GlassButton>
                 <GlassButton href="/pricing" variant="light">View Pricing</GlassButton>
               </div>
-              <div className="mt-12 flex flex-wrap justify-center gap-8 text-orange-100 text-sm" style={{ fontFamily: 'Google Sans, sans-serif' }}>
+              <div className="mt-12 flex flex-wrap justify-center gap-8 text-orange-100 text-sm" style={{ fontFamily: 'Albert Sans, sans-serif' }}>
                 {["Free Consultation", "24/7 Support", "Fast Delivery"].map((item) => (
                   <div key={item} className="flex items-center space-x-2">
                     <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

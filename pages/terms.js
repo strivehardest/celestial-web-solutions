@@ -260,7 +260,7 @@ We are committed to resolving any disputes fairly and professionally in accordan
               </h1>
               <p
                 className="text-xl text-orange-100 max-w-2xl mx-auto leading-relaxed"
-                style={{ fontFamily: "Google Sans, sans-serif" }}
+                style={{ fontFamily: "Albert Sans, sans-serif", fontWeight: 400 }}
               >
                 Please read these terms and conditions carefully before using our services
               </p>

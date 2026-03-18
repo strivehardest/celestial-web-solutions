@@ -563,7 +563,7 @@ export default function PricingWithCalculator() {
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
             <h1 className="text-4xl md:text-6xl font-bold text-white mb-6" style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}>Our Pricing</h1>
             <div className="flex flex-col items-center justify-center mb-4 min-h-[2.5em]">
-              <span className="text-lg md:text-2xl text-white bg-black/20 px-4 py-2 rounded-full font-semibold tracking-wide shadow-lg animate-pulse" style={{ fontFamily: 'Google Sans, sans-serif', letterSpacing: '0.04em' }}>
+              <span className="text-lg md:text-2xl text-white bg-black/20 px-4 py-2 rounded-full font-semibold tracking-wide shadow-lg animate-pulse" style={{ fontFamily: 'Albert Sans, sans-serif', letterSpacing: '0.04em' }}>
                 {displayText}<span className="animate-pulse">|</span>
               </span>
             </div>
@@ -574,23 +574,23 @@ export default function PricingWithCalculator() {
                 A CMS (Content Management System) website uses platforms like WordPress to easily manage content, offering quick setup and user-friendly editing. Full stack websites are custom-built using modern frameworks (like React, Node.js), providing greater flexibility, advanced features, and tailored solutions for complex business needs.
               </p>
             </div>
-            <p className="text-xl text-orange-100 max-w-3xl mx-auto leading-relaxed mb-8" style={{ fontFamily: "Google Sans, sans-serif" }}>
+            <p className="text-xl text-orange-100 max-w-3xl mx-auto leading-relaxed mb-8" style={{ fontFamily: "Albert Sans, sans-serif" }}>
               Quality web development services at affordable rates. No hidden fees, flexible payment plans, and prices in Ghana Cedis.
             </p>
 
             {/* Billing Toggle */}
             <div className="inline-flex items-center justify-center space-x-4 bg-white/20 backdrop-blur-sm rounded-2xl p-2 flex-wrap">
-              <button onClick={() => setBillingPeriod("monthly")} className={`px-6 py-2 rounded-xl font-medium transition-all duration-300 ${billingPeriod === "monthly" ? "bg-white text-orange-800 shadow-lg" : "text-white hover:bg-white/10"}`} style={{ fontFamily: "Google Sans, sans-serif" }}>
+              <button onClick={() => setBillingPeriod("monthly")} className={`px-6 py-2 rounded-xl font-medium transition-all duration-300 ${billingPeriod === "monthly" ? "bg-white text-orange-800 shadow-lg" : "text-white hover:bg-white/10"}`} style={{ fontFamily: "Albert Sans, sans-serif" }}>
                 CMS Development
               </button>
-              <button onClick={() => setBillingPeriod("yearly")} className={`px-6 py-2 rounded-xl font-medium transition-all duration-300 relative ${billingPeriod === "yearly" ? "bg-white text-orange-800 shadow-lg" : "text-white hover:bg-white/10"}`} style={{ fontFamily: "Google Sans, sans-serif" }}>
+              <button onClick={() => setBillingPeriod("yearly")} className={`px-6 py-2 rounded-xl font-medium transition-all duration-300 relative ${billingPeriod === "yearly" ? "bg-white text-orange-800 shadow-lg" : "text-white hover:bg-white/10"}`} style={{ fontFamily: "Albert Sans, sans-serif" }}>
                 Full Stack Development
-                <span className="absolute -top-2 -right-2 bg-yellow-400 text-orange-900 text-xs px-2 py-1 rounded-full font-bold" style={{ fontFamily: "Google Sans, sans-serif" }}>Pro</span>
+                <span className="absolute -top-2 -right-2 bg-yellow-400 text-orange-900 text-xs px-2 py-1 rounded-full font-bold" style={{ fontFamily: "Albert Sans, sans-serif" }}>Pro</span>
               </button>
             </div>
 
             {/* Calculator Toggle Button */}
-            <motion.button onClick={() => setShowCalculator(!showCalculator)} whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="mt-6 inline-flex items-center space-x-2 bg-white text-orange-800 px-6 py-3 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300" style={{ fontFamily: "Google Sans, sans-serif" }}>
+            <motion.button onClick={() => setShowCalculator(!showCalculator)} whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="mt-6 inline-flex items-center space-x-2 bg-white text-orange-800 px-6 py-3 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300" style={{ fontFamily: "Albert Sans, sans-serif" }}>
               <Calculator size={20} />
               <span>{showCalculator ? "Hide Calculator" : "Calculate Your Price"}</span>
             </motion.button>
@@ -609,10 +609,10 @@ export default function PricingWithCalculator() {
                     <Calculator className="text-orange-600" size={32} />
                     <div>
                       <h2 className="text-3xl font-bold text-gray-900 dark:text-white" style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}>Custom Quote Calculator</h2>
-                      <p className="text-gray-600 dark:text-gray-400" style={{ fontFamily: "Google Sans, sans-serif" }}>Build your perfect package</p>
+                      <p className="text-gray-600 dark:text-gray-400" style={{ fontFamily: "Albert Sans, sans-serif" }}>Build your perfect package</p>
                     </div>
                   </div>
-                  <button onClick={resetCalculator} className="text-gray-600 dark:text-gray-400 hover:text-orange-600 transition-colors text-sm font-medium" style={{ fontFamily: "Google Sans, sans-serif" }}>Reset</button>
+                  <button onClick={resetCalculator} className="text-gray-600 dark:text-gray-400 hover:text-orange-600 transition-colors text-sm font-medium" style={{ fontFamily: "Albert Sans, sans-serif" }}>Reset</button>
                 </div>
 
                 {/* Base Package Selection */}
@@ -622,7 +622,7 @@ export default function PricingWithCalculator() {
                     {["starter", "professional", "ecommerce", "enterprise"].map((pkg) => (
                       <button key={pkg} onClick={() => setSelectedBase(pkg)} className={`p-4 rounded-xl border-2 transition-all duration-300 ${selectedBase === pkg ? "border-orange-500 bg-orange-50 dark:bg-orange-900/20 shadow-lg" : "border-gray-200 dark:border-gray-700 hover:border-orange-300 bg-white dark:bg-gray-800"}`}>
                         <div className="font-bold text-gray-900 dark:text-white capitalize mb-1" style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}>{pkg}</div>
-                        <div className="text-orange-600 font-semibold" style={{ fontFamily: "Google Sans, sans-serif" }}>{formatPrice(basePrices[pkg][billingPeriod])}</div>
+                        <div className="text-orange-600 font-semibold" style={{ fontFamily: "Albert Sans, sans-serif" }}>{formatPrice(basePrices[pkg][billingPeriod])}</div>
                       </button>
                     ))}
                   </div>
@@ -636,7 +636,7 @@ export default function PricingWithCalculator() {
                     <div className="flex items-center justify-between p-4 bg-gray-50 dark:bg-gray-700 rounded-xl">
                       <div className="flex-1">
                         <div className="font-semibold text-gray-900 dark:text-white" style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}>Extra Pages</div>
-                        <div className="text-sm text-gray-600 dark:text-gray-400" style={{ fontFamily: "Google Sans, sans-serif" }}>{formatPrice(addOnPrices.extraPages)} per page</div>
+                        <div className="text-sm text-gray-600 dark:text-gray-400" style={{ fontFamily: "Albert Sans, sans-serif" }}>{formatPrice(addOnPrices.extraPages)} per page</div>
                       </div>
                       <div className="flex items-center space-x-3">
                         <button onClick={() => updateQuantity("extraPages", -1)} className="w-8 h-8 rounded-lg bg-white dark:bg-gray-600 border-2 border-gray-300 dark:border-gray-500 flex items-center justify-center hover:border-orange-500 transition-colors disabled:opacity-50 disabled:cursor-not-allowed" disabled={addOns.extraPages === 0}>
@@ -661,9 +661,9 @@ export default function PricingWithCalculator() {
                         <div className="flex-1">
                           <div className="flex items-center space-x-2">
                             <span className="font-semibold text-gray-900 dark:text-white" style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}>{addon.label}</span>
-                            {addon.disabled && <span className="text-xs bg-orange-100 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400 px-2 py-1 rounded" style={{ fontFamily: "Google Sans, sans-serif" }}>Included</span>}
+                            {addon.disabled && <span className="text-xs bg-orange-100 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400 px-2 py-1 rounded" style={{ fontFamily: "Albert Sans, sans-serif" }}>Included</span>}
                           </div>
-                          <div className="text-sm text-gray-600 dark:text-gray-400" style={{ fontFamily: "Google Sans, sans-serif" }}>{formatPrice(addon.price)} {addon.note && <span className="ml-1">({addon.note})</span>}</div>
+                          <div className="text-sm text-gray-600 dark:text-gray-400" style={{ fontFamily: "Albert Sans, sans-serif" }}>{formatPrice(addon.price)} {addon.note && <span className="ml-1">({addon.note})</span>}</div>
                         </div>
                         <div className={`w-12 h-6 rounded-full transition-colors ${addon.disabled ? "bg-gray-300" : addOns[addon.key] ? "bg-orange-500" : "bg-gray-300"}`}>
                           <div className={`w-5 h-5 bg-white rounded-full shadow-md transform transition-transform ${(addOns[addon.key] && !addon.disabled) ? "translate-x-6" : "translate-x-0.5"} mt-0.5`}></div>
@@ -675,7 +675,7 @@ export default function PricingWithCalculator() {
                     <div className="flex items-center justify-between p-4 bg-gray-50 dark:bg-gray-700 rounded-xl">
                       <div className="flex-1">
                         <div className="font-semibold text-gray-900 dark:text-white" style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}>Custom Features</div>
-                        <div className="text-sm text-gray-600 dark:text-gray-400" style={{ fontFamily: "Google Sans, sans-serif" }}>{formatPrice(addOnPrices.customFeatures)} per feature</div>
+                        <div className="text-sm text-gray-600 dark:text-gray-400" style={{ fontFamily: "Albert Sans, sans-serif" }}>{formatPrice(addOnPrices.customFeatures)} per feature</div>
                       </div>
                       <div className="flex items-center space-x-3">
                         <button onClick={() => updateQuantity("customFeatures", -1)} className="w-8 h-8 rounded-lg bg-white dark:bg-gray-600 border-2 border-gray-300 dark:border-gray-500 flex items-center justify-center hover:border-orange-500 transition-colors disabled:opacity-50 disabled:cursor-not-allowed" disabled={addOns.customFeatures === 0}>
@@ -693,7 +693,7 @@ export default function PricingWithCalculator() {
                 {/* Total */}
                 <div className="mt-8 p-6 bg-orange-50 dark:bg-orange-900/20 rounded-2xl flex items-center justify-between">
                   <div>
-                    <div className="text-gray-700 dark:text-gray-300 font-semibold" style={{ fontFamily: "Google Sans, sans-serif" }}>Total Price ({billingPeriod === "yearly" ? "Full Stack Development" : "CMS Development"}):</div>
+                    <div className="text-gray-700 dark:text-gray-300 font-semibold" style={{ fontFamily: "Albert Sans, sans-serif" }}>Total Price ({billingPeriod === "yearly" ? "Full Stack Development" : "CMS Development"}):</div>
                     <div className="text-3xl font-bold text-orange-600" style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}>{formatPrice(calculateTotal())}</div>
                   </div>
                   <PremiumCTA href={getCalculatorWhatsAppLink()} size="default" variant="primary" className="flex items-center space-x-2" target="_blank" rel="noopener noreferrer">
@@ -716,7 +716,7 @@ export default function PricingWithCalculator() {
             <div className="flex flex-wrap items-center justify-center gap-3">
               <div className="flex items-center space-x-2">
                 <div className={`w-2 h-2 rounded-full ${ratesLoading ? 'bg-yellow-500' : 'bg-green-500'} animate-pulse`}></div>
-                <span className="text-sm font-semibold text-gray-700 dark:text-gray-300" style={{ fontFamily: "Google Sans, sans-serif" }}>
+                <span className="text-sm font-semibold text-gray-700 dark:text-gray-300" style={{ fontFamily: "Albert Sans, sans-serif" }}>
                   Select Currency:
                 </span>
               </div>
@@ -761,15 +761,15 @@ export default function PricingWithCalculator() {
                 {plan.popular && <div className="absolute top-3 right-3 bg-orange-500 text-white text-xs font-bold px-3 py-1 rounded-full">Most Popular</div>}
                 <plan.icon className="text-orange-500 mb-4" size={32} />
                 <h3 className="text-2xl font-bold mb-2 text-gray-900 dark:text-white" style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}>{plan.name}</h3>
-                <p className="text-gray-600 dark:text-gray-400 mb-4" style={{ fontFamily: "Google Sans, sans-serif" }}>{plan.description}</p>
+                <p className="text-gray-600 dark:text-gray-400 mb-4" style={{ fontFamily: "Albert Sans, sans-serif" }}>{plan.description}</p>
                 <div className="mb-4">
                   <span className="text-3xl font-bold text-orange-600" style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}>{formatPrice(plan.price[billingPeriod])}</span>
                   <span className="text-sm line-through text-gray-400 ml-2">{formatPrice(plan.originalPrice ? plan.originalPrice[billingPeriod] : plan.price[billingPeriod])}</span>
                 </div>
-                <div className="mb-2 text-xs text-gray-500 dark:text-gray-400" style={{ fontFamily: "Google Sans, sans-serif" }}>
+                <div className="mb-2 text-xs text-gray-500 dark:text-gray-400" style={{ fontFamily: "Albert Sans, sans-serif" }}>
                   Delivery: {typeof plan.deliveryTime === 'object' ? plan.deliveryTime[billingPeriod] : plan.deliveryTime}
                 </div>
-                <ul className="mb-6 space-y-2 text-gray-700 dark:text-gray-300 text-sm" style={{ fontFamily: "Google Sans, sans-serif" }}>
+                <ul className="mb-6 space-y-2 text-gray-700 dark:text-gray-300 text-sm" style={{ fontFamily: "Albert Sans, sans-serif" }}>
                   {(Array.isArray(plan.features) ? plan.features : plan.features[billingPeriod]).map((feat, i) => (
                     <li key={i} className="flex items-center space-x-2"><Check className="text-green-500" size={16} /> <span>{feat}</span></li>
                   ))}
@@ -779,7 +779,7 @@ export default function PricingWithCalculator() {
                 </PremiumCTA>
                 {plan.renewalPrice && (
                   <div className="mt-4 pt-4 border-t border-gray-200 dark:border-gray-700 text-center">
-                    <p className="text-xs text-gray-500 dark:text-gray-400" style={{ fontFamily: "Google Sans, sans-serif" }}>Annual Renewal</p>
+                    <p className="text-xs text-gray-500 dark:text-gray-400" style={{ fontFamily: "Albert Sans, sans-serif" }}>Annual Renewal</p>
                     <p className="text-lg font-bold text-green-600" style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}>{formatPrice(plan.renewalPrice[billingPeriod])}/year</p>
                   </div>
                 )}
@@ -796,18 +796,18 @@ export default function PricingWithCalculator() {
             <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4" style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}>
               Compare Our Packages
             </h2>
-            <p className="text-gray-600 dark:text-gray-400 text-lg mb-6" style={{ fontFamily: "Google Sans, sans-serif" }}>
+            <p className="text-gray-600 dark:text-gray-400 text-lg mb-6" style={{ fontFamily: "Albert Sans, sans-serif" }}>
               Find the perfect plan that matches your business needs
             </p>
             
             {/* Package Type Toggle */}
             <div className="inline-flex items-center justify-center space-x-4 bg-gray-200 dark:bg-gray-700 rounded-2xl p-2 flex-wrap">
-              <button onClick={() => setBillingPeriod("monthly")} className={`px-6 py-2 rounded-xl font-medium transition-all duration-300 ${billingPeriod === "monthly" ? "bg-orange-500 text-white shadow-lg" : "text-gray-800 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600"}`} style={{ fontFamily: "Google Sans, sans-serif" }}>
+              <button onClick={() => setBillingPeriod("monthly")} className={`px-6 py-2 rounded-xl font-medium transition-all duration-300 ${billingPeriod === "monthly" ? "bg-orange-500 text-white shadow-lg" : "text-gray-800 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600"}`} style={{ fontFamily: "Albert Sans, sans-serif" }}>
                 CMS Development
               </button>
-              <button onClick={() => setBillingPeriod("yearly")} className={`px-6 py-2 rounded-xl font-medium transition-all duration-300 relative ${billingPeriod === "yearly" ? "bg-orange-500 text-white shadow-lg" : "text-gray-800 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600"}`} style={{ fontFamily: "Google Sans, sans-serif" }}>
+              <button onClick={() => setBillingPeriod("yearly")} className={`px-6 py-2 rounded-xl font-medium transition-all duration-300 relative ${billingPeriod === "yearly" ? "bg-orange-500 text-white shadow-lg" : "text-gray-800 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600"}`} style={{ fontFamily: "Albert Sans, sans-serif" }}>
                 Full Stack Development
-                <span className="absolute -top-2 -right-2 bg-yellow-400 text-orange-900 text-xs px-2 py-1 rounded-full font-bold" style={{ fontFamily: "Google Sans, sans-serif" }}>Pro</span>
+                <span className="absolute -top-2 -right-2 bg-yellow-400 text-orange-900 text-xs px-2 py-1 rounded-full font-bold" style={{ fontFamily: "Albert Sans, sans-serif" }}>Pro</span>
               </button>
             </div>
           </div>
@@ -816,7 +816,7 @@ export default function PricingWithCalculator() {
           <div className="overflow-x-auto rounded-2xl shadow-lg">
             {/* Scroll indicator for mobile/tablet */}
             <div className="lg:hidden bg-orange-100 dark:bg-orange-900/20 px-4 py-2 text-center border-b border-orange-200 dark:border-orange-800">
-              <p className="text-sm text-orange-700 dark:text-orange-300 font-semibold flex items-center justify-center gap-2" style={{ fontFamily: "Google Sans, sans-serif" }}>
+              <p className="text-sm text-orange-700 dark:text-orange-300 font-semibold flex items-center justify-center gap-2" style={{ fontFamily: "Albert Sans, sans-serif" }}>
                 <ArrowRight size={16} className="animate-pulse" />
                 Swipe left to see all features
                 <ArrowRight size={16} className="animate-pulse" />
@@ -889,7 +889,7 @@ export default function PricingWithCalculator() {
                 <tr className="bg-white dark:bg-gray-900 hover:bg-orange-50 dark:hover:bg-gray-700/50 transition-colors">
                   <td className="px-6 py-4 font-bold text-gray-900 dark:text-white" style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}>Delivery Time</td>
                   {pricingPlans.map((plan, idx) => (
-                    <td key={idx} className="px-6 py-4 text-center text-gray-700 dark:text-gray-300" style={{ fontFamily: "Google Sans, sans-serif" }}>
+                    <td key={idx} className="px-6 py-4 text-center text-gray-700 dark:text-gray-300" style={{ fontFamily: "Albert Sans, sans-serif" }}>
                       {typeof plan.deliveryTime === 'object' ? plan.deliveryTime[billingPeriod] : plan.deliveryTime}
                     </td>
                   ))}
@@ -1149,7 +1149,7 @@ export default function PricingWithCalculator() {
           </div>
 
           {/* Legend */}
-          <div className="mt-8 text-center text-sm text-gray-600 dark:text-gray-400" style={{ fontFamily: "Google Sans, sans-serif" }}>
+          <div className="mt-8 text-center text-sm text-gray-600 dark:text-gray-400" style={{ fontFamily: "Albert Sans, sans-serif" }}>
             <p>✓ Feature included • ✗ Feature not included</p>
           </div>
         </div>
@@ -1162,7 +1162,7 @@ export default function PricingWithCalculator() {
             <h2 className="text-4xl font-bold mb-4 text-gray-900 dark:text-white" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>
               Why Choose Us
             </h2>
-            <p className="text-lg mb-2 text-gray-600 dark:text-gray-400" style={{ fontFamily: 'Google Sans, sans-serif' }}>
+            <p className="text-lg mb-2 text-gray-600 dark:text-gray-400" style={{ fontFamily: 'Albert Sans, sans-serif' }}>
               See how Celestial Web Solutions compares to in-house teams and freelancers
             </p>
           </div>
@@ -1179,33 +1179,33 @@ export default function PricingWithCalculator() {
               <tbody className="divide-y divide-gray-200 dark:divide-gray-700">
                 <tr className="bg-white dark:bg-gray-900">
                   <td className="px-6 py-4 font-bold text-gray-900 dark:text-white" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>Cost</td>
-                  <td className="px-6 py-4 text-center font-semibold text-orange-600" style={{ fontFamily: 'Google Sans, sans-serif' }}>Get the power of a team at an individual price.</td>
-                  <td className="px-6 py-4 text-center text-gray-900 dark:text-white" style={{ fontFamily: 'Google Sans, sans-serif' }}>Significant ongoing team expense (salaries + overhead)</td>
-                  <td className="px-6 py-4 text-center text-gray-900 dark:text-white" style={{ fontFamily: 'Google Sans, sans-serif' }}>Hidden costs due management and communication gaps</td>
+                  <td className="px-6 py-4 text-center font-semibold text-orange-600" style={{ fontFamily: 'Albert Sans, sans-serif' }}>Get the power of a team at an individual price.</td>
+                  <td className="px-6 py-4 text-center text-gray-900 dark:text-white" style={{ fontFamily: 'Albert Sans, sans-serif' }}>Significant ongoing team expense (salaries + overhead)</td>
+                  <td className="px-6 py-4 text-center text-gray-900 dark:text-white" style={{ fontFamily: 'Albert Sans, sans-serif' }}>Hidden costs due management and communication gaps</td>
                 </tr>
                 <tr className="bg-white dark:bg-gray-900">
                   <td className="px-6 py-4 font-bold text-gray-900 dark:text-white" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>Project Failure Potential</td>
-                  <td className="px-6 py-4 text-center font-semibold text-orange-600" style={{ fontFamily: 'Google Sans, sans-serif' }}>None</td>
-                  <td className="px-6 py-4 text-center text-gray-900 dark:text-white" style={{ fontFamily: 'Google Sans, sans-serif' }}>The effectiveness depends on how you choose the team</td>
-                  <td className="px-6 py-4 text-center text-gray-900 dark:text-white" style={{ fontFamily: 'Google Sans, sans-serif' }}>Freelancers often have multiple clients, which can be a problem</td>
+                  <td className="px-6 py-4 text-center font-semibold text-orange-600" style={{ fontFamily: 'Albert Sans, sans-serif' }}>None</td>
+                  <td className="px-6 py-4 text-center text-gray-900 dark:text-white" style={{ fontFamily: 'Albert Sans, sans-serif' }}>The effectiveness depends on how you choose the team</td>
+                  <td className="px-6 py-4 text-center text-gray-900 dark:text-white" style={{ fontFamily: 'Albert Sans, sans-serif' }}>Freelancers often have multiple clients, which can be a problem</td>
                 </tr>
                 <tr className="bg-white dark:bg-gray-900">
                   <td className="px-6 py-4 font-bold text-gray-900 dark:text-white" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>Track Record</td>
-                  <td className="px-6 py-4 text-center font-semibold text-orange-600" style={{ fontFamily: 'Google Sans, sans-serif' }}>Experience honed through successful projects</td>
-                  <td className="px-6 py-4 text-center text-gray-900 dark:text-white" style={{ fontFamily: 'Google Sans, sans-serif' }}>No Experience</td>
-                  <td className="px-6 py-4 text-center text-gray-900 dark:text-white" style={{ fontFamily: 'Google Sans, sans-serif' }}>Different experience and only on one field of work</td>
+                  <td className="px-6 py-4 text-center font-semibold text-orange-600" style={{ fontFamily: 'Albert Sans, sans-serif' }}>Experience honed through successful projects</td>
+                  <td className="px-6 py-4 text-center text-gray-900 dark:text-white" style={{ fontFamily: 'Albert Sans, sans-serif' }}>No Experience</td>
+                  <td className="px-6 py-4 text-center text-gray-900 dark:text-white" style={{ fontFamily: 'Albert Sans, sans-serif' }}>Different experience and only on one field of work</td>
                 </tr>
                 <tr className="bg-white dark:bg-gray-900">
                   <td className="px-6 py-4 font-bold text-gray-900 dark:text-white" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>Time to Start</td>
-                  <td className="px-6 py-4 text-center font-semibold text-orange-600" style={{ fontFamily: 'Google Sans, sans-serif' }}>Instant</td>
-                  <td className="px-6 py-4 text-center text-gray-900 dark:text-white" style={{ fontFamily: 'Google Sans, sans-serif' }}>Finding the right experts depends on the specific skills needed, potentially taking several months</td>
-                  <td className="px-6 py-4 text-center text-gray-900 dark:text-white" style={{ fontFamily: 'Google Sans, sans-serif' }}>The time it takes to begin working with a freelancer depends on their schedule</td>
+                  <td className="px-6 py-4 text-center font-semibold text-orange-600" style={{ fontFamily: 'Albert Sans, sans-serif' }}>Instant</td>
+                  <td className="px-6 py-4 text-center text-gray-900 dark:text-white" style={{ fontFamily: 'Albert Sans, sans-serif' }}>Finding the right experts depends on the specific skills needed, potentially taking several months</td>
+                  <td className="px-6 py-4 text-center text-gray-900 dark:text-white" style={{ fontFamily: 'Albert Sans, sans-serif' }}>The time it takes to begin working with a freelancer depends on their schedule</td>
                 </tr>
                 <tr className="bg-white dark:bg-gray-900">
                   <td className="px-6 py-4 font-bold text-gray-900 dark:text-white" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>Cost-effectiveness</td>
-                  <td className="px-6 py-4 text-center font-semibold text-orange-600" style={{ fontFamily: 'Google Sans, sans-serif' }}>Trained team</td>
-                  <td className="px-6 py-4 text-center text-gray-900 dark:text-white" style={{ fontFamily: 'Google Sans, sans-serif' }}>A 3-month training period may be necessary to ensure the team has the necessary skills</td>
-                  <td className="px-6 py-4 text-center text-gray-900 dark:text-white" style={{ fontFamily: 'Google Sans, sans-serif' }}>Building a team and establishing clear communication channels can be a time investment</td>
+                  <td className="px-6 py-4 text-center font-semibold text-orange-600" style={{ fontFamily: 'Albert Sans, sans-serif' }}>Trained team</td>
+                  <td className="px-6 py-4 text-center text-gray-900 dark:text-white" style={{ fontFamily: 'Albert Sans, sans-serif' }}>A 3-month training period may be necessary to ensure the team has the necessary skills</td>
+                  <td className="px-6 py-4 text-center text-gray-900 dark:text-white" style={{ fontFamily: 'Albert Sans, sans-serif' }}>Building a team and establishing clear communication channels can be a time investment</td>
                 </tr>
               </tbody>
             </table>
@@ -1223,14 +1223,14 @@ export default function PricingWithCalculator() {
             <a 
               href="/faqs" 
               className="inline-flex items-center gap-2 px-6 py-3 rounded-lg font-semibold transition-all backdrop-blur-md bg-white/30 hover:bg-white/50 text-blue-900 dark:text-blue-100 border border-white/40 hover:border-white/60 shadow-lg hover:shadow-xl"
-              style={{ fontFamily: "Google Sans, sans-serif" }}
+              style={{ fontFamily: "Albert Sans, sans-serif", fontWeight: 400 }}
             >
               View All FAQs →
             </a>
             <a 
               href="/schedule-a-call" 
               className="inline-flex items-center gap-2 px-6 py-3 rounded-lg font-semibold transition-all backdrop-blur-md bg-white/30 hover:bg-white/50 text-orange-900 dark:text-orange-100 border border-white/40 hover:border-white/60 shadow-lg hover:shadow-xl"
-              style={{ fontFamily: "Google Sans, sans-serif" }}
+              style={{ fontFamily: "Albert Sans, sans-serif", fontWeight: 400 }}
             >
               Book Free Consultation →
             </a>
@@ -1244,7 +1244,7 @@ export default function PricingWithCalculator() {
           <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2" style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}>
             We Accept
           </h3>
-          <p className="text-sm text-gray-600 dark:text-gray-400 mb-8" style={{ fontFamily: "Google Sans, sans-serif" }}>
+          <p className="text-sm text-gray-600 dark:text-gray-400 mb-8" style={{ fontFamily: "Albert Sans, sans-serif" }}>
             Click a payment method to view details
           </p>
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4">
@@ -1259,7 +1259,7 @@ export default function PricingWithCalculator() {
                 }`}
               >
                 <img src={method.logo} alt={method.title} className="max-h-10 max-w-24 object-contain" />
-                <span className="text-[10px] mt-1 text-gray-500 dark:text-gray-400 font-medium" style={{ fontFamily: "Google Sans, sans-serif" }}>
+                <span className="text-[10px] mt-1 text-gray-500 dark:text-gray-400 font-medium" style={{ fontFamily: "Albert Sans, sans-serif" }}>
                   {method.id === 'mtn1' ? 'MoMo (Merchant 1)' : method.id === 'mtn2' ? 'MoMo (Merchant 2)' : method.title}
                 </span>
                 {selectedPayment === method.id && (
@@ -1298,7 +1298,7 @@ export default function PricingWithCalculator() {
                       <method.icon size={24} />
                       <div className="text-left">
                         <h4 className="font-bold text-lg" style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}>{method.title}</h4>
-                        <p className="text-sm text-white/80" style={{ fontFamily: "Google Sans, sans-serif" }}>{method.subtitle}</p>
+                        <p className="text-sm text-white/80" style={{ fontFamily: "Albert Sans, sans-serif" }}>{method.subtitle}</p>
                       </div>
                     </div>
                     <div className="bg-white/20 backdrop-blur-sm rounded-xl p-4 space-y-3 text-left">
@@ -1307,7 +1307,7 @@ export default function PricingWithCalculator() {
                         <>
                           <div className="flex items-center justify-between">
                             <div>
-                              <p className="text-xs text-white/70 uppercase tracking-wide" style={{ fontFamily: "Google Sans, sans-serif" }}>Number</p>
+                              <p className="text-xs text-white/70 uppercase tracking-wide" style={{ fontFamily: "Albert Sans, sans-serif" }}>Number</p>
                               <p className="font-bold text-lg tracking-wider" style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}>{method.details.number}</p>
                             </div>
                             <button
@@ -1319,7 +1319,7 @@ export default function PricingWithCalculator() {
                             </button>
                           </div>
                           <div>
-                            <p className="text-xs text-white/70 uppercase tracking-wide" style={{ fontFamily: "Google Sans, sans-serif" }}>Name</p>
+                            <p className="text-xs text-white/70 uppercase tracking-wide" style={{ fontFamily: "Albert Sans, sans-serif" }}>Name</p>
                             <p className="font-semibold" style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}>{method.details.name}</p>
                           </div>
                         </>
@@ -1327,13 +1327,13 @@ export default function PricingWithCalculator() {
                       {/* Paystack Details */}
                       {method.details.link && (
                         <div>
-                          <p className="text-xs text-white/70 uppercase tracking-wide mb-2" style={{ fontFamily: "Google Sans, sans-serif" }}>Payment Link</p>
+                          <p className="text-xs text-white/70 uppercase tracking-wide mb-2" style={{ fontFamily: "Albert Sans, sans-serif" }}>Payment Link</p>
                           <a
                             href={`https://${method.details.link}`}
                             target="_blank"
                             rel="noopener noreferrer"
                             className="inline-flex items-center gap-2 px-4 py-2 bg-white text-blue-600 font-semibold rounded-lg hover:bg-gray-100 transition-colors text-sm"
-                            style={{ fontFamily: "Google Sans, sans-serif" }}
+                            style={{ fontFamily: "Albert Sans, sans-serif" }}
                           >
                             Pay with Paystack <ArrowRight size={14} />
                           </a>
@@ -1344,7 +1344,7 @@ export default function PricingWithCalculator() {
                         <>
                           <div className="flex items-center justify-between">
                             <div>
-                              <p className="text-xs text-white/70 uppercase tracking-wide" style={{ fontFamily: "Google Sans, sans-serif" }}>Account Number</p>
+                              <p className="text-xs text-white/70 uppercase tracking-wide" style={{ fontFamily: "Albert Sans, sans-serif" }}>Account Number</p>
                               <p className="font-bold text-lg tracking-wider" style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}>{method.details.accountNumber}</p>
                             </div>
                             <button
@@ -1356,22 +1356,22 @@ export default function PricingWithCalculator() {
                             </button>
                           </div>
                           <div>
-                            <p className="text-xs text-white/70 uppercase tracking-wide" style={{ fontFamily: "Google Sans, sans-serif" }}>Account Name</p>
+                            <p className="text-xs text-white/70 uppercase tracking-wide" style={{ fontFamily: "Albert Sans, sans-serif" }}>Account Name</p>
                             <p className="font-semibold" style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}>{method.details.accountName}</p>
                           </div>
                           <div className="flex gap-4">
                             <div>
-                              <p className="text-xs text-white/70 uppercase tracking-wide" style={{ fontFamily: "Google Sans, sans-serif" }}>Bank</p>
+                              <p className="text-xs text-white/70 uppercase tracking-wide" style={{ fontFamily: "Albert Sans, sans-serif" }}>Bank</p>
                               <p className="font-semibold text-sm" style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}>{method.details.bank}</p>
                             </div>
                             {method.details.branch && (
                               <div>
-                                <p className="text-xs text-white/70 uppercase tracking-wide" style={{ fontFamily: "Google Sans, sans-serif" }}>Branch</p>
+                                <p className="text-xs text-white/70 uppercase tracking-wide" style={{ fontFamily: "Albert Sans, sans-serif" }}>Branch</p>
                                 <p className="font-semibold text-sm" style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}>{method.details.branch}</p>
                               </div>
                             )}
                             <div>
-                              <p className="text-xs text-white/70 uppercase tracking-wide" style={{ fontFamily: "Google Sans, sans-serif" }}>SWIFT</p>
+                              <p className="text-xs text-white/70 uppercase tracking-wide" style={{ fontFamily: "Albert Sans, sans-serif" }}>SWIFT</p>
                               <p className="font-semibold text-sm" style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}>{method.details.swiftCode}</p>
                             </div>
                           </div>
@@ -1384,14 +1384,14 @@ export default function PricingWithCalculator() {
             })()}
           </AnimatePresence>
 
-          <p className="mt-8 text-sm text-gray-600 dark:text-gray-400" style={{ fontFamily: "Google Sans, sans-serif" }}>
+          <p className="mt-8 text-sm text-gray-600 dark:text-gray-400" style={{ fontFamily: "Albert Sans, sans-serif" }}>
             Flexible payment options to suit your convenience
           </p>
           <div className="mt-4">
             <a 
               href="/payment" 
               className="inline-flex items-center gap-2 px-6 py-3 bg-orange-600 hover:bg-orange-700 text-white font-semibold rounded-lg transition-all shadow-lg hover:shadow-xl"
-              style={{ fontFamily: "Google Sans, sans-serif" }}
+              style={{ fontFamily: "Albert Sans, sans-serif" }}
             >
               View Full Payment Page →
             </a>
@@ -1409,7 +1409,7 @@ export default function PricingWithCalculator() {
         }}
       >
         <h2 className="text-3xl md:text-5xl font-bold mb-4 relative z-10" style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}>Ready to Start Your Project?</h2>
-        <p className="text-lg mb-8 relative z-10" style={{ fontFamily: "Google Sans, sans-serif" }}>Get in touch today and let's build your online presence together!</p>
+        <p className="text-lg mb-8 relative z-10" style={{ fontFamily: "Albert Sans, sans-serif" }}>Get in touch today and let's build your online presence together!</p>
         <div className="relative z-10">
           <PremiumCTA href="/contact" size="default" variant="outline">
             Contact Us

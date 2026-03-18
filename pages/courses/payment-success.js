@@ -68,7 +68,7 @@ export default function PaymentSuccess() {
           <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-2" style={{ fontFamily: '"Bricolage Grotesque", sans-serif' }}>
             Verifying Payment...
           </h2>
-          <p className="text-gray-600 dark:text-gray-400" style={{ fontFamily: '"Google Sans", sans-serif' }}>
+          <p className="text-gray-600 dark:text-gray-400" style={{ fontFamily: '"Albert Sans", sans-serif' }}>
             Please wait while we confirm your payment
           </p>
         </div>
@@ -86,7 +86,7 @@ export default function PaymentSuccess() {
           <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-3" style={{ fontFamily: '"Bricolage Grotesque", sans-serif' }}>
             Payment Verification Failed
           </h2>
-          <p className="text-gray-600 dark:text-gray-400 mb-6" style={{ fontFamily: '"Google Sans", sans-serif' }}>
+          <p className="text-gray-600 dark:text-gray-400 mb-6" style={{ fontFamily: '"Albert Sans", sans-serif' }}>
             {error}
           </p>
           <Link href="/courses">
@@ -113,7 +113,7 @@ export default function PaymentSuccess() {
           <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-3" style={{ fontFamily: '"Bricolage Grotesque", sans-serif' }}>
             Payment Verified!
           </h2>
-          <p className="text-gray-600 dark:text-gray-400 mb-6" style={{ fontFamily: '"Google Sans", sans-serif' }}>
+          <p className="text-gray-600 dark:text-gray-400 mb-6" style={{ fontFamily: '"Albert Sans", sans-serif' }}>
             Opening enrollment form. Please complete your profile.
           </p>
         </motion.div>
@@ -140,7 +140,7 @@ export default function PaymentSuccess() {
           <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-3" style={{ fontFamily: '"Bricolage Grotesque", sans-serif' }}>
             Payment Successful!
           </h2>
-          <p className="text-gray-600 dark:text-gray-400 mb-6" style={{ fontFamily: '"Google Sans", sans-serif' }}>
+          <p className="text-gray-600 dark:text-gray-400 mb-6" style={{ fontFamily: '"Albert Sans", sans-serif' }}>
             We're redirecting you to complete your enrollment.
           </p>
           <div className="flex justify-center gap-2">

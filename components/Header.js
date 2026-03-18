@@ -219,7 +219,7 @@ const whatsappLink = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
       ? 'bg-green-500 text-white hover:bg-green-600'
       : 'bg-white/20 text-white hover:bg-white/30 backdrop-blur-sm'
   }`}
-  style={{ fontFamily: 'Google Sans, sans-serif' }}
+  style={{ fontFamily: 'Albert Sans, sans-serif', fontWeight: 400 }}
   whileHover={{ scale: 1.05 }}
   whileTap={{ scale: 0.95 }}
 >

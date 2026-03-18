@@ -145,10 +145,10 @@ export default function CourseDetail() {
                 >
                   <div className="flex items-center gap-3 mb-4">
                     <span className="bg-orange-500 text-white px-3 py-1 rounded-full text-sm font-semibold"
-                          style={{ fontFamily: '"Google Sans", sans-serif' }}>
+                          style={{ fontFamily: '"Albert Sans", sans-serif' }}>
                       {course.level}
                     </span>
-                    <span className="text-gray-300 text-sm" style={{ fontFamily: 'Google Sans, sans-serif' }}>
+                    <span className="text-gray-300 text-sm" style={{ fontFamily: '"Albert Sans", sans-serif' }}>
                       Updated {course.lastUpdated}
                     </span>
                   </div>
@@ -158,7 +158,7 @@ export default function CourseDetail() {
                     {course.title}
                   </h1>
 
-                  <p className="text-xl text-gray-300 mb-6" style={{ fontFamily: 'Google Sans, sans-serif' }}>
+                  <p className="text-xl text-gray-300 mb-6" style={{ fontFamily: '"Albert Sans", sans-serif' }}>
                     {course.subtitle}
                   </p>
 
@@ -190,11 +190,11 @@ export default function CourseDetail() {
                       />
                     </div>
                     <div>
-                      <p className="text-sm text-gray-400" style={{ fontFamily: 'Google Sans, sans-serif' }}>Created by</p>
-                      <p className="text-lg font-bold text-white" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>
+                      <p className="text-sm text-gray-400" style={{ fontFamily: '"Albert Sans", sans-serif' }}>Created by</p>
+                      <p className="text-lg font-bold text-white" style={{ fontFamily: '"Bricolage Grotesque", sans-serif' }}>
                         {course.instructor.name}
                       </p>
-                      <p className="text-sm text-gray-300" style={{ fontFamily: 'Google Sans, sans-serif' }}>
+                      <p className="text-sm text-gray-300" style={{ fontFamily: '"Albert Sans", sans-serif' }}>
                         {course.instructor.title}
                       </p>
                     </div>
@@ -251,24 +251,24 @@ export default function CourseDetail() {
                         whileHover={{ scale: 1.02 }}
                         whileTap={{ scale: 0.98 }}
                         className="w-full bg-orange-500 hover:bg-orange-600 text-white py-4 rounded-xl font-bold text-lg shadow-lg hover:shadow-xl transition-all duration-300 mb-4"
-                        style={{ fontFamily: 'Google Sans, sans-serif' }}
+                        style={{ fontFamily: '"Albert Sans", sans-serif' }}
                       >
                         Enroll Now
                       </motion.button>
                     </Link>
 
                     <Link href="/contact">
-                      <button className="w-full border-2 border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white py-3 rounded-xl font-semibold hover:bg-gray-50 dark:hover:bg-gray-700 transition-all duration-300" style={{ fontFamily: '"Google Sans", sans-serif' }}>
+                      <button className="w-full border-2 border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white py-3 rounded-xl font-semibold hover:bg-gray-50 dark:hover:bg-gray-700 transition-all duration-300" style={{ fontFamily: '"Albert Sans", sans-serif' }}>
                         Contact Us
                       </button>
                     </Link>
 
                     {/* Course Includes */}
                     <div className="mt-6 pt-6 border-t border-gray-200 dark:border-gray-700">
-                      <h4 className="font-bold text-gray-900 dark:text-white mb-4" style={{ fontFamily: '"Google Sans", sans-serif' }}>This course includes:</h4>
+                      <h4 className="font-bold text-gray-900 dark:text-white mb-4" style={{ fontFamily: '"Albert Sans", sans-serif' }}>This course includes:</h4>
                       <ul className="space-y-3">
                         {course.includes.map((item, index) => (
-                          <li key={index} className="flex items-start gap-3 text-sm text-gray-700 dark:text-gray-300" style={{ fontFamily: '"Google Sans", sans-serif' }}>
+                          <li key={index} className="flex items-start gap-3 text-sm text-gray-700 dark:text-gray-300" style={{ fontFamily: '"Albert Sans", sans-serif' }}>
                             <CheckCircle className="w-5 h-5 text-orange-500 flex-shrink-0 mt-0.5" />
                             <span>{item}</span>
                           </li>
@@ -278,7 +278,7 @@ export default function CourseDetail() {
 
                     {/* Share */}
                     <div className="mt-6 pt-6 border-t border-gray-200 dark:border-gray-700">
-                      <h4 className="text-sm font-bold text-gray-900 dark:text-white mb-3 flex items-center gap-2" style={{ fontFamily: '"Google Sans", sans-serif' }}>
+                      <h4 className="text-sm font-bold text-gray-900 dark:text-white mb-3 flex items-center gap-2" style={{ fontFamily: '"Albert Sans", sans-serif' }}>
                         <Share2 className="w-4 h-4 text-orange-600" />
                         Share this course
                       </h4>
@@ -412,7 +412,7 @@ export default function CourseDetail() {
                           {course.whatYouLearn.map((item, index) => (
                             <div key={index} className="flex items-start gap-3">
                               <CheckCircle className="w-5 h-5 text-orange-500 flex-shrink-0 mt-1" />
-                              <span className="text-gray-700 dark:text-gray-300" style={{ fontFamily: '"Google Sans", sans-serif' }}>{item}</span>
+                              <span className="text-gray-700 dark:text-gray-300" style={{ fontFamily: '"Albert Sans", sans-serif' }}>{item}</span>
                             </div>
                           ))}
                         </div>
@@ -423,7 +423,7 @@ export default function CourseDetail() {
                         <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-6" style={{ fontFamily: '"Bricolage Grotesque", sans-serif', fontWeight: 700 }}>Course Description</h2>
                         <div className="prose dark:prose-invert max-w-none">
                           {course.description.split('\n\n').map((paragraph, index) => (
-                            <p key={index} className="text-gray-700 dark:text-gray-300 mb-4" style={{ fontFamily: '"Google Sans", sans-serif' }}>
+                            <p key={index} className="text-gray-700 dark:text-gray-300 mb-4" style={{ fontFamily: '"Albert Sans", sans-serif' }}>
                               {paragraph}
                             </p>
                           ))}
@@ -435,7 +435,7 @@ export default function CourseDetail() {
                         <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-6" style={{ fontFamily: '"Bricolage Grotesque", sans-serif', fontWeight: 700 }}>Requirements</h2>
                         <ul className="space-y-3">
                           {course.requirements.map((req, index) => (
-                            <li key={index} className="flex items-start gap-3 text-gray-700 dark:text-gray-300" style={{ fontFamily: '"Google Sans", sans-serif' }}>
+                            <li key={index} className="flex items-start gap-3 text-gray-700 dark:text-gray-300" style={{ fontFamily: '"Albert Sans", sans-serif' }}>
                               <div className="w-2 h-2 rounded-full bg-orange-600 mt-2 flex-shrink-0" />
                               <span>{req}</span>
                             </li>
@@ -523,9 +523,9 @@ export default function CourseDetail() {
                                       >
                                         <div className="flex items-center gap-3">
                                           <Play className="w-4 h-4 text-gray-400" />
-                                          <span className="text-gray-700 dark:text-gray-300" style={{ fontFamily: '"Google Sans", sans-serif' }}>{lesson.title}</span>
+                                          <span className="text-gray-700 dark:text-gray-300" style={{ fontFamily: '"Albert Sans", sans-serif' }}>{lesson.title}</span>
                                         </div>
-                                        <span className="text-sm text-gray-500 dark:text-gray-400" style={{ fontFamily: '"Google Sans", sans-serif' }}>{lesson.duration}</span>
+                                        <span className="text-sm text-gray-500 dark:text-gray-400" style={{ fontFamily: '"Albert Sans", sans-serif' }}>{lesson.duration}</span>
                                       </div>
                                     ))}
                                   </div>
@@ -570,7 +570,7 @@ export default function CourseDetail() {
                               <p className="font-bold text-gray-900 dark:text-white" style={{ fontFamily: '"Bricolage Grotesque", sans-serif', fontWeight: 700 }}>
                                 {mode}
                               </p>
-                              <p className="text-sm text-gray-600 dark:text-gray-400" style={{ fontFamily: '"Google Sans", sans-serif' }}>
+                              <p className="text-sm text-gray-600 dark:text-gray-400" style={{ fontFamily: '"Albert Sans", sans-serif' }}>
                                 {mode.includes('Google Meet') && 'Live instructor-led sessions with screen sharing'}
                                 {mode.includes('Zoom') && 'Interactive live classes with Q&A'}
                               </p>
@@ -582,7 +582,7 @@ export default function CourseDetail() {
                       <div className="mt-8 space-y-4">
                         <div className="p-6 bg-blue-50 dark:bg-blue-900/20 rounded-xl border border-blue-200 dark:border-blue-800">
                           <h3 className="text-lg font-bold text-blue-900 dark:text-blue-100 mb-2" style={{ fontFamily: '"Bricolage Grotesque", sans-serif', fontWeight: 700 }}>How It Works</h3>
-                          <ul className="space-y-2 text-blue-800 dark:text-blue-200" style={{ fontFamily: '"Google Sans", sans-serif' }}>
+                          <ul className="space-y-2 text-blue-800 dark:text-blue-200" style={{ fontFamily: '"Albert Sans", sans-serif' }}>
                             <li className="flex items-start gap-2"><span className="text-blue-500 font-bold">1.</span> Enroll and complete payment via Paystack</li>
                             <li className="flex items-start gap-2"><span className="text-blue-500 font-bold">2.</span> Receive your Google Meet or Zoom session link via WhatsApp</li>
                             <li className="flex items-start gap-2"><span className="text-blue-500 font-bold">3.</span> Join scheduled live sessions with your instructor</li>
@@ -593,7 +593,7 @@ export default function CourseDetail() {
 
                         <div className="p-6 bg-green-50 dark:bg-green-900/20 rounded-xl border border-green-200 dark:border-green-800">
                           <h3 className="text-lg font-bold text-green-900 dark:text-green-100 mb-2" style={{ fontFamily: '"Bricolage Grotesque", sans-serif', fontWeight: 700 }}>What You Get</h3>
-                          <ul className="space-y-2 text-green-800 dark:text-green-200" style={{ fontFamily: '"Google Sans", sans-serif' }}>
+                          <ul className="space-y-2 text-green-800 dark:text-green-200" style={{ fontFamily: '"Albert Sans", sans-serif' }}>
                             <li>&#10003; Live instructor-led sessions (small group or 1-on-1)</li>
                             <li>&#10003; Session recordings sent after each class</li>
                             <li>&#10003; WhatsApp group for ongoing support</li>
@@ -630,9 +630,9 @@ export default function CourseDetail() {
                           <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2" style={{ fontFamily: '"Bricolage Grotesque", sans-serif', fontWeight: 700 }}>
                             {course.instructor.name}
                           </h3>
-                          <p className="text-gray-600 dark:text-gray-400 mb-4" style={{ fontFamily: '"Google Sans", sans-serif' }}>{course.instructor.title}</p>
+                          <p className="text-gray-600 dark:text-gray-400 mb-4" style={{ fontFamily: '"Albert Sans", sans-serif' }}>{course.instructor.title}</p>
                           
-                          <div className="flex flex-wrap gap-4 text-sm text-gray-700 dark:text-gray-300" style={{ fontFamily: '"Google Sans", sans-serif' }}>
+                          <div className="flex flex-wrap gap-4 text-sm text-gray-700 dark:text-gray-300" style={{ fontFamily: '"Albert Sans", sans-serif' }}>
                             <div className="flex items-center gap-2">
                               <Star className="w-4 h-4 text-yellow-500 fill-yellow-500" />
                               <span>{course.instructor.rating} Instructor Rating</span>
@@ -649,7 +649,7 @@ export default function CourseDetail() {
                         </div>
                       </div>
 
-                      <p className="text-gray-700 dark:text-gray-300 leading-relaxed" style={{ fontFamily: '"Google Sans", sans-serif' }}>
+                      <p className="text-gray-700 dark:text-gray-300 leading-relaxed" style={{ fontFamily: '"Albert Sans", sans-serif' }}>
                         {course.instructor.bio}
                       </p>
                     </motion.div>
@@ -672,7 +672,7 @@ export default function CourseDetail() {
                         <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-3" style={{ fontFamily: '"Bricolage Grotesque", sans-serif', fontWeight: 700 }}>
                           Share Your Experience
                         </h3>
-                        <p className="text-gray-700 dark:text-gray-300 mb-6 max-w-2xl mx-auto" style={{ fontFamily: '"Google Sans", sans-serif' }}>
+                        <p className="text-gray-700 dark:text-gray-300 mb-6 max-w-2xl mx-auto" style={{ fontFamily: '"Albert Sans", sans-serif' }}>
                           Help other students by sharing your thoughts about this course. Your feedback helps us improve and guides others in their learning journey.
                         </p>
                         <a 
@@ -684,13 +684,13 @@ export default function CourseDetail() {
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
                             className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 rounded-xl font-bold text-lg shadow-lg hover:shadow-xl transition-all duration-300 inline-flex items-center gap-2"
-                            style={{ fontFamily: '"Google Sans", sans-serif', fontWeight: 700 }}
+                            style={{ fontFamily: '"Albert Sans", sans-serif', fontWeight: 700 }}
                           >
                             <MessageCircle className="w-5 h-5" />
                             Write a Review
                           </motion.button>
                         </a>
-                        <p className="text-sm text-gray-600 dark:text-gray-400 mt-4" style={{ fontFamily: '"Google Sans", sans-serif' }}>
+                        <p className="text-sm text-gray-600 dark:text-gray-400 mt-4" style={{ fontFamily: '"Albert Sans", sans-serif' }}>
                           Takes less than 2 minutes
                         </p>
                       </div>
@@ -724,7 +724,7 @@ export default function CourseDetail() {
             <h2 className="text-4xl font-bold mb-6" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>
               Ready to Start Your Learning Journey?
             </h2>
-            <p className="text-xl mb-8 opacity-90" style={{ fontFamily: 'Google Sans, sans-serif' }}>
+            <p className="text-xl mb-8 opacity-90" style={{ fontFamily: 'Albert Sans, sans-serif' }}>
               Join hundreds of students who have transformed their careers through our courses.
             </p>
             <Link href="/contact">
@@ -732,7 +732,7 @@ export default function CourseDetail() {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className="bg-white text-orange-600 px-8 py-4 rounded-full font-bold text-lg shadow-lg hover:shadow-xl transition-all duration-300"
-                style={{ fontFamily: 'Google Sans, sans-serif' }}
+                style={{ fontFamily: 'Albert Sans, sans-serif' }}
               >
                 Contact Us Today
               </motion.button>

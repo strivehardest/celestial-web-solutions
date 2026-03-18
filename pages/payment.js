@@ -185,13 +185,13 @@ export default function PaymentPage() {
             </h1>
           </div>
           <div className="flex flex-col items-center justify-center mb-4 min-h-[2.5em]">
-            <span className="text-lg md:text-2xl text-white bg-black/20 px-4 py-2 rounded-full font-semibold tracking-wide shadow-lg animate-pulse" style={{ fontFamily: 'Google Sans, sans-serif', letterSpacing: '0.04em' }}>
+            <span className="text-lg md:text-2xl text-white bg-black/20 px-4 py-2 rounded-full font-semibold tracking-wide shadow-lg animate-pulse" style={{ fontFamily: 'Albert Sans, sans-serif', letterSpacing: '0.04em' }}>
               {displayText}<span className="animate-pulse">|</span>
             </span>
           </div>
           <p
             className="text-lg text-white/90 max-w-3xl mx-auto"
-            style={{ fontFamily: 'Google Sans, sans-serif' }}
+            style={{ fontFamily: 'Albert Sans, sans-serif' }}
           >
             Pay securely for web design, website development, and digital services with Celestial Web Solutions. Accepting MTN MoMo, Telecel Cash, Paystack, Fidelity Bank, and Ecobank transfers.
           </p>
@@ -208,7 +208,7 @@ export default function PaymentPage() {
             Select Your Payment Method
           </h2>
 
-          <div className="space-y-6" style={{ fontFamily: 'Google Sans, sans-serif' }}>
+          <div className="space-y-6" style={{ fontFamily: 'Albert Sans, sans-serif' }}>
             {paymentOptions.map(option => (
               <div
                 key={option.id}
@@ -238,7 +238,7 @@ export default function PaymentPage() {
                         >
                           {option.title}
                         </h3>
-                        <p className="text-white/90">{option.subtitle}</p>
+                        <p className="text-white/90" style={{ fontFamily: 'Albert Sans, sans-serif' }}>{option.subtitle}</p>
                       </div>
                     </div>
                     <ArrowRight
@@ -250,7 +250,7 @@ export default function PaymentPage() {
                 </div>
 
                 {selectedOption === option.id && (
-                  <div className="p-6 bg-gray-50 dark:bg-gray-800 dark:text-gray-200 transition-colors duration-500">
+                  <div className="p-6 bg-gray-50 dark:bg-gray-800 dark:text-gray-200 transition-colors duration-500" style={{ fontFamily: 'Albert Sans, sans-serif' }}>
                     {(option.id === 1 || option.id === 2) && (
                       <>
                         <div className="flex justify-between bg-white dark:bg-gray-700 p-3 rounded-lg mb-3">
@@ -310,7 +310,7 @@ export default function PaymentPage() {
       {/* Contact Section */}
       <section
         className="relative py-16 text-white text-center overflow-hidden transition-colors duration-500"
-        style={{ fontFamily: 'Google Sans, sans-serif' }}
+        style={{ fontFamily: 'Albert Sans, sans-serif' }}
       >
         {/* Background image with overlay */}
         <div className="absolute inset-0">

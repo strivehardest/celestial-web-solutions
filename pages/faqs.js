@@ -191,7 +191,7 @@ export default function FAQs() {
               </h1>
               <p
                 className="text-xl text-orange-100 max-w-2xl mx-auto leading-relaxed drop-shadow-md"
-                style={{ fontFamily: "Google Sans, sans-serif" }}
+                style={{ fontFamily: "Albert Sans, sans-serif" }}
               >
                 Get answers to common questions about our web development services, pricing, and process
               </p>
@@ -217,7 +217,7 @@ export default function FAQs() {
                   <category.icon size={20} className="text-orange-500" />
                   <span
                     className="font-medium text-gray-700 dark:text-gray-300"
-                    style={{ fontFamily: "Google Sans, sans-serif" }}
+                    style={{ fontFamily: "Albert Sans, sans-serif" }}
                   >
                     {category.category}
                   </span>
@@ -297,7 +297,7 @@ export default function FAQs() {
                               <div className="px-6 pb-4 border-t border-gray-100 dark:border-gray-700">
                                 <p
                                   className="text-gray-600 dark:text-gray-300 leading-relaxed pt-4"
-                                  style={{ fontFamily: "Google Sans, sans-serif" }}
+                                  style={{ fontFamily: "Albert Sans, sans-serif" }}
                                 >
                                   {faq.answer}
                                 </p>
@@ -331,7 +331,7 @@ export default function FAQs() {
               </h3>
               <p
                 className="text-gray-600 dark:text-gray-300 mb-8 max-w-2xl mx-auto leading-relaxed"
-                style={{ fontFamily: "Google Sans, sans-serif" }}
+                style={{ fontFamily: "Albert Sans, sans-serif" }}
               >
                 Can't find the answer you're looking for? Our team is here to help! Get in touch for a personalized consultation.
               </p>

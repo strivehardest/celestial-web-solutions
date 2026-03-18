@@ -111,13 +111,13 @@ export default function Courses() {
                 Master <span className="border-r-2 border-orange-500 animate-pulse">{displayText}</span>
               </div>
               <p className="text-xl md:text-2xl text-gray-300 mb-4 max-w-3xl mx-auto"
-                 style={{ fontFamily: '"Google Sans", sans-serif' }}>
+                 style={{ fontFamily: '"Albert Sans", sans-serif' }}>
                 Master the skills you need to build professional websites and launch your career in tech. 
                 From WordPress to modern frameworks, we've got you covered.
               </p>
               <div className="inline-flex items-center gap-2 bg-orange-500/20 border border-orange-500/40 rounded-full px-6 py-3 mb-8">
                 <span className="w-2 h-2 rounded-full bg-orange-500 animate-pulse" />
-                <p className="text-white font-semibold" style={{ fontFamily: '"Google Sans", sans-serif' }}>
+                <p className="text-white font-semibold" style={{ fontFamily: '"Albert Sans", sans-serif' }}>
                   Started on 2nd March, 2026
                 </p>
               </div>
@@ -134,13 +134,13 @@ export default function Courses() {
                 <BookOpen className="w-10 h-10 text-orange-500 mx-auto mb-3" />
                 <h3 className="text-3xl font-bold text-white mb-1"
                     style={{ fontFamily: '"Bricolage Grotesque", sans-serif', fontWeight: 700 }}>{courses.length}</h3>
-                <p className="text-gray-300" style={{ fontFamily: '"Google Sans", sans-serif' }}>Active Courses</p>
+                <p className="text-gray-300" style={{ fontFamily: '"Albert Sans", sans-serif' }}>Active Courses</p>
               </div>
               <div className="bg-white/10 backdrop-blur-md dark:bg-gray-800/50 rounded-2xl p-6 shadow-lg">
                 <TrendingUp className="w-10 h-10 text-orange-500 mx-auto mb-3" />
                 <h3 className="text-3xl font-bold text-white mb-1"
                     style={{ fontFamily: '"Bricolage Grotesque", sans-serif', fontWeight: 700 }}>Practical</h3>
-                <p className="text-gray-300" style={{ fontFamily: '"Google Sans", sans-serif' }}>Hands-On Learning</p>
+                <p className="text-gray-300" style={{ fontFamily: '"Albert Sans", sans-serif' }}>Hands-On Learning</p>
               </div>
             </motion.div>
 
@@ -160,7 +160,7 @@ export default function Courses() {
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
                     className="w-full pl-12 pr-4 py-4 rounded-xl border-2 border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:ring-2 focus:ring-orange-500 focus:border-orange-500 outline-none"
-                    style={{ fontFamily: '"Google Sans", sans-serif' }}
+                    style={{ fontFamily: '"Albert Sans", sans-serif' }}
                   />
                 </div>
                 <div className="relative">
@@ -169,7 +169,7 @@ export default function Courses() {
                     value={filterLevel}
                     onChange={(e) => setFilterLevel(e.target.value)}
                     className="w-full md:w-48 pl-12 pr-4 py-4 rounded-xl border-2 border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-orange-500 focus:border-orange-500 outline-none appearance-none cursor-pointer"
-                    style={{ fontFamily: '"Google Sans", sans-serif' }}
+                    style={{ fontFamily: '"Albert Sans", sans-serif' }}
                   >
                     <option value="all" className="bg-white dark:bg-gray-800">All Levels</option>
                     <option value="beginner" className="bg-white dark:bg-gray-800">Beginner</option>
@@ -229,7 +229,7 @@ export default function Courses() {
                             {course.title}
                           </h3>
                           <p className="text-gray-600 dark:text-gray-400 mb-4 line-clamp-2 text-sm"
-                             style={{ fontFamily: '"Google Sans", sans-serif' }}>
+                             style={{ fontFamily: '"Albert Sans", sans-serif' }}>
                             {course.subtitle}
                           </p>
 
@@ -250,7 +250,7 @@ export default function Courses() {
                                 {course.instructor.name}
                               </p>
                               <p className="text-xs text-gray-600 dark:text-gray-300"
-                                 style={{ fontFamily: '"Google Sans", sans-serif' }}>
+                                 style={{ fontFamily: '"Albert Sans", sans-serif' }}>
                                 {course.instructor.title}
                               </p>
                             </div>
@@ -321,7 +321,7 @@ export default function Courses() {
             <h2 className="text-4xl font-bold mb-6" style={{ fontFamily: '"Bricolage Grotesque", sans-serif', fontWeight: 700 }}>
               Ready to Start Your Learning Journey?
             </h2>
-            <p className="text-xl mb-8 opacity-90" style={{ fontFamily: '"Google Sans", sans-serif' }}>
+            <p className="text-xl mb-8 opacity-90" style={{ fontFamily: '"Albert Sans", sans-serif' }}>
               Join hundreds of students who have transformed their careers through our courses.
             </p>
             <Link href="/contact">
@@ -329,7 +329,7 @@ export default function Courses() {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className="bg-white text-orange-600 px-8 py-4 rounded-full font-bold text-lg shadow-lg hover:shadow-xl transition-all duration-300"
-                style={{ fontFamily: '"Google Sans", sans-serif', fontWeight: 700 }}
+                style={{ fontFamily: '"Albert Sans", sans-serif', fontWeight: 700 }}
               >
                 Contact Us Today
               </motion.button>

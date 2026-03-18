@@ -31,11 +31,12 @@ export default function Document() {
           rel="stylesheet" 
         />
         
-        {/* Google Sans with font-display swap, loaded eagerly */}
+        {/* Albert Sans for body text, font-weight 400 */}
         <link 
-          href="https://fonts.cdnfonts.com/css/google-sans?display=swap" 
+          href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400&display=swap" 
           rel="stylesheet" 
         />
+        
         {/* Google AdSense */}
         <script
           async

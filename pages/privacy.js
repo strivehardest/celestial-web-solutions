@@ -429,12 +429,12 @@ We take privacy seriously and are committed to addressing your concerns promptly
               </h1>
               <p
                 className="text-xl text-orange-100 max-w-2xl mx-auto leading-relaxed"
-                style={{ fontFamily: "Google Sans, sans-serif" }}
+                style={{ fontFamily: "Albert Sans, sans-serif" }}
               >
                 Your privacy is important to us. Learn how we collect, use, and protect your information.
               </p>
               <div className="mt-6 text-orange-100">
-                <p style={{ fontFamily: "Google Sans, sans-serif" }}>
+                <p style={{ fontFamily: "Albert Sans, sans-serif" }}>
                   Last Updated: January 15, 2025
                 </p>
               </div>
@@ -454,7 +454,7 @@ We take privacy seriously and are committed to addressing your concerns promptly
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: index * 0.05 }}
                   className="flex items-center space-x-2 bg-white dark:bg-gray-700 px-4 py-2 rounded-lg shadow-sm border border-orange-200 dark:border-orange-600 hover:bg-orange-50 dark:hover:bg-gray-600 transition-colors"
-                  style={{ fontFamily: "Google Sans, sans-serif" }}
+                  style={{ fontFamily: "Albert Sans, sans-serif" }}
                 >
                   <section.icon size={16} className="text-orange-500" />
                   <span className="text-gray-700 dark:text-gray-300 text-sm">
@@ -486,7 +486,7 @@ We take privacy seriously and are committed to addressing your concerns promptly
                   </h2>
                   <p
                     className="text-blue-600 dark:text-blue-200 leading-relaxed"
-                    style={{ fontFamily: "Google Sans, sans-serif" }}
+                    style={{ fontFamily: "Albert Sans, sans-serif" }}
                   >
                     At Celestial Web Solutions, we are committed to protecting your privacy and handling your personal information with care and respect. 
                     This privacy policy explains how we collect, use, share, and protect your information when you use our services.
@@ -525,7 +525,7 @@ We take privacy seriously and are committed to addressing your concerns promptly
                   {/* Section Content */}
                   <div
                     className="text-gray-700 dark:text-gray-300 leading-relaxed whitespace-pre-line"
-                    style={{ fontFamily: "Google Sans, sans-serif" }}
+                    style={{ fontFamily: "Albert Sans, sans-serif" }}
                   >
                     {section.content}
                   </div>
@@ -552,7 +552,7 @@ We take privacy seriously and are committed to addressing your concerns promptly
               </h3>
               <p
                 className="text-orange-100 mb-8 max-w-2xl mx-auto leading-relaxed"
-                style={{ fontFamily: "Google Sans, sans-serif" }}
+                style={{ fontFamily: "Albert Sans, sans-serif" }}
               >
                 If you have any questions about this Privacy Policy or how we handle your information, 
                 please don't hesitate to contact us. We're here to address your concerns.
@@ -568,13 +568,13 @@ We take privacy seriously and are committed to addressing your concerns promptly
               </div>
 
               <div className="mt-8 text-orange-100 space-y-2">
-                <p style={{ fontFamily: "Google Sans, sans-serif" }}>
+                <p style={{ fontFamily: "Albert Sans, sans-serif" }}>
                   Email: info@celestialwebsolutions.net
                 </p>
-                <p style={{ fontFamily: "Google Sans, sans-serif" }}>
+                <p style={{ fontFamily: "Albert Sans, sans-serif" }}>
                   Phone: +233 530 505 031
                 </p>
-                <p style={{ fontFamily: "Google Sans, sans-serif" }}>
+                <p style={{ fontFamily: "Albert Sans, sans-serif" }}>
                   Address: 235 Agblor Link, Keta, Ghana
                 </p>
               </div>

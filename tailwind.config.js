@@ -9,9 +9,9 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        // Body text: Google Sans with robust fallbacks
+        // Body text: Albert Sans with robust fallbacks
         sans: [
-          "Google Sans",
+          "Albert Sans",
           "Roboto",
           "Segoe UI",
           "Helvetica Neue",

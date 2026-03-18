@@ -196,7 +196,7 @@ export default function Contact() {
         <link rel="canonical" href="https://celestialwebsolutions.net/contact" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@300;400;500;600;700;800&family=Google Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@300;400;500;600;700;800&family=Albert+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
       </Head>
 
       <div className="min-h-screen bg-white dark:bg-gray-900">
@@ -231,13 +231,13 @@ export default function Contact() {
                 Contact Us
               </h1>
               <div className="flex flex-col items-center justify-center mb-4 min-h-[2.5em]">
-                <span className="text-lg md:text-2xl text-white bg-black/20 px-4 py-2 rounded-full font-semibold tracking-wide shadow-lg animate-pulse" style={{ fontFamily: 'Google Sans, sans-serif', letterSpacing: '0.04em' }}>
+                <span className="text-lg md:text-2xl text-white bg-black/20 px-4 py-2 rounded-full font-semibold tracking-wide shadow-lg animate-pulse" style={{ fontFamily: 'Albert Sans, sans-serif', letterSpacing: '0.04em' }}>
                   {displayText}<span className="animate-pulse">|</span>
                 </span>
               </div>
               <p
                 className="text-xl text-orange-100 max-w-3xl mx-auto leading-relaxed drop-shadow-md"
-                style={{ fontFamily: "Google Sans, sans-serif" }}
+                style={{ fontFamily: "Albert Sans, sans-serif" }}
               >
                 Ready to bring your digital vision to life? Let's discuss your project and create something amazing together.
               </p>
@@ -270,7 +270,7 @@ export default function Contact() {
                     </div>
                   </div>
                   <h3 className="font-bold text-gray-900 dark:text-white mb-2 text-lg" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>Phone</h3>
-                  <p className="text-gray-600 dark:text-gray-300 font-medium" style={{ fontFamily: 'Google Sans, sans-serif' }}>+233 53 050 5031</p>
+                  <p className="text-gray-600 dark:text-gray-300 font-medium" style={{ fontFamily: 'Albert Sans, sans-serif' }}>+233 53 050 5031</p>
                 </motion.div>
 
                 {/* WhatsApp */}
@@ -286,7 +286,7 @@ export default function Contact() {
                     </div>
                   </div>
                   <h3 className="font-bold text-gray-900 dark:text-white mb-2 text-lg" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>WhatsApp</h3>
-                  <p className="text-gray-600 dark:text-gray-300 font-medium" style={{ fontFamily: 'Google Sans, sans-serif' }}>+233 245 709 341</p>
+                  <p className="text-gray-600 dark:text-gray-300 font-medium" style={{ fontFamily: 'Albert Sans, sans-serif' }}>+233 245 709 341</p>
                 </motion.div>
 
                 {/* Email */}
@@ -302,7 +302,7 @@ export default function Contact() {
                     </div>
                   </div>
                   <h3 className="font-bold text-gray-900 dark:text-white mb-2 text-lg" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>Email</h3>
-                  <p className="text-gray-600 dark:text-gray-300 break-all font-medium" style={{ fontFamily: 'Google Sans, sans-serif' }}>info@celestialwebsolutions.net</p>
+                  <p className="text-gray-600 dark:text-gray-300 break-all font-medium" style={{ fontFamily: 'Albert Sans, sans-serif' }}>info@celestialwebsolutions.net</p>
                 </motion.div>
 
                 {/* Location */}
@@ -319,7 +319,7 @@ export default function Contact() {
                     </div>
                   </div>
                   <h3 className="font-bold text-gray-900 dark:text-white mb-2 text-lg" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>Location</h3>
-                  <p className="text-gray-600 dark:text-gray-300 font-medium" style={{ fontFamily: 'Google Sans, sans-serif' }}>Keta & Accra, Ghana</p>
+                  <p className="text-gray-600 dark:text-gray-300 font-medium" style={{ fontFamily: 'Albert Sans, sans-serif' }}>Keta & Accra, Ghana</p>
                 </motion.div>
               </div>
 
@@ -332,7 +332,7 @@ export default function Contact() {
               >
                 <div className="p-8 border-b border-gray-200 dark:border-gray-700 bg-gradient-to-r from-orange-50 to-orange-100 dark:from-gray-800 dark:to-gray-700">
                   <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>Find Us</h3>
-                  <p className="text-gray-600 dark:text-gray-300 font-medium" style={{ fontFamily: 'Google Sans, sans-serif' }}> Our Main Office is located in the beautiful coastal city of Keta, Ghana</p>
+                  <p className="text-gray-600 dark:text-gray-300 font-medium" style={{ fontFamily: 'Albert Sans, sans-serif' }}> Our Main Office is located in the beautiful coastal city of Keta, Ghana</p>
                 </div>
                 <div className="h-64 bg-gray-200 relative">
                   <Map center={[5.8836217, 0.9828871]} zoom={15} markerText="Celestial Web Solutions - Keta, Ghana" height="256px" useCustomIcon={false} showCircle={false} />
@@ -351,7 +351,7 @@ export default function Contact() {
               
               <div className="mb-10 relative z-10">
                 <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-3" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>Send us a Message</h2>
-                <p className="text-gray-600 dark:text-gray-300 text-lg leading-relaxed" style={{ fontFamily: 'Google Sans, sans-serif' }}>Tell us about your project and we will get back to you within 24 hours.</p>
+                <p className="text-gray-600 dark:text-gray-300 text-lg leading-relaxed" style={{ fontFamily: 'Albert Sans, sans-serif' }}>Tell us about your project and we will get back to you within 24 hours.</p>
               </div>
 
               {submitStatus && (
@@ -363,7 +363,7 @@ export default function Contact() {
                       ? 'bg-green-50 dark:bg-green-900/20 text-green-800 dark:text-green-400 border-green-500' 
                       : 'bg-red-50 dark:bg-red-900/20 text-red-800 dark:text-red-400 border-red-500'
                   }`}
-                  style={{ fontFamily: 'Google Sans, sans-serif' }}
+                  style={{ fontFamily: 'Albert Sans, sans-serif' }}
                 >
                   <div className="flex items-center">
                     {submitStatus === 'success' ? (
@@ -399,7 +399,7 @@ export default function Contact() {
                       value={formData.name}
                       onChange={handleInputChange}
                       className="w-full px-5 py-3 border-2 border-gray-200 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-2xl focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-all duration-300"
-                      style={{ fontFamily: 'Google Sans, sans-serif' }}
+                      style={{ fontFamily: 'Albert Sans, sans-serif' }}
                       placeholder="Your name"
                     />
                   </div>
@@ -415,7 +415,7 @@ export default function Contact() {
                       value={formData.phone}
                       onChange={handleInputChange}
                       className="w-full px-5 py-3 border-2 border-gray-200 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-2xl focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-all duration-300"
-                      style={{ fontFamily: 'Google Sans, sans-serif' }}
+                      style={{ fontFamily: 'Albert Sans, sans-serif' }}
                       placeholder="+233 50 505 031"
                     />
                   </div>
@@ -433,7 +433,7 @@ export default function Contact() {
                     value={formData.email}
                     onChange={handleInputChange}
                     className="w-full px-5 py-3 border-2 border-gray-200 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-2xl focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-all duration-300"
-                    style={{ fontFamily: 'Google Sans, sans-serif' }}
+                    style={{ fontFamily: 'Albert Sans, sans-serif' }}
                     placeholder="your@email.com"
                   />
                 </div>
@@ -449,7 +449,7 @@ export default function Contact() {
                     value={formData.subject}
                     onChange={handleInputChange}
                     className="w-full px-5 py-3 border-2 border-gray-200 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-2xl focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-all duration-300"
-                    style={{ fontFamily: 'Google Sans, sans-serif' }}
+                    style={{ fontFamily: 'Albert Sans, sans-serif' }}
                   >
                     <option value="">Select a subject</option>
                     <option value="Web Development">Web Development</option>
@@ -475,7 +475,7 @@ export default function Contact() {
                     value={formData.message}
                     onChange={handleInputChange}
                     className="w-full px-5 py-3 border-2 border-gray-200 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-2xl focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-all duration-300 resize-none"
-                    style={{ fontFamily: 'Google Sans, sans-serif' }}
+                    style={{ fontFamily: 'Albert Sans, sans-serif' }}
                     placeholder="Tell us about your project..."
                   />
                 </div>
@@ -510,13 +510,13 @@ export default function Contact() {
               </form>
 
               <div className="mt-8 pt-6 border-t border-gray-200 dark:border-gray-700">
-                <p className="text-sm text-gray-600 dark:text-gray-300 mb-4 font-medium" style={{ fontFamily: 'Google Sans, sans-serif' }}>Prefer to contact us directly?</p>
+                <p className="text-sm text-gray-600 dark:text-gray-300 mb-4 font-medium" style={{ fontFamily: 'Albert Sans, sans-serif' }}>Prefer to contact us directly?</p>
                 <div className="grid grid-cols-3 gap-3">
                   <motion.a 
                     href="tel:+233530505031" 
                     whileHover={{ scale: 1.05 }}
                     className="flex items-center justify-center text-white bg-orange-500 hover:bg-orange-600 font-bold py-2 px-3 rounded-xl transition-all text-sm"
-                    style={{ fontFamily: 'Google Sans, sans-serif' }}
+                    style={{ fontFamily: 'Albert Sans, sans-serif' }}
                   >
                     Call
                   </motion.a>
@@ -525,7 +525,7 @@ export default function Contact() {
                     href="https://wa.me/233245709341" 
                     whileHover={{ scale: 1.05 }}
                     className="flex items-center justify-center text-white bg-green-500 hover:bg-green-600 font-bold py-2 px-3 rounded-xl transition-all text-sm"
-                    style={{ fontFamily: 'Google Sans, sans-serif' }}
+                    style={{ fontFamily: 'Albert Sans, sans-serif' }}
                     target="_blank"
                     rel="noopener noreferrer"
                   >
@@ -536,7 +536,7 @@ export default function Contact() {
                     href="mailto:info@celestialwebsolutions.net" 
                     whileHover={{ scale: 1.05 }}
                     className="flex items-center justify-center text-white bg-red-500 hover:bg-red-600 font-bold py-2 px-3 rounded-xl transition-all text-sm"
-                    style={{ fontFamily: 'Google Sans, sans-serif' }}
+                    style={{ fontFamily: 'Albert Sans, sans-serif' }}
                   >
                     Email
                   </motion.a>
@@ -558,7 +558,7 @@ export default function Contact() {
               <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>
                 Schedule a Meeting
               </h2>
-              <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto" style={{ fontFamily: 'Google Sans, sans-serif' }}>
+              <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto" style={{ fontFamily: 'Albert Sans, sans-serif' }}>
                 Book a free consultation call to discuss your project requirements and get expert advice.
               </p>
             </motion.div>

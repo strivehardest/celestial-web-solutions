@@ -223,7 +223,7 @@ export default function Footer({ darkMode, toggleDarkMode }) {
             {/* Section label */}
             <p
               className="text-center text-xs text-gray-400 dark:text-gray-500 uppercase tracking-widest mb-5"
-              style={{ fontFamily: 'Google Sans, sans-serif' }}
+              style={{ fontFamily: 'Albert Sans, sans-serif', fontWeight: 400 }}
             >
               Trusted &amp; Reviewed On
             </p>
@@ -283,7 +283,7 @@ export default function Footer({ darkMode, toggleDarkMode }) {
                       </div>
                       <div
                         className="text-xs text-gray-400 dark:text-gray-500 mt-0.5"
-                        style={{ fontFamily: 'Google Sans, sans-serif' }}
+                        style={{ fontFamily: 'Albert Sans, sans-serif', fontWeight: 400 }}
                       >
                         {platform.label}
                       </div>
@@ -326,26 +326,26 @@ export default function Footer({ darkMode, toggleDarkMode }) {
                   <div className="text-3xl font-bold text-gray-900 dark:text-white" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>
                     Celestial
                   </div>
-                  <div className="text-base text-gray-500 dark:text-gray-400" style={{ fontFamily: 'Google Sans, sans-serif' }}>
+                  <div className="text-base text-gray-500 dark:text-gray-400" style={{ fontFamily: 'Albert Sans, sans-serif' }}>
                     Web Solutions
                   </div>
                 </div>
               </Link>
 
-              <p className="text-gray-500 dark:text-gray-400 text-base mb-6 max-w-sm leading-relaxed" style={{ fontFamily: 'Google Sans, sans-serif' }}>
+              <p className="text-gray-500 dark:text-gray-400 text-base mb-6 max-w-sm leading-relaxed" style={{ fontFamily: 'Albert Sans, sans-serif' }}>
                 A focused web design and development company in Ghana, delivering exceptional digital experiences for businesses across Africa.
               </p>
 
               <div className="space-y-3 mb-6">
-                <a href="tel:+233530505031" className="flex items-center gap-3 text-gray-500 dark:text-gray-400 hover:text-orange-500 dark:hover:text-orange-400 transition-colors text-base" style={{ fontFamily: 'Google Sans, sans-serif' }}>
+                <a href="tel:+233530505031" className="flex items-center gap-3 text-gray-500 dark:text-gray-400 hover:text-orange-500 dark:hover:text-orange-400 transition-colors text-base" style={{ fontFamily: 'Albert Sans, sans-serif' }}>
                   <Phone size={16} className="text-orange-500" />
                   +233 530 505 031
                 </a>
-                <a href="mailto:info@celestialwebsolutions.net" className="flex items-center gap-3 text-gray-500 dark:text-gray-400 hover:text-orange-500 dark:hover:text-orange-400 transition-colors text-base" style={{ fontFamily: 'Google Sans, sans-serif' }}>
+                <a href="mailto:info@celestialwebsolutions.net" className="flex items-center gap-3 text-gray-500 dark:text-gray-400 hover:text-orange-500 dark:hover:text-orange-400 transition-colors text-base" style={{ fontFamily: 'Albert Sans, sans-serif' }}>
                   <Mail size={16} className="text-orange-500" />
                   info@celestialwebsolutions.net
                 </a>
-                <div className="flex items-start gap-3 text-gray-500 dark:text-gray-400 text-base" style={{ fontFamily: 'Google Sans, sans-serif' }}>
+                <div className="flex items-start gap-3 text-gray-500 dark:text-gray-400 text-base" style={{ fontFamily: 'Albert Sans, sans-serif' }}>
                   <MapPin size={16} className="text-orange-500 flex-shrink-0 mt-0.5" />
                   <span>Keta & Accra, Ghana</span>
                 </div>
@@ -363,7 +363,7 @@ export default function Footer({ darkMode, toggleDarkMode }) {
                     <Link
                       href={link.href}
                       className={`text-sm transition-colors ${router.pathname === link.href ? 'text-orange-500 font-bold' : 'text-gray-500 dark:text-gray-400 hover:text-orange-500 dark:hover:text-orange-400'}`}
-                      style={{ fontFamily: 'Google Sans, sans-serif' }}
+                      style={{ fontFamily: 'Albert Sans, sans-serif' }}
                     >
                       {link.name}
                     </Link>
@@ -383,7 +383,7 @@ export default function Footer({ darkMode, toggleDarkMode }) {
                     <Link
                       href={link.href}
                       className={`text-sm transition-colors inline-flex items-center gap-2 ${router.pathname === link.href ? 'text-orange-500 font-bold' : 'text-gray-500 dark:text-gray-400 hover:text-orange-500 dark:hover:text-orange-400'}`}
-                      style={{ fontFamily: 'Google Sans, sans-serif' }}
+                      style={{ fontFamily: 'Albert Sans, sans-serif' }}
                     >
                       {link.name}
                       {link.isNew && (
@@ -408,7 +408,7 @@ export default function Footer({ darkMode, toggleDarkMode }) {
                     <Link
                       href={link.href}
                       className={`text-sm transition-colors ${router.pathname === link.href ? 'text-orange-500 font-bold' : 'text-gray-500 dark:text-gray-400 hover:text-orange-500 dark:hover:text-orange-400'}`}
-                      style={{ fontFamily: 'Google Sans, sans-serif' }}
+                      style={{ fontFamily: 'Albert Sans, sans-serif' }}
                     >
                       {link.name}
                     </Link>
@@ -443,7 +443,7 @@ export default function Footer({ darkMode, toggleDarkMode }) {
                     className="rounded shadow-sm"
                   />
                   <div className="flex flex-col">
-                    <span className="text-xs text-gray-400 dark:text-gray-500 uppercase tracking-wider" style={{ fontFamily: 'Google Sans, sans-serif' }}>
+                    <span className="text-xs text-gray-400 dark:text-gray-500 uppercase tracking-wider" style={{ fontFamily: 'Albert Sans, sans-serif' }}>
                       {city}, {country}
                     </span>
                     <span
@@ -511,10 +511,10 @@ export default function Footer({ darkMode, toggleDarkMode }) {
 
               {/* Copyright */}
               <div className="text-center">
-                <p className="text-gray-600 dark:text-gray-300 text-base" style={{ fontFamily: 'Google Sans, sans-serif' }}>
+                <p className="text-gray-600 dark:text-gray-300 text-base" style={{ fontFamily: 'Albert Sans, sans-serif' }}>
                   © {currentYear} Celestial Web Solutions. All rights reserved.
                 </p>
-                <p className="text-xs text-gray-400 dark:text-gray-500 mt-1" style={{ fontFamily: 'Google Sans, sans-serif' }}>
+                <p className="text-xs text-gray-400 dark:text-gray-500 mt-1" style={{ fontFamily: 'Albert Sans, sans-serif' }}>
                   Handcrafted with passion in Ghana.
                 </p>
               </div>

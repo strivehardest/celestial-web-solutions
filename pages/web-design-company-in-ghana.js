@@ -97,7 +97,7 @@ const GlassButton = ({ children, href, variant = "light", className = "" }) => {
 		<Link href={href}>
 			<motion.span
 				className={`${baseClasses} ${variants[variant]} ${className}`}
-				style={{ fontFamily: 'Google Sans, sans-serif' }}
+				style={{ fontFamily: 'Albert Sans, sans-serif', fontWeight: 400 }}
 				whileHover={{ scale: 1.05, y: -2 }}
 				whileTap={{ scale: 0.95 }}
 			>
@@ -217,7 +217,7 @@ export default function ServicesPage() {
 													initial={{ opacity: 0, x: -20 }}
 													animate={{ opacity: 1, x: 0 }}
 													transition={{ delay: 0.2 }}
-													style={{ fontFamily: 'Google Sans, sans-serif' }}
+													style={{ fontFamily: 'Albert Sans, sans-serif', fontWeight: 400 }}
 												>
 													OUR SERVICES
 												</motion.span>
@@ -330,7 +330,7 @@ export default function ServicesPage() {
 												whileInView={{ opacity: 1, y: 0 }}
 												viewport={{ once: true }}
 												className="inline-block px-4 py-2 bg-orange-100 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400 rounded-full text-sm font-semibold mb-4"
-												style={{ fontFamily: 'Google Sans, sans-serif' }}
+												style={{ fontFamily: 'Albert Sans, sans-serif', fontWeight: 400 }}
 											>
 												WHAT WE OFFER
 											</motion.span>
@@ -342,7 +342,7 @@ export default function ServicesPage() {
 											</h2>
 											<p 
 												className="text-gray-600 dark:text-gray-300 text-lg max-w-2xl mx-auto"
-												style={{ fontFamily: 'Google Sans, sans-serif' }}
+												style={{ fontFamily: 'Albert Sans, sans-serif', fontWeight: 400 }}
 											>
 												Professional services tailored to meet your unique business needs and drive exceptional results
 											</p>

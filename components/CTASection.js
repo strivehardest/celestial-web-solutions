@@ -81,7 +81,7 @@ export default function CTASection({
           
           <p
             className={`text-lg md:text-xl mb-12 max-w-2xl mx-auto leading-relaxed ${style.subtitle}`}
-            style={{ fontFamily: 'Google Sans, sans-serif' }}
+                   style={{ fontFamily: 'Albert Sans, sans-serif', fontWeight: 400 }}
           >
             {displaySubtitle}
           </p>

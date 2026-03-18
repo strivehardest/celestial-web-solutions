@@ -3467,13 +3467,13 @@ export default function BlogPost({ slug, article, relatedArticles: initialRelate
             <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-4" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>
               Article Not Found
             </h1>
-            <p className="text-gray-600 dark:text-gray-400 mb-8" style={{ fontFamily: 'Google Sans, sans-serif' }}>
+            <p className="text-gray-600 dark:text-gray-400 mb-8" style={{ fontFamily: 'Albert Sans, sans-serif' }}>
               The article you're looking for doesn't exist or may have been moved.
             </p>
             <Link 
               href="/blog" 
               className="inline-flex items-center gap-2 px-6 py-3 bg-orange-500 hover:bg-orange-600 text-white rounded-full font-semibold transition-colors"
-              style={{ fontFamily: 'Google Sans, sans-serif' }}
+              style={{ fontFamily: 'Albert Sans, sans-serif' }}
             >
               <ArrowLeft size={20} />
               Back to Blog
@@ -3812,14 +3812,14 @@ export default function BlogPost({ slug, article, relatedArticles: initialRelate
                             <h3 className="text-xl font-bold text-gray-900 dark:text-white" style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}>
                               In This Article
                             </h3>
-                            <p className="text-sm text-gray-500 dark:text-gray-400" style={{ fontFamily: "Google Sans, sans-serif" }}>
+                            <p className="text-sm text-gray-500 dark:text-gray-400" style={{ fontFamily: "Albert Sans, sans-serif" }}>
                               Jump to any section
                             </p>
                           </div>
                         </div>
                         <div className="flex items-center gap-2 px-3 py-1.5 bg-orange-500/10 dark:bg-orange-500/20 rounded-full">
                           <div className="w-2 h-2 bg-orange-500 rounded-full animate-pulse"></div>
-                          <span className="text-xs font-semibold text-orange-600 dark:text-orange-400" style={{ fontFamily: "Google Sans, sans-serif" }}>
+                          <span className="text-xs font-semibold text-orange-600 dark:text-orange-400" style={{ fontFamily: "Albert Sans, sans-serif" }}>
                             {headings.length} sections
                           </span>
                         </div>
@@ -3846,7 +3846,7 @@ export default function BlogPost({ slug, article, relatedArticles: initialRelate
                             className={`w-full text-left group relative ${
                               heading.level === 2 ? 'py-3 px-4' : 'py-2.5 px-4 ml-4'
                             }`}
-                            style={{ fontFamily: "Google Sans, sans-serif" }}
+                            style={{ fontFamily: "Albert Sans, sans-serif" }}
                           >
                             {/* Hover Background */}
                             <div className={`absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-all duration-300 ${
@@ -3894,7 +3894,7 @@ export default function BlogPost({ slug, article, relatedArticles: initialRelate
                     
                     {/* Footer Tip */}
                     <div className="relative px-6 py-3 border-t border-orange-100/50 dark:border-orange-900/20 bg-gradient-to-r from-orange-50/50 to-transparent dark:from-orange-900/10 dark:to-transparent">
-                      <p className="text-xs text-gray-500 dark:text-gray-400 flex items-center gap-2" style={{ fontFamily: "Google Sans, sans-serif" }}>
+                      <p className="text-xs text-gray-500 dark:text-gray-400 flex items-center gap-2" style={{ fontFamily: "Albert Sans, sans-serif" }}>
                         <svg className="w-4 h-4 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                         </svg>
@@ -3922,7 +3922,7 @@ export default function BlogPost({ slug, article, relatedArticles: initialRelate
                 }}
                 dangerouslySetInnerHTML={{ __html: article.content }}
                 className="prose prose-orange prose-lg dark:prose-invert max-w-none"
-                style={{ fontFamily: "Google Sans, sans-serif" }}
+                style={{ fontFamily: "Albert Sans, sans-serif" }}
               />
               
               {/* Google AdSense Ad */}
@@ -3986,7 +3986,7 @@ export default function BlogPost({ slug, article, relatedArticles: initialRelate
                       {relatedArticle.title}
                     </h3>
                     
-                    <p className="text-gray-600 dark:text-gray-400 text-sm line-clamp-3" style={{ fontFamily: "Google Sans, sans-serif" }}>
+                    <p className="text-gray-600 dark:text-gray-400 text-sm line-clamp-3" style={{ fontFamily: "Albert Sans, sans-serif" }}>
                       {relatedArticle.excerpt}
                     </p>
                     

@@ -23,7 +23,7 @@ export default function ScheduleCall() {
               <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 drop-shadow-lg" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>
                 Schedule a Call
               </h1>
-              <p className="text-xl text-orange-100 max-w-2xl mx-auto leading-relaxed drop-shadow-md" style={{ fontFamily: 'Google Sans, sans-serif' }}>
+              <p className="text-xl text-orange-100 max-w-2xl mx-auto leading-relaxed drop-shadow-md" style={{ fontFamily: 'Albert Sans, sans-serif' }}>
                 Book a free consultation with our team. Let’s discuss your project, answer your questions, and help you achieve your digital goals.
               </p>
             </motion.div>
@@ -34,7 +34,7 @@ export default function ScheduleCall() {
             <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>
               Book Your Free Consultation
             </h2>
-            <p className="text-lg text-gray-600 dark:text-gray-300" style={{ fontFamily: 'Google Sans, sans-serif' }}>
+            <p className="text-lg text-gray-600 dark:text-gray-300" style={{ fontFamily: 'Albert Sans, sans-serif' }}>
               Choose a time that works for you and we’ll connect via phone or video call.
             </p>
           </motion.div>
@@ -42,13 +42,13 @@ export default function ScheduleCall() {
             <CalendlyWidget />
           </div>
           <div className="mt-10 text-center">
-            <p className="text-gray-700 dark:text-gray-300 mb-2" style={{ fontFamily: 'Google Sans, sans-serif' }}>
+            <p className="text-gray-700 dark:text-gray-300 mb-2" style={{ fontFamily: 'Albert Sans, sans-serif' }}>
               Prefer to contact us directly?
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-4">
-              <a href="tel:+233530505031" className="flex items-center justify-center text-white bg-orange-500 hover:bg-orange-600 font-bold py-2 px-4 rounded-xl transition-all text-sm" style={{ fontFamily: 'Google Sans, sans-serif' }}>Call</a>
-              <a href="https://wa.me/233245709341" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center text-white bg-green-500 hover:bg-green-600 font-bold py-2 px-4 rounded-xl transition-all text-sm" style={{ fontFamily: 'Google Sans, sans-serif' }}>WhatsApp</a>
-              <a href="mailto:info@celestialwebsolutions.net" className="flex items-center justify-center text-white bg-red-500 hover:bg-red-600 font-bold py-2 px-4 rounded-xl transition-all text-sm" style={{ fontFamily: 'Google Sans, sans-serif' }}>Email</a>
+              <a href="tel:+233530505031" className="flex items-center justify-center text-white bg-orange-500 hover:bg-orange-600 font-bold py-2 px-4 rounded-xl transition-all text-sm" style={{ fontFamily: 'Albert Sans, sans-serif' }}>Call</a>
+              <a href="https://wa.me/233245709341" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center text-white bg-green-500 hover:bg-green-600 font-bold py-2 px-4 rounded-xl transition-all text-sm" style={{ fontFamily: 'Albert Sans, sans-serif' }}>WhatsApp</a>
+              <a href="mailto:info@celestialwebsolutions.net" className="flex items-center justify-center text-white bg-red-500 hover:bg-red-600 font-bold py-2 px-4 rounded-xl transition-all text-sm" style={{ fontFamily: 'Albert Sans, sans-serif' }}>Email</a>
             </div>
           </div>
         </div>

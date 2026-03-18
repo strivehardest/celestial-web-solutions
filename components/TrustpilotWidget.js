@@ -34,7 +34,7 @@ export default function TrustpilotWidget() {
                 />
               ))}
             </div>
-            <p className="text-sm text-blue-100" style={{ fontFamily: 'Google Sans, sans-serif' }}>
+            <p className="text-sm text-blue-100" style={{ fontFamily: 'Albert Sans, sans-serif' }}>
               {stats.percentage}% Recommended
             </p>
           </div>
@@ -49,14 +49,14 @@ export default function TrustpilotWidget() {
           </div>
         </div>
 
-        <p className="text-sm text-blue-100 mb-4" style={{ fontFamily: 'Google Sans, sans-serif' }}>
+        <p className="text-sm text-blue-100 mb-4" style={{ fontFamily: 'Albert Sans, sans-serif' }}>
           Based on <span className="font-semibold">{stats.totalReviews}+ reviews</span> from real customers
         </p>
 
         <Link href={trustpilotUrl} target="_blank" rel="noopener noreferrer">
           <motion.a
             className="inline-flex items-center gap-2 bg-white text-blue-600 hover:bg-blue-50 px-6 py-2.5 rounded-full font-semibold transition-colors text-sm"
-            style={{ fontFamily: 'Google Sans, sans-serif' }}
+            style={{ fontFamily: 'Albert Sans, sans-serif' }}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >

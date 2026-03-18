@@ -12,10 +12,23 @@ const TalkToExpertModal = ({ isOpen, onClose }) => {
     email: '',
     phone: '',
     company: '',
+    businessCategory: '',
     service: '',
     budget: '',
     message: '',
   });
+    const businessCategoryOptions = [
+      'Technology',
+      'Retail',
+      'Healthcare',
+      'Education',
+      'Finance',
+      'Real Estate',
+      'Hospitality',
+      'Manufacturing',
+      'Non-Profit',
+      'Other',
+    ];
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null); // 'success' | 'error' | null
   const [turnstileToken, setTurnstileToken] = useState(null);
@@ -207,7 +220,7 @@ const TalkToExpertModal = ({ isOpen, onClose }) => {
                   </h2>
                 </div>
               </div>
-              <p className="text-sm text-gray-500 dark:text-gray-400" style={{ fontFamily: 'Google Sans, sans-serif' }}>
+              <p className="text-sm text-gray-500 dark:text-gray-400" style={{ fontFamily: 'Albert Sans, sans-serif' }}>
                 How can we help? Fill out the form below and we&apos;ll reach out.
               </p>
             </div>
@@ -228,13 +241,13 @@ const TalkToExpertModal = ({ isOpen, onClose }) => {
                 >
                   Message Sent Successfully!
                 </h3>
-                <p className="text-sm text-gray-500 dark:text-gray-400 mb-6" style={{ fontFamily: 'Google Sans, sans-serif' }}>
+                <p className="text-sm text-gray-500 dark:text-gray-400 mb-6" style={{ fontFamily: 'Albert Sans, sans-serif' }}>
                   Thank you for reaching out. Our team will get back to you within 24 hours.
                 </p>
                 <button
                   onClick={() => { setSubmitStatus(null); onClose(); }}
                   className="px-6 py-2.5 bg-gradient-to-r from-orange-500 to-red-500 text-white font-semibold text-sm rounded-xl hover:shadow-lg hover:shadow-orange-500/25 transition-all duration-200"
-                  style={{ fontFamily: 'Google Sans, sans-serif' }}
+                  style={{ fontFamily: 'Albert Sans, sans-serif' }}
                 >
                   Close
                 </button>
@@ -253,7 +266,7 @@ const TalkToExpertModal = ({ isOpen, onClose }) => {
                 {/* Name Row */}
                 <div className="grid grid-cols-2 gap-3">
                   <div>
-                    <label htmlFor="firstName" className={labelClass} style={{ fontFamily: 'Google Sans, sans-serif' }}>
+                    <label htmlFor="firstName" className={labelClass} style={{ fontFamily: 'Albert Sans, sans-serif' }}>
                       First name <span className="text-red-500">*</span>
                     </label>
                     <input
@@ -268,7 +281,7 @@ const TalkToExpertModal = ({ isOpen, onClose }) => {
                     />
                   </div>
                   <div>
-                    <label htmlFor="lastName" className={labelClass} style={{ fontFamily: 'Google Sans, sans-serif' }}>
+                    <label htmlFor="lastName" className={labelClass} style={{ fontFamily: 'Albert Sans, sans-serif' }}>
                       Last name <span className="text-red-500">*</span>
                     </label>
                     <input
@@ -286,7 +299,7 @@ const TalkToExpertModal = ({ isOpen, onClose }) => {
 
                 {/* Email */}
                 <div>
-                  <label htmlFor="email" className={labelClass} style={{ fontFamily: 'Google Sans, sans-serif' }}>
+                  <label htmlFor="email" className={labelClass} style={{ fontFamily: 'Albert Sans, sans-serif' }}>
                     Work email <span className="text-red-500">*</span>
                   </label>
                   <input
@@ -303,7 +316,7 @@ const TalkToExpertModal = ({ isOpen, onClose }) => {
 
                 {/* Phone */}
                 <div>
-                  <label htmlFor="phone" className={labelClass} style={{ fontFamily: 'Google Sans, sans-serif' }}>
+                  <label htmlFor="phone" className={labelClass} style={{ fontFamily: 'Albert Sans, sans-serif' }}>
                     Phone number <span className="text-red-500">*</span>
                   </label>
                   <input
@@ -320,7 +333,7 @@ const TalkToExpertModal = ({ isOpen, onClose }) => {
 
                 {/* Company */}
                 <div>
-                  <label htmlFor="company" className={labelClass} style={{ fontFamily: 'Google Sans, sans-serif' }}>
+                  <label htmlFor="company" className={labelClass} style={{ fontFamily: 'Albert Sans, sans-serif' }}>
                     Business Name / Company <span className="text-red-500">*</span>
                   </label>
                   <input
@@ -335,9 +348,30 @@ const TalkToExpertModal = ({ isOpen, onClose }) => {
                   />
                 </div>
 
+                {/* Business Category */}
+                <div>
+                  <label htmlFor="businessCategory" className={labelClass} style={{ fontFamily: 'Albert Sans, sans-serif' }}>
+                    Business Category <span className="text-red-500">*</span>
+                  </label>
+                  <select
+                    id="businessCategory"
+                    name="businessCategory"
+                    value={formData.businessCategory}
+                    onChange={handleChange}
+                    required
+                    className={`${inputClass} appearance-none cursor-pointer`}
+                    style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%239ca3af' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E")`, backgroundRepeat: 'no-repeat', backgroundPosition: 'right 12px center' }}
+                  >
+                    <option value="">Select...</option>
+                    {businessCategoryOptions.map(opt => (
+                      <option key={opt} value={opt}>{opt}</option>
+                    ))}
+                  </select>
+                </div>
+
                 {/* Service Interest */}
                 <div>
-                  <label htmlFor="service" className={labelClass} style={{ fontFamily: 'Google Sans, sans-serif' }}>
+                  <label htmlFor="service" className={labelClass} style={{ fontFamily: 'Albert Sans, sans-serif' }}>
                     I&apos;m interested in <span className="text-red-500">*</span>
                   </label>
                   <select
@@ -358,7 +392,7 @@ const TalkToExpertModal = ({ isOpen, onClose }) => {
 
                 {/* Budget */}
                 <div>
-                  <label htmlFor="budget" className={labelClass} style={{ fontFamily: 'Google Sans, sans-serif' }}>
+                  <label htmlFor="budget" className={labelClass} style={{ fontFamily: 'Albert Sans, sans-serif' }}>
                     Budget range
                   </label>
                   <select
@@ -378,7 +412,7 @@ const TalkToExpertModal = ({ isOpen, onClose }) => {
 
                 {/* Message */}
                 <div>
-                  <label htmlFor="message" className={labelClass} style={{ fontFamily: 'Google Sans, sans-serif' }}>
+                  <label htmlFor="message" className={labelClass} style={{ fontFamily: 'Albert Sans, sans-serif' }}>
                     Tell us about your project
                   </label>
                   <textarea

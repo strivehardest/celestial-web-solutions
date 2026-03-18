@@ -74,7 +74,7 @@ export default function GoogleReviewsHero() {
               <Link href={googleReviewUrl} target="_blank" rel="noopener noreferrer">
                 <motion.a
                   className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-full font-semibold transition-colors w-full justify-center"
-                  style={{ fontFamily: 'Google Sans, sans-serif' }}
+                  style={{ fontFamily: 'Albert Sans, sans-serif', fontWeight: 400 }}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
@@ -111,7 +111,7 @@ export default function GoogleReviewsHero() {
                   
                   <div className="flex-1">
                     <div className="flex items-center justify-between mb-1">
-                      <h4 className="font-semibold text-gray-900 dark:text-white" style={{ fontFamily: 'Google Sans, sans-serif' }}>
+                      <h4 className="font-semibold text-gray-900 dark:text-white" style={{ fontFamily: 'Albert Sans, sans-serif', fontWeight: 400 }}>
                         {review.author}
                       </h4>
                       <div className="flex gap-0.5">
@@ -120,7 +120,7 @@ export default function GoogleReviewsHero() {
                         ))}
                       </div>
                     </div>
-                    <p className="text-sm text-gray-600 dark:text-gray-300" style={{ fontFamily: 'Google Sans, sans-serif' }}>
+                    <p className="text-sm text-gray-600 dark:text-gray-300" style={{ fontFamily: 'Albert Sans, sans-serif', fontWeight: 400 }}>
                       {review.text}
                     </p>
                   </div>

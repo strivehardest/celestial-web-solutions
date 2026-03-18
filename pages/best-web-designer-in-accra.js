@@ -138,7 +138,7 @@ export default function BestWebDesignerInAccraPage() {
                     <div className="w-full lg:w-[45%] flex flex-col justify-center z-20 pt-28 sm:pt-32 lg:pt-24 pb-4 lg:pb-0">
                       <div className="inline-flex items-center gap-2 bg-orange-500/15 border border-orange-500/30 rounded-full px-4 py-2 w-fit mb-5">
                         <span className="w-2 h-2 rounded-full bg-orange-500 animate-pulse" />
-                        <span className="text-orange-400 text-xs font-bold tracking-[0.2em] uppercase" style={{ fontFamily: 'Google Sans, sans-serif' }}>
+                        <span className="text-orange-400 text-xs font-bold tracking-[0.2em] uppercase" style={{ fontFamily: 'Albert Sans, sans-serif', fontWeight: 400 }}>
                           BEST WEB DESIGN IN ACCRA
                         </span>
                       </div>
@@ -152,7 +152,7 @@ export default function BestWebDesignerInAccraPage() {
 
                       <p
                         className="text-base sm:text-lg md:text-xl text-white/75 max-w-md mb-8 leading-relaxed"
-                        style={{ fontFamily: 'Google Sans, sans-serif' }}
+                        style={{ fontFamily: 'Albert Sans, sans-serif', fontWeight: 400 }}
                       >
                         We craft conversion-focused websites that help Ghanaian brands launch fast and stand out online.
                       </p>
@@ -161,7 +161,7 @@ export default function BestWebDesignerInAccraPage() {
                         {serviceFocus.map((item) => (
                           <div key={item} className="flex items-start gap-3 text-base text-white/90">
                             <CheckCircle className="w-5 h-5 text-orange-400 mt-0.5 flex-shrink-0" />
-                            <span style={{ fontFamily: 'Google Sans, sans-serif' }}>{item}</span>
+                            <span style={{ fontFamily: 'Albert Sans, sans-serif', fontWeight: 400 }}>{item}</span>
                           </div>
                         ))}
                       </div>
@@ -175,7 +175,7 @@ export default function BestWebDesignerInAccraPage() {
                         </PremiumCTA>
                       </div>
 
-                      <div className="flex flex-wrap items-center gap-3 text-xs sm:text-sm text-white/50" style={{ fontFamily: 'Google Sans, sans-serif' }}>
+                      <div className="flex flex-wrap items-center gap-3 text-xs sm:text-sm text-white/50" style={{ fontFamily: 'Albert Sans, sans-serif' }}>
                         <span className="inline-flex items-center gap-1.5">
                           <CheckCircle className="w-4 h-4 text-orange-400" />
                           Fast response
@@ -253,16 +253,16 @@ export default function BestWebDesignerInAccraPage() {
                   key={item}
                   className="rounded-2xl border border-gray-200 dark:border-white/10 bg-white/80 dark:bg-white/5 backdrop-blur p-5 shadow-lg shadow-orange-500/10"
                 >
-                  <p className="text-base text-gray-800 dark:text-gray-200">{item}</p>
+                    <p className="text-base text-gray-800 dark:text-gray-200" style={{ fontFamily: 'Albert Sans, sans-serif', fontWeight: 400 }}>{item}</p>
                 </div>
               ))}
             </div>
 
             <div className="rounded-3xl border border-gray-200 dark:border-white/10 bg-white/85 dark:bg-white/5 backdrop-blur p-8 shadow-xl shadow-orange-500/10 space-y-6">
               <div className="space-y-2">
-                <p className="text-sm uppercase tracking-[0.16em] text-orange-500 font-semibold">Why choose us (proof)</p>
+                <p className="text-sm uppercase tracking-[0.16em] text-orange-500 font-semibold" style={{ fontFamily: 'Albert Sans, sans-serif', fontWeight: 400 }}>Why choose us (proof)</p>
                 <h2 className="text-2xl sm:text-3xl font-display font-bold text-gray-900 dark:text-white">Why you can trust Celestial Web Solutions</h2>
-                <p className="text-base text-gray-700 dark:text-gray-200 max-w-3xl">Evidence that we deliver: seasoned experience, diverse clients, modern stacks, and measurable business outcomes.</p>
+                <p className="text-base text-gray-700 dark:text-gray-200 max-w-3xl" style={{ fontFamily: 'Albert Sans, sans-serif', fontWeight: 400 }}>Evidence that we deliver: seasoned experience, diverse clients, modern stacks, and measurable business outcomes.</p>
               </div>
 
               <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -272,7 +272,7 @@ export default function BestWebDesignerInAccraPage() {
                     <span className="text-sm font-semibold uppercase tracking-wide">Years of experience</span>
                   </div>
                   <p className="text-xl font-display text-gray-900 dark:text-white">3+ years shipping web experiences</p>
-                  <p className="text-sm text-gray-700 dark:text-gray-300">Product, marketing, and transactional sites delivered for Ghanaian brands.</p>
+                  <p className="text-sm text-gray-700 dark:text-gray-300" style={{ fontFamily: 'Albert Sans, sans-serif', fontWeight: 400 }}>Product, marketing, and transactional sites delivered for Ghanaian brands.</p>
                 </div>
 
                 <div className="rounded-2xl border border-gray-200 dark:border-white/10 bg-white/80 dark:bg-white/5 p-4 flex flex-col gap-2">
@@ -281,7 +281,7 @@ export default function BestWebDesignerInAccraPage() {
                     <span className="text-sm font-semibold uppercase tracking-wide">Clients served</span>
                   </div>
                   <p className="text-xl font-display text-gray-900 dark:text-white">NGOs, SMEs, e-commerce, churches</p>
-                  <p className="text-sm text-gray-700 dark:text-gray-300">Built for founders, ministries, schools, and fast-moving retail teams.</p>
+                  <p className="text-sm text-gray-700 dark:text-gray-300" style={{ fontFamily: 'Albert Sans, sans-serif', fontWeight: 400 }}>Built for founders, ministries, schools, and fast-moving retail teams.</p>
                 </div>
 
                 <div className="rounded-2xl border border-gray-200 dark:border-white/10 bg-white/80 dark:bg-white/5 p-4 flex flex-col gap-2">
@@ -290,7 +290,7 @@ export default function BestWebDesignerInAccraPage() {
                     <span className="text-sm font-semibold uppercase tracking-wide">Tech & SEO</span>
                   </div>
                   <p className="text-xl font-display text-gray-900 dark:text-white">Next.js, WordPress, on-page SEO</p>
-                  <p className="text-sm text-gray-700 dark:text-gray-300">Performance, Core Web Vitals, schema, and analytics set up from day one.</p>
+                  <p className="text-sm text-gray-700 dark:text-gray-300" style={{ fontFamily: 'Albert Sans, sans-serif', fontWeight: 400 }}>Performance, Core Web Vitals, schema, and analytics set up from day one.</p>
                 </div>
 
                 <div className="rounded-2xl border border-gray-200 dark:border-white/10 bg-white/80 dark:bg-white/5 p-4 flex flex-col gap-2">
@@ -299,70 +299,96 @@ export default function BestWebDesignerInAccraPage() {
                     <span className="text-sm font-semibold uppercase tracking-wide">Results</span>
                   </div>
                   <p className="text-xl font-display text-gray-900 dark:text-white">More leads, sales, visibility</p>
-                  <p className="text-sm text-gray-700 dark:text-gray-300">Conversion-led pages, faster load times, and SEO foundations that drive traffic.</p>
+                  <p className="text-sm text-gray-700 dark:text-gray-300" style={{ fontFamily: 'Albert Sans, sans-serif', fontWeight: 400 }}>Conversion-led pages, faster load times, and SEO foundations that drive traffic.</p>
                 </div>
               </div>
             </div>
 
             <div className="rounded-2xl border border-gray-200 dark:border-white/10 bg-white/85 dark:bg-white/5 backdrop-blur p-6 text-sm text-gray-700 dark:text-gray-300">
-              <p>
+              <p style={{ fontFamily: 'Albert Sans, sans-serif', fontWeight: 400 }}>
                 Ready to transform your web presence? Let&apos;s design a site that feels premium, loads fast, and converts visitors into loyal customers.
               </p>
             </div>
 
             <div className="rounded-3xl border border-gray-200 dark:border-white/10 bg-white/85 dark:bg-white/5 backdrop-blur p-8 shadow-xl shadow-orange-500/10 space-y-6">
               <div className="space-y-2">
-                <p className="text-sm uppercase tracking-[0.16em] text-orange-500 font-semibold" style={{ fontFamily: 'Google Sans, sans-serif' }}>Local expertise</p>
+                <p className="text-sm uppercase tracking-[0.16em] text-orange-500 font-semibold" style={{ fontFamily: 'Albert Sans, sans-serif' }}>Local expertise</p>
                 <h2 className="text-2xl sm:text-3xl font-display font-bold text-gray-900 dark:text-white">Web Design Services in Accra</h2>
-                <p className="text-base text-gray-700 dark:text-gray-200 max-w-3xl" style={{ fontFamily: 'Google Sans, sans-serif' }}>Based in Accra, Ghana, we know the local market and deliver websites built for Ghanaian businesses to succeed online.</p>
+                <p className="text-base text-gray-700 dark:text-gray-200 max-w-3xl" style={{ fontFamily: 'Albert Sans, sans-serif', fontWeight: 400 }}>
+                  Based in Accra, Ghana, we know the local market and deliver websites built for Ghanaian businesses to succeed online.
+                </p>
               </div>
 
               <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
                 <div className="rounded-xl border border-gray-200 dark:border-white/10 bg-white/80 dark:bg-white/5 p-4 flex items-start gap-3">
                   <CheckCircle className="w-5 h-5 text-orange-500 mt-0.5 flex-shrink-0" />
                   <div>
-                    <p className="font-semibold text-gray-900 dark:text-white" style={{ fontFamily: 'Google Sans, sans-serif' }}>Business Websites</p>
-                    <p className="text-sm text-gray-700 dark:text-gray-300 mt-1" style={{ fontFamily: 'Google Sans, sans-serif' }}>Professional sites that establish Accra brands online</p>
+                    <p className="font-semibold text-gray-900 dark:text-white" style={{ fontFamily: 'Albert Sans, sans-serif', fontWeight: 400 }}>
+                      Business Websites
+                    </p>
+                    <p className="text-sm text-gray-700 dark:text-gray-300 mt-1" style={{ fontFamily: 'Albert Sans, sans-serif', fontWeight: 400 }}>
+                      Professional sites that establish Accra brands online
+                    </p>
                   </div>
                 </div>
 
                 <div className="rounded-xl border border-gray-200 dark:border-white/10 bg-white/80 dark:bg-white/5 p-4 flex items-start gap-3">
                   <CheckCircle className="w-5 h-5 text-orange-500 mt-0.5 flex-shrink-0" />
                   <div>
-                    <p className="font-semibold text-gray-900 dark:text-white" style={{ fontFamily: 'Google Sans, sans-serif' }}>E-commerce Websites</p>
-                    <p className="text-sm text-gray-700 dark:text-gray-300 mt-1" style={{ fontFamily: 'Google Sans, sans-serif' }}>Online stores with payment integration for Accra businesses</p>
+                    <p className="font-semibold text-gray-900 dark:text-white" style={{ fontFamily: 'Albert Sans, sans-serif', fontWeight: 400 }}>
+                      E-commerce Websites
+                    </p>
+                    <p className="text-sm text-gray-700 dark:text-gray-300 mt-1" style={{ fontFamily: 'Albert Sans, sans-serif', fontWeight: 400 }}>
+                      Online stores with payment integration for Accra businesses
+                    </p>
                   </div>
                 </div>
 
                 <div className="rounded-xl border border-gray-200 dark:border-white/10 bg-white/80 dark:bg-white/5 p-4 flex items-start gap-3">
                   <CheckCircle className="w-5 h-5 text-orange-500 mt-0.5 flex-shrink-0" />
                   <div>
-                    <p className="font-semibold text-gray-900 dark:text-white" style={{ fontFamily: 'Google Sans, sans-serif' }}>Portfolio Websites</p>
-                    <p className="text-sm text-gray-700 dark:text-gray-300 mt-1" style={{ fontFamily: 'Google Sans, sans-serif' }}>Showcase your work with stunning portfolio sites</p>
+                    <p className="font-semibold text-gray-900 dark:text-white" style={{ fontFamily: 'Albert Sans, sans-serif', fontWeight: 400 }}>
+                      Portfolio Websites
+                    </p>
+                    <p className="text-sm text-gray-700 dark:text-gray-300 mt-1" style={{ fontFamily: 'Albert Sans, sans-serif', fontWeight: 400 }}>
+                      Showcase your work with stunning portfolio sites
+                    </p>
                   </div>
                 </div>
 
                 <div className="rounded-xl border border-gray-200 dark:border-white/10 bg-white/80 dark:bg-white/5 p-4 flex items-start gap-3">
                   <CheckCircle className="w-5 h-5 text-orange-500 mt-0.5 flex-shrink-0" />
                   <div>
-                    <p className="font-semibold text-gray-900 dark:text-white" style={{ fontFamily: 'Google Sans, sans-serif' }}>SEO & Optimization</p>
-                    <p className="text-sm text-gray-700 dark:text-gray-300 mt-1" style={{ fontFamily: 'Google Sans, sans-serif' }}>Rank higher locally and reach more customers in Accra</p>
+                    <p className="font-semibold text-gray-900 dark:text-white" style={{ fontFamily: 'Albert Sans, sans-serif', fontWeight: 400 }}>
+                      SEO & Optimization
+                    </p>
+                    <p className="text-sm text-gray-700 dark:text-gray-300 mt-1" style={{ fontFamily: 'Albert Sans, sans-serif', fontWeight: 400 }}>
+                      Rank higher locally and reach more customers in Accra
+                    </p>
                   </div>
                 </div>
 
                 <div className="rounded-xl border border-gray-200 dark:border-white/10 bg-white/80 dark:bg-white/5 p-4 flex items-start gap-3">
                   <CheckCircle className="w-5 h-5 text-orange-500 mt-0.5 flex-shrink-0" />
                   <div>
-                    <p className="font-semibold text-gray-900 dark:text-white" style={{ fontFamily: 'Google Sans, sans-serif' }}>Website Maintenance</p>
-                    <p className="text-sm text-gray-700 dark:text-gray-300 mt-1" style={{ fontFamily: 'Google Sans, sans-serif' }}>Keep your site secure, fast, and up-to-date</p>
+                    <p className="font-semibold text-gray-900 dark:text-white" style={{ fontFamily: 'Albert Sans, sans-serif', fontWeight: 400 }}>
+                      Website Maintenance
+                    </p>
+                    <p className="text-sm text-gray-700 dark:text-gray-300 mt-1" style={{ fontFamily: 'Albert Sans, sans-serif', fontWeight: 400 }}>
+                      Keep your site secure, fast, and up-to-date
+                    </p>
                   </div>
                 </div>
 
                 <div className="rounded-xl border border-gray-200 dark:border-white/10 bg-white/80 dark:bg-white/5 p-4 flex items-start gap-3">
                   <CheckCircle className="w-5 h-5 text-orange-500 mt-0.5 flex-shrink-0" />
                   <div>
-                    <p className="font-semibold text-gray-900 dark:text-white" style={{ fontFamily: 'Google Sans, sans-serif' }}>Speed & Performance</p>
-                    <p className="text-sm text-gray-700 dark:text-gray-300 mt-1" style={{ fontFamily: 'Google Sans, sans-serif' }}>Fast-loading sites that convert visitors to customers</p>
+                    <p className="font-semibold text-gray-900 dark:text-white" style={{ fontFamily: 'Albert Sans, sans-serif', fontWeight: 400 }}>
+                      Speed & Performance
+                    </p>
+                    <p className="text-sm text-gray-700 dark:text-gray-300 mt-1" style={{ fontFamily: 'Albert Sans, sans-serif', fontWeight: 400 }}>
+                      Fast-loading sites that convert visitors to customers
+                    </p>
                   </div>
                 </div>
               </div>
@@ -370,9 +396,11 @@ export default function BestWebDesignerInAccraPage() {
 
             <div className="rounded-3xl border border-gray-200 dark:border-white/10 bg-white/85 dark:bg-white/5 backdrop-blur p-8 shadow-xl shadow-orange-500/10 space-y-6">
               <div className="space-y-2">
-                <p className="text-sm uppercase tracking-[0.16em] text-orange-500 font-semibold" style={{ fontFamily: 'Google Sans, sans-serif' }}>Portfolio</p>
+                <p className="text-sm uppercase tracking-[0.16em] text-orange-500 font-semibold" style={{ fontFamily: 'Albert Sans, sans-serif' }}>Portfolio</p>
                 <h2 className="text-2xl sm:text-3xl font-display font-bold text-gray-900 dark:text-white">Recent Projects & Highlights</h2>
-                <p className="text-base text-gray-700 dark:text-gray-200 max-w-3xl" style={{ fontFamily: 'Google Sans, sans-serif' }}>A selection of websites we've built for businesses across e-commerce, media, services, and more.</p>
+                <p className="text-base text-gray-700 dark:text-gray-200 max-w-3xl" style={{ fontFamily: 'Albert Sans, sans-serif', fontWeight: 400 }}>
+                  A selection of websites we've built for businesses across e-commerce, media, services, and more.
+                </p>
               </div>
 
               <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -389,18 +417,18 @@ export default function BestWebDesignerInAccraPage() {
                     
                     <div className="flex flex-col flex-grow p-5 space-y-3">
                       <div>
-                        <p className="text-xs uppercase tracking-wide text-orange-500 font-semibold" style={{ fontFamily: 'Google Sans, sans-serif' }}>{project.category}</p>
-                        <h3 className="text-lg font-semibold text-gray-900 dark:text-white mt-1" style={{ fontFamily: 'Google Sans, sans-serif' }}>{project.title}</h3>
+                        <p className="text-xs uppercase tracking-wide text-orange-500 font-semibold" style={{ fontFamily: 'Albert Sans, sans-serif' }}>{project.category}</p>
+                        <h3 className="text-lg font-semibold text-gray-900 dark:text-white mt-1" style={{ fontFamily: 'Albert Sans, sans-serif', fontWeight: 400 }}>{project.title}</h3>
                       </div>
                       
-                      <p className="text-sm text-gray-700 dark:text-gray-300 flex-grow" style={{ fontFamily: 'Google Sans, sans-serif' }}>
+                      <p className="text-sm text-gray-700 dark:text-gray-300 flex-grow" style={{ fontFamily: 'Albert Sans, sans-serif', fontWeight: 400 }}>
                         {project.description}
                       </p>
                       
                       <Link
                         href={`/portfolio/${project.slug}`}
                         className="inline-flex items-center gap-2 text-orange-500 hover:text-orange-600 dark:hover:text-orange-400 text-sm font-medium transition-colors group/link"
-                        style={{ fontFamily: 'Google Sans, sans-serif' }}
+                        style={{ fontFamily: 'Albert Sans, sans-serif', fontWeight: 400 }}
                       >
                         View Case Study
                         <span className="group-hover/link:translate-x-1 transition-transform">→</span>
@@ -414,7 +442,7 @@ export default function BestWebDesignerInAccraPage() {
                 <Link
                   href="/portfolio"
                   className="inline-flex items-center gap-2 px-8 py-3 rounded-full bg-gradient-to-r from-orange-500 to-orange-600 text-white font-semibold hover:from-orange-600 hover:to-orange-700 transition-all shadow-lg shadow-orange-500/30"
-                  style={{ fontFamily: 'Google Sans, sans-serif' }}
+                  style={{ fontFamily: 'Albert Sans, sans-serif', fontWeight: 400 }}
                 >
                   View All Projects
                   <span>→</span>
@@ -428,39 +456,43 @@ export default function BestWebDesignerInAccraPage() {
 
             <div className="rounded-3xl border border-gray-200 dark:border-white/10 bg-white/85 dark:bg-white/5 backdrop-blur p-8 shadow-xl shadow-orange-500/10 space-y-6">
               <div className="space-y-2">
-                <p className="text-sm uppercase tracking-[0.16em] text-orange-500 font-semibold" style={{ fontFamily: 'Google Sans, sans-serif' }}></p>
+                <p className="text-sm uppercase tracking-[0.16em] text-orange-500 font-semibold" style={{ fontFamily: 'Albert Sans, sans-serif' }}>FAQs</p>
                 <h2 className="text-2xl sm:text-3xl font-display font-bold text-gray-900 dark:text-white">FAQs</h2>
-                <p className="text-base text-gray-700 dark:text-gray-200 max-w-3xl" style={{ fontFamily: 'Google Sans, sans-serif' }}>Quick answers to the most common questions from Accra clients.</p>
+                <p className="text-base text-gray-700 dark:text-gray-200 max-w-3xl" style={{ fontFamily: 'Albert Sans, sans-serif', fontWeight: 400 }}>
+                  Quick answers to the most common questions from Accra clients.
+                </p>
               </div>
 
               <div className="space-y-4">
                 <div className="rounded-2xl border border-gray-200 dark:border-white/10 bg-white/80 dark:bg-white/5 p-5">
-                  <h3 className="text-lg font-semibold text-gray-900 dark:text-white" style={{ fontFamily: 'Google Sans, sans-serif' }}>How much does web design cost in Accra?</h3>
-                  <p className="text-sm text-gray-700 dark:text-gray-300 mt-2" style={{ fontFamily: 'Google Sans, sans-serif' }}>Most projects start from GHS 4,000 for a lean business site. E-commerce builds typically range from GHS 6,500–12,000 depending on catalog size, integrations, and custom features. You’ll get a clear quote after a quick call.</p>
+                  <h3 className="text-lg font-semibold text-gray-900 dark:text-white" style={{ fontFamily: 'Albert Sans, sans-serif', fontWeight: 400 }}>How much does web design cost in Accra?</h3>
+                  <p className="text-sm text-gray-700 dark:text-gray-300 mt-2" style={{ fontFamily: 'Albert Sans, sans-serif', fontWeight: 400 }}>Most projects start from GHS 4,000 for a lean business site. E-commerce builds typically range from GHS 6,500–12,000 depending on catalog size, integrations, and custom features. You’ll get a clear quote after a quick call.</p>
                 </div>
 
                 <div className="rounded-2xl border border-gray-200 dark:border-white/10 bg-white/80 dark:bg-white/5 p-5">
-                  <h3 className="text-lg font-semibold text-gray-900 dark:text-white" style={{ fontFamily: 'Google Sans, sans-serif' }}>How long does it take?</h3>
-                  <p className="text-sm text-gray-700 dark:text-gray-300 mt-2" style={{ fontFamily: 'Google Sans, sans-serif' }}>A focused business site usually launches in 2–4 weeks. E-commerce projects run 3–6 weeks depending on product setup, payments, and content readiness. We share a clear timeline on day one.</p>
+                  <h3 className="text-lg font-semibold text-gray-900 dark:text-white" style={{ fontFamily: 'Albert Sans, sans-serif', fontWeight: 400 }}>How long does it take?</h3>
+                  <p className="text-sm text-gray-700 dark:text-gray-300 mt-2" style={{ fontFamily: 'Albert Sans, sans-serif', fontWeight: 400 }}>A focused business site usually launches in 2–4 weeks. E-commerce projects run 3–6 weeks depending on product setup, payments, and content readiness. We share a clear timeline on day one.</p> 
                 </div>
 
                 <div className="rounded-2xl border border-gray-200 dark:border-white/10 bg-white/80 dark:bg-white/5 p-5">
-                  <h3 className="text-lg font-semibold text-gray-900 dark:text-white" style={{ fontFamily: 'Google Sans, sans-serif' }}>Do you offer SEO?</h3>
-                  <p className="text-sm text-gray-700 dark:text-gray-300 mt-2" style={{ fontFamily: 'Google Sans, sans-serif' }}>Yes. Every build includes on-page SEO, fast performance, mobile optimization, and basic schema. We can add local SEO, blog setup, and content guidance to help you rank in Accra and beyond.</p>
+                  <h3 className="text-lg font-semibold text-gray-900 dark:text-white" style={{ fontFamily: 'Albert Sans, sans-serif', fontWeight: 400 }}>Do you offer SEO?</h3>
+                  <p className="text-sm text-gray-700 dark:text-gray-300 mt-2" style={{ fontFamily: 'Albert Sans, sans-serif', fontWeight: 400 }}>Yes. Every build includes on-page SEO, fast performance, mobile optimization, and basic schema. We can add local SEO, blog setup, and content guidance to help you rank in Accra and beyond.</p>
                 </div>
 
                 <div className="rounded-2xl border border-gray-200 dark:border-white/10 bg-white/80 dark:bg-white/5 p-5">
-                  <h3 className="text-lg font-semibold text-gray-900 dark:text-white" style={{ fontFamily: 'Google Sans, sans-serif' }}>Do you work with small businesses?</h3>
-                  <p className="text-sm text-gray-700 dark:text-gray-300 mt-2" style={{ fontFamily: 'Google Sans, sans-serif' }}>Absolutely. We support founders, SMEs, and growing teams with right-sized packages—clear pricing, fast launches, and ongoing support to keep you online and converting.</p>
+                  <h3 className="text-lg font-semibold text-gray-900 dark:text-white" style={{ fontFamily: 'Albert Sans, sans-serif', fontWeight: 400 }}>Do you work with small businesses?</h3>
+                  <p className="text-sm text-gray-700 dark:text-gray-300 mt-2" style={{ fontFamily: 'Albert Sans, sans-serif', fontWeight: 400 }}>Absolutely. We support founders, SMEs, and growing teams with right-sized packages—clear pricing, fast launches, and ongoing support to keep you online and converting.</p>
                 </div>
               </div>
             </div>
 
             <div className="rounded-3xl border border-gray-200 dark:border-white/10 bg-white/85 dark:bg-white/5 backdrop-blur p-8 shadow-xl shadow-orange-500/10 space-y-6 overflow-hidden">
               <div className="space-y-2">
-                <p className="text-sm uppercase tracking-[0.16em] text-orange-500 font-semibold" style={{ fontFamily: 'Google Sans, sans-serif' }}>Local Expertise</p>
+                <p className="text-sm uppercase tracking-[0.16em] text-orange-500 font-semibold" style={{ fontFamily: 'Albert Sans, sans-serif' }}>Local Expertise</p>
                 <h2 className="text-2xl sm:text-3xl font-display font-bold text-gray-900 dark:text-white">Serving Businesses Across Accra & Greater Accra</h2>
-                <p className="text-base text-gray-700 dark:text-gray-200 max-w-3xl" style={{ fontFamily: 'Google Sans, sans-serif' }}>Based in Accra, we partner with businesses throughout Greater Accra and beyond. We understand the local market and deliver web solutions built for success.</p>
+                <p className="text-base text-gray-700 dark:text-gray-200 max-w-3xl" style={{ fontFamily: 'Albert Sans, sans-serif', fontWeight: 400 }}>
+                  Based in Accra, we partner with businesses throughout Greater Accra and beyond. We understand the local market and deliver web solutions built for success.
+                </p>
               </div>
 
               <div className="rounded-2xl overflow-hidden border border-gray-200 dark:border-white/10 shadow-lg h-96">
@@ -469,18 +501,20 @@ export default function BestWebDesignerInAccraPage() {
 
               <div className="grid sm:grid-cols-2 gap-4 justify-center">
                 <div className="rounded-xl border border-gray-200 dark:border-white/10 bg-white/80 dark:bg-white/5 p-4 max-w-xl w-full mx-auto">
-                  <p className="text-sm font-semibold text-orange-500 uppercase tracking-wide mb-2" style={{ fontFamily: 'Google Sans, sans-serif' }}>Service Area</p>
-                  <p className="text-base text-gray-900 dark:text-white font-semibold" style={{ fontFamily: 'Google Sans, sans-serif' }}>Greater Accra Region</p>
-                  <p className="text-sm text-gray-700 dark:text-gray-300 mt-1" style={{ fontFamily: 'Google Sans, sans-serif' }}>Accra, Tema, Madina, Kasoa, Pokuase, and surrounding areas</p>
+                  <p className="text-sm font-semibold text-orange-500 uppercase tracking-wide mb-2" style={{ fontFamily: 'Albert Sans, sans-serif' }}>Service Area</p>
+                  <p className="text-base text-gray-900 dark:text-white font-semibold" style={{ fontFamily: 'Albert Sans, sans-serif' }}>Greater Accra Region</p>
+                  <p className="text-sm text-gray-700 dark:text-gray-300 mt-1" style={{ fontFamily: 'Albert Sans, sans-serif' }}>Accra, Tema, Madina, Kasoa, Pokuase, and surrounding areas</p>
                 </div>
               </div>
 
               {/* Related Blog Articles */}
               <div className="space-y-6">
                 <div className="space-y-2">
-                  <p className="text-sm uppercase tracking-[0.16em] text-orange-500 font-semibold" style={{ fontFamily: 'Google Sans, sans-serif' }}>Resources</p>
+                  <p className="text-sm uppercase tracking-[0.16em] text-orange-500 font-semibold" style={{ fontFamily: 'Albert Sans, sans-serif' }}>Resources</p>
                   <h2 className="text-2xl sm:text-3xl font-display font-bold text-gray-900 dark:text-white">Related Articles</h2>
-                  <p className="text-base text-gray-700 dark:text-gray-200 max-w-3xl" style={{ fontFamily: 'Google Sans, sans-serif' }}>Learn more about web design, e-commerce, and growing your online business.</p>
+                  <p className="text-base text-gray-700 dark:text-gray-200 max-w-3xl" style={{ fontFamily: 'Albert Sans, sans-serif', fontWeight: 400 }}>
+                    Learn more about web design, e-commerce, and growing your online business.
+                  </p>
                 </div>
 
                 <div className="grid sm:grid-cols-2 gap-6">
@@ -494,9 +528,11 @@ export default function BestWebDesignerInAccraPage() {
                         />
                       </div>
                       <div className="p-6 flex flex-col flex-grow">
-                        <p className="text-xs text-orange-600 dark:text-orange-400 font-semibold uppercase tracking-wide mb-2" style={{ fontFamily: 'Google Sans, sans-serif' }}>Web Design</p>
+                        <p className="text-xs text-orange-600 dark:text-orange-400 font-semibold uppercase tracking-wide mb-2" style={{ fontFamily: 'Albert Sans, sans-serif' }}>Web Design</p>
                         <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2 group-hover:text-orange-600 transition-colors" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>12 Best Web Design Companies in Ghana (2026)</h3>
-                        <p className="text-sm text-gray-700 dark:text-gray-300 flex-grow" style={{ fontFamily: 'Google Sans, sans-serif' }}>We ranked and reviewed the top 12 agencies based on portfolio quality, client reviews, SEO expertise, and industry recognition.</p>
+                        <p className="text-sm text-gray-700 dark:text-gray-300 flex-grow" style={{ fontFamily: 'Albert Sans, sans-serif', fontWeight: 400 }}>
+                          We ranked and reviewed the top 12 agencies based on portfolio quality, client reviews, SEO expertise, and industry recognition.
+                        </p>
                         <div className="mt-4 flex items-center gap-2 text-orange-600 dark:text-orange-400 font-semibold text-sm">
                           Read More →
                         </div>
@@ -514,9 +550,11 @@ export default function BestWebDesignerInAccraPage() {
                         />
                       </div>
                       <div className="p-6 flex flex-col flex-grow">
-                        <p className="text-xs text-orange-600 dark:text-orange-400 font-semibold uppercase tracking-wide mb-2" style={{ fontFamily: 'Google Sans, sans-serif' }}>Web Development</p>
+                        <p className="text-xs text-orange-600 dark:text-orange-400 font-semibold uppercase tracking-wide mb-2" style={{ fontFamily: 'Albert Sans, sans-serif' }}>Web Development</p>
                         <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2 group-hover:text-orange-600 transition-colors" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>WordPress vs Custom Website</h3>
-                        <p className="text-sm text-gray-700 dark:text-gray-300 flex-grow" style={{ fontFamily: 'Google Sans, sans-serif' }}>Compare WordPress and custom development to find the best solution for your Ghanaian business in 2026.</p>
+                        <p className="text-sm text-gray-700 dark:text-gray-300 flex-grow" style={{ fontFamily: 'Albert Sans, sans-serif', fontWeight: 400 }}>
+                          Compare WordPress and custom development to find the best solution for your Ghanaian business in 2026.
+                        </p>
                         <div className="mt-4 flex items-center gap-2 text-orange-600 dark:text-orange-400 font-semibold text-sm">
                           Read More →
                         </div>
@@ -529,7 +567,7 @@ export default function BestWebDesignerInAccraPage() {
                   <Link
                     href="/blog"
                     className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-gradient-to-r from-orange-500 to-orange-600 text-white font-semibold hover:from-orange-600 hover:to-orange-700 transition-all shadow-lg shadow-orange-500/30"
-                    style={{ fontFamily: 'Google Sans, sans-serif' }}
+                    style={{ fontFamily: 'Albert Sans, sans-serif', fontWeight: 400 }}
                   >
                     View All Articles
                     <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -541,13 +579,15 @@ export default function BestWebDesignerInAccraPage() {
 
               <div className="rounded-2xl border border-gray-200 dark:border-white/10 bg-gradient-to-r from-orange-50 to-orange-100 dark:from-orange-950/20 dark:to-orange-900/20 p-8 text-center space-y-4">
                 <h3 className="text-2xl font-display font-bold text-gray-900 dark:text-white">Ready to Launch Your Web Presence?</h3>
-                <p className="text-base text-gray-700 dark:text-gray-200 max-w-2xl mx-auto" style={{ fontFamily: 'Google Sans, sans-serif' }}>Join hundreds of Accra-based businesses that have transformed their online presence with our web design services.</p>
+                <p className="text-base text-gray-700 dark:text-gray-200 max-w-2xl mx-auto" style={{ fontFamily: 'Albert Sans, sans-serif', fontWeight: 400 }}>
+                  Join hundreds of Accra-based businesses that have transformed their online presence with our web design services.
+                </p>
 
                 <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
                   <Link
                     href="/contact"
                     className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-gradient-to-r from-orange-500 to-orange-600 text-white font-semibold hover:from-orange-600 hover:to-orange-700 transition-all shadow-lg shadow-orange-500/30"
-                    style={{ fontFamily: 'Google Sans, sans-serif' }}
+                    style={{ fontFamily: 'Albert Sans, sans-serif', fontWeight: 400 }}
                   >
                     Get a Website Today
                   </Link>
@@ -557,7 +597,7 @@ export default function BestWebDesignerInAccraPage() {
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-green-500 hover:bg-green-600 text-white font-semibold transition-all shadow-lg shadow-green-500/30"
-                    style={{ fontFamily: 'Google Sans, sans-serif' }}
+                    style={{ fontFamily: 'Albert Sans, sans-serif', fontWeight: 400 }}
                   >
                     <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                       <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>

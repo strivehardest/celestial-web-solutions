@@ -20,7 +20,7 @@ const GlassButton = ({ children, href, variant = 'light', className = '', extern
   const Component = href ? (external ? 'a' : Link) : 'button';
   const props = href ? (external ? { href, target: "_blank", rel: "noopener noreferrer" } : { href }) : { onClick };
   return (
-    <Component {...props} className={`${baseStyles} ${variants[variant]} ${className}`} style={{ fontFamily: 'Google Sans, sans-serif' }}>
+    <Component {...props} className={`${baseStyles} ${variants[variant]} ${className}`} style={{ fontFamily: 'Albert Sans, sans-serif', fontWeight: 400 }}>
       {children}
     </Component>
   );
@@ -112,7 +112,7 @@ const DeviceMockup = ({ project }) => {
               </div>
               <div className="flex items-center justify-center gap-1.5 pt-1">
                 <Monitor size={13} className="text-gray-400" />
-                <span className="text-xs text-gray-400 font-medium" style={{ fontFamily: 'Google Sans, sans-serif' }}>Desktop</span>
+                <span className="text-xs text-gray-400 font-medium" style={{ fontFamily: 'Albert Sans, sans-serif', fontWeight: 400 }}>Desktop</span>
               </div>
             </div>
 
@@ -143,7 +143,7 @@ const DeviceMockup = ({ project }) => {
               </div>
               <div className="flex items-center justify-center gap-1.5 pt-1">
                 <Smartphone size={13} className="text-gray-400" />
-                <span className="text-xs text-gray-400 font-medium" style={{ fontFamily: 'Google Sans, sans-serif' }}>Mobile</span>
+                <span className="text-xs text-gray-400 font-medium" style={{ fontFamily: 'Albert Sans, sans-serif', fontWeight: 400 }}>Mobile</span>
               </div>
             </div>
           </div>
@@ -175,7 +175,7 @@ const DeviceMockup = ({ project }) => {
             </div>
             <div className="flex items-center justify-center gap-1.5 pt-1">
               <Monitor size={13} className="text-gray-400" />
-              <span className="text-xs text-gray-400 font-medium" style={{ fontFamily: 'Google Sans, sans-serif' }}>Desktop</span>
+              <span className="text-xs text-gray-400 font-medium" style={{ fontFamily: 'Albert Sans, sans-serif', fontWeight: 400 }}>Desktop</span>
             </div>
           </div>
 
@@ -207,7 +207,7 @@ const DeviceMockup = ({ project }) => {
               </div>
               <div className="flex items-center justify-center gap-1.5 pt-1">
                 <Smartphone size={13} className="text-gray-400" />
-                <span className="text-xs text-gray-400 font-medium" style={{ fontFamily: 'Google Sans, sans-serif' }}>Mobile</span>
+                <span className="text-xs text-gray-400 font-medium" style={{ fontFamily: 'Albert Sans, sans-serif', fontWeight: 400 }}>Mobile</span>
               </div>
             </div>
           </div>
@@ -264,7 +264,7 @@ const DeviceMockup = ({ project }) => {
             </motion.div>
 
             {/* ESC hint */}
-            <div className="absolute bottom-5 left-1/2 -translate-x-1/2 z-20 text-white/60 text-sm font-medium" style={{ fontFamily: 'Google Sans, sans-serif' }}>
+            <div className="absolute bottom-5 left-1/2 -translate-x-1/2 z-20 text-white/60 text-sm font-medium" style={{ fontFamily: 'Albert Sans, sans-serif', fontWeight: 400 }}>
               Click anywhere or press ESC to close
             </div>
           </motion.div>
@@ -372,8 +372,8 @@ export default function ProjectDetail({ project, currentIndex, prevProject: prev
           <div className="text-center max-w-md">
             <AlertCircle className="w-16 h-16 text-orange-500 mx-auto mb-4" />
             <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-4" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>Project Not Found</h1>
-            <p className="text-gray-600 dark:text-gray-400 mb-8" style={{ fontFamily: 'Google Sans, sans-serif' }}>The project you're looking for doesn't exist or may have been removed.</p>
-            <Link href="/portfolio" className="inline-flex items-center gap-2 px-6 py-3 bg-orange-500 hover:bg-orange-600 text-white rounded-full font-semibold transition-colors" style={{ fontFamily: 'Google Sans, sans-serif' }}>
+            <p className="text-gray-600 dark:text-gray-400 mb-8" style={{ fontFamily: 'Albert Sans, sans-serif' }}>The project you're looking for doesn't exist or may have been removed.</p>
+            <Link href="/portfolio" className="inline-flex items-center gap-2 px-6 py-3 bg-orange-500 hover:bg-orange-600 text-white rounded-full font-semibold transition-colors" style={{ fontFamily: 'Albert Sans, sans-serif' }}>
               <ArrowLeft size={20} /> Back to Portfolio
             </Link>
           </div>
@@ -448,7 +448,7 @@ export default function ProjectDetail({ project, currentIndex, prevProject: prev
               </motion.div>
               <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-white/90 dark:bg-gray-800/90 backdrop-blur-md rounded-lg px-3 py-2 shadow-lg ring-1 ring-gray-200 dark:ring-gray-700 max-w-[150px]">
                 <p className="text-xs text-gray-500 dark:text-gray-400 font-medium">Previous</p>
-                <p className="text-sm text-gray-900 dark:text-white font-semibold truncate" style={{ fontFamily: 'Google Sans, sans-serif' }}>{prevProject.title}</p>
+                <p className="text-sm text-gray-900 dark:text-white font-semibold truncate" style={{ fontFamily: 'Albert Sans, sans-serif' }}>{prevProject.title}</p>
               </div>
             </div>
           </Link>
@@ -459,7 +459,7 @@ export default function ProjectDetail({ project, currentIndex, prevProject: prev
             <div className="flex items-center gap-3">
               <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-white/90 dark:bg-gray-800/90 backdrop-blur-md rounded-lg px-3 py-2 shadow-lg ring-1 ring-gray-200 dark:ring-gray-700 max-w-[150px] text-right">
                 <p className="text-xs text-gray-500 dark:text-gray-400 font-medium">Next</p>
-                <p className="text-sm text-gray-900 dark:text-white font-semibold truncate" style={{ fontFamily: 'Google Sans, sans-serif' }}>{nextProject.title}</p>
+                <p className="text-sm text-gray-900 dark:text-white font-semibold truncate" style={{ fontFamily: 'Albert Sans, sans-serif' }}>{nextProject.title}</p>
               </div>
               <motion.div className="w-12 h-12 rounded-full bg-white/90 dark:bg-gray-800/90 backdrop-blur-md shadow-lg ring-1 ring-gray-200 dark:ring-gray-700 flex items-center justify-center group-hover:bg-orange-500 group-hover:ring-orange-500 transition-all duration-300"
                 whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
@@ -491,7 +491,7 @@ export default function ProjectDetail({ project, currentIndex, prevProject: prev
 
           <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 pt-32">
             <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
-              <Link href="/portfolio" className="text-white/80 hover:text-white mb-6 inline-flex items-center gap-2 transition font-medium group" style={{ fontFamily: 'Google Sans, sans-serif' }}>
+              <Link href="/portfolio" className="text-white/80 hover:text-white mb-6 inline-flex items-center gap-2 transition font-medium group" style={{ fontFamily: 'Albert Sans, sans-serif' }}>
                 <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" />
                 Back to Portfolio
               </Link>
@@ -518,7 +518,7 @@ export default function ProjectDetail({ project, currentIndex, prevProject: prev
               </h1>
 
               <p className="text-lg sm:text-xl text-gray-300 max-w-2xl leading-relaxed mb-8"
-                style={{ fontFamily: "Google Sans, sans-serif" }}>
+                style={{ fontFamily: "Albert Sans, sans-serif" }}>
                 {project.description}
               </p>
 
@@ -547,7 +547,7 @@ export default function ProjectDetail({ project, currentIndex, prevProject: prev
                   </div>
                   <div>
                     <p className="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wide font-medium">Client</p>
-                    <p className="text-gray-900 dark:text-white font-semibold truncate" style={{ fontFamily: 'Google Sans, sans-serif' }}>{project.client}</p>
+                    <p className="text-gray-900 dark:text-white font-semibold truncate" style={{ fontFamily: 'Albert Sans, sans-serif' }}>{project.client}</p>
                   </div>
                 </motion.div>
               )}
@@ -558,7 +558,7 @@ export default function ProjectDetail({ project, currentIndex, prevProject: prev
                   </div>
                   <div>
                     <p className="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wide font-medium">Location</p>
-                    <p className="text-gray-900 dark:text-white font-semibold" style={{ fontFamily: 'Google Sans, sans-serif' }}>{project.clientCountry}</p>
+                    <p className="text-gray-900 dark:text-white font-semibold" style={{ fontFamily: 'Albert Sans, sans-serif' }}>{project.clientCountry}</p>
                   </div>
                 </motion.div>
               )}
@@ -569,7 +569,7 @@ export default function ProjectDetail({ project, currentIndex, prevProject: prev
                   </div>
                   <div>
                     <p className="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wide font-medium">Duration</p>
-                    <p className="text-gray-900 dark:text-white font-semibold" style={{ fontFamily: 'Google Sans, sans-serif' }}>{project.duration}</p>
+                    <p className="text-gray-900 dark:text-white font-semibold" style={{ fontFamily: 'Albert Sans, sans-serif' }}>{project.duration}</p>
                   </div>
                 </motion.div>
               )}
@@ -579,7 +579,7 @@ export default function ProjectDetail({ project, currentIndex, prevProject: prev
                 </div>
                 <div>
                   <p className="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wide font-medium">Completed</p>
-                  <p className="text-gray-900 dark:text-white font-semibold" style={{ fontFamily: 'Google Sans, sans-serif' }}>
+                  <p className="text-gray-900 dark:text-white font-semibold" style={{ fontFamily: 'Albert Sans, sans-serif' }}>
                     {project.completionDate === "In Progress" ? (
                       <span className="inline-flex items-center gap-1">
                         <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
@@ -679,7 +679,7 @@ export default function ProjectDetail({ project, currentIndex, prevProject: prev
                         transition={{ duration: 0.3, delay: 0.4 + i * 0.05 }}
                         className="flex items-start gap-3 p-4 rounded-xl bg-gray-50 dark:bg-gray-900 border border-gray-100 dark:border-gray-800">
                         <CheckCircle2 className="w-5 h-5 text-orange-500 flex-shrink-0 mt-0.5" />
-                        <span className="text-gray-700 dark:text-gray-200" style={{ fontFamily: 'Google Sans, sans-serif' }}>{feature}</span>
+                        <span className="text-gray-700 dark:text-gray-200" style={{ fontFamily: 'Albert Sans, sans-serif' }}>{feature}</span>
                       </motion.div>
                     ))}
                   </div>
@@ -706,7 +706,7 @@ export default function ProjectDetail({ project, currentIndex, prevProject: prev
                       </div>
                       <div>
                         <h4 className="font-semibold text-gray-900 dark:text-white text-lg" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>{phase.title}</h4>
-                        <p className="text-gray-600 dark:text-gray-400" style={{ fontFamily: 'Google Sans, sans-serif' }}>{phase.desc}</p>
+                        <p className="text-gray-600 dark:text-gray-400" style={{ fontFamily: 'Albert Sans, sans-serif' }}>{phase.desc}</p>
                       </div>
                     </motion.div>
                   ))}
@@ -740,7 +740,7 @@ export default function ProjectDetail({ project, currentIndex, prevProject: prev
                             </div>
                           )}
                         </div>
-                        <span className="text-sm font-medium text-gray-700 dark:text-gray-300" style={{ fontFamily: 'Google Sans, sans-serif' }}>
+                        <span className="text-sm font-medium text-gray-700 dark:text-gray-300" style={{ fontFamily: 'Albert Sans, sans-serif' }}>
                           {tech.name}
                         </span>
                       </motion.div>
@@ -756,24 +756,24 @@ export default function ProjectDetail({ project, currentIndex, prevProject: prev
                     {project.client && (
                       <div>
                         <p className="text-orange-200 text-xs uppercase tracking-wide font-medium">Client</p>
-                        <p className="font-semibold" style={{ fontFamily: 'Google Sans, sans-serif' }}>{project.client}</p>
+                        <p className="font-semibold" style={{ fontFamily: 'Albert Sans, sans-serif' }}>{project.client}</p>
                       </div>
                     )}
                     {project.clientCountry && (
                       <div>
                         <p className="text-orange-200 text-xs uppercase tracking-wide font-medium">Location</p>
-                        <p className="font-semibold" style={{ fontFamily: 'Google Sans, sans-serif' }}>{project.clientCountry}</p>
+                        <p className="font-semibold" style={{ fontFamily: 'Albert Sans, sans-serif' }}>{project.clientCountry}</p>
                       </div>
                     )}
                     {project.duration && (
                       <div>
                         <p className="text-orange-200 text-xs uppercase tracking-wide font-medium">Duration</p>
-                        <p className="font-semibold" style={{ fontFamily: 'Google Sans, sans-serif' }}>{project.duration}</p>
+                        <p className="font-semibold" style={{ fontFamily: 'Albert Sans, sans-serif' }}>{project.duration}</p>
                       </div>
                     )}
                     <div>
                       <p className="text-orange-200 text-xs uppercase tracking-wide font-medium">Completed</p>
-                      <p className="font-semibold" style={{ fontFamily: 'Google Sans, sans-serif' }}>
+                      <p className="font-semibold" style={{ fontFamily: 'Albert Sans, sans-serif' }}>
                         {project.completionDate === "In Progress" ? (
                           <span className="inline-flex items-center gap-1">
                             <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
@@ -788,7 +788,7 @@ export default function ProjectDetail({ project, currentIndex, prevProject: prev
                   {project.link && project.link !== "#" && (
                     <a href={project.link} target="_blank" rel="noopener noreferrer"
                       className="mt-6 w-full inline-flex items-center justify-center gap-2 px-4 py-3 bg-white text-orange-600 rounded-xl font-semibold hover:bg-orange-50 transition-colors"
-                      style={{ fontFamily: 'Google Sans, sans-serif' }}>
+                      style={{ fontFamily: 'Albert Sans, sans-serif' }}>
                       Visit Website <ExternalLink className="w-4 h-4" />
                     </a>
                   )}
@@ -805,7 +805,7 @@ export default function ProjectDetail({ project, currentIndex, prevProject: prev
                       Need Something Similar?
                     </h3>
                   </div>
-                  <p className="text-gray-600 dark:text-gray-400 text-sm mb-4" style={{ fontFamily: 'Google Sans, sans-serif' }}>
+                  <p className="text-gray-600 dark:text-gray-400 text-sm mb-4" style={{ fontFamily: 'Albert Sans, sans-serif' }}>
                     Let's discuss your project and bring your vision to life.
                   </p>
                   <GlassButton href="/contact" variant="orange" className="w-full">
@@ -833,7 +833,7 @@ export default function ProjectDetail({ project, currentIndex, prevProject: prev
               <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} viewport={{ once: true }} className="text-center mb-12">
                   <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-4" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>Related Projects</h2>
-                  <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto" style={{ fontFamily: 'Google Sans, sans-serif' }}>Explore more of our work in similar categories</p>
+                  <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto" style={{ fontFamily: 'Albert Sans, sans-serif' }}>Explore more of our work in similar categories</p>
                 </motion.div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                   {relatedProjects.map((relatedProject, index) => (
@@ -863,7 +863,7 @@ export default function ProjectDetail({ project, currentIndex, prevProject: prev
                             <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-orange-500 transition-colors" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>
                               {relatedProject.title}
                             </h3>
-                            <p className="text-gray-600 dark:text-gray-400 text-sm line-clamp-2 mb-4" style={{ fontFamily: 'Google Sans, sans-serif' }}>
+                            <p className="text-gray-600 dark:text-gray-400 text-sm line-clamp-2 mb-4" style={{ fontFamily: 'Albert Sans, sans-serif' }}>
                               {relatedProject.description}
                             </p>
                             <div className="flex items-center text-orange-500 font-semibold text-sm">
@@ -892,7 +892,7 @@ export default function ProjectDetail({ project, currentIndex, prevProject: prev
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>
                 Ready to Start Your Project?
               </h2>
-              <p className="text-lg sm:text-xl text-orange-100 mb-10 max-w-2xl mx-auto" style={{ fontFamily: 'Google Sans, sans-serif' }}>
+              <p className="text-lg sm:text-xl text-orange-100 mb-10 max-w-2xl mx-auto" style={{ fontFamily: 'Albert Sans, sans-serif' }}>
                 Let's bring your vision to life with cutting-edge technology and creative solutions.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -912,7 +912,7 @@ export default function ProjectDetail({ project, currentIndex, prevProject: prev
                   <ArrowLeft className="w-5 h-5 text-orange-500 flex-shrink-0" />
                   <div className="min-w-0">
                     <p className="text-xs text-gray-500 dark:text-gray-400">Previous</p>
-                    <p className="text-sm font-semibold text-gray-900 dark:text-white truncate" style={{ fontFamily: 'Google Sans, sans-serif' }}>{prevProject.title}</p>
+                    <p className="text-sm font-semibold text-gray-900 dark:text-white truncate" style={{ fontFamily: 'Albert Sans, sans-serif' }}>{prevProject.title}</p>
                   </div>
                 </Link>
               ) : <div className="p-4" />}
@@ -920,7 +920,7 @@ export default function ProjectDetail({ project, currentIndex, prevProject: prev
                 <Link href={`/portfolio/${nextProject.slug}`} className="flex items-center justify-end gap-3 p-4 hover:bg-gray-50 dark:hover:bg-gray-900 transition-colors text-right">
                   <div className="min-w-0">
                     <p className="text-xs text-gray-500 dark:text-gray-400">Next</p>
-                    <p className="text-sm font-semibold text-gray-900 dark:text-white truncate" style={{ fontFamily: 'Google Sans, sans-serif' }}>{nextProject.title}</p>
+                    <p className="text-sm font-semibold text-gray-900 dark:text-white truncate" style={{ fontFamily: 'Albert Sans, sans-serif' }}>{nextProject.title}</p>
                   </div>
                   <ArrowRight className="w-5 h-5 text-orange-500 flex-shrink-0" />
                 </Link>

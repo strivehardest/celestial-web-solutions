@@ -128,7 +128,7 @@ export default function HeroSwiper() {
                 <div className="w-full lg:w-[45%] flex flex-col justify-center z-20 pt-20 sm:pt-24 lg:pt-0 pb-4 lg:pb-0">
                   <span
                     className="text-orange-400 text-[11px] sm:text-xs font-bold tracking-[0.25em] uppercase mb-5"
-                    style={{ fontFamily: 'Google Sans, sans-serif' }}
+                    style={{ fontFamily: 'Albert Sans, sans-serif', fontWeight: 400 }}
                   >
                     {slide.tag}
                   </span>
@@ -142,7 +142,7 @@ export default function HeroSwiper() {
 
                   <p
                     className="text-base sm:text-lg md:text-xl text-white/75 max-w-md mb-10 leading-relaxed"
-                    style={{ fontFamily: 'Google Sans, sans-serif' }}
+                    style={{ fontFamily: 'Albert Sans, sans-serif', fontWeight: 400 }}
                   >
                     {slide.description}
                   </p>

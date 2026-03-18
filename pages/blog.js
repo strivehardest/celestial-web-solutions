@@ -451,7 +451,7 @@ export default function BlogPage() {
               >
                 <span
                   className="inline-block px-4 py-1.5 rounded-full text-xs font-semibold tracking-wider uppercase bg-orange-500/10 text-orange-400 border border-orange-500/20 mb-6"
-                  style={{ fontFamily: "Google Sans, sans-serif" }}
+                  style={{ fontFamily: "Albert Sans, sans-serif" }}
                 >
                   Our Blog
                 </span>
@@ -463,7 +463,7 @@ export default function BlogPage() {
                 </h1>
                 <p
                   className="mt-4 text-lg md:text-xl text-gray-400 max-w-xl"
-                  style={{ fontFamily: "Google Sans, sans-serif" }}
+                  style={{ fontFamily: "Albert Sans, sans-serif" }}
                 >
                   Insights on web design, development, SEO, and digital trends — from our team in Accra to the world.
                 </p>
@@ -502,7 +502,7 @@ export default function BlogPage() {
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   className="w-full pl-10 pr-10 py-2.5 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-900 dark:text-white text-sm focus:border-orange-500 focus:ring-1 focus:ring-orange-500 dark:focus:border-orange-400 outline-none transition-all"
-                  style={{ fontFamily: "Google Sans, sans-serif" }}
+                  style={{ fontFamily: "Albert Sans, sans-serif" }}
                 />
                 {searchQuery && (
                   <button onClick={() => { setSearchQuery(""); setDebouncedSearch(""); }} className="absolute right-3 top-1/2 -translate-y-1/2 p-0.5 rounded hover:bg-gray-100 dark:hover:bg-gray-800">
@@ -522,7 +522,7 @@ export default function BlogPage() {
                         ? 'bg-gray-900 dark:bg-white text-white dark:text-gray-900'
                         : 'bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700'
                     }`}
-                    style={{ fontFamily: "Google Sans, sans-serif" }}
+                    style={{ fontFamily: "Albert Sans, sans-serif" }}
                   >
                     {cat}
                   </button>
@@ -531,7 +531,7 @@ export default function BlogPage() {
             </div>
 
             {debouncedSearch.trim() && (
-              <p className="mt-3 text-sm text-gray-500 dark:text-gray-400" style={{ fontFamily: "Google Sans, sans-serif" }}>
+              <p className="mt-3 text-sm text-gray-500 dark:text-gray-400" style={{ fontFamily: "Albert Sans, sans-serif" }}>
                 {totalFiltered} {totalFiltered === 1 ? 'result' : 'results'} for &ldquo;{debouncedSearch}&rdquo;
               </p>
             )}
@@ -561,10 +561,10 @@ export default function BlogPage() {
                   {/* Content */}
                   <div className="flex flex-col justify-center">
                     <div className="flex items-center gap-3 mb-4">
-                      <span className="px-3 py-1 rounded-full text-xs font-semibold bg-orange-100 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400" style={{ fontFamily: "Google Sans, sans-serif" }}>
+                      <span className="px-3 py-1 rounded-full text-xs font-semibold bg-orange-100 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400" style={{ fontFamily: "Albert Sans, sans-serif" }}>
                         {heroArticle.category}
                       </span>
-                      <span className="text-sm text-gray-400 dark:text-gray-500" style={{ fontFamily: "Google Sans, sans-serif" }}>
+                      <span className="text-sm text-gray-400 dark:text-gray-500" style={{ fontFamily: "Albert Sans, sans-serif" }}>
                         {formatDate(heroArticle.date)}
                       </span>
                     </div>
@@ -578,12 +578,12 @@ export default function BlogPage() {
 
                     <p
                       className="mt-4 text-gray-600 dark:text-gray-400 text-base md:text-lg leading-relaxed line-clamp-3"
-                      style={{ fontFamily: "Google Sans, sans-serif" }}
+                      style={{ fontFamily: "Albert Sans, sans-serif" }}
                     >
                       {heroArticle.excerpt}
                     </p>
 
-                    <div className="mt-6 flex items-center gap-4 text-sm text-gray-500 dark:text-gray-400" style={{ fontFamily: "Google Sans, sans-serif" }}>
+                    <div className="mt-6 flex items-center gap-4 text-sm text-gray-500 dark:text-gray-400" style={{ fontFamily: "Albert Sans, sans-serif" }}>
                       <span className="flex items-center gap-1.5">
                         <User className="w-4 h-4" />
                         {heroArticle.author}
@@ -621,10 +621,10 @@ export default function BlogPage() {
                         {/* Text */}
                         <div className="order-2 md:order-1">
                           <div className="flex items-center gap-3 mb-3">
-                            <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400" style={{ fontFamily: "Google Sans, sans-serif" }}>
+                            <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400" style={{ fontFamily: "Albert Sans, sans-serif" }}>
                               {article.category}
                             </span>
-                            <span className="text-sm text-gray-400 dark:text-gray-500" style={{ fontFamily: "Google Sans, sans-serif" }}>
+                            <span className="text-sm text-gray-400 dark:text-gray-500" style={{ fontFamily: "Albert Sans, sans-serif" }}>
                               {formatDate(article.date)}
                             </span>
                           </div>
@@ -638,12 +638,12 @@ export default function BlogPage() {
 
                           <p
                             className="mt-2.5 text-gray-500 dark:text-gray-400 text-sm md:text-base leading-relaxed line-clamp-2"
-                            style={{ fontFamily: "Google Sans, sans-serif" }}
+                            style={{ fontFamily: "Albert Sans, sans-serif" }}
                           >
                             {article.excerpt}
                           </p>
 
-                          <div className="mt-4 flex items-center gap-4 text-xs text-gray-400 dark:text-gray-500" style={{ fontFamily: "Google Sans, sans-serif" }}>
+                          <div className="mt-4 flex items-center gap-4 text-xs text-gray-400 dark:text-gray-500" style={{ fontFamily: "Albert Sans, sans-serif" }}>
                             <span className="flex items-center gap-1">
                               <User className="w-3.5 h-3.5" />
                               {article.author}
@@ -684,7 +684,7 @@ export default function BlogPage() {
                   <button
                     onClick={() => setVisibleCount(prev => prev + 12)}
                     className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-700 dark:text-gray-300 text-sm font-semibold hover:border-orange-400 hover:text-orange-500 dark:hover:border-orange-500 dark:hover:text-orange-400 transition-all duration-200"
-                    style={{ fontFamily: "Google Sans, sans-serif" }}
+                    style={{ fontFamily: "Albert Sans, sans-serif" }}
                   >
                     Load more articles
                     <ArrowRight className="w-4 h-4" />
@@ -705,7 +705,7 @@ export default function BlogPage() {
               <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2" style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}>
                 No articles found
               </h3>
-              <p className="text-gray-500 dark:text-gray-400 text-sm mb-6" style={{ fontFamily: "Google Sans, sans-serif" }}>
+              <p className="text-gray-500 dark:text-gray-400 text-sm mb-6" style={{ fontFamily: "Albert Sans, sans-serif" }}>
                 {debouncedSearch.trim()
                   ? <>No results for &ldquo;{debouncedSearch}&rdquo;. Try a different search term.</>
                   : "No articles in this category yet."}
@@ -713,7 +713,7 @@ export default function BlogPage() {
               <button
                 onClick={() => { setSearchQuery(""); setDebouncedSearch(""); setSelectedCategory("All"); }}
                 className="px-5 py-2.5 rounded-full bg-gray-900 dark:bg-white text-white dark:text-gray-900 text-sm font-semibold hover:opacity-90 transition-opacity"
-                style={{ fontFamily: "Google Sans, sans-serif" }}
+                style={{ fontFamily: "Albert Sans, sans-serif" }}
               >
                 View all articles
               </button>
@@ -733,7 +733,7 @@ export default function BlogPage() {
               </h2>
               <p
                 className="mt-3 text-gray-500 dark:text-gray-400 text-base"
-                style={{ fontFamily: "Google Sans, sans-serif" }}
+                style={{ fontFamily: "Albert Sans, sans-serif" }}
               >
                 Let&rsquo;s create a fast, beautiful website that grows your business. Get a free consultation today.
               </p>
@@ -741,7 +741,7 @@ export default function BlogPage() {
                 <Link
                   href="/contact"
                   className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-orange-500 hover:bg-orange-600 text-white text-sm font-semibold transition-colors"
-                  style={{ fontFamily: "Google Sans, sans-serif" }}
+                  style={{ fontFamily: "Albert Sans, sans-serif" }}
                 >
                   Get Started
                   <ArrowRight className="w-4 h-4" />
@@ -749,7 +749,7 @@ export default function BlogPage() {
                 <Link
                   href="/web-design-company-in-ghana"
                   className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full border border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-300 text-sm font-semibold hover:border-gray-400 dark:hover:border-gray-500 transition-colors"
-                  style={{ fontFamily: "Google Sans, sans-serif" }}
+                  style={{ fontFamily: "Albert Sans, sans-serif" }}
                 >
                   View Services
                 </Link>
