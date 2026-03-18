@@ -161,7 +161,7 @@ export default function Portfolio() {
     "restaurants & hospitality", "marketplace & classifieds"
   ];
 
-  const filteredProjects = filter === "all"
+  const filteredProjects = (filter === "all"
     ? projects
     : projects.filter(p => {
         const category = (p.category || '').toLowerCase();
@@ -203,7 +203,18 @@ export default function Portfolio() {
           default:
             return title.includes(searchTerm) || description.includes(searchTerm);
         }
-      });
+      }))
+    // Remove any project with 'Celestial Web Solutions' in title, client, or description
+    .filter(p => {
+      const t = (p.title || '').toLowerCase();
+      const c = (p.client || '').toLowerCase();
+      const d = (p.description || '').toLowerCase();
+      return !(
+        t.includes('celestial web solutions') ||
+        c.includes('celestial web solutions') ||
+        d.includes('celestial web solutions')
+      );
+    });
 
   const happyClients = [
     { name: "Building Planner Designs", src: "/png/projects/building.png" },
