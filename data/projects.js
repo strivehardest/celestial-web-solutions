@@ -451,7 +451,7 @@ const projects = [
     image: "/png/projects/celestial.png",
     desktopImage: "/portfolio/desktop/celestial-web.png",
     mobileImage: "/portfolio/mobile/celestial-web.png",
-    screenshot: "/png/screenshots/celestial-full.png",
+    screenshot: "/png/screenshots/celestial-web-full.png",
     link: "https://celestialwebsolutions.net",
     tech: ["Next.js", "Tailwind CSS", "Vercel", "Paystack", "React", "Node.js"],
     techLogos: [
