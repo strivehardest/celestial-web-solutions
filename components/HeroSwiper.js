@@ -74,6 +74,17 @@ const heroSlides = [
     mainImage: '/portfolio/desktop/valyd.png',
     bgColor: 'from-emerald-950 via-teal-900 to-green-950',
   },
+  {
+    tag: 'AGRIBUSINESS, BRANDING',
+    title: 'Tru Seeds\nAfrica',
+    description: 'A comprehensive platform for agribusinesses — innovative, user-friendly, and designed to drive growth.',
+    caseStudyLink: '/portfolio/tru-seeds-africa',
+    caseStudyLabel: 'VIEW PROJECT',
+    ctaLink: '/contact',
+    ctaLabel: 'START YOUR PROJECT',
+    mainImage: '/portfolio/desktop/trueseeds.png',
+    bgColor: 'from-green-950 via-green-900 to-green-900',
+  },
 ];
 
 export default function HeroSwiper() {
