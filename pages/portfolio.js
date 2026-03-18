@@ -140,7 +140,6 @@ export default function Portfolio() {
   const portfolioImages = {
     'building-planner-designs':   '/png/screenshots/buildingplanner-full.png',
     'celestial-shopping':         '/png/screenshots/celestial-shopping.png',
-    'celestial-web-solutions':    '/png/screenshots/celestial-web-full.png',
     'dl-auto-parts':              '/png/screenshots/dlautos-full.png',
     'doeman-group':               '/png/projects/doeman.jpeg',
     'adbay-store':                '/png/screenshots/adbay-full.png',
