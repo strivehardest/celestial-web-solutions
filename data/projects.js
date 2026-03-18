@@ -297,10 +297,10 @@ const projects = [
     client: "Valyd Homes",
     clientCountry: "Ghana",
     description: "Valyd Homes is a modern real estate and construction company with an eye for quality and design. We are crafting a sleek, high-converting property showcase website featuring property listings, inquiry forms, and a premium visual experience to attract serious buyers and investors in Ghana's growing real estate market.",
-    image: "/png/projects/valyd.png",
+    image: "/png/projects/valydhome.png",
     desktopImage: "/portfolio/desktop/valyd.png",
     mobileImage: "/portfolio/mobile/valyd.png",
-    screenshot: "",
+    screenshot: "/png/screenshots/valyd.png",
     link: "https://valydhomes.com",
     tech: ["Next.js", "React", "Tailwind CSS", "Javascript", "Framer Motion"],
     techLogos: [
