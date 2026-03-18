@@ -1,3 +1,74 @@
+// ProjectVideo component for YouTube walkthrough
+const ProjectVideo = ({ project }) => {
+  if (!project.youtubeId) return null;
+
+  const embedUrl = `https://www.youtube.com/embed/${project.youtubeId}?rel=0&modestbranding=1&color=white`;
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6, delay: 0.18 }}
+    >
+      {/* Section header */}
+      <div className="flex items-center gap-3 mb-6">
+        <h2
+          className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white"
+          style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}
+        >
+          Project Walkthrough
+        </h2>
+        <span className="flex items-center gap-1.5 px-2.5 py-1 bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400 text-xs font-semibold rounded-full">
+          <svg className="w-3 h-3" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/>
+          </svg>
+          YouTube
+        </span>
+      </div>
+
+      {/* iMac frame with YouTube embed */}
+      <div
+        className="rounded-2xl overflow-hidden shadow-2xl"
+        style={{ background: '#1a1a1a', padding: '10px 10px 0' }}
+      >
+        {/* Mac traffic lights */}
+        <div className="flex items-center gap-1.5 px-3 pb-3">
+          <div className="w-3 h-3 rounded-full bg-red-500" />
+          <div className="w-3 h-3 rounded-full bg-yellow-400" />
+          <div className="w-3 h-3 rounded-full bg-green-500" />
+        </div>
+
+        {/* YouTube iframe — 16:9 */}
+        <div className="rounded-t-xl overflow-hidden" style={{ aspectRatio: '16/9' }}>
+          <iframe
+            src={embedUrl}
+            title={`${project.title} - Project Walkthrough`}
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowFullScreen
+            className="w-full h-full"
+            style={{ border: 'none', display: 'block' }}
+          />
+        </div>
+      </div>
+
+      {/* YouTube channel link */}
+      <div className="flex items-center justify-center gap-2 mt-3">
+        <svg className="w-4 h-4 text-red-500" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/>
+        </svg>
+        <a
+          href="https://youtube.com/@celestialwebsolutions"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-xs text-gray-400 dark:text-gray-500 hover:text-red-500 dark:hover:text-red-400 transition-colors"
+          style={{ fontFamily: 'Albert Sans, sans-serif' }}
+        >
+          @celestialwebsolutions
+        </a>
+      </div>
+    </motion.div>
+  );
+};
 import { useRouter } from "next/router";
 
 import Image from "next/image";
@@ -608,8 +679,12 @@ export default function ProjectDetail({ project, currentIndex, prevProject: prev
                 <Image src={project.image} alt={project.title} width={1000} height={600} className="w-full h-auto object-cover" priority />
               </motion.div>
 
+
               {/* ✅ Device Mockup Section — Desktop + Mobile */}
               <DeviceMockup project={project} />
+
+              {/* ── YouTube Project Walkthrough ── */}
+              <ProjectVideo project={project} />
 
               {/* Full Page Screenshot */}
               {project.screenshot && !imageError['screenshot'] && (
