@@ -97,7 +97,7 @@ const service = {
         { name: "Next.js", url: "https://cdn.worldvectorlogo.com/logos/nextjs-2.svg" },
         { name: "Node.js", url: "https://cdn.worldvectorlogo.com/logos/nodejs-1.svg" },
         { name: "MongoDB", url: "https://cdn.worldvectorlogo.com/logos/mongodb-icon-1.svg" },
-        { name: "PostgreSQL", url: "https://cdn.worldvectorlogo.com/logos/postgresql.svg" },
+        { name: "PostgreSQL", url: "https://cdn.thenewstack.io/media/2021/10/84b1b2cf-postgreselepantwbg.png" },
         { name: "Django", url: "https://cdn.worldvectorlogo.com/logos/django-community.svg" },
         { name: "Tailwind CSS", url: "https://cdn.worldvectorlogo.com/logos/tailwindcss.svg" },
         { name: "Paystack", url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdsrdSBdYYXvXzieXYJWaBuy_S2jIT26igzw&s" }

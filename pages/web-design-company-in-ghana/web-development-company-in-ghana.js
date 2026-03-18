@@ -76,7 +76,7 @@ const service = {
         { name: "Node.js", url: "https://cdn.worldvectorlogo.com/logos/nodejs-1.svg" },
         { name: "Express", url: "https://cdn.worldvectorlogo.com/logos/express-109.svg" },
         { name: "NestJS", url: "https://cdn.worldvectorlogo.com/logos/nestjs.svg" },
-        { name: "PostgreSQL", url: "https://cdn.worldvectorlogo.com/logos/postgresql.svg" },
+        { name: "PostgreSQL", url: "https://cdn.thenewstack.io/media/2021/10/84b1b2cf-postgreselepantwbg.png" },
         { name: "MongoDB", url: "https://cdn.worldvectorlogo.com/logos/mongodb-icon-1.svg" },
         { name: "TypeScript", url: "https://cdn.worldvectorlogo.com/logos/typescript.svg" },
         { name: "Tailwind CSS", url: "https://cdn.worldvectorlogo.com/logos/tailwindcss.svg" },

@@ -1,17 +1,11 @@
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Head from "next/head";
 import { ArrowRight, ExternalLink } from "lucide-react";
 import projects from "../data/projects";
 import WhatsAppButton from '../components/WhatsAppButton';
-
-// Helper to convert .png/.jpg to .webp if available
-const toWebp = (src) => {
-  if (!src) return src;
-  return src.replace(/\.(png|jpg|jpeg)$/i, '.webp');
-};
 
 const GlassButton = ({ children, href, variant = "light" }) => {
   const baseClasses = "inline-flex items-center gap-2 px-6 py-3 rounded-full font-semibold transition-all duration-300 backdrop-blur-md border cursor-pointer";
@@ -43,35 +37,35 @@ const CountryFlag = ({ country }) => {
   );
 };
 
-// ✅ NEW: Clean hover-reveal portfolio card
+// ── Connective-style tall portrait card ──────────────────────────────────────
 const PortfolioCard = ({ project, image, index }) => {
-  const [hovered, setHovered] = useState(false);
-
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
+      initial={{ opacity: 0, y: 24 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      transition={{ delay: index * 0.06, duration: 0.5 }}
+      transition={{ delay: index * 0.05, duration: 0.5 }}
     >
-      <Link href={`/portfolio/${project.slug}`}>
+      <Link href={`/portfolio/${project.slug}`} className="group block">
+
+        {/* ── Image container: tall portrait ── */}
         <div
-          className="relative overflow-hidden rounded-xl cursor-pointer group"
-          style={{ aspectRatio: '4/3' }}
-          onMouseEnter={() => setHovered(true)}
-          onMouseLeave={() => setHovered(false)}
+          className="relative overflow-hidden rounded-2xl bg-gray-100 dark:bg-gray-800 mb-4"
+          style={{ aspectRatio: '3 / 4' }}
         >
-          {/* Project Image */}
           <Image
             src={image}
             alt={project.title}
             fill
-            sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 33vw"
-            className="object-cover transition-transform duration-700 group-hover:scale-110"
+            sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+            className="object-cover object-top transition-transform duration-700 ease-out group-hover:scale-[1.03]"
             priority={index < 6}
           />
 
-          {/* In Progress Badge */}
+          {/* Subtle dark vignette at bottom for readability */}
+          <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/30 to-transparent pointer-events-none rounded-b-2xl" />
+
+          {/* In Progress badge */}
           {project.completionDate === "In Progress" && (
             <div className="absolute top-3 left-3 z-20 px-2.5 py-1 bg-yellow-500 text-white text-[10px] font-bold rounded-full flex items-center gap-1 shadow-md">
               <svg className="w-2.5 h-2.5" viewBox="0 0 24 24" fill="currentColor">
@@ -81,96 +75,88 @@ const PortfolioCard = ({ project, image, index }) => {
             </div>
           )}
 
-          {/* Hover Overlay */}
-          <AnimatePresence>
-            {hovered && (
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.25 }}
-                className="absolute inset-0 z-10 flex flex-col justify-end"
-                style={{
-                  background: 'linear-gradient(to top, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.5) 50%, rgba(0,0,0,0.1) 100%)'
-                }}
+          {/* Hover: orange arrow pill bottom-right */}
+          <div className="absolute bottom-4 right-4 z-10 opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0">
+            <span className="inline-flex items-center gap-1.5 bg-orange-500 text-white text-xs font-semibold px-3 py-1.5 rounded-full shadow-lg">
+              View <ArrowRight size={12} />
+            </span>
+          </div>
+
+          {/* Live site link — top right on hover */}
+          {project.link && project.link !== "#" && project.completionDate !== "In Progress" && (
+            <div className="absolute top-3 right-3 z-10 opacity-0 group-hover:opacity-100 transition-all duration-300 -translate-y-1 group-hover:translate-y-0">
+              <a
+                href={project.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={(e) => e.stopPropagation()}
+                className="inline-flex items-center gap-1 bg-white/90 backdrop-blur-sm text-gray-800 text-[10px] font-semibold px-2.5 py-1.5 rounded-full shadow hover:bg-white transition-colors"
               >
-                <motion.div
-                  initial={{ y: 16, opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
-                  exit={{ y: 10, opacity: 0 }}
-                  transition={{ duration: 0.3, delay: 0.05 }}
-                  className="p-5"
-                >
-                  {/* Country flag */}
-                  {project.clientCountry && (
-                    <div className="flex items-center gap-1.5 mb-2">
-                      <CountryFlag country={project.clientCountry} />
-                      <span className="text-white/60 text-xs" style={{ fontFamily: 'Google Sans, sans-serif' }}>
-                        {project.clientCountry}
-                      </span>
-                    </div>
-                  )}
+                <ExternalLink size={10} /> Live Site
+              </a>
+            </div>
+          )}
+        </div>
 
-                  {/* Title */}
-                  <h3
-                    className="text-white text-lg font-bold leading-tight mb-3"
-                    style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}
-                  >
-                    {project.title}
-                  </h3>
+        {/* ── Title below image (always visible, like Connective) ── */}
+        <div className="px-1">
+          {/* Country flag */}
+          {project.clientCountry && (
+            <div className="flex items-center gap-1.5 mb-1.5">
+              <CountryFlag country={project.clientCountry} />
+              <span
+                className="text-xs text-gray-400 dark:text-gray-500"
+                style={{ fontFamily: 'Google Sans, sans-serif' }}
+              >
+                {project.clientCountry}
+              </span>
+            </div>
+          )}
 
-                  {/* View button */}
-                  <div className="flex items-center gap-2">
-                    <span
-                      className="inline-flex items-center gap-1.5 text-xs font-semibold text-white bg-orange-500 hover:bg-orange-600 px-3 py-1.5 rounded-full transition-colors"
-                      style={{ fontFamily: 'Google Sans, sans-serif' }}
-                    >
-                      View Project <ArrowRight size={12} />
-                    </span>
-                    {project.link && project.link !== "#" && project.completionDate !== "In Progress" && (
-                      <a
-                        href={project.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        onClick={(e) => e.stopPropagation()}
-                        className="inline-flex items-center gap-1 text-xs text-white/70 hover:text-white transition-colors"
-                        style={{ fontFamily: 'Google Sans, sans-serif' }}
-                      >
-                        <ExternalLink size={11} /> Live Site
-                      </a>
-                    )}
-                  </div>
-                </motion.div>
-              </motion.div>
-            )}
-          </AnimatePresence>
+          <h3
+            className="text-base font-bold text-gray-900 dark:text-white group-hover:text-orange-500 dark:group-hover:text-orange-400 transition-colors leading-snug"
+            style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}
+          >
+            {project.title}
+          </h3>
+
+          {project.category && (
+            <p
+              className="text-xs text-gray-400 dark:text-gray-500 mt-0.5 capitalize"
+              style={{ fontFamily: 'Google Sans, sans-serif' }}
+            >
+              {project.category}
+            </p>
+          )}
         </div>
       </Link>
     </motion.div>
   );
 };
 
+// ── Page ─────────────────────────────────────────────────────────────────────
 export default function Portfolio() {
+
   const portfolioImages = {
-    'building-planner-designs': '/portfolio/desktop/building.png',
-    'celestial-shopping': '/portfolio/desktop/celestial-shopping.png',
-    'celestial-web-solutions': '/portfolio/desktop/celestial-web.png',
-    'dl-auto-parts': '/portfolio/desktop/dlautos.png',
-    'doeman-group': '/portfolio/desktop/doeman.jpeg',
-    'adbay-store': '/portfolio/desktop/adbay.png',
-    'elolo-agbleke-website': '/portfolio/desktop/elolo.png',
-    'finance-tracker': '/portfolio/desktop/finance.png',
-    'ghana-updates-online': '/portfolio/desktop/ghanaupdates.png',
-    'myspace-furniture': '/portfolio/desktop/myspace.png',
-    'valyd-homes': '/portfolio/desktop/valyd.png',
-    'personal-portfolio-website': '/portfolio/desktop/waliu.png',
-    'tru-seeds-africa': '/portfolio/desktop/trueseeds.png',
+    'building-planner-designs':   '/png/screenshots/buildingplanner-full.png',
+    'celestial-shopping':         '/png/screenshots/celestial-shopping.png',
+    'celestial-web-solutions':    '/png/screenshots/celestial-web-full.png',
+    'dl-auto-parts':              '/png/screenshots/dlautos-full.png',
+    'doeman-group':               '/png/projects/doeman.jpeg',
+    'adbay-store':                '/png/screenshots/adbay-full.png',
+    'elolo-agbleke-website':      '/png/screenshots/elolo-full.png',
+    'finance-tracker':            '/png/screenshots/finance-tracker-full.png',
+    'ghana-updates-online':       '/png/screenshots/ghanaupdates-full.png',
+    'myspace-furniture':          '/png/screenshots/myspace-furniture-full.png',
+    'valyd-homes':                '/png/screenshots/valyd.png',
+    'personal-portfolio-website': '/png/screenshots/waliu-portfolio-full.png',
+    'tru-seeds-africa':           '/png/screenshots/truseeds.png',
   };
 
   const [filter, setFilter] = useState("all");
 
   const categories = [
-    "all", "business & corporate", "e-commerce & retail", "portfolio & personal",
+    "all", "agriculture & farming", "business & corporate", "e-commerce & retail", "portfolio & personal",
     "news & media", "educational institutions", "ngos & nonprofits", "churches & religious",
     "finance & banking", "healthcare & wellness", "real estate & construction",
     "restaurants & hospitality", "marketplace & classifieds"
@@ -222,15 +208,15 @@ export default function Portfolio() {
 
   const happyClients = [
     { name: "Building Planner Designs", src: "/png/projects/building.png" },
-    { name: "Ghana Updates Online", src: "/png/projects/ghanaupdates1.jpg" },
-    { name: "AdBay Store", src: "/png/projects/Adbay1.png" },
-    { name: "Elolo Agbleke", src: "/png/projects/elolo2.jpeg" },
-    { name: "Mart Ban Logistics", src: "/png/projects/martb.png" },
-    { name: "My Space Furniture", src: "/png/projects/myspace.png" },
-    { name: "Valyd Homes", src: "/png/projects/valyd.png" },
-    { name: "Doeman Group", src: "/png/projects/doeman.jpeg" },
-    { name: "DL Auto Parts", src: "/png/projects/dl-auto-parts.png" },
-    { name: "Tru Seeds Africa", src: "/png/projects/truseeds.webp" },
+    { name: "Ghana Updates Online",    src: "/png/projects/ghanaupdates1.jpg" },
+    { name: "AdBay Store",             src: "/png/projects/Adbay1.png" },
+    { name: "Elolo Agbleke",           src: "/png/projects/elolo2.jpeg" },
+    { name: "Mart Ban Logistics",      src: "/png/projects/martb.png" },
+    { name: "My Space Furniture",      src: "/png/projects/myspace.png" },
+    { name: "Valyd Homes",             src: "/png/projects/valyd.png" },
+    { name: "Doeman Group",            src: "/png/projects/doeman.jpeg" },
+    { name: "DL Auto Parts",           src: "/png/projects/dl-auto-parts.png" },
+    { name: "Tru Seeds Africa",        src: "/png/projects/truseeds.webp" },
   ];
 
   return (
@@ -244,7 +230,7 @@ export default function Portfolio() {
 
       <div className="min-h-screen bg-white dark:bg-gray-900">
 
-        {/* ── Hero Section ── */}
+        {/* ── Hero ─────────────────────────────────────────────────────────── */}
         <section className="relative min-h-[60vh] flex items-center overflow-hidden">
           <div className="absolute inset-0">
             <video className="w-full h-full object-cover" src="/videos/hero6.mp4"
@@ -291,11 +277,11 @@ export default function Portfolio() {
           </div>
         </section>
 
-        {/* ── Filter + Grid ── */}
-        <div className="max-w-7xl mx-auto px-4 py-12">
+        {/* ── Filter + Grid ─────────────────────────────────────────────────── */}
+        <div className="max-w-7xl mx-auto px-4 py-16">
 
           {/* Category Filters */}
-          <div className="flex flex-wrap justify-center gap-2 mb-12">
+          <div className="flex flex-wrap justify-center gap-2 mb-14">
             {categories.map((category) => (
               <motion.button key={category} onClick={() => setFilter(category)}
                 whileHover={{ scale: 1.05, y: -1 }} whileTap={{ scale: 0.95 }}
@@ -310,7 +296,7 @@ export default function Portfolio() {
             ))}
           </div>
 
-          {/* ✅ NEW: 3-col desktop/tablet, 2-col mobile grid — no card details, hover to reveal */}
+          {/* ── Connective-style 3-col portrait grid ── */}
           <AnimatePresence mode="wait">
             <motion.div
               key={filter}
@@ -318,7 +304,7 @@ export default function Portfolio() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.3 }}
-              className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4"
+              className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-8"
             >
               {filteredProjects.map((project, index) => (
                 <PortfolioCard
@@ -331,7 +317,7 @@ export default function Portfolio() {
             </motion.div>
           </AnimatePresence>
 
-          {/* Empty State */}
+          {/* Empty state */}
           {filteredProjects.length === 0 && (
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-center py-20">
               <p className="text-gray-500 dark:text-gray-400 text-lg" style={{ fontFamily: "Google Sans, sans-serif" }}>
@@ -340,8 +326,8 @@ export default function Portfolio() {
             </motion.div>
           )}
 
-          {/* ── Happy Clients ── */}
-          <section className="py-12 bg-gradient-to-r from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 rounded-3xl mt-20 mb-12">
+          {/* ── Happy Clients ─────────────────────────────────────────────── */}
+          <section className="py-12 bg-gradient-to-r from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 rounded-3xl mt-24 mb-12">
             <div className="max-w-7xl mx-auto px-4 mb-8">
               <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
                 className="text-3xl md:text-4xl font-bold text-center mb-4 bg-gradient-to-r from-orange-600 to-orange-500 bg-clip-text text-transparent"
@@ -362,8 +348,6 @@ export default function Portfolio() {
                     height={120}
                     loading="lazy"
                     className="h-16 sm:h-20 md:h-24 lg:h-32 w-auto max-w-[120px] sm:max-w-[160px] md:max-w-[200px] lg:max-w-[240px] object-contain mx-auto mb-2"
-                    style={client.name === 'Elolo Agbleke' ? { maxHeight: '60px' } : client.name === 'Ghana Updates Online' ? { maxHeight: '80px' } : {}}
-                    style={client.name === 'Elolo Agbleke' ? { maxHeight: '60px' } : client.name === 'Ghana Updates Online' ? { maxHeight: '80px' } : client.name === 'Tru Seeds Africa' ? { maxHeight: '50px' } : {}}
                     unoptimized={false}
                   />
                   <span className="text-xs text-gray-700 dark:text-gray-300 mt-1 text-center" style={{ fontFamily: 'Google Sans, sans-serif' }}>{client.name}</span>
@@ -372,7 +356,7 @@ export default function Portfolio() {
             </div>
           </section>
 
-          {/* ── CTA Section ── */}
+          {/* ── CTA ───────────────────────────────────────────────────────── */}
           <motion.section initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }} className="relative mt-20 py-24 rounded-3xl overflow-hidden">
             <div className="absolute inset-0">
@@ -380,7 +364,6 @@ export default function Portfolio() {
                 alt="CTA Background" className="w-full h-full object-cover" />
               <div className="absolute inset-0 bg-gradient-to-r from-orange-600/95 via-orange-500/90 to-red-600/95" />
             </div>
-
             <div className="relative z-10 text-center px-4">
               <h2 className="text-2xl md:text-4xl font-bold text-white mb-4"
                 style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}>
