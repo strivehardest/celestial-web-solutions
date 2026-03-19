@@ -3,6 +3,7 @@ const projects = [
   {
     title: "Tru Seeds Africa",
     slug: "tru-seeds-africa",
+    youtubeId: '',
     category: "agriculture & farming",
     client: "Tru Seeds Africa",
     clientCountry: "Ghana",
@@ -43,6 +44,7 @@ const projects = [
   {
     title: "My Space Furniture",
     slug: "myspace-furniture",
+    youtubeId: 'qElt25Bjn5w',
     category: "e-commerce & retail",
     client: "My Space Furniture",
     clientCountry: "United States",
@@ -79,6 +81,7 @@ const projects = [
   {
     title: "Building Planner Designs",
     slug: "building-planner-designs",
+    youtubeId: 'PASTE_VIDEO_ID_HERE',
     category: "business & corporate",
     client: "Building Planner Designs",
     clientCountry: "Ghana",
@@ -115,6 +118,7 @@ const projects = [
   {
     title: "DL Auto Parts",
     slug: "dl-auto-parts",
+    youtubeId: 'PASTE_VIDEO_ID_HERE',
     category: "e-commerce & retail",
     client: "DL Auto Parts",
     clientCountry: "Ghana",
@@ -155,6 +159,7 @@ const projects = [
   {
     title: "Ghana Updates Online",
     slug: "ghana-updates-online",
+    youtubeId: 'PASTE_VIDEO_ID_HERE',
     category: "news & media",
     client: "Ghana Updates Media",
     clientCountry: "Ghana",
@@ -188,6 +193,7 @@ const projects = [
   {
     title: "AdBay.store",
     slug: "adbay-store",
+    youtubeId: 'PASTE_VIDEO_ID_HERE',
     category: "marketplace & classifieds",
     client: "AdBay Marketplace",
     clientCountry: "Ghana",
@@ -223,6 +229,7 @@ const projects = [
   {
     title: "Elolo Agbleke Portfolio Website",
     slug: "elolo-agbleke-website",
+    youtubeId: 'PASTE_VIDEO_ID_HERE',
     category: "portfolio & personal",
     client: "Elolo Agbleke",
     clientCountry: "Ghana",
@@ -263,6 +270,7 @@ const projects = [
   {
     title: "Doeman Group",
     slug: "doeman-group",
+    youtubeId: 'PASTE_VIDEO_ID_HERE',
     category: "business & corporate",
     client: "Doeman Group",
     clientCountry: "United States",
@@ -293,6 +301,7 @@ const projects = [
   {
     title: "Valyd Homes",
     slug: "valyd-homes",
+    youtubeId: 'PASTE_VIDEO_ID_HERE',
     category: "real estate & construction",
     client: "Valyd Homes",
     clientCountry: "Ghana",
@@ -325,6 +334,7 @@ const projects = [
   {
     title: "Celestial Shopping",
     slug: "celestial-shopping",
+    youtubeId: 'PASTE_VIDEO_ID_HERE',
     category: "e-commerce & retail",
     client: "E-Commerce Demo Website",
     clientCountry: "Ghana",
@@ -363,6 +373,7 @@ const projects = [
   {
     title: "Finance Tracker",
     slug: "finance-tracker",
+    youtubeId: 'PASTE_VIDEO_ID_HERE',
     category: "finance & banking",
     client: "Personal Project",
     clientCountry: "Ghana",
@@ -408,6 +419,7 @@ const projects = [
   {
     title: "Personal Portfolio Website",
     slug: "personal-portfolio-website",
+    youtubeId: 'PASTE_VIDEO_ID_HERE',
     category: "portfolio & personal",
     client: "Waliu",
     clientCountry: "Ghana",
@@ -441,44 +453,6 @@ const projects = [
       "SEO Optimized"
     ]
   },
-  {
-    title: "Celestial Web Solutions",
-    slug: "celestial-web-solutions",
-    category: "business & corporate",
-    client: "Celestial Web Solutions",
-    clientCountry: "Ghana",
-    description: "A comprehensive business portfolio website showcasing web development services with modern design, client testimonials, and integrated payment solutions for seamless business operations.",
-    image: "/png/projects/celestial.png",
-    desktopImage: "/portfolio/desktop/celestial-web.png",
-    mobileImage: "/portfolio/mobile/celestial-web.png",
-    screenshot: "/png/screenshots/celestial-web-full.png",
-    link: "https://celestialwebsolutions.net",
-    tech: ["Next.js", "Tailwind CSS", "Vercel", "Paystack", "React", "Node.js"],
-    techLogos: [
-      { name: "Next.js", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" },
-      { name: "Tailwind CSS", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg" },
-       { name: "React", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" },
-      { name: "Vercel", logo: "https://www.svgrepo.com/show/354513/vercel-icon.svg" },
-      { name: "Javascript", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" },
-      { name: "Node.js", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" }
-    ],
-    startDate: "2024-08-01",
-    completionDate: "2024-08-15",
-    duration: "14 days",
-    features: [
-      "Responsive Design",
-      "Payment Integration with Paystack",
-      "SEO Optimized",
-      "Contact Forms",
-      "Service Showcase",
-      "Client Testimonials",
-      "Modern UI/UX",
-      "Dark/Light Mode Toggle",
-      "Fast Loading Performance",
-      "WhatsApp Integration",
-      "Google Analytics Setup"
-    ]
-  }
 ];
 
 export default projects;
