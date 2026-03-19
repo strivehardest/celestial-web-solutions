@@ -44,7 +44,7 @@ const projects = [
   {
     title: "My Space Furniture",
     slug: "myspace-furniture",
-    youtubeId: 'qElt25Bjn5w',
+    youtubeId: 'qEIt25Bjn5w',
     category: "e-commerce & retail",
     client: "My Space Furniture",
     clientCountry: "United States",
@@ -118,7 +118,7 @@ const projects = [
   {
     title: "DL Auto Parts",
     slug: "dl-auto-parts",
-    youtubeId: 'PASTE_VIDEO_ID_HERE',
+    youtubeId: '',
     category: "e-commerce & retail",
     client: "DL Auto Parts",
     clientCountry: "Ghana",
@@ -159,7 +159,7 @@ const projects = [
   {
     title: "Ghana Updates Online",
     slug: "ghana-updates-online",
-    youtubeId: 'PASTE_VIDEO_ID_HERE',
+    youtubeId: '',
     category: "news & media",
     client: "Ghana Updates Media",
     clientCountry: "Ghana",
@@ -193,7 +193,7 @@ const projects = [
   {
     title: "AdBay.store",
     slug: "adbay-store",
-    youtubeId: 'PASTE_VIDEO_ID_HERE',
+    youtubeId: '',
     category: "marketplace & classifieds",
     client: "AdBay Marketplace",
     clientCountry: "Ghana",
@@ -229,7 +229,7 @@ const projects = [
   {
     title: "Elolo Agbleke Portfolio Website",
     slug: "elolo-agbleke-website",
-    youtubeId: 'PASTE_VIDEO_ID_HERE',
+    youtubeId: '',
     category: "portfolio & personal",
     client: "Elolo Agbleke",
     clientCountry: "Ghana",
@@ -270,7 +270,7 @@ const projects = [
   {
     title: "Doeman Group",
     slug: "doeman-group",
-    youtubeId: 'PASTE_VIDEO_ID_HERE',
+    youtubeId: '',
     category: "business & corporate",
     client: "Doeman Group",
     clientCountry: "United States",
@@ -301,7 +301,7 @@ const projects = [
   {
     title: "Valyd Homes",
     slug: "valyd-homes",
-    youtubeId: 'PASTE_VIDEO_ID_HERE',
+    youtubeId: '',
     category: "real estate & construction",
     client: "Valyd Homes",
     clientCountry: "Ghana",
@@ -334,7 +334,7 @@ const projects = [
   {
     title: "Celestial Shopping",
     slug: "celestial-shopping",
-    youtubeId: 'PASTE_VIDEO_ID_HERE',
+    youtubeId: '',
     category: "e-commerce & retail",
     client: "E-Commerce Demo Website",
     clientCountry: "Ghana",
@@ -373,7 +373,7 @@ const projects = [
   {
     title: "Finance Tracker",
     slug: "finance-tracker",
-    youtubeId: 'PASTE_VIDEO_ID_HERE',
+    youtubeId: '',
     category: "finance & banking",
     client: "Personal Project",
     clientCountry: "Ghana",
@@ -419,7 +419,7 @@ const projects = [
   {
     title: "Personal Portfolio Website",
     slug: "personal-portfolio-website",
-    youtubeId: 'PASTE_VIDEO_ID_HERE',
+    youtubeId: '',
     category: "portfolio & personal",
     client: "Waliu",
     clientCountry: "Ghana",
