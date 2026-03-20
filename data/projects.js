@@ -81,7 +81,7 @@ const projects = [
   {
     title: "Building Planner Designs",
     slug: "building-planner-designs",
-    youtubeId: 'PASTE_VIDEO_ID_HERE',
+    youtubeId: 'q8Fr2aHC2vo',
     category: "business & corporate",
     client: "Building Planner Designs",
     clientCountry: "Ghana",
