@@ -349,20 +349,27 @@ export default function Portfolio() {
               </p>
             </div>
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 md:gap-8 justify-items-center items-center px-4">
-              {happyClients.map((client, idx) => (
-                <div key={`${client.name}-${idx}`} className="flex flex-col items-center justify-center w-full">
-                  <Image
-                    src={client.src}
-                    alt={client.name}
-                    width={200}
-                    height={120}
-                    loading="lazy"
-                    className="h-16 sm:h-20 md:h-24 lg:h-32 w-auto max-w-[120px] sm:max-w-[160px] md:max-w-[200px] lg:max-w-[240px] object-contain mx-auto mb-2"
-                    unoptimized={false}
-                  />
-                  <span className="text-xs text-gray-700 dark:text-gray-300 mt-1 text-center" style={{ fontFamily: 'Albert Sans, sans-serif' }}>{client.name}</span>
-                </div>
-              ))}
+              {happyClients.map((client, idx) => {
+                // Decrease logo size for Elolo Agbleke and Tru Seeds Africa
+                const isSmallLogo = client.name === "Elolo Agbleke" || client.name === "Tru Seeds Africa";
+                const imgClass = isSmallLogo
+                  ? "h-10 sm:h-12 md:h-16 lg:h-20 w-auto max-w-[80px] sm:max-w-[100px] md:max-w-[120px] lg:max-w-[140px] object-contain mx-auto mb-2"
+                  : "h-16 sm:h-20 md:h-24 lg:h-32 w-auto max-w-[120px] sm:max-w-[160px] md:max-w-[200px] lg:max-w-[240px] object-contain mx-auto mb-2";
+                return (
+                  <div key={`${client.name}-${idx}`} className="flex flex-col items-center justify-center w-full">
+                    <Image
+                      src={client.src}
+                      alt={client.name}
+                      width={isSmallLogo ? 100 : 200}
+                      height={isSmallLogo ? 60 : 120}
+                      loading="lazy"
+                      className={imgClass}
+                      unoptimized={false}
+                    />
+                    <span className="text-xs text-gray-700 dark:text-gray-300 mt-1 text-center" style={{ fontFamily: 'Albert Sans, sans-serif' }}>{client.name}</span>
+                  </div>
+                );
+              })}
             </div>
           </section>
 
