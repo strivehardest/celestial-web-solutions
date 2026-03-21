@@ -1,3 +1,5 @@
+import PhoneCallButton from '../components/PhoneCallButton';
+import WhatsAppButton from '../components/WhatsAppButton';
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import Script from 'next/script';
@@ -130,8 +132,11 @@ function MyApp({ Component, pageProps }) {
       <CustomCursor />
       <MouseTrail />
       <ScrollToTop />
+
       <Component {...pageProps} />
       <Footer />
+      <PhoneCallButton />
+      <WhatsAppButton />
 
       {/* AdSense — lazyOnload means it loads after everything else, only on homepage */}
       {router.pathname === '/' && (
