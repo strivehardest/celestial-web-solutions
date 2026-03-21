@@ -1,7 +1,7 @@
 import { useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 
-export default function MagneticButton({ children, className = '', strength = 0.3, ...props }) {
+export default function MagneticButton({ children, className = '', strength = 0.5, ...props }) {
   const ref = useRef(null);
   const [position, setPosition] = useState({ x: 0, y: 0 });
 
@@ -23,7 +23,7 @@ export default function MagneticButton({ children, className = '', strength = 0.
       onMouseMove={handleMouse}
       onMouseLeave={reset}
       animate={{ x: position.x, y: position.y }}
-      transition={{ type: 'spring', stiffness: 350, damping: 15, mass: 0.5 }}
+      transition={{ type: 'spring', stiffness: 1200, damping: 15, mass: 0.2 }}
       className={className}
       {...props}
     >

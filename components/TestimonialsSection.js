@@ -10,6 +10,8 @@ import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 
+import GoogleAIBadge from "./GoogleAIBadge";
+
 const testimonials = [
   {
     name: "Rev. Frank Ntow Gyan",
@@ -171,6 +173,7 @@ export default function TestimonialsSection() {
     */
     <section className="relative py-24 overflow-hidden bg-gray-50 dark:bg-[#0f1729] transition-colors duration-300">
 
+
       {/* Noise texture — only visible in dark mode */}
       <div
         className="absolute inset-0 opacity-0 dark:opacity-[0.03] pointer-events-none"
@@ -210,8 +213,14 @@ export default function TestimonialsSection() {
         </span>
       </div>
 
+
       {/* Main content */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        {/* Google AI Badge */}
+        <div className="mb-10 max-w-2xl">
+          <GoogleAIBadge />
+        </div>
 
         <AnimatePresence mode="wait">
           <motion.div

@@ -13,7 +13,7 @@ export default function MouseTrail() {
 
     let trailId = 0;
     let lastTime = 0;
-    const throttleTime = 50; // Slower trail - only add every 50ms
+    const throttleTime = 6; // Fires twice as often for ultra responsiveness
 
     const handleMouseMove = (e) => {
       const now = Date.now();
@@ -26,15 +26,15 @@ export default function MouseTrail() {
         y: e.clientY,
       };
 
-      setTrails(prev => [...prev.slice(-8), newTrail]); // Keep fewer trails
+      setTrails(prev => [...prev.slice(-10), newTrail]); // Fewer dots = less lag
     };
 
     window.addEventListener('mousemove', handleMouseMove);
 
     // Clean up old trails slower
     const cleanupInterval = setInterval(() => {
-      setTrails(prev => prev.slice(-6));
-    }, 150);
+      setTrails(prev => prev.slice(-14)); // Clean up less aggressively
+    }, 100);
 
     return () => {
       window.removeEventListener('mousemove', handleMouseMove);
@@ -53,7 +53,7 @@ export default function MouseTrail() {
             initial={{ opacity: 0.5, scale: 0.8 }}
             animate={{ opacity: 0, scale: 0 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 1.2, ease: 'easeOut' }} // Slower fade
+            transition={{ duration: 0.6, ease: 'easeOut' }} // Faster fade
             className="absolute w-2 h-2 rounded-full bg-gradient-to-r from-orange-400 to-orange-500"
             style={{
               left: trail.x,

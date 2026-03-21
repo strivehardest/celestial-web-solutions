@@ -64,7 +64,7 @@ export default function Footer({ darkMode, toggleDarkMode }) {
     {
       name: 'Google',
       rating: 4.9,
-      label: '30 Reviews',
+      label: '20 Reviews',
       url: 'https://www.google.com/maps/place/Celestial+Web+Solutions/@5.883579,0.9829622,17z/data=!4m6!3m5!1s0x1021710073fe6fff:0x96453357ca880329!8m2!3d5.8836217!4d0.9828871!16s%2Fg%2F11lf36fzj1?entry=ttu&g_ep=EgoyMDI1MTEwMi4wIKXMDSoASAFQAw%3D%3D',
       logo: (
         <svg className="w-7 h-7 flex-shrink-0" viewBox="0 0 24 24">
