@@ -265,7 +265,7 @@ We are committed to resolving any disputes fairly and professionally in accordan
                 Please read these terms and conditions carefully before using our services
               </p>
               <div className="mt-6 text-orange-100">
-                <p style={{ fontFamily: "Google Sans, sans-serif" }}>
+                <p style={{ fontFamily: "Albert Sans, sans-serif" }}>
                   Last Updated: January 13, 2026
                 </p>
               </div>
@@ -285,7 +285,7 @@ We are committed to resolving any disputes fairly and professionally in accordan
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: index * 0.05 }}
                   className="flex items-center space-x-2 bg-white dark:bg-gray-700 px-4 py-2 rounded-lg shadow-sm border border-orange-200 dark:border-orange-600 hover:bg-orange-50 dark:hover:bg-gray-600 transition-colors"
-                  style={{ fontFamily: "Google Sans, sans-serif" }}
+                  style={{ fontFamily: "Albert Sans, sans-serif" }}
                 >
                   <section.icon size={16} className="text-orange-500" />
                   <span className="text-gray-700 dark:text-gray-300 text-sm">
@@ -317,7 +317,7 @@ We are committed to resolving any disputes fairly and professionally in accordan
                   </h2>
                   <p
                     className="text-blue-600 dark:text-blue-200 leading-relaxed"
-                    style={{ fontFamily: "Google Sans, sans-serif" }}
+                    style={{ fontFamily: "Albert Sans, sans-serif" }}
                   >
                     These terms and conditions outline the rules and regulations for the use of Celestial Web Solutions' services. 
                     By engaging our services, you agree to these terms in full. Please read them carefully and contact us if you have any questions.
@@ -356,7 +356,7 @@ We are committed to resolving any disputes fairly and professionally in accordan
                   {/* Section Content */}
                   <div
                     className="text-gray-700 dark:text-gray-300 leading-relaxed whitespace-pre-line"
-                    style={{ fontFamily: "Google Sans, sans-serif" }}
+                    style={{ fontFamily: "Albert Sans, sans-serif" }}
                   >
                     {section.content}
                   </div>
@@ -383,7 +383,7 @@ We are committed to resolving any disputes fairly and professionally in accordan
               </h3>
               <p
                 className="text-orange-100 mb-8 max-w-2xl mx-auto leading-relaxed"
-                style={{ fontFamily: "Google Sans, sans-serif" }}
+                style={{ fontFamily: "Albert Sans, sans-serif" }}
               >
                 If you have any questions about these Terms and Conditions, please don't hesitate to contact us. 
                 We're here to help clarify any concerns you may have.
@@ -399,15 +399,15 @@ We are committed to resolving any disputes fairly and professionally in accordan
               </div>
 
               <div className="mt-8 text-orange-100 space-y-2">
-                <p className="flex items-center justify-center space-x-2" style={{ fontFamily: "Google Sans, sans-serif" }}>
+                <p className="flex items-center justify-center space-x-2" style={{ fontFamily: "Albert Sans, sans-serif" }}>
                   <Mail size={18} />
                   <span>Email: info@celestialwebsolutions.net</span>
                 </p>
-                <p className="flex items-center justify-center space-x-2" style={{ fontFamily: "Google Sans, sans-serif" }}>
+                <p className="flex items-center justify-center space-x-2" style={{ fontFamily: "Albert Sans, sans-serif" }}>
                   <Phone size={18} />
                   <span>Phone: +233 530 505 031</span>
                 </p>
-                <p className="flex items-center justify-center space-x-2" style={{ fontFamily: "Google Sans, sans-serif" }}>
+                <p className="flex items-center justify-center space-x-2" style={{ fontFamily: "Albert Sans, sans-serif" }}>
                   <MapPin size={18} />
                   <span>235 Agblor Link, Keta, Ghana</span>
                 </p>
