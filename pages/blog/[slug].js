@@ -55,7 +55,7 @@ const blogArticles = {
     excerpt: "Wondering how much a website costs in Ghana in 2026? Get the full breakdown of web design prices in Ghana, what affects cost, and what Celestial Web Solutions charges.",
     tags: ["web design", "pricing", "Ghana", "2026", "cost guide"],
     hashtags: ["#WebDesignGhana", "#WebDesignPricing", "#GhanaWeb", "#WebsiteCost", "#CelestialWebSolutions"],
-    seoKeywords: "web design prices in Ghana 2026, website cost Ghana 2026, Celestial Web Solutions pricing, Ghana web design packages, web design cost factors Ghana, WordPress vs custom website Ghana, best web design company Ghana 2026",
+    seoKeywords: "web design prices in Ghana 2026, website design prices in Ghana 2026, Celestial Web Solutions pricing, Ghana web design packages, web design cost factors Ghana, WordPress vs custom website Ghana, best web design company Ghana 2026",
     content: `
       <article class="space-y-8 text-gray-900 dark:text-gray-100">
         <h1 class="text-3xl font-bold">Web Design Prices in Ghana 2026: The Complete Honest Guide</h1>
