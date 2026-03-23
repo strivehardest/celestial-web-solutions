@@ -72,7 +72,7 @@ function Avatar({ src, initials, name }) {
       <div className="relative w-16 h-16 rounded-full overflow-hidden flex-shrink-0 ring-2 ring-orange-500/50 shadow-md">
         <Image
           src={src}
-          alt={name}
+          alt={`${testimonials.name} - Client of Celestial Web Solutions Ghana`}
           fill
           className="object-cover"
           onError={() => setImgError(true)}

@@ -621,7 +621,7 @@ const IndexPage = () => {
           </div>
         </section>
 
-        {/* ── PORTFOLIO SHOWCASE (Nuxt.com style grid) ── */}
+        {/* ── PORTFOLIO SHOWCASE  ── */}
         <PortfolioShowcase />
 
         {/* Blog Section */}
@@ -648,22 +648,22 @@ const IndexPage = () => {
             <div className="grid md:grid-cols-2 gap-8 mb-12">
               {[
                 {
-                  title: "12 Best Web Design Companies in Ghana (2026) — Reviewed & Ranked",
-                  excerpt: "Looking for the best web design company in Ghana? We ranked and reviewed the top 12 agencies based on portfolio quality, client reviews, SEO expertise, and industry recognition on Clutch, DesignRush, and Sortlist.",
+                  title: "Web Design Prices in Ghana 2026: The Complete Honest Guide",
+                  excerpt: "Wondering how much a website costs in Ghana in 2026? This comprehensive guide breaks down web design prices based on project type, features, and complexity to help you budget for your next website project.",
                   category: "Web Design",
-                  date: "March 3, 2026",
-                  readTime: "14 min read",
-                  slug: "best-web-design-companies-in-ghana-2026",
-                  image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1200&h=600&fit=crop"
+                  date: "March 23, 2026",
+                  readTime: "15 min read",
+                  slug: "web-design-prices-in-ghana-2026",
+                  image: "https://images.unsplash.com/photo-1542744094-3a31f272c490?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
                 },
                 {
-                  title: "WordPress vs Custom Website: Which is Best for Your Ghanaian Business in 2026?",
-                  excerpt: "Confused about choosing between WordPress and a custom website? This comprehensive guide helps Ghanaian businesses make the right decision based on budget, features, and long-term goals.",
-                  category: "Web Development",
-                  date: "February 1, 2026",
-                  readTime: "12 min read",
-                  slug: "wordpress-vs-custom-website-ghana-2026",
-                  image: "https://images.unsplash.com/photo-1555421689-d68471e189f2?w=1200&h=600&fit=crop"
+                  title: "Why Every Business in Ghana Needs a Website in 2026",
+                  excerpt: "Still running your business without a website in 2026? Here's why every business in Ghana needs a professional website — and what you're losing without one.",
+                  category: "Business",
+                  date: "March 23, 2026",
+                  readTime: "10 min read",
+                  slug: "why-every-business-needs-a-website-in-ghana-2026",
+                  image: "https://images.unsplash.com/photo-1556761175-b413da4baf72?w=1200&h=600&fit=crop"
                 }
               ].map((article, index) => (
                 <motion.div

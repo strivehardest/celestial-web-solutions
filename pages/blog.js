@@ -10,6 +10,42 @@ import GoogleAd from '../components/GoogleAd';
 // Blog articles data with external images - sorted by date (newest first)
 export const blogArticles = [
   {
+    id: 2026,
+    slug: "web-design-prices-in-ghana-2026",
+    title: "Web Design Prices in Ghana 2026: The Complete Honest Guide",
+    excerpt: "Wondering how much a website costs in Ghana in 2026? Get the full breakdown of web design prices in Ghana, what affects cost, and what Celestial Web Solutions charges.",
+    category: "Web Design",
+    author: "Celestial Team",
+    date: "March 23, 2026",
+    readTime: "15 min read",
+    image: "https://images.unsplash.com/photo-1542744094-3a31f272c490?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    alt: "Web design prices in Ghana 2026 - Celestial Web Solutions Ghana",
+    featured: true,
+    tags: ["web design", "pricing", "Ghana", "2026", "cost guide"],
+    hashtags: ["#WebDesignGhana", "#WebDesignPricing", "#GhanaWeb", "#WebsiteCost", "#CelestialWebSolutions"],
+    metaTitle: "Web Design Prices in Ghana 2026 – Full Pricing Breakdown",
+    metaDescription: "Wondering how much a website costs in Ghana in 2026? Get the full breakdown of web design prices in Ghana, what affects cost, and what Celestial Web Solutions charges.",
+    targetKeyword: "web design prices in Ghana 2026"
+  },
+  {
+    id: 2027,
+    slug: "why-every-business-needs-a-website-in-ghana-2026",
+    title: "Why Every Business in Ghana Needs a Website in 2026",
+    excerpt: "Still running your business without a website in 2026? Here's why every business in Ghana needs a professional website — and what you're losing without one.",
+    category: "Business",
+    author: "Celestial Team",
+    date: "March 23, 2026",
+    readTime: "10 min read",
+    image: "https://images.unsplash.com/photo-1556761175-b413da4baf72?w=1200&h=600&fit=crop",
+    alt: "Why every business needs a website in Ghana 2026 - Celestial Web Solutions Ghana",
+    featured: true,
+    tags: ["business", "website", "Ghana", "2026", "digital transformation"],
+    hashtags: ["#GhanaBusiness", "#WebsiteGhana", "#DigitalTransformation", "#CelestialWebSolutions"],
+    metaTitle: "Why Every Business in Ghana Needs a Website in 2026",
+    metaDescription: "Still running your business without a website in 2026? Here's why every business in Ghana needs a professional website — and what you're losing without one.",
+    targetKeyword: "why every business needs a website in Ghana 2026"
+  },
+  {
     id: 1020,
     slug: "best-web-design-companies-in-ghana-2026",
     title: "12 Best Web Design Companies in Ghana (2026) — Reviewed & Ranked",
@@ -19,6 +55,7 @@ export const blogArticles = [
     date: "March 3, 2026",
     readTime: "14 min read",
     image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1200&h=600&fit=crop",
+    alt: "Web design and development blog - Celestial Web Solutions Ghana",
     featured: true,
     tags: ["web design", "Ghana", "best companies", "Clutch", "DesignRush", "2026"],
     hashtags: ["#WebDesignGhana", "#BestWebDesignCompany", "#GhanaTech", "#CelestialWebSolutions", "#WebDevelopmentGhana"]
@@ -33,6 +70,7 @@ export const blogArticles = [
     date: "January 10, 2026",
     readTime: "9 min read",
     image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=1200&h=600&fit=crop",
+    alt: "AI tools transforming web development - Celestial Web Solutions Ghana",
     featured: true,
     tags: ["AI", "web development", "automation", "tools"],
     hashtags: ["#AITools", "#WebDev", "#ArtificialIntelligence", "#CodingTools", "#TechGhana"]
@@ -47,6 +85,7 @@ export const blogArticles = [
     date: "January 10, 2026",
     readTime: "6 min read",
     image: "https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?w=1200&h=600&fit=crop",
+    alt: "Choosing the best web design company in Ghana - Celestial Web Solutions Ghana",
     featured: true,
     tags: ["web design", "Ghana", "choosing company", "guide", "2026"],
     hashtags: ["#WebDesignGhana", "#ChooseWebDesigner", "#GhanaDigital", "#TechGuide", "#WebDevelopment"]
@@ -61,6 +100,7 @@ export const blogArticles = [
     date: "December 29, 2025",
     readTime: "4 min read",
     image: "https://images.unsplash.com/photo-1635405050330-b0824eb1bf26?q=80&w=1169&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    alt: "Web design trends for Ghanaian and global businesses in 2026 - Celestial Web Solutions Ghana",
     featured: true,
     tags: ["web design", "trends", "AI", "accessibility", "2026"],
     hashtags: ["#WebDesign2026", "#GhanaBusiness", "#DigitalTrends", "#CelestialWebSolutions"]
@@ -75,6 +115,7 @@ export const blogArticles = [
     date: "December 29, 2025",
     readTime: "4 min read",
     image: "https://images.unsplash.com/photo-1547658719-da2b51169166?q=80&w=764&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    alt: "Building a future-ready website for Ghanaian and international markets in 2026 - Celestial Web Solutions Ghana",
     featured: true,
     tags: ["future-ready", "global", "Ghana", "website", "2026"],
     hashtags: ["#FutureReady", "#GhanaWeb", "#InternationalBusiness", "#CelestialWebSolutions"]
@@ -89,6 +130,7 @@ export const blogArticles = [
     date: "November 4, 2025",
     readTime: "8 min read",
     image: "https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?w=1200&h=600&fit=crop",
+    alt: "Best web designers in Accra, Ghana 2025 - Celestial Web Solutions Ghana",
     featured: true,
     tags: ["web design", "Accra", "Ghana", "top agencies"],
     hashtags: ["#WebDesignGhana", "#AccraWebDesigners", "#GhanaDigital", "#WebDesignAccra", "#CelestialWebSolutions"]
@@ -103,6 +145,7 @@ export const blogArticles = [
     date: "November 3, 2025",
     readTime: "9 min read",
     image: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=1200&h=600&fit=crop",
+    alt: "Content marketing strategies for Ghanaian businesses in 2025 - Celestial Web Solutions Ghana",
     featured: false,
     tags: ["content marketing", "Ghana", "digital strategy", "engagement"],
     hashtags: ["#DigitalMarketingGhana", "#ContentMarketing", "#GhanaBusiness", "#MarketingStrategy"]
@@ -117,6 +160,7 @@ export const blogArticles = [
     date: "October 15, 2025",
     readTime: "11 min read",
     image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=1200&h=600&fit=crop",
+    alt: "Latest web development tools and frameworks in 2025 - Celestial Web Solutions Ghana",
     featured: true,
     tags: ["web development", "frameworks", "tools", "React", "Next.js"],
     hashtags: ["#WebDevelopment", "#ReactJS", "#NextJS", "#JavaScript", "#WebDevTools"]
@@ -131,6 +175,7 @@ export const blogArticles = [
     date: "March 10, 2025",
     readTime: "10 min read",
     image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=600&fit=crop",
+    alt: "Web design prices in Ghana 2025 - Celestial Web Solutions Ghana",
     featured: true,
     tags: ["pricing", "web design", "Ghana", "cost guide"],
     hashtags: ["#WebDesignPricing", "#GhanaPrices", "#WebsiteCost", "#AffordableWebDesign", "#GhanaWeb"]
@@ -159,6 +204,7 @@ export const blogArticles = [
     date: "February 28, 2025",
     readTime: "12 min read",
     image: "https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?w=1200&h=600&fit=crop",
+    alt: "SEO strategies for Ghanaian businesses to rank #1 on Google - Celestial Web Solutions Ghana",
     featured: true,
     tags: ["SEO", "local SEO", "Ghana", "Google ranking"],
     hashtags: ["#SEOGhana", "#LocalSEO", "#GoogleRanking", "#DigitalMarketingGhana", "#SEOTips"]
@@ -173,6 +219,7 @@ export const blogArticles = [
     date: "February 10, 2025",
     readTime: "10 min read",
     image: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=1200&h=600&fit=crop",
+    alt: "Mobile Money integration for Ghanaian websites - Celestial Web Solutions Ghana",
     featured: false,
     tags: ["mobile money", "e-commerce", "Ghana", "payment integration"],
     hashtags: ["#MobileMoney", "#PaymentGhana", "#MTNMoMo", "#VodafoneCash", "#EcommerceGhana"]
@@ -187,6 +234,7 @@ export const blogArticles = [
     date: "February 5, 2025",
     readTime: "8 min read",
     image: "https://images.unsplash.com/photo-1547658719-da2b51169166?w=1200&h=600&fit=crop",
+    alt: "Responsive web design best practices for 2025 - Celestial Web Solutions Ghana",
     featured: false,
     tags: ["responsive design", "mobile-first", "CSS", "best practices"],
     hashtags: ["#ResponsiveDesign", "#MobileFirst", "#WebDesign", "#CSS", "#UXDesign"]
@@ -201,6 +249,7 @@ export const blogArticles = [
     date: "January 30, 2025",
     readTime: "9 min read",
     image: "https://admin.fruxinfo.com/public/storage/blog/Fruxinfo-1766552749-694b74ad0024c.webp",
+    alt: "How ChatGPT and AI are transforming web development - Celestial Web Solutions Ghana",
     featured: false,
     tags: ["ChatGPT", "AI", "web development", "productivity"],
     hashtags: ["#ChatGPT", "#AIinTech", "#WebDevelopment", "#AIDevelopment", "#CodingAI"]
@@ -215,6 +264,7 @@ export const blogArticles = [
     date: "January 25, 2025",
     readTime: "10 min read",
     image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=1200&h=600&fit=crop",
+    alt: "Website security tips for Ghanaian businesses - Celestial Web Solutions Ghana",
     featured: false,
     tags: ["security", "cybersecurity", "Ghana", "website protection"],
     hashtags: ["#CyberSecurity", "#WebsiteSecurity", "#GhanaTech", "#DataProtection", "#SecureWebsite"]
@@ -229,6 +279,7 @@ export const blogArticles = [
     date: "January 20, 2025",
     readTime: "8 min read",
     image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=1200&h=600&fit=crop",
+    alt: "E-commerce trends in Ghana 2025 - Celestial Web Solutions Ghana",
     featured: false,
     tags: ["e-commerce", "trends", "Ghana", "online shopping"],
     hashtags: ["#EcommerceGhana", "#OnlineShopping", "#DigitalRetail", "#GhanaTrends", "#EcommerceTrends"]
@@ -243,6 +294,7 @@ export const blogArticles = [
     date: "January 15, 2025",
     readTime: "11 min read",
     image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=600&fit=crop",
+    alt: "Google Ads vs SEO for Ghanaian businesses - Celestial Web Solutions Ghana",
     featured: false,
     tags: ["Google Ads", "SEO", "digital marketing", "Ghana"],
     hashtags: ["#GoogleAds", "#SEO", "#DigitalMarketing", "#PPC", "#GhanaMarketing"]
@@ -257,6 +309,7 @@ export const blogArticles = [
     date: "January 14, 2026",
     readTime: "5 min read",
     image: "https://images.unsplash.com/photo-1658297063569-162817482fb6?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    alt: "How to start an online store in Ghana - Celestial Web Solutions Ghana",
     featured: true,
     tags: ["E-commerce", "Ghana", "Online Business", "Startup"],
     hashtags: ["#EcommerceGhana", "#GhanaBusiness", "#OnlineStore", "#StartupTips", "#CelestialWebSolutions"]
@@ -271,6 +324,7 @@ export const blogArticles = [
     date: "February 1, 2026",
     readTime: "12 min read",
     image: "https://images.unsplash.com/photo-1555421689-d68471e189f2?w=1200&h=600&fit=crop",
+    alt: "WordPress vs Custom Website for Ghanaian businesses in 2026 - Celestial Web Solutions Ghana",
     featured: true,
     tags: ["WordPress", "Custom Development", "Web Development", "Ghana", "CMS"],
     hashtags: ["#WordPressGhana", "#CustomWebsite", "#WebDevelopment", "#GhanaBusiness", "#CelestialWebSolutions"]
@@ -285,6 +339,7 @@ export const blogArticles = [
     date: "February 1, 2026",
     readTime: "11 min read",
     image: "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=1200&h=600&fit=crop",
+    alt: "UI/UX design principles for Ghanaian websites in 2026 - Celestial Web Solutions Ghana",
     featured: true,
     tags: ["UI/UX Design", "User Experience", "Web Design", "Ghana", "Conversion Optimization"],
     hashtags: ["#UIUXDesign", "#WebDesignGhana", "#UserExperience", "#GhanaWeb", "#CelestialWebSolutions"]
@@ -299,6 +354,7 @@ export const blogArticles = [
     date: "January 10, 2025",
     readTime: "10 min read",
     image: "https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?w=1200&h=600&fit=crop",
+    alt: "Complete guide to web design agencies in Ghana - Celestial Web Solutions Ghana",
     featured: false,
     tags: ["web design", "Ghana", "web development", "digital agencies"],
     hashtags: ["#WebDesignGhana", "#GhanaWebAgencies", "#DigitalMarketingGhana", "#WebDevelopment", "#CelestialWebSolutions"]
@@ -313,6 +369,7 @@ export const blogArticles = [
     date: "January 5, 2025",
     readTime: "12 min read",
     image: "https://plus.unsplash.com/premium_photo-1661425715124-310ec1b49b8a?q=80&w=1200&h=600&auto=format&fit=crop",
+    alt: "Ultimate guide to digital marketing in Ghana 2025 - Celestial Web Solutions Ghana",
     featured: false,
     tags: ["digital marketing", "Ghana", "SEO", "social media", "email marketing"],
     hashtags: ["#DigitalMarketingGhana", "#SEOGhana", "#SocialMediaGhana", "#CelestialWebSolutions"]
@@ -429,7 +486,7 @@ export default function BlogPage() {
           <div className="absolute inset-0">
             <img
               src="https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?w=1920&h=800&fit=crop&q=80"
-              alt=""
+              alt="Web design and development blog - Celestial Web Solutions Ghana"
               className="w-full h-full object-cover opacity-20"
             />
             <div className="absolute inset-0 bg-gradient-to-b from-gray-900/60 via-gray-900/80 to-gray-900" />

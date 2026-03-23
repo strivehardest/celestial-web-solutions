@@ -135,11 +135,11 @@ export default function BestWebDesignerInAccraPage() {
                   <div className="flex flex-col lg:flex-row items-stretch h-full">
 
                     {/* ─── LEFT SIDE: Text Content ─── */}
-                    <div className="w-full lg:w-[45%] flex flex-col justify-center z-20 pt-28 sm:pt-32 lg:pt-24 pb-4 lg:pb-0">
+                    <div className="w-full lg:w-[45%] flex flex-col justify-center z-20 pt-36 sm:pt-40 lg:pt-32 pb-4 lg:pb-0">
                       <div className="inline-flex items-center gap-2 bg-orange-500/15 border border-orange-500/30 rounded-full px-4 py-2 w-fit mb-5">
                         <span className="w-2 h-2 rounded-full bg-orange-500 animate-pulse" />
                         <span className="text-orange-400 text-xs font-bold tracking-[0.2em] uppercase" style={{ fontFamily: 'Albert Sans, sans-serif', fontWeight: 400 }}>
-                          BEST WEB DESIGN IN ACCRA
+                          BEST IN WEB DESIGN IN ACCRA
                         </span>
                       </div>
 
@@ -518,12 +518,12 @@ export default function BestWebDesignerInAccraPage() {
                 </div>
 
                 <div className="grid sm:grid-cols-2 gap-6">
-                  <Link href="/blog/best-web-design-companies-in-ghana-2026">
+                  <Link href="/blog/web-design-prices-in-ghana-2026">
                     <div className="rounded-2xl border border-gray-200 dark:border-white/10 bg-white/80 dark:bg-white/5 backdrop-blur overflow-hidden hover:shadow-lg transition-all duration-300 cursor-pointer h-full flex flex-col">
                       <div className="relative h-40 overflow-hidden bg-gradient-to-br from-orange-400 to-orange-600">
                         <img 
-                          src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1200&h=600&fit=crop" 
-                          alt="12 Best Web Design Companies in Ghana"
+                          src="https://images.unsplash.com/photo-1542744094-3a31f272c490?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
+                          alt="Web Design Prices in Ghana 2026"
                           className="w-full h-full object-cover hover:scale-110 transition-transform duration-300"
                         />
                       </div>
@@ -540,20 +540,20 @@ export default function BestWebDesignerInAccraPage() {
                     </div>
                   </Link>
 
-                  <Link href="/blog/wordpress-vs-custom-website-ghana-2026">
+                  <Link href="/blog/why-every-business-needs-a-website-in-ghana-2026">
                     <div className="rounded-2xl border border-gray-200 dark:border-white/10 bg-white/80 dark:bg-white/5 backdrop-blur overflow-hidden hover:shadow-lg transition-all duration-300 cursor-pointer h-full flex flex-col">
                       <div className="relative h-40 overflow-hidden bg-gradient-to-br from-orange-400 to-orange-600">
                         <img 
-                          src="https://images.unsplash.com/photo-1555421689-d68471e189f2?w=1200&h=600&fit=crop" 
-                          alt="WordPress vs Custom Website"
+                          src="https://images.unsplash.com/photo-1556761175-b413da4baf72?w=1200&h=600&fit=crop" 
+                          alt="Why Every Business Needs a Website in Ghana 2026"
                           className="w-full h-full object-cover hover:scale-110 transition-transform duration-300"
                         />
                       </div>
                       <div className="p-6 flex flex-col flex-grow">
-                        <p className="text-xs text-orange-600 dark:text-orange-400 font-semibold uppercase tracking-wide mb-2" style={{ fontFamily: 'Albert Sans, sans-serif' }}>Web Development</p>
-                        <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2 group-hover:text-orange-600 transition-colors" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>WordPress vs Custom Website</h3>
+                        <p className="text-xs text-orange-600 dark:text-orange-400 font-semibold uppercase tracking-wide mb-2" style={{ fontFamily: 'Albert Sans, sans-serif' }}>Business</p>
+                        <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2 group-hover:text-orange-600 transition-colors" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>Why Every Business Needs a Website in Ghana 2026</h3>
                         <p className="text-sm text-gray-700 dark:text-gray-300 flex-grow" style={{ fontFamily: 'Albert Sans, sans-serif', fontWeight: 400 }}>
-                          Compare WordPress and custom development to find the best solution for your Ghanaian business in 2026.
+                          Discover why having a professional website is crucial for every business in Ghana in 2026.
                         </p>
                         <div className="mt-4 flex items-center gap-2 text-orange-600 dark:text-orange-400 font-semibold text-sm">
                           Read More →

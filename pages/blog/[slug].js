@@ -44,6 +44,191 @@ const extractHeadings = (htmlContent) => {
 
 // Completed blog articles data with formatted content
 const blogArticles = {
+  "web-design-prices-in-ghana-2026": {
+    title: "Web Design Prices in Ghana 2026: The Complete Honest Guide",
+    category: "Web Design",
+    author: "Celestial Team",
+    date: "March 23, 2026",
+    readTime: "15 min read",
+    image: "https://images.unsplash.com/photo-1542744094-3a31f272c490?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    alt: "Web design prices in Ghana in 2026",
+    excerpt: "Wondering how much a website costs in Ghana in 2026? Get the full breakdown of web design prices in Ghana, what affects cost, and what Celestial Web Solutions charges.",
+    tags: ["web design", "pricing", "Ghana", "2026", "cost guide"],
+    hashtags: ["#WebDesignGhana", "#WebDesignPricing", "#GhanaWeb", "#WebsiteCost", "#CelestialWebSolutions"],
+    seoKeywords: "web design prices in Ghana 2026, website cost Ghana 2026, Celestial Web Solutions pricing, Ghana web design packages, web design cost factors Ghana, WordPress vs custom website Ghana, best web design company Ghana 2026",
+    content: `
+      <article class="space-y-8 text-gray-900 dark:text-gray-100">
+        <h1 class="text-3xl font-bold">Web Design Prices in Ghana 2026: The Complete Honest Guide</h1>
+        <p>One of the most common questions we receive at Celestial Web Solutions is: <em>"How much does a website cost in Ghana?"</em></p>
+        <p>It is a fair question, and the honest answer is — it depends. But that answer is not helpful on its own. In this guide, we break down exactly what determines web design prices in Ghana in 2026, what the real market rates look like, and what you should expect to pay for a quality website built to actually grow your business.</p>
+        <div class="flex flex-col gap-2">
+          <a href="/pricing" class="inline-block text-orange-600 hover:underline font-semibold">See our detailed pricing page</a>
+          <a href="/contact" class="inline-block text-orange-600 hover:underline font-semibold">Request a free quote or service</a>
+        </div>
+        <h2>Why Web Design Prices in Ghana Vary So Much</h2>
+        <p>If you have searched for web design prices in Ghana, you have probably seen figures ranging from GH₵500 to GH₵30,000 or more. That wide range is not a mistake — it reflects genuine differences in quality, experience, and what is actually being built.</p>
+        <ul>
+          <li><strong>Type of Website:</strong> Simple 5-page business sites cost less than e-commerce or custom platforms.</li>
+          <li><strong>Custom Design vs Templates:</strong> Templates are cheaper but limited; custom code is more expensive but delivers better results.</li>
+          <li><strong>Number of Pages:</strong> More pages = more work = higher cost.</li>
+          <li><strong>Features and Integrations:</strong> Each added feature (booking, payments, chat, etc.) increases cost.</li>
+          <li><strong>SEO and Performance Optimization:</strong> Proper SEO setup and fast loading require extra work.</li>
+          <li><strong>Agency vs Freelancer:</strong> Agencies charge more but offer more structure and support.</li>
+        </ul>
+        <h2>Web Design Prices in Ghana 2026: Market Overview</h2>
+        <table>
+          <thead><tr><th>Website Type</th><th>Price Range (GH₵)</th></tr></thead>
+          <tbody>
+            <tr><td>Basic / Template Website</td><td>GH₵1,000 – GH₵3,000</td></tr>
+            <tr><td>Small Business Website (Custom)</td><td>GH₵3,500 – GH₵6,000</td></tr>
+            <tr><td>Professional Business Website</td><td>GH₵6,000 – GH₵12,000</td></tr>
+            <tr><td>E-Commerce Website</td><td>GH₵8,000 – GH₵20,000</td></tr>
+            <tr><td>Enterprise / Corporate Website</td><td>GH₵15,000 – GH₵30,000+</td></tr>
+          </tbody>
+        </table>
+        <h2>Celestial Web Solutions Pricing 2026</h2>
+        <h3>Full Stack Pricing</h3>
+        <ul>
+          <li><strong>Starter Package — GH₵4,500:</strong> Up to 5 pages, custom design, SEO, contact form, Google Analytics, fast loading.</li>
+          <li><strong>Professional Package — GH₵8,500:</strong> Up to 10 pages, advanced design, full SEO, WhatsApp, CMS, priority support.</li>
+          <li><strong>E-Commerce Package — GH₵16,500:</strong> Full store, payment gateway, inventory, customer accounts, SEO, support.</li>
+          <li><strong>Enterprise Package — GH₵28,000:</strong> Unlimited pages, custom features, integrations, multi-language, project management, 6 months support.</li>
+        </ul>
+        <blockquote>All custom packages include a free domain for the first year, SSL, and 30 days post-launch support.</blockquote>
+
+        <h2>Full Stack Development</h2>
+        <p>Looking for a complete solution? Our full stack development services cover both the front-end and back-end of your website or web application. We use modern technologies like React, Next.js, Node.js, and MongoDB to deliver scalable, secure, and high-performance solutions tailored to your business needs.</p>
+        <ul>
+          <li>Custom web applications</li>
+          <li>API development and integration</li>
+          <li>Database design and management</li>
+          <li>Admin dashboards and portals</li>
+          <li>Performance optimization and security</li>
+        </ul>
+        <p>Contact us for a custom quote on full stack projects or to discuss your unique requirements.</p>
+        <h2>WordPress & WooCommerce Packages — Celestial Web Solutions 2026</h2>
+        <ul>
+          <li><strong>WordPress Starter — GH₵2,500</strong> (was GH₵3,500): 5 pages, mobile-friendly, SEO, contact form, Google Map, 7–10 days.</li>
+          <li><strong>WordPress Professional — GH₵3,500</strong> (was GH₵4,500): 10 pages, custom theme, advanced SEO, blog, newsletter, 10–14 days.</li>
+          <li><strong>WooCommerce E-Commerce — GH₵4,500</strong> (was GH₵6,000): Store, 100 products, cart, Paystack, inventory, 15–21 days.</li>
+          <li><strong>WordPress Enterprise — GH₵8,000</strong>: Custom app, advanced theme/plugin, database, user roles, 30–45 days.</li>
+        </ul>
+        <blockquote>WordPress packages are ideal for budget and content management. For max performance and unique design, choose custom-coded.</blockquote>
+        <h2>Custom Code vs WordPress — Which Should You Choose?</h2>
+        <ul>
+          <li><strong>Choose WordPress if:</strong> You need a quick, budget-friendly, content-manageable site.</li>
+          <li><strong>Choose custom-coded if:</strong> You want speed, unique design, best SEO, and scalability.</li>
+        </ul>
+        <h2>What Is NOT Included in Web Design Prices</h2>
+        <ul>
+          <li>Web hosting (GH₵500–GH₵2,000/year)</li>
+          <li>Domain renewal (GH₵100–GH₵300/year)</li>
+          <li>Content writing, photography, graphics</li>
+          <li>Monthly SEO maintenance, website maintenance</li>
+        </ul>
+        <h2>Should You Choose the Cheapest Option?</h2>
+        <p>Cheap websites often cost more in the long run due to poor results. Invest in quality for better ROI.</p>
+        <h2>How to Choose the Right Web Design Company in Ghana</h2>
+        <ol>
+          <li>See examples of similar work</li>
+          <li>Ask if site is custom or template</li>
+          <li>Is SEO included?</li>
+          <li>Who maintains/supports after launch?</li>
+          <li>Project timeline?</li>
+          <li>Transparent, written quotes?</li>
+        </ol>
+        <p>Celestial Web Solutions is recognized among the top agencies in Ghana on Clutch, GoodFirms, DesignRush, and Sortlist.</p>
+        <h2>Get a Free Quote Today</h2>
+        <p>Ready to get started? <a href="https://celestialwebsolutions.net" target="_blank">Visit celestialwebsolutions.net</a> to view packages, portfolio, and request a free quote.</p>
+        <footer><em>Celestial Web Solutions is a leading web design company in Ghana, based in Accra and Keta, serving businesses across Ghana and internationally.</em></footer>
+        <div class="mt-4">
+          <a href="/portfolio" class="inline-block text-orange-600 hover:underline font-semibold">See our portfolio of recent projects</a>
+        </div>
+
+        <div class="mt-8 pt-6 border-t border-gray-200 dark:border-gray-700">
+          <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-white">Explore More Blog Articles</h3>
+          <ul class="list-disc pl-6 space-y-1">
+            <li><a href="/blog/why-every-business-needs-a-website-in-ghana-2026" class="text-orange-600 hover:underline">Why Every Business in Ghana Needs a Website in 2026</a></li>
+            <li><a href="/blog/best-web-design-companies-in-ghana-2026" class="text-orange-600 hover:underline">12 Best Web Design Companies in Ghana (2026) — Reviewed & Ranked</a></li>
+            <li><a href="/blog/ai-tools-web-development-2026" class="text-orange-600 hover:underline">Top 15 AI Tools Revolutionizing Web Development in 2026</a></li>
+            <li><a href="/blog/how-to-choose-best-web-design-company-ghana-2026" class="text-orange-600 hover:underline">How to Choose the Best Web Design Company in Ghana (2026 Guide)</a></li>
+          </ul>
+        </div>
+      </article>
+      <div class="mt-8 pt-6 border-t border-gray-200 dark:border-gray-700">
+        <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-white">Explore More</h3>
+        <ul class="list-disc pl-6 space-y-1">
+          <li><a href="/portfolio" class="text-orange-600 hover:underline">See our portfolio</a></li>
+          <li><a href="/pricing" class="text-orange-600 hover:underline">View pricing packages</a></li>
+          <li><a href="/contact" class="text-orange-600 hover:underline">Contact us</a></li>
+        </ul>
+      </div>
+    `
+  },
+  "why-every-business-needs-a-website-in-ghana-2026": {
+    title: "Why Every Business in Ghana Needs a Website in 2026",
+    category: "Business",
+    author: "Celestial Team",
+    date: "March 23, 2026",
+    readTime: "10 min read",
+    image: "https://images.unsplash.com/photo-1556761175-b413da4baf72?w=1200&h=600&fit=crop",
+    alt: "Why every business in Ghana needs a website in 2026",
+    excerpt: "Still running your business without a website in 2026? Here's why every business in Ghana needs a professional website — and what you're losing without one.",
+    tags: ["business", "website", "Ghana", "2026", "digital transformation"],
+    hashtags: ["#GhanaBusiness", "#WebsiteGhana", "#DigitalTransformation", "#CelestialWebSolutions"],
+    seoKeywords: "why every business needs a website in Ghana 2026, business website benefits Ghana, Celestial Web Solutions, digital transformation Ghana, online presence Ghana, website importance 2026",
+    content: `
+      <article class="space-y-8 text-gray-900 dark:text-gray-100">
+        <h1 class="text-3xl font-bold">Why Every Business in Ghana Needs a Website in 2026</h1>
+        <p>In 2026, if your business does not have a website, you are invisible to a growing majority of your potential customers.</p>
+        <p>More Ghanaians than ever are using the internet to search for products, services, and businesses before making a purchase decision. If your business does not appear in those search results, your competitors take that customer instead.</p>
+        <h2>Your Customers Are Already Online</h2>
+        <p>Ghana's internet penetration continues to grow. Your customers are searching online before they buy. A business without a website in 2026 is like a business without a signboard in 2010.</p>
+        <h2>A Website Works for You 24/7</h2>
+        <p>Your website never sleeps. Customers can learn about you, browse, and contact you at any time, even internationally.</p>
+        <h2>A Website Builds Trust and Credibility</h2>
+        <p>People search for you online. If they find nothing, or just a Facebook page, they may choose a competitor with a professional website. A website signals legitimacy and professionalism.</p>
+        <h2>Social Media Is Not Enough</h2>
+        <ul>
+          <li>You do not own your social media page; platforms can change or restrict access.</li>
+          <li>Social media is not searchable on Google like a website.</li>
+          <li>Websites present your full portfolio, pricing, and services in a structured way.</li>
+        </ul>
+        <h2>A Website Helps You Rank on Google and Attract Free Traffic</h2>
+        <p>SEO brings you consistent, free traffic from Google. Every website we build is optimized for search engines from day one.</p>
+        <h2>A Website Gives You a Competitive Advantage</h2>
+        <p>If your competitors are not online and you are, you capture every customer who searches online. If they are online but their sites are poor, a better website gives you the edge.</p>
+        <h2>A Website Supports Every Other Marketing Channel</h2>
+        <p>All marketing efforts are more effective when they direct people to a professional website.</p>
+        <h2>E-Commerce Opens New Revenue Streams</h2>
+        <p>A website with e-commerce lets you sell online, process payments, and grow revenue without being physically present.</p>
+        <h2>Types of Businesses That Need a Website in Ghana</h2>
+        <ul>
+          <li>Retail and e-commerce</li>
+          <li>Professional services</li>
+          <li>Construction and real estate</li>
+          <li>Hospitality</li>
+          <li>Churches and religious organisations</li>
+          <li>NGOs and nonprofits</li>
+          <li>Schools and training institutes</li>
+          <li>Startups and SMEs</li>
+        </ul>
+        <h2>How Much Does a Website Cost in Ghana in 2026?</h2>
+        <p>Our packages start from <strong>GH₵4,500</strong> for a professional, custom-built business website. See our full range at <a href="https://celestialwebsolutions.net" target="_blank">celestialwebsolutions.net</a>.</p>
+        <h2>Get Your Business Online Today</h2>
+        <p>There has never been a better time — or a more urgent need — to invest in a professional website for your business. Every day without one is a day your competitors are capturing customers that should have been yours.</p>
+        <footer><em>Celestial Web Solutions — Professional Web Design Company in Ghana. Serving businesses in Accra, Keta, and across Ghana.</em></footer>
+      </article>
+      <div class="mt-8 pt-6 border-t border-gray-200 dark:border-gray-700">
+        <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-white">Explore More</h3>
+        <ul class="list-disc pl-6 space-y-1">
+          <li><a href="/portfolio" class="text-orange-600 hover:underline">See our portfolio</a></li>
+          <li><a href="/pricing" class="text-orange-600 hover:underline">View pricing packages</a></li>
+          <li><a href="/contact" class="text-orange-600 hover:underline">Contact us</a></li>
+        </ul>
+      </div>
+    `
+  },
   "best-web-design-companies-in-ghana-2026": {
       title: "12 Best Web Design Companies in Ghana (2026) — Reviewed & Ranked",
       category: "Web Design",
@@ -51,6 +236,7 @@ const blogArticles = {
       date: "March 3, 2026",
       readTime: "14 min read",
       image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1200&h=600&fit=crop",
+      alt: "Top web design companies in Ghana in 2026",
       excerpt: "Looking for the best web design company in Ghana? We reviewed and ranked the top 12 agencies based on portfolio quality, client reviews, SEO capabilities, technology stack, and industry recognition on Clutch, DesignRush, and Sortlist.",
       tags: ["web design", "Ghana", "best companies", "Clutch", "DesignRush", "2026"],
       hashtags: ["#WebDesignGhana", "#BestWebDesignCompany", "#GhanaTech", "#CelestialWebSolutions", "#WebDevelopmentGhana"],
@@ -433,6 +619,7 @@ const blogArticles = {
       date: "December 29, 2025",
       readTime: "4 min read",
       image: "https://images.unsplash.com/photo-1635405050330-b0824eb1bf26?q=80&w=1169&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      alt: "Web design trends for businesses in Ghana and worldwide in 2026",
       excerpt: "Stay ahead in 2026! Discover the top web design trends for Ghanaian and global businesses: AI-driven personalization, minimal UIs, speed, voice optimization, and accessibility.",
       tags: ["web design", "trends", "AI", "accessibility", "2026"],
       hashtags: ["#WebDesign2026", "#GhanaBusiness", "#DigitalTrends", "#CelestialWebSolutions"],
@@ -473,6 +660,7 @@ const blogArticles = {
       date: "December 29, 2025",
       readTime: "4 min read",
       image: "https://images.unsplash.com/photo-1547658719-da2b51169166?q=80&w=764&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      alt: "Future-ready website for Ghanaian and international markets in 2026",
       excerpt: "Learn how to build a website that grows your business in Ghana and globally in 2026: scalable architecture, security, global payments, SEO, and easy content management.",
       tags: ["future-ready", "global", "Ghana", "website", "2026"],
       hashtags: ["#FutureReady", "#GhanaWeb", "#InternationalBusiness", "#CelestialWebSolutions"],
@@ -513,6 +701,7 @@ const blogArticles = {
     date: "November 4, 2025",
     readTime: "10 min read",
     image: "https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?w=1200&h=600&fit=crop",
+    alt: "Best web designers in Accra, Ghana 2025",
     excerpt: "Looking for the best web designers in Accra? Discover the top web design agencies in Ghana, including Celestial Web Solutions, ranked #1 for quality and affordability.",
     tags: ["web design", "Accra", "Ghana", "top agencies", "best web designers"],
     hashtags: ["#WebDesignGhana", "#AccraWebDesigners", "#GhanaDigital", "#WebDesignAccra", "#CelestialWebSolutions"],
@@ -749,6 +938,14 @@ const blogArticles = {
           </div>
         </div>
       </article>
+      <div class="mt-8 pt-6 border-t border-gray-200 dark:border-gray-700">
+        <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-white">Explore More</h3>
+        <ul class="list-disc pl-6 space-y-1">
+          <li><a href="/portfolio" class="text-orange-600 hover:underline">See our portfolio</a></li>
+          <li><a href="/pricing" class="text-orange-600 hover:underline">View pricing packages</a></li>
+          <li><a href="/contact" class="text-orange-600 hover:underline">Contact us</a></li>
+        </ul>
+      </div>
     `
   },
 
@@ -759,6 +956,7 @@ const blogArticles = {
     date: "January 10, 2026",
     readTime: "6 min read",
     image: "https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?w=1200&h=600&fit=crop",
+    alt: "How to choose the best web design company in Ghana 2026",
     excerpt: "Learn what to look for when hiring a web design company in Ghana.",
     tags: ["web design", "Ghana", "choosing company", "guide", "2026"],
     hashtags: ["#WebDesignGhana", "#ChooseWebDesigner", "#GhanaDigital", "#TechGuide", "#WebDevelopment"],
@@ -857,6 +1055,14 @@ const blogArticles = {
           </div>
         </div>
       </article>
+      <div class="mt-8 pt-6 border-t border-gray-200 dark:border-gray-700">
+        <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-white">Explore More</h3>
+        <ul class="list-disc pl-6 space-y-1">
+          <li><a href="/portfolio" class="text-orange-600 hover:underline">See our portfolio</a></li>
+          <li><a href="/pricing" class="text-orange-600 hover:underline">View pricing packages</a></li>
+          <li><a href="/contact" class="text-orange-600 hover:underline">Contact us</a></li>
+        </ul>
+      </div>
     `
   },
 
@@ -867,6 +1073,7 @@ const blogArticles = {
     date: "January 10, 2026",
     readTime: "9 min read",
     image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=1200&h=600&fit=crop",
+    alt: "AI tools for web development 2026",
     excerpt: "Explore the latest AI-powered tools transforming web development.",
     tags: ["AI", "web development", "automation", "tools", "technology"],
     hashtags: ["#AITools", "#WebDev", "#ArtificialIntelligence", "#CodingTools", "#TechGhana"],
@@ -1000,6 +1207,14 @@ const blogArticles = {
           </div>
         </div>
       </article>
+      <div class="mt-8 pt-6 border-t border-gray-200 dark:border-gray-700">
+        <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-white">Explore More</h3>
+        <ul class="list-disc pl-6 space-y-1">
+          <li><a href="/portfolio" class="text-orange-600 hover:underline">See our portfolio</a></li>
+          <li><a href="/pricing" class="text-orange-600 hover:underline">View pricing packages</a></li>
+          <li><a href="/contact" class="text-orange-600 hover:underline">Contact us</a></li>
+        </ul>
+      </div>
     `
   },
 
@@ -1010,6 +1225,7 @@ const blogArticles = {
     date: "October 15, 2025",
     readTime: "11 min read",
     image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=1200&h=600&fit=crop",
+    alt: "AI tools for web development 2026",
     excerpt: "Stay ahead with the newest web development tools and frameworks.",
     tags: ["web development", "frameworks", "tools", "React", "Next.js"],
     hashtags: ["#WebDevelopment", "#ReactJS", "#NextJS", "#JavaScript", "#WebDevTools"],
@@ -1134,6 +1350,7 @@ const blogArticles = {
     date: "February 10, 2025",
     readTime: "10 min read",
     image: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=1200&h=600&fit=crop",
+    alt: "Mobile Money integration for Ghana websites",
     excerpt: "Learn how to integrate MTN Mobile Money, Vodafone Cash, and AirtelTigo Money into your website.",
     tags: ["mobile money", "e-commerce", "Ghana", "payment integration"],
     hashtags: ["#MobileMoney", "#PaymentGhana", "#MTNMoMo", "#VodafoneCash", "#EcommerceGhana"],
@@ -1247,6 +1464,7 @@ const blogArticles = {
     date: "February 5, 2025",
     readTime: "8 min read",
     image: "https://images.unsplash.com/photo-1547658719-da2b51169166?w=1200&h=600&fit=crop",
+    alt: "Responsive web design best practices 2025",
     excerpt: "Master responsive design with modern techniques and best practices.",
     tags: ["responsive design", "mobile-first", "CSS", "best practices"],
     hashtags: ["#ResponsiveDesign", "#MobileFirst", "#WebDesign", "#CSS", "#UXDesign"],
@@ -1344,6 +1562,7 @@ const blogArticles = {
     date: "March 10, 2025",
     readTime: "10 min read",
     image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=600&fit=crop",
+    alt: "Web design prices in Ghana 2025",
     excerpt: "Comprehensive guide to web design costs in Ghana. Learn about pricing for different types of websites.",
     tags: ["pricing", "web design", "Ghana", "cost guide", "budget"],
     hashtags: ["#WebDesignPricing", "#GhanaPrices", "#WebsiteCost", "#AffordableWebDesign", "#GhanaWeb"],
@@ -1465,6 +1684,7 @@ const blogArticles = {
     date: "March 5, 2025",
     readTime: "7 min read",
     image: "https://images.unsplash.com/photo-1556761175-b413da4baf72?w=1200&h=600&fit=crop",
+    alt: "Why every business in Ghana needs a website in 2025",
     excerpt: "Discover why having a professional website is no longer optional for Ghanaian businesses.",
     tags: ["business growth", "digital presence", "Ghana", "website benefits", "online business"],
     hashtags: ["#GhanaBusiness", "#DigitalTransformation", "#WebsiteGhana", "#BusinessGrowth", "#OnlinePresence"],
@@ -1547,6 +1767,7 @@ const blogArticles = {
     date: "February 28, 2025",
     readTime: "12 min read",
     image: "https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?w=1200&h=600&fit=crop",
+    alt: "SEO strategies for Ghanaian businesses 2025",
     excerpt: "Master local SEO in Ghana with proven strategies to dominate Google search results.",
     tags: ["SEO", "local SEO", "Ghana", "Google ranking", "digital marketing"],
     hashtags: ["#SEOGhana", "#LocalSEO", "#GoogleRanking", "#DigitalMarketingGhana", "#SEOTips"],
@@ -1756,6 +1977,7 @@ const blogArticles = {
     date: "January 25, 2025",
     readTime: "10 min read",
     image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=1200&h=600&fit=crop",
+    alt: "Website security tips for Ghanaian businesses",
     excerpt: "Protect your business website from cyber threats with these essential security measures.",
     tags: ["security", "cybersecurity", "Ghana", "website protection"],
     hashtags: ["#CyberSecurity", "#WebsiteSecurity", "#GhanaTech", "#DataProtection", "#SecureWebsite"],
@@ -1880,6 +2102,7 @@ const blogArticles = {
     date: "January 20, 2025",
     readTime: "8 min read",
     image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=1200&h=600&fit=crop",
+    alt: "E-commerce trends in Ghana 2025",
     excerpt: "Explore the latest e-commerce trends shaping online retail in Ghana.",
     tags: ["e-commerce", "trends", "Ghana", "online shopping"],
     hashtags: ["#EcommerceGhana", "#OnlineShopping", "#DigitalRetail", "#GhanaTrends", "#EcommerceTrends"],
@@ -1991,6 +2214,7 @@ const blogArticles = {
     date: "January 15, 2025",
     readTime: "11 min read",
     image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=600&fit=crop",
+    alt: "Google Ads vs SEO for Ghanaian businesses",
     excerpt: "Compare Google Ads and SEO to determine the best digital marketing strategy for your business.",
     tags: ["Google Ads", "SEO", "digital marketing", "Ghana"],
     hashtags: ["#GoogleAds", "#SEO", "#DigitalMarketing", "#PPC", "#GhanaMarketing"],
@@ -2128,6 +2352,7 @@ const blogArticles = {
     date: "January 10, 2025",
     readTime: "10 min read",
     image: "https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?w=1200&h=600&fit=crop",
+    alt: "Comprehensive guide to web design agencies in Ghana",
     excerpt: "Everything you need to know about choosing a web design agency in Ghana.",
     tags: ["web design", "Ghana", "web development", "digital agencies"],
     hashtags: ["#WebDesignGhana", "#GhanaWebAgencies", "#DigitalMarketingGhana", "#WebDevelopment", "#CelestialWebSolutions"],
@@ -2210,6 +2435,7 @@ const blogArticles = {
     date: "January 5, 2025",
     readTime: "12 min read",
     image: "https://plus.unsplash.com/premium_photo-1661425715124-310ec1b49b8a?q=80&w=1200&h=600&auto=format&fit=crop",
+    alt: "Comprehensive guide to digital marketing in Ghana 2025",
     excerpt: "Master digital marketing in Ghana with our comprehensive guide. Strategies, tips, and tools for success.",
     tags: ["digital marketing", "Ghana", "SEO", "social media", "email marketing"],
     hashtags: ["#DigitalMarketingGhana", "#SEOGhana", "#SocialMediaGhana", "#EmailMarketing", "#GhanaBusiness"],
@@ -2329,6 +2555,7 @@ const blogArticles = {
     date: "August 30, 2025",
     readTime: "10 min read",
     image: "https://images.unsplash.com/photo-1519389950473-478c5b0b8f8b?w=1200&h=600&fit=crop",
+    alt: "Web design and development trends in Ghana for 2025",
     excerpt: "Discover the top web design and development trends in Ghana for 2025.",
     tags: ["web design", "development", "Ghana", "2025 trends"],
     hashtags: ["#WebDesignTrends", "#GhanaWebDevelopment", "#2025Trends", "#DigitalInnovation", "#CelestialWebSolutions"],
@@ -2399,6 +2626,7 @@ const blogArticles = {
     date: "November 3, 2025",
     readTime: "9 min read",
     image: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=1200&h=600&fit=crop",
+    alt: "Effective content marketing strategies for Ghanaian businesses in 2025",
     excerpt: "Boost your online presence with effective content marketing. Learn strategies tailored for Ghanaian audiences to increase engagement and drive sales.",
     tags: ["content marketing", "Ghana", "digital strategy", "engagement"],
     hashtags: ["#ContentMarketingGhana", "#DigitalStrategyGhana", "#GhanaBusiness", "#ContentCreation", "#MarketingGhana"],
@@ -2588,6 +2816,7 @@ const blogArticles = {
     date: "January 14, 2026",
     readTime: "5 min read",
     image: "https://images.unsplash.com/photo-1658297063569-162817482fb6?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    alt: "Online store setup in Ghana",
     excerpt: "Learn the essential steps to launch your online store in Ghana, from choosing a platform to setting up payment methods and driving your first sales.",
     tags: ["E-commerce", "Ghana", "Online Business", "Startup"],
     hashtags: ["#OnlineStore", "#GhanaE-commerce", "#EcommerceTips", "#CelestialWebSolutions"],
@@ -2692,6 +2921,7 @@ const blogArticles = {
     date: "February 1, 2026",
     readTime: "12 min read",
     image: "https://images.unsplash.com/photo-1555421689-d68471e189f2?w=1200&h=600&fit=crop",
+    alt: "WordPress vs Custom Website for Ghanaian Businesses 2026",
     excerpt: "Confused about choosing between WordPress and a custom website? This comprehensive guide helps Ghanaian businesses make the right decision based on budget, features, and long-term goals.",
     tags: ["WordPress", "Custom Development", "Web Development", "Ghana", "CMS"],
     hashtags: ["#WordPressGhana", "#CustomWebsite", "#WebDevelopment", "#GhanaBusiness", "#CelestialWebSolutions"],
@@ -2969,6 +3199,7 @@ const blogArticles = {
     date: "February 1, 2026",
     readTime: "11 min read",
     image: "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=1200&h=600&fit=crop",
+    alt: "UI/UX Design Principles for Ghanaian Websites in 2026",
     excerpt: "Master the essential UI/UX design principles that make websites successful in Ghana. Learn how to create user-friendly, conversion-focused designs that work for Ghanaian users in 2026.",
     tags: ["UI/UX Design", "User Experience", "Web Design", "Ghana", "Conversion Optimization"],
     hashtags: ["#UIUXDesign", "#WebDesignGhana", "#UserExperience", "#GhanaWeb", "#CelestialWebSolutions"],

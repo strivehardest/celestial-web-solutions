@@ -235,7 +235,7 @@ export default function ServicesPage() {
                         
 												<p
 													className="text-xl text-gray-300 max-w-xl leading-relaxed mb-8"
-													style={{ fontFamily: "Google Sans, sans-serif" }}
+													style={{ fontFamily: "Albert Sans, sans-serif" }}
 												>
 													From concept to deployment, we deliver comprehensive digital solutions that transform businesses and drive measurable growth. Looking for the best web designer in Accra? <Link href="/best-web-designer-in-accra" className="text-orange-300 font-semibold underline underline-offset-4 hover:text-orange-200">See our Accra-focused page</Link>.
 												</p>
@@ -253,15 +253,15 @@ export default function ServicesPage() {
 												<div className="flex flex-wrap gap-6 items-center">
 													<div className="flex items-center gap-2 text-gray-400">
 														<CheckCircle2 className="w-5 h-5 text-orange-500" />
-														<span className="text-sm" style={{ fontFamily: 'Google Sans, sans-serif' }}>Free Consultation</span>
+														<span className="text-sm" style={{ fontFamily: 'Albert Sans, sans-serif' }}>Free Consultation</span>
 													</div>
 													<div className="flex items-center gap-2 text-gray-400">
 														<CheckCircle2 className="w-5 h-5 text-orange-500" />
-														<span className="text-sm" style={{ fontFamily: 'Google Sans, sans-serif' }}>24/7 Support</span>
+														<span className="text-sm" style={{ fontFamily: 'Albert Sans, sans-serif' }}>24/7 Support</span>
 													</div>
 													<div className="flex items-center gap-2 text-gray-400">
 														<CheckCircle2 className="w-5 h-5 text-orange-500" />
-														<span className="text-sm" style={{ fontFamily: 'Google Sans, sans-serif' }}>Money Back Guarantee</span>
+														<span className="text-sm" style={{ fontFamily: 'Albert Sans, sans-serif' }}>Money Back Guarantee</span>
 													</div>
 												</div>
 											</motion.div>
@@ -293,7 +293,7 @@ export default function ServicesPage() {
 														<div className="text-3xl font-bold text-white mb-1" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>
 															<AnimatedCounter value={stat.value} />
 														</div>
-														<div className="text-gray-400 text-sm" style={{ fontFamily: 'Google Sans, sans-serif' }}>{stat.label}</div>
+														<div className="text-gray-400 text-sm" style={{ fontFamily: 'Albert Sans, sans-serif' }}>{stat.label}</div>
 													</motion.div>
 												))}
 											</motion.div>
@@ -390,7 +390,7 @@ export default function ServicesPage() {
 																<Link href={`/web-design-company-in-ghana/${service.slug}`}>
 																	<motion.span 
 																		className="px-6 py-3 bg-white text-gray-900 rounded-full font-semibold inline-flex items-center gap-2"
-																		style={{ fontFamily: 'Google Sans, sans-serif' }}
+																		style={{ fontFamily: 'Albert Sans, sans-serif' }}
 																		whileHover={{ scale: 1.05 }}
 																	>
 																		View Details <ArrowRight className="w-4 h-4" />
@@ -410,7 +410,7 @@ export default function ServicesPage() {
 														>
 															<span 
 																className="text-orange-500 font-semibold text-sm tracking-wider"
-																style={{ fontFamily: 'Google Sans, sans-serif' }}
+																style={{ fontFamily: 'Albert Sans, sans-serif' }}
 															>
 																SERVICE 0{index + 1}
 															</span>
@@ -424,7 +424,7 @@ export default function ServicesPage() {
                             
 														<p 
 															className="text-gray-600 dark:text-gray-300 text-lg leading-relaxed"
-															style={{ fontFamily: 'Google Sans, sans-serif' }}
+															style={{ fontFamily: 'Albert Sans, sans-serif' }}
 														>
 															{service.description}
 														</p>
@@ -439,7 +439,7 @@ export default function ServicesPage() {
 																	transition={{ delay: 0.3 + idx * 0.05 }}
 																	whileHover={{ scale: 1.05, y: -2 }}
 																	className="text-sm px-4 py-2 bg-white dark:bg-gray-700 border border-gray-200 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-full font-medium shadow-sm hover:shadow-md hover:border-orange-300 dark:hover:border-orange-600 transition-all"
-																	style={{ fontFamily: 'Google Sans, sans-serif' }}
+																	style={{ fontFamily: 'Albert Sans, sans-serif' }}
 																>
 																	{keyword}
 																</motion.span>
@@ -466,7 +466,7 @@ export default function ServicesPage() {
 											<div className="text-center mb-12">
 												<span 
 													className="inline-block px-4 py-2 bg-orange-100 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400 rounded-full text-sm font-semibold mb-4"
-													style={{ fontFamily: 'Google Sans, sans-serif' }}
+													style={{ fontFamily: 'Albert Sans, sans-serif' }}
 												>
 													WHY CHOOSE US
 												</span>
@@ -505,7 +505,7 @@ export default function ServicesPage() {
 														</h3>
 														<p 
 															className="text-gray-600 dark:text-gray-400 text-l"
-															style={{ fontFamily: 'Google Sans, sans-serif' }}
+															style={{ fontFamily: 'Albert Sans, sans-serif' }}
 														>
 															{item.desc}
 														</p>
@@ -553,7 +553,7 @@ export default function ServicesPage() {
 												>
 													<span 
 														className="inline-block px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full text-white text-sm font-semibold mb-6"
-														style={{ fontFamily: 'Google Sans, sans-serif' }}
+														style={{ fontFamily: 'Albert Sans, sans-serif' }}
 													>
 														LET'S WORK TOGETHER
 													</span>
@@ -565,7 +565,7 @@ export default function ServicesPage() {
 													</h2>
 													<p
 														className="text-orange-100 mb-10 max-w-2xl mx-auto leading-relaxed text-lg"
-														style={{ fontFamily: "Google Sans, sans-serif" }}
+														style={{ fontFamily: "Albert Sans, sans-serif" }}
 													>
 														Let's discuss your project and create something amazing together. Get started with a free consultation today.
 													</p>
@@ -602,7 +602,7 @@ export default function ServicesPage() {
 															>
 																{stat.value}
 															</motion.div>
-															<div className="text-orange-200 text-lg" style={{ fontFamily: 'Google Sans, sans-serif' }}>
+															<div className="text-orange-200 text-lg" style={{ fontFamily: 'Albert Sans, sans-serif' }}>
 																{stat.label}
 															</div>
 														</motion.div>

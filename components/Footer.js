@@ -439,7 +439,7 @@ export default function Footer({ darkMode, toggleDarkMode }) {
                     srcSet={`https://flagcdn.com/w80/${flagCode}.png 2x`}
                     width="32"
                     height="24"
-                    alt={`${country} flag`}
+                    alt={`${country} flag - Celestial Web Solutions serves clients in ${country}`}
                     className="rounded shadow-sm"
                   />
                   <div className="flex flex-col">
