@@ -496,7 +496,7 @@ export default function BestWebDesignerInAccraPage() {
               </div>
 
               <div className="rounded-2xl overflow-hidden border border-gray-200 dark:border-white/10 shadow-lg h-96">
-                <Map center={[5.6037, -0.2163]} zoom={13} markerText="Celestial Web Solutions - Accra, Ghana" height="100%" useCustomIcon={false} />
+                <Map center={[5.6679307, -0.1661991]} zoom={15} markerText="Celestial Web Solutions - Accra, Office" height="100%" useCustomIcon={false} />
               </div>
 
               <div className="grid sm:grid-cols-2 gap-4 justify-center">

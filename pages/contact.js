@@ -16,9 +16,9 @@ const typingPhrases = [
   'Call us: +233 53 050 5031',
   'WhatsApp us: +233 245 709 341',
   'Email: info@celestialwebsolutions.net',
-  'Located in Keta & Accra, Ghana',
+  'Offices in Keta & Accra, Ghana',
   'Free Consultation Available',
-  'Let’s Build Something Great Together',
+  "Let's Build Something Great Together",
   'Your Success is Our Mission',
   'Web Design Experts at Your Service',
 ];
@@ -43,21 +43,16 @@ export default function Contact() {
   const [isDeleting, setIsDeleting] = useState(false);
 
   useEffect(() => {
-    // Load Calendly widget script
     const script = document.createElement('script');
     script.src = 'https://assets.calendly.com/assets/external/widget.js';
     script.async = true;
     document.body.appendChild(script);
-
     return () => {
-      // Cleanup script on unmount
-      if (document.body.contains(script)) {
-        document.body.removeChild(script);
-      }
+      if (document.body.contains(script)) document.body.removeChild(script);
     };
   }, []);
 
-  // Render Cloudflare Turnstile widget
+  // Turnstile widget
   useEffect(() => {
     const renderWidget = () => {
       if (!turnstileRef.current || !window.turnstile) return;
@@ -73,21 +68,16 @@ export default function Contact() {
         size: 'normal',
       });
     };
-
     const timer = setTimeout(() => {
       if (window.turnstile) {
         renderWidget();
       } else {
         const check = setInterval(() => {
-          if (window.turnstile) {
-            clearInterval(check);
-            renderWidget();
-          }
+          if (window.turnstile) { clearInterval(check); renderWidget(); }
         }, 200);
         setTimeout(() => clearInterval(check), 10000);
       }
     }, 500);
-
     return () => {
       clearTimeout(timer);
       if (turnstileWidgetId.current !== null && window.turnstile) {
@@ -97,7 +87,7 @@ export default function Contact() {
     };
   }, []);
 
-  // Typing effect logic
+  // Typing effect
   useEffect(() => {
     const currentPhrase = typingPhrases[currentPhraseIndex];
     const typingSpeed = isDeleting ? 40 : 80;
@@ -122,43 +112,28 @@ export default function Contact() {
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
+    setFormData(prev => ({ ...prev, [name]: value }));
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
     setSubmitStatus(null);
-
     if (!turnstileToken) {
       setSubmitStatus('error');
       setIsSubmitting(false);
       return;
     }
-
     try {
       const response = await fetch('/api/contact', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ ...formData, turnstileToken }),
       });
-
       if (response.ok) {
         setSubmitStatus('success');
-        setFormData({
-          name: '',
-          email: '',
-          phone: '',
-          subject: '',
-          message: ''
-        });
+        setFormData({ name: '', email: '', phone: '', subject: '', message: '' });
         setTurnstileToken(null);
-        // Reset Turnstile widget
         if (turnstileWidgetId.current !== null && window.turnstile) {
           window.turnstile.reset(turnstileWidgetId.current);
         }
@@ -176,23 +151,18 @@ export default function Contact() {
     <>
       <Head>
         <title>Contact Celestial Web Solutions | Web Design Company Ghana</title>
-        <meta name="description" content="Contact Celestial Web Solutions today for professional web design, development, e-commerce, and SEO services in Ghana." />
-        <meta name="keywords" content="contact web designer Ghana, web design company Ghana" />
+        <meta name="description" content="Contact Celestial Web Solutions today for professional web design, development, e-commerce, and SEO services in Ghana. Offices in Keta and Accra." />
+        <meta name="keywords" content="contact web designer Ghana, web design company Ghana, web design Accra, web design Keta" />
         <meta name="author" content="Celestial Web Solutions" />
         <meta name="robots" content="index, follow" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        
-        {/* Open Graph */}
-        <meta property="og:title" content="Contact Celestial Web Solutions | Ghana"/>
+        <meta property="og:title" content="Contact Celestial Web Solutions | Ghana" />
         <meta property="og:description" content="Get in touch with Celestial Web Solutions. Contact us for web design and development services." />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://celestialwebsolutions.net/contact" />
-        
-        {/* Twitter Card */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Contact Celestial Web Solutions | Ghana" />
         <meta name="twitter:description" content="Contact us for web design and development services in Ghana." />
-        
         <link rel="canonical" href="https://celestialwebsolutions.net/contact" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
@@ -200,56 +170,42 @@ export default function Contact() {
       </Head>
 
       <div className="min-h-screen bg-white dark:bg-gray-900">
-        {/* Hero Section with Background Image */}
+
+        {/* ── Hero ── */}
         <section className="relative py-20 overflow-hidden">
-          {/* Background Image with Overlay */}
-          <div 
+          <div
             className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-            style={{
-              backgroundImage: 'url("https://media.istockphoto.com/id/879441788/photo/web-contact-us-icons-on-cubes.jpg?s=612x612&w=0&k=20&c=4wKebqcelXRP3skkhI-SlTeJQekYavAKGrcwYm9awag=")',
-            }}
+            style={{ backgroundImage: 'url("https://media.istockphoto.com/id/879441788/photo/web-contact-us-icons-on-cubes.jpg?s=612x612&w=0&k=20&c=4wKebqcelXRP3skkhI-SlTeJQekYavAKGrcwYm9awag=")' }}
           />
-          <div className="absolute inset-0 bg-gradient-to-br from-orange-500/95 via-orange-600/90 to-red-500/95"></div>
-
-          {/* Animated Background Elements */}
+          <div className="absolute inset-0 bg-gradient-to-br from-orange-500/95 via-orange-600/90 to-red-500/95" />
           <div className="absolute inset-0 overflow-hidden">
-            <div className="absolute -top-40 -right-40 w-80 h-80 bg-white/10 rounded-full opacity-50 animate-pulse"></div>
-            <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-white/10 rounded-full opacity-50 animate-pulse" style={{animationDelay: '2s'}}></div>
-            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-white/5 rounded-full opacity-30 animate-spin" style={{animationDuration: '20s'}}></div>
+            <div className="absolute -top-40 -right-40 w-80 h-80 bg-white/10 rounded-full opacity-50 animate-pulse" />
+            <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-white/10 rounded-full opacity-50 animate-pulse" style={{ animationDelay: '2s' }} />
+            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-white/5 rounded-full opacity-30 animate-spin" style={{ animationDuration: '20s' }} />
           </div>
-
           <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-            >
-              <h1
-                className="text-4xl md:text-6xl font-bold text-white mb-6 drop-shadow-lg"
-                style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}
-              >
+            <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
+              <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 drop-shadow-lg" style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}>
                 Contact Us
               </h1>
               <div className="flex flex-col items-center justify-center mb-4 min-h-[2.5em]">
-                <span className="text-lg md:text-2xl text-white bg-black/20 px-4 py-2 rounded-full font-semibold tracking-wide shadow-lg animate-pulse" style={{ fontFamily: 'Albert Sans, sans-serif', letterSpacing: '0.04em' }}>
+                <span className="text-lg md:text-2xl text-white bg-black/20 px-4 py-2 rounded-full font-semibold tracking-wide shadow-lg" style={{ fontFamily: 'Albert Sans, sans-serif', letterSpacing: '0.04em' }}>
                   {displayText}<span className="animate-pulse">|</span>
                 </span>
               </div>
-              <p
-                className="text-xl text-orange-100 max-w-3xl mx-auto leading-relaxed drop-shadow-md"
-                style={{ fontFamily: "Albert Sans, sans-serif" }}
-              >
+              <p className="text-xl text-orange-100 max-w-3xl mx-auto leading-relaxed drop-shadow-md" style={{ fontFamily: "Albert Sans, sans-serif" }}>
                 Ready to bring your digital vision to life? Let's discuss your project and create something amazing together.
               </p>
             </motion.div>
           </div>
         </section>
 
-        {/* Main Content */}
+        {/* ── Main Content ── */}
         <div className="max-w-7xl mx-auto px-4 py-16">
           <div className="grid lg:grid-cols-2 gap-12">
-            {/* Contact Information */}
-            <motion.div 
+
+            {/* ── Left: Contact Info ── */}
+            <motion.div
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
@@ -258,10 +214,7 @@ export default function Contact() {
               {/* Contact Cards */}
               <div className="grid sm:grid-cols-2 gap-6">
                 {/* Phone */}
-                <motion.div 
-                  whileHover={{ scale: 1.02, y: -2 }}
-                  className="bg-white dark:bg-gray-800 rounded-3xl shadow-xl p-6 border border-orange-100 dark:border-gray-700 hover:shadow-2xl hover:shadow-orange-500/10 transition-all duration-300"
-                >
+                <motion.div whileHover={{ scale: 1.02, y: -2 }} className="bg-white dark:bg-gray-800 rounded-3xl shadow-xl p-6 border border-orange-100 dark:border-gray-700 hover:shadow-2xl hover:shadow-orange-500/10 transition-all duration-300">
                   <div className="flex items-center mb-4">
                     <div className="w-14 h-14 bg-gradient-to-br from-orange-500 to-orange-600 rounded-2xl flex items-center justify-center shadow-lg">
                       <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -274,10 +227,7 @@ export default function Contact() {
                 </motion.div>
 
                 {/* WhatsApp */}
-                <motion.div 
-                  whileHover={{ scale: 1.02, y: -2 }}
-                  className="bg-white dark:bg-gray-800 rounded-3xl shadow-xl p-6 border border-green-100 dark:border-gray-700 hover:shadow-2xl hover:shadow-green-500/10 transition-all duration-300"
-                >
+                <motion.div whileHover={{ scale: 1.02, y: -2 }} className="bg-white dark:bg-gray-800 rounded-3xl shadow-xl p-6 border border-green-100 dark:border-gray-700 hover:shadow-2xl hover:shadow-green-500/10 transition-all duration-300">
                   <div className="flex items-center mb-4">
                     <div className="w-14 h-14 bg-gradient-to-br from-green-500 to-green-600 rounded-2xl flex items-center justify-center shadow-lg">
                       <svg className="w-7 h-7 text-white" fill="currentColor" viewBox="0 0 24 24">
@@ -290,10 +240,7 @@ export default function Contact() {
                 </motion.div>
 
                 {/* Email */}
-                <motion.div 
-                  whileHover={{ scale: 1.02, y: -2 }}
-                  className="bg-white dark:bg-gray-800 rounded-3xl shadow-xl p-6 border border-red-100 dark:border-gray-700 hover:shadow-2xl hover:shadow-red-500/10 transition-all duration-300"
-                >
+                <motion.div whileHover={{ scale: 1.02, y: -2 }} className="bg-white dark:bg-gray-800 rounded-3xl shadow-xl p-6 border border-red-100 dark:border-gray-700 hover:shadow-2xl hover:shadow-red-500/10 transition-all duration-300">
                   <div className="flex items-center mb-4">
                     <div className="w-14 h-14 bg-gradient-to-br from-red-500 to-red-600 rounded-2xl flex items-center justify-center shadow-lg">
                       <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -305,11 +252,8 @@ export default function Contact() {
                   <p className="text-gray-600 dark:text-gray-300 break-all font-medium" style={{ fontFamily: 'Albert Sans, sans-serif' }}>info@celestialwebsolutions.net</p>
                 </motion.div>
 
-                {/* Location */}
-                <motion.div 
-                  whileHover={{ scale: 1.02, y: -2 }}
-                  className="bg-white dark:bg-gray-800 rounded-3xl shadow-xl p-6 border border-purple-100 dark:border-gray-700 hover:shadow-2xl hover:shadow-purple-500/10 transition-all duration-300"
-                >
+                {/* Offices */}
+                <motion.div whileHover={{ scale: 1.02, y: -2 }} className="bg-white dark:bg-gray-800 rounded-3xl shadow-xl p-6 border border-purple-100 dark:border-gray-700 hover:shadow-2xl hover:shadow-purple-500/10 transition-all duration-300">
                   <div className="flex items-center mb-4">
                     <div className="w-14 h-14 bg-gradient-to-br from-purple-500 to-purple-600 rounded-2xl flex items-center justify-center shadow-lg">
                       <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -318,68 +262,138 @@ export default function Contact() {
                       </svg>
                     </div>
                   </div>
-                  <h3 className="font-bold text-gray-900 dark:text-white mb-2 text-lg" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>Location</h3>
-                  <p className="text-gray-600 dark:text-gray-300 font-medium" style={{ fontFamily: 'Albert Sans, sans-serif' }}>Keta & Accra, Ghana</p>
+                  <h3 className="font-bold text-gray-900 dark:text-white mb-2 text-lg" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>Offices</h3>
+                  <p className="text-gray-600 dark:text-gray-300 font-medium text-sm leading-relaxed" style={{ fontFamily: 'Albert Sans, sans-serif' }}>
+                    Keta, Volta Region<br />
+                    <span className="text-orange-500 font-semibold">+</span> Accra, Greater Accra
+                  </p>
                 </motion.div>
               </div>
 
-              {/* Google Maps */}
-              <motion.div 
+              {/* ── Office Locations Maps ── */}
+              <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.5 }}
-                className="bg-white dark:bg-gray-800 rounded-3xl shadow-xl overflow-hidden border border-orange-100 dark:border-gray-700"
+                className="space-y-6"
               >
-                <div className="p-8 border-b border-gray-200 dark:border-gray-700 bg-gradient-to-r from-orange-50 to-orange-100 dark:from-gray-800 dark:to-gray-700">
-                  <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>Find Us</h3>
-                  <p className="text-gray-600 dark:text-gray-300 font-medium" style={{ fontFamily: 'Albert Sans, sans-serif' }}> Our Main Office is located in the beautiful coastal city of Keta, Ghana</p>
+                {/* Section heading */}
+                <div className="flex items-center gap-3">
+                  <h3 className="text-2xl font-bold text-gray-900 dark:text-white" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>
+                    Our Offices
+                  </h3>
+                  <span className="px-3 py-1 bg-orange-100 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400 text-xs font-semibold rounded-full">
+                    2 Locations
+                  </span>
                 </div>
-                <div className="h-64 bg-gray-200 relative">
-                  <Map center={[5.8836217, 0.9828871]} zoom={15} markerText="Celestial Web Solutions - Keta, Ghana" height="256px" useCustomIcon={false} showCircle={false} />
+
+                {/* Keta Office */}
+                <div className="bg-white dark:bg-gray-800 rounded-3xl shadow-xl overflow-hidden border border-orange-100 dark:border-gray-700">
+                  <div className="px-6 py-5 bg-gradient-to-r from-orange-50 to-orange-100 dark:from-gray-800 dark:to-gray-700 border-b border-gray-200 dark:border-gray-700">
+                    <div className="flex items-center justify-between">
+                      <div>
+                        <div className="flex items-center gap-2 mb-1">
+                          <span className="w-2.5 h-2.5 rounded-full bg-orange-500 inline-block" />
+                          <span className="text-xs font-bold text-orange-500 uppercase tracking-widest" style={{ fontFamily: 'Albert Sans, sans-serif' }}>HQ — Main Office</span>
+                        </div>
+                        <h4 className="text-xl font-bold text-gray-900 dark:text-white" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>Keta, Volta Region</h4>
+                        <p className="text-sm text-gray-500 dark:text-gray-400 mt-0.5" style={{ fontFamily: 'Albert Sans, sans-serif' }}>Keta, Volta Region, Ghana</p>
+                      </div>
+                      <a
+                        href="https://www.google.com/maps/place/Celestial+Web+Solutions/@5.8836217,0.9803122,17z/data=!4m12!1m5!3m4!2zNcKwNTMnMDEuMCJOIDDCsDU4JzU4LjQiRQ!8m2!3d5.8836217!4d0.9828871!3m5!1s0x1021710073fe6fff:0x96453357ca880329!8m2!3d5.8836217!4d0.9828871!16s%2Fg%2F11lf36fzj1?entry=ttu"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-1.5 px-4 py-2 bg-orange-500 hover:bg-orange-600 text-white text-xs font-bold rounded-xl transition-colors shadow-md"
+                        style={{ fontFamily: 'Albert Sans, sans-serif' }}
+                      >
+                        <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                        </svg>
+                        Directions
+                      </a>
+                    </div>
+                  </div>
+                  <div className="h-56">
+                    <Map center={[5.8836217, 0.9828871]} zoom={15} markerText="Celestial Web Solutions — Keta HQ" height="224px" useCustomIcon={false} showCircle={false} />
+                  </div>
                 </div>
+
+                {/* Accra Office */}
+                <div className="bg-white dark:bg-gray-800 rounded-3xl shadow-xl overflow-hidden border border-blue-100 dark:border-gray-700">
+                  <div className="px-6 py-5 bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-gray-800 dark:to-gray-700 border-b border-gray-200 dark:border-gray-700">
+                    <div className="flex items-center justify-between">
+                      <div>
+                        <div className="flex items-center gap-2 mb-1">
+                          <span className="w-2.5 h-2.5 rounded-full bg-blue-500 inline-block" />
+                          <span className="text-xs font-bold text-blue-500 uppercase tracking-widest" style={{ fontFamily: 'Albert Sans, sans-serif' }}>Branch Office</span>
+                        </div>
+                        <h4 className="text-xl font-bold text-gray-900 dark:text-white" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>Accra, Greater Accra</h4>
+                        <p className="text-sm text-gray-500 dark:text-gray-400 mt-0.5" style={{ fontFamily: 'Albert Sans, sans-serif' }}>Accra, Greater Accra Region, Ghana</p>
+                      </div>
+                      <a
+                        href="https://www.google.com/maps/place/Bait+%26+Tackle+Ghana/@5.6679307,-0.1661991,17z"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-1.5 px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white text-xs font-bold rounded-xl transition-colors shadow-md"
+                        style={{ fontFamily: 'Albert Sans, sans-serif' }}
+                      >
+                        <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                        </svg>
+                        Directions
+                      </a>
+                    </div>
+                  </div>
+                  {/* Accra map — update coordinates below to match your exact pin */}
+                  <div className="h-56">
+                    <Map center={[5.6679307, -0.1661991]} zoom={15} markerText="Celestial Web Solutions — Accra Office" height="224px" useCustomIcon={false} showCircle={false} />
+                  </div>
+                </div>
+
               </motion.div>
             </motion.div>
 
-            {/* Contact Form */}
-            <motion.div 
+            {/* ── Right: Contact Form ── */}
+            <motion.div
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
               className="bg-white dark:bg-gray-800 rounded-3xl shadow-2xl p-8 md:p-10 border border-orange-100 dark:border-gray-700 relative overflow-hidden"
             >
-              <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-orange-400 to-orange-600 rounded-full opacity-5 transform translate-x-16 -translate-y-16"></div>
-              
+              <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-orange-400 to-orange-600 rounded-full opacity-5 transform translate-x-16 -translate-y-16" />
+
               <div className="mb-10 relative z-10">
                 <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-3" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>Send us a Message</h2>
-                <p className="text-gray-600 dark:text-gray-300 text-lg leading-relaxed" style={{ fontFamily: 'Albert Sans, sans-serif' }}>Tell us about your project and we will get back to you within 24 hours.</p>
+                <p className="text-gray-600 dark:text-gray-300 text-lg leading-relaxed" style={{ fontFamily: 'Albert Sans, sans-serif' }}>Tell us about your project and we'll get back to you within 24 hours.</p>
               </div>
 
               {submitStatus && (
-                <motion.div 
+                <motion.div
                   initial={{ opacity: 0, y: -10 }}
                   animate={{ opacity: 1, y: 0 }}
                   className={`mb-8 p-5 rounded-2xl border-l-4 ${
-                    submitStatus === 'success' 
-                      ? 'bg-green-50 dark:bg-green-900/20 text-green-800 dark:text-green-400 border-green-500' 
+                    submitStatus === 'success'
+                      ? 'bg-green-50 dark:bg-green-900/20 text-green-800 dark:text-green-400 border-green-500'
                       : 'bg-red-50 dark:bg-red-900/20 text-red-800 dark:text-red-400 border-red-500'
                   }`}
                   style={{ fontFamily: 'Albert Sans, sans-serif' }}
                 >
                   <div className="flex items-center">
                     {submitStatus === 'success' ? (
-                      <svg className="w-6 h-6 mr-3 text-green-600 dark:text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <svg className="w-6 h-6 mr-3 text-green-600 dark:text-green-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                       </svg>
                     ) : (
-                      <svg className="w-6 h-6 mr-3 text-red-600 dark:text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <svg className="w-6 h-6 mr-3 text-red-600 dark:text-red-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                       </svg>
                     )}
                     <div>
-                      {submitStatus === 'success' 
-                        ? 'Thank you! Your message has been sent successfully. We\'ll get back to you soon!' 
-                        : 'Sorry, there was an error sending your message. Please try again.'
-                      }
+                      {submitStatus === 'success'
+                        ? "Thank you! Your message has been sent successfully. We'll get back to you soon!"
+                        : 'Sorry, there was an error sending your message. Please try again.'}
                     </div>
                   </div>
                 </motion.div>
@@ -388,32 +402,20 @@ export default function Contact() {
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid sm:grid-cols-2 gap-6">
                   <div className="space-y-2">
-                    <label htmlFor="name" className="block text-sm font-bold text-gray-800 dark:text-gray-200" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>
-                      Full Name *
-                    </label>
+                    <label htmlFor="name" className="block text-sm font-bold text-gray-800 dark:text-gray-200" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>Full Name *</label>
                     <input
-                      type="text"
-                      id="name"
-                      name="name"
-                      required
-                      value={formData.name}
-                      onChange={handleInputChange}
+                      type="text" id="name" name="name" required
+                      value={formData.name} onChange={handleInputChange}
                       className="w-full px-5 py-3 border-2 border-gray-200 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-2xl focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-all duration-300"
                       style={{ fontFamily: 'Albert Sans, sans-serif' }}
                       placeholder="Your name"
                     />
                   </div>
-
                   <div className="space-y-2">
-                    <label htmlFor="phone" className="block text-sm font-bold text-gray-800 dark:text-gray-200" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>
-                      Phone Number
-                    </label>
+                    <label htmlFor="phone" className="block text-sm font-bold text-gray-800 dark:text-gray-200" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>Phone Number</label>
                     <input
-                      type="tel"
-                      id="phone"
-                      name="phone"
-                      value={formData.phone}
-                      onChange={handleInputChange}
+                      type="tel" id="phone" name="phone"
+                      value={formData.phone} onChange={handleInputChange}
                       className="w-full px-5 py-3 border-2 border-gray-200 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-2xl focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-all duration-300"
                       style={{ fontFamily: 'Albert Sans, sans-serif' }}
                       placeholder="+233 50 505 031"
@@ -422,16 +424,10 @@ export default function Contact() {
                 </div>
 
                 <div className="space-y-2">
-                  <label htmlFor="email" className="block text-sm font-bold text-gray-800 dark:text-gray-200" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>
-                    Email Address *
-                  </label>
+                  <label htmlFor="email" className="block text-sm font-bold text-gray-800 dark:text-gray-200" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>Email Address *</label>
                   <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    required
-                    value={formData.email}
-                    onChange={handleInputChange}
+                    type="email" id="email" name="email" required
+                    value={formData.email} onChange={handleInputChange}
                     className="w-full px-5 py-3 border-2 border-gray-200 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-2xl focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-all duration-300"
                     style={{ fontFamily: 'Albert Sans, sans-serif' }}
                     placeholder="your@email.com"
@@ -439,15 +435,10 @@ export default function Contact() {
                 </div>
 
                 <div className="space-y-2">
-                  <label htmlFor="subject" className="block text-sm font-bold text-gray-800 dark:text-gray-200" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>
-                    Subject *
-                  </label>
+                  <label htmlFor="subject" className="block text-sm font-bold text-gray-800 dark:text-gray-200" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>Subject *</label>
                   <select
-                    id="subject"
-                    name="subject"
-                    required
-                    value={formData.subject}
-                    onChange={handleInputChange}
+                    id="subject" name="subject" required
+                    value={formData.subject} onChange={handleInputChange}
                     className="w-full px-5 py-3 border-2 border-gray-200 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-2xl focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-all duration-300"
                     style={{ fontFamily: 'Albert Sans, sans-serif' }}
                   >
@@ -464,23 +455,17 @@ export default function Contact() {
                 </div>
 
                 <div className="space-y-2">
-                  <label htmlFor="message" className="block text-sm font-bold text-gray-800 dark:text-gray-200" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>
-                    Message *
-                  </label>
+                  <label htmlFor="message" className="block text-sm font-bold text-gray-800 dark:text-gray-200" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>Message *</label>
                   <textarea
-                    id="message"
-                    name="message"
-                    required
-                    rows="5"
-                    value={formData.message}
-                    onChange={handleInputChange}
+                    id="message" name="message" required rows="5"
+                    value={formData.message} onChange={handleInputChange}
                     className="w-full px-5 py-3 border-2 border-gray-200 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-2xl focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-all duration-300 resize-none"
                     style={{ fontFamily: 'Albert Sans, sans-serif' }}
                     placeholder="Tell us about your project..."
                   />
                 </div>
 
-                {/* Cloudflare Turnstile CAPTCHA */}
+                {/* Cloudflare Turnstile */}
                 <div className="flex justify-center">
                   <div ref={turnstileRef} />
                 </div>
@@ -497,14 +482,12 @@ export default function Contact() {
                     {isSubmitting ? (
                       <span className="flex items-center justify-center">
                         <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                          <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                          <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                          <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                          <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
                         </svg>
                         Sending...
                       </span>
-                    ) : (
-                      'Send Message'
-                    )}
+                    ) : 'Send Message'}
                   </PremiumCTA>
                 </div>
               </form>
@@ -512,32 +495,20 @@ export default function Contact() {
               <div className="mt-8 pt-6 border-t border-gray-200 dark:border-gray-700">
                 <p className="text-sm text-gray-600 dark:text-gray-300 mb-4 font-medium" style={{ fontFamily: 'Albert Sans, sans-serif' }}>Prefer to contact us directly?</p>
                 <div className="grid grid-cols-3 gap-3">
-                  <motion.a 
-                    href="tel:+233530505031" 
-                    whileHover={{ scale: 1.05 }}
+                  <motion.a href="tel:+233530505031" whileHover={{ scale: 1.05 }}
                     className="flex items-center justify-center text-white bg-orange-500 hover:bg-orange-600 font-bold py-2 px-3 rounded-xl transition-all text-sm"
-                    style={{ fontFamily: 'Albert Sans, sans-serif' }}
-                  >
+                    style={{ fontFamily: 'Albert Sans, sans-serif' }}>
                     Call
                   </motion.a>
-                  
-                  <motion.a 
-                    href="https://wa.me/233245709341" 
-                    whileHover={{ scale: 1.05 }}
+                  <motion.a href="https://wa.me/233245709341" whileHover={{ scale: 1.05 }}
                     className="flex items-center justify-center text-white bg-green-500 hover:bg-green-600 font-bold py-2 px-3 rounded-xl transition-all text-sm"
                     style={{ fontFamily: 'Albert Sans, sans-serif' }}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
+                    target="_blank" rel="noopener noreferrer">
                     WhatsApp
                   </motion.a>
-                  
-                  <motion.a 
-                    href="mailto:info@celestialwebsolutions.net" 
-                    whileHover={{ scale: 1.05 }}
+                  <motion.a href="mailto:info@celestialwebsolutions.net" whileHover={{ scale: 1.05 }}
                     className="flex items-center justify-center text-white bg-red-500 hover:bg-red-600 font-bold py-2 px-3 rounded-xl transition-all text-sm"
-                    style={{ fontFamily: 'Albert Sans, sans-serif' }}
-                  >
+                    style={{ fontFamily: 'Albert Sans, sans-serif' }}>
                     Email
                   </motion.a>
                 </div>
@@ -546,7 +517,7 @@ export default function Contact() {
           </div>
         </div>
 
-        {/* Schedule a Meeting Section with Calendly */}
+        {/* ── Schedule a Meeting ── */}
         <section className="py-16 bg-gray-50 dark:bg-gray-800">
           <div className="max-w-7xl mx-auto px-4">
             <motion.div
@@ -563,7 +534,6 @@ export default function Contact() {
               </p>
             </motion.div>
 
-            {/* Calendly Widget */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -571,16 +541,16 @@ export default function Contact() {
               transition={{ delay: 0.2 }}
               className="bg-white dark:bg-gray-900 rounded-3xl shadow-2xl overflow-hidden border border-orange-100 dark:border-gray-700"
             >
-              <div 
-                className="calendly-inline-widget" 
-                data-url="https://calendly.com/waliuaforlabi?hide_landing_page_details=1&primary_color=f7a707" 
+              <div
+                className="calendly-inline-widget"
+                data-url="https://calendly.com/waliuaforlabi?hide_landing_page_details=1&primary_color=f7a707"
                 style={{ minWidth: '320px', height: '700px' }}
               />
             </motion.div>
           </div>
         </section>
 
-        <div className="pb-20"></div>
+        <div className="pb-20" />
       </div>
       <WhatsAppButton />
     </>

@@ -69,8 +69,8 @@ const ProjectVideo = ({ project }) => {
     </motion.div>
   );
 };
-import { useRouter } from "next/router";
 
+import { useRouter } from "next/router";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState, useRef } from "react";
@@ -105,7 +105,6 @@ const DeviceMockup = ({ project }) => {
   const openModal = (src, alt) => setModal({ open: true, src, alt });
   const closeModal = () => setModal({ open: false, src: '', alt: '' });
 
-  // ✅ Lock body scroll + ESC key handler when modal is open
   useEffect(() => {
     if (modal.open) {
       document.body.style.overflow = 'hidden';
@@ -170,7 +169,6 @@ const DeviceMockup = ({ project }) => {
                     className="object-cover transition-transform duration-500 group-hover:scale-105"
                     sizes="(max-width: 768px) 100vw, 60vw"
                   />
-                  {/* Zoom hint on hover */}
                   <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 flex items-center justify-center pointer-events-none">
                     <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/70 text-white text-xs font-semibold px-3 py-1.5 rounded-full flex items-center gap-1.5 pointer-events-none">
                       <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -285,7 +283,7 @@ const DeviceMockup = ({ project }) => {
         )}
       </motion.div>
 
-      {/* ✅ Self-contained Modal — click anywhere (including image) to close */}
+      {/* Modal */}
       <AnimatePresence>
         {modal.open && (
           <motion.div
@@ -296,10 +294,8 @@ const DeviceMockup = ({ project }) => {
             className="fixed inset-0 z-[9999] flex items-center justify-center p-4 cursor-pointer"
             onClick={closeModal}
           >
-            {/* Backdrop */}
             <div className="absolute inset-0 bg-black/90 backdrop-blur-sm" />
 
-            {/* ✅ Close button — top right, large & clearly visible */}
             <button
               onClick={closeModal}
               className="absolute top-5 right-5 z-20 w-12 h-12 bg-white/20 hover:bg-red-500 border-2 border-white/40 hover:border-red-400 rounded-full flex items-center justify-center text-white transition-all duration-200 hover:scale-110 shadow-lg hover:shadow-red-500/30"
@@ -310,7 +306,6 @@ const DeviceMockup = ({ project }) => {
               </svg>
             </button>
 
-            {/* Image container — clicking image also closes modal */}
             <motion.div
               initial={{ scale: 0.9, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
@@ -323,7 +318,6 @@ const DeviceMockup = ({ project }) => {
                 alt={modal.alt}
                 className="max-w-full max-h-[85vh] object-contain rounded-xl shadow-2xl transition-transform duration-300 group-hover:scale-[0.98]"
               />
-              {/* Hover overlay on image with close hint */}
               <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 rounded-xl flex items-center justify-center pointer-events-none">
                 <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/70 text-white text-sm font-semibold px-4 py-2 rounded-full flex items-center gap-2 shadow-lg">
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -334,7 +328,6 @@ const DeviceMockup = ({ project }) => {
               </div>
             </motion.div>
 
-            {/* ESC hint */}
             <div className="absolute bottom-5 left-1/2 -translate-x-1/2 z-20 text-white/60 text-sm font-medium" style={{ fontFamily: 'Albert Sans, sans-serif', fontWeight: 400 }}>
               Click anywhere or press ESC to close
             </div>
@@ -345,7 +338,7 @@ const DeviceMockup = ({ project }) => {
   );
 };
 
-// --- SSG: Pre-render all portfolio pages at build time ---
+// --- SSG ---
 export async function getStaticPaths() {
   const paths = projects.map((p) => ({ params: { slug: p.slug } }));
   return { paths, fallback: false };
@@ -377,12 +370,9 @@ export default function ProjectDetail({ project, currentIndex, prevProject: prev
   const imageContainerRef = useRef(null);
   const imageRef = useRef(null);
 
-  // ✅ Add ESC key support (closes any open modals via DeviceMockup's internal state)
   useEffect(() => {
     const handleEsc = (e) => {
-      if (e.key === 'Escape') {
-        // closes any open modals via the DeviceMockup's internal state
-      }
+      if (e.key === 'Escape') {}
     };
     window.addEventListener('keydown', handleEsc);
     return () => window.removeEventListener('keydown', handleEsc);
@@ -611,49 +601,57 @@ export default function ProjectDetail({ project, currentIndex, prevProject: prev
         <section className="bg-gray-50 dark:bg-gray-900 border-y border-gray-200 dark:border-gray-800">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
+
+              {/* CLIENT */}
               {project.client && (
-                <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }} className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-orange-100 dark:bg-orange-900/30 flex items-center justify-center">
+                <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }} className="flex items-center gap-3 min-w-0">
+                  <div className="w-10 h-10 rounded-full bg-orange-100 dark:bg-orange-900/30 flex items-center justify-center flex-shrink-0">
                     <User className="w-5 h-5 text-orange-600" />
                   </div>
-                  <div>
+                  <div className="min-w-0">
                     <p className="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wide font-medium">Client</p>
                     <p className="text-gray-900 dark:text-white font-semibold truncate" style={{ fontFamily: 'Albert Sans, sans-serif' }}>{project.client}</p>
                   </div>
                 </motion.div>
               )}
+
+              {/* LOCATION */}
               {project.clientCountry && (
-                <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 }} className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-orange-100 dark:bg-orange-900/30 flex items-center justify-center">
+                <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 }} className="flex items-center gap-3 min-w-0">
+                  <div className="w-10 h-10 rounded-full bg-orange-100 dark:bg-orange-900/30 flex items-center justify-center flex-shrink-0">
                     <MapPin className="w-5 h-5 text-orange-600" />
                   </div>
-                  <div>
+                  <div className="min-w-0">
                     <p className="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wide font-medium">Location</p>
-                    <p className="text-gray-900 dark:text-white font-semibold" style={{ fontFamily: 'Albert Sans, sans-serif' }}>{project.clientCountry}</p>
+                    <p className="text-gray-900 dark:text-white font-semibold truncate" style={{ fontFamily: 'Albert Sans, sans-serif' }}>{project.clientCountry}</p>
                   </div>
                 </motion.div>
               )}
+
+              {/* DURATION */}
               {project.duration && (
-                <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5 }} className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-orange-100 dark:bg-orange-900/30 flex items-center justify-center">
+                <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5 }} className="flex items-center gap-3 min-w-0">
+                  <div className="w-10 h-10 rounded-full bg-orange-100 dark:bg-orange-900/30 flex items-center justify-center flex-shrink-0">
                     <Clock className="w-5 h-5 text-orange-600" />
                   </div>
-                  <div>
+                  <div className="min-w-0">
                     <p className="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wide font-medium">Duration</p>
-                    <p className="text-gray-900 dark:text-white font-semibold" style={{ fontFamily: 'Albert Sans, sans-serif' }}>{project.duration}</p>
+                    <p className="text-gray-900 dark:text-white font-semibold truncate" style={{ fontFamily: 'Albert Sans, sans-serif' }}>{project.duration}</p>
                   </div>
                 </motion.div>
               )}
-              <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.6 }} className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-orange-100 dark:bg-orange-900/30 flex items-center justify-center">
+
+              {/* COMPLETED */}
+              <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.6 }} className="flex items-center gap-3 min-w-0">
+                <div className="w-10 h-10 rounded-full bg-orange-100 dark:bg-orange-900/30 flex items-center justify-center flex-shrink-0">
                   <Calendar className="w-5 h-5 text-orange-600" />
                 </div>
-                <div>
+                <div className="min-w-0">
                   <p className="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wide font-medium">Completed</p>
-                  <p className="text-gray-900 dark:text-white font-semibold" style={{ fontFamily: 'Albert Sans, sans-serif' }}>
+                  <p className="text-gray-900 dark:text-white font-semibold truncate" style={{ fontFamily: 'Albert Sans, sans-serif' }}>
                     {project.completionDate === "In Progress" ? (
                       <span className="inline-flex items-center gap-1">
-                        <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+                        <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4 flex-shrink-0" viewBox="0 0 24 24" fill="currentColor">
                           <path d="M6 2v6l4 4-4 4v6h12v-6l-4-4 4-4V2H6zm10 14.5V20H8v-3.5l4-4 4 4zm-4-5l-4-4V4h8v3.5l-4 4z"/>
                         </svg>
                         In Progress
@@ -662,6 +660,7 @@ export default function ProjectDetail({ project, currentIndex, prevProject: prev
                   </p>
                 </div>
               </motion.div>
+
             </div>
           </div>
         </section>
@@ -679,11 +678,10 @@ export default function ProjectDetail({ project, currentIndex, prevProject: prev
                 <Image src={project.image} alt={project.title} width={1000} height={600} className="w-full h-auto object-cover" priority />
               </motion.div>
 
-
-              {/* ✅ Device Mockup Section — Desktop + Mobile */}
+              {/* Device Mockup Section */}
               <DeviceMockup project={project} />
 
-              {/* ── YouTube Project Walkthrough ── */}
+              {/* YouTube Project Walkthrough */}
               <ProjectVideo project={project} />
 
               {/* Full Page Screenshot */}
@@ -851,7 +849,7 @@ export default function ProjectDetail({ project, currentIndex, prevProject: prev
                       <p className="font-semibold" style={{ fontFamily: 'Albert Sans, sans-serif' }}>
                         {project.completionDate === "In Progress" ? (
                           <span className="inline-flex items-center gap-1">
-                            <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+                            <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4 flex-shrink-0" viewBox="0 0 24 24" fill="currentColor">
                               <path d="M6 2v6l4 4-4 4v6h12v-6l-4-4 4-4V2H6zm10 14.5V20H8v-3.5l4-4 4 4zm-4-5l-4-4V4h8v3.5l-4 4z"/>
                             </svg>
                             In Progress
@@ -873,7 +871,7 @@ export default function ProjectDetail({ project, currentIndex, prevProject: prev
                 <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.6 }}
                   className="bg-gray-50 dark:bg-gray-900 rounded-2xl p-6 border border-gray-100 dark:border-gray-800">
                   <div className="flex items-center gap-3 mb-4">
-                    <div className="w-10 h-10 bg-orange-100 dark:bg-orange-900/30 rounded-full flex items-center justify-center">
+                    <div className="w-10 h-10 bg-orange-100 dark:bg-orange-900/30 rounded-full flex items-center justify-center flex-shrink-0">
                       <Star className="w-5 h-5 text-orange-600" />
                     </div>
                     <h3 className="text-lg font-bold text-gray-900 dark:text-white" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>
