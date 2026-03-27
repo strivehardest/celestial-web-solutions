@@ -559,10 +559,10 @@ We take privacy seriously and are committed to addressing your concerns promptly
               </p>
               
               <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-4">
-                <PremiumCTA href="/contact" size="large" variant="primary">
+                <PremiumCTA href="/contact" size="large" variant="light">
                   Contact Us
                 </PremiumCTA>
-                <PremiumCTA href="mailto:info@celestialwebsolutions.net" size="large" variant="primary">
+                <PremiumCTA href="mailto:info@celestialwebsolutions.net" size="large" variant="light">
                   <span>Email Us</span>
                 </PremiumCTA>
               </div>

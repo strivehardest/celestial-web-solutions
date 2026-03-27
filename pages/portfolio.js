@@ -279,6 +279,107 @@ export default function Portfolio() {
                 </Link>.
               </p>
 
+              {/* ── Review Badges — Full Width Strip ── */}
+              <section className="relative z-20 w-full max-w-4xl mx-auto mb-10">
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-px bg-white/10 rounded-2xl overflow-hidden border border-white/15 backdrop-blur-md shadow-xl shadow-black/20">
+                  {/* 1. Trustpilot */}
+                  <a
+                    href="https://www.trustpilot.com/review/celestialwebsolutions.net"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Celestial Web Solutions on Trustpilot"
+                    className="group flex flex-col items-center justify-center gap-1.5 bg-white/8 hover:bg-white/15 transition-all duration-300 py-4 px-3 text-center"
+                  >
+                    <div className="flex items-center gap-0.5">
+                      {[...Array(5)].map((_, i) => (
+                        <svg key={i} className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="#00B67A">
+                          <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                        </svg>
+                      ))}
+                    </div>
+                    <p className="text-white text-xs font-bold leading-none" style={{ fontFamily: 'Albert Sans, sans-serif' }}>
+                      <span className="text-[#00B67A]">Excellent</span> 4.9/5
+                    </p>
+                    <div className="flex items-center gap-1 mt-0.5">
+                      <svg viewBox="0 0 111 110" className="w-3 h-3" fill="#00B67A">
+                        <path d="M55.5 0L68.2 40.2H110.6L77.7 65.1L90.4 105.3L55.5 80.4L20.6 105.3L33.3 65.1L0.4 40.2H42.8Z"/>
+                      </svg>
+                      <span className="text-white/50 text-[10px] tracking-wide" style={{ fontFamily: 'Albert Sans, sans-serif' }}>Trustpilot</span>
+                    </div>
+                  </a>
+                  {/* 2. Google Reviews */}
+                  <a
+                    href="https://www.google.com/maps/place/Celestial+Web+Solutions/@5.883579,0.9829622,17z/data=!4m6!3m5!1s0x1021710073fe6fff:0x96453357ca880329!8m2!3d5.8836217!4d0.9828871!16s%2Fg%2F11lf36fzj1?entry=ttu&g_ep=EgoyMDI1MTEwMi4wIKXMDSoASAFQAw%3D%3D"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Celestial Web Solutions on Google Reviews"
+                    className="group flex flex-col items-center justify-center gap-1.5 bg-white/8 hover:bg-white/15 transition-all duration-300 py-4 px-3 text-center"
+                  >
+                    <svg className="w-5 h-5" viewBox="0 0 24 24">
+                      <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                      <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                      <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z"/>
+                      <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+                    </svg>
+                    <div className="flex items-center gap-0.5">
+                      {[...Array(5)].map((_, i) => (
+                        <svg key={i} className="w-3 h-3 text-yellow-400" viewBox="0 0 24 24" fill="currentColor">
+                          <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                        </svg>
+                      ))}
+                    </div>
+                    <p className="text-white text-xs font-bold leading-none" style={{ fontFamily: 'Albert Sans, sans-serif' }}>
+                      <span className="text-yellow-400">4.9</span> / 5 stars
+                    </p>
+                    <span className="text-white/50 text-[10px] tracking-wide" style={{ fontFamily: 'Albert Sans, sans-serif' }}>Google Reviews</span>
+                  </a>
+                  {/* 3. DesignRush */}
+                  <a
+                    href="https://www.designrush.com/agency/profile/celestial-web-solutions"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Celestial Web Solutions on DesignRush"
+                    className="group flex flex-col items-center justify-center gap-1.5 bg-white/8 hover:bg-white/15 transition-all duration-300 py-4 px-3 text-center"
+                  >
+                    <div className="w-10 h-10 flex items-center justify-center">
+                      <img src="/designrush.png" alt="DesignRush" className="w-9 h-9 object-contain" />
+                    </div>
+                    <div className="flex items-center gap-0.5">
+                      {[...Array(5)].map((_, i) => (
+                        <svg key={i} className="w-3 h-3 text-blue-400" viewBox="0 0 24 24" fill="currentColor">
+                          <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                        </svg>
+                      ))}
+                    </div>
+                    <p className="text-white text-xs font-bold leading-none" style={{ fontFamily: 'Albert Sans, sans-serif' }}>
+                      <span className="text-blue-400">Top Agency</span>
+                    </p>
+                    <span className="text-white/50 text-[10px] tracking-wide" style={{ fontFamily: 'Albert Sans, sans-serif' }}>DesignRush</span>
+                  </a>
+                  {/* 4. Clutch */}
+                  <a
+                    href="https://clutch.co/profile/celestial-web-solutions"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Celestial Web Solutions on Clutch"
+                    className="group flex flex-col items-center justify-center gap-1.5 bg-white/8 hover:bg-white/15 transition-all duration-300 py-4 px-3 text-center"
+                  >
+                    <div className="w-10 h-10 flex items-center justify-center">
+                      <img src="/clutch-logo.png" alt="Clutch" className="w-9 h-9 object-contain" />
+                    </div>
+                    <div className="flex items-center gap-0.5 opacity-40">
+                      {[...Array(5)].map((_, i) => (
+                        <svg key={i} className="w-3 h-3 text-red-400" viewBox="0 0 24 24" fill="currentColor">
+                          <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                        </svg>
+                      ))}
+                    </div>
+                    {/* Hide rating text since no reviews yet */}
+                    <span className="text-white/50 text-[10px] tracking-wide" style={{ fontFamily: 'Albert Sans, sans-serif' }}>Clutch</span>
+                  </a>
+                </div>
+              </section>
+
               <div className="flex flex-wrap gap-4">
                 <GlassButton href="/contact" variant="light">Start Your Project</GlassButton>
                 <GlassButton href="/web-design-company-in-ghana" variant="light">Our Services</GlassButton>

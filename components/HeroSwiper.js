@@ -67,7 +67,7 @@ const heroSlides = [
     tag: 'REAL ESTATE, WEB APPLICATION',
     title: 'Valyd Homes\nPlatform',
     description: 'A modern real estate web app we engineered for seamless property discovery — responsive, fast, and user-first.',
-    caseStudyLink: '/portfolio/valyd',
+    caseStudyLink: '/portfolio/valyd-homes',
     caseStudyLabel: 'VIEW PROJECT',
     ctaLink: '/contact',
     ctaLabel: 'START YOUR PROJECT',

@@ -247,7 +247,7 @@ const portfolioItems = [
     category: "Real Estate",
     description: "A real estate company website showcasing properties and services.",
     tech: ["Next.js", "Tailwind CSS", "Framer Motion", "React"],
-    link: "/portfolio/valyd",
+    link: "/portfolio/valyd-homes",
     image: "/portfolio/desktop/valyd.webp",
     accent: "#ec4899"
   },
@@ -422,14 +422,14 @@ const IndexPage = () => {
       <SEOHead />
       <div className="min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300">
 
-        {/* ── HERO SECTION — Kava-style Swiper Slider ── */}
-        <div className="min-h-[320px] w-full">
-          <HeroSwiper />
-        </div>
-
         {/* ── Hero Text Section ── */}
-        <section className="relative py-16 sm:py-20 bg-white dark:bg-gray-900 overflow-hidden min-h-[520px]">
-          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <section className="relative py-16 sm:py-24 overflow-hidden min-h-[620px]">
+          {/* Static background image from public folder */}
+          <div className="absolute inset-0 w-full h-full">
+            <img src="/hero-bg.jpg" alt="Hero Background" className="w-full h-full object-cover object-center" style={{zIndex:0}} />
+            <div className="absolute inset-0 bg-black/70" style={{zIndex:1}} />
+          </div>
+          <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8" style={{zIndex:2}}>
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -438,7 +438,7 @@ const IndexPage = () => {
               className="text-center"
             >
               <motion.div
-                className="inline-flex items-center space-x-2 bg-orange-100 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400 px-4 py-2 rounded-full mb-6 text-xs sm:text-sm font-semibold"
+                className="inline-flex items-center space-x-2 bg-orange-500/90 text-white px-4 py-2 rounded-full mb-6 text-xs sm:text-sm font-bold shadow-lg"
                 style={{ fontFamily: 'Albert Sans, sans-serif' }}
                 initial={{ opacity: 0, scale: 0.8 }}
                 whileInView={{ opacity: 1, scale: 1 }}
@@ -451,29 +451,160 @@ const IndexPage = () => {
               </motion.div>
 
               <h1
-                className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-gray-900 dark:text-white leading-tight"
+                className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold mb-6 text-white drop-shadow-lg leading-tight"
                 style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}
               >
                 Best Web Design Company in Ghana
               </h1>
 
               <p
-                className="text-base sm:text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed mb-8"
+                className="text-base sm:text-lg md:text-xl text-white/90 max-w-3xl mx-auto leading-relaxed mb-8 drop-shadow-md"
                 style={{ fontFamily: 'Albert Sans, sans-serif' }}
               >
-                From concept to deployment, we build scalable web applications that drive business growth. Let&rsquo;s turn your vision into digital reality.{' '}
-                <Link href="/best-web-designer-in-accra" className="text-orange-500 hover:text-orange-600 underline underline-offset-4 font-semibold">
+                From concept to deployment, we build scalable web applications that drive business growth. Let&rsquo;s turn your vision into digital reality. Looking for Best Web Designer in Accra? {' '}
+                <Link href="/best-web-designer-in-accra" className="text-orange-300 hover:text-orange-400 underline underline-offset-4 font-semibold">
                   See our Accra page.
                 </Link>
               </p>
 
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                 <GlassButton href="/contact" variant="solid">Let&rsquo;s Build Together</GlassButton>
-                <GlassButton href="/portfolio" variant="orange">View Our Work</GlassButton>
+                <GlassButton href="/portfolio" variant="light">View Our Work</GlassButton>
               </div>
+
+              {/* ── Review Badges — Full Width Strip ── */}
+              <motion.div
+                className="mt-10 w-full max-w-4xl mx-auto"
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.5, duration: 0.6 }}
+              >
+                {/* Thin top rule */}
+                <div className="w-full h-px bg-white/15 mb-5" />
+
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-px bg-white/10 rounded-2xl overflow-hidden border border-white/15 backdrop-blur-md shadow-xl shadow-black/20">
+
+                  {/* ── 1. Trustpilot ── */}
+                  <a
+                    href="https://www.trustpilot.com/review/celestialwebsolutions.net"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Celestial Web Solutions on Trustpilot"
+                    className="group flex flex-col items-center justify-center gap-1.5 bg-white/8 hover:bg-white/15 transition-all duration-300 py-4 px-3 text-center"
+                  >
+                    {/* Trustpilot stars */}
+                    <div className="flex items-center gap-0.5">
+                      {[...Array(5)].map((_, i) => (
+                        <svg key={i} className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="#00B67A">
+                          <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                        </svg>
+                      ))}
+                    </div>
+                    <p className="text-white text-xs font-bold leading-none" style={{ fontFamily: 'Albert Sans, sans-serif' }}>
+                      <span className="text-[#00B67A]">Excellent</span> 4.9/5
+                    </p>
+                    {/* Trustpilot wordmark */}
+                    <div className="flex items-center gap-1 mt-0.5">
+                      <svg viewBox="0 0 111 110" className="w-3 h-3" fill="#00B67A">
+                        <path d="M55.5 0L68.2 40.2H110.6L77.7 65.1L90.4 105.3L55.5 80.4L20.6 105.3L33.3 65.1L0.4 40.2H42.8Z"/>
+                      </svg>
+                      <span className="text-white/50 text-[10px] tracking-wide" style={{ fontFamily: 'Albert Sans, sans-serif' }}>Trustpilot</span>
+                    </div>
+                  </a>
+
+                  {/* ── 2. Google Reviews ── */}
+                  <a
+                    href="https://www.google.com/maps/place/Celestial+Web+Solutions/@5.883579,0.9829622,17z/data=!4m6!3m5!1s0x1021710073fe6fff:0x96453357ca880329!8m2!3d5.8836217!4d0.9828871!16s%2Fg%2F11lf36fzj1?entry=ttu&g_ep=EgoyMDI1MTEwMi4wIKXMDSoASAFQAw%3D%3D"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Celestial Web Solutions on Google Reviews"
+                    className="group flex flex-col items-center justify-center gap-1.5 bg-white/8 hover:bg-white/15 transition-all duration-300 py-4 px-3 text-center"
+                  >
+                    {/* Google G */}
+                    <svg className="w-5 h-5" viewBox="0 0 24 24">
+                      <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                      <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                      <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z"/>
+                      <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+                    </svg>
+                    {/* Yellow stars */}
+                    <div className="flex items-center gap-0.5">
+                      {[...Array(5)].map((_, i) => (
+                        <svg key={i} className="w-3 h-3 text-yellow-400" viewBox="0 0 24 24" fill="currentColor">
+                          <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                        </svg>
+                      ))}
+                    </div>
+                    <p className="text-white text-xs font-bold leading-none" style={{ fontFamily: 'Albert Sans, sans-serif' }}>
+                      <span className="text-yellow-400">4.9</span> / 5 stars
+                    </p>
+                    <span className="text-white/50 text-[10px] tracking-wide" style={{ fontFamily: 'Albert Sans, sans-serif' }}>Google Reviews</span>
+                  </a>
+
+                  {/* ── 3. DesignRush ── */}
+                  <a
+                    href="https://www.designrush.com/agency/profile/celestial-web-solutions"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Celestial Web Solutions on DesignRush"
+                    className="group flex flex-col items-center justify-center gap-1.5 bg-white/8 hover:bg-white/15 transition-all duration-300 py-4 px-3 text-center"
+                  >
+                    {/* DesignRush logo */}
+                    <div className="w-12 h-12 flex items-center justify-center">
+                      <img src="/designrush.png" alt="DesignRush" className="w-24 h-24 object-contain" />
+                    </div>
+                    {/* Stars */}
+                    <div className="flex items-center gap-0.5">
+                      {[...Array(5)].map((_, i) => (
+                        <svg key={i} className="w-3 h-3 text-blue-400" viewBox="0 0 24 24" fill="currentColor">
+                          <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                        </svg>
+                      ))}
+                    </div>
+                    <p className="text-white text-xs font-bold leading-none" style={{ fontFamily: 'Albert Sans, sans-serif' }}>
+                      <span className="text-blue-400">Top Agency</span>
+                    </p>
+                    <span className="text-white/50 text-[10px] tracking-wide" style={{ fontFamily: 'Albert Sans, sans-serif' }}>DesignRush</span>
+                  </a>
+
+                  {/* ── 4. Clutch ── */}
+                  <a
+                    href="https://clutch.co/profile/celestial-web-solutions"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Celestial Web Solutions on Clutch"
+                    className="group flex flex-col items-center justify-center gap-1.5 bg-white/8 hover:bg-white/15 transition-all duration-300 py-4 px-3 text-center"
+                  >
+                    {/* Clutch logo */}
+                    <div className="w-12 h-12 flex items-center justify-center">
+                      <img src="/clutch-logo.png" alt="Clutch" className="w-24 h-24 object-contain" />
+                    </div>
+                    {/* Stars (hidden for Clutch since no reviews) */}
+                    <div className="flex items-center gap-0.5 opacity-40">
+                      {[...Array(5)].map((_, i) => (
+                        <svg key={i} className="w-3 h-3 text-red-400" viewBox="0 0 24 24" fill="currentColor">
+                          <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                        </svg>
+                      ))}
+                    </div>
+                    {/* Hide rating text since no reviews yet */}
+                    <span className="text-white/50 text-[10px] tracking-wide" style={{ fontFamily: 'Albert Sans, sans-serif' }}> Review on Clutch</span>
+                  </a>
+
+                </div>
+
+                {/* Thin bottom rule */}
+                <div className="w-full h-px bg-white/15 mt-5" />
+              </motion.div>
             </motion.div>
           </div>
         </section>
+
+        {/* ── HERO SECTION — Kava-style Swiper Slider ── */}
+        <div className="min-h-[320px] w-full">
+          <HeroSwiper />
+        </div>
 
         {/* Company Intro Section */}
         <section className="py-8 bg-white dark:bg-gray-900">
