@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://celestialwebsolutions.net/sitemap.xml
+Sitemap: https://www.celestialwebsolutions.net/sitemap.xml
