@@ -2,7 +2,7 @@ import { blogArticles } from '../blog.js';
 import projects from '../../data/projects.js';
 import { courses } from '../../data/courses.js';
 
-const BASE_URL = 'https://celestialwebsolutions.net';
+const BASE_URL = 'https://www.celestialwebsolutions.net';
 const TODAY = new Date().toISOString().split('T')[0];
 
 function getDate(dateString) {
@@ -109,7 +109,7 @@ ${allUrls
 </urlset>`;
 
   res.setHeader('Content-Type', 'application/xml');
-  res.setHeader('Cache-Control', 'public, max-age=3600, s-maxage=3600'); // Cache for 1 hour
+  res.setHeader('Cache-Control', 'public, max-age=3600, s-maxage=3600');
   res.write(sitemap);
   res.end();
 }
