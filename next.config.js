@@ -7,7 +7,7 @@ const withPWA = require('next-pwa')({
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  trailingSlash: false, // Ensure consistent URLs without trailing slashes
+  trailingSlash: false,
   async rewrites() {
     return [
       {
@@ -18,11 +18,6 @@ const nextConfig = {
   },
   async redirects() {
     return [
-      {
-        source: '/api/sitemap',
-        destination: '/sitemap.xml',
-        permanent: true,
-      },
       {
         source: '/web-design-company-in-ghana/web-development',
         destination: '/web-design-company-in-ghana/web-development-company-in-ghana',
@@ -38,7 +33,15 @@ const nextConfig = {
   async headers() {
     return [
       {
-        // Cache all static assets in /public for 1 year
+        source: '/(.*)',
+        headers: [
+          {
+            key: 'Content-Security-Policy',
+            value: "frame-src 'self' https://www.youtube.com;",
+          },
+        ],
+      },
+      {
         source: '/(images|fonts|portfolio|png)/(.*)',
         headers: [
           {
@@ -48,7 +51,6 @@ const nextConfig = {
         ],
       },
       {
-        // Cache SVG tech icons for 1 year
         source: '/images/tech/:path*',
         headers: [
           {
@@ -70,12 +72,12 @@ const nextConfig = {
       {
         protocol: 'https',
         hostname: 'images.seeklogo.com',
-        pathname: '/**'
+        pathname: '/**',
       },
       {
         protocol: 'https',
         hostname: 'seeklogo.com',
-        pathname: '/**'
+        pathname: '/**',
       },
       {
         protocol: 'https',
@@ -110,6 +112,11 @@ const nextConfig = {
       {
         protocol: 'https',
         hostname: 'cdn.worldvectorlogo.com',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'img.youtube.com',
         pathname: '/**',
       },
     ],
