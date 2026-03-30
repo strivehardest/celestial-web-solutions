@@ -396,10 +396,10 @@ We take privacy seriously and are committed to addressing your concerns promptly
           content="Read our privacy policy to understand how we protect and manage your personal information."
         />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://celestialwebsolutions.net/privacy" />
+        <meta property="og:url" content="https://www.celestialwebsolutions.net/privacy" />
 
         {/* Canonical URL */}
-        <link rel="canonical" href="https://celestialwebsolutions.net/privacy" />
+        <link rel="canonical" href="https://www.celestialwebsolutions.net/privacy" />
       </Head>
 
       <div className="min-h-screen bg-white dark:bg-gray-900">

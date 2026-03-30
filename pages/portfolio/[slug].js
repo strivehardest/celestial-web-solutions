@@ -444,7 +444,7 @@ export default function ProjectDetail({ project, currentIndex, prevProject: prev
     );
   }
 
-  const currentUrl = `https://celestialwebsolutions.net/portfolio/${project.slug}`;
+  const currentUrl = `https://www.celestialwebsolutions.net/portfolio/${project.slug}`;
 
   return (
     <>
@@ -477,8 +477,8 @@ export default function ProjectDetail({ project, currentIndex, prevProject: prev
             "name": project.title, "description": project.description,
             "image": project.image, "url": currentUrl,
             "datePublished": project.completionDate !== "In Progress" ? project.completionDate : project.startDate,
-            "creator": { "@type": "Organization", "name": "Celestial Web Solutions", "url": "https://celestialwebsolutions.net" },
-            "publisher": { "@type": "Organization", "name": "Celestial Web Solutions", "logo": { "@type": "ImageObject", "url": "https://celestialwebsolutions.net/logo.png" } },
+            "creator": { "@type": "Organization", "name": "Celestial Web Solutions", "url": "https://www.celestialwebsolutions.net" },
+            "publisher": { "@type": "Organization", "name": "Celestial Web Solutions", "logo": { "@type": "ImageObject", "url": "https://www.celestialwebsolutions.net/logo.png" } },
             "category": project.category || "Web Development",
             "keywords": project.tech ? project.tech.join(", ") : "",
             ...(project.client && { "client": project.client }),
@@ -489,8 +489,8 @@ export default function ProjectDetail({ project, currentIndex, prevProject: prev
           __html: JSON.stringify({
             "@context": "https://schema.org", "@type": "BreadcrumbList",
             "itemListElement": [
-              { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://celestialwebsolutions.net" },
-              { "@type": "ListItem", "position": 2, "name": "Portfolio", "item": "https://celestialwebsolutions.net/portfolio" },
+              { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.celestialwebsolutions.net" },
+              { "@type": "ListItem", "position": 2, "name": "Portfolio", "item": "https://www.celestialwebsolutions.net/portfolio" },
               { "@type": "ListItem", "position": 3, "name": project.title, "item": currentUrl }
             ]
           })

@@ -456,9 +456,9 @@ export default function BlogPage() {
         <meta property="og:title" content="Blog | Celestial Web Solutions" />
         <meta property="og:description" content="Expert insights on web design, SEO, digital marketing, and technology trends from Ghana's leading web agency." />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://celestialwebsolutions.net/blog" />
+        <meta property="og:url" content="https://www.celestialwebsolutions.net/blog" />
         <meta name="twitter:card" content="summary_large_image" />
-        <link rel="canonical" href="https://celestialwebsolutions.net/blog" />
+        <link rel="canonical" href="https://www.celestialwebsolutions.net/blog" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -467,11 +467,11 @@ export default function BlogPage() {
               "@type": "CollectionPage",
               "name": "Blog - Celestial Web Solutions",
               "description": "Expert insights on web design, SEO, digital marketing, and technology trends from Ghana's leading web agency.",
-              "url": "https://celestialwebsolutions.net/blog",
+              "url": "https://www.celestialwebsolutions.net/blog",
               "publisher": {
                 "@type": "Organization",
                 "name": "Celestial Web Solutions",
-                "logo": { "@type": "ImageObject", "url": "https://celestialwebsolutions.net/logo.png" }
+                "logo": { "@type": "ImageObject", "url": "https://www.celestialwebsolutions.net/logo.png" }
               }
             })
           }}

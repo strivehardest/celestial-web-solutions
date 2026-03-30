@@ -235,7 +235,7 @@ export default function Portfolio() {
         <title>Portfolio | Celestial Web Solutions - Our Recent Projects</title>
         <meta name="description" content="Explore our portfolio of successful web development projects. See how we've helped businesses, NGOs, churches, educational institutions and more grow with custom websites, e-commerce solutions, and digital platforms." />
         <meta name="keywords" content="best web designer in accra and ghana, web development portfolio, website projects, e-commerce websites, Ghana web projects, Celestial Web Solutions work, NGO websites, church websites, educational websites, best web designer in accra" />
-        <link rel="canonical" href="https://celestialwebsolutions.net/portfolio" />
+        <link rel="canonical" href="https://www.celestialwebsolutions.net/portfolio" />
       </Head>
 
       <div className="min-h-screen bg-white dark:bg-gray-900">

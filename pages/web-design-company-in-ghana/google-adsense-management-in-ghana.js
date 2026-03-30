@@ -69,10 +69,10 @@ export default function GoogleAdsenseManagementServicePage() {
         <meta name="author" content="Celestial Web Solutions" />
         <meta name="robots" content="index, follow" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="canonical" href={`https://celestialwebsolutions.net/web-design-company-in-ghana/google-adsense-management-in-ghana`} />
+        <link rel="canonical" href={`https://www.celestialwebsolutions.net/web-design-company-in-ghana/google-adsense-management-in-ghana`} />
         {/* Open Graph / Facebook */}
         <meta property="og:type" content="website" />
-        <meta property="og:url" content={`https://celestialwebsolutions.net/web-design-company-in-ghana/google-adsense-management-in-ghana`} />
+        <meta property="og:url" content={`https://www.celestialwebsolutions.net/web-design-company-in-ghana/google-adsense-management-in-ghana`} />
         <meta property="og:title" content={`${service.title} | Celestial Web Solutions`} />
         <meta property="og:description" content={service.description} />
         <meta property="og:image" content={service.heroImage} />

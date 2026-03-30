@@ -180,7 +180,7 @@ export default function AboutUs() {
         <meta property="og:title" content="About Celestial Web Solutions | Web Design Company in Ghana"/>
         <meta property="og:description" content="Learn more about Celestial Web Solutions, a professional web design and development company in Ghana committed to helping businesses grow online." />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://celestialwebsolutions.net/about" />
+        <meta property="og:url" content="https://www.celestialwebsolutions.net/about" />
         <meta property="og:locale" content="en_GH" />
         
         {/* Twitter Card */}
@@ -188,7 +188,7 @@ export default function AboutUs() {
         <meta name="twitter:title" content="About Celestial Web Solutions | Web Design Company in Ghana" />
         <meta name="twitter:description" content="Learn more about Celestial Web Solutions, a professional web design and development company in Ghana committed to helping businesses grow online." />
         
-        <link rel="canonical" href="https://celestialwebsolutions.net/about" />
+        <link rel="canonical" href="https://www.celestialwebsolutions.net/about" />
       </Head>
 
       {/* Hero Section - Full Background Image Like Services Page */}
@@ -359,7 +359,7 @@ export default function AboutUs() {
                   className="inline-block text-orange-500 font-semibold text-sm tracking-wider uppercase mb-4"
                   style={{ fontFamily: "Albert Sans, sans-serif" }}
                 >
-                  About Celestial
+                  About Celestial Web Solutions
                 </motion.span>
                 
                 <h2

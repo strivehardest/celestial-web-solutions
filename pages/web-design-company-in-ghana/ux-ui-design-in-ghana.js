@@ -72,10 +72,10 @@ export default function UXUIDesignServicePage() {
         <meta name="author" content="Celestial Web Solutions" />
         <meta name="robots" content="index, follow" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="canonical" href={`https://celestialwebsolutions.net/web-design-company-in-ghana/ux-ui-design-in-ghana`} />
+        <link rel="canonical" href={`https://www.celestialwebsolutions.net/web-design-company-in-ghana/ux-ui-design-in-ghana`} />
         {/* Open Graph / Facebook */}
         <meta property="og:type" content="website" />
-        <meta property="og:url" content={`https://celestialwebsolutions.net/web-design-company-in-ghana/ux-ui-design-in-ghana`} />
+        <meta property="og:url" content={`https://www.celestialwebsolutions.net/web-design-company-in-ghana/ux-ui-design-in-ghana`} />
         <meta property="og:title" content={`${service.title} | Celestial Web Solutions`} />
         <meta property="og:description" content={service.description} />
         <meta property="og:image" content={service.heroImage} />
@@ -97,12 +97,12 @@ export default function UXUIDesignServicePage() {
               "provider": {
                 "@type": "Organization",
                 "name": "Celestial Web Solutions",
-                "url": "https://celestialwebsolutions.net"
+                "url": "https://www.celestialwebsolutions.net"
               },
               "areaServed": "Ghana",
               "image": service.heroImage,
               "keywords": service.keywords.join(', '),
-              "url": `https://celestialwebsolutions.net/web-design-company-in-ghana/ux-ui-design-in-ghana`
+              "url": `https://www.celestialwebsolutions.net/web-design-company-in-ghana/ux-ui-design-in-ghana`
             })
           }}
         />

@@ -74,7 +74,7 @@ export default function Courses() {
         <title>Online Tech Courses - Learn WordPress, Next.js & Web Design | Celestial Web Solutions</title>
         <meta name="description" content="Learn web development and design with our comprehensive online courses. Master WordPress, Next.js, and modern web design techniques." />
         <meta name="keywords" content="online courses, web development courses, WordPress course, Next.js course, web design course, Ghana" />
-        <link rel="canonical" href="https://celestialwebsolutions.net/courses" />
+        <link rel="canonical" href="https://www.celestialwebsolutions.net/courses" />
       </Head>
 
       <div className="min-h-screen bg-white dark:bg-gray-900">

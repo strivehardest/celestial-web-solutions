@@ -63,16 +63,16 @@ const SEOHead = () => {
       <meta property="og:title" content="Best Web Design Company in Ghana | Celestial Web Solutions"/>
       <meta property="og:description" content="Celestial Web Solutions is a leading web design company in Ghana providing professional website design, web development, e-commerce solutions, and SEO services for businesses." />
       <meta property="og:type" content="website" />
-      <meta property="og:url" content="https://celestialwebsolutions.net" />
-      <meta property="og:image" content="https://celestialwebsolutions.net/og-image.jpg" />
+      <meta property="og:url" content="https://www.celestialwebsolutions.net" />
+      <meta property="og:image" content="https://www.celestialwebsolutions.net/og-image.jpg" />
       <meta property="og:site_name" content="Celestial Web Solutions" />
       <meta property="og:locale" content="en_GH" />
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content="Best Web Design Company in Ghana | Celestial Web Solutions" />
       <meta name="twitter:description" content="Celestial Web Solutions is a leading web design company in Ghana providing professional website design, web development, e-commerce solutions, and SEO services for businesses." />
-      <meta name="twitter:image" content="https://celestialwebsolutions.net/twitter-image.jpg" />
+      <meta name="twitter:image" content="https://www.celestialwebsolutions.net/twitter-image.jpg" />
       <meta name="theme-color" content="#FF6B00" />
-      <link rel="canonical" href="https://celestialwebsolutions.net" />
+      <link rel="canonical" href="https://www.celestialwebsolutions.net" />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -81,7 +81,7 @@ const SEOHead = () => {
             "@type": "WebDesignCompany",
             "name": "Celestial Web Solutions",
             "description": "Celestial Web Solutions is a leading web design company in Ghana providing professional website design, web development, e-commerce solutions, and SEO services for businesses.",
-            "url": "https://celestialwebsolutions.net",
+            "url": "https://www.celestialwebsolutions.net",
             "telephone": "+233-530-505-031",
             "email": "info@celestialwebsolutions.net",
             "areaServed": ["Accra", "Keta", "Ghana", "West Africa"],

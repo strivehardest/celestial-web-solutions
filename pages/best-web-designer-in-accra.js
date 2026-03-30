@@ -58,16 +58,98 @@ const portfolioHighlights = [
     category: 'Architecture & Design',
     description: 'Professional services website showcasing architectural and design expertise.',
     image: '/png/projects/buildingplanner.png',
-    slug: 'best-web-designer-in-accra'
+    slug: 'building-planner-designs'
   }
 ];
 
-// ─── Navbar height token ─────────────────────────────────────────────────────
-// Adjust this if your navbar height changes. Used for both the hero top-padding
-// (mobile/tablet) and the desktop "flex items-center" centering behaviour.
-// Desktop: navbar is likely fixed at ~80px; mobile: ~72px.
-const NAV_H_MOBILE = 72;  // px  — used in inline style for safety
-const NAV_H_DESKTOP = 80; // px
+const NAV_H_MOBILE = 72;
+const NAV_H_DESKTOP = 80;
+
+// ─── Structured Data ─────────────────────────────────────────────────────────
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How much does web design cost in Accra?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Most projects start from GHS 4,500 for a lean business site. E-commerce builds typically range from GHS 8,500–16,500 depending on catalog size, integrations, and custom features. You'll get a clear quote after a quick call."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How long does it take to build a website in Accra?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A focused business site usually launches in 2–4 weeks. E-commerce projects run 3–6 weeks depending on product setup, payments, and content readiness. We share a clear timeline on day one."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you offer SEO services in Accra?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Every build includes on-page SEO, fast performance, mobile optimization, and basic schema. We can add local SEO, blog setup, and content guidance to help you rank in Accra and beyond."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you work with small businesses in Accra?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Absolutely. We support founders, SMEs, and growing teams with right-sized packages — clear pricing, fast launches, and ongoing support to keep you online and converting."
+      }
+    }
+  ]
+};
+
+const localBusinessSchema = {
+  "@context": "https://www.schema.org",
+  "@type": "ProfessionalService",
+  "name": "Celestial Web Solutions",
+  "url": "https://www.celestialwebsolutions.net",
+  "logo": "https://www.celestialwebsolutions.net/logo-white.webp",
+  "image": "https://www.celestialwebsolutions.net/logo-white.webp",
+  "description": "Celestial Web Solutions is the best web design company in Accra, Ghana. We build fast, SEO-optimized websites for SMEs, NGOs, e-commerce, and churches.",
+  "telephone": "+233530505031",
+  "whatsapp" : "+233245709341",
+  "email": "info@celestialwebsolutions.net",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Accra",
+    "addressLocality": "Accra",
+    "addressRegion": "Greater Accra",
+    "addressCountry": "GH"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 5.6679307,
+    "longitude": -0.1661991
+  },
+  "areaServed": [
+    { "@type": "City", "name": "Accra" },
+    { "@type": "City", "name": "Tema" },
+    { "@type": "City", "name": "Madina" },
+    { "@type": "State", "name": "Greater Accra" },
+    { "@type": "Country", "name": "Ghana" }
+  ],
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.9",
+    "reviewCount": "21",
+    "bestRating": "5"
+  },
+  "sameAs": [
+    "https://clutch.co/profile/celestial-web-solutions",
+    "https://www.designrush.com/agency/profile/celestial-web-solutions",
+    "https://themanifest.com/gh/web-design/agencies"
+  ],
+  "priceRange": "GHS 4,500 – GHS 28,000",
+  "openingHours": "Mo-Fr 08:00-18:00",
+  "hasMap": "https://www.google.com/maps/place/Celestial+Web+Solutions"
+};
 
 export default function BestWebDesignerInAccraPage() {
   return (
@@ -80,19 +162,26 @@ export default function BestWebDesignerInAccraPage() {
         />
         <link
           rel="canonical"
-          href="https://celestialwebsolutions.net/best-web-designer-in-accra"
+          href="https://www.celestialwebsolutions.net/best-web-designer-in-accra"
         />
         <meta name="keywords" content="best web designer in Accra, web design companies in accra, web design company in Ghana, SEO services in Ghana, e-commerce website Ghana, business website design Ghana, affordable web design Ghana" />
+
+        {/* FAQ Schema */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        />
+
+        {/* LocalBusiness Schema */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
+        />
       </Head>
 
       <main className="min-h-screen bg-white dark:bg-gray-900 text-gray-900 dark:text-white font-sans transition-colors duration-300">
 
         {/* ─── Hero Section ──────────────────────────────────────────────────── */}
-        {/*
-          h-screen  → fills the full viewport height (navbar is fixed on top of this)
-          min-h-[600px] → stops the hero from collapsing on very short screens
-          No max-h → lets it breathe on tall/large screens instead of clipping
-        */}
         <section className="relative w-full h-screen min-h-[600px] overflow-hidden">
           <Swiper
             modules={[EffectFade, Autoplay]}
@@ -108,32 +197,16 @@ export default function BestWebDesignerInAccraPage() {
           >
             {heroProjects.map((project, index) => (
               <SwiperSlide key={index}>
-                {/* Background gradient */}
                 <div className={`absolute inset-0 bg-gradient-to-br ${project.bgColor}`} />
                 <div className="absolute inset-0 bg-black/40" />
 
-                {/* Slide content wrapper */}
                 <div className="relative z-10 w-full h-full max-w-[1440px] mx-auto px-6 sm:px-8 lg:px-16">
                   <div className="flex flex-col lg:flex-row items-stretch h-full">
 
-                    {/* ── LEFT: Text Content ─────────────────────────────────
-                        Mobile / tablet: pad the top by the navbar height so text
-                        never slides under the fixed bar. Use an inline style for
-                        precision (Tailwind's arbitrary values can miss edge cases
-                        across the JIT cache between deploys).
-
-                        Desktop (lg+): the two-column flex layout centres the
-                        content naturally so no extra top offset is needed.
-                    ────────────────────────────────────────────────────────── */}
                     <div
                       className="w-full lg:w-[45%] flex flex-col justify-center z-20 pb-4 lg:pb-0"
-                      style={{
-                        paddingTop: `${NAV_H_MOBILE}px`,
-                      }}
+                      style={{ paddingTop: `${NAV_H_MOBILE}px` }}
                     >
-                      {/* On desktop override the inline padding via a className that
-                          wins due to specificity — we use a small utility trick:
-                          a wrapper div that resets pt to 0 on lg+ */}
                       <div className="lg:pt-0 lg:-mt-0 flex flex-col h-full justify-center">
 
                         <div className="inline-flex items-center gap-2 bg-orange-500/15 border border-orange-500/30 rounded-full px-4 py-2 w-fit mb-5">
@@ -209,11 +282,10 @@ export default function BestWebDesignerInAccraPage() {
                       </div>
                     </div>
 
-                    {/* ── RIGHT: Project Image (Desktop only) ───────────────── */}
+                    {/* Desktop image */}
                     <div className="hidden lg:block w-[55%] relative z-10">
                       <div className="absolute inset-0 flex items-center justify-center">
                         <div className="relative w-[90%] h-[78%] rounded-xl overflow-hidden shadow-2xl shadow-black/40 border border-white/10">
-                          {/* Mock browser chrome */}
                           <div className="bg-gray-900/95 backdrop-blur-sm px-4 py-2.5 flex items-center gap-1.5 border-b border-white/5 flex-shrink-0">
                             <span className="w-2.5 h-2.5 rounded-full bg-red-500" />
                             <span className="w-2.5 h-2.5 rounded-full bg-yellow-500" />
@@ -234,11 +306,7 @@ export default function BestWebDesignerInAccraPage() {
                       </div>
                     </div>
 
-                    {/* ── MOBILE: Project Image ─────────────────────────────
-                        Placed below text content. Uses flex-shrink-0 so it
-                        never collapses. Bottom padding keeps it clear of any
-                        scroll indicators / safe-area insets.
-                    ────────────────────────────────────────────────────────── */}
+                    {/* Mobile image */}
                     <div className="lg:hidden w-full px-3 flex-shrink-0 pb-6 mt-4">
                       <div className="relative w-full max-w-md mx-auto rounded-xl overflow-hidden shadow-2xl shadow-black/50 border border-white/15">
                         <div className="bg-gray-900 px-3 py-2 flex items-center gap-1.5 border-b border-white/10">
@@ -266,11 +334,11 @@ export default function BestWebDesignerInAccraPage() {
             ))}
           </Swiper>
         </section>
-        {/* ─── End Hero ──────────────────────────────────────────────────────── */}
 
         <div className="max-w-6xl mx-auto px-6 pt-16 pb-16 sm:pb-20 space-y-14">
-
           <section className="space-y-8">
+
+            {/* Highlights */}
             <div className="grid gap-4 sm:grid-cols-2">
               {highlights.map((item) => (
                 <div
@@ -282,6 +350,7 @@ export default function BestWebDesignerInAccraPage() {
               ))}
             </div>
 
+            {/* Why Trust Us */}
             <div className="rounded-3xl border border-gray-200 dark:border-white/10 bg-white/85 dark:bg-white/5 backdrop-blur p-8 shadow-xl shadow-orange-500/10 space-y-6">
               <div className="space-y-2">
                 <p className="text-sm uppercase tracking-[0.16em] text-orange-500 font-semibold" style={{ fontFamily: 'Albert Sans, sans-serif', fontWeight: 400 }}>Why choose us (proof)</p>
@@ -334,6 +403,7 @@ export default function BestWebDesignerInAccraPage() {
               </p>
             </div>
 
+            {/* Services */}
             <div className="rounded-3xl border border-gray-200 dark:border-white/10 bg-white/85 dark:bg-white/5 backdrop-blur p-8 shadow-xl shadow-orange-500/10 space-y-6">
               <div className="space-y-2">
                 <p className="text-sm uppercase tracking-[0.16em] text-orange-500 font-semibold" style={{ fontFamily: 'Albert Sans, sans-serif' }}>Local expertise</p>
@@ -363,6 +433,7 @@ export default function BestWebDesignerInAccraPage() {
               </div>
             </div>
 
+            {/* Portfolio */}
             <div className="rounded-3xl border border-gray-200 dark:border-white/10 bg-white/85 dark:bg-white/5 backdrop-blur p-8 shadow-xl shadow-orange-500/10 space-y-6">
               <div className="space-y-2">
                 <p className="text-sm uppercase tracking-[0.16em] text-orange-500 font-semibold" style={{ fontFamily: 'Albert Sans, sans-serif' }}>Portfolio</p>
@@ -413,14 +484,16 @@ export default function BestWebDesignerInAccraPage() {
               </div>
             </div>
 
+            {/* Testimonials */}
             <div className="rounded-3xl border border-gray-200 dark:border-white/10 bg-white/85 dark:bg-white/5 backdrop-blur p-8 shadow-xl shadow-orange-500/10 space-y-6">
               <TestimonialsSection />
             </div>
 
+            {/* FAQ */}
             <div className="rounded-3xl border border-gray-200 dark:border-white/10 bg-white/85 dark:bg-white/5 backdrop-blur p-8 shadow-xl shadow-orange-500/10 space-y-6">
               <div className="space-y-2">
                 <p className="text-sm uppercase tracking-[0.16em] text-orange-500 font-semibold" style={{ fontFamily: 'Albert Sans, sans-serif' }}>FAQs</p>
-                <h2 className="text-2xl sm:text-3xl font-display font-bold text-gray-900 dark:text-white">FAQs</h2>
+                <h2 className="text-2xl sm:text-3xl font-display font-bold text-gray-900 dark:text-white">Frequently Asked Questions</h2>
                 <p className="text-base text-gray-700 dark:text-gray-200 max-w-3xl" style={{ fontFamily: 'Albert Sans, sans-serif', fontWeight: 400 }}>
                   Quick answers to the most common questions from Accra clients.
                 </p>
@@ -430,19 +503,19 @@ export default function BestWebDesignerInAccraPage() {
                 {[
                   {
                     q: 'How much does web design cost in Accra?',
-                    a: 'Most projects start from GHS 4,000 for a lean business site. E-commerce builds typically range from GHS 6,500–12,000 depending on catalog size, integrations, and custom features. You\'ll get a clear quote after a quick call.'
+                    a: "Most projects start from GHS 4,500 for a lean business site. E-commerce builds typically range from GHS 8,500–16,500 depending on catalog size, integrations, and custom features. You'll get a clear quote after a quick call."
                   },
                   {
-                    q: 'How long does it take?',
+                    q: 'How long does it take to build a website in Accra?',
                     a: 'A focused business site usually launches in 2–4 weeks. E-commerce projects run 3–6 weeks depending on product setup, payments, and content readiness. We share a clear timeline on day one.'
                   },
                   {
-                    q: 'Do you offer SEO?',
+                    q: 'Do you offer SEO services in Accra?',
                     a: 'Yes. Every build includes on-page SEO, fast performance, mobile optimization, and basic schema. We can add local SEO, blog setup, and content guidance to help you rank in Accra and beyond.'
                   },
                   {
-                    q: 'Do you work with small businesses?',
-                    a: 'Absolutely. We support founders, SMEs, and growing teams with right-sized packages—clear pricing, fast launches, and ongoing support to keep you online and converting.'
+                    q: 'Do you work with small businesses in Accra?',
+                    a: "Absolutely. We support founders, SMEs, and growing teams with right-sized packages — clear pricing, fast launches, and ongoing support to keep you online and converting."
                   },
                 ].map(({ q, a }) => (
                   <div key={q} className="rounded-2xl border border-gray-200 dark:border-white/10 bg-white/80 dark:bg-white/5 p-5">
@@ -453,6 +526,7 @@ export default function BestWebDesignerInAccraPage() {
               </div>
             </div>
 
+            {/* Map + Local Area */}
             <div className="rounded-3xl border border-gray-200 dark:border-white/10 bg-white/85 dark:bg-white/5 backdrop-blur p-8 shadow-xl shadow-orange-500/10 space-y-6 overflow-hidden">
               <div className="space-y-2">
                 <p className="text-sm uppercase tracking-[0.16em] text-orange-500 font-semibold" style={{ fontFamily: 'Albert Sans, sans-serif' }}>Local Expertise</p>
@@ -480,7 +554,7 @@ export default function BestWebDesignerInAccraPage() {
                   <p className="text-sm uppercase tracking-[0.16em] text-orange-500 font-semibold" style={{ fontFamily: 'Albert Sans, sans-serif' }}>Resources</p>
                   <h2 className="text-2xl sm:text-3xl font-display font-bold text-gray-900 dark:text-white">Related Articles</h2>
                   <p className="text-base text-gray-700 dark:text-gray-200 max-w-3xl" style={{ fontFamily: 'Albert Sans, sans-serif', fontWeight: 400 }}>
-                    Learn more about web design, e-commerce, and growing your online business.
+                    Learn more about web design, e-commerce, and growing your online business in Ghana.
                   </p>
                 </div>
 
@@ -498,7 +572,7 @@ export default function BestWebDesignerInAccraPage() {
                         <p className="text-xs text-orange-600 dark:text-orange-400 font-semibold uppercase tracking-wide mb-2" style={{ fontFamily: 'Albert Sans, sans-serif' }}>Web Design</p>
                         <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>Web Design Prices in Ghana (2026)</h3>
                         <p className="text-sm text-gray-700 dark:text-gray-300 flex-grow" style={{ fontFamily: 'Albert Sans, sans-serif', fontWeight: 400 }}>
-                          We ranked and reviewed the top 12 agencies based on portfolio quality, client reviews, SEO expertise, and industry recognition.
+                          A complete, honest breakdown of how much a website costs in Ghana in 2026 — by project type, features, and complexity.
                         </p>
                         <div className="mt-4 flex items-center gap-2 text-orange-600 dark:text-orange-400 font-semibold text-sm">Read More →</div>
                       </div>
@@ -518,7 +592,7 @@ export default function BestWebDesignerInAccraPage() {
                         <p className="text-xs text-orange-600 dark:text-orange-400 font-semibold uppercase tracking-wide mb-2" style={{ fontFamily: 'Albert Sans, sans-serif' }}>Business</p>
                         <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>Why Every Business Needs a Website in Ghana 2026</h3>
                         <p className="text-sm text-gray-700 dark:text-gray-300 flex-grow" style={{ fontFamily: 'Albert Sans, sans-serif', fontWeight: 400 }}>
-                          Discover why having a professional website is crucial for every business in Ghana in 2026.
+                          Discover why having a professional website is crucial for every business in Ghana in 2026 and what you're losing without one.
                         </p>
                         <div className="mt-4 flex items-center gap-2 text-orange-600 dark:text-orange-400 font-semibold text-sm">Read More →</div>
                       </div>
@@ -540,10 +614,11 @@ export default function BestWebDesignerInAccraPage() {
                 </div>
               </div>
 
+              {/* Final CTA */}
               <div className="rounded-2xl border border-gray-200 dark:border-white/10 bg-gradient-to-r from-orange-50 to-orange-100 dark:from-orange-950/20 dark:to-orange-900/20 p-8 text-center space-y-4">
-                <h3 className="text-2xl font-display font-bold text-gray-900 dark:text-white">Ready to Launch Your Web Presence?</h3>
+                <h3 className="text-2xl font-display font-bold text-gray-900 dark:text-white">Ready to Launch Your Web Presence in Accra?</h3>
                 <p className="text-base text-gray-700 dark:text-gray-200 max-w-2xl mx-auto" style={{ fontFamily: 'Albert Sans, sans-serif', fontWeight: 400 }}>
-                  Join hundreds of Accra-based businesses that have transformed their online presence with our web design services.
+                  Join businesses across Accra and Greater Accra that have transformed their online presence with our web design services.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
                   <Link
@@ -567,6 +642,7 @@ export default function BestWebDesignerInAccraPage() {
                   </a>
                 </div>
               </div>
+
             </div>
           </section>
         </div>

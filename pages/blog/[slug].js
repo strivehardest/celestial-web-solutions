@@ -139,7 +139,7 @@ const blogArticles = {
         </ol>
         <p>Celestial Web Solutions is recognized among the top agencies in Ghana on Clutch, GoodFirms, DesignRush, and Sortlist.</p>
         <h2>Get a Free Quote Today</h2>
-        <p>Ready to get started? <a href="https://celestialwebsolutions.net" target="_blank">Visit celestialwebsolutions.net</a> to view packages, portfolio, and request a free quote.</p>
+        <p>Ready to get started? <a href="https://www.celestialwebsolutions.net" target="_blank">Visit celestialwebsolutions.net</a> to view packages, portfolio, and request a free quote.</p>
         <footer><em>Celestial Web Solutions is a leading web design company in Ghana, based in Accra and Keta, serving businesses across Ghana and internationally.</em></footer>
         <div class="mt-4">
           <a href="/portfolio" class="inline-block text-orange-600 hover:underline font-semibold">See our portfolio of recent projects</a>
@@ -3716,7 +3716,7 @@ export default function BlogPost({ slug, article, relatedArticles: initialRelate
     );
   }
 
-  const currentUrl = `https://celestialwebsolutions.net/blog/${slug}`;
+  const currentUrl = `https://www.celestialwebsolutions.net/blog/${slug}`;
 
   const handleShare = (platform) => {
     const shareUrls = {
@@ -3786,14 +3786,14 @@ export default function BlogPost({ slug, article, relatedArticles: initialRelate
               "author": {
                 "@type": "Organization",
                 "name": article.author,
-                "url": "https://celestialwebsolutions.net"
+                "url": "https://www.celestialwebsolutions.net"
               },
               "publisher": {
                 "@type": "Organization",
                 "name": "Celestial Web Solutions",
                 "logo": {
                   "@type": "ImageObject",
-                  "url": "https://celestialwebsolutions.net/logo.png"
+                  "url": "https://www.celestialwebsolutions.net/logo.png"
                 }
               },
               "mainEntityOfPage": {
@@ -3819,13 +3819,13 @@ export default function BlogPost({ slug, article, relatedArticles: initialRelate
                   "@type": "ListItem",
                   "position": 1,
                   "name": "Home",
-                  "item": "https://celestialwebsolutions.net"
+                  "item": "https://www.celestialwebsolutions.net"
                 },
                 {
                   "@type": "ListItem",
                   "position": 2,
                   "name": "Blog",
-                  "item": "https://celestialwebsolutions.net/blog"
+                  "item": "https://www.celestialwebsolutions.net/blog"
                 },
                 {
                   "@type": "ListItem",

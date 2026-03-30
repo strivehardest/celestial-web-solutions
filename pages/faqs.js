@@ -153,10 +153,10 @@ export default function FAQs() {
           content="Get answers to frequently asked questions about our web development services, pricing, and process."
         />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://celestialwebsolutions.net/faqs" />
+        <meta property="og:url" content="https://www.celestialwebsolutions.net/faqs" />
 
         {/* Canonical URL */}
-        <link rel="canonical" href="https://celestialwebsolutions.net/faqs" />
+        <link rel="canonical" href="https://www.celestialwebsolutions.net/faqs" />
       </Head>
 
       <div className="min-h-screen bg-white dark:bg-gray-900">

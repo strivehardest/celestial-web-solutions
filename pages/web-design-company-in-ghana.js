@@ -169,7 +169,7 @@ export default function ServicesPage() {
 				<meta property="og:title" content="Web Design Company in Ghana | Professional Website Designers"/>
 				<meta property="og:description" content="Looking for a professional web design company in Ghana? Celestial Web Solutions designs modern, responsive, and SEO-friendly websites for businesses."/>
 				<meta property="og:type" content="website" />
-				<meta property="og:url" content="https://celestialwebsolutions.net/web-design-company-in-ghana" />
+				<meta property="og:url" content="https://www.celestialwebsolutions.net/web-design-company-in-ghana" />
 				<meta property="og:locale" content="en_GH" />
         
 				{/* Twitter Card */}
@@ -177,7 +177,7 @@ export default function ServicesPage() {
 				<meta name="twitter:title" content="Web Design Company in Ghana | Professional Website Designers" />
 				<meta name="twitter:description" content="Looking for a professional web design company in Ghana? Celestial Web Solutions designs modern, responsive, and SEO-friendly websites for businesses." />
         
-				<link rel="canonical" href="https://celestialwebsolutions.net/web-design-company-in-ghana" />
+				<link rel="canonical" href="https://www.celestialwebsolutions.net/web-design-company-in-ghana" />
 			</Head>
 
 						<div className="min-h-screen bg-white dark:bg-gray-900">

@@ -159,11 +159,11 @@ export default function Contact() {
         <meta property="og:title" content="Contact Celestial Web Solutions | Ghana" />
         <meta property="og:description" content="Get in touch with Celestial Web Solutions. Contact us for web design and development services." />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://celestialwebsolutions.net/contact" />
+        <meta property="og:url" content="https://www.celestialwebsolutions.net/contact" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Contact Celestial Web Solutions | Ghana" />
         <meta name="twitter:description" content="Contact us for web design and development services in Ghana." />
-        <link rel="canonical" href="https://celestialwebsolutions.net/contact" />
+        <link rel="canonical" href="https://www.celestialwebsolutions.net/contact" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@300;400;500;600;700;800&family=Albert+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
