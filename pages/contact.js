@@ -10,7 +10,8 @@ const Map = dynamic(() => import('../components/Map'), {
   loading: () => <p className="text-center py-8 text-gray-500">Loading map...</p>,
 });
 
-const TURNSTILE_SITE_KEY = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY || '1x00000000000000000000AA';
+// No fallback — if this is undefined the widget will not render and console will warn
+const TURNSTILE_SITE_KEY = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
 
 const typingPhrases = [
   'Call us: +233 53 050 5031',
@@ -42,18 +43,13 @@ export default function Contact() {
   const [displayText, setDisplayText] = useState('');
   const [isDeleting, setIsDeleting] = useState(false);
 
+  // Turnstile widget — guarded against missing sitekey
   useEffect(() => {
-    const script = document.createElement('script');
-    script.src = 'https://assets.calendly.com/assets/external/widget.js';
-    script.async = true;
-    document.body.appendChild(script);
-    return () => {
-      if (document.body.contains(script)) document.body.removeChild(script);
-    };
-  }, []);
+    if (!TURNSTILE_SITE_KEY) {
+      console.error('[Turnstile] NEXT_PUBLIC_TURNSTILE_SITE_KEY is not set. Widget will not render.');
+      return;
+    }
 
-  // Turnstile widget
-  useEffect(() => {
     const renderWidget = () => {
       if (!turnstileRef.current || !window.turnstile) return;
       if (turnstileWidgetId.current !== null) {
@@ -68,6 +64,7 @@ export default function Contact() {
         size: 'normal',
       });
     };
+
     const timer = setTimeout(() => {
       if (window.turnstile) {
         renderWidget();
@@ -78,6 +75,7 @@ export default function Contact() {
         setTimeout(() => clearInterval(check), 10000);
       }
     }, 500);
+
     return () => {
       clearTimeout(timer);
       if (turnstileWidgetId.current !== null && window.turnstile) {
@@ -277,7 +275,6 @@ export default function Contact() {
                 transition={{ duration: 0.6, delay: 0.5 }}
                 className="space-y-6"
               >
-                {/* Section heading */}
                 <div className="flex items-center gap-3">
                   <h3 className="text-2xl font-bold text-gray-900 dark:text-white" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>
                     Our Offices
@@ -346,12 +343,10 @@ export default function Contact() {
                       </a>
                     </div>
                   </div>
-                  {/* Accra map — update coordinates below to match your exact pin */}
                   <div className="h-56">
                     <Map center={[5.6679307, -0.1661991]} zoom={15} markerText="Celestial Web Solutions — Accra Office" height="224px" useCustomIcon={false} showCircle={false} />
                   </div>
                 </div>
-
               </motion.div>
             </motion.div>
 
