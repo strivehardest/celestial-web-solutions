@@ -10,6 +10,10 @@ const Map = dynamic(() => import('../components/Map'), {
   loading: () => <p className="text-center py-8 text-gray-500">Loading map...</p>,
 });
 
+const CalendlyWidget = dynamic(() => import('../components/CalendlyWidget'), {
+  ssr: false,
+});
+
 // No fallback — if this is undefined the widget will not render and console will warn
 const TURNSTILE_SITE_KEY = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
 
@@ -536,11 +540,7 @@ export default function Contact() {
               transition={{ delay: 0.2 }}
               className="bg-white dark:bg-gray-900 rounded-3xl shadow-2xl overflow-hidden border border-orange-100 dark:border-gray-700"
             >
-              <div
-                className="calendly-inline-widget"
-                data-url="https://calendly.com/waliuaforlabi?hide_landing_page_details=1&primary_color=f7a707"
-                style={{ minWidth: '320px', height: '700px' }}
-              />
+              <CalendlyWidget />
             </motion.div>
           </div>
         </section>
