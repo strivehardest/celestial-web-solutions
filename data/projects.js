@@ -44,7 +44,7 @@ const projects = [
   {
     title: "My Space Furniture",
     slug: "myspace-furniture",
-    youtubeId: 'qEIt25Bjn5w',
+    youtubeId: 'RflvHQTV_SQ',
     category: "e-commerce & retail",
     client: "My Space Furniture",
     clientCountry: "United States",
@@ -52,7 +52,7 @@ const projects = [
     image: "/png/projects/myspace-furniture.png",
     desktopImage: "/portfolio/desktop/myspace.png",
     mobileImage: "/portfolio/mobile/myspace.png",
-    screenshot: "/png/screenshots/myspace-furniture-full.png",
+    screenshot: "/png/screenshots/myspace-furniture.png",
     startDate: "2025-11-28",
     completionDate: "2025-12-08",
     duration: "10 days",

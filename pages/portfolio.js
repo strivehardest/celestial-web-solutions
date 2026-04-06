@@ -146,7 +146,7 @@ export default function Portfolio() {
     'elolo-agbleke-website':      '/png/screenshots/elolo-full.png',
     'finance-tracker':            '/png/screenshots/finance-tracker-full.png',
     'ghana-updates-online':       '/png/screenshots/ghanaupdates-full.png',
-    'myspace-furniture':          '/png/screenshots/myspace-furniture-full.png',
+    'myspace-furniture':          '/png/screenshots/myspace-furniture.png',
     'valyd-homes':                '/png/screenshots/valyd.png',
     'personal-portfolio-website': '/png/screenshots/waliu-portfolio-full.png',
     'tru-seeds-africa':           '/png/screenshots/truseeds.png',
