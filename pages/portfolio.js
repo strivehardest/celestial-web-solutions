@@ -138,18 +138,18 @@ const PortfolioCard = ({ project, image, index }) => {
 export default function Portfolio() {
 
   const portfolioImages = {
-    'building-planner-designs':   '/png/screenshots/buildingplanner-full.png',
-    'celestial-shopping':         '/png/screenshots/celestial-shopping.png',
-    'dl-auto-parts':              '/png/screenshots/dlautos-full.png',
-    'doeman-group':               '/png/projects/doeman.jpeg',
-    'adbay-store':                '/png/screenshots/adbay-full.png',
-    'elolo-agbleke-website':      '/png/screenshots/elolo-full.png',
-    'finance-tracker':            '/png/screenshots/finance-tracker-full.png',
-    'ghana-updates-online':       '/png/screenshots/ghanaupdates-full.png',
-    'myspace-furniture':          '/png/screenshots/myspace-furniture.png',
-    'valyd-homes':                '/png/screenshots/valyd.png',
-    'personal-portfolio-website': '/png/screenshots/waliu-portfolio-full.png',
-    'tru-seeds-africa':           '/png/screenshots/truseeds.png',
+    'building-planner-designs':   '/png/screenshots/buildingplanner.webp',
+    'celestial-shopping':         '/png/screenshots/celestial-shopping.webp',
+    'dl-auto-parts':              '/png/screenshots/dlautos-full.webp',
+    'doeman-group':               '/png/projects/doeman.webp',
+    'adbay-store':                '/png/screenshots/adbay-full.webp',
+    'elolo-agbleke-website':      '/png/screenshots/elolo-full.webp',
+    'finance-tracker':            '/png/screenshots/finance-tracker-full.webp',
+    'ghana-updates-online':       '/png/screenshots/ghanaupdates-full.webp',
+    'myspace-furniture':          '/png/screenshots/myspace-furniture.webp',
+    'valyd-homes':                '/png/screenshots/valyd.webp',
+    'personal-portfolio-website': '/png/screenshots/waliu-portfolio-full.webp',
+    'tru-seeds-africa':           '/png/screenshots/truseeds.webp',
   };
 
   const [filter, setFilter] = useState("all");
