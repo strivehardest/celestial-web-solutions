@@ -11,7 +11,7 @@ const projects = [
     image: "/png/projects/truseeds.png",
     desktopImage: "/portfolio/desktop/trueseeds.png",
     mobileImage: "/portfolio/mobile/trueseeds.png",
-    screenshot: "/png/screenshots/truseeds.png",
+    screenshot: "/png/screenshots/truseeds.webp",
     link: "https://truseedsafrica.com",
     tech: ["Next.js", "React", "Tailwind CSS", "Framer Motion", "TypeScript",],
     techLogos: [
@@ -52,7 +52,7 @@ const projects = [
     image: "/png/projects/myspace-furniture.png",
     desktopImage: "/portfolio/desktop/myspace.png",
     mobileImage: "/portfolio/mobile/myspace.png",
-    screenshot: "/png/screenshots/myspace-furniture.png",
+    screenshot: "/png/screenshots/myspace-furniture.webp",
     startDate: "2025-11-28",
     completionDate: "2025-12-08",
     duration: "10 days",
@@ -65,17 +65,23 @@ const projects = [
       "Responsive design",
       "SEO optimized",
       "Accessibility features",
-      "WhatsApp integration"
+      "WhatsApp integration",
+      "Progressive Web App (PWA) features",
+      "Professional branding",
+      "Fast loading performance",
+      "Social media integration",
+      "Customer reviews and ratings",
     ],
-    tech: ["Next.js", "TypeScript", "Framer Motion", "Tailwind CSS", "Stripe", "MongoDB"],
-    tech: ["Next.js", "React", "TypeScript", "Framer Motion", "Tailwind CSS", "Stripe", "MongoDB"],
+    tech: ["Next.js", "TypeScript", "Javascript","Framer Motion", "Tailwind CSS", "Stripe", "MongoDB"],
+    tech: ["Next.js", "React", "Javascript","TypeScript", "Framer Motion", "Tailwind CSS", "Stripe", "MongoDB"],
     techLogos: [
       { name: "Next.js", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" },
       { name: "React", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" },
       { name: "TypeScript", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" },
       { name: "Framer Motion", logo: "https://cdn.worldvectorlogo.com/logos/framer-motion.svg" },
       { name: "Tailwind CSS", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg" },
-      { name: "Vercel", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vercel/vercel-original.svg" }
+      { name: "Vercel", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vercel/vercel-original.svg" },
+      { name: "JavaScript", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" },
     ]
   },
   {
@@ -85,23 +91,28 @@ const projects = [
     category: "business & corporate",
     client: "Building Planner Designs",
     clientCountry: "Ghana",
-    description: "A professional website for one of Accra's leading building and construction planning companies. Built with WordPress and WooCommerce, the site features a stunning project gallery, detailed service listings, and e-commerce functionality — helping the brand attract and convert high-value clients online.",
+    description: "A professional website for one of Accra's leading building and construction planning companies.",
     image: "/png/projects/buildingplanner.png",
     desktopImage: "/portfolio/desktop/building.png",
     mobileImage: "/portfolio/mobile/building.png",
-    screenshot: "/png/screenshots/buildingplanner-full.png",
-    link: "https://buildingplannerdesigns.com",
-    tech: ["WordPress", "WooCommerce", "Elementor", "Paystack"],
+    screenshot: "/png/screenshots/buildingplanner.webp",
+    link: "https://www.buildingplannerdesigns.com",
+    tech: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Framer Motion", "Vercel", "GitHub"],
     techLogos: [
-      { name: "WordPress", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/wordpress/wordpress-original.svg" },
-      { name: "WooCommerce", logo: "https://www.logo.wine/a/logo/WooCommerce/WooCommerce-Logo.wine.svg" },
-      { name: "Paystack", logo: "https://assets.paystack.com/assets/img/hero/Paystack-mark-white-twitter.png" }
+      { name: "Next.js", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" },
+      { name: "TypeScript", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" },
+      { name: "Tailwind CSS", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg" },
+      { name: "Framer Motion", logo: "https://cdn.worldvectorlogo.com/logos/framer-motion.svg" },
+      { name: "Vercel", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vercel/vercel-original.svg" },
+      { name: "React", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" },
+      { name: "GitHub", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" }
     ],
     startDate: "2025-01-01",
     completionDate: "2025-01-15",
     duration: "2 weeks",
     features: [
-      "E-commerce Integration",
+      "Google Maps Integration",
+      "Google My Business Integration",
       "Project Portfolio Gallery",
       "Service Catalog",
       "Online Booking System",
@@ -126,7 +137,7 @@ const projects = [
     image: "/png/projects/dlautos.png",
     desktopImage: "/portfolio/desktop/dlautos.png",
     mobileImage: "/portfolio/mobile/dlauto.png",
-    screenshot: "/png/screenshots/dlautos-full.png",
+    screenshot: "/png/screenshots/dlautos-full.webp",
     link: "https://dlautopartsgh.com/",
     tech: ["WordPress", "PHP", "WooCommerce", "CSS3", "HTML5", "Paystack"],
     techLogos: [
@@ -167,7 +178,7 @@ const projects = [
     image: "/png/projects/ghanaupdates.png",
     desktopImage: "/portfolio/desktop/ghanaupdates.png",
     mobileImage: "/portfolio/mobile/ghanaupdates.png",
-    screenshot: "/png/screenshots/ghanaupdates-full.png",
+    screenshot: "/png/screenshots/ghanaupdates-full.webp",
     link: "https://ghanaupdates.online",
     tech: ["WordPress", "Elementor", "Google AdSense"],
     techLogos: [
@@ -201,7 +212,7 @@ const projects = [
     image: "/png/projects/adbay.png",
     desktopImage: "/portfolio/desktop/adbay.png",
     mobileImage: "",
-    screenshot: "/png/screenshots/adbay-full.png",
+    screenshot: "/png/screenshots/adbay-full.webp",
     link: "https://adbay.store",
     tech: ["WordPress", "Elementor", "CSS", "HTML", "PHP"],
     techLogos: [
@@ -237,7 +248,7 @@ const projects = [
     image: "/png/projects/elolo.png",
     desktopImage: "/portfolio/desktop/elolo.png",
     mobileImage: "/portfolio/mobile/elolo.png",
-    screenshot: "/png/screenshots/elolo-full.png",
+    screenshot: "/png/screenshots/elolo-full.webp",
     link: "https://eloloagbleke.com",
     tech: ["WordPress", "Node.js", "Next.js", "Framer Motion", "JavaScript", "GitHub", "Tailwind CSS", "Vercel"],
     techLogos: [
@@ -276,7 +287,7 @@ const projects = [
     clientCountry: "United States",
     description: "Doeman Group is a dynamic U.S.-based group of companies with diverse business interests. We are crafting a sleek, modern corporate website that will serve as the digital headquarters for all their ventures — featuring a clean brand identity, company overview, and a professional design that commands authority and trust in the American market.",
     image: "/png/projects/doeman.jpeg",
-    screenshot: "",
+    screenshot: "/png/screenshots/doeman-full.webp",
     link: "http://www.doemangroup.com/",
     tech: ["Next.js", "React", "Tailwind CSS", "Framer Motion", "SEO", "Google Analytics"],
     techLogos: [
@@ -309,7 +320,7 @@ const projects = [
     image: "/png/projects/valydhome.png",
     desktopImage: "/portfolio/desktop/valyd.png",
     mobileImage: "/portfolio/mobile/valyd.png",
-    screenshot: "/png/screenshots/valyd.png",
+    screenshot: "/png/screenshots/valyd.webp",
     link: "https://valydhomes.com",
     tech: ["Next.js", "React", "Tailwind CSS", "Javascript", "Framer Motion"],
     techLogos: [
@@ -342,7 +353,7 @@ const projects = [
     image: "/png/projects/celestial1.png",
     desktopImage: "/portfolio/desktop/celestial-shopping.png",
     mobileImage: "/portfolio/mobile/celestial-shopping.png",
-    screenshot: "/png/screenshots/celestial-shopping.png",
+    screenshot: "/png/screenshots/celestial-shopping.webp",
     link: "https://celestial-shopping.vercel.app/",
     tech: ["Next.js", "Framer Motion", "GitHub", "Tailwind CSS", "Vercel", "Render", "Django"],
     techLogos: [
@@ -381,7 +392,7 @@ const projects = [
     image: "/png/projects/finance-tracker.png",
     desktopImage: "/portfolio/desktop/finance.png",
     mobileImage: "/portfolio/mobile/finance.png",
-    screenshot: "/png/screenshots/finance-tracker-full.png",
+    screenshot: "/png/screenshots/finance-tracker-full.webp",
     link: "https://finance-tracker-muiu.onrender.com/",
     tech: ["HTML5", "CSS3", "Django", "Python", "Github", "Render"],
     techLogos: [
@@ -427,7 +438,7 @@ const projects = [
     image: "/png/projects/waliu-portfolio.png",
     desktopImage: "/portfolio/desktop/waliu.png",
     mobileImage: "/portfolio/mobile/waliu.png",
-    screenshot: "/png/screenshots/waliu-portfolio-full.png",
+    screenshot: "/png/screenshots/waliu-portfolio-full.webp",
     link: "https://waliu-portfolio-sage.vercel.app",
     tech: ["Next.js", "Tailwind CSS", "Framer Motion", "Javascript", "React", "GitHub", "Vercel"],
     techLogos: [
