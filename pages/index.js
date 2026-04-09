@@ -198,6 +198,15 @@ const typingPhrases = [
 // ─────────────────────────────────────────────
 const portfolioItems = [
   {
+   title: "Building Planner Designs",
+   category: "Building",
+   description: "A professional platform for architectural building plans and 3D visualizations.",
+   tech: ["Next.js", "React", "Tailwind CSS", "Framer Motion", "TypeScript"],
+   link: "/portfolio/building-planner-designs",
+   image: "/portfolio/desktop/building.png",
+  accent: "#FFD700"
+  },
+  {
     title: "Tru Seeds Africa",
     category: "Agriculture",
     description: "A modern, responsive website for a leading agricultural company in Ghana specializing in high-quality seeds.",
