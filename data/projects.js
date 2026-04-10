@@ -1,6 +1,47 @@
 // data/projects.js
 const projects = [
   {
+    title: "AfroCinema",
+    slug: "afrocinema",
+    youtubeId: '',
+    category: "entertainment & streaming",
+    client: "AfroCinema",
+    clientCountry: "Ghana",
+    description: "AfroCinema is a modern platform for Nollywood, Bollywood, Hollywood movies and series. Built with a robust tech stack, it delivers a seamless viewing experience, fast performance, and a visually engaging UI. The platform leverages Supabase for scalable backend and PLpgSQL for advanced database logic. All images and screenshots are organized in their respective folders.",
+    image: "/png/projects/afrocinema.png",
+    desktopImage: "/portfolio/desktop/afrocinema.png",
+    mobileImage: "/portfolio/mobile/afrocinema.png",
+    screenshot: "/png/screenshots/afrocinema.webp",
+    link: "https://afrocinema.vercel.app",
+    tech: ["TypeScript", "React", "Next.js", "Javascript", "Tailwind CSS", "PLpgSQL", "Supabase"],
+    techLogos: [
+      { name: "TypeScript", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" },
+      { name: "React", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" },
+      { name: "Next.js", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" },
+      { name: "Javascript", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" },
+      { name: "Tailwind CSS", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg" },
+      { name: "PLpgSQL", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" },
+      { name: "Supabase", logo: "/portfolio/desktop/supabase.jfif" }
+    ],
+    startDate: "2026-04-01",
+    completionDate: "2026-04-10",
+    duration: "10 days",
+    features: [
+      "Movie Recommendation Platform",
+      "Responsive Design",
+      "SEO Optimized",
+      "Progressive Web App (PWA) Features",
+      "Movie & Series Catalog",
+      "Supabase Backend Integration",
+      "PLpgSQL Database Logic",
+      "Fast Loading Performance",
+      "Modern UI/UX",
+      "Mobile-First Design",
+      "Google Analytics Setup",
+      "TMDb API Integration",
+    ]
+  },
+  {
     title: "Tru Seeds Africa",
     slug: "tru-seeds-africa",
     youtubeId: '',
