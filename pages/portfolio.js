@@ -150,6 +150,7 @@ export default function Portfolio() {
     'valyd-homes':                '/png/screenshots/valyd.webp',
     'personal-portfolio-website': '/png/screenshots/waliu-portfolio-full.webp',
     'tru-seeds-africa':           '/png/screenshots/truseeds.webp',
+    'afrocinema':                   '/png/screenshots/afrocinema.webp',
   };
 
   const [filter, setFilter] = useState("all");
