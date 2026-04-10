@@ -21,7 +21,7 @@ const projects = [
       { name: "Javascript", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" },
       { name: "Tailwind CSS", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg" },
       { name: "PLpgSQL", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" },
-      { name: "Supabase", logo: "/portfolio/desktop/supabase.jfif" }
+      { name: "Supabase", logo: "/portfolio/desktop/supabase.webp" }
     ],
     startDate: "2026-04-01",
     completionDate: "2026-04-10",
