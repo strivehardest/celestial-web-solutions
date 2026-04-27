@@ -30,6 +30,9 @@ const heroProjects = [
   { image: '/portfolio/desktop/ghanaupdates.png', title: 'Ghana Updates Online', bgColor: 'from-red-950 via-red-900 to-red-800' },
   { image: '/portfolio/desktop/dlautos.png', title: 'DL Auto Parts', bgColor: 'from-green-950 via-green-900 to-emerald-900' },
   { image: '/portfolio/desktop/valyd.png', title: 'Valyd Homes', bgColor: 'from-emerald-950 via-teal-900 to-green-950' },
+  { image: '/portfolio/desktop/copti.webp', title: 'Conference of Principals of Technical Institutions', bgColor: 'from-blue-400 via-blue-500 to blue-600' },
+  { image: '/portfolio/desktop/trueseeds.webp', title: 'Tru Seeds Africa', bgColor: 'from-green-400 via-green-500 to emarald-600' },
+  
 ];
 
 const serviceFocus = [
@@ -47,11 +50,11 @@ const portfolioHighlights = [
     slug: 'myspace-furniture'
   },
   {
-    title: 'Ghana Updates Online',
-    category: 'News & Media',
-    description: 'High-performance news platform delivering timely updates to thousands of readers.',
-    image: '/png/projects/ghanaupdates.png',
-    slug: 'ghana-updates-online'
+    title: 'COPTI',
+    category: 'Educational Institutions',
+    description: 'Conference of Principals of Technical Institutions (COPTI) official website.',
+    image: '/png/projects/copti1.png',
+    slug: 'copti'
   },
   {
     title: 'Building Planner Designs',

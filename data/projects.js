@@ -1,6 +1,58 @@
 // data/projects.js
 const projects = [
   {
+    title: "Conference of Principals of Technical Institutions",
+    slug: "copti",
+    youtubeId: '',
+    category: "educational institutions",
+    client: "COPTI",
+    clientCountry: "Ghana",
+    description: "COPTI is the official national website for the Conference of Principals of Technical Institutions — the professional body representing principals of public technical institutes across all 16 regions of Ghana. Built with Next.js 15, Sanity CMS, and Tailwind CSS, the platform features a full member schools directory of technical institutions, dynamic news and events, a photo gallery system, and a comprehensive SEO architecture with JSON-LD structured data. The site positions COPTI as Ghana's leading TVET authority online.",
+    image: "/png/projects/copti1.png",
+    desktopImage: "/portfolio/desktop/copti.webp",
+    mobileImage: "/portfolio/mobile/copti.webp",
+    screenshot: "/png/screenshots/copti-full.webp",
+    link: "https://copti.org.gh",
+    tech: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Sanity CMS", "GROQ", "Vercel"],
+    techLogos: [
+      { name: "Next.js",      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" },
+      { name: "React",        logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" },
+      { name: "TypeScript",   logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" },
+      { name: "Tailwind CSS", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg" },
+      { name: "Sanity CMS",   logo: "https://cdn.worldvectorlogo.com/logos/sanity.svg" },
+      { name: "Vercel",       logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vercel/vercel-original.svg" },
+      { name: "GitHub",       logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" },
+    ],
+    startDate: "2026-04-10",
+    completionDate: "2026-04-24",
+    duration: "2 weeks",
+    features: [
+      "Member Schools Directory",
+      "Hero Image Slider (3 Slides, Auto-Advance)",
+      "School Search, Filter & Pagination",
+      "Individual School Profiles with Google Maps",
+      "Sanity CMS — Headless Content Management",
+      "News & Blog System",
+      "Photo Gallery with Lightbox",
+      "Events Management",
+      "School Enquiry Contact Forms",
+      "Dynamic XML Sitemap (All Schools)",
+      "JSON-LD Structured Data (Schema.org)",
+      "Open Graph & Twitter Card Tags",
+      "Google Analytics 4 Integration",
+      "Google Search Console Setup",
+      "Responsive Design (Mobile-First)",
+      "SEO Optimized — Unique Meta Per Page",
+      "Progressive Web App (PWA) Features",
+      "WhatsApp Integration",
+      "Social Media Share Buttons",
+      "Custom Sanity Studio with SVG Icons",
+      "Data Migration Script (Google Form CSV → Sanity)",
+      "Fast Loading Performance",
+      "Google Fonts — Playfair Display & Source Sans Pro",
+    ],
+  },
+  {
     title: "AfroCinema",
     slug: "afrocinema",
     youtubeId: '',
@@ -15,13 +67,13 @@ const projects = [
     link: "https://afrocinema.vercel.app",
     tech: ["TypeScript", "React", "Next.js", "Javascript", "Tailwind CSS", "PLpgSQL", "Supabase"],
     techLogos: [
-      { name: "TypeScript", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" },
-      { name: "React", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" },
-      { name: "Next.js", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" },
-      { name: "Javascript", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" },
+      { name: "TypeScript",   logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" },
+      { name: "React",        logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" },
+      { name: "Next.js",      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" },
+      { name: "Javascript",   logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" },
       { name: "Tailwind CSS", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg" },
-      { name: "PLpgSQL", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" },
-      { name: "Supabase", logo: "/portfolio/desktop/supabase.webp" }
+      { name: "PLpgSQL",      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" },
+      { name: "Supabase",     logo: "/portfolio/desktop/supabase.jfif" },
     ],
     startDate: "2026-04-01",
     completionDate: "2026-04-10",
@@ -39,7 +91,7 @@ const projects = [
       "Mobile-First Design",
       "Google Analytics Setup",
       "TMDb API Integration",
-    ]
+    ],
   },
   {
     title: "Tru Seeds Africa",
@@ -54,13 +106,13 @@ const projects = [
     mobileImage: "/portfolio/mobile/trueseeds.png",
     screenshot: "/png/screenshots/truseeds.webp",
     link: "https://truseedsafrica.com",
-    tech: ["Next.js", "React", "Tailwind CSS", "Framer Motion", "TypeScript",],
+    tech: ["Next.js", "React", "Tailwind CSS", "Framer Motion", "TypeScript"],
     techLogos: [
-      { name: "Next.js", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" },
-      { name: "React", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" },
+      { name: "Next.js",      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" },
+      { name: "React",        logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" },
       { name: "Tailwind CSS", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg" },
-      { name: "Framer Motion", logo: "https://cdn.worldvectorlogo.com/logos/framer-motion.svg" },
-      { name: "TypeScript", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" }
+      { name: "Framer Motion",logo: "https://cdn.worldvectorlogo.com/logos/framer-motion.svg" },
+      { name: "TypeScript",   logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" },
     ],
     startDate: "2026-03-10",
     completionDate: "2026-03-17",
@@ -80,8 +132,8 @@ const projects = [
       "Mobile-First Design Approach",
       "Clean and Modern UI/UX Design",
       "Cross-Browser Compatibility",
-    ]
-  },  
+    ],
+  },
   {
     title: "My Space Furniture",
     slug: "myspace-furniture",
@@ -94,10 +146,20 @@ const projects = [
     desktopImage: "/portfolio/desktop/myspace.png",
     mobileImage: "/portfolio/mobile/myspace.png",
     screenshot: "/png/screenshots/myspace-furniture.webp",
+    link: "https://www.myyspacefurniture.com",
+    tech: ["Next.js", "React", "JavaScript", "TypeScript", "Framer Motion", "Tailwind CSS", "Stripe", "MongoDB"],
+    techLogos: [
+      { name: "Next.js",      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" },
+      { name: "React",        logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" },
+      { name: "TypeScript",   logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" },
+      { name: "Framer Motion",logo: "https://cdn.worldvectorlogo.com/logos/framer-motion.svg" },
+      { name: "Tailwind CSS", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg" },
+      { name: "Vercel",       logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vercel/vercel-original.svg" },
+      { name: "JavaScript",   logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" },
+    ],
     startDate: "2025-11-28",
     completionDate: "2025-12-08",
     duration: "10 days",
-    link: "https://www.myyspacefurniture.com",
     features: [
       "Various furniture categories",
       "Interactive product configurator",
@@ -113,17 +175,6 @@ const projects = [
       "Social media integration",
       "Customer reviews and ratings",
     ],
-    tech: ["Next.js", "TypeScript", "Javascript","Framer Motion", "Tailwind CSS", "Stripe", "MongoDB"],
-    tech: ["Next.js", "React", "Javascript","TypeScript", "Framer Motion", "Tailwind CSS", "Stripe", "MongoDB"],
-    techLogos: [
-      { name: "Next.js", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" },
-      { name: "React", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" },
-      { name: "TypeScript", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" },
-      { name: "Framer Motion", logo: "https://cdn.worldvectorlogo.com/logos/framer-motion.svg" },
-      { name: "Tailwind CSS", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg" },
-      { name: "Vercel", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vercel/vercel-original.svg" },
-      { name: "JavaScript", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" },
-    ]
   },
   {
     title: "Building Planner Designs",
@@ -140,13 +191,13 @@ const projects = [
     link: "https://www.buildingplannerdesigns.com",
     tech: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Framer Motion", "Vercel", "GitHub"],
     techLogos: [
-      { name: "Next.js", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" },
-      { name: "TypeScript", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" },
+      { name: "Next.js",      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" },
+      { name: "TypeScript",   logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" },
       { name: "Tailwind CSS", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg" },
-      { name: "Framer Motion", logo: "https://cdn.worldvectorlogo.com/logos/framer-motion.svg" },
-      { name: "Vercel", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vercel/vercel-original.svg" },
-      { name: "React", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" },
-      { name: "GitHub", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" }
+      { name: "Framer Motion",logo: "https://cdn.worldvectorlogo.com/logos/framer-motion.svg" },
+      { name: "Vercel",       logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vercel/vercel-original.svg" },
+      { name: "React",        logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" },
+      { name: "GitHub",       logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" },
     ],
     startDate: "2025-01-01",
     completionDate: "2025-01-15",
@@ -164,8 +215,8 @@ const projects = [
       "Social Media Integration",
       "Youtube Integration",
       "Google Analytics Setup",
-      "WhatsApp Integration"
-    ]
+      "WhatsApp Integration",
+    ],
   },
   {
     title: "DL Auto Parts",
@@ -182,11 +233,11 @@ const projects = [
     link: "https://dlautopartsgh.com/",
     tech: ["WordPress", "PHP", "WooCommerce", "CSS3", "HTML5", "Paystack"],
     techLogos: [
-      { name: "WordPress", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/wordpress/wordpress-plain.svg" },
-      { name: "PHP", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg" },
+      { name: "WordPress",   logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/wordpress/wordpress-plain.svg" },
+      { name: "PHP",         logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg" },
       { name: "WooCommerce", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/woocommerce/woocommerce-original.svg" },
-      { name: "CSS3", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" },
-      { name: "HTML5", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" },
+      { name: "CSS3",        logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" },
+      { name: "HTML5",       logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" },
     ],
     startDate: "2026-02-13",
     completionDate: "2026-02-20",
@@ -205,8 +256,8 @@ const projects = [
       "Contact Forms",
       "Customer Reviews & Ratings",
       "Inventory Management",
-      "Order Tracking System",    
-    ]
+      "Order Tracking System",
+    ],
   },
   {
     title: "Ghana Updates Online",
@@ -223,7 +274,7 @@ const projects = [
     link: "https://ghanaupdates.online",
     tech: ["WordPress", "Elementor", "Google AdSense"],
     techLogos: [
-      { name: "WordPress", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/wordpress/wordpress-original.svg" }
+      { name: "WordPress", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/wordpress/wordpress-original.svg" },
     ],
     startDate: "2023-04-01",
     completionDate: "2023-04-10",
@@ -239,8 +290,8 @@ const projects = [
       "Newsletter Subscription",
       "Contact Forms",
       "Fast Loading Speed",
-      "Google Analytics Setup"
-    ]
+      "Google Analytics Setup",
+    ],
   },
   {
     title: "AdBay.store",
@@ -258,9 +309,9 @@ const projects = [
     tech: ["WordPress", "Elementor", "CSS", "HTML", "PHP"],
     techLogos: [
       { name: "WordPress", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/wordpress/wordpress-original.svg" },
-      { name: "PHP", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg" },
-      { name: "HTML", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" },
-      { name: "CSS", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" }
+      { name: "PHP",       logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg" },
+      { name: "HTML",      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" },
+      { name: "CSS",       logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" },
     ],
     startDate: "2025-07-01",
     completionDate: "2025-07-16",
@@ -275,8 +326,8 @@ const projects = [
       "Responsive Design",
       "Admin Dashboard",
       "SEO Optimization",
-      "Social Media Integration"
-    ]
+      "Social Media Integration",
+    ],
   },
   {
     title: "Elolo Agbleke Portfolio Website",
@@ -291,15 +342,15 @@ const projects = [
     mobileImage: "/portfolio/mobile/elolo.png",
     screenshot: "/png/screenshots/elolo-full.webp",
     link: "https://eloloagbleke.com",
-    tech: ["WordPress", "Node.js", "Next.js", "Framer Motion", "JavaScript", "GitHub", "Tailwind CSS", "Vercel"],
+    tech: ["Next.js", "React", "Node.js", "Framer Motion", "JavaScript", "Tailwind CSS", "Vercel", "GitHub"],
     techLogos: [
-      { name: "Vercel", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vercel/vercel-original.svg" },
-      { name: "Next.js", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" },
-      { name: "React", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" },
-      { name: "Framer Motion", logo: "https://cdn.worldvectorlogo.com/logos/framer-motion.svg" },
-      { name: "Javascript", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" },
-      { name: "Node.js", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" },
-      { name: "Tailwind CSS", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg" }
+      { name: "Vercel",       logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vercel/vercel-original.svg" },
+      { name: "Next.js",      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" },
+      { name: "React",        logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" },
+      { name: "Framer Motion",logo: "https://cdn.worldvectorlogo.com/logos/framer-motion.svg" },
+      { name: "Javascript",   logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" },
+      { name: "Node.js",      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" },
+      { name: "Tailwind CSS", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg" },
     ],
     startDate: "2026-01-16",
     completionDate: "2026-01-30",
@@ -316,8 +367,8 @@ const projects = [
       "SEO Optimization",
       "Fast Loading Performance",
       "Google Analytics Setup",
-      "WhatsApp Integration"
-    ]
+      "WhatsApp Integration",
+    ],
   },
   {
     title: "Doeman Group",
@@ -332,9 +383,9 @@ const projects = [
     link: "http://www.doemangroup.com/",
     tech: ["Next.js", "React", "Tailwind CSS", "Framer Motion", "SEO", "Google Analytics"],
     techLogos: [
-      { name: "Next.js", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" },
-      { name: "React", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" },
-      { name: "Tailwind CSS", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg" }
+      { name: "Next.js",      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" },
+      { name: "React",        logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" },
+      { name: "Tailwind CSS", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg" },
     ],
     startDate: "2025-12-01",
     completionDate: "In Progress",
@@ -347,8 +398,8 @@ const projects = [
       "Responsive Design",
       "SEO Optimization",
       "Google Analytics Setup",
-      "Professional Branding"
-    ]
+      "Professional Branding",
+    ],
   },
   {
     title: "Valyd Homes",
@@ -363,13 +414,13 @@ const projects = [
     mobileImage: "/portfolio/mobile/valyd.png",
     screenshot: "/png/screenshots/valyd.webp",
     link: "https://valydhomes.com",
-    tech: ["Next.js", "React", "Tailwind CSS", "Javascript", "Framer Motion"],
+    tech: ["Next.js", "React", "Tailwind CSS", "JavaScript", "Framer Motion"],
     techLogos: [
-      { name: "Next.js", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" },
-      { name: "React", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" },
+      { name: "Next.js",      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" },
+      { name: "React",        logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" },
       { name: "Tailwind CSS", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg" },
-      { name: "Framer Motion", logo: "https://cdn.worldvectorlogo.com/logos/framer-motion.svg" },
-      { name: "Javascript", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" }
+      { name: "Framer Motion",logo: "https://cdn.worldvectorlogo.com/logos/framer-motion.svg" },
+      { name: "Javascript",   logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" },
     ],
     startDate: "2026-01-07",
     completionDate: "In Progress",
@@ -380,8 +431,8 @@ const projects = [
       "Contact Forms",
       "Responsive Design",
       "SEO Optimization",
-      "Professional Branding"
-    ]
+      "Professional Branding",
+    ],
   },
   {
     title: "Celestial Shopping",
@@ -396,13 +447,13 @@ const projects = [
     mobileImage: "/portfolio/mobile/celestial-shopping.png",
     screenshot: "/png/screenshots/celestial-shopping.webp",
     link: "https://celestial-shopping.vercel.app/",
-    tech: ["Next.js", "Framer Motion", "GitHub", "Tailwind CSS", "Vercel", "Render", "Django"],
+    tech: ["Next.js", "React", "Framer Motion", "Tailwind CSS", "Vercel", "Render", "Django"],
     techLogos: [
-      { name: "Next.js", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" },
-      { name: "React", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" },
+      { name: "Next.js",      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" },
+      { name: "React",        logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" },
       { name: "Tailwind CSS", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg" },
-      { name: "Framer Motion", logo: "https://cdn.worldvectorlogo.com/logos/framer-motion.svg" },
-      { name: "Django", logo: "https://cdn.worldvectorlogo.com/logos/django.svg" }
+      { name: "Framer Motion",logo: "https://cdn.worldvectorlogo.com/logos/framer-motion.svg" },
+      { name: "Django",       logo: "https://cdn.worldvectorlogo.com/logos/django.svg" },
     ],
     startDate: "2025-10-18",
     completionDate: "2025-11-04",
@@ -419,8 +470,8 @@ const projects = [
       "SEO Optimization",
       "Fast Loading Performance",
       "Google Analytics Setup",
-      "WhatsApp Integration"
-    ]
+      "WhatsApp Integration",
+    ],
   },
   {
     title: "Finance Tracker",
@@ -437,11 +488,11 @@ const projects = [
     link: "https://finance-tracker-muiu.onrender.com/",
     tech: ["HTML5", "CSS3", "Django", "Python", "Github", "Render"],
     techLogos: [
-      { name: "HTML5", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" },
-      { name: "CSS3", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" },
+      { name: "HTML5",  logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" },
+      { name: "CSS3",   logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" },
       { name: "Django", logo: "https://cdn.worldvectorlogo.com/logos/django.svg" },
       { name: "GitHub", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" },
-      { name: "Python", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" }
+      { name: "Python", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" },
     ],
     startDate: "2025-11-06",
     completionDate: "2025-11-14",
@@ -465,8 +516,8 @@ const projects = [
       "Currency Conversion Feature",
       "Secure Authentication",
       "Password Recovery Options",
-      "User Profile Management"
-    ]
+      "User Profile Management",
+    ],
   },
   {
     title: "Personal Portfolio Website",
@@ -481,15 +532,15 @@ const projects = [
     mobileImage: "/portfolio/mobile/waliu.png",
     screenshot: "/png/screenshots/waliu-portfolio-full.webp",
     link: "https://waliu-portfolio-sage.vercel.app",
-    tech: ["Next.js", "Tailwind CSS", "Framer Motion", "Javascript", "React", "GitHub", "Vercel"],
+    tech: ["Next.js", "React", "Tailwind CSS", "Framer Motion", "JavaScript", "GitHub", "Vercel"],
     techLogos: [
-      { name: "Next.js", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" },
+      { name: "Next.js",      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" },
       { name: "Tailwind CSS", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg" },
-      { name: "React", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" },
-      { name: "Javascript", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" },
-      { name: "Framer Motion", logo: "https://cdn.worldvectorlogo.com/logos/framer-motion.svg" },
-      { name: "GitHub", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" },
-      { name: "Vercel", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vercel/vercel-original.svg" }
+      { name: "React",        logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" },
+      { name: "Javascript",   logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" },
+      { name: "Framer Motion",logo: "https://cdn.worldvectorlogo.com/logos/framer-motion.svg" },
+      { name: "GitHub",       logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" },
+      { name: "Vercel",       logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vercel/vercel-original.svg" },
     ],
     startDate: "2025-08-01",
     completionDate: "2025-08-08",
@@ -502,8 +553,8 @@ const projects = [
       "Contact Form",
       "Responsive Design",
       "Fast Performance",
-      "SEO Optimized"
-    ]
+      "SEO Optimized",
+    ],
   },
 ];
 

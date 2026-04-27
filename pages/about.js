@@ -52,6 +52,10 @@ const happyClients = [
   {
     name: "Tru Seeds Africa",
     src: "/png/projects/truseeds.webp",
+  },
+  {
+    name: "Conference of Principals of Technical Institutes",
+    src: "/png/projects/copti.png"
   }
 ];
 
@@ -153,7 +157,7 @@ export default function AboutUs() {
     { name: 'HTML5', logo: 'https://cdn.worldvectorlogo.com/logos/html-1.svg' },
     { name: 'CSS3', logo: 'https://cdn.worldvectorlogo.com/logos/css-3.svg' },
     { name: 'WordPress', logo: 'https://cdn.worldvectorlogo.com/logos/wordpress-icon.svg' },
-    { name: 'Bootstrap', logo: 'https://cdn.worldvectorlogo.com/logos/bootstrap-4.svg' },
+    { name: 'Sanity CMS', logo: 'https://cdn.worldvectorlogo.com/logos/sanity.svg' },
     { name: 'Framer Motion', logo: 'https://cdn.worldvectorlogo.com/logos/framer-motion.svg' },
     { name: 'PostgreSQL', logo: 'https://cdn.worldvectorlogo.com/logos/postgresql.svg' },
     { name: 'MongoDB', logo: 'https://cdn.worldvectorlogo.com/logos/mongodb-icon-1.svg' },

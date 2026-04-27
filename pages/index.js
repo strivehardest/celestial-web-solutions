@@ -11,6 +11,7 @@ const happyClients = [
   { name: "Doeman", src: "/png/projects/doeman.jpeg" },
   { name: "DL Auto Parts", src: "/png/projects/dl-auto-parts.png" },
   { name: "Tru Seeds Africa", src: "/png/projects/truseeds.webp" },
+  { name: "COPTI", src: "/png/projects/copti.png" },
 ];
 
 import { useState, useEffect, useRef } from 'react';
@@ -178,7 +179,7 @@ const techStackCategories = [
     items: [
       { name: 'Figma', icon: '/images/tech/figma.svg' },
       { name: 'TailwindCSS', icon: '/images/tailwindcss-logo.png' },
-      { name: 'Bootstrap', icon: '/images/tech/bootstrap.svg' },
+      { name: 'Sanity CMS', icon: '/images/sanity.png' },
       { name: 'WordPress', icon: '/images/tech/wordpress.svg' }
     ]
   }
@@ -197,6 +198,15 @@ const typingPhrases = [
 // Portfolio data
 // ─────────────────────────────────────────────
 const portfolioItems = [
+  {
+   title: "Conference of Principals of Technical Institutions",
+   cateory: "Educational Institutions",
+   description: "COPTI is the official national website for the Conference of Principals of Technical Institutions — the professional body representing principals of public technical institutes across all 16 regions of Ghana.",
+   tech: ["Next.js", "React", "Tailwind CSS", "TypeScript"],
+   link: "/portfolio/copti",
+   image: "/portfolio/desktop/copti.webp",
+   accent: "#BDCDEE"
+  },
   {
    title: "Building Planner Designs",
    category: "Building",

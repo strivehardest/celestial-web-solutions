@@ -150,7 +150,8 @@ export default function Portfolio() {
     'valyd-homes':                '/png/screenshots/valyd.webp',
     'personal-portfolio-website': '/png/screenshots/waliu-portfolio-full.webp',
     'tru-seeds-africa':           '/png/screenshots/truseeds.webp',
-    'afrocinema':                   '/png/screenshots/afrocinema.webp',
+    'afrocinema':                 '/png/screenshots/afrocinema.webp',
+    'copti':                      '/png/screenshots/copti-full.webp',
   };
 
   const [filter, setFilter] = useState("all");
@@ -228,6 +229,7 @@ export default function Portfolio() {
     { name: "Doeman Group",            src: "/png/projects/doeman.jpeg" },
     { name: "DL Auto Parts",           src: "/png/projects/dl-auto-parts.png" },
     { name: "Tru Seeds Africa",        src: "/png/projects/truseeds.webp" },
+    { name: "COPTI",                   src: "/png/projects/copti.png" },
   ];
 
   return (
