@@ -706,88 +706,190 @@ export default function PricingWithCalculator() {
         )}
       </AnimatePresence>
 
-      {/* Pricing Cards Section */}
-      <section className="py-20 bg-white dark:bg-gray-900">
-        <div className="max-w-6xl mx-auto px-4">
-          <h2 className="text-4xl font-bold text-gray-900 dark:text-white text-center mb-6" style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}>Our Packages</h2>
-          
-          {/* Exchange Rate Info Bar */}
-          <div className="bg-gradient-to-r from-gray-50 to-orange-50 dark:from-gray-800 dark:to-gray-900 rounded-2xl p-4 mb-12">
-            <div className="flex flex-wrap items-center justify-center gap-3">
-              <div className="flex items-center space-x-2">
-                <div className={`w-2 h-2 rounded-full ${ratesLoading ? 'bg-yellow-500' : 'bg-green-500'} animate-pulse`}></div>
-                <span className="text-sm font-semibold text-gray-700 dark:text-gray-300" style={{ fontFamily: "Albert Sans, sans-serif" }}>
-                  Select Currency:
-                </span>
-              </div>
-              {currencies.map((currency) => (
-                <div 
-                  key={currency.code}
-                  onClick={() => setSelectedCurrency(currency.code)}
-                  className={`flex items-center space-x-2 px-4 py-2 rounded-xl cursor-pointer transition-all duration-200 ${
-                    selectedCurrency === currency.code 
-                      ? 'bg-orange-500 text-white shadow-lg scale-105' 
-                      : 'bg-white dark:bg-gray-700 hover:bg-orange-100 dark:hover:bg-gray-600'
-                  }`}
-                >
-                  <img 
-                    src={`https://flagcdn.com/w20/${currency.flag}.png`}
-                    alt={currency.code}
-                    className="w-5 h-3.5 object-cover rounded shadow-sm"
-                  />
-                  <span className={`text-sm font-bold ${selectedCurrency === currency.code ? 'text-white' : 'text-gray-800 dark:text-gray-200'}`} style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}>
-                    {currency.code === 'GHS' ? currency.symbol : `${currency.symbol}${exchangeRates[currency.code]?.toFixed(currency.code === 'NGN' ? 2 : 4)}`}
-                  </span>
-                  <span className={`text-xs ${selectedCurrency === currency.code ? 'text-white/80' : 'text-gray-500 dark:text-gray-400'}`}>
-                    {currency.code}
-                  </span>
-                </div>
-              ))}
+{/* Pricing Cards Section */}
+<section className="py-20 bg-gray-100 dark:bg-gray-950 relative overflow-hidden">
+  {/* Ambient glow — only visible in dark mode */}
+  <div className="absolute inset-x-0 -top-10 -z-10 flex justify-center pointer-events-none">
+    <div
+      className="w-[600px] h-[300px] opacity-0 dark:opacity-20 blur-3xl rounded-full transition-opacity duration-300"
+      style={{ background: "radial-gradient(ellipse, #f97316 0%, transparent 70%)" }}
+    />
+  </div>
+
+  <div className="max-w-7xl mx-auto px-4">
+    <h2
+      className="text-4xl font-bold text-gray-900 dark:text-white text-center mb-3"
+      style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}
+    >
+      Our Packages
+    </h2>
+    <p
+      className="text-center text-gray-500 dark:text-slate-400 mb-8"
+      style={{ fontFamily: "Albert Sans, sans-serif" }}
+    >
+      Quality web development at affordable Ghana Cedi rates — no hidden fees
+    </p>
+
+    {/* Exchange Rate Bar */}
+    <div className="bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-2xl p-4 mb-10">
+      <div className="flex flex-wrap items-center justify-center gap-3">
+        <span
+          className="text-sm font-semibold text-gray-700 dark:text-slate-300"
+          style={{ fontFamily: "Albert Sans, sans-serif" }}
+        >
+          Select Currency:
+        </span>
+        {currencies.map((currency) => (
+          <div
+            key={currency.code}
+            onClick={() => setSelectedCurrency(currency.code)}
+            className={`flex items-center space-x-2 px-3 py-1.5 rounded-xl cursor-pointer transition-all duration-200 border ${
+              selectedCurrency === currency.code
+                ? "bg-orange-500 border-orange-500 text-white shadow-lg scale-105"
+                : "border-gray-200 dark:border-white/10 bg-gray-50 dark:bg-white/5 hover:bg-orange-50 dark:hover:bg-white/10 text-gray-700 dark:text-slate-300"
+            }`}
+          >
+            <img
+              src={`https://flagcdn.com/w20/${currency.flag}.png`}
+              alt={currency.code}
+              className="w-5 h-3.5 object-cover rounded shadow-sm"
+            />
+            <span
+              className="text-sm font-bold"
+              style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}
+            >
+              {currency.code}
+            </span>
+          </div>
+        ))}
+      </div>
+      <div className="flex items-center justify-center mt-3 space-x-2">
+        <span className="text-xs text-gray-400 dark:text-slate-500">
+          {ratesLoading ? "🔄 Updating rates..." : `⏱️ Updated ${getTimeAgo(lastUpdated)}`}
+        </span>
+        <span className="text-xs text-gray-300 dark:text-slate-600">•</span>
+        <span className="text-xs text-gray-400 dark:text-slate-500">
+          🕐 {liveTime.toLocaleTimeString("en-GB", { hour: "2-digit", minute: "2-digit", second: "2-digit" })}
+        </span>
+      </div>
+    </div>
+
+    {/* Plan cards grid */}
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      {pricingPlans.map((plan, idx) => (
+        <motion.div
+          key={idx}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.4, delay: idx * 0.08 }}
+          className={`relative rounded-2xl p-6 flex flex-col gap-5 border transition-all duration-300 ${
+            plan.popular
+              ? "bg-orange-50 dark:bg-orange-500/10 border-orange-300 dark:border-orange-500/40 shadow-xl shadow-orange-100 dark:shadow-orange-900/20"
+              : "bg-white dark:bg-white/[0.03] border-gray-200 dark:border-white/10 hover:border-orange-200 dark:hover:border-white/20"
+          }`}
+        >
+          {/* Popular badge */}
+          {plan.popular && (
+            <div className="absolute -top-3 right-4 bg-orange-500 text-white text-[10px] font-bold px-3 py-1 rounded-full tracking-wide">
+              Most Popular
             </div>
-            <div className="flex items-center justify-center mt-3 space-x-2">
-              <span className="text-xs text-gray-500 dark:text-gray-400">
-                {ratesLoading ? '🔄 Updating rates...' : `⏱️ Updated ${getTimeAgo(lastUpdated)}`}
+          )}
+
+          {/* Icon */}
+          <div className="w-10 h-10 rounded-xl bg-orange-100 dark:bg-orange-500/15 border border-orange-200 dark:border-orange-500/30 flex items-center justify-center">
+            <plan.icon className="text-orange-500 dark:text-orange-400" size={20} />
+          </div>
+
+          {/* Name + description */}
+          <div>
+            <h3
+              className="text-lg font-bold text-gray-900 dark:text-slate-100 mb-1"
+              style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}
+            >
+              {plan.name}
+            </h3>
+            <p
+              className="text-gray-500 dark:text-slate-500 text-sm leading-relaxed"
+              style={{ fontFamily: "Albert Sans, sans-serif" }}
+            >
+              {plan.description}
+            </p>
+          </div>
+
+          {/* Price */}
+          <div>
+            <div className="flex items-baseline gap-2">
+              <span
+                className="text-3xl font-bold text-orange-600 dark:text-orange-400"
+                style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}
+              >
+                {formatPrice(plan.price[billingPeriod])}
               </span>
-              <span className="text-xs text-gray-400">•</span>
-              <span className="text-xs text-gray-500 dark:text-gray-400">
-                🕐 {liveTime.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', second: '2-digit' })}
+            </div>
+            {plan.originalPrice && (
+              <span className="text-sm line-through text-gray-400 dark:text-slate-600">
+                {formatPrice(plan.originalPrice[billingPeriod])}
               </span>
+            )}
+            <div className="flex items-center gap-1 mt-1 text-gray-400 dark:text-slate-500 text-xs">
+              <Clock size={11} />
+              {typeof plan.deliveryTime === "object"
+                ? plan.deliveryTime[billingPeriod]
+                : plan.deliveryTime}
             </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {pricingPlans.map((plan, idx) => (
-              <motion.div key={idx} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.4 }} className={`border rounded-2xl p-6 shadow-lg relative bg-white dark:bg-gray-800 ${plan.popular ? "border-orange-500" : "border-gray-200 dark:border-gray-700"}`}>
-                {plan.popular && <div className="absolute top-3 right-3 bg-orange-500 text-white text-xs font-bold px-3 py-1 rounded-full">Most Popular</div>}
-                <plan.icon className="text-orange-500 mb-4" size={32} />
-                <h3 className="text-2xl font-bold mb-2 text-gray-900 dark:text-white" style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}>{plan.name}</h3>
-                <p className="text-gray-600 dark:text-gray-400 mb-4" style={{ fontFamily: "Albert Sans, sans-serif" }}>{plan.description}</p>
-                <div className="mb-4">
-                  <span className="text-3xl font-bold text-orange-600" style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}>{formatPrice(plan.price[billingPeriod])}</span>
-                  <span className="text-sm line-through text-gray-400 ml-2">{formatPrice(plan.originalPrice ? plan.originalPrice[billingPeriod] : plan.price[billingPeriod])}</span>
-                </div>
-                <div className="mb-2 text-xs text-gray-500 dark:text-gray-400" style={{ fontFamily: "Albert Sans, sans-serif" }}>
-                  Delivery: {typeof plan.deliveryTime === 'object' ? plan.deliveryTime[billingPeriod] : plan.deliveryTime}
-                </div>
-                <ul className="mb-6 space-y-2 text-gray-700 dark:text-gray-300 text-sm" style={{ fontFamily: "Albert Sans, sans-serif" }}>
-                  {(Array.isArray(plan.features) ? plan.features : plan.features[billingPeriod]).map((feat, i) => (
-                    <li key={i} className="flex items-center space-x-2"><Check className="text-green-500" size={16} /> <span>{feat}</span></li>
-                  ))}
-                </ul>
-                <PremiumCTA href={getWhatsAppLink(plan.name, plan.price[billingPeriod])} size="default" variant="primary" className="w-full justify-center" target="_blank" rel="noopener noreferrer">
-                  {plan.cta || 'Order Now'}
-                </PremiumCTA>
-                {plan.renewalPrice && (
-                  <div className="mt-4 pt-4 border-t border-gray-200 dark:border-gray-700 text-center">
-                    <p className="text-xs text-gray-500 dark:text-gray-400" style={{ fontFamily: "Albert Sans, sans-serif" }}>Annual Renewal</p>
-                    <p className="text-lg font-bold text-green-600" style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}>{formatPrice(plan.renewalPrice[billingPeriod])}/year</p>
-                  </div>
-                )}
-              </motion.div>
+          {/* Feature list */}
+          <ul
+            className="flex-1 space-y-2 text-sm"
+            style={{ fontFamily: "Albert Sans, sans-serif" }}
+          >
+            {(Array.isArray(plan.features)
+              ? plan.features
+              : plan.features[billingPeriod]
+            ).map((feat, i) => (
+              <li key={i} className="flex items-start gap-2 text-gray-600 dark:text-slate-400">
+                <Check className="text-green-500 mt-0.5 shrink-0" size={14} />
+                <span>{feat}</span>
+              </li>
             ))}
-          </div>
-        </div>
-      </section>
+          </ul>
+
+          {/* CTA */}
+          <PremiumCTA
+            href={getWhatsAppLink(plan.name, plan.price[billingPeriod])}
+            size="default"
+            variant={plan.popular ? "primary" : "outline"}
+            className="w-full justify-center"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {plan.cta || "Order Now"}
+          </PremiumCTA>
+
+          {/* Renewal */}
+          {plan.renewalPrice && (
+            <div className="pt-4 border-t border-gray-100 dark:border-white/[0.06] text-center">
+              <p
+                className="text-xs text-gray-400 dark:text-slate-600"
+                style={{ fontFamily: "Albert Sans, sans-serif" }}
+              >
+                Annual renewal
+              </p>
+              <p
+                className="text-base font-bold text-green-600 dark:text-green-500"
+                style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}
+              >
+                {formatPrice(plan.renewalPrice[billingPeriod])}/yr
+              </p>
+            </div>
+          )}
+        </motion.div>
+      ))}
+    </div>
+  </div>
+</section>
 
       {/* Package Comparison Section */}
       <section className="py-20 bg-gray-50 dark:bg-gray-800">
