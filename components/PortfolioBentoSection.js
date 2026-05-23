@@ -45,7 +45,7 @@ const codeLines = [
 const techStack = [
   {
     label: 'Next.js',
-    color: '#ffffff',
+    color: '#000000',
     bg: 'rgba(255,255,255,0.06)',
     img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg',
   },
@@ -108,6 +108,12 @@ const techStack = [
     color: '#FF3E00',
     bg: 'rgba(255,62,0,0.08)',
     img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sanity/sanity-original.svg',
+  },
+  {
+    label:' PostgreSQL',
+    color: '#336791',
+    bg: 'rgba(51,103,145,0.08)',
+    img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg',
   }
 ];
 
