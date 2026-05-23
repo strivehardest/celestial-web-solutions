@@ -42,11 +42,25 @@ const codeLines = [
   [{t:"export default ",c:K},{t:"PortfolioCard",c:CY},{t:";",c:WH}],
 ];
 
+// Logos that are black SVGs — must be inverted to show on dark backgrounds
+const INVERT_LOGOS = new Set(['Next.js', 'GitHub']);
+
+// Logos that need a custom color filter (colored SVGs that render wrong)
+const LOGO_FILTERS = {
+  'WordPress': 'brightness(0) saturate(100%) invert(38%) sepia(63%) saturate(400%) hue-rotate(170deg)',
+};
+
+function getLogoFilter(label) {
+  if (INVERT_LOGOS.has(label.trim())) return 'brightness(0) invert(1)';
+  if (LOGO_FILTERS[label.trim()])    return LOGO_FILTERS[label.trim()];
+  return 'none';
+}
+
 const techStack = [
   {
     label: 'Next.js',
-    color: '#000000',
-    bg: 'rgba(255,255,255,0.06)',
+    color: '#ffffff',
+    bg: 'rgba(255,255,255,0.10)',
     img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg',
   },
   {
@@ -93,12 +107,12 @@ const techStack = [
   },
   {
     label: 'GitHub',
-    color: '#181717',
-    bg: 'rgba(24,23,23,0.08)',
+    color: '#ffffff',
+    bg: 'rgba(255,255,255,0.08)',
     img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg',
   },
   {
-    label:' Supabase',
+    label: 'Supabase',
     color: '#3ECF8E',
     bg: 'rgba(62,207,142,0.08)',
     img: '/portfolio/desktop/supabase.webp',
@@ -110,11 +124,11 @@ const techStack = [
     img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sanity/sanity-original.svg',
   },
   {
-    label:' PostgreSQL',
+    label: 'PostgreSQL',
     color: '#336791',
     bg: 'rgba(51,103,145,0.08)',
     img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg',
-  }
+  },
 ];
 
 export default function PortfolioBentoSection() {
@@ -136,7 +150,7 @@ export default function PortfolioBentoSection() {
           <div className="h-px flex-1 bg-gradient-to-r from-transparent via-white/10 to-transparent" />
         </div>
 
-        {/* TWO cards only */}
+        {/* Two cards */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
 
           {/* ── Card 1: Tech Stack ── */}
@@ -165,42 +179,39 @@ export default function PortfolioBentoSection() {
             </div>
 
             <div className="grid grid-cols-4 gap-3">
-              {techStack.map((tech) => (
-                <div
-                  key={tech.label}
-                  onMouseEnter={() => setHoveredTech(tech.label)}
-                  onMouseLeave={() => setHoveredTech(null)}
-                  className="group flex flex-col items-center gap-2 cursor-default"
-                >
+              {techStack.map((tech) => {
+                const isHovered = hoveredTech === tech.label.trim();
+                return (
                   <div
-                    className="w-12 h-12 rounded-xl flex items-center justify-center transition-all duration-300 group-hover:scale-110"
-                    style={{
-                      background: hoveredTech === tech.label ? tech.bg : 'rgba(255,255,255,0.04)',
-                      boxShadow: hoveredTech === tech.label ? `0 0 20px ${tech.color}40` : 'none',
-                      border: '1px solid rgba(255,255,255,0.06)',
-                    }}
+                    key={tech.label}
+                    onMouseEnter={() => setHoveredTech(tech.label.trim())}
+                    onMouseLeave={() => setHoveredTech(null)}
+                    className="group flex flex-col items-center gap-2 cursor-default"
                   >
-                    <img
-                      src={tech.img}
-                      alt={tech.label}
-                      className="w-7 h-7 object-contain"
+                    <div
+                      className="w-12 h-12 rounded-xl flex items-center justify-center transition-all duration-300 group-hover:scale-110"
                       style={{
-                        filter: tech.label === 'Next.js'
-                          ? 'brightness(0) invert(1)'
-                          : tech.label === 'WordPress'
-                          ? 'brightness(0) saturate(100%) invert(38%) sepia(63%) saturate(400%) hue-rotate(170deg)'
-                          : 'none',
+                        background: isHovered ? tech.bg : 'rgba(255,255,255,0.04)',
+                        boxShadow: isHovered ? `0 0 20px ${tech.color}40` : 'none',
+                        border: '1px solid rgba(255,255,255,0.06)',
                       }}
-                    />
+                    >
+                      <img
+                        src={tech.img}
+                        alt={tech.label}
+                        className="w-7 h-7 object-contain"
+                        style={{ filter: getLogoFilter(tech.label) }}
+                      />
+                    </div>
+                    <span
+                      className="text-[10px] text-gray-500 group-hover:text-gray-300 transition-colors text-center leading-tight"
+                      style={{ fontFamily: "'Albert Sans', sans-serif" }}
+                    >
+                      {tech.label.trim()}
+                    </span>
                   </div>
-                  <span
-                    className="text-[10px] text-gray-500 group-hover:text-gray-300 transition-colors text-center leading-tight"
-                    style={{ fontFamily: "'Albert Sans', sans-serif" }}
-                  >
-                    {tech.label}
-                  </span>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </div>
 
@@ -271,7 +282,9 @@ export default function PortfolioBentoSection() {
                           verticalAlign: 'top',
                         }}>
                           {tokens && tokens.length > 0
-                            ? tokens.map((tok, j) => <span key={j} style={{ color: tok.c }}>{tok.t}</span>)
+                            ? tokens.map((tok, j) => (
+                                <span key={j} style={{ color: tok.c }}>{tok.t}</span>
+                              ))
                             : <span style={{ color: WH }}>&nbsp;</span>
                           }
                         </td>
