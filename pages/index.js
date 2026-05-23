@@ -12,6 +12,7 @@ const happyClients = [
   { name: "DL Auto Parts", src: "/png/projects/dl-auto-parts.png" },
   { name: "Tru Seeds Africa", src: "/png/projects/truseeds.webp" },
   { name: "COPTI", src: "/png/projects/copti.png" },
+  { name: "Kafui Dey", src: "/png/projects/kafui-dey.png" }
 ];
 
 import { useState, useEffect, useRef } from 'react';
@@ -244,13 +245,13 @@ const portfolioItems = [
     accent: "#3b82f6"
   },
   {
-    title: "Ghana Updates Online",
-    category: "News & Media",
-    description: "A leading Ghanaian news platform delivering real-time updates and editorial content.",
-    tech: ["WordPress", "Custom Theme", "SEO"],
-    link: "/portfolio/ghana-updates-online",
-    image: "/portfolio/desktop/ghanaupdates.webp",
-    accent: "#10b981"
+    title: "Kafui Dey Interviews",
+    category: "Personal Website",
+    description: "A personal website for Kafui Dey, featuring interviews and professional insights.",
+    tech: ["Next.js", "React", "Tailwind CSS", "Sanity CMS", "TypeScript"],
+    link: "/portfolio/kafui-dey",
+    image: "/portfolio/desktop/kafui-desktop.webp",
+    accent: "#ec4899"
   },
   {
     title: "Elolo Agbleke Portfolio",

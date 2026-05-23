@@ -56,6 +56,10 @@ const happyClients = [
   {
     name: "Conference of Principals of Technical Institutes",
     src: "/png/projects/copti.png"
+  },
+  {
+    name: "Kafui Dey",
+    src: "/png/projects/kafui-dey.png"
   }
 ];
 
