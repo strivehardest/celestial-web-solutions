@@ -3,20 +3,29 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
 import { ArrowRight, ArrowLeft, ExternalLink } from 'lucide-react';
 
-// ─────────────────────────────────────────────────────────────────────────────
-// 1. Upload each project walkthrough video to youtube.com/@celestialwebsolutions
-// 2. Grab the video ID from the URL e.g. https://youtu.be/ABC123 → "ABC123"
-// 3. Paste it in the youtubeId field below
-// ─────────────────────────────────────────────────────────────────────────────
+
 const showcaseProjects = [
+  {
+    slug: 'afrocinema',
+    title: 'AfroCinema',
+    category: 'Entertainment & Streaming',
+    description: 'Modern African movie streaming platform built with Next.js, TypeScript, Supabase, and PLpgSQL. Fast, scalable, and visually engaging.',
+    country: 'Ghana 🇬🇭',
+    liveUrl: 'https://afrocinema.vercel.app',
+    youtubeId: '',
+    posterImg: '/portfolio/desktop/afrocinema.png',
+    bg: '#18181b',
+    accent: '#f97316',
+    textColor: '#fff',
+  },
   {
     slug: 'tru-seeds-africa',
     title: 'Tru Seeds Africa',
     category: 'Corporate Website',
     description: 'Agricultural company web presence built with Next.js & TypeScript.',
     country: 'Ghana 🇬🇭',
-    liveUrl: 'https://truseeds.africa',
-    youtubeId: 'REPLACE_WITH_VIDEO_ID', // ← paste YouTube video ID here
+    liveUrl: 'https://truseedsafrica.com',
+    youtubeId: 'REPLACE_WITH_VIDEO_ID', 
     posterImg: '/portfolio/desktop/trueseeds.png',
     bg: '#1a6b3c',
     accent: '#f5c842',
@@ -62,16 +71,16 @@ const showcaseProjects = [
     textColor: '#fff',
   },
   {
-    slug: 'ghana-updates-online',
-    title: 'Ghana Updates Online',
-    category: 'News & Media',
-    description: 'WordPress news portal with AdSense monetisation.',
+    slug: 'kafui-dey',
+    title: 'Kafui Dey Interviews',
+    category: 'Personal Website',
+    description: 'A personal website for Kafui Dey, featuring interviews and professional insights.',
     country: 'Ghana 🇬🇭',
-    liveUrl: 'https://ghanaupdates.online',
+    liveUrl: 'https://kafuideyinterviews.com',
     youtubeId: 'REPLACE_WITH_VIDEO_ID',
-    posterImg: '/portfolio/desktop/ghanaupdates.png',
-    bg: '#e67e22',
-    accent: '#2c3e50',
+    posterImg: '/portfolio/desktop/kafui-desktop.png',
+    bg: '#ec4899',
+    accent: '#ec4899',
     textColor: '#fff',
   },
   {
@@ -79,14 +88,27 @@ const showcaseProjects = [
     title: 'MySpace Furniture',
     category: 'E-Commerce Store',
     description: 'Furniture shop with product catalogue & enquiry.',
-    country: 'Ghana 🇬🇭',
-    liveUrl: '#',
-    youtubeId: 'REPLACE_WITH_VIDEO_ID',
+    country: 'USA US',
+    liveUrl: 'https://www.myyspacefurniture.com',
+    youtubeId: 'RflvHQTV_SQ',
     posterImg: '/portfolio/desktop/myspace.png',
     bg: '#2c3e50',
     accent: '#e74c3c',
     textColor: '#fff',
   },
+  {
+    slug: 'copti',
+    title: 'COPTI',
+    category: 'Educational Institutions',
+    description: 'Conference of Principals of Technical Institutions.',
+    country: 'Ghana 🇬🇭',
+    liveUrl: 'https://copti.org.gh',
+    youtubeId: 'REPLACE_WITH_VIDEO_ID',
+    posterImg: '/portfolio/desktop/copti.webp',
+    bg: '#2cbkd',
+    accent: '#e74c4d',
+    textColor: '#fff',
+  }
 ];
 
 // Builds the YouTube embed URL with autoplay, loop, no controls, no branding
