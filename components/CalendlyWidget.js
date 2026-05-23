@@ -4,14 +4,9 @@ export default function CalendlyWidget() {
   const ref = useRef(null);
 
   useEffect(() => {
-    // Load Calendly script lazily
-    const script = document.createElement('script');
-    script.src = 'https://assets.calendly.com/assets/external/widget.js';
-    script.async = true;
-    document.body.appendChild(script);
-
-    script.onload = () => {
+    const initCalendly = () => {
       if (ref.current && window.Calendly) {
+        ref.current.innerHTML = '';
         window.Calendly.initInlineWidget({
           url: 'https://calendly.com/waliuaforlabi?hide_landing_page_details=1&primary_color=f7a707',
           parentElement: ref.current,
@@ -21,8 +16,29 @@ export default function CalendlyWidget() {
       }
     };
 
+    // If Calendly script is already available, initialize immediately.
+    if (window.Calendly) {
+      initCalendly();
+      return;
+    }
+
+    let script = document.querySelector('script[src="https://assets.calendly.com/assets/external/widget.js"]');
+    let onLoadHandler;
+
+    if (!script) {
+      script = document.createElement('script');
+      script.src = 'https://assets.calendly.com/assets/external/widget.js';
+      script.async = true;
+      document.body.appendChild(script);
+    }
+
+    onLoadHandler = () => initCalendly();
+    script.addEventListener('load', onLoadHandler);
+
     return () => {
-      document.body.removeChild(script);
+      if (script && onLoadHandler) {
+        script.removeEventListener('load', onLoadHandler);
+      }
     };
   }, []);
 
