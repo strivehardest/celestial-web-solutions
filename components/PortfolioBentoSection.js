@@ -120,6 +120,30 @@ const techStack = [
     bg:     'rgba(51,103,145,0.10)',
     img:    'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg',
   },
+  {
+    label:  'Vercel',
+    color:  '#000000',
+    bg:     'rgba(0,0,0,0.08)',
+    img:    'https://cdn.simpleicons.org/vercel/000000',
+  },
+  {
+    label: 'Python',
+    color: '#3776AB',
+    bg: 'rgba(55,118,171,0.08)',
+    img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg',
+  },
+  {
+    label: 'Django',
+    color: '#092E20',
+    bg: 'rgba(9,46,32,0.08)',
+    img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/django/django-plain.svg',
+  },
+  {
+    label:'Framer Motion',
+    color: '#FF008C',
+    bg: 'rgba(255,0,140,0.08)',
+    img: 'https://cdn.worldvectorlogo.com/logos/framer-motion.svg',
+  }
 ];
 
 export default function PortfolioBentoSection() {
