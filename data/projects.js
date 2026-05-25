@@ -8,7 +8,7 @@ const projects = [
     client: "Kafui Dey",
     clientCountry: "Ghana",
     description: "A sleek, modern website showcasing the life and work of Kafui Dey — one of Ghana's most influential media personalities. The site features a comprehensive interview archive, dynamic content management with Sanity CMS, and a visually engaging design that celebrates his impact on Ghanaian media and culture.",
-    image: "/png/projects/kafui.png",
+    image: "/png/projects/kafui.webp",
     desktopImage: "/portfolio/desktop/kafui-desktop.webp",
     mobileImage: "/portfolio/mobile/kafui-mobile.webp",
     screenshot: "/png/screenshots/kafui-full.webp",
