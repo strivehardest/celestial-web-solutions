@@ -3629,7 +3629,10 @@ const POST_QUERY = `*[_type == "post" && slug.current == $slug][0]{
   tags,
   seoKeywords,
   metaDescription,
-  body
+  body[]{
+    ...,
+    asset->
+  }
 }`
 
 export async function getStaticProps({ params }) {
