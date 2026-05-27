@@ -3647,7 +3647,7 @@ export async function getStaticProps({ params }) {
         date: new Date(sanityArticle.date).toLocaleDateString('en-US', {
           month: 'long', day: 'numeric', year: 'numeric'
         }),
-        hashtags: sanityArticle.tags?.map(t => `#${t}`) || [],
+        hashtags: sanityArticle.tags?.map(t => `#${t.replace(/\s+/g, '')}`) || [],
       }
       isPortableText = true
     }
@@ -3728,15 +3728,14 @@ export default function BlogPost({ slug, article, relatedArticles: initialRelate
   const [relatedArticles, setRelatedArticles] = useState(initialRelated || []);
   const [headings, setHeadings] = useState([]);
 
- useEffect(() => {
+useEffect(() => {
   if (!article) return
 
   if (isPortableText && article.body) {
-    // Extract headings from PortableText body array
     const extracted = (article.body || [])
       .filter(block => block._type === 'block' && ['h2', 'h3'].includes(block.style))
-      .map((block, index) => ({
-        id: `heading-${index}`,
+      .map((block) => ({
+        id: `heading-${block._key}`,
         text: block.children?.map(c => c.text).join('') || '',
         level: block.style === 'h2' ? 2 : 3,
       }))
