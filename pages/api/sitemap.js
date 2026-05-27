@@ -1,6 +1,7 @@
 import { blogArticles } from '../blog.js';
 import projects from '../../data/projects.js';
 import { courses } from '../../data/courses.js';
+import { client } from '../../lib/sanity.js';
 
 const BASE_URL = 'https://www.celestialwebsolutions.net';
 const TODAY = new Date().toISOString().split('T')[0];
@@ -16,7 +17,6 @@ function getDate(dateString) {
   }
 }
 
-// Static URLs with individual priority and changefreq
 const staticPaths = [
   // Core pages
   { path: '/',                                                                        priority: 1.0, changefreq: 'daily'   },
@@ -53,7 +53,7 @@ export default async function handler(req, res) {
     return;
   }
 
-  // Static URLs
+  // ── Static URLs ──
   const staticUrls = staticPaths.map(({ path, priority, changefreq }) => ({
     loc: `${BASE_URL}${path}`,
     lastmod: TODAY,
@@ -61,15 +61,44 @@ export default async function handler(req, res) {
     changefreq,
   }));
 
-  // Blog posts - high priority, weekly changefreq
-  const blogUrls = blogArticles.map(post => ({
-    loc: `${BASE_URL}/blog/${post.slug}`,
-    lastmod: getDate(post.date),
-    priority: 0.8,
-    changefreq: 'weekly',
-  }));
+  // ── Sanity blog posts (new posts written in Studio) ──
+  let sanityBlogUrls = [];
+  try {
+    const sanityPosts = await client.fetch(`
+      *[_type == "post"] | order(publishedAt desc) {
+        "slug": slug.current,
+        publishedAt
+      }
+    `);
+    sanityBlogUrls = sanityPosts
+      .filter(p => p.slug)
+      .map(p => ({
+        loc: `${BASE_URL}/blog/${p.slug}`,
+        lastmod: getDate(p.publishedAt),
+        priority: 0.8,
+        changefreq: 'weekly',
+      }));
+  } catch (e) {
+    console.error('Sitemap: Sanity fetch failed, continuing without Sanity posts:', e);
+  }
 
-  // Portfolio projects
+  // ── Hardcoded blog posts (existing posts) ──
+  // Deduplicate — if a slug exists in Sanity, skip the hardcoded version
+  const sanitySlugSet = new Set(sanityBlogUrls.map(u => u.loc));
+
+  const hardcodedBlogUrls = blogArticles
+    .filter(post => !sanitySlugSet.has(`${BASE_URL}/blog/${post.slug}`))
+    .map(post => ({
+      loc: `${BASE_URL}/blog/${post.slug}`,
+      lastmod: getDate(post.date),
+      priority: 0.8,
+      changefreq: 'weekly',
+    }));
+
+  // Sanity posts first (newest), then remaining hardcoded
+  const allBlogUrls = [...sanityBlogUrls, ...hardcodedBlogUrls];
+
+  // ── Portfolio projects ──
   const portfolioUrls = projects.map(project => ({
     loc: `${BASE_URL}/portfolio/${project.slug}`,
     lastmod: getDate(
@@ -81,7 +110,7 @@ export default async function handler(req, res) {
     changefreq: 'monthly',
   }));
 
-  // Courses
+  // ── Courses ──
   const courseUrls = courses.map(course => ({
     loc: `${BASE_URL}/courses/${course.slug}`,
     lastmod: getDate(course.lastUpdated),
@@ -89,10 +118,15 @@ export default async function handler(req, res) {
     changefreq: 'weekly',
   }));
 
-  // Combine all URLs
-  const allUrls = [...staticUrls, ...blogUrls, ...portfolioUrls, ...courseUrls];
+  // ── Combine all ──
+  const allUrls = [
+    ...staticUrls,
+    ...allBlogUrls,
+    ...portfolioUrls,
+    ...courseUrls,
+  ];
 
-  // Generate sitemap XML
+  // ── Generate XML ──
   const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${allUrls
