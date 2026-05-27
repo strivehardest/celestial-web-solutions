@@ -22,6 +22,11 @@ function MyApp({ Component, pageProps }) {
   const [isLoading, setIsLoading] = useState(false);
   const [showExpertPopup, setShowExpertPopup] = useState(false);
 
+// Render studio completely standalone — no site layout, no scripts
+  if (router.pathname.startsWith('/studio')) {
+    return <Component {...pageProps} />
+  }  
+
   useEffect(() => {
     const handleRouteChangeStart = () => {
       setIsLoading(true);

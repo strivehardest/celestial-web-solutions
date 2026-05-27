@@ -19,6 +19,9 @@ import WhatsAppButton from '../../components/WhatsAppButton';
 import PremiumCTA from '../../components/PremiumCTA';
 import GoogleAd from '../../components/GoogleAd';
 import { useState, useEffect } from 'react';
+import { client } from '../../lib/sanity'
+import { PortableText } from '@portabletext/react'
+import { portableTextComponents } from '../../lib/portableTextComponents'
 
 // Helper function to extract headings from HTML content
 const extractHeadings = (htmlContent) => {
@@ -3592,23 +3595,75 @@ const blogArticles = {
   }
 };
 
-// --- SSG: Pre-render all blog posts at build time ---
+const ALL_SLUGS_QUERY = `*[_type == "post"]{ "slug": slug.current }`
+
 export async function getStaticPaths() {
-  const paths = Object.keys(blogArticles).map((slug) => ({
-    params: { slug },
-  }));
-  return { paths, fallback: false };
-}
-
-export async function getStaticProps({ params }) {
-  const { slug } = params;
-  const articleData = blogArticles[slug] || null;
-
-  if (!articleData) {
-    return { notFound: true };
+  let sanitySlugs = []
+  try {
+    const sanityPosts = await client.fetch(ALL_SLUGS_QUERY)
+    sanitySlugs = sanityPosts.map(p => p.slug).filter(Boolean)
+  } catch (e) {
+    console.log('Sanity fetch failed, using hardcoded slugs only')
   }
 
-  // Compute related articles server-side
+  const hardcodedSlugs = Object.keys(blogArticles)
+  const allSlugs = [...new Set([...sanitySlugs, ...hardcodedSlugs])]
+
+  return {
+    paths: allSlugs.map(slug => ({ params: { slug } })),
+    fallback: false,
+  }
+}
+
+const POST_QUERY = `*[_type == "post" && slug.current == $slug][0]{
+  title,
+  "slug": slug.current,
+  excerpt,
+  "image": mainImage.asset->url,
+  "alt": mainImage.alt,
+  category,
+  author,
+  "date": publishedAt,
+  readTime,
+  featured,
+  tags,
+  seoKeywords,
+  metaDescription,
+  body
+}`
+
+export async function getStaticProps({ params }) {
+  const { slug } = params
+
+  let article = null
+  let isPortableText = false
+
+  // 1. Try Sanity first
+  try {
+    const sanityArticle = await client.fetch(POST_QUERY, { slug })
+    if (sanityArticle) {
+      article = {
+        ...sanityArticle,
+        date: new Date(sanityArticle.date).toLocaleDateString('en-US', {
+          month: 'long', day: 'numeric', year: 'numeric'
+        }),
+        hashtags: sanityArticle.tags?.map(t => `#${t}`) || [],
+      }
+      isPortableText = true
+    }
+  } catch (e) {
+    console.log('Sanity fetch failed, falling back to hardcoded')
+  }
+
+  // 2. Fall back to hardcoded if Sanity has nothing
+  if (!article) {
+    article = blogArticles[slug] || null
+  }
+
+  // 3. 404 if neither has it
+  if (!article) return { notFound: true }
+
+  // 4. Related articles (your existing logic - unchanged)
   const allArticles = Object.keys(blogArticles).map((key) => ({
     slug: key,
     title: blogArticles[key].title,
@@ -3618,47 +3673,54 @@ export async function getStaticProps({ params }) {
     image: blogArticles[key].image,
     excerpt: blogArticles[key].excerpt,
     tags: blogArticles[key].tags || [],
-  }));
+  }))
 
-  let related = allArticles.filter((a) => {
-    if (a.slug === slug) return false;
-    if (a.category === articleData.category) return true;
-    if (articleData.tags && a.tags) {
-      return a.tags.some((tag) => articleData.tags.includes(tag));
-    }
-    return false;
-  }).slice(0, 3);
+  let related = allArticles
+    .filter((a) => {
+      if (a.slug === slug) return false
+      if (a.category === article.category) return true
+      if (article.tags && a.tags) {
+        return a.tags.some((tag) => article.tags.includes(tag))
+      }
+      return false
+    })
+    .slice(0, 3)
 
   if (related.length === 0) {
     related = allArticles
       .filter((a) => a.slug !== slug)
       .sort((a, b) => new Date(b.date) - new Date(a.date))
-      .slice(0, 3);
+      .slice(0, 3)
   }
 
-  // Compute prev/next navigation
-  let nav = { prev: null, next: null };
+  // 5. Prev/Next nav (your existing logic - unchanged)
+  let nav = { prev: null, next: null }
   if (Array.isArray(blogList)) {
-    const idx = blogList.findIndex((a) => a.slug === slug);
+    const idx = blogList.findIndex((a) => a.slug === slug)
     if (idx !== -1) {
       nav = {
-        prev: idx > 0 ? { slug: blogList[idx - 1].slug, title: blogList[idx - 1].title } : null,
-        next: idx < blogList.length - 1 ? { slug: blogList[idx + 1].slug, title: blogList[idx + 1].title } : null,
-      };
+        prev: idx > 0
+          ? { slug: blogList[idx - 1].slug, title: blogList[idx - 1].title }
+          : null,
+        next: idx < blogList.length - 1
+          ? { slug: blogList[idx + 1].slug, title: blogList[idx + 1].title }
+          : null,
+      }
     }
   }
 
   return {
     props: {
       slug,
-      article: articleData,
+      article,
+      isPortableText,
       relatedArticles: related,
       nav,
     },
-  };
+  }
 }
 
-export default function BlogPost({ slug, article, relatedArticles: initialRelated, nav: initialNav }) {
+export default function BlogPost({ slug, article, relatedArticles: initialRelated, nav: initialNav, isPortableText }) {
   const router = useRouter();
   const [nav, setNav] = useState(initialNav || { prev: null, next: null });
   const [notFound, setNotFound] = useState(!article);
@@ -3666,18 +3728,27 @@ export default function BlogPost({ slug, article, relatedArticles: initialRelate
   const [relatedArticles, setRelatedArticles] = useState(initialRelated || []);
   const [headings, setHeadings] = useState([]);
 
-  // Extract headings client-side (needs DOM parser)
-  useEffect(() => {
-    if (article && article.content) {
-      try {
-        const extractedHeadings = extractHeadings(article.content);
-        setHeadings(extractedHeadings);
-      } catch (e) {
-        console.log('Could not extract headings');
-        setHeadings([]);
-      }
+ useEffect(() => {
+  if (!article) return
+
+  if (isPortableText && article.body) {
+    // Extract headings from PortableText body array
+    const extracted = (article.body || [])
+      .filter(block => block._type === 'block' && ['h2', 'h3'].includes(block.style))
+      .map((block, index) => ({
+        id: `heading-${index}`,
+        text: block.children?.map(c => c.text).join('') || '',
+        level: block.style === 'h2' ? 2 : 3,
+      }))
+    setHeadings(extracted)
+  } else if (!isPortableText && article.content) {
+    try {
+      setHeadings(extractHeadings(article.content))
+    } catch (e) {
+      setHeadings([])
     }
-  }, [article]);
+  }
+}, [article, isPortableText])
 
   if (notFound || !article) {
     return (
@@ -3907,7 +3978,7 @@ export default function BlogPost({ slug, article, relatedArticles: initialRelate
               <div className="flex items-center gap-4">
                 <Tag className="w-5 h-5 text-orange-500" />
                 <div className="flex flex-wrap gap-2">
-                  {article.tags.map((tag, index) => (
+                  {(article.tags || []).map((tag, index) => (
                     <span
                       key={index}
                       className="text-sm px-3 py-1 bg-orange-100 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400 rounded-full"
@@ -4136,25 +4207,33 @@ export default function BlogPost({ slug, article, relatedArticles: initialRelate
                 </motion.div>
               )}
 
-              <div
-                ref={(el) => {
-                  if (el && headings.length > 0) {
-                    headings.forEach((heading) => {
-                      const elements = el.querySelectorAll('h2, h3');
-                      let matchIndex = 0;
-                      elements.forEach((elem) => {
-                        if (elem.textContent.trim() === heading.text.trim()) {
-                          elem.id = heading.id;
-                          matchIndex++;
-                        }
-                      });
-                    });
-                  }
-                }}
-                dangerouslySetInnerHTML={{ __html: article.content }}
-                className="prose prose-orange prose-lg dark:prose-invert max-w-none"
-                style={{ fontFamily: "Albert Sans, sans-serif" }}
-              />
+              {/* REPLACE with this: */}
+{isPortableText ? (
+  <div className="prose prose-orange prose-lg dark:prose-invert max-w-none">
+    <PortableText value={article.body} 
+    components={portableTextComponents} />
+  </div>
+) : (
+  <div
+    ref={(el) => {
+      if (el && headings.length > 0) {
+        headings.forEach((heading) => {
+          const elements = el.querySelectorAll('h2, h3');
+          let matchIndex = 0;
+          elements.forEach((elem) => {
+            if (elem.textContent.trim() === heading.text.trim()) {
+              elem.id = heading.id;
+              matchIndex++;
+            }
+          });
+        });
+      }
+    }}
+    dangerouslySetInnerHTML={{ __html: article.content }}
+    className="prose prose-orange prose-lg dark:prose-invert max-w-none"
+    style={{ fontFamily: "Albert Sans, sans-serif" }}
+  />
+)}
               
               {/* Google AdSense Ad */}
               <div className="my-8 flex justify-center">

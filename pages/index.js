@@ -28,6 +28,7 @@ const PremiumCTA = dynamic(() => import('../components/PremiumCTA'), { ssr: fals
 import { TextCTA } from '../components/PremiumCTA';
 import CTASection from '../components/CTASection';
 import dynamic from 'next/dynamic';
+import { client, urlFor } from '../lib/sanity'
 
 const HeroSwiper = dynamic(() => import('../components/HeroSwiper'), { ssr: false });
 
@@ -369,7 +370,7 @@ const PortfolioShowcase = () => {
 // ─────────────────────────────────────────────
 // Main Page
 // ─────────────────────────────────────────────
-const IndexPage = () => {
+const IndexPage = ({ latestPosts = [] }) => {
   const router = useRouter();
   const [scrolled, setScrolled] = useState(false);
 
@@ -797,26 +798,39 @@ const IndexPage = () => {
             </motion.div>
 
             <div className="grid md:grid-cols-2 gap-8 mb-12">
-              {[
-                {
-                  title: "Web Design Prices in Ghana 2026: The Complete Honest Guide",
-                  excerpt: "Wondering how much a website costs in Ghana in 2026? This comprehensive guide breaks down web design prices based on project type, features, and complexity to help you budget for your next website project.",
-                  category: "Web Design",
-                  date: "March 23, 2026",
-                  readTime: "15 min read",
-                  slug: "web-design-prices-in-ghana-2026",
-                  image: "https://images.unsplash.com/photo-1542744094-3a31f272c490?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-                },
-                {
-                  title: "Why Every Business in Ghana Needs a Website in 2026",
-                  excerpt: "Still running your business without a website in 2026? Here's why every business in Ghana needs a professional website — and what you're losing without one.",
-                  category: "Business",
-                  date: "March 23, 2026",
-                  readTime: "10 min read",
-                  slug: "why-every-business-needs-a-website-in-ghana-2026",
-                  image: "https://images.unsplash.com/photo-1556761175-b413da4baf72?w=1200&h=600&fit=crop"
-                }
-              ].map((article, index) => (
+             {(latestPosts.length > 0
+  ? latestPosts.map(post => ({
+      title: post.title,
+      excerpt: post.excerpt || '',
+      category: post.category || 'Web Design',
+      date: new Date(post.publishedAt).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' }),
+      readTime: post.readTime || '5 min read',
+      slug: post.slug?.current,
+      image: post.mainImage
+        ? urlFor(post.mainImage).width(1200).height(600).url()
+        : 'https://images.unsplash.com/photo-1542744094-3a31f272c490?w=1200&h=600&fit=crop',
+    }))
+  : [
+      {
+        title: "Web Design Prices in Ghana 2026: The Complete Honest Guide",
+        excerpt: "Wondering how much a website costs in Ghana in 2026? This comprehensive guide breaks down web design prices based on project type, features, and complexity.",
+        category: "Web Design",
+        date: "March 23, 2026",
+        readTime: "15 min read",
+        slug: "web-design-prices-in-ghana-2026",
+        image: "https://images.unsplash.com/photo-1542744094-3a31f272c490?q=80&w=1170&auto=format&fit=crop",
+      },
+      {
+        title: "Why Every Business in Ghana Needs a Website in 2026",
+        excerpt: "Still running your business without a website in 2026? Here's why every business in Ghana needs a professional website.",
+        category: "Business",
+        date: "March 23, 2026",
+        readTime: "10 min read",
+        slug: "why-every-business-needs-a-website-in-ghana-2026",
+        image: "https://images.unsplash.com/photo-1556761175-b413da4baf72?w=1200&h=600&fit=crop",
+      }
+    ]
+).map((article, index) => (
                 <motion.div
                   key={index}
                   initial={{ opacity: 0, y: 40 }}
@@ -1010,3 +1024,16 @@ const IndexPage = () => {
 };
 
 export default IndexPage;
+
+export async function getStaticProps() {
+  try {
+    const latestPosts = await client.fetch(`
+      *[_type == "post"] | order(publishedAt desc)[0...2] {
+        _id, title, slug, excerpt, mainImage, category, publishedAt, readTime
+      }
+    `)
+    return { props: { latestPosts: latestPosts || [] }, revalidate: 60 }
+  } catch {
+    return { props: { latestPosts: [] }, revalidate: 60 }
+  }
+}

@@ -10,6 +10,7 @@
   white-space: nowrap;
   border-width: 0;
 }
+
 /* Glassmorphism CTA Button */
 .glass-cta {
   background: rgba(255, 255, 255, 0.18) !important;
@@ -18,19 +19,15 @@
   border: 1px solid rgba(255,255,255,0.25);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  /* Removed color override so Tailwind/variant color is respected */
 }
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @keyframes scroll {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-100%);
-  }
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-100%); }
 }
 
 .animate-scroll {
@@ -41,12 +38,8 @@
 }
 
 @keyframes scrollLeft {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
 }
 
 .scroll-left {
@@ -56,90 +49,102 @@
   animation-play-state: paused;
 }
 
-/* Orange Scrollbar Styles */
 @layer base {
-  /* Force system font stack helper */
   .font-system {
     font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif !important;
   }
-  /* Webkit Browsers (Chrome, Safari, Edge, Opera) */
+
+  /* Webkit Scrollbar */
   ::-webkit-scrollbar {
-    width: 13px;  /* ✅ Fixed typo (was 130x) */
+    width: 13px;
     height: 13px;
   }
-
   ::-webkit-scrollbar-track {
     background: #f3f4f6;
     border-radius: 20px;
   }
-
   html.dark ::-webkit-scrollbar-track {
     background: #1f2937;
   }
-
   ::-webkit-scrollbar-thumb {
     background: linear-gradient(180deg, #f97316, #ea580c);
     border-radius: 10px;
     border: 4px solid #f3f4f6;
   }
-
   html.dark ::-webkit-scrollbar-thumb {
     border-color: #1f2937;
   }
-
   ::-webkit-scrollbar-thumb:hover {
     background: linear-gradient(180deg, #ea580c, #c2410c);
   }
-
   ::-webkit-scrollbar-thumb:active {
     background: #c2410c;
   }
 
-  /* Firefox */
+  /* Firefox Scrollbar */
   html, body {
     scrollbar-width: thin;
     scrollbar-color: #f97316 #f3f4f6;
   }
-
   html.dark {
     scrollbar-color: #f97316 #1f2937;
   }
 
-  /* Smooth scrolling */
   html {
     scroll-behavior: smooth;
   }
 }
 
-/* Custom Cursor Styles */
+/* ── Custom Cursor — skip on Sanity Studio pages ── */
 @media (min-width: 769px) {
-  html, body {
+  html:not(:has([data-ui])),
+  html:not(:has([data-ui])) body {
     cursor: none !important;
   }
-  
-  a, button, input, textarea, select, [role="button"], .cursor-hover {
+
+  html:not(:has([data-ui])) a,
+  html:not(:has([data-ui])) button,
+  html:not(:has([data-ui])) input,
+  html:not(:has([data-ui])) textarea,
+  html:not(:has([data-ui])) select,
+  html:not(:has([data-ui])) [role="button"],
+  html:not(:has([data-ui])) .cursor-hover {
     cursor: none !important;
   }
 }
 
-/* Magnetic hover effect for buttons */
+/* ── Sanity Studio — restore native cursor ── */
+[data-ui],
+[data-ui] * {
+  cursor: auto !important;
+}
+[data-ui] button,
+[data-ui] a,
+[data-ui] [role="button"] {
+  cursor: pointer !important;
+}
+[data-ui] input,
+[data-ui] textarea {
+  cursor: text !important;
+}
+
+/* Magnetic hover */
 .magnetic-hover {
   transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
-
 .magnetic-hover:hover {
   transform: scale(1.02);
 }
 
-/* Glow effect on hover */
+/* Glow hover */
 .glow-hover {
   transition: all 0.3s ease;
 }
-
 .glow-hover:hover {
-  box-shadow: 0 0 20px rgba(249, 115, 22, 0.4),
-              0 0 40px rgba(249, 115, 22, 0.2),
-              0 0 60px rgba(249, 115, 22, 0.1);
+  box-shadow:
+    0 0 20px rgba(249, 115, 22, 0.4),
+    0 0 40px rgba(249, 115, 22, 0.2),
+    0 0 60px rgba(249, 115, 22, 0.1);
 }
 
 /* Ripple effect */
@@ -147,7 +152,6 @@
   position: relative;
   overflow: hidden;
 }
-
 .ripple::after {
   content: '';
   position: absolute;
@@ -160,13 +164,12 @@
   transform: translate(-50%, -50%);
   transition: width 0.6s ease, height 0.6s ease;
 }
-
 .ripple:active::after {
   width: 300px;
   height: 300px;
 }
 
-/* Smooth scroll behavior */
+/* Smooth scroll */
 html {
   scroll-behavior: smooth;
 }
@@ -177,6 +180,7 @@ html {
   color: inherit;
 }
 
+/* Base font */
 body, html {
   font-family: 'Albert Sans', sans-serif !important;
   font-weight: 400 !important;

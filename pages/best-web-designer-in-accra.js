@@ -11,6 +11,7 @@ import { EffectFade, Autoplay } from 'swiper/modules';
 import PremiumCTA from '../components/PremiumCTA';
 import 'swiper/css';
 import 'swiper/css/effect-fade';
+import { client, urlFor } from '../lib/sanity'
 
 const Map = dynamic(() => import('../components/Map'), {
   ssr: false,
@@ -30,9 +31,8 @@ const heroProjects = [
   { image: '/portfolio/desktop/ghanaupdates.png', title: 'Ghana Updates Online', bgColor: 'from-red-950 via-red-900 to-red-800' },
   { image: '/portfolio/desktop/dlautos.png', title: 'DL Auto Parts', bgColor: 'from-green-950 via-green-900 to-emerald-900' },
   { image: '/portfolio/desktop/valyd.png', title: 'Valyd Homes', bgColor: 'from-emerald-950 via-teal-900 to-green-950' },
-  { image: '/portfolio/desktop/copti.webp', title: 'Conference of Principals of Technical Institutions', bgColor: 'from-blue-400 via-blue-500 to blue-600' },
-  { image: '/portfolio/desktop/trueseeds.webp', title: 'Tru Seeds Africa', bgColor: 'from-green-400 via-green-500 to emarald-600' },
-  
+  { image: '/portfolio/desktop/copti.webp', title: 'Conference of Principals of Technical Institutions', bgColor: 'from-blue-400 via-blue-500 to-blue-600' },
+  { image: '/portfolio/desktop/trueseeds.webp', title: 'Tru Seeds Africa', bgColor: 'from-green-400 via-green-500 to-emerald-600' },
 ];
 
 const serviceFocus = [
@@ -117,7 +117,7 @@ const localBusinessSchema = {
   "image": "https://www.celestialwebsolutions.net/logo-white.webp",
   "description": "Celestial Web Solutions is the best web design company in Accra, Ghana. We build fast, SEO-optimized websites for SMEs, NGOs, e-commerce, and churches.",
   "telephone": "+233530505031",
-  "whatsapp" : "+233245709341",
+  "whatsapp": "+233245709341",
   "email": "info@celestialwebsolutions.net",
   "address": {
     "@type": "PostalAddress",
@@ -154,7 +154,7 @@ const localBusinessSchema = {
   "hasMap": "https://www.google.com/maps/place/Celestial+Web+Solutions"
 };
 
-export default function BestWebDesignerInAccraPage() {
+export default function BestWebDesignerInAccraPage({ latestPosts = [] }) {
   return (
     <>
       <Head>
@@ -338,6 +338,7 @@ export default function BestWebDesignerInAccraPage() {
           </Swiper>
         </section>
 
+        {/* ─── Main Content ──────────────────────────────────────────────────── */}
         <div className="max-w-6xl mx-auto px-6 pt-16 pb-16 sm:pb-20 space-y-14">
           <section className="space-y-8">
 
@@ -550,107 +551,123 @@ export default function BestWebDesignerInAccraPage() {
                   <p className="text-sm text-gray-700 dark:text-gray-300 mt-1" style={{ fontFamily: 'Albert Sans, sans-serif' }}>Accra, Tema, Madina, Kasoa, Pokuase, and surrounding areas</p>
                 </div>
               </div>
-
-              {/* Related Blog Articles */}
-              <div className="space-y-6">
-                <div className="space-y-2">
-                  <p className="text-sm uppercase tracking-[0.16em] text-orange-500 font-semibold" style={{ fontFamily: 'Albert Sans, sans-serif' }}>Resources</p>
-                  <h2 className="text-2xl sm:text-3xl font-display font-bold text-gray-900 dark:text-white">Related Articles</h2>
-                  <p className="text-base text-gray-700 dark:text-gray-200 max-w-3xl" style={{ fontFamily: 'Albert Sans, sans-serif', fontWeight: 400 }}>
-                    Learn more about web design, e-commerce, and growing your online business in Ghana.
-                  </p>
-                </div>
-
-                <div className="grid sm:grid-cols-2 gap-6">
-                  <Link href="/blog/web-design-prices-in-ghana-2026">
-                    <div className="rounded-2xl border border-gray-200 dark:border-white/10 bg-white/80 dark:bg-white/5 backdrop-blur overflow-hidden hover:shadow-lg transition-all duration-300 cursor-pointer h-full flex flex-col">
-                      <div className="relative h-40 overflow-hidden bg-gradient-to-br from-orange-400 to-orange-600">
-                        <img
-                          src="https://images.unsplash.com/photo-1542744094-3a31f272c490?q=80&w=1170&auto=format&fit=crop"
-                          alt="Web Design Prices in Ghana 2026"
-                          className="w-full h-full object-cover hover:scale-110 transition-transform duration-300"
-                        />
-                      </div>
-                      <div className="p-6 flex flex-col flex-grow">
-                        <p className="text-xs text-orange-600 dark:text-orange-400 font-semibold uppercase tracking-wide mb-2" style={{ fontFamily: 'Albert Sans, sans-serif' }}>Web Design</p>
-                        <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>Web Design Prices in Ghana (2026)</h3>
-                        <p className="text-sm text-gray-700 dark:text-gray-300 flex-grow" style={{ fontFamily: 'Albert Sans, sans-serif', fontWeight: 400 }}>
-                          A complete, honest breakdown of how much a website costs in Ghana in 2026 — by project type, features, and complexity.
-                        </p>
-                        <div className="mt-4 flex items-center gap-2 text-orange-600 dark:text-orange-400 font-semibold text-sm">Read More →</div>
-                      </div>
-                    </div>
-                  </Link>
-
-                  <Link href="/blog/why-every-business-needs-a-website-in-ghana-2026">
-                    <div className="rounded-2xl border border-gray-200 dark:border-white/10 bg-white/80 dark:bg-white/5 backdrop-blur overflow-hidden hover:shadow-lg transition-all duration-300 cursor-pointer h-full flex flex-col">
-                      <div className="relative h-40 overflow-hidden bg-gradient-to-br from-orange-400 to-orange-600">
-                        <img
-                          src="https://images.unsplash.com/photo-1556761175-b413da4baf72?w=1200&h=600&fit=crop"
-                          alt="Why Every Business Needs a Website in Ghana 2026"
-                          className="w-full h-full object-cover hover:scale-110 transition-transform duration-300"
-                        />
-                      </div>
-                      <div className="p-6 flex flex-col flex-grow">
-                        <p className="text-xs text-orange-600 dark:text-orange-400 font-semibold uppercase tracking-wide mb-2" style={{ fontFamily: 'Albert Sans, sans-serif' }}>Business</p>
-                        <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>Why Every Business Needs a Website in Ghana 2026</h3>
-                        <p className="text-sm text-gray-700 dark:text-gray-300 flex-grow" style={{ fontFamily: 'Albert Sans, sans-serif', fontWeight: 400 }}>
-                          Discover why having a professional website is crucial for every business in Ghana in 2026 and what you're losing without one.
-                        </p>
-                        <div className="mt-4 flex items-center gap-2 text-orange-600 dark:text-orange-400 font-semibold text-sm">Read More →</div>
-                      </div>
-                    </div>
-                  </Link>
-                </div>
-
-                <div className="text-center mt-8">
-                  <Link
-                    href="/blog"
-                    className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-gradient-to-r from-orange-500 to-orange-600 text-white font-semibold hover:from-orange-600 hover:to-orange-700 transition-all shadow-lg shadow-orange-500/30"
-                    style={{ fontFamily: 'Albert Sans, sans-serif', fontWeight: 400 }}
-                  >
-                    View All Articles
-                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                    </svg>
-                  </Link>
-                </div>
-              </div>
-
-              {/* Final CTA */}
-              <div className="rounded-2xl border border-gray-200 dark:border-white/10 bg-gradient-to-r from-orange-50 to-orange-100 dark:from-orange-950/20 dark:to-orange-900/20 p-8 text-center space-y-4">
-                <h3 className="text-2xl font-display font-bold text-gray-900 dark:text-white">Ready to Launch Your Web Presence in Accra?</h3>
-                <p className="text-base text-gray-700 dark:text-gray-200 max-w-2xl mx-auto" style={{ fontFamily: 'Albert Sans, sans-serif', fontWeight: 400 }}>
-                  Join businesses across Accra and Greater Accra that have transformed their online presence with our web design services.
-                </p>
-                <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
-                  <Link
-                    href="/contact"
-                    className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-gradient-to-r from-orange-500 to-orange-600 text-white font-semibold hover:from-orange-600 hover:to-orange-700 transition-all shadow-lg shadow-orange-500/30"
-                    style={{ fontFamily: 'Albert Sans, sans-serif', fontWeight: 400 }}
-                  >
-                    Get a Website Today
-                  </Link>
-                  <a
-                    href="https://wa.me/233245709341?text=Hi%20Celestial,%20I'm%20interested%20in%20getting%20a%20website%20designed%20in%20Accra."
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-green-500 hover:bg-green-600 text-white font-semibold transition-all shadow-lg shadow-green-500/30"
-                    style={{ fontFamily: 'Albert Sans, sans-serif', fontWeight: 400 }}
-                  >
-                    <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-                    </svg>
-                    WhatsApp Us
-                  </a>
-                </div>
-              </div>
-
             </div>
+
+            {/* Related Blog Articles */}
+            <div className="rounded-3xl border border-gray-200 dark:border-white/10 bg-white/85 dark:bg-white/5 backdrop-blur p-8 shadow-xl shadow-orange-500/10 space-y-6">
+              <div className="space-y-2">
+                <p className="text-sm uppercase tracking-[0.16em] text-orange-500 font-semibold" style={{ fontFamily: 'Albert Sans, sans-serif' }}>Resources</p>
+                <h2 className="text-2xl sm:text-3xl font-display font-bold text-gray-900 dark:text-white">Related Articles</h2>
+                <p className="text-base text-gray-700 dark:text-gray-200 max-w-3xl" style={{ fontFamily: 'Albert Sans, sans-serif', fontWeight: 400 }}>
+                  Learn more about web design, e-commerce, and growing your online business in Ghana.
+                </p>
+              </div>
+
+              <div className="grid sm:grid-cols-2 gap-6">
+                {(latestPosts.length > 0
+                  ? latestPosts.map(post => ({
+                      href: `/blog/${post.slug?.current}`,
+                      image: post.mainImage ? urlFor(post.mainImage).width(1200).height(600).url() : 'https://images.unsplash.com/photo-1542744094-3a31f272c490?w=1200&h=600&fit=crop',
+                      alt: post.title,
+                      category: post.category || 'Web Design',
+                      title: post.title,
+                      excerpt: post.excerpt || '',
+                    }))
+                  : [
+                      {
+                        href: '/blog/web-design-prices-in-ghana-2026',
+                        image: 'https://images.unsplash.com/photo-1542744094-3a31f272c490?q=80&w=1170&auto=format&fit=crop',
+                        alt: 'Web Design Prices in Ghana 2026',
+                        category: 'Web Design',
+                        title: 'Web Design Prices in Ghana (2026)',
+                        excerpt: 'A complete, honest breakdown of how much a website costs in Ghana in 2026 — by project type, features, and complexity.',
+                      },
+                      {
+                        href: '/blog/why-every-business-needs-a-website-in-ghana-2026',
+                        image: 'https://images.unsplash.com/photo-1556761175-b413da4baf72?w=1200&h=600&fit=crop',
+                        alt: 'Why Every Business Needs a Website in Ghana 2026',
+                        category: 'Business',
+                        title: 'Why Every Business Needs a Website in Ghana 2026',
+                        excerpt: "Discover why having a professional website is crucial for every business in Ghana in 2026 and what you're losing without one.",
+                      },
+                    ]
+                ).map((article, index) => (
+                  <Link key={index} href={article.href}>
+                    <div className="rounded-2xl border border-gray-200 dark:border-white/10 bg-white/80 dark:bg-white/5 backdrop-blur overflow-hidden hover:shadow-lg transition-all duration-300 cursor-pointer h-full flex flex-col">
+                      <div className="relative h-40 overflow-hidden bg-gradient-to-br from-orange-400 to-orange-600">
+                        <img
+                          src={article.image}
+                          alt={article.alt}
+                          className="w-full h-full object-cover hover:scale-110 transition-transform duration-300"
+                        />
+                      </div>
+                      <div className="p-6 flex flex-col flex-grow">
+                        <p className="text-xs text-orange-600 dark:text-orange-400 font-semibold uppercase tracking-wide mb-2" style={{ fontFamily: 'Albert Sans, sans-serif' }}>
+                          {article.category}
+                        </p>
+                        <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>
+                          {article.title}
+                        </h3>
+                        <p className="text-sm text-gray-700 dark:text-gray-300 flex-grow" style={{ fontFamily: 'Albert Sans, sans-serif', fontWeight: 400 }}>
+                          {article.excerpt}
+                        </p>
+                        <div className="mt-4 flex items-center gap-2 text-orange-600 dark:text-orange-400 font-semibold text-sm">
+                          Read More →
+                        </div>
+                      </div>
+                    </div>
+                  </Link>
+                ))}
+              </div>
+            </div>
+
+            {/* Final CTA */}
+            <div className="rounded-2xl border border-gray-200 dark:border-white/10 bg-gradient-to-r from-orange-50 to-orange-100 dark:from-orange-950/20 dark:to-orange-900/20 p-8 text-center space-y-4">
+              <h3 className="text-2xl font-display font-bold text-gray-900 dark:text-white">Ready to Launch Your Web Presence in Accra?</h3>
+              <p className="text-base text-gray-700 dark:text-gray-200 max-w-2xl mx-auto" style={{ fontFamily: 'Albert Sans, sans-serif', fontWeight: 400 }}>
+                Join businesses across Accra and Greater Accra that have transformed their online presence with our web design services.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
+                <Link
+                  href="/contact"
+                  className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-gradient-to-r from-orange-500 to-orange-600 text-white font-semibold hover:from-orange-600 hover:to-orange-700 transition-all shadow-lg shadow-orange-500/30"
+                  style={{ fontFamily: 'Albert Sans, sans-serif', fontWeight: 400 }}
+                >
+                  Get a Website Today
+                </Link>
+                <a
+                  href="https://wa.me/233245709341?text=Hi%20Celestial,%20I'm%20interested%20in%20getting%20a%20website%20designed%20in%20Accra."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-green-500 hover:bg-green-600 text-white font-semibold transition-all shadow-lg shadow-green-500/30"
+                  style={{ fontFamily: 'Albert Sans, sans-serif', fontWeight: 400 }}
+                >
+                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                  </svg>
+                  WhatsApp Us
+                </a>
+              </div>
+            </div>
+
           </section>
         </div>
+
       </main>
       <WhatsAppButton />
     </>
   );
+}
+
+export async function getStaticProps() {
+  try {
+    const latestPosts = await client.fetch(`
+      *[_type == "post"] | order(publishedAt desc)[0...2] {
+        _id, title, slug, excerpt, mainImage, category, publishedAt, readTime
+      }
+    `)
+    return { props: { latestPosts: latestPosts || [] }, revalidate: 60 }
+  } catch {
+    return { props: { latestPosts: [] }, revalidate: 60 }
+  }
 }
