@@ -1,404 +1,458 @@
-// ─────────────────────────────────────────────────────────────────────────────
-// TestimonialsSection.jsx
-// Drop-in replacement — dark/light mode via Tailwind dark: classes
-// Real avatar images with initials fallback.
-// Usage: import TestimonialsSection from '../components/TestimonialsSection'
-//        then <TestimonialsSection /> where the old testimonials section was.
-// ─────────────────────────────────────────────────────────────────────────────
+'use client';
 
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
+import GoogleAIBadge from './GoogleAIBadge';
 
-import GoogleAIBadge from "./GoogleAIBadge";
-
+// ── Data ──────────────────────────────────────────────────────────────────────
 const testimonials = [
   {
-    name: "Rev. Frank Ntow Gyan",
-    company: "Building Planner Designs Limited",
-    role: "CEO",
-    text: "Working with Celestial Web Solutions was incredible! They transformed our outdated website into a modern, user-friendly platform. Our online sales have increased by 200% since the launch.",
-    rating: 5,
-    image: "/testimonials/frank.jpg",
-    initials: "FG",
+    id: 'bpd',
+    tabName: 'Building Planner',
+    tabLogo: '/testimonials/logos/building.png',
+    cardPhoto: '/testimonials/frank.jpg',
+    cardLogo: '/testimonials/logos/building.png',
+    logoAlt: 'Building Planner Designs logo',
+    photoAlt: 'Rev. Frank Ntow Gyan',
+    logoInitials: 'BPD',
+    nameInitials: 'FG',
+    name: 'Rev. Frank Ntow Gyan',
+    role: 'CEO',
+    company: 'Building Planner Designs Limited',
+    text: 'Working with Celestial Web Solutions was incredible! They transformed our outdated website into a modern, user-friendly platform. Our online sales have increased by 200% since the launch.',
   },
   {
-    name: "Righteous Semahar",
-    company: "RAK Foundation",
-    role: "CEO",
-    text: "Expertise in Web Development, their services are excellent. They built exactly what we envisioned and delivered on time. The team is professional, communicative, and genuinely cares about results.",
-    rating: 5,
-    image: "/testimonials/righteous.jpg",
-    initials: "RS",
+    id: 'rak',
+    tabName: 'RAK Foundation',
+    tabLogo: '/testimonials/logos/rak.png',
+    cardPhoto: '/testimonials/righteous.jpg',
+    cardLogo: '/testimonials/logos/rak.png',
+    logoAlt: 'RAK Foundation logo',
+    photoAlt: 'Righteous Semahar',
+    logoInitials: 'RAK',
+    nameInitials: 'RS',
+    name: 'Righteous Semahar',
+    role: 'CEO',
+    company: 'RAK Foundation',
+    text: 'Expertise in Web Development — their services are excellent. They built exactly what we envisioned and delivered on time. The team is professional, communicative, and genuinely cares about results.',
   },
   {
-    name: "Elolo Agbleke",
-    company: "Keta Institute of Technology",
-    role: "Program Manager, COO",
-    text: "Great design concepts, always available for quick design changes, open to collaboration and customer-focused. Vast experience easily shows in their output. Good prices as well.",
-    rating: 5,
-    image: "/testimonials/elolo.jpg",
-    initials: "EA",
+    id: 'elolo',
+    tabName: 'Elolo Agbleke',
+    tabLogo: '/testimonials/logos/elolo2.jpeg',
+    cardPhoto: '/testimonials/elolo.jpg',
+    cardLogo: '/testimonials/logos/elolo2.jpeg',
+    logoAlt: 'Keta Institute of Technology logo',
+    photoAlt: 'Elolo Agbleke',
+    logoInitials: 'KIT',
+    nameInitials: 'EA',
+    name: 'Elolo Agbleke',
+    role: 'Program Manager, COO',
+    company: 'Keta Institute of Technology',
+    text: 'Great design concepts, always available for quick changes, open to collaboration and customer-focused. Vast experience easily shows in their output. Good prices as well.',
   },
   {
-    name: "Akari Kev",
-    company: "Ghana",
-    role: "Client",
+    id: 'akari',
+    tabName: 'Akari Kev',
+    tabLogo: null,
+    cardPhoto: null,
+    cardLogo: null,
+    logoAlt: 'Akari Kev',
+    photoAlt: 'Akari Kev',
+    logoInitials: 'AK',
+    nameInitials: 'AK',
+    name: 'Akari Kev',
+    role: 'Client',
+    company: 'Ghana',
     text: "Celestial Web Solutions was professional, responsive, and easy to work with. They understood my requirements clearly and delivered quality work on time. Communication was smooth, and any feedback was handled quickly. I'd definitely recommend them.",
-    rating: 5,
-    image: null,
-    initials: "AK",
-    badge: "Trustpilot",
   },
   {
-    name: "Paul Dickens Doe",
-    company: "My Space Furniture",
-    role: "Client",
-    text: "Celestial Web Solutions team did a great job on our websites. They always finish each project in record time. Their continuous tech support and updating of pages is just excellent. Highly recommended.",
-    rating: 5,
-    image: null,
-    initials: "PD",
-    badge: "Trustpilot",
+    id: 'myyspace',
+    tabName: 'Myy Space Furniture',
+    tabLogo: '/testimonials/logos/myspace.png',
+    cardPhoto: '/testimonials/myspace.jpg',
+    cardLogo: '/testimonials/logos/myspace.png',
+    logoAlt: 'Myy Space Furniture logo',
+    photoAlt: 'Paul Dickens Doe',
+    logoInitials: 'MS',
+    nameInitials: 'PD',
+    name: 'Paul Dickens Doe',
+    role: 'Client',
+    company: 'Myy Space Furniture',
+    text: 'Celestial Web Solutions did a great job on our website. They always finish each project in record time. Their continuous tech support and updating of pages is just excellent. Highly recommended.',
   },
 ];
 
-// ── Avatar component ──────────────────────────────────────────────────────────
-// Shows real photo if available, falls back gracefully to initials circle
-function Avatar({ src, initials, name }) {
-  const [imgError, setImgError] = useState(false);
+const AUTO_DELAY = 6000;
 
-  if (src && !imgError) {
+// ── Tab logo ──────────────────────────────────────────────────────────────────
+function TabLogo({ src, initials, active }) {
+  const [err, setErr] = useState(false);
+
+  if (src && !err) {
     return (
-      <div className="relative w-16 h-16 rounded-full overflow-hidden flex-shrink-0 ring-2 ring-orange-500/50 shadow-md">
+      <span className="relative block flex-shrink-0" style={{ width: 26, height: 26 }}>
         <Image
           src={src}
-          alt={`${testimonials.name} - Client of Celestial Web Solutions Ghana`}
+          alt={initials}
           fill
-          className="object-cover"
-          onError={() => setImgError(true)}
+          className="object-contain"
+          onError={() => setErr(true)}
         />
-      </div>
+      </span>
     );
   }
-
   return (
-    <div
-      className="w-16 h-16 rounded-full flex items-center justify-center text-white font-bold text-xl flex-shrink-0 ring-2 ring-orange-500/40 shadow-md"
-      style={{
-        background: 'linear-gradient(135deg, #f97316, #dc2626)',
-        fontFamily: 'Bricolage Grotesque, sans-serif',
-      }}
+    <span
+      className={`flex-shrink-0 flex items-center justify-center rounded-full text-[10px] font-bold transition-colors duration-200
+        ${active
+          ? 'bg-orange-100 text-orange-600 dark:bg-orange-500/20 dark:text-orange-400'
+          : 'bg-gray-200 text-gray-500 dark:bg-white/10 dark:text-white/50'
+        }`}
+      style={{ width: 26, height: 26 }}
     >
       {initials}
+    </span>
+  );
+}
+
+// ── Client card: LARGE logo top-right + SMALL circular avatar bottom-left ─────
+//
+//   Cloudflare Shopify layout:
+//
+//        [                 ]
+//        [   LARGE LOGO    ]  ← 124px, top-right
+//   [av] [                 ]
+//    ↑
+//    62px circle, bottom-left, overlaps logo
+//    Border matches card bg via CSS var --tw-card-bg
+//
+function ClientCard({ photo, photoAlt, logo, logoAlt, nameInitials, logoInitials }) {
+  const [photoErr, setPhotoErr] = useState(false);
+  const [logoErr,  setLogoErr]  = useState(false);
+
+  return (
+    <div className="relative flex-shrink-0" style={{ width: 165, height: 140 }}>
+
+      {/* Large company logo — top-right */}
+      <div className="absolute top-0 right-0" style={{ width: 124, height: 124 }}>
+        {logo && !logoErr ? (
+          <Image
+            src={logo}
+            alt={logoAlt}
+            fill
+            className="object-contain"
+            onError={() => setLogoErr(true)}
+          />
+        ) : (
+          <div className="w-full h-full flex flex-col items-center justify-center rounded-2xl
+                          bg-orange-50 border border-orange-200
+                          dark:bg-orange-500/10 dark:border-orange-500/20">
+            <span
+              className="text-orange-500 dark:text-orange-400 font-black text-3xl"
+              style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}
+            >
+              {logoInitials}
+            </span>
+          </div>
+        )}
+      </div>
+
+      {/* Small circular avatar — bottom-left, overlaps logo */}
+      {/* The border color matches the card bg via [--tw-card-bg] CSS variable set on the card container */}
+      <div
+        className="absolute bottom-0 left-0 rounded-full overflow-hidden z-10
+                   border-[3px] border-[var(--testimonial-card-bg,#ffffff)]
+                   shadow-md"
+        style={{
+          width: 62,
+          height: 62,
+          background: 'linear-gradient(135deg, #f97316, #dc2626)',
+        }}
+      >
+        {photo && !photoErr ? (
+          <Image
+            src={photo}
+            alt={photoAlt}
+            fill
+            className="object-cover object-top"
+            onError={() => setPhotoErr(true)}
+          />
+        ) : (
+          <div
+            className="w-full h-full flex items-center justify-center text-white font-bold text-lg"
+            style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}
+          >
+            {nameInitials}
+          </div>
+        )}
+      </div>
+
     </div>
   );
 }
 
-// ── Typing effect hook ────────────────────────────────────────────────────────
-function useTypingEffect(text, isActive) {
-  const [displayed, setDisplayed] = useState('');
-  const [done, setDone] = useState(false);
-
-  useEffect(() => {
-    if (!isActive) {
-      setDisplayed('');
-      setDone(false);
-      return;
-    }
-    setDisplayed('');
-    setDone(false);
-    let i = 0;
-    const id = setInterval(() => {
-      i++;
-      setDisplayed(text.slice(0, i));
-      if (i >= text.length) {
-        clearInterval(id);
-        setDone(true);
-      }
-    }, 22);
-    return () => clearInterval(id);
-  }, [text, isActive]);
-
-  return { displayed, done };
+// ── Nav button (prev / next) ──────────────────────────────────────────────────
+function NavBtn({ onClick, label, children }) {
+  return (
+    <button
+      onClick={onClick}
+      aria-label={label}
+      className="flex items-center justify-center rounded-full transition-all duration-200
+                 w-9 h-9
+                 border border-gray-300 text-gray-400
+                 hover:border-orange-500 hover:text-orange-500
+                 dark:border-white/[0.12] dark:text-white/45
+                 dark:hover:border-orange-500 dark:hover:text-orange-400"
+      style={{ background: 'transparent', cursor: 'pointer' }}
+    >
+      {children}
+    </button>
+  );
 }
 
-// ── Main component ────────────────────────────────────────────────────────────
+// ── Main section ──────────────────────────────────────────────────────────────
 export default function TestimonialsSection() {
   const [current, setCurrent] = useState(0);
-  const [typing, setTyping] = useState(true);
-  const [progress, setProgress] = useState(0);
-  const progressRef = useRef(null);
-  const DURATION = 7000; // ms to wait after typing before auto-advancing
+  const [paused,  setPaused]  = useState(false);
+  const timerRef = useRef(null);
 
-  const total = testimonials.length;
-  const t = testimonials[current];
-  const { displayed, done } = useTypingEffect(t.text, typing);
+  const goTo = useCallback((idx) => {
+    clearTimeout(timerRef.current);
+    setCurrent(((idx % testimonials.length) + testimonials.length) % testimonials.length);
+  }, []);
 
-  // Auto-advance with progress bar after typing finishes
   useEffect(() => {
-    if (!done) return;
-    setProgress(0);
-    const start = performance.now();
-    const tick = (now) => {
-      const elapsed = now - start;
-      setProgress(Math.min((elapsed / DURATION) * 100, 100));
-      if (elapsed < DURATION) {
-        progressRef.current = requestAnimationFrame(tick);
-      } else {
-        goNext();
-      }
-    };
-    progressRef.current = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(progressRef.current);
-  }, [done, current]);
+    if (paused) return;
+    timerRef.current = setTimeout(
+      () => setCurrent((c) => (c + 1) % testimonials.length),
+      AUTO_DELAY
+    );
+    return () => clearTimeout(timerRef.current);
+  }, [current, paused]);
 
-  const goTo = (idx) => {
-    cancelAnimationFrame(progressRef.current);
-    setProgress(0);
-    setTyping(false);
-    setTimeout(() => {
-      setCurrent(idx);
-      setTyping(true);
-    }, 50);
-  };
-
-  const goPrev = () => goTo((current - 1 + total) % total);
-  const goNext = () => goTo((current + 1) % total);
+  const t = testimonials[current];
 
   return (
-    /*
-      LIGHT: soft gray-50 background, dark text
-      DARK:  deep navy #0f1729 background, light text
-      Both respond automatically to ThemeToggle's `dark` class on <html>
-    */
-    <section className="relative py-24 overflow-hidden bg-gray-50 dark:bg-[#0f1729] transition-colors duration-300">
-
-
-      {/* Noise texture — only visible in dark mode */}
-      <div
-        className="absolute inset-0 opacity-0 dark:opacity-[0.03] pointer-events-none"
-        style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")`,
-          backgroundSize: '200px',
-        }}
-      />
-
-      {/* Ambient glow orbs */}
-      <div className="absolute top-0 right-0 w-96 h-96 bg-orange-500/5 dark:bg-orange-500/10 rounded-full blur-3xl pointer-events-none -translate-y-1/2 translate-x-1/4" />
-      <div className="absolute bottom-0 left-0 w-80 h-80 bg-orange-600/5 dark:bg-orange-600/10 rounded-full blur-3xl pointer-events-none translate-y-1/2 -translate-x-1/4" />
-
-      {/* Giant decorative quote marks — top right like Stack Overflow */}
-      <div
-        className="absolute top-0 right-0 select-none pointer-events-none
-                   text-gray-200 dark:text-white/[0.04] transition-colors duration-300"
-        aria-hidden="true"
-        style={{
-          fontSize: 'clamp(180px, 20vw, 320px)',
-          lineHeight: 1,
-          fontFamily: 'Georgia, serif',
-          transform: 'translate(5%, -15%)',
-          letterSpacing: '-0.05em',
-        }}
-      >
-        &#8220;&#8221;
+    <section
+      className="relative py-24 overflow-hidden
+                 bg-gray-50 dark:bg-[#0f1729]
+                 transition-colors duration-300"
+      aria-label="Client testimonials"
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
+    >
+      {/* Ambient glow */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
+        <div className="absolute -top-32 -right-32 w-[500px] h-[500px] rounded-full opacity-20 dark:opacity-30"
+             style={{ background: 'radial-gradient(circle, rgba(249,115,22,0.15) 0%, transparent 70%)' }} />
+        <div className="absolute -bottom-32 -left-32 w-96 h-96 rounded-full opacity-10 dark:opacity-20"
+             style={{ background: 'radial-gradient(circle, rgba(249,115,22,0.12) 0%, transparent 70%)' }} />
       </div>
 
-      {/* Section label */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">
-        <span
-          className="inline-block px-4 py-2 bg-orange-100 dark:bg-orange-900/40 text-orange-700 dark:text-orange-300 rounded-full text-sm font-semibold uppercase tracking-wider transition-colors duration-300"
-          style={{ fontFamily: 'Albert Sans, sans-serif' }}
-        >
-          What our clients say
-        </span>
-      </div>
-
-
-      {/* Main content */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
+        {/* Section label */}
+        <div className="mb-10">
+          <span
+            className="inline-block px-4 py-2 rounded-full text-sm font-semibold uppercase tracking-wider
+                       bg-orange-100 text-orange-700
+                       dark:bg-orange-900/40 dark:text-orange-300
+                       transition-colors duration-300"
+            style={{ fontFamily: 'Albert Sans, sans-serif' }}
+          >
+            What our clients say
+          </span>
+        </div>
+
         {/* Google AI Badge */}
-        <div className="mb-10 max-w-2xl">
+        <div className="mb-10">
           <GoogleAIBadge />
         </div>
 
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={current}
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -16 }}
-            transition={{ duration: 0.45, ease: 'easeOut' }}
-            className="grid lg:grid-cols-5 gap-10 lg:gap-16 items-center min-h-[280px]"
+        {/*
+          Card container.
+          CSS variable --testimonial-card-bg is read by ClientCard to color
+          the avatar separator ring — must always match the card background.
+
+          Light: white (#ffffff)
+          Dark:  #111827
+        */}
+        <div
+          className="rounded-2xl overflow-hidden
+                     [--testimonial-card-bg:#ffffff] dark:[--testimonial-card-bg:#111827]
+                     bg-white dark:bg-[#111827]
+                     border border-gray-200 dark:border-white/[0.07]
+                     transition-colors duration-300"
+        >
+
+          {/* ── TAB BAR ── */}
+          <div
+            className="flex items-stretch overflow-x-auto
+                       bg-gray-50 dark:bg-black/20
+                       border-b border-gray-200 dark:border-white/[0.08]
+                       transition-colors duration-300"
+            style={{ scrollbarWidth: 'none' }}
+            role="tablist"
+            aria-label="Client testimonials navigation"
           >
+            {testimonials.map((item, i) => {
+              const isActive = i === current;
+              return (
+                <button
+                  key={item.id}
+                  role="tab"
+                  aria-selected={isActive}
+                  aria-controls={`testimonial-panel-${item.id}`}
+                  onClick={() => goTo(i)}
+                  className={`relative flex items-center gap-2.5 px-6 py-5 flex-shrink-0
+                              transition-colors duration-200 whitespace-nowrap
+                              border-none cursor-pointer bg-transparent
+                              ${isActive
+                                ? 'text-gray-900 dark:text-white font-semibold'
+                                : 'text-gray-400 dark:text-white/40 font-normal hover:text-gray-700 dark:hover:text-white/70'
+                              }`}
+                  style={{
+                    fontFamily: 'Albert Sans, sans-serif',
+                    fontSize: 14,
+                  }}
+                >
+                  <TabLogo src={item.tabLogo} initials={item.logoInitials} active={isActive} />
+                  <span>{item.tabName}</span>
 
-            {/* ── LEFT: Quote text ── */}
-            <div className="lg:col-span-3">
-              {/* Decorative small quote */}
-              <span
-                className="block text-orange-500 mb-4 select-none"
-                style={{ fontSize: '3.5rem', fontFamily: 'Georgia, serif', lineHeight: 1 }}
-                aria-hidden="true"
-              >
-                &#8220;&#8221;
-              </span>
+                  {/* Animated orange underline for active tab */}
+                  {isActive && (
+                    <motion.span
+                      layoutId="tab-underline"
+                      className="absolute bottom-0 left-0 right-0 h-[2px] bg-orange-500"
+                      transition={{ type: 'spring', stiffness: 400, damping: 40 }}
+                    />
+                  )}
+                </button>
+              );
+            })}
+          </div>
 
-              <p
-                className="text-gray-800 dark:text-white font-medium leading-relaxed min-h-[140px] transition-colors duration-300"
-                style={{
-                  fontFamily: 'Bricolage Grotesque, sans-serif',
-                  fontSize: 'clamp(1.1rem, 1.8vw, 1.45rem)',
-                }}
-              >
-                {displayed}
-                {/* blinking cursor while text is typing */}
-                {!done && (
+          {/* ── CARD BODY ── */}
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={t.id}
+              id={`testimonial-panel-${t.id}`}
+              role="tabpanel"
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -12 }}
+              transition={{ duration: 0.4, ease: 'easeOut' }}
+              className="flex items-center justify-between gap-10 px-10 md:px-16 py-14"
+            >
+              {/* Left: quote + attribution */}
+              <div className="flex-1 min-w-0">
+
+                {/* Quote text */}
+                <p
+                  className="font-bold leading-snug text-gray-900 dark:text-white transition-colors duration-300"
+                  style={{
+                    fontFamily: 'Bricolage Grotesque, sans-serif',
+                    fontSize: 'clamp(1.2rem, 2.2vw, 1.6rem)',
+                  }}
+                >
                   <span
                     aria-hidden="true"
+                    className="text-gray-900 dark:text-white"
                     style={{
-                      display: 'inline-block',
-                      width: '2px',
-                      height: '1.15em',
-                      background: '#f97316',
-                      marginLeft: '3px',
-                      verticalAlign: 'text-bottom',
-                      animation: 'blink 0.7s step-end infinite',
+                      fontFamily: 'Georgia, serif',
+                      fontSize: 'clamp(1.4rem, 2.8vw, 2rem)',
+                      lineHeight: 1,
+                      marginRight: 3,
+                      verticalAlign: 'top',
                     }}
-                  />
-                )}
-              </p>
-            </div>
+                  >&#8220;</span>
+                  {t.text}
+                  <span
+                    aria-hidden="true"
+                    className="text-gray-900 dark:text-white"
+                    style={{
+                      fontFamily: 'Georgia, serif',
+                      fontSize: 'clamp(1.4rem, 2.8vw, 2rem)',
+                      lineHeight: 1,
+                      marginLeft: 3,
+                      verticalAlign: 'bottom',
+                    }}
+                  >&#8221;</span>
+                </p>
 
-            {/* ── RIGHT: Author card ── */}
-            <div className="lg:col-span-2 flex flex-col gap-5">
-
-              {/* Avatar + name block */}
-              <div className="flex items-center gap-4">
-                <Avatar src={t.image} initials={t.initials} name={t.name} />
-                <div>
-                  <p
-                    className="text-orange-600 dark:text-orange-300 font-bold text-lg uppercase tracking-wide transition-colors duration-300"
-                    style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}
-                  >
-                    {t.name}
-                  </p>
-                  <p
-                    className="text-gray-600 dark:text-gray-400 text-sm uppercase tracking-wider transition-colors duration-300"
-                    style={{ fontFamily: 'Albert Sans, sans-serif' }}
-                  >
-                    {t.role}
-                  </p>
-                </div>
-              </div>
-
-              {/* Company — left-bordered */}
-              <div className="border-l-2 border-orange-500/50 pl-4">
+                {/* Attribution */}
                 <p
-                  className="text-gray-700 dark:text-gray-200 text-sm font-medium transition-colors duration-300"
-                  style={{ fontFamily: ' Albert Sans, sans-serif' }}
+                  className="mt-8 text-gray-500 dark:text-white/55 transition-colors duration-300"
+                  style={{ fontFamily: 'Albert Sans, sans-serif', fontSize: 15 }}
                 >
-                  {t.company}
+                  <strong className="text-gray-900 dark:text-white font-semibold">
+                    {t.name}
+                  </strong>
+                  {`, ${t.role}, ${t.company}`}
                 </p>
               </div>
 
-              {/* Star rating */}
-              <div className="flex gap-1">
-                {Array.from({ length: 5 }).map((_, i) => (
-                  <svg key={i} className="w-5 h-5 text-orange-400" fill="currentColor" viewBox="0 0 20 20">
-                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.957a1 1 0 00.95.69h4.162c.969 0 1.371 1.24.588 1.81l-3.368 2.448a1 1 0 00-.364 1.118l1.287 3.957c.3.921-.755 1.688-1.54 1.118l-3.368-2.448a1 1 0 00-1.175 0l-3.368 2.448c-.784.57-1.838-.197-1.539-1.118l1.287-3.957a1 1 0 00-.364-1.118L2.063 9.384c-.783-.57-.38-1.81.588-1.81h4.162a1 1 0 00.95-.69L9.049 2.927z" />
-                  </svg>
-                ))}
+              {/* Right: large logo + small avatar */}
+              <div className="flex-shrink-0 self-center hidden sm:block">
+                <ClientCard
+                  photo={t.cardPhoto}
+                  photoAlt={t.photoAlt}
+                  logo={t.cardLogo}
+                  logoAlt={t.logoAlt}
+                  nameInitials={t.nameInitials}
+                  logoInitials={t.logoInitials}
+                />
               </div>
+            </motion.div>
+          </AnimatePresence>
 
-              {/* Trustpilot badge */}
-              {t.badge === 'Trustpilot' && (
-                <div className="inline-flex items-center gap-2 bg-[#00b67a] px-3 py-2 rounded w-fit">
-                  <svg className="w-5 h-5 text-white" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M12 1.5l3.27 6.6 7.23 1.05-5.25 5.1 1.24 7.23-6.49-3.42-6.49 3.42 1.24-7.23-5.25-5.1 7.23-1.05z" />
-                  </svg>
-                  <span className="text-white text-sm font-bold">Trustpilot</span>
-                </div>
-              )}
+          {/* ── Bottom nav bar ── */}
+          <div
+            className="flex items-center justify-between px-10 md:px-16 py-5
+                       border-t border-gray-100 dark:border-white/[0.07]
+                       transition-colors duration-300"
+          >
+            {/* Prev / Next arrows */}
+            <div className="flex items-center gap-3">
+              <NavBtn onClick={() => goTo(current - 1)} label="Previous testimonial">
+                <svg width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" aria-hidden="true">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
+                </svg>
+              </NavBtn>
+              <NavBtn onClick={() => goTo(current + 1)} label="Next testimonial">
+                <svg width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" aria-hidden="true">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                </svg>
+              </NavBtn>
             </div>
-          </motion.div>
-        </AnimatePresence>
 
-        {/* ── Bottom controls (Stack Overflow style) ── */}
-        <div className="mt-12 flex items-center gap-4 flex-wrap">
-
-          {/* ← Prev */}
-          <button
-            onClick={goPrev}
-            aria-label="Previous testimonial"
-            className="w-11 h-11 rounded-full border
-                       border-gray-300 dark:border-white/20
-                       text-gray-600 dark:text-white
-                       hover:border-orange-500 hover:text-orange-500
-                       dark:hover:border-orange-500 dark:hover:text-orange-400
-                       flex items-center justify-center transition-colors duration-200"
-          >
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
-            </svg>
-          </button>
-
-          {/* → Next */}
-          <button
-            onClick={goNext}
-            aria-label="Next testimonial"
-            className="w-11 h-11 rounded-full border
-                       border-gray-300 dark:border-white/20
-                       text-gray-600 dark:text-white
-                       hover:border-orange-500 hover:text-orange-500
-                       dark:hover:border-orange-500 dark:hover:text-orange-400
-                       flex items-center justify-center transition-colors duration-200"
-          >
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
-            </svg>
-          </button>
-
-          {/* "1 / 5" counter */}
-          <span
-            className="text-gray-700 dark:text-white font-semibold text-base tabular-nums transition-colors duration-300"
-            style={{ fontFamily: 'Bricolage Grotesque, sans-serif', minWidth: '3rem' }}
-          >
-            {current + 1} / {total}
-          </span>
-
-          {/* Progress bar */}
-          <div className="h-[3px] rounded-full overflow-hidden w-32 sm:w-48 bg-gray-200 dark:bg-white/10 transition-colors duration-300">
-            <div
-              className="h-full bg-orange-500 rounded-full"
-              style={{ width: `${done ? progress : 0}%`, transition: 'none' }}
-            />
+            {/* Dot-pill indicators */}
+            <div className="flex items-center gap-2">
+              {testimonials.map((_, i) => (
+                <button
+                  key={i}
+                  onClick={() => goTo(i)}
+                  aria-label={`Go to testimonial ${i + 1}`}
+                  className={`rounded-full border-none cursor-pointer transition-all duration-300 p-0
+                    ${i === current
+                      ? 'bg-orange-500'
+                      : 'bg-gray-300 dark:bg-white/20 hover:bg-orange-300 dark:hover:bg-white/40'
+                    }`}
+                  style={{
+                    height: 7,
+                    width: i === current ? 22 : 7,
+                  }}
+                />
+              ))}
+            </div>
           </div>
 
-          {/* Dot indicators */}
-          <div className="flex gap-2 ml-auto">
-            {testimonials.map((_, i) => (
-              <button
-                key={i}
-                onClick={() => goTo(i)}
-                aria-label={`Go to testimonial ${i + 1}`}
-                className={`relative rounded-full transition-all duration-300 after:absolute after:content-[''] after:inset-[-18px] ${
-                  i === current
-                    ? 'w-5 h-2 bg-orange-500'
-                    : 'w-2 h-2 bg-gray-300 dark:bg-white/20 hover:bg-orange-300 dark:hover:bg-white/40'
-                }`}
-              />
-            ))}
-          </div>
         </div>
-      </div>
+        {/* ── End card ── */}
 
-      {/* Blink keyframe for typing cursor */}
-      <style>{`
-        @keyframes blink {
-          from, to { opacity: 1; }
-          50% { opacity: 0; }
-        }
-      `}</style>
+      </div>
     </section>
   );
 }
