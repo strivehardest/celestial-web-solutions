@@ -37,7 +37,7 @@ const HAPPY_CLIENTS = [
   { name: "AdBay Store",              src: "/png/projects/Adbay1.png" },
   { name: "Elolo Agbleke",            src: "/png/projects/elolo2.jpeg" },
   { name: "Mart Ban Logistics",       src: "/png/projects/martb.png" },
-  { name: "My Space Furniture",       src: "/png/projects/myspace.png" },
+  { name: "My Space Furniture",       src: "/testimonials/logos/myspace.png" },
   { name: "Valyd Homes",              src: "/png/projects/valyd.png" },
   { name: "Doeman Group",             src: "/png/projects/doeman.jpeg" },
   { name: "DL Auto Parts",            src: "/png/projects/dl-auto-parts.png" },
