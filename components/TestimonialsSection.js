@@ -71,7 +71,7 @@ const testimonials = [
     id: 'myyspace',
     tabName: 'Myy Space Furniture',
     tabLogo: '/testimonials/logos/myspace.png',
-    cardPhoto: '/testimonials/myspace.jpg',
+    cardPhoto: '/testimonials/myspace.png',
     cardLogo: '/testimonials/logos/myspace.png',
     logoAlt: 'Myy Space Furniture logo',
     photoAlt: 'Paul Dickens Doe',
