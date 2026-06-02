@@ -3600,7 +3600,7 @@ const ALL_SLUGS_QUERY = `*[_type == "post"]{ "slug": slug.current }`
 export async function getStaticPaths() {
   let sanitySlugs = []
   try {
-    const sanityPosts = await client.fetch(ALL_SLUGS_QUERY)
+    const sanityPosts = await client.fetch(ALL_SLUGS_QUERY, {}, { next: { revalidate: 60 } })
     sanitySlugs = sanityPosts.map(p => p.slug).filter(Boolean)
   } catch (e) {
     console.log('Sanity fetch failed, using hardcoded slugs only')
@@ -3651,7 +3651,7 @@ export async function getStaticProps({ params }) {
 
   // 1. Try Sanity first
   try {
-    const sanityArticle = await client.fetch(POST_QUERY, { slug })
+    const sanityArticle = await client.fetch(POST_QUERY, { slug }, { next: { revalidate: 60 } })
     if (sanityArticle) {
       article = {
         ...sanityArticle,

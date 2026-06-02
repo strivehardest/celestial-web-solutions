@@ -665,7 +665,7 @@ export async function getStaticProps() {
       *[_type == "post"] | order(publishedAt desc)[0...2] {
         _id, title, slug, excerpt, mainImage, category, publishedAt, readTime
       }
-    `)
+    `, {}, { next: { revalidate: 60 } })
     return { props: { latestPosts: latestPosts || [] }, revalidate: 60 }
   } catch {
     return { props: { latestPosts: [] }, revalidate: 60 }

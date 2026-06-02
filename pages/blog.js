@@ -787,7 +787,7 @@ export async function getStaticProps() {
       seoKeywords,
     }`
 
-    const sanityPosts = await client.fetch(query)
+    const sanityPosts = await client.fetch(query, {}, { next: { revalidate: 60 } })
 
     return {
       props: { sanityPosts: sanityPosts || [] },
