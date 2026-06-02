@@ -185,3 +185,14 @@ body, html {
   font-family: 'Albert Sans', sans-serif !important;
   font-weight: 400 !important;
 }
+
+/* Prevent code blocks from breaking mobile layout */
+pre, code {
+  max-width: 100%;
+  white-space: pre;
+}
+
+pre {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
