@@ -93,6 +93,7 @@ export default {
           type: 'code',
           title: 'Code Block',
           options: {
+            language: 'javascript',
             languageAlternatives: [
               { title: 'JavaScript', value: 'javascript' },
               { title: 'TypeScript', value: 'typescript' },
@@ -102,6 +103,7 @@ export default {
               { title: 'Bash', value: 'bash' },
               { title: 'Plain Text', value: 'text' },
             ],
+            withFilename: true,
           },
         },
         {

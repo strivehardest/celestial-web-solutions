@@ -3631,7 +3631,15 @@ const POST_QUERY = `*[_type == "post" && slug.current == $slug][0]{
   metaDescription,
   body[]{
     ...,
-    asset->
+    _type == "code" => {
+      language,
+      code,
+      filename
+    },
+    _type == "image" => {
+      ...,
+      asset->
+    }
   }
 }`
 
