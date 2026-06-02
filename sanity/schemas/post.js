@@ -90,6 +90,21 @@ export default {
           ]
         },
         {
+          type: 'code',
+          title: 'Code Block',
+          options: {
+            languageAlternatives: [
+              { title: 'JavaScript', value: 'javascript' },
+              { title: 'TypeScript', value: 'typescript' },
+              { title: 'HTML', value: 'html' },
+              { title: 'CSS', value: 'css' },
+              { title: 'JSON', value: 'json' },
+              { title: 'Bash', value: 'bash' },
+              { title: 'Plain Text', value: 'text' },
+            ],
+          },
+        },
+        {
           type: 'object',
           name: 'callout',
           title: 'Callout Box',
