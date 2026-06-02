@@ -96,7 +96,6 @@ export default {
             language: 'javascript',
             languageAlternatives: [
               { title: 'JavaScript', value: 'javascript' },
-              { title: 'TypeScript', value: 'typescript' },
               { title: 'HTML', value: 'html' },
               { title: 'CSS', value: 'css' },
               { title: 'JSON', value: 'json' },
