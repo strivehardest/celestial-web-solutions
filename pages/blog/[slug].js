@@ -3728,6 +3728,7 @@ export async function getStaticProps({ params }) {
       relatedArticles: related,
       nav,
     },
+    revalidate: 60,
   }
 }
 
