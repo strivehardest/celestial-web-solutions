@@ -3,7 +3,7 @@ const projects = [
   {
     title: "Kafui Dey Interview Website ",
     slug: "kafui-dey",
-    youtubeId: '',
+    youtubeId: 'QyT56hbepVk',
     category: "personal & portfolio",
     client: "Kafui Dey",
     clientCountry: "Ghana",
