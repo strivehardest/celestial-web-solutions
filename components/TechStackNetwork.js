@@ -270,6 +270,44 @@ function GlobeSvg({ activeLayer }) {
   );
 }
 
+function TechNodeBadge({ node, isActive, onActivate, onDeactivate, compact = false }) {
+  return (
+    <motion.div
+      className={compact ? 'flex flex-col items-center gap-1' : 'flex flex-col items-center gap-1.5'}
+      whileHover={compact ? undefined : { scale: 1.1, y: -5 }}
+      onMouseEnter={onActivate}
+      onMouseLeave={onDeactivate}
+      onTouchStart={onActivate}
+      onTouchEnd={onDeactivate}
+    >
+      <div
+        className={`rounded-xl bg-white dark:bg-gray-800 border shadow-md flex items-center justify-center transition-all duration-300 ${
+          isActive
+            ? 'border-orange-300 dark:border-orange-600 shadow-orange-500/20'
+            : 'border-gray-200 dark:border-gray-700'
+        } ${compact ? 'p-1.5' : 'p-2 shadow-lg'}`}
+        style={{ width: compact ? 40 : node.size, height: compact ? 40 : node.size }}
+      >
+        <Image
+          src={node.icon}
+          alt={node.name}
+          width={compact ? 26 : node.size - 14}
+          height={compact ? 26 : node.size - 14}
+          className="object-contain"
+        />
+      </div>
+      <span
+        className={`font-semibold text-gray-700 dark:text-gray-300 text-center bg-white/90 dark:bg-gray-900/90 px-1.5 py-0.5 rounded-full backdrop-blur-sm border border-gray-100 dark:border-gray-700 ${
+          compact ? 'text-[8px] leading-tight max-w-[4.5rem] truncate' : 'text-[9px] sm:text-[10px] whitespace-nowrap px-2'
+        }`}
+        style={{ fontFamily: 'Albert Sans, sans-serif' }}
+      >
+        {node.name}
+      </span>
+    </motion.div>
+  );
+}
+
 export default function TechStackNetwork() {
   const [activeLayer, setActiveLayer] = useState(null);
   const activeMeta = stackLayers.find((l) => l.id === activeLayer);
@@ -313,16 +351,16 @@ export default function TechStackNetwork() {
         })}
       </motion.div>
 
-      {/* Globe visualization */}
-      <div className="relative mx-auto aspect-[16/10] min-h-[340px] sm:min-h-[400px] lg:min-h-[460px] rounded-3xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 overflow-hidden">
+      {/* Globe visualization — desktop: floating nodes; mobile/tablet: stacked layout */}
+      <div className="relative mx-auto rounded-3xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 overflow-hidden lg:aspect-[16/10] lg:min-h-[460px]">
         {callouts.map((c) => (
           <BracketCallout key={`${c.side}-${c.position}`} {...c} />
         ))}
 
-        <div className="absolute inset-0 xl:px-32 2xl:px-40 pt-4 pb-8">
+        {/* Desktop: globe + positioned nodes */}
+        <div className="hidden lg:block absolute inset-0 xl:px-32 2xl:px-40 pt-4 pb-8">
           <GlobeSvg activeLayer={activeLayer} />
 
-          {/* Tech nodes */}
           {techNodes.map((node, i) => {
             const isActive = !activeLayer || node.layer === activeLayer;
             return (
@@ -336,38 +374,43 @@ export default function TechStackNetwork() {
                 transition={{ duration: 0.45, delay: 0.12 + i * 0.06 }}
                 animate={{ opacity: isActive ? 1 : 0.25, scale: isActive ? 1 : 0.9 }}
               >
-                <motion.div
-                  className="flex flex-col items-center gap-1.5"
-                  whileHover={{ scale: 1.1, y: -5 }}
-                  onHoverStart={() => setActiveLayer(node.layer)}
-                  onHoverEnd={() => setActiveLayer(null)}
-                >
-                  <div
-                    className={`rounded-xl bg-white dark:bg-gray-800 border shadow-lg flex items-center justify-center p-2 transition-all duration-300 ${
-                      isActive
-                        ? 'border-orange-300 dark:border-orange-600 shadow-orange-500/20'
-                        : 'border-gray-200 dark:border-gray-700'
-                    }`}
-                    style={{ width: node.size, height: node.size }}
-                  >
-                    <Image
-                      src={node.icon}
-                      alt={node.name}
-                      width={node.size - 14}
-                      height={node.size - 14}
-                      className="object-contain"
-                    />
-                  </div>
-                  <span
-                    className="text-[9px] sm:text-[10px] font-semibold text-gray-700 dark:text-gray-300 whitespace-nowrap bg-white/90 dark:bg-gray-900/90 px-2 py-0.5 rounded-full backdrop-blur-sm border border-gray-100 dark:border-gray-700"
-                    style={{ fontFamily: 'Albert Sans, sans-serif' }}
-                  >
-                    {node.name}
-                  </span>
-                </motion.div>
+                <TechNodeBadge
+                  node={node}
+                  isActive={isActive}
+                  onActivate={() => setActiveLayer(node.layer)}
+                  onDeactivate={() => setActiveLayer(null)}
+                />
               </motion.div>
             );
           })}
+        </div>
+
+        {/* Mobile & tablet: globe on top, tech grid below */}
+        <div className="lg:hidden px-4 py-6 sm:px-6 sm:py-8">
+          <div className="relative w-full h-[200px] sm:h-[240px] md:h-[280px] mb-6">
+            <GlobeSvg activeLayer={activeLayer} />
+          </div>
+          <div className="grid grid-cols-4 gap-x-2 gap-y-4 sm:gap-4 max-w-lg mx-auto">
+            {techNodes.map((node) => {
+              const isActive = !activeLayer || node.layer === activeLayer;
+              return (
+                <motion.div
+                  key={node.name}
+                  className="flex justify-center"
+                  animate={{ opacity: isActive ? 1 : 0.35, scale: isActive ? 1 : 0.95 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <TechNodeBadge
+                    node={node}
+                    isActive={isActive}
+                    compact
+                    onActivate={() => setActiveLayer(node.layer)}
+                    onDeactivate={() => setActiveLayer(null)}
+                  />
+                </motion.div>
+              );
+            })}
+          </div>
         </div>
       </div>
 
@@ -402,7 +445,8 @@ export default function TechStackNetwork() {
           className="text-center text-sm text-gray-500 dark:text-gray-400 mb-5"
           style={{ fontFamily: 'Albert Sans, sans-serif' }}
         >
-          Hover a layer to highlight its tools on the network
+          <span className="lg:hidden">Tap a layer to highlight its tools</span>
+          <span className="hidden lg:inline">Hover a layer to highlight its tools on the network</span>
         </motion.p>
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {stackLayers.map((layer, i) => (
@@ -415,6 +459,7 @@ export default function TechStackNetwork() {
               transition={{ delay: i * 0.08 }}
               onMouseEnter={() => setActiveLayer(layer.id)}
               onMouseLeave={() => setActiveLayer(null)}
+              onClick={() => setActiveLayer((prev) => (prev === layer.id ? null : layer.id))}
               onFocus={() => setActiveLayer(layer.id)}
               onBlur={() => setActiveLayer(null)}
               className={`text-left p-4 rounded-2xl border transition-all duration-300 ${
