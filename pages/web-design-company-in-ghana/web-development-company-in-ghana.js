@@ -70,16 +70,19 @@ const service = {
     {
       heading: "Modern Technologies & Clean Code",
       content: [
-        { name: "React", url: "https://cdn.worldvectorlogo.com/logos/react-2.svg" },
+        { name: "React", url: "/images/tech/react.svg" },
         { name: "Next.js", url: "https://cdn.worldvectorlogo.com/logos/nextjs-2.svg" },
         { name: "Node.js", url: "https://cdn.worldvectorlogo.com/logos/nodejs-1.svg" },
         { name: "Express", url: "https://cdn.worldvectorlogo.com/logos/express-109.svg" },
         { name: "NestJS", url: "https://cdn.worldvectorlogo.com/logos/nestjs.svg" },
         { name: "PostgreSQL", url: "https://cdn.thenewstack.io/media/2021/10/84b1b2cf-postgreselepantwbg.png" },
         { name: "MongoDB", url: "https://cdn.worldvectorlogo.com/logos/mongodb-icon-1.svg" },
+        { name: "Supabase", url: "https://cdn.simpleicons.org/supabase/3ECF8E" },
+        { name: "Sanity CMS", url: "/images/tech/sanity.svg" },
         { name: "TypeScript", url: "https://cdn.worldvectorlogo.com/logos/typescript.svg" },
         { name: "Tailwind CSS", url: "https://cdn.worldvectorlogo.com/logos/tailwindcss.svg" },
-        { name: "Docker", url: "https://cdn.worldvectorlogo.com/logos/docker.svg" }
+        { name: "Docker", url: "https://cdn.worldvectorlogo.com/logos/docker.svg" },
+        { name: "Paystack", url: "/images/paystack-logo.png" }
       ]
     },
     {

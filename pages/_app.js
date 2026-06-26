@@ -8,7 +8,6 @@ import Navbar from '../components/Navbar';
 import dynamic from 'next/dynamic';
 const Footer = dynamic(() => import('../components/Footer'), { ssr: false });
 const CustomCursor = dynamic(() => import('../components/CustomCursor'), { ssr: false });
-const MouseTrail = dynamic(() => import('../components/MouseTrail'), { ssr: false });
 const ScrollToTop = dynamic(() => import('../components/ScrollToTop'), { ssr: false });
 const SpinningLogoLoader = dynamic(() => import('../components/SpinningLogoLoader'), { ssr: false });
 const TalkToExpertModal = dynamic(() => import('../components/TalkToExpertModal'), { ssr: false });
@@ -135,7 +134,6 @@ function MyApp({ Component, pageProps }) {
 
       <Navbar />
       <CustomCursor />
-      <MouseTrail />
       <ScrollToTop />
 
       <Component {...pageProps} />

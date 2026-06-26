@@ -31,6 +31,7 @@ import dynamic from 'next/dynamic';
 import { client, urlFor } from '../lib/sanity'
 
 const HeroSwiper = dynamic(() => import('../components/HeroSwiper'), { ssr: false });
+const TechStackNetwork = dynamic(() => import('../components/TechStackNetwork'), { ssr: false });
 
 // Glass Button Component
 const GlassButton = ({ children, href, variant = "light", className = "" }) => {
@@ -171,6 +172,7 @@ const techStackCategories = [
       { name: 'Node.js', icon: '/images/tech/nodejs.svg' },
       { name: 'Python', icon: '/images/tech/python.svg' },
       { name: 'MongoDB', icon: '/images/tech/mongodb.svg' },
+      { name: 'Supabase', icon: '/images/tech/supabase.svg' },
       { name: 'Django', icon: '/images/tech/django.svg' }
     ]
   },
@@ -181,7 +183,7 @@ const techStackCategories = [
     items: [
       { name: 'Figma', icon: '/images/tech/figma.svg' },
       { name: 'TailwindCSS', icon: '/images/tailwindcss-logo.png' },
-      { name: 'Sanity CMS', icon: '/images/sanity.png' },
+      { name: 'Sanity CMS', icon: '/images/tech/sanity.svg' },
       { name: 'WordPress', icon: '/images/tech/wordpress.svg' }
     ]
   }
@@ -885,6 +887,8 @@ const IndexPage = ({ latestPosts = [] }) => {
                 Modern tools and technologies we use to build exceptional digital experiences
               </p>
             </motion.div>
+
+            <TechStackNetwork />
 
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-8 mb-12">
               {techStackCategories.map((category, index) => (

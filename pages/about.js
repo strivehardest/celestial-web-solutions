@@ -150,7 +150,7 @@ export default function AboutUs() {
 
   // Technology stack with external logo URLs
   const techStack = [
-    { name: 'React', logo: 'https://cdn.worldvectorlogo.com/logos/react-2.svg' },
+    { name: 'React', logo: '/images/tech/react.svg' },
     { name: 'Next.js', logo: 'https://cdn.worldvectorlogo.com/logos/nextjs-2.svg' },
     { name: 'Node.js', logo: 'https://cdn.worldvectorlogo.com/logos/nodejs-1.svg' },
     { name: 'Django', logo: 'https://cdn.worldvectorlogo.com/logos/django.svg' },
@@ -165,6 +165,7 @@ export default function AboutUs() {
     { name: 'Framer Motion', logo: 'https://cdn.worldvectorlogo.com/logos/framer-motion.svg' },
     { name: 'PostgreSQL', logo: 'https://cdn.worldvectorlogo.com/logos/postgresql.svg' },
     { name: 'MongoDB', logo: 'https://cdn.worldvectorlogo.com/logos/mongodb-icon-1.svg' },
+    { name: 'Supabase', logo: '/images/tech/supabase.svg' },
     { name: 'Shopify', logo: 'https://cdn.worldvectorlogo.com/logos/shopify.svg' },
     { name: 'Vercel', logo: 'https://www.svgrepo.com/show/354513/vercel-icon.svg' },
     { name: 'Render', logo: 'https://images.seeklogo.com/logo-png/53/1/render-logo-png_seeklogo-532232.png' },
