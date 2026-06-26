@@ -49,7 +49,7 @@ const projects = [
   {
     title: "Conference of Principals of Technical Institutions",
     slug: "copti",
-    youtubeId: '',
+    youtubeId: 'dUW_v4iY4cA',
     category: "educational institutions",
     client: "COPTI",
     clientCountry: "Ghana",

@@ -9,6 +9,28 @@ import 'swiper/css/effect-fade';
 
 const heroSlides = [
   {
+    tag: 'PERSONAL BRAND, MEDIA',
+    title: 'Kafui Dey\nInterviews',
+    description: 'A sleek, modern website showcasing the life and work of Kafui Dey — one of Ghana\'s most influential media personalities, with a dynamic interview archive and Sanity CMS.',
+    caseStudyLink: '/portfolio/kafui-dey',
+    caseStudyLabel: 'VIEW PROJECT',
+    ctaLink: '/contact',
+    ctaLabel: 'START YOUR PROJECT',
+    mainImage: '/portfolio/desktop/kafui-desktop.webp',
+    bgColor: 'from-stone-950 via-amber-950 to-yellow-950',
+  },
+  {
+    tag: 'EDUCATION, INSTITUTIONAL',
+    title: 'COPTI\nOfficial Platform',
+    description: 'The official national website for the Conference of Principals of Technical Institutions — member schools directory, news, events, and a comprehensive SEO architecture.',
+    caseStudyLink: '/portfolio/copti',
+    caseStudyLabel: 'VIEW PROJECT',
+    ctaLink: '/contact',
+    ctaLabel: 'START YOUR PROJECT',
+    mainImage: '/portfolio/desktop/copti.webp',
+    bgColor: 'from-cyan-950 via-teal-900 to-sky-900',
+  },
+  {
     tag: 'WEB DEVELOPMENT, SEO',
     title: 'Building Planner\nDesigns',
     description: 'We designed a professional website for Ghana\'s trusted building planning firm — fast, SEO-ready, and built to convert.',
