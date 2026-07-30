@@ -3595,13 +3595,58 @@ const blogArticles = {
   }
 };
 
-const ALL_SLUGS_QUERY = `*[_type == "post"]{ "slug": slug.current }`
+const ALL_SLUGS_QUERY = `*[_type == "post" && defined(slug.current)]{ "slug": slug.current }`
+
+function toDisplayDate(value) {
+  const parsed = value ? new Date(value) : null
+  if (!parsed || Number.isNaN(parsed.getTime())) return value || ''
+  return parsed.toLocaleDateString('en-US', {
+    month: 'long',
+    day: 'numeric',
+    year: 'numeric',
+  })
+}
+
+function toIsoDate(value) {
+  if (!value) return null
+  const parsed = new Date(value)
+  if (Number.isNaN(parsed.getTime())) return null
+  return parsed.toISOString()
+}
+
+function normalizeArticle(raw, { isPortableText = false, publishedAt = null } = {}) {
+  if (!raw) return null
+
+  const tags = Array.isArray(raw.tags) ? raw.tags.filter(Boolean) : []
+  const isoSource = publishedAt || raw.dateISO || raw.date || null
+
+  return {
+    ...raw,
+    title: raw.title || 'Untitled',
+    excerpt: raw.excerpt || raw.metaDescription || '',
+    author: raw.author || 'Celestial Team',
+    category: raw.category || 'Web Design',
+    readTime: raw.readTime || '5 min read',
+    image:
+      raw.image ||
+      'https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?w=1200&h=600&fit=crop',
+    tags,
+    hashtags: Array.isArray(raw.hashtags)
+      ? raw.hashtags
+      : tags.map((t) => `#${String(t).replace(/\s+/g, '')}`),
+    date: toDisplayDate(isoSource) || raw.date || '',
+    dateISO: toIsoDate(isoSource),
+    body: Array.isArray(raw.body) ? raw.body : [],
+    content: raw.content || '',
+    isPortableText,
+  }
+}
 
 export async function getStaticPaths() {
   let sanitySlugs = []
   try {
-    const sanityPosts = await client.fetch(ALL_SLUGS_QUERY, {}, { next: { revalidate: 60 } })
-    sanitySlugs = sanityPosts.map(p => p.slug).filter(Boolean)
+    const sanityPosts = await client.fetch(ALL_SLUGS_QUERY)
+    sanitySlugs = (sanityPosts || []).map((p) => p.slug).filter(Boolean)
   } catch (e) {
     console.log('Sanity fetch failed, using hardcoded slugs only')
   }
@@ -3610,7 +3655,7 @@ export async function getStaticPaths() {
   const allSlugs = [...new Set([...sanitySlugs, ...hardcodedSlugs])]
 
   return {
-    paths: allSlugs.map(slug => ({ params: { slug } })),
+    paths: allSlugs.map((slug) => ({ params: { slug } })),
     fallback: 'blocking',
   }
 }
@@ -3623,7 +3668,7 @@ const POST_QUERY = `*[_type == "post" && slug.current == $slug][0]{
   "alt": mainImage.alt,
   category,
   author,
-  "date": publishedAt,
+  "publishedAt": publishedAt,
   readTime,
   featured,
   tags,
@@ -3644,37 +3689,36 @@ const POST_QUERY = `*[_type == "post" && slug.current == $slug][0]{
 }`
 
 export async function getStaticProps({ params }) {
-  const { slug } = params
+  const slug = typeof params?.slug === 'string' ? params.slug : params?.slug?.[0]
+
+  if (!slug) return { notFound: true }
 
   let article = null
   let isPortableText = false
 
   // 1. Try Sanity first
   try {
-    const sanityArticle = await client.fetch(POST_QUERY, { slug }, { next: { revalidate: 60 } })
-    if (sanityArticle) {
-      article = {
-        ...sanityArticle,
-        date: new Date(sanityArticle.date).toLocaleDateString('en-US', {
-          month: 'long', day: 'numeric', year: 'numeric'
-        }),
-        hashtags: sanityArticle.tags?.map(t => `#${t.replace(/\s+/g, '')}`) || [],
-      }
+    const sanityArticle = await client.fetch(POST_QUERY, { slug })
+    if (sanityArticle?.title) {
+      article = normalizeArticle(sanityArticle, {
+        isPortableText: true,
+        publishedAt: sanityArticle.publishedAt,
+      })
       isPortableText = true
     }
   } catch (e) {
-    console.log('Sanity fetch failed, falling back to hardcoded')
+    console.log('Sanity fetch failed, falling back to hardcoded', e?.message || e)
   }
 
   // 2. Fall back to hardcoded if Sanity has nothing
   if (!article) {
-    article = blogArticles[slug] || null
+    article = normalizeArticle(blogArticles[slug] || null, { isPortableText: false })
   }
 
   // 3. 404 if neither has it
   if (!article) return { notFound: true }
 
-  // 4. Related articles (your existing logic - unchanged)
+  // 4. Related articles
   const allArticles = Object.keys(blogArticles).map((key) => ({
     slug: key,
     title: blogArticles[key].title,
@@ -3686,12 +3730,14 @@ export async function getStaticProps({ params }) {
     tags: blogArticles[key].tags || [],
   }))
 
+  const articleTags = article.tags || []
+
   let related = allArticles
     .filter((a) => {
       if (a.slug === slug) return false
       if (a.category === article.category) return true
-      if (article.tags && a.tags) {
-        return a.tags.some((tag) => article.tags.includes(tag))
+      if (articleTags.length && a.tags?.length) {
+        return a.tags.some((tag) => articleTags.includes(tag))
       }
       return false
     })
@@ -3700,11 +3746,10 @@ export async function getStaticProps({ params }) {
   if (related.length === 0) {
     related = allArticles
       .filter((a) => a.slug !== slug)
-      .sort((a, b) => new Date(b.date) - new Date(a.date))
       .slice(0, 3)
   }
 
-  // 5. Prev/Next nav (your existing logic - unchanged)
+  // 5. Prev/Next nav
   let nav = { prev: null, next: null }
   if (Array.isArray(blogList)) {
     const idx = blogList.findIndex((a) => a.slug === slug)
@@ -3839,10 +3884,12 @@ useEffect(() => {
         <meta property="og:description" content={article.excerpt || article.metaDescription || ''} />
         <meta property="og:image" content={article.image} />
         <meta property="og:site_name" content="Celestial Web Solutions" />
-        <meta property="article:published_time" content={new Date(article.date).toISOString()} />
+        {article.dateISO && (
+          <meta property="article:published_time" content={article.dateISO} />
+        )}
         <meta property="article:author" content={article.author} />
         <meta property="article:section" content={article.category} />
-        {article.tags && article.tags.map((tag, index) => (
+        {(article.tags || []).map((tag, index) => (
           <meta key={index} property="article:tag" content={tag} />
         ))}
 
@@ -3863,8 +3910,12 @@ useEffect(() => {
               "headline": article.title,
               "description": article.excerpt || article.metaDescription || '',
               "image": article.image,
-              "datePublished": new Date(article.date).toISOString(),
-              "dateModified": new Date(article.date).toISOString(),
+              ...(article.dateISO
+                ? {
+                    datePublished: article.dateISO,
+                    dateModified: article.dateISO,
+                  }
+                : {}),
               "author": {
                 "@type": "Organization",
                 "name": article.author,
@@ -4218,11 +4269,18 @@ useEffect(() => {
                 </motion.div>
               )}
 
-              {/* REPLACE with this: */}
 {isPortableText ? (
   <div className="prose prose-orange prose-lg dark:prose-invert max-w-none">
-    <PortableText value={article.body} 
-    components={portableTextComponents} />
+    {article.body?.length ? (
+      <PortableText
+        value={article.body}
+        components={portableTextComponents}
+      />
+    ) : (
+      <p className="text-lg text-gray-800 dark:text-gray-200">
+        {article.excerpt || 'This article is being prepared. Please check back soon.'}
+      </p>
+    )}
   </div>
 ) : (
   <div
