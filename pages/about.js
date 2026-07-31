@@ -60,7 +60,15 @@ const happyClients = [
   {
     name: "Kafui Dey",
     src: "/png/projects/kafui-dey.png"
-  }
+  },
+  {
+    name: "Ghana Event",
+    src: "/png/projects/ghanasevent.jpeg"
+  },
+  {
+    name: "Act Campus Care",
+    src: "/png/projects/act-campus-care.jpg"
+  } 
 ];
 
 /**

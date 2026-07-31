@@ -134,10 +134,15 @@ const HeroSection = () => {
               {/* Animated background glow */}
               <div className="absolute inset-0 bg-gradient-to-r from-orange-600 to-red-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               
-              <div className="relative flex items-center justify-center space-x-3">
-                <Zap className="w-5 h-5 sm:w-6 sm:h-6" />
+              <div className="relative flex items-center justify-center">
+                <Zap className="w-5 h-5 sm:w-6 sm:h-6 mr-3" />
                 <span>Let's Build Together</span>
-                <ArrowRight className="w-5 h-5 sm:w-6 sm:h-6 group-hover:translate-x-1 transition-transform duration-300" />
+                <span
+                  aria-hidden="true"
+                  className="inline-flex overflow-hidden max-w-0 opacity-0 -translate-x-1 group-hover:max-w-[1.75rem] group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)]"
+                >
+                  <ArrowRight className="w-5 h-5 sm:w-6 sm:h-6 ml-2 shrink-0" />
+                </span>
               </div>
             </motion.button>
 
@@ -149,9 +154,14 @@ const HeroSection = () => {
               whileTap={{ scale: 0.95 }}
               onClick={() => handleNavigation('/portfolio')}
             >
-              <div className="flex items-center justify-center space-x-3">
+              <div className="flex items-center justify-center">
                 <span>View Our Work</span>
-                <ArrowRight className="w-5 h-5 sm:w-6 sm:h-6 group-hover:translate-x-1 transition-transform duration-300" />
+                <span
+                  aria-hidden="true"
+                  className="inline-flex overflow-hidden max-w-0 opacity-0 -translate-x-1 group-hover:max-w-[1.75rem] group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)]"
+                >
+                  <ArrowRight className="w-5 h-5 sm:w-6 sm:h-6 ml-2 shrink-0" />
+                </span>
               </div>
             </motion.button>
           </motion.div>

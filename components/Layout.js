@@ -77,13 +77,12 @@ export default function Layout({ children }) {
         {/* Custom Scrollbar Styles */}
         <style jsx global>{`
           ::-webkit-scrollbar {
-            width: 12px;
-            height: 12px;
+            width: 16px;
+            height: 16px;
           }
 
           ::-webkit-scrollbar-track {
-            background: #f1f1f1;
-            border-radius: 10px;
+            background: #f3f4f6;
           }
 
           .dark ::-webkit-scrollbar-track {
@@ -91,19 +90,23 @@ export default function Layout({ children }) {
           }
 
           ::-webkit-scrollbar-thumb {
-            background: linear-gradient(180deg, #ea580c, #f97316);
+            background: linear-gradient(180deg, #f97316, #ea580c);
             border-radius: 10px;
-            border: 2px solid transparent;
+            border: 3px solid #f3f4f6;
             background-clip: padding-box;
           }
 
+          .dark ::-webkit-scrollbar-thumb {
+            border-color: #1f2937;
+          }
+
           ::-webkit-scrollbar-thumb:hover {
-            background: linear-gradient(180deg, #c2410c, #ea580c);
+            background: linear-gradient(180deg, #ea580c, #c2410c);
           }
 
           * {
-            scrollbar-width: thin;
-            scrollbar-color: #f97316 #f1f1f1;
+            scrollbar-width: auto;
+            scrollbar-color: #f97316 #f3f4f6;
           }
 
           .dark * {

@@ -25,14 +25,16 @@ const highlights = [
 ];
 
 const heroProjects = [
+  { image: '/portfolio/desktop/ghanas-event.png', title: 'Ghanas Event', bgColor: 'from-amber-950 via-yellow-900 to-stone-900' },
+  { image: '/portfolio/desktop/ghanas-event-blog.png', title: 'Ghanas Event Blog', bgColor: 'from-slate-950 via-blue-950 to-indigo-900' },
+  { image: '/portfolio/desktop/copti.webp', title: 'Conference of Principals of Technical Institutions', bgColor: 'from-blue-400 via-blue-500 to-blue-600' },
+  { image: '/portfolio/desktop/kafui-desktop.webp', title: 'Kafui Dey Interviews', bgColor: 'from-stone-950 via-amber-950 to-yellow-950' },
+  { image: '/portfolio/desktop/trueseeds.webp', title: 'Tru Seeds Africa', bgColor: 'from-green-400 via-green-500 to-emerald-600' },
   { image: '/portfolio/desktop/building.png', title: 'Building Planner Designs', bgColor: 'from-blue-950 via-blue-900 to-amber-900' },
-  { image: '/portfolio/desktop/myspace.png', title: 'My Space Furniture', bgColor: 'from-gray-950 via-neutral-900 to-stone-900' },
-  { image: '/portfolio/desktop/elolo.png', title: 'Elolo Agbleke', bgColor: 'from-slate-950 via-blue-950 to-indigo-950' },
   { image: '/portfolio/desktop/ghanaupdates.png', title: 'Ghana Updates Online', bgColor: 'from-red-950 via-red-900 to-red-800' },
   { image: '/portfolio/desktop/dlautos.png', title: 'DL Auto Parts', bgColor: 'from-green-950 via-green-900 to-emerald-900' },
   { image: '/portfolio/desktop/valyd.png', title: 'Valyd Homes', bgColor: 'from-emerald-950 via-teal-900 to-green-950' },
-  { image: '/portfolio/desktop/copti.webp', title: 'Conference of Principals of Technical Institutions', bgColor: 'from-blue-400 via-blue-500 to-blue-600' },
-  { image: '/portfolio/desktop/trueseeds.webp', title: 'Tru Seeds Africa', bgColor: 'from-green-400 via-green-500 to-emerald-600' },
+  { image: '/portfolio/desktop/elolo.png', title: 'Elolo Agbleke', bgColor: 'from-slate-950 via-blue-950 to-indigo-950' },
 ];
 
 const serviceFocus = [
@@ -43,26 +45,47 @@ const serviceFocus = [
 
 const portfolioHighlights = [
   {
-    title: 'My Space Furniture',
-    category: 'Furniture & E-Commerce',
-    description: 'Modern furniture platform with interactive categories and seamless shopping experience.',
-    image: '/png/projects/myspace-furniture.png',
-    slug: 'myspace-furniture'
+    title: 'Ghanas Event',
+    category: 'Events & Ticketing',
+    description: 'Event discovery and ticketing platform with Mobile Money payments and QR tickets across all 16 regions of Ghana.',
+    image: '/png/projects/ghanas-event.png',
+    slug: 'ghanas-event'
+  },
+  {
+    title: 'Ghanas Event Blog',
+    category: 'News & Media',
+    description: 'Editorial platform for organiser guides, city event roundups, and stories from Ghana\'s live-events industry.',
+    image: '/png/projects/ghanas-event-blog.png',
+    slug: 'ghanas-event-blog'
   },
   {
     title: 'COPTI',
     category: 'Educational Institutions',
-    description: 'Conference of Principals of Technical Institutions (COPTI) official website.',
+    description: 'Official national website for the Conference of Principals of Technical Institutions across Ghana.',
     image: '/png/projects/copti1.png',
     slug: 'copti'
   },
   {
+    title: 'Kafui Dey Interviews',
+    category: 'Personal Brand & Media',
+    description: 'Modern interview archive website for one of Ghana\'s most influential media personalities.',
+    image: '/png/projects/kafui.webp',
+    slug: 'kafui-dey'
+  },
+  {
+    title: 'Tru Seeds Africa',
+    category: 'Agriculture',
+    description: 'Modern agribusiness website for a leading Ghanaian seed company serving farmers nationwide.',
+    image: '/png/projects/truseeds.png',
+    slug: 'tru-seeds-africa'
+  },
+  {
     title: 'Building Planner Designs',
     category: 'Architecture & Design',
-    description: 'Professional services website showcasing architectural and design expertise.',
+    description: 'Professional services website for a trusted Ghanaian building planning and design firm.',
     image: '/png/projects/buildingplanner.png',
     slug: 'building-planner-designs'
-  }
+  },
 ];
 
 const NAV_H_MOBILE = 72;

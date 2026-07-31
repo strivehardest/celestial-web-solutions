@@ -14,29 +14,21 @@ export default function PremiumCTA({
   ...props 
 }) {
   const router = useRouter();
-  const [isHovered, setIsHovered] = useState(false);
   const buttonRef = useRef(null);
   const [ripplePosition, setRipplePosition] = useState({ x: 0, y: 0 });
   const [showRipple, setShowRipple] = useState(false);
 
-  const handleMouseEnter = (e) => {
-    setIsHovered(true);
-  };
-
-  const handleMouseLeave = () => {
-    setIsHovered(false);
-  };
-
   const handleClick = (e) => {
-    const rect = buttonRef.current.getBoundingClientRect();
-    setRipplePosition({
-      x: e.clientX - rect.left,
-      y: e.clientY - rect.top,
-    });
-    setShowRipple(true);
-    setTimeout(() => setShowRipple(false), 600);
+    if (buttonRef.current) {
+      const rect = buttonRef.current.getBoundingClientRect();
+      setRipplePosition({
+        x: e.clientX - rect.left,
+        y: e.clientY - rect.top,
+      });
+      setShowRipple(true);
+      setTimeout(() => setShowRipple(false), 600);
+    }
 
-    // Navigate for internal links (unless it's a submit button or external link)
     if (props.type !== 'submit' && !external && href && !props.onClick) {
       router.push(href);
     }
@@ -49,9 +41,12 @@ export default function PremiumCTA({
   };
 
   const variantClasses = {
-    primary: 'bg-gradient-to-r from-orange-500 via-orange-500 to-red-500 border border-orange-400/50 shadow-lg shadow-orange-500/25 text-orange-600 dark:text-white',
-    secondary: 'bg-white border border-white/80 shadow-lg text-orange-600',
-    outline: 'bg-transparent text-orange-600 dark:text-white border-2 border-white hover:bg-white/10',
+    primary:
+      'bg-gradient-to-r from-orange-500 via-orange-500 to-orange-600 border border-orange-400/40 shadow-lg shadow-orange-500/25 text-white hover:from-orange-600 hover:to-orange-700',
+    secondary:
+      'bg-white border border-white/90 shadow-lg text-orange-600 hover:text-orange-700 hover:bg-orange-50',
+    outline:
+      'bg-transparent border-2 border-white/80 text-white hover:bg-white/10 hover:border-white hover:text-orange-100 dark:text-white',
   };
 
   const ButtonContent = () => (
@@ -86,31 +81,36 @@ export default function PremiumCTA({
         />
       )}
 
-      {/* Text without color change on hover */}
-      <span className="relative z-10">
+      {/* Text */}
+      <span className="relative z-10 transition-colors duration-300">
         {children}
       </span>
 
-      {/* Arrow icon without hover effect */}
       {icon && (
-        <span className="relative z-10 flex items-center">
-          <svg 
-            className="w-5 h-5" 
-            fill="none" 
-            stroke="currentColor" 
+        <span
+          aria-hidden="true"
+          className="
+            relative z-10 inline-flex items-center overflow-hidden
+            max-w-0 opacity-0 -translate-x-1.5 scale-75
+            group-hover:max-w-[1.75rem] group-hover:opacity-100 group-hover:translate-x-0 group-hover:scale-100
+            transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)]
+          "
+        >
+          <svg
+            className="w-5 h-5 ml-2 shrink-0"
+            fill="none"
+            stroke="currentColor"
             viewBox="0 0 24 24"
           >
-            <path 
-              strokeLinecap="round" 
-              strokeLinejoin="round" 
-              strokeWidth={2} 
-              d="M17 8l4 4m0 0l-4 4m4-4H3" 
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2.25}
+              d="M17 8l4 4m0 0l-4 4m4-4H3"
             />
           </svg>
         </span>
       )}
-
-      {/* Removed shine effect for hover */}
     </motion.span>
   );
 
@@ -155,33 +155,28 @@ export function OutlineCTA({ children, href = '/contact', ...props }) {
 
 // Text link CTA
 export function TextCTA({ children, href = '/contact', className = '', ...props }) {
-  const [isHovered, setIsHovered] = useState(false);
-
   return (
     <Link href={href}>
-      <motion.span
-        className={`inline-flex items-center gap-2 font-bold text-orange-600 cursor-pointer group ${className}`}
+      <span
+        className={`group inline-flex items-center font-bold text-orange-600 dark:text-orange-400 hover:text-orange-700 dark:hover:text-orange-300 cursor-pointer transition-colors duration-300 ${className}`}
         style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
         {...props}
       >
         <span className="relative">
           {children}
-          <motion.span
-            className="absolute bottom-0 left-0 h-0.5 bg-orange-600"
-            initial={{ width: '0%' }}
-            animate={{ width: isHovered ? '100%' : '0%' }}
-            transition={{ duration: 0.3 }}
-          />
+          <span className="absolute bottom-0 left-0 h-0.5 w-0 bg-current group-hover:w-full transition-all duration-300 ease-out" />
         </span>
-        <motion.span
-          animate={{ x: isHovered ? 5 : 0 }}
-          transition={{ duration: 0.3 }}
+        <span
+          aria-hidden="true"
+          className="
+            inline-flex overflow-hidden max-w-0 opacity-0 -translate-x-1
+            group-hover:max-w-[1.5rem] group-hover:opacity-100 group-hover:translate-x-0
+            transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)]
+          "
         >
-          →
-        </motion.span>
-      </motion.span>
+          <span className="ml-2">→</span>
+        </span>
+      </span>
     </Link>
   );
 }

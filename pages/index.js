@@ -12,7 +12,9 @@ const happyClients = [
   { name: "DL Auto Parts", src: "/png/projects/dl-auto-parts.png" },
   { name: "Tru Seeds Africa", src: "/png/projects/truseeds.webp" },
   { name: "COPTI", src: "/png/projects/copti.png" },
-  { name: "Kafui Dey", src: "/png/projects/kafui-dey.png" }
+  { name: "Kafui Dey", src: "/png/projects/kafui-dey.png" },
+  { name: "Ghana Event", src: "/png/projects/ghanasevent.jpeg" },
+  { name: "Act Campus Care", src: "/png/projects/act-campus-care.jpg" },
 ];
 
 import { useState, useEffect, useRef } from 'react';
@@ -27,29 +29,13 @@ const WhatsAppButton = dynamic(() => import('../components/WhatsAppButton'), { s
 const PremiumCTA = dynamic(() => import('../components/PremiumCTA'), { ssr: false });
 import { TextCTA } from '../components/PremiumCTA';
 import CTASection from '../components/CTASection';
+import GlassButton from '../components/GlassButton';
 import dynamic from 'next/dynamic';
 import { client, urlFor } from '../lib/sanity'
 
 const HeroSwiper = dynamic(() => import('../components/HeroSwiper'), { ssr: false });
+const ServicesScrollStrip = dynamic(() => import('../components/ServicesScrollStrip'), { ssr: false });
 const TechStackNetwork = dynamic(() => import('../components/TechStackNetwork'), { ssr: false });
-
-// Glass Button Component
-const GlassButton = ({ children, href, variant = "light", className = "" }) => {
-  const baseClasses = "inline-flex items-center gap-2 px-6 py-3 rounded-full font-semibold transition-all duration-300 backdrop-blur-md border cursor-pointer";
-  const variants = {
-    light: "bg-white/20 hover:bg-white/30 border-white/30 text-white hover:shadow-lg hover:shadow-white/10",
-    dark: "bg-black/20 hover:bg-black/30 border-black/20 text-gray-900 hover:shadow-lg",
-    orange: "bg-orange-500/20 hover:bg-orange-500/30 border-orange-500/30 text-orange-600 dark:text-orange-400 hover:shadow-lg hover:shadow-orange-500/20",
-    solid: "bg-orange-500 hover:bg-orange-600 border-orange-500 text-white hover:shadow-lg hover:shadow-orange-500/30"
-  };
-
-  return (
-    <Link href={href} className={`${baseClasses} ${variants[variant]} ${className}`} style={{ fontFamily: 'Albert Sans, sans-serif', fontWeight: 400 }}>
-      {children}
-      <ArrowRight size={18} />
-    </Link>
-  );
-};
 
 // SEO Component with Next.js Head
 const SEOHead = () => {
@@ -203,6 +189,33 @@ const typingPhrases = [
 // ─────────────────────────────────────────────
 const portfolioItems = [
   {
+    title: "ACT Campus Care 2.0",
+    category: "Healthcare & Wellness",
+    description: "A culturally grounded VR wellness platform helping HBCU students regulate stress and build resilience.",
+    tech: ["Next.js", "React", "TypeScript", "Sanity CMS", "Tailwind CSS"],
+    link: "/portfolio/act-campus-care",
+    image: "/portfolio/desktop/act-campus-care.png",
+    accent: "#0e4f88"
+  },
+  {
+    title: "Ghanas Event",
+    category: "Events & Ticketing",
+    description: "Ghana's event discovery and ticketing platform with Mobile Money payments and QR tickets across all 16 regions.",
+    tech: ["Next.js", "React", "TypeScript", "Supabase", "Paystack"],
+    link: "/portfolio/ghanas-event",
+    image: "/portfolio/desktop/ghanas-event.png",
+    accent: "#C9973A"
+  },
+  {
+    title: "Ghanas Event Blog",
+    category: "News & Media",
+    description: "Editorial platform for organiser guides, city event roundups, and stories from Ghana's live-events industry.",
+    tech: ["Next.js", "React", "TypeScript", "Sanity CMS", "Tailwind CSS"],
+    link: "/portfolio/ghanas-event-blog",
+    image: "/portfolio/desktop/ghanas-event-blog.png",
+    accent: "#1d4ed8"
+  },
+  {
    title: "Conference of Principals of Technical Institutions",
    cateory: "Educational Institutions",
    description: "COPTI is the official national website for the Conference of Principals of Technical Institutions — the professional body representing principals of public technical institutes across all 16 regions of Ghana.",
@@ -311,11 +324,16 @@ const PortfolioShowcase = () => {
           <Link
             href="/portfolio"
             aria-label="View all our web design projects"
-            className="group inline-flex items-center gap-2 text-sm font-semibold text-orange-500 hover:text-orange-600 dark:text-orange-400 dark:hover:text-orange-300 transition-colors shrink-0"
+            className="group inline-flex items-center text-sm font-semibold text-orange-500 hover:text-orange-600 dark:text-orange-400 dark:hover:text-orange-300 transition-colors duration-300 shrink-0"
             style={{ fontFamily: 'Albert Sans, sans-serif' }}
           >
             View all projects
-            <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+            <span
+              aria-hidden="true"
+              className="inline-flex overflow-hidden max-w-0 opacity-0 -translate-x-1 group-hover:max-w-[1.25rem] group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)]"
+            >
+              <ArrowRight size={16} className="ml-1.5 shrink-0" strokeWidth={2.35} />
+            </span>
           </Link>
         </div>
 
@@ -629,6 +647,8 @@ const IndexPage = ({ latestPosts = [] }) => {
           <HeroSwiper />
         </div>
 
+        <ServicesScrollStrip />
+
         {/* Company Intro Section */}
         <section className="py-8 bg-white dark:bg-gray-900">
           <div className="max-w-3xl mx-auto px-4 text-center">
@@ -858,10 +878,15 @@ const IndexPage = ({ latestPosts = [] }) => {
                         href={`/blog/${article.slug}`}
                         aria-label={`Read More about ${article.title}`}
                       >
-                        <motion.span className="inline-flex items-center gap-2 text-orange-600 dark:text-orange-400 font-semibold text-sm hover:gap-3 transition-all" style={{ fontFamily: 'Albert Sans, sans-serif' }} whileHover={{ x: 5 }}>
+                        <motion.span className="group inline-flex items-center text-orange-600 dark:text-orange-400 hover:text-orange-700 dark:hover:text-orange-300 font-semibold text-sm transition-colors duration-300" style={{ fontFamily: 'Albert Sans, sans-serif' }}>
                           Read More
                           <span className="sr-only">about {article.title}</span>
-                          <ArrowRight className="w-4 h-4" />
+                          <span
+                            aria-hidden="true"
+                            className="inline-flex overflow-hidden max-w-0 opacity-0 -translate-x-1 group-hover:max-w-[1.25rem] group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)]"
+                          >
+                            <ArrowRight className="w-4 h-4 ml-1.5 shrink-0" strokeWidth={2.35} />
+                          </span>
                         </motion.span>
                       </Link>
                     </div>

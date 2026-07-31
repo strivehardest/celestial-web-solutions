@@ -3,9 +3,10 @@ import { useState, useEffect } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
 import { motion } from "framer-motion";
-import { Monitor, Code, Search, ShoppingCart, Palette, Headphones, Target, MousePointer, ArrowRight, CheckCircle2, Rocket, Users, Star, Zap } from "lucide-react";
+import { Monitor, Code, Search, ShoppingCart, Palette, Headphones, Target, MousePointer, CheckCircle2, Rocket, Users, Star, Zap } from "lucide-react";
 import Link from "next/link";
 import WhatsAppButton from '../components/WhatsAppButton';
+import GlassButton from '../components/GlassButton';
 
 // Typing effect phrases for services
 const typingPhrases = [
@@ -82,31 +83,6 @@ const services = [
 		keywords: ["Google Ads", "PPC management", "paid advertising", "campaign management"]
 	}
 ];
-
-// Glass Button Component
-const GlassButton = ({ children, href, variant = "light", className = "" }) => {
-	const baseClasses = "inline-flex items-center gap-2 px-6 py-3 rounded-full font-semibold transition-all duration-300 backdrop-blur-md border cursor-pointer";
-	const variants = {
-		light: "bg-white/20 hover:bg-white/30 border-white/30 text-white hover:shadow-lg hover:shadow-white/10",
-		dark: "bg-black/20 hover:bg-black/30 border-black/20 text-gray-900 hover:shadow-lg",
-		orange: "bg-orange-500/20 hover:bg-orange-500/30 border-orange-500/30 text-orange-600 dark:text-orange-400 hover:shadow-lg hover:shadow-orange-500/20",
-		solid: "bg-orange-500 hover:bg-orange-600 border-orange-500 text-white hover:shadow-lg hover:shadow-orange-500/30"
-	};
-
-	return (
-		<Link href={href}>
-			<motion.span
-				className={`${baseClasses} ${variants[variant]} ${className}`}
-				style={{ fontFamily: 'Albert Sans, sans-serif', fontWeight: 400 }}
-				whileHover={{ scale: 1.05, y: -2 }}
-				whileTap={{ scale: 0.95 }}
-			>
-				{children}
-				<ArrowRight size={18} />
-			</motion.span>
-		</Link>
-	);
-};
 
 // Animated Counter Component
 const AnimatedCounter = ({ value, suffix = "" }) => {

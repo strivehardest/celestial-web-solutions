@@ -56,12 +56,11 @@
 
   /* Webkit Scrollbar */
   ::-webkit-scrollbar {
-    width: 13px;
-    height: 13px;
+    width: 16px;
+    height: 16px;
   }
   ::-webkit-scrollbar-track {
     background: #f3f4f6;
-    border-radius: 20px;
   }
   html.dark ::-webkit-scrollbar-track {
     background: #1f2937;
@@ -69,7 +68,8 @@
   ::-webkit-scrollbar-thumb {
     background: linear-gradient(180deg, #f97316, #ea580c);
     border-radius: 10px;
-    border: 4px solid #f3f4f6;
+    border: 3px solid #f3f4f6;
+    background-clip: padding-box;
   }
   html.dark ::-webkit-scrollbar-thumb {
     border-color: #1f2937;
@@ -83,7 +83,7 @@
 
   /* Firefox Scrollbar */
   html, body {
-    scrollbar-width: thin;
+    scrollbar-width: auto;
     scrollbar-color: #f97316 #f3f4f6;
   }
   html.dark {
@@ -93,39 +93,6 @@
   html {
     scroll-behavior: smooth;
   }
-}
-
-/* ── Custom Cursor — skip on Sanity Studio pages ── */
-@media (min-width: 769px) {
-  html:not(:has([data-ui])),
-  html:not(:has([data-ui])) body {
-    cursor: none !important;
-  }
-
-  html:not(:has([data-ui])) a,
-  html:not(:has([data-ui])) button,
-  html:not(:has([data-ui])) input,
-  html:not(:has([data-ui])) textarea,
-  html:not(:has([data-ui])) select,
-  html:not(:has([data-ui])) [role="button"],
-  html:not(:has([data-ui])) .cursor-hover {
-    cursor: none !important;
-  }
-}
-
-/* ── Sanity Studio — restore native cursor ── */
-[data-ui],
-[data-ui] * {
-  cursor: auto !important;
-}
-[data-ui] button,
-[data-ui] a,
-[data-ui] [role="button"] {
-  cursor: pointer !important;
-}
-[data-ui] input,
-[data-ui] textarea {
-  cursor: text !important;
 }
 
 /* Magnetic hover */
@@ -180,6 +147,17 @@ html {
   color: inherit;
 }
 
+/* Theme backgrounds — CSS-owned so Google Translate can't wipe them via inline styles */
+html.dark body,
+html[data-theme='dark'] body {
+  background-color: #111827 !important;
+}
+
+html:not(.dark) body,
+html[data-theme='light'] body {
+  background-color: #ffffff !important;
+}
+
 /* Base font */
 body, html {
   font-family: 'Albert Sans', sans-serif !important;
@@ -195,4 +173,82 @@ pre, code {
 pre {
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
+}
+
+/* Google Translate — hide banner, keep widget available off-screen */
+.cws-gt-widget {
+  position: absolute !important;
+  left: -10000px !important;
+  top: 0 !important;
+  width: 1px !important;
+  height: 1px !important;
+  overflow: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+/* Hide the injected top banner that pushes/overlaps the header */
+body > .skiptranslate,
+.skiptranslate > iframe,
+.goog-te-banner-frame,
+.goog-te-banner-frame.skiptranslate,
+iframe.goog-te-banner-frame,
+.goog-te-balloon-frame,
+#goog-gt-tt,
+.goog-te-spinner-pos,
+.goog-tooltip,
+.goog-tooltip:hover {
+  display: none !important;
+  visibility: hidden !important;
+  height: 0 !important;
+  width: 0 !important;
+  max-height: 0 !important;
+  border: none !important;
+  overflow: hidden !important;
+  position: absolute !important;
+  top: -9999px !important;
+  left: -9999px !important;
+  z-index: -1 !important;
+  pointer-events: none !important;
+}
+
+html.translated-ltr,
+html.translated-rtl {
+  margin-top: 0 !important;
+}
+
+html {
+  margin-top: 0 !important;
+}
+
+body {
+  top: 0 !important;
+  position: static !important;
+  min-height: 100% !important;
+}
+
+.goog-text-highlight,
+font font,
+font {
+  background-color: transparent !important;
+  box-shadow: none !important;
+  box-sizing: border-box !important;
+}
+
+/* GT wraps text in <font> — keep layout/typography intact */
+body font {
+  vertical-align: inherit !important;
+  font-size: inherit !important;
+  font-family: inherit !important;
+  font-weight: inherit !important;
+  line-height: inherit !important;
+  letter-spacing: inherit !important;
+  color: inherit !important;
+  background: none !important;
+}
+
+/* Site header must stay above GT artifacts */
+header.fixed,
+header[class*="fixed"] {
+  z-index: 9990 !important;
 }

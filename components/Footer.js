@@ -3,6 +3,7 @@ import { useRouter } from 'next/router';
 import Image from 'next/image';
 import { MapPin, Phone, Mail, ArrowRight } from 'lucide-react';
 import ThemeToggle from './ThemeToggle';
+import LanguageSwitcher from './LanguageSwitcher';
 import { useState, useEffect } from 'react';
 
 const whatsappNumber = '233245709341';
@@ -336,6 +337,10 @@ export default function Footer({ darkMode, toggleDarkMode }) {
                 A focused web design and development company in Ghana, delivering exceptional digital experiences for businesses across Africa.
               </p>
 
+              <div className="mb-6 notranslate skiptranslate" translate="no">
+                <LanguageSwitcher dropUp={false} />
+              </div>
+
               <div className="space-y-3 mb-6">
                 <a href="tel:+233530505031" className="flex items-center gap-3 text-gray-500 dark:text-gray-400 hover:text-orange-500 dark:hover:text-orange-400 transition-colors text-base" style={{ fontFamily: 'Albert Sans, sans-serif' }}>
                   <Phone size={16} className="text-orange-500" />
@@ -418,11 +423,16 @@ export default function Footer({ darkMode, toggleDarkMode }) {
 
               <Link
                 href="/schedule-a-call"
-                className="inline-flex items-center gap-2 mt-6 px-5 py-2.5 bg-gradient-to-r from-orange-500 to-orange-600 text-white text-sm font-semibold rounded-full hover:from-orange-600 hover:to-orange-700 transition-all"
+                className="group inline-flex items-center mt-6 px-5 py-2.5 bg-gradient-to-r from-orange-500 to-orange-600 text-white text-sm font-semibold rounded-full hover:from-orange-600 hover:to-orange-700 hover:shadow-lg hover:shadow-orange-500/25 transition-all duration-300"
                 style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}
               >
                 Schedule a Call
-                <ArrowRight size={16} />
+                <span
+                  aria-hidden="true"
+                  className="inline-flex overflow-hidden max-w-0 opacity-0 -translate-x-1 group-hover:max-w-[1.25rem] group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)]"
+                >
+                  <ArrowRight size={16} className="ml-1.5 shrink-0" strokeWidth={2.35} />
+                </span>
               </Link>
             </div>
           </div>
@@ -537,7 +547,7 @@ export default function Footer({ darkMode, toggleDarkMode }) {
 
               {/* Theme Toggle */}
               <div className="flex items-center gap-4">
-                <ThemeToggle darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
+                <ThemeToggle />
               </div>
             </div>
 

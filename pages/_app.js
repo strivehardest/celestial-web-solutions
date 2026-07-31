@@ -1,13 +1,13 @@
-import PhoneCallButton from '../components/PhoneCallButton';
-import WhatsAppButton from '../components/WhatsAppButton';
+import ContactChatWidget from '../components/ContactChatWidget';
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import Script from 'next/script';
 import '../styles/globals.css';
 import Navbar from '../components/Navbar';
 import dynamic from 'next/dynamic';
+import { LanguageProvider } from '../lib/i18n/LanguageContext';
+import GoogleTranslate from '../components/GoogleTranslate';
 const Footer = dynamic(() => import('../components/Footer'), { ssr: false });
-const CustomCursor = dynamic(() => import('../components/CustomCursor'), { ssr: false });
 const ScrollToTop = dynamic(() => import('../components/ScrollToTop'), { ssr: false });
 const SpinningLogoLoader = dynamic(() => import('../components/SpinningLogoLoader'), { ssr: false });
 const TalkToExpertModal = dynamic(() => import('../components/TalkToExpertModal'), { ssr: false });
@@ -73,7 +73,9 @@ function MyApp({ Component, pageProps }) {
   }, []);
 
   return (
-    <>
+    <LanguageProvider>
+      <>
+        <GoogleTranslate />
         <ReadingProgressBar />
       {/* Show loader during page transitions — fixed duplicate */}
       {isLoading && <SpinningLogoLoader />}
@@ -133,13 +135,11 @@ function MyApp({ Component, pageProps }) {
       />
 
       <Navbar />
-      <CustomCursor />
       <ScrollToTop />
 
       <Component {...pageProps} />
       <Footer />
-      <PhoneCallButton />
-      <WhatsAppButton />
+      <ContactChatWidget />
 
       {/* AdSense — lazyOnload means it loads after everything else, only on homepage */}
       {router.pathname === '/' && (
@@ -156,6 +156,7 @@ function MyApp({ Component, pageProps }) {
         onClose={() => setShowExpertPopup(false)}
       />
     </>
+    </LanguageProvider>
   );
 }
 

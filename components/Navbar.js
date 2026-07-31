@@ -32,7 +32,7 @@ const Navbar = () => {
     { name: 'Our Services', href: '/web-design-company-in-ghana' },
     { name: 'Portfolio', href: '/portfolio' },
     { name: 'About Us', href: '/about' },
-    { name: 'Courses', href: '/courses' },
+    { name: 'Courses', href: '/courses', isCourses: true },
     { 
       name: 'Resources', 
       href: '/#',
@@ -307,7 +307,7 @@ const Navbar = () => {
         onClick={() => handleNavigation(item.href)}
       >
         <span>{item.name}</span>
-        {item.name === 'Courses' && (
+        {item.isCourses && (
           <span className="absolute -top-1 -right-1 bg-red-500 text-white text-[10px] font-bold px-1.5 py-0.5 rounded animate-pulse">
             New
           </span>
@@ -319,7 +319,7 @@ const Navbar = () => {
   return (
     <>
       <header
-        className={`fixed w-full top-0 z-50 transition-all duration-500 ${
+        className={`fixed w-full top-0 z-[9990] transition-all duration-500 ${
           scrolled
             ? 'bg-white/95 dark:bg-gray-900/95 backdrop-blur-xl shadow-2xl border-b border-gray-200/20 dark:border-gray-700/20'
             : 'bg-transparent'
@@ -485,7 +485,7 @@ const Navbar = () => {
                       >
                         <span className="flex items-center gap-2">
                           {item.name}
-                          {item.name === 'Courses' && (
+                          {item.isCourses && (
                             <span className="bg-red-500 text-white text-[10px] font-bold px-1.5 py-0.5 rounded animate-pulse">New</span>
                           )}
                         </span>

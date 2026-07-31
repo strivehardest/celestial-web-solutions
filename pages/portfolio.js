@@ -7,6 +7,7 @@ import { ArrowRight, ExternalLink, ArrowUpRight } from "lucide-react";
 import projects from "../data/projects";
 import WhatsAppButton from "../components/WhatsAppButton";
 import PortfolioBentoSection from "../components/PortfolioBentoSection";
+import GlassButton from "../components/GlassButton";
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Constants
@@ -14,6 +15,9 @@ import PortfolioBentoSection from "../components/PortfolioBentoSection";
 const PLACEHOLDER_IMAGE = "/png/screenshots/placeholder.webp";
 
 const PORTFOLIO_IMAGES = {
+  "act-campus-care": "/png/screenshots/act-campus-care.webp",
+  "ghanas-event": "/png/screenshots/ghanas-event.webp",
+  "ghanas-event-blog": "/png/screenshots/ghanas-event-blog.webp",
   "building-planner-designs": "/png/screenshots/buildingplanner.webp",
   "celestial-shopping": "/png/screenshots/celestial-shopping.webp",
   "dl-auto-parts": "/png/screenshots/dlautos-full.webp",
@@ -44,6 +48,8 @@ const HAPPY_CLIENTS = [
   { name: "Tru Seeds Africa",         src: "/png/projects/truseeds.webp" },
   { name: "COPTI",                    src: "/png/projects/copti.png" },
   { name: "Kafui Dey",                src: "/png/projects/kafui-dey.png" },
+  { name: "Act Campus Care",          src: "/png/projects/act-campus-care.jpg" },
+  { name: "Ghana Event",              src: "/png/projects/ghanasevent.jpeg" },
 ];
 
 const CATEGORIES = [
@@ -51,6 +57,7 @@ const CATEGORIES = [
   "agriculture & farming",
   "business & corporate",
   "e-commerce & retail",
+  "events & ticketing",
   "portfolio & personal",
   "news & media",
   "educational institutions",
@@ -158,32 +165,6 @@ const CountryFlag = ({ country }) => {
       className="w-5 h-4 object-cover rounded-sm inline-block"
       onError={(e) => { e.target.style.display = "none"; }}
     />
-  );
-};
-
-// ─────────────────────────────────────────────────────────────────────────────
-// GlassButton
-// ─────────────────────────────────────────────────────────────────────────────
-const GlassButton = ({ children, href, variant = "light" }) => {
-  const base =
-    "inline-flex items-center gap-2 px-6 py-3 rounded-full font-semibold transition-all duration-300 backdrop-blur-md border cursor-pointer";
-  const variants = {
-    light:
-      "bg-white/20 hover:bg-white/30 border-white/30 text-white hover:shadow-lg hover:shadow-white/10",
-    dark:
-      "bg-black/20 hover:bg-black/30 border-black/20 text-gray-900 hover:shadow-lg",
-    orange:
-      "bg-orange-500/20 hover:bg-orange-500/30 border-orange-500/30 text-orange-600 dark:text-orange-400 hover:shadow-lg hover:shadow-orange-500/20",
-  };
-  return (
-    <Link
-      href={href}
-      className={`${base} ${variants[variant]}`}
-      style={{ fontFamily: "Albert Sans, sans-serif" }}
-    >
-      {children}
-      <ArrowRight size={18} />
-    </Link>
   );
 };
 
