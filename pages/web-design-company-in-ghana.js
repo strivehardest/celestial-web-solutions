@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
 import { motion } from "framer-motion";
-import { Monitor, Code, Search, ShoppingCart, Palette, Headphones, Target, MousePointer, CheckCircle2, Rocket, Users, Star, Zap } from "lucide-react";
+import { Monitor, Code, Search, ShoppingCart, Palette, Headphones, Target, MousePointer, CheckCircle2, Rocket, Users, Star, Zap, ArrowRight } from "lucide-react";
 import Link from "next/link";
 import WhatsAppButton from '../components/WhatsAppButton';
 import GlassButton from '../components/GlassButton';
