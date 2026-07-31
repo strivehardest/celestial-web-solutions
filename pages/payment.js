@@ -334,10 +334,10 @@ export default function PaymentPage() {
             Call or WhatsApp us for instant support on your payment or service confirmation.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <PremiumCTA href="tel:+233530505031" size="default" variant="outline">
+            <PremiumCTA href="tel:+233530505031" size="default" variant="secondary">
               Call +233 53 050 5031
             </PremiumCTA>
-            <PremiumCTA href="https://wa.me/233245709341" size="default" variant="outline" target="_blank" rel="noopener noreferrer">
+            <PremiumCTA href="https://wa.me/233245709341" size="default" variant="secondary" target="_blank" rel="noopener noreferrer">
               Chat on WhatsApp
             </PremiumCTA>
           </div>

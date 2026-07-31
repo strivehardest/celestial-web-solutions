@@ -11,15 +11,7 @@
   border-width: 0;
 }
 
-/* Glassmorphism CTA Button */
-.glass-cta {
-  background: rgba(255, 255, 255, 0.18) !important;
-  border-radius: 9999px;
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
-  border: 1px solid rgba(255,255,255,0.25);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-}
+/* Legacy glass-cta class kept as no-op so old markup does not force invisible white glass */
 
 @tailwind base;
 @tailwind components;

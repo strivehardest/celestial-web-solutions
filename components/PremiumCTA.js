@@ -44,10 +44,13 @@ export default function PremiumCTA({
     primary:
       'bg-gradient-to-r from-orange-500 via-orange-500 to-orange-600 border border-orange-400/40 shadow-lg shadow-orange-500/25 text-white hover:from-orange-600 hover:to-orange-700',
     secondary:
-      'bg-white border border-white/90 shadow-lg text-orange-600 hover:text-orange-700 hover:bg-orange-50',
+      'bg-white border border-white shadow-lg text-orange-600 hover:text-orange-700 hover:bg-orange-50',
+    // For light page surfaces (pricing cards, tables). Use `secondary` on orange/dark heroes.
     outline:
-      'bg-transparent border-2 border-white/80 text-white hover:bg-white/10 hover:border-white hover:text-orange-100 dark:text-white',
+      'bg-transparent border-2 border-orange-500 text-orange-600 hover:bg-orange-500 hover:text-white hover:border-orange-500 dark:border-orange-400 dark:text-orange-400 dark:hover:bg-orange-500 dark:hover:text-white',
   };
+
+  const resolvedSize = size === 'sm' ? 'small' : size;
 
   const ButtonContent = () => (
     <motion.span
@@ -55,10 +58,9 @@ export default function PremiumCTA({
       className={`
         relative inline-flex items-center justify-center gap-3 font-bold rounded-full
         overflow-hidden cursor-pointer group
-        ${sizeClasses[size]}
-        ${variantClasses[variant]}
+        ${sizeClasses[resolvedSize] || sizeClasses.default}
+        ${variantClasses[variant] || variantClasses.primary}
         ${className}
-        glass-cta
       `}
       style={{ fontFamily: 'Bricolage Grotesque, sans-serif', ...props.style }}
       onClick={handleClick}
