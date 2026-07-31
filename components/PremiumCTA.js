@@ -3,20 +3,34 @@ import { useRouter } from 'next/router';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 
-export default function PremiumCTA({ 
-  children, 
-  href = '/contact', 
+function isExternalHref(href = '', { external, target } = {}) {
+  if (external || target === '_blank') return true;
+  return /^(https?:|tel:|mailto:|sms:)/i.test(href);
+}
+
+export default function PremiumCTA({
+  children,
+  href = '/contact',
   variant = 'primary', // 'primary' | 'secondary' | 'outline'
-  size = 'default', // 'small' | 'default' | 'large'
+  size = 'default', // 'small' | 'default' | 'large' | 'sm'
   icon = true,
   className = '',
   external = false,
-  ...props 
+  type,
+  target,
+  rel,
+  onClick,
+  style,
+  disabled,
+  ...props
 }) {
   const router = useRouter();
   const buttonRef = useRef(null);
   const [ripplePosition, setRipplePosition] = useState({ x: 0, y: 0 });
   const [showRipple, setShowRipple] = useState(false);
+
+  const resolvedSize = size === 'sm' ? 'small' : size;
+  const externalLink = isExternalHref(href, { external, target });
 
   const handleClick = (e) => {
     if (buttonRef.current) {
@@ -29,15 +43,22 @@ export default function PremiumCTA({
       setTimeout(() => setShowRipple(false), 600);
     }
 
-    if (props.type !== 'submit' && !external && href && !props.onClick) {
-      router.push(href);
+    if (onClick) {
+      onClick(e);
+      return;
     }
+
+    // External / tel / mailto handled by the <a> itself — do not router.push
+    if (type === 'submit' || externalLink || !href) return;
+
+    e.preventDefault();
+    router.push(href);
   };
 
   const sizeClasses = {
-    small: 'px-5 py-2.5 text-sm',
-    default: 'px-8 py-4 text-base',
-    large: 'px-10 py-5 text-lg',
+    small: 'pl-5 pr-9 py-2.5 text-sm',
+    default: 'pl-8 pr-11 py-4 text-base',
+    large: 'pl-10 pr-12 py-5 text-lg',
   };
 
   const variantClasses = {
@@ -45,33 +66,23 @@ export default function PremiumCTA({
       'bg-gradient-to-r from-orange-500 via-orange-500 to-orange-600 border border-orange-400/40 shadow-lg shadow-orange-500/25 text-white hover:from-orange-600 hover:to-orange-700',
     secondary:
       'bg-white border border-white shadow-lg text-orange-600 hover:text-orange-700 hover:bg-orange-50',
-    // For light page surfaces (pricing cards, tables). Use `secondary` on orange/dark heroes.
     outline:
       'bg-transparent border-2 border-orange-500 text-orange-600 hover:bg-orange-500 hover:text-white hover:border-orange-500 dark:border-orange-400 dark:text-orange-400 dark:hover:bg-orange-500 dark:hover:text-white',
   };
 
-  const resolvedSize = size === 'sm' ? 'small' : size;
+  const classes = `
+    group relative inline-flex items-center justify-center font-bold rounded-full
+    overflow-hidden cursor-pointer
+    ${sizeClasses[resolvedSize] || sizeClasses.default}
+    ${variantClasses[variant] || variantClasses.primary}
+    ${className}
+  `;
 
-  const ButtonContent = () => (
-    <motion.span
-      ref={buttonRef}
-      className={`
-        relative inline-flex items-center justify-center gap-3 font-bold rounded-full
-        overflow-hidden cursor-pointer group
-        ${sizeClasses[resolvedSize] || sizeClasses.default}
-        ${variantClasses[variant] || variantClasses.primary}
-        ${className}
-      `}
-      style={{ fontFamily: 'Bricolage Grotesque, sans-serif', ...props.style }}
-      onClick={handleClick}
-      {...props}
-    >
-      {/* Removed background slide effect for hover */}
-
-      {/* Ripple effect */}
+  const content = (
+    <>
       {showRipple && (
         <motion.span
-          className="absolute rounded-full bg-white/30"
+          className="absolute rounded-full bg-white/30 pointer-events-none"
           initial={{ width: 0, height: 0, opacity: 1 }}
           animate={{ width: 300, height: 300, opacity: 0 }}
           transition={{ duration: 0.6 }}
@@ -83,8 +94,8 @@ export default function PremiumCTA({
         />
       )}
 
-      {/* Text */}
-      <span className="relative z-10 transition-colors duration-300">
+      {/* Label stays centered; arrow overlays right padding on hover (no layout shift) */}
+      <span className="relative z-10 tracking-wide transition-colors duration-300">
         {children}
       </span>
 
@@ -92,14 +103,15 @@ export default function PremiumCTA({
         <span
           aria-hidden="true"
           className="
-            relative z-10 inline-flex items-center overflow-hidden
-            max-w-0 opacity-0 -translate-x-1.5 scale-75
-            group-hover:max-w-[1.75rem] group-hover:opacity-100 group-hover:translate-x-0 group-hover:scale-100
+            pointer-events-none absolute right-4 top-1/2 z-10
+            -translate-y-1/2 translate-x-1 opacity-0
+            group-hover:translate-x-0 group-hover:opacity-100
+            group-focus-visible:translate-x-0 group-focus-visible:opacity-100
             transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)]
           "
         >
           <svg
-            className="w-5 h-5 ml-2 shrink-0"
+            className="h-5 w-5 shrink-0"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -113,40 +125,61 @@ export default function PremiumCTA({
           </svg>
         </span>
       )}
-    </motion.span>
+    </>
   );
 
-  if (props.type === 'submit') {
-    // Render as button for form submission
-    return (
-      <button type="submit" className={className} disabled={props.disabled} style={props.style} onClick={handleClick}>
-        <ButtonContent />
-      </button>
-    );
-  }
+  const sharedStyle = { fontFamily: 'Bricolage Grotesque, sans-serif', ...style };
 
-  // Always render <a> for external links or if target/rel is set
-  if (external || props.target === '_blank' || props.rel) {
+  if (type === 'submit') {
     return (
-      <a
-        href={href}
-        target={props.target || (external ? '_blank' : undefined)}
-        rel={props.rel || (external ? 'noopener noreferrer' : undefined)}
-        className={className}
-        style={props.style}
+      <motion.button
+        ref={buttonRef}
+        type="submit"
+        className={classes}
+        style={sharedStyle}
+        disabled={disabled}
         onClick={handleClick}
+        whileTap={{ scale: 0.98 }}
         {...props}
       >
-        <ButtonContent />
-      </a>
+        {content}
+      </motion.button>
     );
   }
 
-  // Default: render as span (button-like)
-  return <ButtonContent />;
+  if (externalLink) {
+    return (
+      <motion.a
+        ref={buttonRef}
+        href={href}
+        target={target || (external ? '_blank' : undefined)}
+        rel={rel || (external || target === '_blank' ? 'noopener noreferrer' : undefined)}
+        className={classes}
+        style={sharedStyle}
+        onClick={handleClick}
+        whileTap={{ scale: 0.98 }}
+        {...props}
+      >
+        {content}
+      </motion.a>
+    );
+  }
+
+  return (
+    <motion.button
+      ref={buttonRef}
+      type="button"
+      className={classes}
+      style={sharedStyle}
+      onClick={handleClick}
+      whileTap={{ scale: 0.98 }}
+      {...props}
+    >
+      {content}
+    </motion.button>
+  );
 }
 
-// Secondary CTA with different style
 export function OutlineCTA({ children, href = '/contact', ...props }) {
   return (
     <PremiumCTA href={href} variant="outline" {...props}>
@@ -155,7 +188,6 @@ export function OutlineCTA({ children, href = '/contact', ...props }) {
   );
 }
 
-// Text link CTA
 export function TextCTA({ children, href = '/contact', className = '', ...props }) {
   return (
     <Link href={href}>
@@ -171,12 +203,13 @@ export function TextCTA({ children, href = '/contact', className = '', ...props 
         <span
           aria-hidden="true"
           className="
-            inline-flex overflow-hidden max-w-0 opacity-0 -translate-x-1
-            group-hover:max-w-[1.5rem] group-hover:opacity-100 group-hover:translate-x-0
+            ml-1 inline-flex w-4 shrink-0 justify-end
+            opacity-0 -translate-x-1
+            group-hover:opacity-100 group-hover:translate-x-0
             transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)]
           "
         >
-          <span className="ml-2">→</span>
+          →
         </span>
       </span>
     </Link>
