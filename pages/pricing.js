@@ -64,33 +64,16 @@ const paymentMethods = [
     logo: '/paystack-logo.png',
   },
   {
-    id: 'fidelity',
-    title: 'Fidelity Bank',
-    subtitle: 'Bank transfer',
+    id: 'bank',
+    title: 'Bank Transfer',
+    subtitle: 'Available on demand',
     icon: Building2,
     color: 'from-orange-500 to-orange-600',
     details: {
-      accountNumber: '2400251299814',
-      accountName: 'Waliu Ibrahimah Aforlabi',
-      bank: 'Fidelity Bank',
-      branch: 'Ho Branch',
-      swiftCode: 'FBLIGHAC',
+      onDemand: true,
+      message: 'Bank account details are available on demand. Contact us and we\'ll share the transfer details for your payment.',
     },
     logo: '/fidelity-bank-logo.jpg',
-  },
-  {
-    id: 'ecobank',
-    title: 'Ecobank Ghana',
-    subtitle: 'Bank transfer',
-    icon: Building2,
-    color: 'from-green-500 to-green-600',
-    details: {
-      accountNumber: '1441000576414',
-      accountName: 'Waliu Ibrahimah Aforlabi',
-      bank: 'Ecobank Ghana',
-      swiftCode: 'ECOCGHAC',
-    },
-    logo: '/ecobank-logo.png',
   },
 ];
 
@@ -1349,7 +1332,7 @@ export default function PricingWithCalculator() {
           <p className="text-sm text-gray-600 dark:text-gray-400 mb-8" style={{ fontFamily: "Albert Sans, sans-serif" }}>
             Click a payment method to view details
           </p>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 max-w-4xl mx-auto">
             {paymentMethods.map((method) => (
               <button
                 key={method.id}
@@ -1441,43 +1424,25 @@ export default function PricingWithCalculator() {
                           </a>
                         </div>
                       )}
-                      {/* Bank Transfer Details */}
-                      {method.details.accountNumber && (
-                        <>
-                          <div className="flex items-center justify-between">
-                            <div>
-                              <p className="text-xs text-white/70 uppercase tracking-wide" style={{ fontFamily: "Albert Sans, sans-serif" }}>Account Number</p>
-                              <p className="font-bold text-lg tracking-wider" style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}>{method.details.accountNumber}</p>
-                            </div>
-                            <button
-                              onClick={() => copyToClipboard(method.details.accountNumber, `${method.id}-acct`)}
-                              className="p-2 rounded-lg bg-white/20 hover:bg-white/30 transition-colors"
-                              title="Copy account number"
-                            >
-                              {copiedText === `${method.id}-acct` ? <Check size={16} /> : <Copy size={16} />}
-                            </button>
-                          </div>
-                          <div>
-                            <p className="text-xs text-white/70 uppercase tracking-wide" style={{ fontFamily: "Albert Sans, sans-serif" }}>Account Name</p>
-                            <p className="font-semibold" style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}>{method.details.accountName}</p>
-                          </div>
-                          <div className="flex gap-4">
-                            <div>
-                              <p className="text-xs text-white/70 uppercase tracking-wide" style={{ fontFamily: "Albert Sans, sans-serif" }}>Bank</p>
-                              <p className="font-semibold text-sm" style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}>{method.details.bank}</p>
-                            </div>
-                            {method.details.branch && (
-                              <div>
-                                <p className="text-xs text-white/70 uppercase tracking-wide" style={{ fontFamily: "Albert Sans, sans-serif" }}>Branch</p>
-                                <p className="font-semibold text-sm" style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}>{method.details.branch}</p>
-                              </div>
-                            )}
-                            <div>
-                              <p className="text-xs text-white/70 uppercase tracking-wide" style={{ fontFamily: "Albert Sans, sans-serif" }}>SWIFT</p>
-                              <p className="font-semibold text-sm" style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}>{method.details.swiftCode}</p>
-                            </div>
-                          </div>
-                        </>
+                      {/* Bank Transfer — on demand */}
+                      {method.details.onDemand && (
+                        <div className="space-y-3">
+                          <p className="text-sm text-white/90 leading-relaxed" style={{ fontFamily: "Albert Sans, sans-serif" }}>
+                            {method.details.message}
+                          </p>
+                          <p className="text-xs font-bold uppercase tracking-wide text-white/80" style={{ fontFamily: "Albert Sans, sans-serif" }}>
+                            Available on demand
+                          </p>
+                          <a
+                            href="https://wa.me/233245709341?text=Hi%2C%20I%27d%20like%20bank%20transfer%20details%20for%20payment."
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-2 px-4 py-2 bg-white text-orange-600 font-semibold rounded-lg hover:bg-gray-100 transition-colors text-sm"
+                            style={{ fontFamily: "Albert Sans, sans-serif" }}
+                          >
+                            Request via WhatsApp <ArrowRight size={14} />
+                          </a>
+                        </div>
                       )}
                     </div>
                   </div>

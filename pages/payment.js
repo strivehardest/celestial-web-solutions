@@ -21,7 +21,7 @@ const typingPhrases = [
   'Pay with MTN Mobile Money',
   'Pay with Telecel Cash',
   'Pay securely via Paystack',
-  'Pay with Fidelity Bank Transfer',
+  'Bank transfer available on demand',
   'Fast, Secure, Trusted Payments',
   'Contact: +233 53 050 5031',
   'Chat on WhatsApp: +233 245 709 341',
@@ -74,7 +74,7 @@ export default function PaymentPage() {
 
   const paymentOptions = [
     {
-      id: 1,
+      id: 'mtn1',
       title: "MTN Mobile Money",
       subtitle: "Pay instantly with MTN MoMo",
       icon: Smartphone,
@@ -86,7 +86,7 @@ export default function PaymentPage() {
       logo: "/mtn-momo-logo.png"
     },
     {
-      id: 1,
+      id: 'mtn2',
       title: "MTN Mobile Money",
       subtitle: "Pay instantly with MTN MoMo",
       icon: Smartphone,
@@ -98,7 +98,7 @@ export default function PaymentPage() {
       logo: "/mtn-momo-logo.png"  
     },
     {
-      id: 2,
+      id: 'telecel',
       title: "Telecel Cash",
       subtitle: "Pay easily with Telecel Money",
       icon: Smartphone,
@@ -110,7 +110,7 @@ export default function PaymentPage() {
       logo: "/telecel-logo.webp"
     },
     {
-      id: 3,
+      id: 'paystack',
       title: "Paystack Payment",
       subtitle: "Secure online payment gateway",
       icon: CreditCard,
@@ -121,34 +121,17 @@ export default function PaymentPage() {
       logo: "/paystack-logo.png"
     },
     {
-      id: 4,
-      title: "Fidelity Bank Transfer",
-      subtitle: "Direct bank transfer for large payments",
+      id: 'bank',
+      title: "Bank Transfer",
+      subtitle: "Available on demand",
       icon: Building2,
       color: "from-orange-500 to-orange-600",
       details: {
-        accountNumber: "2400251299814",
-        accountName: "Waliu Ibrahimah Aforlabi",
-        bank: "Fidelity Bank",
-        branch: "Ho Branch",
-        swiftCode: "FBLIGHAC"
+        onDemand: true,
+        message: "Bank account details are available on demand. Contact us and we'll share the transfer details for your payment."
       },
       logo: "/fidelity-bank-logo.jpg"
     },
-    {
-      id: 5,
-      title: "Ecobank Ghana Transfer",
-      subtitle: "Direct bank transfer to Ecobank Ghana",
-      color: "from-green-500 to-green-600",
-      details: {
-        accountNumber: "1441000576414",
-        accountName: "Waliu Ibrahimah Aforlabi",
-        bank: "Ecobank Ghana",
-        swiftCode: "ECOCGHAC",
-        bankAddress: "2 Morocco Lane, Off Independence Ave"
-      },
-      logo: "/ecobank-logo.png"
-    }
   ];
 
   return (
@@ -157,11 +140,11 @@ export default function PaymentPage() {
         <title>Secure Payment Options | Celestial Web Solutions Ghana</title>
         <meta
           name="description"
-          content="Pay securely for web design, website development, and digital services with Celestial Web Solutions. Accepting MTN MoMo, Telecel Cash, Paystack, Fidelity Bank, and Ecobank transfers."
+          content="Pay securely for web design, website development, and digital services with Celestial Web Solutions. Accepting MTN MoMo, Telecel Cash, Paystack, and bank transfer on demand."
         />
         <meta
           name="keywords"
-          content="Celestial Web Solutions payment, web design Ghana, website payment Ghana, MTN MoMo web design, Telecel Cash website, Paystack Ghana, Fidelity Bank transfer web design, Ecobank transfer web design, secure payment Ghana"
+          content="Celestial Web Solutions payment, web design Ghana, website payment Ghana, MTN MoMo web design, Telecel Cash website, Paystack Ghana, bank transfer on demand, secure payment Ghana"
         />
       </Head>
 
@@ -193,7 +176,7 @@ export default function PaymentPage() {
             className="text-lg text-white/90 max-w-3xl mx-auto"
             style={{ fontFamily: 'Albert Sans, sans-serif' }}
           >
-            Pay securely for web design, website development, and digital services with Celestial Web Solutions. Accepting MTN MoMo, Telecel Cash, Paystack, Fidelity Bank, and Ecobank transfers.
+            Pay securely for web design, website development, and digital services with Celestial Web Solutions. Accepting MTN MoMo, Telecel Cash, Paystack, and bank transfer available on demand.
           </p>
         </div>
       </section>
@@ -251,16 +234,16 @@ export default function PaymentPage() {
 
                 {selectedOption === option.id && (
                   <div className="p-6 bg-gray-50 dark:bg-gray-800 dark:text-gray-200 transition-colors duration-500" style={{ fontFamily: 'Albert Sans, sans-serif' }}>
-                    {(option.id === 1 || option.id === 2) && (
+                    {option.details.number && (
                       <>
                         <div className="flex justify-between bg-white dark:bg-gray-700 p-3 rounded-lg mb-3">
-                          <span>{option.id === 1 ? 'MoMo Pay Number:' : 'Telecel Cash Number:'}</span>
+                          <span>{option.id === 'telecel' ? 'Telecel Cash Number:' : 'MoMo Pay Number:'}</span>
                           <div className="flex items-center space-x-2">
                             <strong>{option.details.number}</strong>
-                            <button onClick={() => copyToClipboard(option.details.number, 'num')}>
+                            <button onClick={() => copyToClipboard(option.details.number, `${option.id}-num`)}>
                               <Copy size={16} className="text-orange-500" />
                             </button>
-                            {copied === 'num' && <Check size={16} className="text-green-500" />}
+                            {copied === `${option.id}-num` && <Check size={16} className="text-green-500" />}
                           </div>
                         </div>
                         <div className="flex justify-between bg-white dark:bg-gray-700 p-3 rounded-lg">
@@ -270,7 +253,7 @@ export default function PaymentPage() {
                       </>
                     )}
 
-                    {option.id === 3 && (
+                    {option.details.link && (
                       <PremiumCTA
                         href={`https://${option.details.link}`}
                         size="small"
@@ -284,19 +267,34 @@ export default function PaymentPage() {
                       </PremiumCTA>
                     )}
 
-                    {(option.id === 4 || option.id === 5) && (
-                      <div className="space-y-3">
-                        {Object.entries(option.details).map(([label, value]) => (
-                          <div
-                            key={label}
-                            className="flex justify-between bg-white dark:bg-gray-700 p-3 rounded-lg"
+                    {option.details.onDemand && (
+                      <div className="space-y-4">
+                        <p className="text-gray-700 dark:text-gray-200 leading-relaxed">
+                          {option.details.message}
+                        </p>
+                        <p className="text-sm font-semibold text-orange-600 dark:text-orange-400 uppercase tracking-wide">
+                          Available on demand
+                        </p>
+                        <div className="flex flex-col sm:flex-row gap-3">
+                          <PremiumCTA
+                            href="https://wa.me/233245709341?text=Hi%2C%20I%27d%20like%20bank%20transfer%20details%20for%20payment."
+                            size="small"
+                            variant="primary"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="justify-center"
                           >
-                            <span className="capitalize">
-                              {label.replace(/([A-Z])/g, ' $1').trim()}:
-                            </span>
-                            <strong>{value}</strong>
-                          </div>
-                        ))}
+                            Request via WhatsApp
+                          </PremiumCTA>
+                          <PremiumCTA
+                            href="/contact"
+                            size="small"
+                            variant="outline"
+                            className="justify-center"
+                          >
+                            Contact Us
+                          </PremiumCTA>
+                        </div>
                       </div>
                     )}
                   </div>
