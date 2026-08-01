@@ -55,7 +55,7 @@ const nextConfig = {
           {
             key: 'Content-Security-Policy',
             value:
-              "frame-src 'self' https://www.youtube.com https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://www.google.com https://calendly.com https://challenges.cloudflare.com;",
+              "frame-src 'self' https://www.youtube.com https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://www.google.com https://translate.google.com https://translate.googleapis.com https://www.gstatic.com https://calendly.com https://challenges.cloudflare.com;",
           },
         ],
       },

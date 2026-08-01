@@ -176,12 +176,12 @@ pre {
   height: 1px !important;
   overflow: hidden !important;
   opacity: 0 !important;
-  pointer-events: none !important;
+  /* keep pointer-events so the combo can still be driven programmatically */
 }
 
-/* Hide the injected top banner that pushes/overlaps the header */
+/* Hide only the injected top banner — do NOT hide .skiptranslate > iframe
+   (that also kills the translate engine iframe inside the widget) */
 body > .skiptranslate,
-.skiptranslate > iframe,
 .goog-te-banner-frame,
 .goog-te-banner-frame.skiptranslate,
 iframe.goog-te-banner-frame,
@@ -193,7 +193,6 @@ iframe.goog-te-banner-frame,
   display: none !important;
   visibility: hidden !important;
   height: 0 !important;
-  width: 0 !important;
   max-height: 0 !important;
   border: none !important;
   overflow: hidden !important;

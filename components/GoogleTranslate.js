@@ -26,9 +26,7 @@ export default function GoogleTranslate() {
 
   useEffect(() => {
     const lang = readGoogleTranslateLocale();
-    if (lang !== 'en') {
-      ensurePageTranslated(lang);
-    }
+    ensurePageTranslated(lang);
 
     hideGoogleBanner();
     applySavedTheme();
@@ -46,7 +44,7 @@ export default function GoogleTranslate() {
       if (addedBanner) hideGoogleBanner();
     });
 
-    observer.observe(document.body, { childList: true });
+    observer.observe(document.documentElement, { childList: true, subtree: true });
     return () => observer.disconnect();
   }, []);
 
@@ -54,11 +52,11 @@ export default function GoogleTranslate() {
     const onRouteDone = () => {
       applySavedTheme();
       const lang = readGoogleTranslateLocale();
-      if (lang === 'en') return;
       window.setTimeout(() => {
         ensurePageTranslated(lang);
         applySavedTheme();
-      }, 500);
+        hideGoogleBanner();
+      }, 400);
     };
 
     router.events.on('routeChangeComplete', onRouteDone);
@@ -79,34 +77,43 @@ export default function GoogleTranslate() {
               includedLanguages: 'en,fr,es,ee,ak,gaa',
               autoDisplay: false,
               multilanguagePage: true,
-              layout: window.google.translate.TranslateElement.InlineLayout.HORIZONTAL
+              layout: window.google.translate.TranslateElement.InlineLayout.SIMPLE
             }, 'google_translate_element');
 
             try {
               var match = document.cookie.match(/(?:^|;\\s*)googtrans=\\/en\\/([a-z]{2,3})/i);
               var lang = match ? match[1] : (localStorage.getItem('cws-locale') || 'en');
-              if (lang && lang !== 'en') {
-                var tries = 0;
-                var timer = setInterval(function () {
-                  var select = document.querySelector('.goog-te-combo');
-                  tries += 1;
-                  if (select) {
-                    select.value = lang;
-                    select.dispatchEvent(new Event('change'));
-                    clearInterval(timer);
-                    setTimeout(function () {
-                      try {
-                        var theme = localStorage.getItem('theme') || 'system';
-                        var dark = theme === 'dark' || (theme === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches);
-                        document.documentElement.classList.toggle('dark', dark);
-                        document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light');
-                      } catch (e) {}
-                    }, 600);
-                  } else if (tries > 40) {
-                    clearInterval(timer);
-                  }
-                }, 200);
-              }
+              var tries = 0;
+              var timer = setInterval(function () {
+                var select = document.querySelector('#google_translate_element select.goog-te-combo')
+                  || document.querySelector('.goog-te-combo');
+                tries += 1;
+                if (!select) {
+                  if (tries > 50) clearInterval(timer);
+                  return;
+                }
+                clearInterval(timer);
+                var target = (!lang || lang === 'en') ? '' : lang;
+                var values = Array.prototype.map.call(select.options || [], function (o) { return o.value; });
+                if (target && values.indexOf(target) === -1) return;
+                if (!target && values.indexOf('') === -1 && values.indexOf('en') !== -1) target = 'en';
+                select.value = target;
+                try {
+                  select.dispatchEvent(new Event('change', { bubbles: true }));
+                } catch (e) {
+                  var evt = document.createEvent('HTMLEvents');
+                  evt.initEvent('change', true, true);
+                  select.dispatchEvent(evt);
+                }
+                setTimeout(function () {
+                  try {
+                    var theme = localStorage.getItem('theme') || 'system';
+                    var dark = theme === 'dark' || (theme === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches);
+                    document.documentElement.classList.toggle('dark', dark);
+                    document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light');
+                  } catch (err) {}
+                }, 600);
+              }, 200);
             } catch (e) {}
           };
         `}
