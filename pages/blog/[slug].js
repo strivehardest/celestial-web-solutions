@@ -4390,9 +4390,10 @@ useEffect(() => {
               href="/blog"
               size="default"
               variant="primary"
-              className="inline-flex items-center gap-2"
+              className="inline-flex items-center gap-2 !text-white"
+              style={{ color: '#ffffff' }}
             >
-              View All Articles
+              <span className="!text-white" style={{ color: '#ffffff' }}>View All Articles</span>
             </PremiumCTA>
           </div>
         </div>
