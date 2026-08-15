@@ -226,6 +226,52 @@ font {
   box-sizing: border-box !important;
 }
 
+/* Never let the translator touch prices, currency codes, clocks or counters —
+   it rewrites the text nodes and React can no longer update them */
+.notranslate,
+[translate="no"] {
+  unicode-bidi: isolate;
+}
+
+/* Translated copy runs longer than English: shrink display type and let it wrap */
+html.translated-ltr h1,
+html.translated-rtl h1 {
+  font-size: clamp(1.65rem, 4.2vw, 2.75rem) !important;
+  line-height: 1.15 !important;
+}
+
+html.translated-ltr h2,
+html.translated-rtl h2 {
+  font-size: clamp(1.35rem, 3.2vw, 2rem) !important;
+  line-height: 1.2 !important;
+}
+
+html.translated-ltr h3,
+html.translated-rtl h3 {
+  font-size: clamp(1.05rem, 2.4vw, 1.35rem) !important;
+  line-height: 1.25 !important;
+}
+
+html.translated-ltr h1,
+html.translated-rtl h1,
+html.translated-ltr h2,
+html.translated-rtl h2,
+html.translated-ltr h3,
+html.translated-rtl h3,
+html.translated-ltr h4,
+html.translated-rtl h4 {
+  overflow-wrap: break-word;
+  word-break: break-word;
+  hyphens: auto;
+}
+
+html.translated-ltr header nav a,
+html.translated-rtl header nav a,
+html.translated-ltr header nav button,
+html.translated-rtl header nav button {
+  font-size: 0.8125rem !important;
+}
+
 /* GT wraps text in <font> — keep layout/typography intact */
 body font {
   vertical-align: inherit !important;

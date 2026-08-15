@@ -1,6 +1,3 @@
-<Head>
-  <meta name="keywords" content="best web design company in ghana, web design company in Ghana, web development company in Ghana, website designers in Ghana, web development company Ghana, SEO services in Ghana, e-commerce website Ghana, web designer in Accra, web designer in Keta, web design company in Accra, web designer in Accra Ghana, web design company in Keta, website design services Ghana, e-commerce website development Ghana, business website design Ghana, affordable web design Ghana" />
-</Head>
 import Head from "next/head";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -22,7 +19,7 @@ const typingPhrases = [
   'E-Commerce Website Pricing',
   'Custom Web App Quotes',
   'Flexible Payment Plans',
-  'Contact us: +233 53 050 5031',
+  'Contact us: +233 24 567 1832',
   'Email: info@celestialwebsolutions.net',
 ];
 
@@ -91,6 +88,25 @@ export default function PricingWithCalculator() {
   const [currentPhraseIndex, setCurrentPhraseIndex] = useState(0);
   const [displayText, setDisplayText] = useState('');
   const [isDeleting, setIsDeleting] = useState(false);
+
+  // Google Translate rewrites text nodes, so React can no longer update the copy it
+  // already replaced. On translated pages we remount the price blocks instead.
+  const [isTranslated, setIsTranslated] = useState(false);
+
+  useEffect(() => {
+    const root = document.documentElement;
+    const read = () =>
+      setIsTranslated(
+        root.classList.contains('translated-ltr') || root.classList.contains('translated-rtl')
+      );
+
+    read();
+    const observer = new MutationObserver(read);
+    observer.observe(root, { attributes: true, attributeFilter: ['class'] });
+    return () => observer.disconnect();
+  }, []);
+
+  const dynamicKey = isTranslated ? `${billingPeriod}-${selectedCurrency}` : 'base';
 
   // Fetch exchange rates on component mount
   useEffect(() => {
@@ -462,6 +478,14 @@ export default function PricingWithCalculator() {
     return `${currency.symbol}${formatted}`;
   };
 
+  // Amounts must stay in the source language: the translator mangles currency symbols
+  // and digit grouping, and once it owns the text node React can't refresh the price.
+  const priceTag = (amount, { suffix = "", className = "", style } = {}) => (
+    <span className={`notranslate ${className}`.trim()} translate="no" style={style}>
+      {`${formatPrice(amount)}${suffix}`}
+    </span>
+  );
+
   const toggleAddOn = (addOnName) => setAddOns(prev => ({ ...prev, [addOnName]: !prev[addOnName] }));
   const updateQuantity = (field, delta) => setAddOns(prev => ({ ...prev, [field]: Math.max(0, prev[field] + delta) }));
   const resetCalculator = () => {
@@ -476,7 +500,7 @@ export default function PricingWithCalculator() {
     const ghsPrice = `₵${new Intl.NumberFormat('en-GH', { minimumFractionDigits: 0, maximumFractionDigits: 0 }).format(priceInGHS)}`;
     const message = `Hi Celestial Web Solutions! I'm interested in your ${planName} package priced at ${formattedPrice} (${ghsPrice} GHS). Can you provide more details?`;
     const encodedMessage = encodeURIComponent(message);
-    return `https://wa.me/233245709341?text=${encodedMessage}`;
+    return `https://wa.me/233530505031?text=${encodedMessage}`;
   };
 
   const getCalculatorWhatsAppLink = () => {
@@ -485,7 +509,7 @@ export default function PricingWithCalculator() {
     const ghsPrice = `₵${new Intl.NumberFormat('en-GH', { minimumFractionDigits: 0, maximumFractionDigits: 0 }).format(total)}`;
     const message = `Hi! I calculated a custom quote using your calculator: ${formattedPrice} (${ghsPrice} GHS). Can we discuss this package?`;
     const encodedMessage = encodeURIComponent(message);
-    return `https://wa.me/233245709341?text=${encodedMessage}`;
+    return `https://wa.me/233530505031?text=${encodedMessage}`;
   };
 
   // Typing effect logic
@@ -546,8 +570,8 @@ export default function PricingWithCalculator() {
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
             <h1 className="text-4xl md:text-6xl font-bold text-white mb-6" style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}>Our Pricing</h1>
             <div className="flex flex-col items-center justify-center mb-4 min-h-[2.5em]">
-              <span className="text-lg md:text-2xl text-white bg-black/20 px-4 py-2 rounded-full font-semibold tracking-wide shadow-lg animate-pulse" style={{ fontFamily: 'Albert Sans, sans-serif', letterSpacing: '0.04em' }}>
-                {displayText}<span className="animate-pulse">|</span>
+              <span className="notranslate text-lg md:text-2xl text-white bg-black/20 px-4 py-2 rounded-full font-semibold tracking-wide shadow-lg animate-pulse" translate="no" style={{ fontFamily: 'Albert Sans, sans-serif', letterSpacing: '0.04em' }}>
+                <span>{displayText}</span><span className="animate-pulse">|</span>
               </span>
             </div>
             {/* CMS vs Full Stack Description */}
@@ -605,7 +629,7 @@ export default function PricingWithCalculator() {
                     {["starter", "professional", "ecommerce", "enterprise"].map((pkg) => (
                       <button key={pkg} onClick={() => setSelectedBase(pkg)} className={`p-4 rounded-xl border-2 transition-all duration-300 ${selectedBase === pkg ? "border-orange-500 bg-orange-50 dark:bg-orange-900/20 shadow-lg" : "border-gray-200 dark:border-gray-700 hover:border-orange-300 bg-white dark:bg-gray-800"}`}>
                         <div className="font-bold text-gray-900 dark:text-white capitalize mb-1" style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}>{pkg}</div>
-                        <div className="text-orange-600 font-semibold" style={{ fontFamily: "Albert Sans, sans-serif" }}>{formatPrice(basePrices[pkg][billingPeriod])}</div>
+                        <div className="text-orange-600 font-semibold" style={{ fontFamily: "Albert Sans, sans-serif" }}>{priceTag(basePrices[pkg][billingPeriod])}</div>
                       </button>
                     ))}
                   </div>
@@ -619,13 +643,13 @@ export default function PricingWithCalculator() {
                     <div className="flex items-center justify-between p-4 bg-gray-50 dark:bg-gray-700 rounded-xl">
                       <div className="flex-1">
                         <div className="font-semibold text-gray-900 dark:text-white" style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}>Extra Pages</div>
-                        <div className="text-sm text-gray-600 dark:text-gray-400" style={{ fontFamily: "Albert Sans, sans-serif" }}>{formatPrice(addOnPrices.extraPages)} per page</div>
+                        <div className="text-sm text-gray-600 dark:text-gray-400" style={{ fontFamily: "Albert Sans, sans-serif" }}>{priceTag(addOnPrices.extraPages)} per page</div>
                       </div>
                       <div className="flex items-center space-x-3">
                         <button onClick={() => updateQuantity("extraPages", -1)} className="w-8 h-8 rounded-lg bg-white dark:bg-gray-600 border-2 border-gray-300 dark:border-gray-500 flex items-center justify-center hover:border-orange-500 transition-colors disabled:opacity-50 disabled:cursor-not-allowed" disabled={addOns.extraPages === 0}>
                           <Minus size={16} className="text-gray-700 dark:text-gray-300" />
                         </button>
-                        <span className="w-12 text-center font-bold text-gray-900 dark:text-white" style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}>{addOns.extraPages}</span>
+                        <span className="notranslate w-12 text-center font-bold text-gray-900 dark:text-white" translate="no" style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}>{addOns.extraPages}</span>
                         <button onClick={() => updateQuantity("extraPages", 1)} className="w-8 h-8 rounded-lg bg-white dark:bg-gray-600 border-2 border-gray-300 dark:border-gray-500 flex items-center justify-center hover:border-orange-500 transition-colors">
                           <Plus size={16} className="text-gray-700 dark:text-gray-300" />
                         </button>
@@ -646,7 +670,7 @@ export default function PricingWithCalculator() {
                             <span className="font-semibold text-gray-900 dark:text-white" style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}>{addon.label}</span>
                             {addon.disabled && <span className="text-xs bg-orange-100 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400 px-2 py-1 rounded" style={{ fontFamily: "Albert Sans, sans-serif" }}>Included</span>}
                           </div>
-                          <div className="text-sm text-gray-600 dark:text-gray-400" style={{ fontFamily: "Albert Sans, sans-serif" }}>{formatPrice(addon.price)} {addon.note && <span className="ml-1">({addon.note})</span>}</div>
+                          <div className="text-sm text-gray-600 dark:text-gray-400" style={{ fontFamily: "Albert Sans, sans-serif" }}>{priceTag(addon.price)} {addon.note && <span className="notranslate ml-1" translate="no">({addon.note})</span>}</div>
                         </div>
                         <div className={`w-12 h-6 rounded-full transition-colors ${addon.disabled ? "bg-gray-300" : addOns[addon.key] ? "bg-orange-500" : "bg-gray-300"}`}>
                           <div className={`w-5 h-5 bg-white rounded-full shadow-md transform transition-transform ${(addOns[addon.key] && !addon.disabled) ? "translate-x-6" : "translate-x-0.5"} mt-0.5`}></div>
@@ -658,13 +682,13 @@ export default function PricingWithCalculator() {
                     <div className="flex items-center justify-between p-4 bg-gray-50 dark:bg-gray-700 rounded-xl">
                       <div className="flex-1">
                         <div className="font-semibold text-gray-900 dark:text-white" style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}>Custom Features</div>
-                        <div className="text-sm text-gray-600 dark:text-gray-400" style={{ fontFamily: "Albert Sans, sans-serif" }}>{formatPrice(addOnPrices.customFeatures)} per feature</div>
+                        <div className="text-sm text-gray-600 dark:text-gray-400" style={{ fontFamily: "Albert Sans, sans-serif" }}>{priceTag(addOnPrices.customFeatures)} per feature</div>
                       </div>
                       <div className="flex items-center space-x-3">
                         <button onClick={() => updateQuantity("customFeatures", -1)} className="w-8 h-8 rounded-lg bg-white dark:bg-gray-600 border-2 border-gray-300 dark:border-gray-500 flex items-center justify-center hover:border-orange-500 transition-colors disabled:opacity-50 disabled:cursor-not-allowed" disabled={addOns.customFeatures === 0}>
                           <Minus size={16} className="text-gray-700 dark:text-gray-300" />
                         </button>
-                        <span className="w-12 text-center font-bold text-gray-900 dark:text-white" style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}>{addOns.customFeatures}</span>
+                        <span className="notranslate w-12 text-center font-bold text-gray-900 dark:text-white" translate="no" style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}>{addOns.customFeatures}</span>
                         <button onClick={() => updateQuantity("customFeatures", 1)} className="w-8 h-8 rounded-lg bg-white dark:bg-gray-600 border-2 border-gray-300 dark:border-gray-500 flex items-center justify-center hover:border-orange-500 transition-colors">
                           <Plus size={16} className="text-gray-700 dark:text-gray-300" />
                         </button>
@@ -677,7 +701,7 @@ export default function PricingWithCalculator() {
                 <div className="mt-8 p-6 bg-orange-50 dark:bg-orange-900/20 rounded-2xl flex items-center justify-between">
                   <div>
                     <div className="text-gray-700 dark:text-gray-300 font-semibold" style={{ fontFamily: "Albert Sans, sans-serif" }}>Total Price ({billingPeriod === "yearly" ? "Full Stack Development" : "CMS Development"}):</div>
-                    <div className="text-3xl font-bold text-orange-600" style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}>{formatPrice(calculateTotal())}</div>
+                    <div className="text-3xl font-bold text-orange-600" style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}>{priceTag(calculateTotal())}</div>
                   </div>
                   <PremiumCTA href={getCalculatorWhatsAppLink()} size="default" variant="primary" className="flex items-center space-x-2" target="_blank" rel="noopener noreferrer">
                     <span>Order on WhatsApp</span>
@@ -738,7 +762,8 @@ export default function PricingWithCalculator() {
               className="w-5 h-3.5 object-cover rounded shadow-sm"
             />
             <span
-              className="text-sm font-bold"
+              className="notranslate text-sm font-bold"
+              translate="no"
               style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}
             >
               {currency.code}
@@ -746,19 +771,19 @@ export default function PricingWithCalculator() {
           </div>
         ))}
       </div>
-      <div className="flex items-center justify-center mt-3 space-x-2">
+      <div className="notranslate flex items-center justify-center mt-3 space-x-2" translate="no">
         <span className="text-xs text-gray-400 dark:text-slate-500">
           {ratesLoading ? "🔄 Updating rates..." : `⏱️ Updated ${getTimeAgo(lastUpdated)}`}
         </span>
         <span className="text-xs text-gray-300 dark:text-slate-600">•</span>
         <span className="text-xs text-gray-400 dark:text-slate-500">
-          🕐 {liveTime.toLocaleTimeString("en-GB", { hour: "2-digit", minute: "2-digit", second: "2-digit" })}
+          {`🕐 ${liveTime.toLocaleTimeString("en-GB", { hour: "2-digit", minute: "2-digit", second: "2-digit" })}`}
         </span>
       </div>
     </div>
 
     {/* Plan cards grid */}
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+    <div key={dynamicKey} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
       {pricingPlans.map((plan, idx) => (
         <motion.div
           key={idx}
@@ -803,23 +828,22 @@ export default function PricingWithCalculator() {
           {/* Price */}
           <div>
             <div className="flex items-baseline gap-2">
-              <span
-                className="text-3xl font-bold text-orange-600 dark:text-orange-400"
-                style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}
-              >
-                {formatPrice(plan.price[billingPeriod])}
-              </span>
+              {priceTag(plan.price[billingPeriod], {
+                className: "text-3xl font-bold text-orange-600 dark:text-orange-400",
+                style: { fontFamily: "Bricolage Grotesque, sans-serif" },
+              })}
             </div>
-            {plan.originalPrice && (
-              <span className="text-sm line-through text-gray-400 dark:text-slate-600">
-                {formatPrice(plan.originalPrice[billingPeriod])}
-              </span>
-            )}
+            {plan.originalPrice &&
+              priceTag(plan.originalPrice[billingPeriod], {
+                className: "text-sm line-through text-gray-400 dark:text-slate-600",
+              })}
             <div className="flex items-center gap-1 mt-1 text-gray-400 dark:text-slate-500 text-xs">
               <Clock size={11} />
-              {typeof plan.deliveryTime === "object"
-                ? plan.deliveryTime[billingPeriod]
-                : plan.deliveryTime}
+              <span className="notranslate" translate="no">
+                {typeof plan.deliveryTime === "object"
+                  ? plan.deliveryTime[billingPeriod]
+                  : plan.deliveryTime}
+              </span>
             </div>
           </div>
 
@@ -864,7 +888,7 @@ export default function PricingWithCalculator() {
                 className="text-base font-bold text-green-600 dark:text-green-500"
                 style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}
               >
-                {formatPrice(plan.renewalPrice[billingPeriod])}/yr
+                {priceTag(plan.renewalPrice[billingPeriod], { suffix: "/yr" })}
               </p>
             </div>
           )}
@@ -918,34 +942,19 @@ export default function PricingWithCalculator() {
                   <th className="px-6 py-4 text-center font-bold" style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}>Enterprise</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-gray-200 dark:divide-gray-700">
+              <tbody key={dynamicKey} className="divide-y divide-gray-200 dark:divide-gray-700">
                 {/* Price Row */}
                 <tr className="bg-white dark:bg-gray-900 hover:bg-orange-50 dark:hover:bg-gray-700/50 transition-colors">
                   <td className="px-6 py-4 font-bold text-gray-900 dark:text-white" style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}>Starting Price</td>
-                  <td className="px-6 py-4 text-center">
-                    <span className="text-2xl font-bold text-orange-600" style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}>
-                      {formatPrice(pricingPlans[0].price[billingPeriod])}
-                    </span>
-                    <div className="text-xs text-gray-600 dark:text-gray-400 mt-1">first year</div>
-                  </td>
-                  <td className="px-6 py-4 text-center">
-                    <span className="text-2xl font-bold text-orange-600" style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}>
-                      {formatPrice(pricingPlans[1].price[billingPeriod])}
-                    </span>
-                    <div className="text-xs text-gray-600 dark:text-gray-400 mt-1">first year</div>
-                  </td>
-                  <td className="px-6 py-4 text-center">
-                    <span className="text-2xl font-bold text-orange-600" style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}>
-                      {formatPrice(pricingPlans[2].price[billingPeriod])}
-                    </span>
-                    <div className="text-xs text-gray-600 dark:text-gray-400 mt-1">first year</div>
-                  </td>
-                  <td className="px-6 py-4 text-center">
-                    <span className="text-2xl font-bold text-orange-600" style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}>
-                      {formatPrice(pricingPlans[3].price[billingPeriod])}
-                    </span>
-                    <div className="text-xs text-gray-600 dark:text-gray-400 mt-1">first year</div>
-                  </td>
+                  {pricingPlans.map((plan, idx) => (
+                    <td key={idx} className="px-6 py-4 text-center">
+                      {priceTag(plan.price[billingPeriod], {
+                        className: "text-2xl font-bold text-orange-600",
+                        style: { fontFamily: "Bricolage Grotesque, sans-serif" },
+                      })}
+                      <div className="text-xs text-gray-600 dark:text-gray-400 mt-1">first year</div>
+                    </td>
+                  ))}
                 </tr>
 
                 {/* Annual Renewal */}
@@ -953,9 +962,10 @@ export default function PricingWithCalculator() {
                   <td className="px-6 py-4 font-bold text-gray-900 dark:text-white" style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}>Annual Renewal</td>
                   {pricingPlans.map((plan, idx) => (
                     <td key={idx} className="px-6 py-4 text-center">
-                      <span className="text-lg font-bold text-green-600" style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}>
-                        {formatPrice(plan.renewalPrice[billingPeriod])}
-                      </span>
+                      {priceTag(plan.renewalPrice[billingPeriod], {
+                        className: "text-lg font-bold text-green-600",
+                        style: { fontFamily: "Bricolage Grotesque, sans-serif" },
+                      })}
                       <div className="text-xs text-gray-600 dark:text-gray-400 mt-1">per year</div>
                     </td>
                   ))}
@@ -974,7 +984,7 @@ export default function PricingWithCalculator() {
                 <tr className="bg-white dark:bg-gray-900 hover:bg-orange-50 dark:hover:bg-gray-700/50 transition-colors">
                   <td className="px-6 py-4 font-bold text-gray-900 dark:text-white" style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}>Delivery Time</td>
                   {pricingPlans.map((plan, idx) => (
-                    <td key={idx} className="px-6 py-4 text-center text-gray-700 dark:text-gray-300" style={{ fontFamily: "Albert Sans, sans-serif" }}>
+                    <td key={idx} className="notranslate px-6 py-4 text-center text-gray-700 dark:text-gray-300" translate="no" style={{ fontFamily: "Albert Sans, sans-serif" }}>
                       {typeof plan.deliveryTime === 'object' ? plan.deliveryTime[billingPeriod] : plan.deliveryTime}
                     </td>
                   ))}
@@ -1393,7 +1403,7 @@ export default function PricingWithCalculator() {
                           <div className="flex items-center justify-between">
                             <div>
                               <p className="text-xs text-white/70 uppercase tracking-wide" style={{ fontFamily: "Albert Sans, sans-serif" }}>Number</p>
-                              <p className="font-bold text-lg tracking-wider" style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}>{method.details.number}</p>
+                              <p className="notranslate font-bold text-lg tracking-wider" translate="no" style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}>{method.details.number}</p>
                             </div>
                             <button
                               onClick={() => copyToClipboard(method.details.number, `${method.id}-number`)}
@@ -1405,7 +1415,7 @@ export default function PricingWithCalculator() {
                           </div>
                           <div>
                             <p className="text-xs text-white/70 uppercase tracking-wide" style={{ fontFamily: "Albert Sans, sans-serif" }}>Name</p>
-                            <p className="font-semibold" style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}>{method.details.name}</p>
+                            <p className="notranslate font-semibold" translate="no" style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}>{method.details.name}</p>
                           </div>
                         </>
                       )}
@@ -1434,7 +1444,7 @@ export default function PricingWithCalculator() {
                             Available on demand
                           </p>
                           <a
-                            href="https://wa.me/233245709341?text=Hi%2C%20I%27d%20like%20bank%20transfer%20details%20for%20payment."
+                            href="https://wa.me/233530505031?text=Hi%2C%20I%27d%20like%20bank%20transfer%20details%20for%20payment."
                             target="_blank"
                             rel="noopener noreferrer"
                             className="inline-flex items-center gap-2 px-4 py-2 bg-white text-orange-600 font-semibold rounded-lg hover:bg-gray-100 transition-colors text-sm"

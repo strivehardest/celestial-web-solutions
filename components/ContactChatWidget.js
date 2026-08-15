@@ -1,7 +1,7 @@
 import { useEffect, useId, useRef, useState } from 'react';
 
-const WHATSAPP_NUMBER = '233245709341';
-const PHONE_NUMBER = '+233530505031';
+const WHATSAPP_NUMBER = '233530505031';
+const PHONE_NUMBER = '+233245671832';
 const WHATSAPP_MESSAGE = "Hi! I'm interested in your web development services.";
 const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`;
 const PHONE_HREF = `tel:${PHONE_NUMBER}`;

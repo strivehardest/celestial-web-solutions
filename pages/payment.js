@@ -1,6 +1,3 @@
-<Head>
-  <meta name="keywords" content="web design company in Ghana, web development company in Ghana, website designers in Ghana, web development company Ghana, SEO services in Ghana, e-commerce website Ghana, web designer in Accra, web designer in Keta, web design company in Accra, web designer in Accra Ghana, web design company in Keta, website design services Ghana, e-commerce website development Ghana, business website design Ghana, affordable web design Ghana" />
-</Head>
 import React, { useState, useEffect } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
@@ -23,8 +20,8 @@ const typingPhrases = [
   'Pay securely via Paystack',
   'Bank transfer available on demand',
   'Fast, Secure, Trusted Payments',
-  'Contact: +233 53 050 5031',
-  'Chat on WhatsApp: +233 245 709 341',
+  'Contact: +233 24 567 1832',
+  'Chat on WhatsApp: +233 53 050 5031',
   'info@celestialwebsolutions.net',
 ];
 
@@ -277,7 +274,7 @@ export default function PaymentPage() {
                         </p>
                         <div className="flex flex-col sm:flex-row gap-3">
                           <PremiumCTA
-                            href="https://wa.me/233245709341?text=Hi%2C%20I%27d%20like%20bank%20transfer%20details%20for%20payment."
+                            href="https://wa.me/233530505031?text=Hi%2C%20I%27d%20like%20bank%20transfer%20details%20for%20payment."
                             size="small"
                             variant="primary"
                             target="_blank"
@@ -332,10 +329,10 @@ export default function PaymentPage() {
             Call or WhatsApp us for instant support on your payment or service confirmation.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <PremiumCTA href="tel:+233530505031" size="default" variant="secondary">
-              Call +233 53 050 5031
+            <PremiumCTA href="tel:+233245671832" size="default" variant="secondary">
+              Call +233 24 567 1832
             </PremiumCTA>
-            <PremiumCTA href="https://wa.me/233245709341" size="default" variant="secondary" target="_blank" rel="noopener noreferrer">
+            <PremiumCTA href="https://wa.me/233530505031" size="default" variant="secondary" target="_blank" rel="noopener noreferrer">
               Chat on WhatsApp
             </PremiumCTA>
           </div>

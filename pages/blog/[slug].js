@@ -297,7 +297,7 @@ const blogArticles = {
               <div class="mt-6 pt-4 border-t border-orange-200 dark:border-orange-700">
                 <p class="text-sm text-gray-600 dark:text-gray-400"><strong>Location:</strong> Keta, Volta Region, Ghana — serving clients nationwide and internationally</p>
                 <p class="text-sm text-gray-600 dark:text-gray-400"><strong>Website:</strong> <a href="https://celestialwebsolutions.net" target="_blank" rel="noopener noreferrer" class="text-orange-600 hover:underline">celestialwebsolutions.net</a></p>
-                <p class="text-sm text-gray-600 dark:text-gray-400"><strong>Contact:</strong> +233 53 050 5031</p>
+                <p class="text-sm text-gray-600 dark:text-gray-400"><strong>Contact:</strong> +233 24 567 1832</p>
                 <p class="text-sm text-gray-600 dark:text-gray-400"><strong>Clutch Profile:</strong> <a href="https://clutch.co/profile/celestial-web-solutions" target="_blank" rel="noopener noreferrer" class="text-orange-600 hover:underline">clutch.co/profile/celestial-web-solutions</a></p>
               </div>
             </div>

@@ -1,6 +1,3 @@
-<Head>
-  <meta name="keywords" content="web design company in Ghana, web development company in Ghana, website designers in Ghana, web development company Ghana, SEO services in Ghana, e-commerce website Ghana, web designer in Accra, web designer in Keta, web design company in Accra, web designer in Accra Ghana, web design company in Keta, website design services Ghana, e-commerce website development Ghana, business website design Ghana, affordable web design Ghana" />
-</Head>
 import Head from "next/head";
 import { motion } from "framer-motion";
 import {
@@ -345,7 +342,7 @@ We encourage you to review this privacy policy periodically to stay informed abo
 Primary Contact:
 • Email: info@celestialwebsolutions.net
 • Phone: +233 530 505 031
-• WhatsApp: +233 245 709 341
+• WhatsApp: +233 53 050 5031
 
 Physical Address:
 • Celestial Web Solutions, 235 Agblor Link, Keta, Ghana

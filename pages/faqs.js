@@ -1,6 +1,3 @@
-<Head>
-  <meta name="keywords" content="web design company in Ghana, web development company in Ghana, website designers in Ghana, web development company Ghana, SEO services in Ghana, e-commerce website Ghana, web designer in Accra, web designer in Keta, web design company in Accra, web designer in Accra Ghana, web design company in Keta, website design services Ghana, e-commerce website development Ghana, business website design Ghana, affordable web design Ghana" />
-</Head>
 import Head from "next/head";
 import { useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -339,7 +336,7 @@ export default function FAQs() {
                 <PremiumCTA href="/contact" size="large" variant="secondary">
                   Contact Us
                 </PremiumCTA>
-                <PremiumCTA href="tel:+233530505031" size="large" variant="primary">
+                <PremiumCTA href="tel:+233245671832" size="large" variant="primary">
                   <span>Call Us</span>
                 </PremiumCTA>
               </div>

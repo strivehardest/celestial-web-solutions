@@ -205,7 +205,7 @@ export function TextCTA({ children, href = '/contact', className = '', ...props 
 }
 
 // Add this WhatsApp link variable at the top of your component
-const whatsappNumber = '+233245671832';
+const whatsappNumber = '+233530505031';
 const whatsappMessage = encodeURIComponent('Hello! I am interested in your web development services.');
 const whatsappLink = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
 

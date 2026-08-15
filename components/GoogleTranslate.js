@@ -7,6 +7,30 @@ import {
 } from '../lib/i18n/googleTranslate';
 import { applySavedTheme } from '../lib/theme';
 
+// Google Translate swaps text nodes for <font> wrappers behind React's back, so a
+// later React update can try to remove/insert a node that no longer belongs to its
+// recorded parent and throw NotFoundError. Make those two operations tolerant.
+if (typeof window !== 'undefined' && !window.__cwsTranslateDomPatched) {
+  window.__cwsTranslateDomPatched = true;
+
+  const originalRemoveChild = Node.prototype.removeChild;
+  Node.prototype.removeChild = function (child) {
+    if (child && child.parentNode !== this) {
+      if (child.parentNode) child.parentNode.removeChild(child);
+      return child;
+    }
+    return originalRemoveChild.apply(this, arguments);
+  };
+
+  const originalInsertBefore = Node.prototype.insertBefore;
+  Node.prototype.insertBefore = function (newNode, referenceNode) {
+    if (referenceNode && referenceNode.parentNode !== this) {
+      return this.appendChild(newNode);
+    }
+    return originalInsertBefore.apply(this, arguments);
+  };
+}
+
 function hideGoogleBanner() {
   document.querySelectorAll(
     'iframe.goog-te-banner-frame, .goog-te-banner-frame'

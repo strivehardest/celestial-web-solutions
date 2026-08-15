@@ -327,7 +327,7 @@ const TalkToExpertModal = ({ isOpen, onClose }) => {
                     onChange={handleChange}
                     required
                     className={inputClass}
-                    placeholder="+233 53 050 5031"
+                    placeholder="+233 24 567 1832"
                   />
                 </div>
 

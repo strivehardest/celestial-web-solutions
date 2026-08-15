@@ -55,7 +55,7 @@ export default function Layout({ children }) {
     { href: '/contact', label: 'Contact' },
   ];
 
-  const whatsappNumber = '+233245671832';
+  const whatsappNumber = '+233530505031';
   const whatsappMessage = encodeURIComponent('Hello! I am interested in your web development services.');
   const whatsappLink = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
 

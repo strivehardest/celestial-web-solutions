@@ -139,8 +139,8 @@ const localBusinessSchema = {
   "logo": "https://www.celestialwebsolutions.net/logo-white.webp",
   "image": "https://www.celestialwebsolutions.net/logo-white.webp",
   "description": "Celestial Web Solutions is the best web design company in Accra, Ghana. We build fast, SEO-optimized websites for SMEs, NGOs, e-commerce, and churches.",
-  "telephone": "+233530505031",
-  "whatsapp": "+233245709341",
+  "telephone": "+233245671832",
+  "whatsapp": "+233530505031",
   "email": "info@celestialwebsolutions.net",
   "address": {
     "@type": "PostalAddress",
@@ -659,7 +659,7 @@ export default function BestWebDesignerInAccraPage({ latestPosts = [] }) {
                   Get a Website Today
                 </Link>
                 <a
-                  href="https://wa.me/233245709341?text=Hi%20Celestial,%20I'm%20interested%20in%20getting%20a%20website%20designed%20in%20Accra."
+                  href="https://wa.me/233530505031?text=Hi%20Celestial,%20I'm%20interested%20in%20getting%20a%20website%20designed%20in%20Accra."
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-green-500 hover:bg-green-600 text-white font-semibold transition-all shadow-lg shadow-green-500/30"
