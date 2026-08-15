@@ -946,7 +946,7 @@ export default function AboutUs() {
                 <PremiumCTA
                   href="/contact"
                   size="large"
-                  variant="primary"
+                  variant="secondary"
                   icon={true}
                 >
                   Work With Us
@@ -954,7 +954,7 @@ export default function AboutUs() {
                 <PremiumCTA
                   href="/portfolio"
                   size="large"
-                  variant="secondary"
+                  variant="ghost"
                   icon={true}
                 >
                   View Our Portfolio

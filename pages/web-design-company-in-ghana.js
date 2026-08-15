@@ -546,10 +546,10 @@ export default function ServicesPage() {
 														Let's discuss your project and create something amazing together. Get started with a free consultation today.
 													</p>
 													<div className="flex flex-col sm:flex-row gap-4 justify-center">
-														<GlassButton href="/contact" variant="light">
+														<GlassButton href="/contact" variant="white">
 															Get Started Today
 														</GlassButton>
-														<GlassButton href="/portfolio" variant="light">
+														<GlassButton href="/portfolio" variant="outline">
 															View Our Work
 														</GlassButton>
 													</div>

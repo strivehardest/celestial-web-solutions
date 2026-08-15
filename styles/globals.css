@@ -13,6 +13,20 @@
 
 /* Legacy glass-cta class kept as no-op so old markup does not force invisible white glass */
 
+/* Force white labels on solid orange CTA fills (stops child spans from hiding text) */
+button.bg-orange-500,
+a.bg-orange-500,
+button.bg-orange-600,
+a.bg-orange-600 {
+  color: #fff !important;
+}
+button.bg-orange-500 *:not(svg):not(path),
+a.bg-orange-500 *:not(svg):not(path),
+button.bg-orange-600 *:not(svg):not(path),
+a.bg-orange-600 *:not(svg):not(path) {
+  color: inherit !important;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

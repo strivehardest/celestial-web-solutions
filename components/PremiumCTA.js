@@ -68,14 +68,19 @@ export default function PremiumCTA({
       'bg-white border border-white shadow-lg !text-orange-600 hover:!text-orange-700 hover:bg-orange-50',
     outline:
       'bg-white border-2 border-orange-500 !text-orange-600 hover:bg-orange-500 hover:!text-white hover:border-orange-500 dark:bg-transparent dark:border-orange-400 dark:!text-orange-400 dark:hover:bg-orange-500 dark:hover:!text-white',
-    // Alias used on orange/dark heroes — white chip, readable on colored surfaces
+    // White chip — for orange / dark heroes
     light:
       'bg-white border border-white shadow-lg !text-orange-600 hover:!text-orange-700 hover:bg-orange-50',
+    // Frosted / bordered white text — secondary action on orange / dark heroes
+    ghost:
+      'bg-transparent border-2 border-white !text-white hover:bg-white/10 hover:!text-white',
   };
 
   const labelColorClass =
     variant === 'primary'
       ? '!text-white'
+      : variant === 'ghost'
+        ? '!text-white group-hover:!text-white'
       : variant === 'outline'
         ? '!text-orange-600 dark:!text-orange-400 group-hover:!text-white dark:group-hover:!text-white'
         : '!text-orange-600';

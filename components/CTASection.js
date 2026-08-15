@@ -98,7 +98,7 @@ export default function CTASection({
             {showSecondary && (
               <PremiumCTA 
                 href={secondaryHref}
-                variant={variant === 'light' ? 'outline' : 'primary'}
+                variant={variant === 'light' ? 'outline' : 'ghost'}
                 size="large"
               >
                 {displaySecondaryText}

@@ -8,10 +8,11 @@ import { ArrowRight, ArrowLeft, CheckCircle2, Zap, Users, Clock, Award, Search, 
 const GlassButton = ({ children, href, variant = 'light', external = false }) => {
   const baseStyles = "inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full font-semibold text-sm transition-all duration-300 backdrop-blur-md border";
   const variants = {
-    light: "bg-white/20 hover:bg-white/30 text-white border-white/30 hover:border-white/50 shadow-lg hover:shadow-xl",
-    dark: "bg-black/20 hover:bg-black/30 text-gray-900 dark:text-white border-black/20 dark:border-white/20",
-    orange: "bg-orange-500/90 hover:bg-orange-600 text-white border-orange-400/50 hover:border-orange-500 shadow-lg hover:shadow-orange-500/25",
-    outline: "bg-transparent hover:bg-white/10 text-white border-white/50 hover:border-white"
+    light: "bg-white/20 hover:bg-white/30 !text-white border-white/30 hover:border-white/50 shadow-lg hover:shadow-xl",
+    dark: "bg-black/20 hover:bg-black/30 !text-gray-900 dark:!text-white border-black/20 dark:border-white/20",
+    orange: "bg-orange-500 hover:bg-orange-600 !text-white border-orange-400/50 hover:border-orange-500 shadow-lg hover:shadow-orange-500/25",
+    white: "bg-white hover:bg-orange-50 !text-orange-600 border-white shadow-lg hover:shadow-xl",
+    outline: "bg-transparent hover:bg-white/10 !text-white border-2 border-white/70 hover:border-white"
   };
   const Component = external ? 'a' : Link;
   const props = external ? { href, target: "_blank", rel: "noopener noreferrer" } : { href };
@@ -450,7 +451,7 @@ export default function EcommerceSolutionsServicePage() {
                 Ready to transform your business with our {service.title.toLowerCase()} expertise? Get started today.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <GlassButton href="/contact" variant="light">
+                <GlassButton href="/contact" variant="white">
                   Start Your Project <ArrowRight className="w-4 h-4" />
                 </GlassButton>
                 <GlassButton href="/web-design-company-in-ghana" variant="outline">

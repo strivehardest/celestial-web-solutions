@@ -559,7 +559,7 @@ We take privacy seriously and are committed to addressing your concerns promptly
                 <PremiumCTA href="/contact" size="large" variant="light">
                   Contact Us
                 </PremiumCTA>
-                <PremiumCTA href="mailto:info@celestialwebsolutions.net" size="large" variant="light">
+                <PremiumCTA href="mailto:info@celestialwebsolutions.net" size="large" variant="ghost">
                   <span>Email Us</span>
                 </PremiumCTA>
               </div>

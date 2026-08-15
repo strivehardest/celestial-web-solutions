@@ -83,10 +83,11 @@ import { ArrowRight, ArrowLeft, ExternalLink, Calendar, MapPin, User, Clock, Sta
 const GlassButton = ({ children, href, variant = 'light', className = '', external = false, onClick }) => {
   const baseStyles = "inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full font-semibold text-sm transition-all duration-300 backdrop-blur-md border";
   const variants = {
-    light: "bg-white/20 hover:bg-white/30 text-white border-white/30 hover:border-white/50 shadow-lg hover:shadow-xl",
-    dark: "bg-black/20 hover:bg-black/30 text-gray-900 dark:text-white border-black/20 dark:border-white/20 hover:border-black/40 dark:hover:border-white/40",
-    orange: "bg-orange-500/90 hover:bg-orange-600 text-white border-orange-400/50 hover:border-orange-500 shadow-lg hover:shadow-orange-500/25",
-    outline: "bg-transparent hover:bg-white/10 text-white border-white/50 hover:border-white"
+    light: "bg-white/20 hover:bg-white/30 !text-white border-white/30 hover:border-white/50 shadow-lg hover:shadow-xl",
+    dark: "bg-black/20 hover:bg-black/30 !text-gray-900 dark:!text-white border-black/20 dark:border-white/20",
+    orange: "bg-orange-500 hover:bg-orange-600 !text-white border-orange-400/50 hover:border-orange-500 shadow-lg hover:shadow-orange-500/25",
+    white: "bg-white hover:bg-orange-50 !text-orange-600 border-white shadow-lg hover:shadow-xl",
+    outline: "bg-transparent hover:bg-white/10 !text-white border-2 border-white/70 hover:border-white"
   };
   const Component = href ? (external ? 'a' : Link) : 'button';
   const props = href ? (external ? { href, target: "_blank", rel: "noopener noreferrer" } : { href }) : { onClick };
@@ -589,7 +590,7 @@ export default function ProjectDetail({ project, currentIndex, prevProject: prev
                     Visit Live Site <ExternalLink className="w-4 h-4" />
                   </GlassButton>
                 )}
-                <GlassButton href="/contact" variant="light">
+                <GlassButton href="/contact" variant="white">
                   Start Similar Project <ArrowRight className="w-4 h-4" />
                 </GlassButton>
               </div>
@@ -969,7 +970,7 @@ export default function ProjectDetail({ project, currentIndex, prevProject: prev
                 Let's bring your vision to life with cutting-edge technology and creative solutions.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <GlassButton href="/contact" variant="light">Start Your Project <ArrowRight className="w-4 h-4" /></GlassButton>
+                <GlassButton href="/contact" variant="white">Start Your Project <ArrowRight className="w-4 h-4" /></GlassButton>
                 <GlassButton href="/portfolio" variant="outline">View More Projects</GlassButton>
               </div>
             </motion.div>

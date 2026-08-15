@@ -332,7 +332,13 @@ export default function PaymentPage() {
             <PremiumCTA href="tel:+233245671832" size="default" variant="secondary">
               Call +233 24 567 1832
             </PremiumCTA>
-            <PremiumCTA href="https://wa.me/233530505031" size="default" variant="secondary" target="_blank" rel="noopener noreferrer">
+            <PremiumCTA
+              href="https://wa.me/233530505031"
+              size="default"
+              variant="ghost"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               Chat on WhatsApp
             </PremiumCTA>
           </div>

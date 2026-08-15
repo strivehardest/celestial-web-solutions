@@ -1039,8 +1039,8 @@ const IndexPage = ({ latestPosts = [] }) => {
                 Contact us today to get a professional website that helps your business grow online
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <GlassButton href="/contact" variant="light">Start Your Project</GlassButton>
-                <GlassButton href="/portfolio" variant="light">View Our Work</GlassButton>
+                <GlassButton href="/contact" variant="white">Start Your Project</GlassButton>
+                <GlassButton href="/portfolio" variant="outline">View Our Work</GlassButton>
               </div>
             </motion.div>
           </div>

@@ -485,8 +485,8 @@ const CTASection = () => (
       </p>
 
       <div className="flex flex-col sm:flex-row gap-4 justify-center">
-        <GlassButton href="/contact" variant="light">Start a Project</GlassButton>
-        <GlassButton href="/pricing" variant="light">View Pricing</GlassButton>
+        <GlassButton href="/contact" variant="white">Start a Project</GlassButton>
+        <GlassButton href="/pricing" variant="outline">View Pricing</GlassButton>
       </div>
 
       <div
@@ -599,8 +599,8 @@ export default function Portfolio() {
               </p>
 
               <div className="flex flex-wrap gap-4">
-                <GlassButton href="/contact" variant="light">Start Your Project</GlassButton>
-                <GlassButton href="/web-design-company-in-ghana" variant="light">Our Services</GlassButton>
+                <GlassButton href="/contact" variant="white">Start Your Project</GlassButton>
+                <GlassButton href="/web-design-company-in-ghana" variant="outline">Our Services</GlassButton>
               </div>
             </motion.div>
           </div>
