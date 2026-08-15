@@ -10,6 +10,8 @@ const VARIANTS = {
     'bg-orange-500/10 hover:bg-orange-500/20 border-orange-500/25 text-orange-600 dark:text-orange-400 hover:text-orange-700 dark:hover:text-orange-300 hover:shadow-lg hover:shadow-orange-500/15',
   solid:
     'bg-orange-500 hover:bg-orange-600 border-orange-500 text-white hover:text-white hover:shadow-lg hover:shadow-orange-500/30',
+  outline:
+    'bg-transparent hover:bg-white/10 border-2 border-white text-white hover:text-white hover:shadow-lg hover:shadow-white/10',
 };
 
 export default function GlassButton({

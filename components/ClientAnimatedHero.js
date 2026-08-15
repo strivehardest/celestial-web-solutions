@@ -6,7 +6,7 @@ import { motion } from 'framer-motion';
 
 export default function ClientAnimatedHero({ children }) {
   return (
-    <section className="relative py-24 bg-gradient-to-br from-orange-500 via-orange-600 to-red-500 overflow-hidden">
+    <section className="relative py-24 bg-orange-500 overflow-hidden">
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute -top-40 -right-40 w-80 h-80 bg-white/10 rounded-full opacity-50 animate-pulse" />
         <div

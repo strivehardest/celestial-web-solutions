@@ -87,8 +87,7 @@ export default function ContactChatWidget() {
               position: 'relative',
               padding: '18px 18px 20px',
               color: '#fff',
-              background:
-                'linear-gradient(145deg, rgba(234, 88, 12, 0.94) 0%, rgba(249, 115, 22, 0.92) 48%, rgba(194, 65, 12, 0.96) 100%)',
+              background: 'rgba(249, 115, 22, 0.94)',
               overflow: 'hidden',
             }}
           >
@@ -298,9 +297,7 @@ export default function ContactChatWidget() {
           borderRadius: '16px',
           border: 'none',
           cursor: 'pointer',
-          background: isOpen
-            ? 'linear-gradient(145deg, #ea580c 0%, #c2410c 100%)'
-            : 'linear-gradient(145deg, #fb923c 0%, #f97316 55%, #ea580c 100%)',
+          background: isOpen ? '#c2410c' : '#f97316',
           boxShadow: '0 14px 30px rgba(249, 115, 22, 0.42)',
           color: '#fff',
           display: 'inline-flex',

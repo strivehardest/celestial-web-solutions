@@ -49,7 +49,7 @@ export default function Custom404() {
               alt="404 Error Illustration"
               className="w-full h-full object-cover opacity-20"
             />
-            <div className="absolute inset-0 bg-gradient-to-br from-orange-500/40 to-orange-600/40"></div>
+            <div className="absolute inset-0 bg-orange-500/40"></div>
           </div>
           <h1
             className="text-5xl md:text-7xl font-bold text-white mb-4 relative z-10"
@@ -107,7 +107,7 @@ export default function Custom404() {
                     />
                     <button
                       type="submit"
-                      className="inline-flex items-center space-x-2 bg-gradient-to-r from-orange-500 to-orange-600 text-white px-4 py-3 rounded-xl font-semibold shadow hover:shadow-lg transition-all duration-200"
+                      className="inline-flex items-center space-x-2 bg-orange-500 text-white px-4 py-3 rounded-xl font-semibold shadow hover:shadow-lg transition-all duration-200"
                       style={{ fontFamily: "Albert Sans, sans-serif" }}
                     >
                       <span>Search</span>
@@ -117,7 +117,7 @@ export default function Custom404() {
                   <div className="flex flex-col sm:flex-row gap-4">
                     <Link
                       href="/"
-                      className="inline-flex items-center justify-center bg-gradient-to-r from-orange-500 to-orange-600 text-white px-6 py-3 rounded-2xl font-semibold shadow hover:shadow-xl transition-all duration-300"
+                      className="inline-flex items-center justify-center bg-orange-500 text-white px-6 py-3 rounded-2xl font-semibold shadow hover:shadow-xl transition-all duration-300"
                       style={{ fontFamily: "Albert Sans, sans-serif" }}
                     >
                       <span>Back to Home</span>

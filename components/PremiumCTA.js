@@ -63,11 +63,14 @@ export default function PremiumCTA({
 
   const variantClasses = {
     primary:
-      'bg-gradient-to-r from-orange-500 via-orange-500 to-orange-600 border border-orange-400/40 shadow-lg shadow-orange-500/25 text-white hover:from-orange-600 hover:to-orange-700',
+      'bg-orange-500 border border-orange-400/40 shadow-lg shadow-orange-500/25 text-white hover:bg-orange-600',
     secondary:
       'bg-white border border-white shadow-lg text-orange-600 hover:text-orange-700 hover:bg-orange-50',
     outline:
-      'bg-transparent border-2 border-orange-500 text-orange-600 hover:bg-orange-500 hover:text-white hover:border-orange-500 dark:border-orange-400 dark:text-orange-400 dark:hover:bg-orange-500 dark:hover:text-white',
+      'bg-white border-2 border-orange-500 text-orange-600 hover:bg-orange-500 hover:text-white hover:border-orange-500 dark:bg-transparent dark:border-orange-400 dark:text-orange-400 dark:hover:bg-orange-500 dark:hover:text-white',
+    // Alias used on orange/dark heroes — white chip, readable on colored surfaces
+    light:
+      'bg-white border border-white shadow-lg text-orange-600 hover:text-orange-700 hover:bg-orange-50',
   };
 
   const classes = `

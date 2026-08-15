@@ -164,7 +164,7 @@ export default function EcommerceSolutionsServicePage() {
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 0.2 }}
-                className="w-20 h-20 bg-gradient-to-br from-orange-500 to-orange-600 rounded-2xl flex items-center justify-center shadow-2xl mb-6"
+                className="w-20 h-20 bg-orange-500 rounded-2xl flex items-center justify-center shadow-2xl mb-6"
               >
                 {service.icon && <service.icon className="w-10 h-10 text-white" />}
               </motion.div>
@@ -275,7 +275,7 @@ export default function EcommerceSolutionsServicePage() {
                       alt={`${service.title} background`}
                       className="w-full h-full object-cover"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-br from-orange-600/95 via-orange-500/90 to-orange-600/95"></div>
+                    <div className="absolute inset-0 bg-orange-600/95"></div>
                   </div>
                   <div className="relative z-10 p-6 text-white">
                     <h3
@@ -428,7 +428,7 @@ export default function EcommerceSolutionsServicePage() {
               alt="Team collaboration"
               className="w-full h-full object-cover"
             />
-            <div className="absolute inset-0 bg-gradient-to-r from-orange-600/95 via-orange-500/90 to-red-500/95"></div>
+            <div className="absolute inset-0 bg-orange-600/95"></div>
           </div>
           <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <motion.div

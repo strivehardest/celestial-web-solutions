@@ -105,7 +105,7 @@ const PromoPopup = () => {
                 
                 {/* Fallback if image doesn't load */}
                 <div 
-                  className="w-full aspect-square bg-gradient-to-br from-orange-500 to-orange-600 flex items-center justify-center text-white text-center p-8"
+                  className="w-full aspect-square bg-orange-500 flex items-center justify-center text-white text-center p-8"
                   style={{ display: 'none' }}
                 >
                   <div>

@@ -19,7 +19,7 @@ export default function CTASection({
   
   const variants = {
     gradient: {
-      bg: 'bg-gradient-to-r from-orange-500 via-orange-600 to-red-500',
+      bg: 'bg-orange-500',
       title: 'text-white',
       subtitle: 'text-orange-100',
     },
@@ -29,8 +29,8 @@ export default function CTASection({
       subtitle: 'text-gray-300',
     },
     light: {
-      bg: 'bg-gradient-to-br from-orange-50 via-white to-orange-50',
-      title: 'bg-gradient-to-r from-orange-600 to-orange-500 bg-clip-text text-transparent',
+      bg: 'bg-orange-50',
+      title: 'text-orange-600',
       subtitle: 'text-gray-600',
     },
   };

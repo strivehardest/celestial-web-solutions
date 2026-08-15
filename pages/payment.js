@@ -75,7 +75,7 @@ export default function PaymentPage() {
       title: "MTN Mobile Money",
       subtitle: "Pay instantly with MTN MoMo",
       icon: Smartphone,
-      color: "from-yellow-400 to-yellow-500",
+      color: "bg-yellow-400",
       details: {
         number: "705992", 
         name: "Celestial Web Solutions"
@@ -87,7 +87,7 @@ export default function PaymentPage() {
       title: "MTN Mobile Money",
       subtitle: "Pay instantly with MTN MoMo",
       icon: Smartphone,
-      color: "from-yellow-400 to-yellow-500",
+      color: "bg-yellow-400",
       details: {
         number: "435991",
         name: "Celestial Web Solutions"
@@ -99,7 +99,7 @@ export default function PaymentPage() {
       title: "Telecel Cash",
       subtitle: "Pay easily with Telecel Money",
       icon: Smartphone,
-      color: "from-red-500 to-red-600",
+      color: "bg-red-500",
       details: {
         number: "0209044550",
         name: "Waliu Ibrahimah Aforlabi"
@@ -111,7 +111,7 @@ export default function PaymentPage() {
       title: "Paystack Payment",
       subtitle: "Secure online payment gateway",
       icon: CreditCard,
-      color: "from-blue-500 to-blue-600",
+      color: "bg-blue-500",
       details: {
         link: "paystack.shop/pay/payment-for-celestial"
       },
@@ -122,7 +122,7 @@ export default function PaymentPage() {
       title: "Bank Transfer",
       subtitle: "Available on demand",
       icon: Building2,
-      color: "from-orange-500 to-orange-600",
+      color: "bg-orange-500",
       details: {
         onDemand: true,
         message: "Bank account details are available on demand. Contact us and we'll share the transfer details for your payment."
@@ -146,7 +146,7 @@ export default function PaymentPage() {
       </Head>
 
       {/* Hero Section */}
-      <section className="relative py-20 bg-gradient-to-br from-orange-500 via-orange-500 to-red-200 dark:from-gray-800 dark:via-gray-900 dark:to-black overflow-hidden transition-colors duration-500">
+      <section className="relative py-20 bg-orange-500 dark:bg-gray-800 overflow-hidden transition-colors duration-500">
         <div className="absolute inset-0 opacity-20">
           <img
             src="/dollar.webp"
@@ -199,7 +199,7 @@ export default function PaymentPage() {
                 }`}
               >
                 <div
-                  className={`p-6 bg-gradient-to-r ${option.color} cursor-pointer`}
+                  className={`p-6 ${option.color} cursor-pointer`}
                   onClick={() =>
                     setSelectedOption(selectedOption === option.id ? null : option.id)
                   }
@@ -314,7 +314,7 @@ export default function PaymentPage() {
             alt="Payment support background"
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-orange-500/90 to-red-500/90"></div>
+          <div className="absolute inset-0 bg-orange-500/90"></div>
         </div>
 
         {/* Content */}

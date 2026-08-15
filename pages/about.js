@@ -81,13 +81,13 @@ const happyClients = [
  */
 function HappyClients({ clients = [], speed = 28, cardWidth = "w-48", trustedByLabel = "Trusted by" }) {
   return (
-    <section className="py-12 bg-gradient-to-r from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 background">
+    <section className="py-12 bg-gray-50 dark:bg-gray-900 background">
       <div className="max-w-7xl mx-auto px-4">
         <motion.h3
           initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-2xl md:text-3xl font-bold text-center mb-6 bg-gradient-to-r from-orange-600 to-orange-500 bg-clip-text text-transparent"
+          className="text-2xl md:text-3xl font-bold text-center mb-6 text-orange-600"
           style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}
         >
           {trustedByLabel}
@@ -265,7 +265,7 @@ export default function AboutUs() {
                   <motion.button
                     whileHover={{ scale: 1.02, y: -2 }}
                     whileTap={{ scale: 0.98 }}
-                    className="group flex items-center justify-center gap-2 bg-gradient-to-r from-orange-500 to-orange-600 text-white px-8 py-4 rounded-xl font-semibold shadow-lg shadow-orange-500/25 hover:shadow-orange-500/40 transition-all duration-300"
+                    className="group flex items-center justify-center gap-2 bg-orange-500 text-white px-8 py-4 rounded-xl font-semibold shadow-lg shadow-orange-500/25 hover:shadow-orange-500/40 transition-all duration-300"
                     style={{ fontFamily: "Albert Sans, sans-serif" }}
                   >
                     Work With Us
@@ -324,7 +324,7 @@ export default function AboutUs() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.9 }}
-                className="bg-gradient-to-r from-orange-500 to-orange-600 rounded-2xl p-6 relative overflow-hidden"
+                className="bg-orange-500 rounded-2xl p-6 relative overflow-hidden"
               >
                 <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -translate-y-1/2 translate-x-1/2"></div>
                 <div className="relative z-10">
@@ -384,7 +384,7 @@ export default function AboutUs() {
                   style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}
                 >
                   We Help Businesses{" "}
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-orange-600">
+                  <span className="text-transparent bg-clip-text bg-orange-500">
                     Thrive Online
                   </span>
                 </h2>
@@ -489,7 +489,7 @@ export default function AboutUs() {
                       whileHover={{ y: -5, scale: 1.02 }}
                       className="bg-white dark:bg-gray-900 p-5 rounded-2xl shadow-lg border border-gray-100 dark:border-gray-700 hover:border-orange-200 dark:hover:border-orange-600 transition-all duration-300"
                     >
-                      <div className="w-12 h-12 rounded-xl bg-gradient-to-r from-orange-500 to-orange-600 flex items-center justify-center mb-3">
+                      <div className="w-12 h-12 rounded-xl bg-orange-500 flex items-center justify-center mb-3">
                         <service.icon size={24} className="text-white" />
                       </div>
                       <h4 className="font-bold text-gray-900 dark:text-white mb-1" style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}>
@@ -517,7 +517,7 @@ export default function AboutUs() {
               className="text-center mb-12"
             >
               <h2
-                className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-orange-600 to-orange-500 bg-clip-text text-transparent mb-4"
+                className="text-3xl md:text-4xl font-bold text-orange-600 mb-4"
                 style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}
               >
                 Meet Our Founder
@@ -535,12 +535,12 @@ export default function AboutUs() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="grid md:grid-cols-2 gap-12 items-center bg-gradient-to-br from-orange-50 to-orange-100 dark:from-gray-800 dark:to-gray-700 rounded-3xl p-8 md:p-12 shadow-2xl"
+              className="grid md:grid-cols-2 gap-12 items-center bg-orange-50 dark:bg-gray-800 rounded-3xl p-8 md:p-12 shadow-2xl"
             >
               {/* Left Column - Picture */}
               <div className="relative">
                 <div className="relative w-full aspect-square max-w-md mx-auto">
-                  <div className="absolute inset-0 bg-gradient-to-br from-orange-500 to-orange-600 rounded-3xl transform rotate-6"></div>
+                  <div className="absolute inset-0 bg-orange-500 rounded-3xl transform rotate-6"></div>
                   <div className="relative bg-white dark:bg-gray-800 rounded-3xl overflow-hidden shadow-2xl transform -rotate-3 hover:rotate-0 transition-transform duration-500">
                     <img
                       src="/founder-waliu.png"
@@ -553,7 +553,7 @@ export default function AboutUs() {
                     />
                     {/* Fallback placeholder */}
                     <div 
-                      className="w-full h-full flex items-center justify-center bg-gradient-to-br from-orange-500 to-orange-600"
+                      className="w-full h-full flex items-center justify-center bg-orange-500"
                       style={{ display: 'none' }}
                     >
                       <div className="text-center text-white p-8">
@@ -730,10 +730,10 @@ export default function AboutUs() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
-              className="bg-gradient-to-br from-orange-50 to-orange-100 dark:from-gray-900 dark:to-gray-800 p-8 rounded-2xl shadow-xl hover:scale-105 hover:shadow-2xl transition-all duration-300 group"
+              className="bg-orange-50 dark:bg-gray-900 p-8 rounded-2xl shadow-xl hover:scale-105 hover:shadow-2xl transition-all duration-300 group"
             >
               <div className="flex items-center mb-6">
-                <div className="w-14 h-14 rounded-xl bg-gradient-to-r from-orange-500 to-orange-600 flex items-center justify-center text-white mr-4 group-hover:scale-110 transition-transform duration-300">
+                <div className="w-14 h-14 rounded-xl bg-orange-500 flex items-center justify-center text-white mr-4 group-hover:scale-110 transition-transform duration-300">
                   <Target size={28} />
                 </div>
                 <h2
@@ -757,10 +757,10 @@ export default function AboutUs() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="bg-gradient-to-br from-orange-50 to-orange-100 dark:from-gray-900 dark:to-gray-800 p-8 rounded-2xl shadow-xl hover:scale-105 hover:shadow-2xl transition-all duration-300 group"
+              className="bg-orange-50 dark:bg-gray-900 p-8 rounded-2xl shadow-xl hover:scale-105 hover:shadow-2xl transition-all duration-300 group"
             >
               <div className="flex items-center mb-6">
-                <div className="w-14 h-14 rounded-xl bg-gradient-to-r from-orange-500 to-orange-600 flex items-center justify-center text-white mr-4 group-hover:scale-110 transition-transform duration-300">
+                <div className="w-14 h-14 rounded-xl bg-orange-500 flex items-center justify-center text-white mr-4 group-hover:scale-110 transition-transform duration-300">
                   <Eye size={28} />
                 </div>
                 <h2
@@ -788,7 +788,7 @@ export default function AboutUs() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className="text-3xl md:text-4xl font-bold text-center bg-gradient-to-r from-orange-600 to-orange-500 bg-clip-text text-transparent mb-12"
+              className="text-3xl md:text-4xl font-bold text-center text-orange-600 mb-12"
               style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}
             >
               Our Core Values
@@ -799,19 +799,19 @@ export default function AboutUs() {
                   title: "Innovation",
                   desc: "We embrace creativity and cutting-edge technology to deliver exceptional digital experiences that push boundaries.",
                   icon: Lightbulb,
-                  gradient: "from-orange-400 to-orange-500"
+                  gradient: "bg-orange-400"
                 },
                 {
                   title: "Integrity",
                   desc: "Honesty, transparency, and trust form the foundation of our client relationships and business practices.",
                   icon: Shield,
-                  gradient: "from-orange-500 to-orange-600"
+                  gradient: "bg-orange-500"
                 },
                 {
                   title: "Excellence",
                   desc: "We strive for perfection in every project, ensuring the highest quality standards and exceptional results.",
                   icon: Award,
-                  gradient: "from-orange-600 to-red-500"
+                  gradient: "bg-orange-600"
                 },
               ].map((value, index) => (
                 <motion.div
@@ -823,7 +823,7 @@ export default function AboutUs() {
                   className="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 group border border-gray-100 dark:border-gray-700 hover:border-orange-200 dark:hover:border-orange-600"
                 >
                   <div className="flex items-center mb-6">
-                    <div className={`w-16 h-16 rounded-xl bg-gradient-to-r ${value.gradient} flex items-center justify-center text-white mr-4 group-hover:scale-110 transition-transform duration-300`}> 
+                    <div className={`w-16 h-16 rounded-xl ${value.gradient} flex items-center justify-center text-white mr-4 group-hover:scale-110 transition-transform duration-300`}> 
                       <value.icon size={32} />
                     </div>
                     <h3
@@ -853,7 +853,7 @@ export default function AboutUs() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className="text-3xl md:text-4xl font-bold text-center bg-gradient-to-r from-orange-600 to-orange-500 bg-clip-text text-transparent mb-12"
+              className="text-3xl md:text-4xl font-bold text-center text-orange-600 mb-12"
               style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}
             >
               Why Choose Us
@@ -888,7 +888,7 @@ export default function AboutUs() {
                   className="text-center p-8 bg-white dark:bg-gray-900 rounded-2xl hover:shadow-2xl transition-shadow duration-300"
                 >
                   <div className="flex justify-center mb-6">
-                    <div className="w-20 h-20 rounded-full bg-gradient-to-r from-orange-100 to-orange-200 dark:from-orange-900 dark:to-orange-800 flex items-center justify-center">
+                    <div className="w-20 h-20 rounded-full bg-orange-100 dark:bg-orange-900 flex items-center justify-center">
                       <feature.icon size={40} className={feature.color} />
                     </div>
                   </div>
@@ -919,7 +919,7 @@ export default function AboutUs() {
               alt="Developer coding background"
               className="w-full h-full object-cover opacity-20"
             />
-            <div className="absolute inset-0 bg-gradient-to-r from-orange-500/80 via-orange-600/80 to-red-500/80"></div>
+            <div className="absolute inset-0 bg-orange-500/80"></div>
           </div>
 
           <div className="max-w-4xl mx-auto text-center relative z-10">

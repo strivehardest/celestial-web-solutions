@@ -267,7 +267,7 @@ const blogArticles = {
           <!-- Company 1: Celestial Web Solutions -->
           <div class="space-y-6">
             <h2 class="text-3xl font-bold text-gray-900 dark:text-white">1. Celestial Web Solutions</h2>
-            <div class="bg-gradient-to-r from-orange-50 to-amber-50 dark:from-orange-900/30 dark:to-amber-900/30 border border-orange-200 dark:border-orange-700 rounded-xl p-6">
+            <div class="bg-orange-50 dark:bg-orange-900/30 border border-orange-200 dark:border-orange-700 rounded-xl p-6">
               <div class="flex flex-wrap gap-2 mb-4">
                 <span class="px-3 py-1 bg-orange-600 text-white rounded-full text-xs font-bold">Editor's Choice</span>
                 <span class="px-3 py-1 bg-green-100 dark:bg-green-900 text-green-700 dark:text-green-300 rounded-full text-xs font-semibold">5.0 Rating</span>
@@ -3973,7 +3973,7 @@ useEffect(() => {
       </Head>
 
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-orange-500 via-orange-600 to-red-500 pt-32 md:pt-40 pb-16 md:pb-20">
+      <section className="relative bg-orange-500 pt-32 md:pt-40 pb-16 md:pb-20">
         <div className="absolute inset-0 top-0">
           <img
             src={article.image}
@@ -3990,7 +3990,7 @@ useEffect(() => {
             <PremiumCTA
               href="/blog"
               size="small"
-              variant="primary"
+              variant="secondary"
               className="!px-6 !py-3"
               icon={false}
             >
@@ -4151,17 +4151,17 @@ useEffect(() => {
                   className="mb-12 relative overflow-hidden"
                 >
                   {/* Gradient Background Card */}
-                  <div className="relative bg-gradient-to-br from-orange-50 via-white to-red-50 dark:from-gray-800/80 dark:via-gray-900/90 dark:to-gray-800/80 rounded-3xl border border-orange-100/50 dark:border-orange-900/30 shadow-xl">
+                  <div className="relative bg-orange-50 dark:bg-gray-800/80 rounded-3xl border border-orange-100/50 dark:border-orange-900/30 shadow-xl">
                     {/* Decorative Elements */}
-                    <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-orange-400/20 to-red-400/20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
-                    <div className="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-orange-400/15 to-yellow-400/15 rounded-full blur-2xl translate-y-1/2 -translate-x-1/2"></div>
+                    <div className="absolute top-0 right-0 w-32 h-32 bg-orange-400/20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
+                    <div className="absolute bottom-0 left-0 w-24 h-24 bg-orange-400/15 rounded-full blur-2xl translate-y-1/2 -translate-x-1/2"></div>
                     
                     {/* Header */}
                     <div className="relative px-6 py-5 border-b border-orange-100/50 dark:border-orange-900/20">
                       <div className="flex items-center justify-between">
                         <div className="flex items-center gap-4">
                           <div className="relative">
-                            <div className="w-12 h-12 bg-gradient-to-br from-orange-500 via-orange-600 to-red-500 rounded-2xl flex items-center justify-center shadow-lg shadow-orange-500/30 transform rotate-3 hover:rotate-0 transition-transform duration-300">
+                            <div className="w-12 h-12 bg-orange-500 rounded-2xl flex items-center justify-center shadow-lg shadow-orange-500/30 transform rotate-3 hover:rotate-0 transition-transform duration-300">
                               <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 10h16M4 14h16M4 18h16" />
                               </svg>
@@ -4215,20 +4215,20 @@ useEffect(() => {
                             {/* Hover Background */}
                             <div className={`absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-all duration-300 ${
                               heading.level === 2 
-                                ? 'bg-gradient-to-r from-orange-500/10 via-orange-400/5 to-transparent dark:from-orange-500/20 dark:via-orange-400/10 dark:to-transparent' 
+                                ? 'bg-orange-500/10 dark:bg-orange-500/20' 
                                 : 'bg-orange-100/50 dark:bg-orange-900/20'
                             }`}></div>
                             
                             {/* Left Accent Line */}
                             <div className={`absolute left-0 top-1/2 -translate-y-1/2 w-1 rounded-full transition-all duration-300 ${
                               heading.level === 2 
-                                ? 'h-8 bg-gradient-to-b from-orange-500 to-red-500 opacity-0 group-hover:opacity-100' 
+                                ? 'h-8 bg-orange-500 opacity-0 group-hover:opacity-100' 
                                 : 'h-6 bg-orange-300 dark:bg-orange-700 opacity-0 group-hover:opacity-100'
                             }`}></div>
                             
                             <div className="relative flex items-center gap-3">
                               {heading.level === 2 ? (
-                                <div className="flex-shrink-0 w-8 h-8 rounded-lg bg-gradient-to-br from-orange-500 to-red-500 flex items-center justify-center shadow-md group-hover:shadow-lg group-hover:shadow-orange-500/30 transition-all duration-300">
+                                <div className="flex-shrink-0 w-8 h-8 rounded-lg bg-orange-500 flex items-center justify-center shadow-md group-hover:shadow-lg group-hover:shadow-orange-500/30 transition-all duration-300">
                                   <span className="text-white text-sm font-bold">{idx + 1}</span>
                                 </div>
                               ) : (
@@ -4257,7 +4257,7 @@ useEffect(() => {
                     </nav>
                     
                     {/* Footer Tip */}
-                    <div className="relative px-6 py-3 border-t border-orange-100/50 dark:border-orange-900/20 bg-gradient-to-r from-orange-50/50 to-transparent dark:from-orange-900/10 dark:to-transparent">
+                    <div className="relative px-6 py-3 border-t border-orange-100/50 dark:border-orange-900/20 bg-orange-50/50 dark:bg-orange-900/10">
                       <p className="text-xs text-gray-500 dark:text-gray-400 flex items-center gap-2" style={{ fontFamily: "Albert Sans, sans-serif" }}>
                         <svg className="w-4 h-4 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -4392,7 +4392,7 @@ useEffect(() => {
               variant="primary"
               className="inline-flex items-center gap-2"
             >
-              <span className="text-orange-600 dark:text-orange-400">View All Articles</span>
+              View All Articles
             </PremiumCTA>
           </div>
         </div>

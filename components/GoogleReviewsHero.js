@@ -40,7 +40,7 @@ export default function GoogleReviewsHero() {
   };
 
   return (
-    <section className="py-12 px-4 bg-gradient-to-r from-blue-50 to-orange-50 dark:from-gray-900 dark:to-gray-800">
+    <section className="py-12 px-4 bg-orange-50 dark:bg-gray-900">
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col md:flex-row items-center justify-between gap-8">
           
@@ -105,7 +105,7 @@ export default function GoogleReviewsHero() {
                 className="bg-white dark:bg-gray-800 rounded-xl p-5 shadow-md border border-gray-100 dark:border-gray-700 hover:shadow-lg transition-shadow"
               >
                 <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-orange-400 to-blue-500 flex items-center justify-center flex-shrink-0">
+                  <div className="w-10 h-10 rounded-full bg-orange-500 flex items-center justify-center flex-shrink-0">
                     <span className="text-white font-bold text-sm">{review.initials}</span>
                   </div>
                   

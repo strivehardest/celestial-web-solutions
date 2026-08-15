@@ -166,7 +166,7 @@ export default function FAQs() {
               backgroundImage: 'url("https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80")',
             }}
           />
-          <div className="absolute inset-0 bg-gradient-to-br from-orange-500/95 via-orange-600/90 to-red-500/95"></div>
+          <div className="absolute inset-0 bg-orange-500/95"></div>
 
           {/* Background Elements */}
           <div className="absolute inset-0 overflow-hidden">
@@ -240,11 +240,11 @@ export default function FAQs() {
               >
                 {/* Category Header */}
                 <div className="flex items-center space-x-3 mb-6">
-                  <div className="w-12 h-12 rounded-lg bg-gradient-to-r from-orange-500 to-orange-600 flex items-center justify-center">
+                  <div className="w-12 h-12 rounded-lg bg-orange-500 flex items-center justify-center">
                     <category.icon size={24} className="text-white" />
                   </div>
                   <h2
-                    className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-orange-600 to-orange-500 bg-clip-text text-transparent"
+                    className="text-2xl md:text-3xl font-bold text-orange-600"
                     style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}
                   >
                     {category.category}
@@ -312,7 +312,7 @@ export default function FAQs() {
         </section>
 
         {/* Contact CTA */}
-        <section className="py-16 bg-gradient-to-r from-orange-50 to-orange-100 dark:from-gray-800 dark:to-gray-700">
+        <section className="py-16 bg-orange-50 dark:bg-gray-800">
           <div className="max-w-4xl mx-auto px-4 text-center">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -321,7 +321,7 @@ export default function FAQs() {
               transition={{ duration: 0.8 }}
             >
               <h3
-                className="text-3xl font-bold bg-gradient-to-r from-orange-600 to-orange-500 bg-clip-text text-transparent mb-4"
+                className="text-3xl font-bold text-orange-600 mb-4"
                 style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}
               >
                 Still Have Questions?

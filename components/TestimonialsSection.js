@@ -183,7 +183,7 @@ function ClientCard({ photo, photoAlt, logo, logoAlt, nameInitials, logoInitials
         style={{
           width: 62,
           height: 62,
-          background: 'linear-gradient(135deg, #f97316, #dc2626)',
+          background: '#f97316',
         }}
       >
         {photo && !photoErr ? (

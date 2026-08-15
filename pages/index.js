@@ -95,7 +95,7 @@ const mainServices = [
     icon: Code,
     title: "Web Development",
     description: "Modern, responsive websites built with Next.js, React and cutting-edge technologies",
-    color: "from-orange-500 to-orange-600",
+    color: "bg-orange-500",
     link: "/web-design-company-in-ghana/web-development-company-in-ghana",
     image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?q=90&w=800&auto=format&fit=crop"
   },
@@ -103,7 +103,7 @@ const mainServices = [
     icon: Monitor,
     title: "Web Design",
     description: "Beautiful, user-friendly designs that engage your audience and drive conversions",
-    color: "from-orange-500 to-orange-600",
+    color: "bg-orange-500",
     link: "/web-design-company-in-ghana/web-design-in-ghana",
     image: "https://www.ntc.edu/sites/default/files/styles/16_9_1600x900/public/2021-06/web-design-header.jpg?itok=KPytPu7S"
   },
@@ -111,7 +111,7 @@ const mainServices = [
     icon: ShoppingCart,
     title: "E-Commerce Solutions",
     description: "Custom online stores with secure payment integration and inventory management",
-    color: "from-orange-500 to-orange-600",
+    color: "bg-orange-500",
     link: "/web-design-company-in-ghana/ecommerce-website-development-ghana",
     image: "https://admin.wac.co/uploads/What_is_E_commerce_and_What_are_its_Applications_2_d2eb0d4402.jpg"
   },
@@ -119,7 +119,7 @@ const mainServices = [
     icon: Search,
     title: "SEO Optimization",
     description: "Improve your visibility and reach with our proven SEO strategies",
-    color: "from-orange-500 to-orange-600",
+    color: "bg-orange-500",
     link: "/web-design-company-in-ghana/seo-services-in-ghana",
     image: "https://www.intellibright.com/wp-content/uploads/2025/04/Search-Engine-Optimization.jpg"
   }
@@ -129,7 +129,7 @@ const techStackCategories = [
   {
     title: "Frontend Development",
     description: "Building modern web interfaces with HTML, CSS, JavaScript, and React",
-    color: "from-blue-500 to-blue-600",
+    color: "bg-blue-500",
     items: [
       { name: 'React', icon: '/images/tech/react.svg' },
       { name: 'Next.js', icon: '/images/tech/nextjs.svg' },
@@ -142,7 +142,7 @@ const techStackCategories = [
   {
     title: "E-commerce & Payments",
     description: "Complete e-commerce solutions with secure payment integrations",
-    color: "from-purple-500 to-purple-600",
+    color: "bg-purple-500",
     items: [
       { name: 'WooCommerce', icon: '/images/tech/woocommerce.svg' },
       { name: 'Shopify', icon: '/images/shopify-logo.png' },
@@ -153,7 +153,7 @@ const techStackCategories = [
   {
     title: "Backend Development",
     description: "Robust server solutions with Node.js, Python, and databases",
-    color: "from-blue-600 to-blue-700",
+    color: "bg-blue-600",
     items: [
       { name: 'Node.js', icon: '/images/tech/nodejs.svg' },
       { name: 'Python', icon: '/images/tech/python.svg' },
@@ -165,7 +165,7 @@ const techStackCategories = [
   {
     title: "Design & Tools",
     description: "Modern design and development tools for optimal workflow",
-    color: "from-orange-500 to-orange-600",
+    color: "bg-orange-500",
     items: [
       { name: 'Figma', icon: '/images/tech/figma.svg' },
       { name: 'TailwindCSS', icon: '/images/tailwindcss-logo.png' },
@@ -673,7 +673,7 @@ const IndexPage = ({ latestPosts = [] }) => {
         </section>
 
         {/* Manifest Badge Section */}
-        <section className="py-8 bg-gradient-to-r from-orange-50 to-orange-100 dark:from-gray-800 dark:to-gray-900 border-y border-orange-200 dark:border-orange-900/30">
+        <section className="py-8 bg-orange-50 dark:bg-gray-800 border-y border-orange-200 dark:border-orange-900/30">
           <div className="max-w-5xl mx-auto px-4">
             <motion.div
               className="flex flex-col items-center justify-center gap-6"
@@ -745,7 +745,7 @@ const IndexPage = ({ latestPosts = [] }) => {
               >
                 WHAT WE DO
               </motion.span>
-              <h2 className="text-3xl md:text-5xl font-bold bg-gradient-to-r from-orange-600 to-orange-500 bg-clip-text text-transparent mb-4" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>
+              <h2 className="text-3xl md:text-5xl font-bold text-orange-600 mb-4" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>
                 Our Core Services
               </h2>
               <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto text-lg" style={{ fontFamily: 'Albert Sans, sans-serif' }}>
@@ -767,7 +767,7 @@ const IndexPage = ({ latestPosts = [] }) => {
                     <motion.div className="relative h-72 lg:h-96 rounded-3xl overflow-hidden shadow-2xl group" whileHover={{ scale: 1.02 }} transition={{ duration: 0.3 }}>
                       <Image src={service.image} alt={service.title} fill sizes="(max-width: 768px) 100vw, 50vw" quality={75} className="object-cover group-hover:scale-110 transition-transform duration-700" priority={index === 0} />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
-                      <motion.div className="absolute top-6 left-6 w-14 h-14 bg-gradient-to-br from-orange-500 to-orange-600 rounded-2xl flex items-center justify-center shadow-xl shadow-orange-500/30" whileHover={{ rotate: 10, scale: 1.1 }}>
+                      <motion.div className="absolute top-6 left-6 w-14 h-14 bg-orange-500 rounded-2xl flex items-center justify-center shadow-xl shadow-orange-500/30" whileHover={{ rotate: 10, scale: 1.1 }}>
                         <service.icon className="w-7 h-7 text-white" />
                       </motion.div>
                       <div className="absolute bottom-6 right-6 text-7xl font-bold text-white/10" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>0{index + 1}</div>
@@ -811,7 +811,7 @@ const IndexPage = ({ latestPosts = [] }) => {
               >
                 INSIGHTS & TIPS
               </motion.span>
-              <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-orange-600 to-orange-500 bg-clip-text text-transparent" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>
+              <h2 className="text-4xl md:text-5xl font-bold mb-6 text-orange-600" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>
                 Latest Blog Articles
               </h2>
               <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed" style={{ fontFamily: 'Albert Sans, sans-serif' }}>
@@ -864,7 +864,7 @@ const IndexPage = ({ latestPosts = [] }) => {
                   <div className="relative h-56 min-h-[224px] overflow-hidden">
                     <Image src={article.image} alt={article.title} fill sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" className="object-cover group-hover:scale-110 transition-transform duration-700" />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
-                    <div className="absolute top-4 left-4 px-3 py-1 bg-gradient-to-r from-orange-500 to-orange-600 rounded-full text-white text-xs font-semibold">{article.category}</div>
+                    <div className="absolute top-4 left-4 px-3 py-1 bg-orange-500 rounded-full text-white text-xs font-semibold">{article.category}</div>
                   </div>
                   <div className="p-6 md:p-8 flex flex-col flex-grow">
                     <h3 className="text-xl md:text-2xl font-bold text-gray-900 dark:text-white mb-3 group-hover:text-orange-600 dark:group-hover:text-orange-400 transition-colors" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>{article.title}</h3>
@@ -905,7 +905,7 @@ const IndexPage = ({ latestPosts = [] }) => {
         <section className="py-20 bg-white dark:bg-gray-900">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-16">
-              <h2 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-orange-600 to-orange-500 bg-clip-text text-transparent mb-4" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>
+              <h2 className="text-3xl md:text-4xl font-bold text-orange-600 mb-4" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>
                 Our Technology Stack
               </h2>
               <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto" style={{ fontFamily: 'Albert Sans, sans-serif' }}>
@@ -918,7 +918,7 @@ const IndexPage = ({ latestPosts = [] }) => {
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-8 mb-12">
               {techStackCategories.map((category, index) => (
                 <motion.div key={category.title} className="text-center" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: index * 0.1 }}>
-                  <div className={`h-1 w-full bg-gradient-to-r ${category.color} rounded-full mb-4`} />
+                  <div className={`h-1 w-full ${category.color} rounded-full mb-4`} />
                   <h3 className="text-sm font-semibold text-gray-900 dark:text-white mb-2" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>{category.title}</h3>
                 </motion.div>
               ))}
@@ -971,7 +971,7 @@ const IndexPage = ({ latestPosts = [] }) => {
               </motion.span>
               <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-gray-900 dark:text-white" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>
                 A Website Design & Creative<br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-orange-600">Marketing Agency</span> in Ghana
+                <span className="text-transparent bg-clip-text bg-orange-500">Marketing Agency</span> in Ghana
               </h2>
               <div className="max-w-3xl mx-auto mt-10 mb-12 text-center">
                 <h2 className="text-2xl md:text-3xl font-bold text-orange-600 dark:text-orange-400 mb-4" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>Why Choose Celestial Web Solutions</h2>
@@ -1000,11 +1000,11 @@ const IndexPage = ({ latestPosts = [] }) => {
               <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="relative">
                 <div className="relative rounded-3xl overflow-hidden shadow-2xl">
                   <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=90&w=1200&auto=format&fit=crop" alt="Celestial Web Solutions Team" className="w-full h-[400px] object-cover" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-orange-600/40 to-transparent" />
+                  <div className="absolute inset-0 bg-orange-600/20" />
                 </div>
                 <motion.div initial={{ opacity: 0, scale: 0.8 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ delay: 0.3 }} className="absolute -bottom-6 -left-6 bg-white dark:bg-gray-800 rounded-2xl p-4 shadow-xl border border-gray-100 dark:border-gray-700">
                   <div className="flex items-center gap-3">
-                    <div className="w-12 h-12 bg-gradient-to-br from-orange-500 to-red-500 rounded-xl flex items-center justify-center">
+                    <div className="w-12 h-12 bg-orange-500 rounded-xl flex items-center justify-center">
                       <Zap className="w-6 h-6 text-white" />
                     </div>
                     <div>
@@ -1022,7 +1022,7 @@ const IndexPage = ({ latestPosts = [] }) => {
         <section className="relative py-24 overflow-hidden">
           <div className="absolute inset-0">
             <Image src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=90&w=2400&auto=format&fit=crop" alt="Team collaboration" fill sizes="100vw" quality={70} className="object-cover" />
-            <div className="absolute inset-0 bg-gradient-to-r from-orange-600/95 via-orange-500/90 to-red-500/95" />
+            <div className="absolute inset-0 bg-orange-600/95" />
             <motion.div className="absolute -top-20 -right-20 w-64 h-64 bg-white/10 rounded-full" animate={{ scale: [1,1.2,1], rotate: [0,90,0] }} transition={{ duration: 10, repeat: Infinity }} />
             <motion.div className="absolute -bottom-20 -left-20 w-80 h-80 bg-white/5 rounded-full" animate={{ scale: [1.2,1,1.2], rotate: [0,-90,0] }} transition={{ duration: 12, repeat: Infinity }} />
           </div>

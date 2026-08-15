@@ -423,7 +423,7 @@ export default function Footer({ darkMode, toggleDarkMode }) {
 
               <Link
                 href="/schedule-a-call"
-                className="group inline-flex items-center mt-6 px-5 py-2.5 bg-gradient-to-r from-orange-500 to-orange-600 text-white text-sm font-semibold rounded-full hover:from-orange-600 hover:to-orange-700 hover:shadow-lg hover:shadow-orange-500/25 transition-all duration-300"
+                className="group inline-flex items-center mt-6 px-5 py-2.5 bg-orange-500 text-white text-sm font-semibold rounded-full hover:bg-orange-600 hover:shadow-lg hover:shadow-orange-500/25 transition-all duration-300"
                 style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}
               >
                 Schedule a Call

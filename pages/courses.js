@@ -201,7 +201,7 @@ export default function Courses() {
                     <Link href={`/courses/${course.slug}`}>
                       <div className="bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 cursor-pointer h-full flex flex-col">
                         {/* Course Image */}
-                        <div className="relative h-48 bg-gradient-to-br from-orange-400 to-blue-500">
+                        <div className="relative h-48 bg-orange-500">
                           {course.thumbnail && (
                             <Image
                               src={course.thumbnail}
