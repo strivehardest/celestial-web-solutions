@@ -12,9 +12,10 @@ import {
 import { FiPhone, FiMail, FiMapPin } from 'react-icons/fi';
 import projects from '../data/projects';
 import ThemeToggle from './ThemeToggle';
+import CtaArrow from './CtaArrow';
 
 const footerLink =
-  'block text-[14px] leading-6 text-white/70 transition-colors hover:text-white';
+  'block text-[14px] leading-6 text-gray-600 transition-colors hover:text-gray-950 dark:text-white/70 dark:hover:text-white';
 
 const whatsappLink =
   'https://wa.me/233530505031?text=' +
@@ -63,7 +64,7 @@ function LiveClocks() {
       {TIME_ZONES.map(({ city, country, flagCode }) => (
         <div
           key={city}
-          className="flex items-center gap-3 rounded-xl border border-white/10 bg-white/[0.04] px-3.5 py-3"
+          className="flex items-center gap-3 rounded-xl border border-gray-200 bg-gray-50 px-3.5 py-3 dark:border-white/10 dark:bg-white/[0.04]"
         >
           <img
             src={`https://flagcdn.com/w40/${flagCode}.png`}
@@ -74,10 +75,10 @@ function LiveClocks() {
             className="rounded shadow-sm"
           />
           <div className="min-w-0">
-            <p className="text-[11px] font-medium uppercase tracking-[0.12em] text-white/45">
+            <p className="text-[11px] font-medium uppercase tracking-[0.12em] text-gray-400 dark:text-white/45">
               {city}, {country}
             </p>
-            <p className="mt-0.5 font-mono text-[18px] font-semibold tabular-nums tracking-tight text-white">
+            <p className="mt-0.5 font-mono text-[18px] font-semibold tabular-nums tracking-tight text-gray-950 dark:text-white">
               {times[city] || '--:--:--'}
             </p>
           </div>
@@ -91,21 +92,21 @@ export default function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="bg-[#111111] text-white">
+    <footer className="bg-white text-gray-950 transition-colors duration-300 dark:bg-[#111111] dark:text-white">
       {/* Contact + socials band */}
-      <div className="border-b border-white/10">
+      <div className="border-b border-gray-200 dark:border-white/10">
         <div className="mx-auto flex max-w-7xl flex-col gap-6 px-4 py-10 sm:px-6 lg:flex-row lg:items-end lg:justify-between lg:px-8">
           <div>
-            <p className="text-[28px] font-semibold leading-tight tracking-tight text-white sm:text-[34px]">
+            <p className="text-[28px] font-semibold leading-tight tracking-tight text-gray-950 dark:text-white sm:text-[34px]">
               How can we help?{' '}
               <Link
                 href="/contact"
-                className="underline decoration-[#c8f542] decoration-2 underline-offset-[6px] transition-opacity hover:opacity-80"
+                className="underline decoration-orange-500 decoration-2 underline-offset-[6px] transition-opacity hover:opacity-80 dark:decoration-[#c8f542]"
               >
                 Contact us.
               </Link>
             </p>
-            <p className="mt-2 max-w-md text-[14px] text-white/55">
+            <p className="mt-2 max-w-md text-[14px] text-gray-500 dark:text-white/55">
               Tell us about your project — we usually reply within one business day.
             </p>
           </div>
@@ -117,7 +118,7 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={label}
-                className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/15 text-white/80 transition-colors hover:border-white/40 hover:bg-white/5 hover:text-white"
+                className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-gray-200 text-gray-600 transition-colors hover:border-gray-400 hover:bg-gray-50 hover:text-gray-950 dark:border-white/15 dark:text-white/80 dark:hover:border-white/40 dark:hover:bg-white/5 dark:hover:text-white"
               >
                 <Icon className="h-[18px] w-[18px]" />
               </a>
@@ -130,7 +131,7 @@ export default function Footer() {
       <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-12">
           <div className="lg:col-span-2">
-            <h3 className="mb-4 text-[13px] font-semibold uppercase tracking-[0.12em] text-white">
+            <h3 className="mb-4 text-[13px] font-semibold uppercase tracking-[0.12em] text-gray-950 dark:text-white">
               Services
             </h3>
             <ul className="space-y-2.5">
@@ -174,7 +175,7 @@ export default function Footer() {
           </div>
 
           <div className="lg:col-span-2">
-            <h3 className="mb-4 text-[13px] font-semibold uppercase tracking-[0.12em] text-white">
+            <h3 className="mb-4 text-[13px] font-semibold uppercase tracking-[0.12em] text-gray-950 dark:text-white">
               Company
             </h3>
             <ul className="space-y-2.5">
@@ -212,7 +213,7 @@ export default function Footer() {
           </div>
 
           <div className="lg:col-span-2">
-            <h3 className="mb-4 text-[13px] font-semibold uppercase tracking-[0.12em] text-white">
+            <h3 className="mb-4 text-[13px] font-semibold uppercase tracking-[0.12em] text-gray-950 dark:text-white">
               Resources
             </h3>
             <ul className="space-y-2.5">
@@ -246,7 +247,7 @@ export default function Footer() {
 
           <div className="lg:col-span-3">
             <div className="mb-4 flex items-baseline justify-between gap-3">
-              <h3 className="text-[13px] font-semibold uppercase tracking-[0.12em] text-white">
+              <h3 className="text-[13px] font-semibold uppercase tracking-[0.12em] text-gray-950 dark:text-white">
                 Portfolio
               </h3>
               <Link
@@ -272,17 +273,23 @@ export default function Footer() {
           </div>
 
           <div className="lg:col-span-3">
-            <h3 className="mb-4 text-[13px] font-semibold uppercase tracking-[0.12em] text-white">
+            <h3 className="mb-4 text-[13px] font-semibold uppercase tracking-[0.12em] text-gray-950 dark:text-white">
               Get in touch
             </h3>
-            <ul className="space-y-3 text-[14px] text-white/70">
+            <ul className="space-y-3 text-[14px] text-gray-600 dark:text-white/70">
               <li className="flex items-start gap-2.5">
                 <FiPhone className="mt-0.5 h-4 w-4 shrink-0 text-[#ff7a1a]" />
                 <div className="space-y-0.5">
-                  <a href="tel:+233599211746" className="block transition-colors hover:text-white">
+                  <a
+                    href="tel:+233599211746"
+                    className="block transition-colors hover:text-gray-950 dark:hover:text-white"
+                  >
                     +233 59 921 1746
                   </a>
-                  <a href="tel:+233530517782" className="block transition-colors hover:text-white">
+                  <a
+                    href="tel:+233530517782"
+                    className="block transition-colors hover:text-gray-950 dark:hover:text-white"
+                  >
                     +233 53 051 7782
                   </a>
                 </div>
@@ -291,7 +298,7 @@ export default function Footer() {
                 <FiMail className="mt-0.5 h-4 w-4 shrink-0 text-[#ff7a1a]" />
                 <a
                   href="mailto:info@celestialwebsolutions.net"
-                  className="break-all transition-colors hover:text-white"
+                  className="break-all transition-colors hover:text-gray-950 dark:hover:text-white"
                 >
                   info@celestialwebsolutions.net
                 </a>
@@ -304,30 +311,32 @@ export default function Footer() {
             <div className="mt-5 flex flex-wrap gap-2">
               <Link
                 href="/contact"
-                className="inline-flex h-10 items-center justify-center rounded-full border border-white/25 px-5 text-[13px] font-semibold text-white transition-colors hover:bg-white hover:text-black"
+                className="group relative inline-flex h-10 items-center justify-center rounded-full border border-gray-900 pl-5 pr-10 text-[13px] font-semibold text-gray-950 transition-colors hover:bg-gray-950 hover:text-white dark:border-white/25 dark:text-white dark:hover:bg-white dark:hover:text-black"
               >
-                Contact Us
+                <span className="relative z-10">Contact Us</span>
+                <CtaArrow size={14} />
               </Link>
               <Link
                 href="/schedule-a-call"
-                className="inline-flex h-10 items-center justify-center rounded-full bg-[#ff7a1a] px-5 text-[13px] font-semibold text-white transition-opacity hover:opacity-90"
+                className="group relative inline-flex h-10 items-center justify-center rounded-full bg-[#ff7a1a] pl-5 pr-10 text-[13px] font-semibold text-white transition-opacity hover:opacity-90"
               >
-                Schedule a Call
+                <span className="relative z-10">Schedule a Call</span>
+                <CtaArrow size={14} />
               </Link>
             </div>
           </div>
         </div>
 
         {/* Live time */}
-        <div className="mt-12 border-t border-white/10 pt-10">
-          <h3 className="mb-4 text-[13px] font-semibold uppercase tracking-[0.12em] text-white">
+        <div className="mt-12 border-t border-gray-200 pt-10 dark:border-white/10">
+          <h3 className="mb-4 text-[13px] font-semibold uppercase tracking-[0.12em] text-gray-950 dark:text-white">
             Our local time
           </h3>
           <LiveClocks />
         </div>
 
         {/* Trust badges */}
-        <div className="mt-10 grid gap-6 border-t border-white/10 pt-10 lg:grid-cols-[auto_1fr] lg:items-center">
+        <div className="mt-10 grid gap-6 border-t border-gray-200 pt-10 dark:border-white/10 lg:grid-cols-[auto_1fr] lg:items-center">
           <a
             href="https://techbehemoths.com/company/celestial-web-solutions"
             target="_blank"
@@ -336,43 +345,59 @@ export default function Footer() {
             title="Trusted and Verified by TechBehemoths"
           >
             <Image
+              src="/images/TB-Trusted-on-white.svg"
+              alt="Trusted and Verified by TechBehemoths"
+              width={200}
+              height={60}
+              className="block dark:hidden"
+            />
+            <Image
               src="/images/TB-Trusted-on-black.svg"
               alt="Trusted and Verified by TechBehemoths"
               width={200}
               height={60}
+              className="hidden dark:block"
             />
           </a>
-          <div className="min-w-0 overflow-hidden rounded-xl border border-white/10 bg-[#0a0a0a]">
+          <div className="min-w-0 overflow-hidden rounded-xl border border-gray-200 bg-gray-50 dark:border-white/10 dark:bg-[#0a0a0a]">
+            <iframe
+              src="/designrush-widget.html"
+              title="DesignRush Reviews"
+              scrolling="no"
+              frameBorder="0"
+              className="block w-full dark:hidden"
+              style={{ height: '120px', border: 'none' }}
+            />
             <iframe
               src="/designrush-widget-dark.html"
               title="DesignRush Reviews"
               scrolling="no"
               frameBorder="0"
-              className="w-full"
-              style={{ height: '120px', border: 'none', display: 'block' }}
+              className="hidden w-full dark:block"
+              style={{ height: '120px', border: 'none' }}
             />
           </div>
         </div>
       </div>
 
       {/* Legal bar — leave room on mobile for fixed chat button */}
-      <div className="border-t border-white/10">
+      <div className="border-t border-gray-200 dark:border-white/10">
         <div className="mx-auto flex max-w-7xl flex-col items-center gap-4 px-4 py-6 pb-28 text-center sm:px-6 lg:flex-row lg:items-center lg:justify-between lg:gap-6 lg:px-8 lg:pb-8 lg:text-left">
-          <div className="flex flex-col items-center gap-y-2 text-[13px] text-white/55 sm:flex-row sm:flex-wrap sm:justify-center sm:gap-x-5 lg:items-center lg:justify-start">
-            <Link href="/privacy" className="transition-colors hover:text-white">
+          <div className="flex flex-col items-center gap-y-2 text-[13px] text-gray-500 sm:flex-row sm:flex-wrap sm:justify-center sm:gap-x-5 dark:text-white/55 lg:items-center lg:justify-start">
+            <Link href="/privacy" className="transition-colors hover:text-gray-950 dark:hover:text-white">
               Privacy Notice
             </Link>
-            <Link href="/terms" className="transition-colors hover:text-white">
+            <Link href="/terms" className="transition-colors hover:text-gray-950 dark:hover:text-white">
               Terms of Use
             </Link>
-            <Link href="/contact" className="transition-colors hover:text-white">
+            <Link href="/contact" className="transition-colors hover:text-gray-950 dark:hover:text-white">
               Contact
             </Link>
             <span>© {year} Celestial Web Solutions. All rights reserved.</span>
           </div>
           <div className="flex flex-wrap items-center justify-center gap-4 lg:justify-end">
             <div className="flex items-center gap-2.5">
-              <span className="text-[11px] font-semibold uppercase tracking-[0.14em] text-white/40">
+              <span className="text-[11px] font-semibold uppercase tracking-[0.14em] text-gray-400 dark:text-white/40">
                 Theme
               </span>
               <ThemeToggle variant="footer" />

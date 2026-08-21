@@ -50,13 +50,13 @@ export default function LanguageSwitcher({
   const isFooter = variant === 'footer';
 
   const triggerClass = isHeader
-    ? 'inline-flex items-center gap-2 rounded-full border border-black/10 bg-white px-3 py-2 text-sm font-medium text-gray-900 hover:border-black/25 hover:bg-gray-50 transition-colors'
+    ? 'inline-flex items-center gap-2 rounded-full border border-black/10 bg-white px-3 py-2 text-sm font-medium text-gray-900 transition-colors hover:border-black/25 hover:bg-gray-50 dark:border-white/15 dark:bg-gray-900 dark:text-white dark:hover:border-white/30 dark:hover:bg-gray-800'
     : isFooter
-      ? 'inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-3.5 py-2 text-sm font-medium text-white hover:bg-white/10 transition-colors'
+      ? 'inline-flex items-center gap-2 rounded-full border border-gray-200 bg-gray-50 px-3.5 py-2 text-sm font-medium text-gray-900 transition-colors hover:bg-gray-100 dark:border-white/20 dark:bg-white/5 dark:text-white dark:hover:bg-white/10'
       : 'w-full inline-flex items-center gap-3 rounded-xl border border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-800 px-3.5 py-2.5 text-left shadow-sm hover:border-orange-400 dark:hover:border-orange-500 transition-colors';
 
   const menuClass = isHeader || isFooter
-    ? `absolute ${isHeader ? 'right-0' : 'left-0'} min-w-[220px] max-h-[280px] overflow-y-auto rounded-2xl border border-black/10 bg-white shadow-2xl z-[100] ${
+    ? `absolute ${isHeader ? 'right-0' : 'left-0'} min-w-[220px] max-h-[280px] overflow-y-auto rounded-2xl border border-black/10 bg-white shadow-2xl z-[100] dark:border-white/10 dark:bg-gray-900 ${
         dropUp ? 'bottom-full mb-2' : 'top-full mt-2'
       }`
     : `absolute left-0 right-0 min-w-[220px] max-h-[280px] overflow-y-auto rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 shadow-2xl z-[100] ${

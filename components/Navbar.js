@@ -16,6 +16,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import TalkToExpertModal from './TalkToExpertModal';
 import LanguageSwitcher from './LanguageSwitcher';
+import CtaArrow from './CtaArrow';
 
 const SERVICES = [
   { name: 'Web Development', href: '/web-design-company-in-ghana/web-development-company-in-ghana' },
@@ -105,15 +106,17 @@ export default function Navbar() {
   const navLinkClass = (active) =>
     `inline-flex items-center gap-1.5 px-3 py-2 text-[15px] font-medium rounded-lg transition-colors ${
       active
-        ? 'text-gray-950'
-        : 'text-gray-700 hover:text-gray-950 hover:bg-gray-100'
+        ? 'text-gray-950 dark:text-white'
+        : 'text-gray-700 hover:text-gray-950 hover:bg-gray-100 dark:text-gray-300 dark:hover:text-white dark:hover:bg-white/10'
     }`;
 
   return (
     <>
       <header
-        className={`fixed inset-x-0 top-0 z-[9990] bg-white transition-shadow duration-300 ${
-          scrolled ? 'shadow-[0_1px_0_rgba(0,0,0,0.08)]' : 'border-b border-black/[0.06]'
+        className={`fixed inset-x-0 top-0 z-[9990] bg-white transition-[background-color,box-shadow,border-color] duration-300 dark:bg-gray-950 ${
+          scrolled
+            ? 'shadow-[0_1px_0_rgba(0,0,0,0.08)] dark:shadow-[0_1px_0_rgba(255,255,255,0.08)]'
+            : 'border-b border-black/[0.06] dark:border-white/10'
         }`}
       >
         <nav className="mx-auto flex h-[72px] max-w-7xl items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
@@ -128,13 +131,13 @@ export default function Navbar() {
             />
             <span className="hidden sm:block leading-tight">
               <span
-                className="block text-[17px] font-bold tracking-tight text-gray-950"
+                className="block text-[17px] font-bold tracking-tight text-gray-950 dark:text-white"
                 style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}
               >
                 Celestial
               </span>
               <span
-                className="block text-[11px] font-medium uppercase tracking-[0.14em] text-gray-500"
+                className="block text-[11px] font-medium uppercase tracking-[0.14em] text-gray-500 dark:text-gray-400"
                 style={{ fontFamily: 'Albert Sans, sans-serif' }}
               >
                 Web Solutions
@@ -169,7 +172,7 @@ export default function Navbar() {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: 6 }}
                     transition={{ duration: 0.16 }}
-                    className="absolute left-0 top-full mt-3 w-[320px] rounded-2xl border border-black/8 bg-white p-3 shadow-2xl shadow-black/10"
+                    className="absolute left-0 top-full mt-3 w-[320px] rounded-2xl border border-black/8 bg-white p-3 shadow-2xl shadow-black/10 dark:border-white/10 dark:bg-gray-900 dark:shadow-black/40"
                     onMouseEnter={() => openDropdown('services')}
                     onMouseLeave={scheduleClose}
                   >
@@ -178,7 +181,7 @@ export default function Navbar() {
                         <Link
                           key={item.href}
                           href={item.href}
-                          className="rounded-xl px-3.5 py-2.5 text-sm font-medium text-gray-700 hover:bg-orange-50 hover:text-orange-700 transition-colors"
+                          className="rounded-xl px-3.5 py-2.5 text-sm font-medium text-gray-700 hover:bg-orange-50 hover:text-orange-700 transition-colors dark:text-gray-300 dark:hover:bg-orange-500/10 dark:hover:text-orange-300"
                           style={{ fontFamily: 'Albert Sans, sans-serif' }}
                         >
                           {item.name}
@@ -186,7 +189,7 @@ export default function Navbar() {
                       ))}
                       <Link
                         href="/web-design-company-in-ghana"
-                        className="mt-1 rounded-xl px-3.5 py-2.5 text-sm font-semibold text-orange-600 hover:bg-orange-50 transition-colors"
+                        className="mt-1 rounded-xl px-3.5 py-2.5 text-sm font-semibold text-orange-600 hover:bg-orange-50 transition-colors dark:text-orange-400 dark:hover:bg-orange-500/10"
                         style={{ fontFamily: 'Albert Sans, sans-serif' }}
                       >
                         View all services →
@@ -241,7 +244,7 @@ export default function Navbar() {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: 6 }}
                     transition={{ duration: 0.16 }}
-                    className="absolute left-0 top-full mt-3 w-[340px] rounded-2xl border border-black/8 bg-white p-3 shadow-2xl shadow-black/10"
+                    className="absolute left-0 top-full mt-3 w-[340px] rounded-2xl border border-black/8 bg-white p-3 shadow-2xl shadow-black/10 dark:border-white/10 dark:bg-gray-900 dark:shadow-black/40"
                     onMouseEnter={() => openDropdown('resources')}
                     onMouseLeave={scheduleClose}
                   >
@@ -249,20 +252,20 @@ export default function Navbar() {
                       <Link
                         key={item.href}
                         href={item.href}
-                        className="flex items-start gap-3 rounded-xl px-3 py-2.5 hover:bg-orange-50 transition-colors"
+                        className="flex items-start gap-3 rounded-xl px-3 py-2.5 hover:bg-orange-50 transition-colors dark:hover:bg-orange-500/10"
                       >
-                        <span className="mt-0.5 flex h-8 w-8 items-center justify-center rounded-lg bg-orange-50 text-orange-600">
+                        <span className="mt-0.5 flex h-8 w-8 items-center justify-center rounded-lg bg-orange-50 text-orange-600 dark:bg-orange-500/15 dark:text-orange-400">
                           <DropdownIcon name={item.icon} />
                         </span>
                         <span>
                           <span
-                            className="block text-sm font-semibold text-gray-900"
+                            className="block text-sm font-semibold text-gray-900 dark:text-white"
                             style={{ fontFamily: 'Albert Sans, sans-serif' }}
                           >
                             {item.name}
                           </span>
                           <span
-                            className="block text-xs text-gray-500 mt-0.5"
+                            className="block text-xs text-gray-500 mt-0.5 dark:text-gray-400"
                             style={{ fontFamily: 'Albert Sans, sans-serif' }}
                           >
                             {item.description}
@@ -280,18 +283,20 @@ export default function Navbar() {
             <LanguageSwitcher variant="header" dropUp={false} />
             <Link
               href="/contact"
-              className="inline-flex items-center justify-center rounded-full border border-gray-900 bg-white px-4 py-2.5 text-sm font-semibold text-gray-900 hover:bg-gray-50 transition-colors"
+              className="group relative inline-flex items-center justify-center rounded-full border border-gray-900 bg-white pl-4 pr-9 py-2.5 text-sm font-semibold text-gray-900 transition-colors hover:bg-gray-50 dark:border-white dark:bg-transparent dark:text-white dark:hover:bg-white/10"
               style={{ fontFamily: 'Albert Sans, sans-serif' }}
             >
-              Contact Us
+              <span className="relative z-10">Contact Us</span>
+              <CtaArrow size={15} />
             </Link>
             <button
               type="button"
               onClick={() => setIsExpertModalOpen(true)}
-              className="inline-flex items-center justify-center rounded-full bg-orange-500 px-4 py-2.5 text-sm font-semibold text-white hover:bg-orange-600 transition-colors"
+              className="group relative inline-flex items-center justify-center rounded-full bg-orange-500 pl-4 pr-9 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-orange-600"
               style={{ fontFamily: 'Albert Sans, sans-serif' }}
             >
-              Request a Service
+              <span className="relative z-10">Request a Service</span>
+              <CtaArrow size={15} />
             </button>
           </div>
 
@@ -301,7 +306,7 @@ export default function Navbar() {
               type="button"
               aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
               onClick={() => setIsMenuOpen((value) => !value)}
-              className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-black/10 text-gray-900"
+              className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-black/10 text-gray-900 dark:border-white/15 dark:text-white"
             >
               {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
             </button>
@@ -314,58 +319,58 @@ export default function Navbar() {
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
-              className="lg:hidden border-t border-black/[0.06] bg-white overflow-hidden"
+              className="lg:hidden border-t border-black/[0.06] bg-white overflow-hidden dark:border-white/10 dark:bg-gray-950"
             >
               <div className="max-h-[calc(100vh-72px)] overflow-y-auto px-4 py-4 space-y-1">
-                <Link href="/" className="block rounded-xl px-4 py-3 text-base font-medium text-gray-900 hover:bg-gray-50" style={{ fontFamily: 'Albert Sans, sans-serif' }}>
+                <Link href="/" className="block rounded-xl px-4 py-3 text-base font-medium text-gray-900 hover:bg-gray-50 dark:text-white dark:hover:bg-white/5" style={{ fontFamily: 'Albert Sans, sans-serif' }}>
                   Home
                 </Link>
 
                 <button
                   type="button"
                   onClick={() => setOpenMenu(openMenu === 'm-services' ? null : 'm-services')}
-                  className="flex w-full items-center justify-between rounded-xl px-4 py-3 text-base font-medium text-gray-900 hover:bg-gray-50"
+                  className="flex w-full items-center justify-between rounded-xl px-4 py-3 text-base font-medium text-gray-900 hover:bg-gray-50 dark:text-white dark:hover:bg-white/5"
                   style={{ fontFamily: 'Albert Sans, sans-serif' }}
                 >
                   Services
                   <ChevronDown size={16} className={openMenu === 'm-services' ? 'rotate-180' : ''} />
                 </button>
                 {openMenu === 'm-services' && (
-                  <div className="ml-2 border-l border-black/10 pl-3 space-y-1">
+                  <div className="ml-2 border-l border-black/10 pl-3 space-y-1 dark:border-white/10">
                     {SERVICES.map((item) => (
-                      <Link key={item.href} href={item.href} className="block rounded-lg px-3 py-2.5 text-sm text-gray-600 hover:text-orange-600" style={{ fontFamily: 'Albert Sans, sans-serif' }}>
+                      <Link key={item.href} href={item.href} className="block rounded-lg px-3 py-2.5 text-sm text-gray-600 hover:text-orange-600 dark:text-gray-400 dark:hover:text-orange-400" style={{ fontFamily: 'Albert Sans, sans-serif' }}>
                         {item.name}
                       </Link>
                     ))}
-                    <Link href="/web-design-company-in-ghana" className="block rounded-lg px-3 py-2.5 text-sm font-semibold text-orange-600" style={{ fontFamily: 'Albert Sans, sans-serif' }}>
+                    <Link href="/web-design-company-in-ghana" className="block rounded-lg px-3 py-2.5 text-sm font-semibold text-orange-600 dark:text-orange-400" style={{ fontFamily: 'Albert Sans, sans-serif' }}>
                       View all services →
                     </Link>
                   </div>
                 )}
 
-                <Link href="/portfolio" className="block rounded-xl px-4 py-3 text-base font-medium text-gray-900 hover:bg-gray-50" style={{ fontFamily: 'Albert Sans, sans-serif' }}>
+                <Link href="/portfolio" className="block rounded-xl px-4 py-3 text-base font-medium text-gray-900 hover:bg-gray-50 dark:text-white dark:hover:bg-white/5" style={{ fontFamily: 'Albert Sans, sans-serif' }}>
                   Portfolio
                 </Link>
-                <Link href="/pricing" className="block rounded-xl px-4 py-3 text-base font-medium text-gray-900 hover:bg-gray-50" style={{ fontFamily: 'Albert Sans, sans-serif' }}>
+                <Link href="/pricing" className="block rounded-xl px-4 py-3 text-base font-medium text-gray-900 hover:bg-gray-50 dark:text-white dark:hover:bg-white/5" style={{ fontFamily: 'Albert Sans, sans-serif' }}>
                   Pricing
                 </Link>
-                <Link href="/about" className="block rounded-xl px-4 py-3 text-base font-medium text-gray-900 hover:bg-gray-50" style={{ fontFamily: 'Albert Sans, sans-serif' }}>
+                <Link href="/about" className="block rounded-xl px-4 py-3 text-base font-medium text-gray-900 hover:bg-gray-50 dark:text-white dark:hover:bg-white/5" style={{ fontFamily: 'Albert Sans, sans-serif' }}>
                   About
                 </Link>
 
                 <button
                   type="button"
                   onClick={() => setOpenMenu(openMenu === 'm-resources' ? null : 'm-resources')}
-                  className="flex w-full items-center justify-between rounded-xl px-4 py-3 text-base font-medium text-gray-900 hover:bg-gray-50"
+                  className="flex w-full items-center justify-between rounded-xl px-4 py-3 text-base font-medium text-gray-900 hover:bg-gray-50 dark:text-white dark:hover:bg-white/5"
                   style={{ fontFamily: 'Albert Sans, sans-serif' }}
                 >
                   Resources
                   <ChevronDown size={16} className={openMenu === 'm-resources' ? 'rotate-180' : ''} />
                 </button>
                 {openMenu === 'm-resources' && (
-                  <div className="ml-2 border-l border-black/10 pl-3 space-y-1">
+                  <div className="ml-2 border-l border-black/10 pl-3 space-y-1 dark:border-white/10">
                     {RESOURCES.map((item) => (
-                      <Link key={item.href} href={item.href} className="block rounded-lg px-3 py-2.5 text-sm text-gray-600 hover:text-orange-600" style={{ fontFamily: 'Albert Sans, sans-serif' }}>
+                      <Link key={item.href} href={item.href} className="block rounded-lg px-3 py-2.5 text-sm text-gray-600 hover:text-orange-600 dark:text-gray-400 dark:hover:text-orange-400" style={{ fontFamily: 'Albert Sans, sans-serif' }}>
                         {item.name}
                       </Link>
                     ))}
@@ -375,10 +380,11 @@ export default function Navbar() {
                 <div className="pt-4 space-y-2.5">
                   <Link
                     href="/contact"
-                    className="flex w-full items-center justify-center rounded-full border border-gray-900 px-4 py-3 text-sm font-semibold text-gray-900"
+                    className="group relative flex w-full items-center justify-center rounded-full border border-gray-900 pl-4 pr-9 py-3 text-sm font-semibold text-gray-900 dark:border-white dark:text-white"
                     style={{ fontFamily: 'Albert Sans, sans-serif' }}
                   >
-                    Contact Us
+                    <span className="relative z-10">Contact Us</span>
+                    <CtaArrow size={15} />
                   </Link>
                   <button
                     type="button"
@@ -386,10 +392,11 @@ export default function Navbar() {
                       setIsMenuOpen(false);
                       setIsExpertModalOpen(true);
                     }}
-                    className="flex w-full items-center justify-center rounded-full bg-orange-500 px-4 py-3 text-sm font-semibold text-white"
+                    className="group relative flex w-full items-center justify-center rounded-full bg-orange-500 pl-4 pr-9 py-3 text-sm font-semibold text-white"
                     style={{ fontFamily: 'Albert Sans, sans-serif' }}
                   >
-                    Request a Service
+                    <span className="relative z-10">Request a Service</span>
+                    <CtaArrow size={15} />
                   </button>
                 </div>
               </div>

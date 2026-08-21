@@ -46,9 +46,9 @@ export default function ThemeToggle({ isMobile, variant = 'default' }) {
     <div
       className={`notranslate skiptranslate flex items-center rounded-full border p-1
                  ${isFooter
-                   ? 'border-white/15 bg-white/5 shadow-none'
+                   ? 'border-gray-200 bg-gray-100 shadow-none dark:border-white/15 dark:bg-white/5'
                    : isHeader
-                     ? 'border-black/10 bg-white shadow-none'
+                     ? 'border-black/10 bg-white shadow-none dark:border-white/15 dark:bg-gray-900'
                      : 'border-gray-200 bg-white shadow-lg backdrop-blur-sm dark:border-gray-600 dark:bg-gray-800'}
                  ${isMobile ? 'w-full justify-center' : ''}`}
       translate="no"
@@ -66,9 +66,9 @@ export default function ThemeToggle({ isMobile, variant = 'default' }) {
               ${isSelected
                 ? 'bg-orange-500 text-white shadow-sm'
                 : isFooter
-                  ? 'text-white/50 hover:text-white'
+                  ? 'text-gray-500 hover:text-gray-900 dark:text-white/50 dark:hover:text-white'
                   : isHeader
-                    ? 'text-gray-500 hover:text-gray-900'
+                    ? 'text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white'
                     : 'text-gray-500 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-200'}
               ${isMobile ? 'flex-1' : ''}`}
             aria-label={`${themeOption.label} theme`}
