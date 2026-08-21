@@ -1,8 +1,8 @@
 import { ArrowRight } from 'lucide-react';
 
 /**
- * Arrow shown only while the parent `.group` is pressed or focused
- * (not on hover). Absolutely positioned so the label does not shift.
+ * Expanding hover arrow for parent `.group` CTAs.
+ * Reveals on hover, focus, and press without jumping the label abruptly.
  */
 export default function CtaArrow({
   size = 18,
@@ -13,11 +13,12 @@ export default function CtaArrow({
     <span
       aria-hidden="true"
       className={`
-        cta-arrow pointer-events-none absolute right-4 top-1/2 z-10
-        -translate-y-1/2 translate-x-1 opacity-0
-        group-focus:translate-x-0 group-focus:opacity-100
-        group-focus-visible:translate-x-0 group-focus-visible:opacity-100
-        group-active:translate-x-0 group-active:opacity-100
+        cta-arrow inline-flex overflow-hidden max-w-0 opacity-0
+        -translate-x-1
+        group-hover:max-w-[1.5rem] group-hover:opacity-100 group-hover:translate-x-0
+        group-focus:max-w-[1.5rem] group-focus:opacity-100 group-focus:translate-x-0
+        group-focus-visible:max-w-[1.5rem] group-focus-visible:opacity-100 group-focus-visible:translate-x-0
+        group-active:max-w-[1.5rem] group-active:opacity-100 group-active:translate-x-0
         transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)]
         ${accent
           ? 'text-orange-600 dark:text-orange-400'
@@ -25,7 +26,7 @@ export default function CtaArrow({
         ${className}
       `}
     >
-      <ArrowRight size={size} strokeWidth={2.35} className="shrink-0" />
+      <ArrowRight size={size} strokeWidth={2.35} className="ml-1.5 shrink-0" />
     </span>
   );
 }

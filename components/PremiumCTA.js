@@ -2,6 +2,7 @@ import { useState, useRef } from 'react';
 import { useRouter } from 'next/router';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
+import CtaArrow from './CtaArrow';
 
 function isExternalHref(href = '', { external, target } = {}) {
   if (external || target === '_blank') return true;
@@ -105,6 +106,7 @@ export default function PremiumCTA({
           className="
             pointer-events-none absolute right-4 top-1/2 z-10
             -translate-y-1/2 translate-x-1 opacity-0
+            group-hover:translate-x-0 group-hover:opacity-100
             group-focus:translate-x-0 group-focus:opacity-100
             group-focus-visible:translate-x-0 group-focus-visible:opacity-100
             group-active:translate-x-0 group-active:opacity-100
@@ -206,6 +208,7 @@ export function TextCTA({ children, href = '/contact', className = '', ...props 
           className="
             ml-1 inline-flex w-4 shrink-0 justify-end
             opacity-0 -translate-x-1
+            group-hover:opacity-100 group-hover:translate-x-0
             group-focus:opacity-100 group-focus:translate-x-0
             group-active:opacity-100 group-active:translate-x-0
             transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)]

@@ -283,20 +283,24 @@ export default function Navbar() {
             <LanguageSwitcher variant="header" dropUp={false} />
             <Link
               href="/contact"
-              className="group relative inline-flex items-center justify-center rounded-full border border-gray-900 bg-white pl-4 pr-9 py-2.5 text-sm font-semibold text-gray-900 transition-colors hover:bg-gray-50 dark:border-white dark:bg-transparent dark:text-white dark:hover:bg-white/10"
+              className="group relative inline-flex items-center justify-center rounded-full border border-gray-900 bg-white px-4 py-2.5 text-sm font-semibold text-gray-900 transition-colors hover:bg-gray-50 dark:border-white dark:bg-transparent dark:text-white dark:hover:bg-white/10"
               style={{ fontFamily: 'Albert Sans, sans-serif' }}
             >
-              <span className="relative z-10">Contact Us</span>
-              <CtaArrow size={15} />
+              <span className="relative z-10 inline-flex items-center">
+                Contact Us
+                <CtaArrow size={15} />
+              </span>
             </Link>
             <button
               type="button"
               onClick={() => setIsExpertModalOpen(true)}
-              className="group relative inline-flex items-center justify-center rounded-full bg-orange-500 pl-4 pr-9 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-orange-600"
+              className="group relative inline-flex items-center justify-center rounded-full bg-orange-500 px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-orange-600"
               style={{ fontFamily: 'Albert Sans, sans-serif' }}
             >
-              <span className="relative z-10">Request a Service</span>
-              <CtaArrow size={15} />
+              <span className="relative z-10 inline-flex items-center">
+                Request a Service
+                <CtaArrow size={15} />
+              </span>
             </button>
           </div>
 
@@ -380,11 +384,13 @@ export default function Navbar() {
                 <div className="pt-4 space-y-2.5">
                   <Link
                     href="/contact"
-                    className="group relative flex w-full items-center justify-center rounded-full border border-gray-900 pl-4 pr-9 py-3 text-sm font-semibold text-gray-900 dark:border-white dark:text-white"
+                    className="group relative flex w-full items-center justify-center rounded-full border border-gray-900 px-4 py-3 text-sm font-semibold text-gray-900 dark:border-white dark:text-white"
                     style={{ fontFamily: 'Albert Sans, sans-serif' }}
                   >
-                    <span className="relative z-10">Contact Us</span>
-                    <CtaArrow size={15} />
+                    <span className="relative z-10 inline-flex items-center">
+                      Contact Us
+                      <CtaArrow size={15} />
+                    </span>
                   </Link>
                   <button
                     type="button"
@@ -392,11 +398,13 @@ export default function Navbar() {
                       setIsMenuOpen(false);
                       setIsExpertModalOpen(true);
                     }}
-                    className="group relative flex w-full items-center justify-center rounded-full bg-orange-500 pl-4 pr-9 py-3 text-sm font-semibold text-white"
+                    className="group relative flex w-full items-center justify-center rounded-full bg-orange-500 px-4 py-3 text-sm font-semibold text-white"
                     style={{ fontFamily: 'Albert Sans, sans-serif' }}
                   >
-                    <span className="relative z-10">Request a Service</span>
-                    <CtaArrow size={15} />
+                    <span className="relative z-10 inline-flex items-center">
+                      Request a Service
+                      <CtaArrow size={15} />
+                    </span>
                   </button>
                 </div>
               </div>

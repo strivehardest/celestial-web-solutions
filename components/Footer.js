@@ -101,12 +101,12 @@ export default function Footer() {
               How can we help?{' '}
               <Link
                 href="/contact"
-                className="group relative inline-flex items-center gap-1.5 text-gray-950 underline decoration-orange-500 decoration-2 underline-offset-[6px] transition-colors duration-300 focus:text-orange-600 focus:decoration-orange-600 active:text-orange-600 active:decoration-orange-600 dark:text-white dark:decoration-[#c8f542] dark:focus:text-[#c8f542] dark:focus:decoration-white dark:active:text-[#c8f542] dark:active:decoration-white"
+                className="group relative inline-flex items-center gap-1.5 text-gray-950 underline decoration-orange-500 decoration-2 underline-offset-[6px] transition-colors duration-300 hover:text-orange-600 hover:decoration-orange-600 focus:text-orange-600 focus:decoration-orange-600 active:text-orange-600 active:decoration-orange-600 dark:text-white dark:decoration-[#c8f542] dark:hover:text-[#c8f542] dark:hover:decoration-white dark:focus:text-[#c8f542] dark:focus:decoration-white dark:active:text-[#c8f542] dark:active:decoration-white"
               >
                 <span>Contact us.</span>
                 <span
                   aria-hidden="true"
-                  className="inline-flex translate-x-0 opacity-70 transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] group-focus:translate-x-1 group-focus:opacity-100 group-active:translate-x-1 group-active:opacity-100"
+                  className="inline-flex translate-x-0 opacity-70 transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:translate-x-1.5 group-hover:opacity-100 group-focus:translate-x-1.5 group-focus:opacity-100 group-active:translate-x-1.5 group-active:opacity-100"
                 >
                   →
                 </span>
@@ -317,17 +317,21 @@ export default function Footer() {
             <div className="mt-5 flex flex-wrap gap-2">
               <Link
                 href="/contact"
-                className="group relative inline-flex h-10 items-center justify-center rounded-full border border-gray-900 pl-5 pr-10 text-[13px] font-semibold text-gray-950 transition-colors hover:bg-gray-950 hover:text-white dark:border-white/25 dark:text-white dark:hover:bg-white dark:hover:text-black"
+                className="group relative inline-flex h-10 items-center justify-center rounded-full border border-gray-900 px-5 text-[13px] font-semibold text-gray-950 transition-colors hover:bg-gray-950 hover:text-white dark:border-white/25 dark:text-white dark:hover:bg-white dark:hover:text-black"
               >
-                <span className="relative z-10">Contact Us</span>
-                <CtaArrow size={14} />
+                <span className="relative z-10 inline-flex items-center">
+                  Contact Us
+                  <CtaArrow size={14} />
+                </span>
               </Link>
               <Link
                 href="/schedule-a-call"
-                className="group relative inline-flex h-10 items-center justify-center rounded-full bg-[#ff7a1a] pl-5 pr-10 text-[13px] font-semibold text-white transition-opacity hover:opacity-90"
+                className="group relative inline-flex h-10 items-center justify-center rounded-full bg-[#ff7a1a] px-5 text-[13px] font-semibold text-white transition-opacity hover:opacity-90"
               >
-                <span className="relative z-10">Schedule a Call</span>
-                <CtaArrow size={14} />
+                <span className="relative z-10 inline-flex items-center">
+                  Schedule a Call
+                  <CtaArrow size={14} />
+                </span>
               </Link>
             </div>
           </div>
