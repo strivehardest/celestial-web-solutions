@@ -16,7 +16,6 @@ import Link from 'next/link';
 import Image from 'next/image';
 import TalkToExpertModal from './TalkToExpertModal';
 import LanguageSwitcher from './LanguageSwitcher';
-import ThemeToggle from './ThemeToggle';
 
 const SERVICES = [
   { name: 'Web Development', href: '/web-design-company-in-ghana/web-development-company-in-ghana' },
@@ -278,7 +277,6 @@ export default function Navbar() {
           </div>
 
           <div className="hidden lg:flex items-center gap-2.5">
-            <ThemeToggle variant="header" />
             <LanguageSwitcher variant="header" dropUp={false} />
             <Link
               href="/contact"
@@ -298,7 +296,6 @@ export default function Navbar() {
           </div>
 
           <div className="flex lg:hidden items-center gap-2">
-            <ThemeToggle variant="header" />
             <LanguageSwitcher variant="header" dropUp={false} />
             <button
               type="button"

@@ -60,7 +60,7 @@ export default function ContactChatWidget() {
       style={{
         position: 'fixed',
         right: '20px',
-        bottom: '20px',
+        bottom: '40px',
         zIndex: 10050,
         fontFamily: 'Albert Sans, sans-serif',
         pointerEvents: 'auto',

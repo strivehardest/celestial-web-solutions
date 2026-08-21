@@ -11,6 +11,7 @@ import {
 } from 'react-icons/fa';
 import { FiPhone, FiMail, FiMapPin } from 'react-icons/fi';
 import projects from '../data/projects';
+import ThemeToggle from './ThemeToggle';
 
 const footerLink =
   'block text-[14px] leading-6 text-white/70 transition-colors hover:text-white';
@@ -356,7 +357,7 @@ export default function Footer() {
 
       {/* Legal bar — leave room on mobile for fixed chat button */}
       <div className="border-t border-white/10">
-        <div className="mx-auto flex max-w-7xl flex-col gap-3 px-4 py-6 pb-28 sm:px-6 lg:flex-row lg:items-center lg:justify-between lg:px-8 lg:pb-6">
+        <div className="mx-auto flex max-w-7xl flex-col gap-4 px-4 py-6 pb-28 sm:px-6 lg:flex-row lg:items-center lg:justify-between lg:gap-6 lg:px-8 lg:pb-8">
           <div className="flex flex-wrap items-center gap-x-5 gap-y-2 text-[13px] text-white/55">
             <Link href="/privacy" className="transition-colors hover:text-white">
               Privacy Notice
@@ -369,20 +370,28 @@ export default function Footer() {
             </Link>
             <span>© {year} Celestial Web Solutions. All rights reserved.</span>
           </div>
-          <a
-            href="https://www.dmca.com/compliance/celestialwebsolutions.net"
-            title="DMCA.com Protection Status"
-            className="dmca-badge inline-flex opacity-80 transition-opacity hover:opacity-100"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <img
-              src="https://images.dmca.com/Badges/dmca_protected_sml_120a.png?ID=a2cdeca7-613e-4377-a477-855d263ffc77"
-              alt="DMCA.com Protection Status"
-              width="121"
-              height="24"
-            />
-          </a>
+          <div className="flex flex-wrap items-center gap-4">
+            <div className="flex items-center gap-2.5">
+              <span className="text-[11px] font-semibold uppercase tracking-[0.14em] text-white/40">
+                Theme
+              </span>
+              <ThemeToggle variant="footer" />
+            </div>
+            <a
+              href="https://www.dmca.com/compliance/celestialwebsolutions.net"
+              title="DMCA.com Protection Status"
+              className="dmca-badge inline-flex opacity-80 transition-opacity hover:opacity-100"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img
+                src="https://images.dmca.com/Badges/dmca_protected_sml_120a.png?ID=a2cdeca7-613e-4377-a477-855d263ffc77"
+                alt="DMCA.com Protection Status"
+                width="121"
+                height="24"
+              />
+            </a>
+          </div>
         </div>
       </div>
     </footer>
