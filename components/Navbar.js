@@ -1,566 +1,404 @@
-import { useState, useEffect, useRef } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { MessageCircle, Menu, X, ChevronDown, FileText, Shield, HelpCircle, CreditCard, BookOpen, DollarSign } from 'lucide-react';
+import { useEffect, useRef, useState } from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
+import {
+  BookOpen,
+  ChevronDown,
+  CreditCard,
+  DollarSign,
+  FileText,
+  HelpCircle,
+  Menu,
+  Shield,
+  X,
+} from 'lucide-react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import Image from 'next/image';
 import TalkToExpertModal from './TalkToExpertModal';
+import LanguageSwitcher from './LanguageSwitcher';
 
+const SERVICES = [
+  { name: 'Web Development', href: '/web-design-company-in-ghana/web-development-company-in-ghana' },
+  { name: 'Web Design', href: '/web-design-company-in-ghana/web-design-in-ghana' },
+  { name: 'E-Commerce', href: '/web-design-company-in-ghana/ecommerce-website-development-ghana' },
+  { name: 'SEO Services', href: '/web-design-company-in-ghana/seo-services-in-ghana' },
+  { name: 'UX/UI Design', href: '/web-design-company-in-ghana/ux-ui-design-in-ghana' },
+  { name: 'IT Support', href: '/web-design-company-in-ghana/it-support-in-ghana' },
+  { name: 'Google Ads', href: '/web-design-company-in-ghana/google-ads-management-in-ghana' },
+  { name: 'Google AdSense', href: '/web-design-company-in-ghana/google-adsense-management-in-ghana' },
+];
 
-const Navbar = () => {
+const RESOURCES = [
+  { name: 'Blog', href: '/blog', description: 'Insights and tutorials', icon: 'blog' },
+  { name: 'FAQs', href: '/faqs', description: 'Common questions answered', icon: 'faqs' },
+  { name: 'Make Payment', href: '/payment', description: 'Secure online payments', icon: 'payment' },
+  { name: 'Terms of Service', href: '/terms', description: 'Our terms and conditions', icon: 'terms' },
+  { name: 'Privacy Policy', href: '/privacy', description: 'How we protect your data', icon: 'privacy' },
+];
+
+function DropdownIcon({ name }) {
+  const className = 'w-4 h-4';
+  switch (name) {
+    case 'blog':
+      return <BookOpen className={className} />;
+    case 'pricing':
+      return <DollarSign className={className} />;
+    case 'faqs':
+      return <HelpCircle className={className} />;
+    case 'payment':
+      return <CreditCard className={className} />;
+    case 'terms':
+      return <FileText className={className} />;
+    case 'privacy':
+      return <Shield className={className} />;
+    default:
+      return <FileText className={className} />;
+  }
+}
+
+export default function Navbar() {
   const router = useRouter();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [activeDropdown, setActiveDropdown] = useState(null);
-  const [currentPath, setCurrentPath] = useState('/');
+  const [openMenu, setOpenMenu] = useState(null);
   const [isExpertModalOpen, setIsExpertModalOpen] = useState(false);
+  const closeTimer = useRef(null);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 10);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    const onScroll = () => setScrolled(window.scrollY > 8);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
   useEffect(() => {
-    setCurrentPath(router.pathname);
-  }, [router.pathname]);
-
-  const navigation = [
-    { name: 'Home', href: '/' },
-    { name: 'Our Services', href: '/web-design-company-in-ghana' },
-    { name: 'Portfolio', href: '/portfolio' },
-    { name: 'About Us', href: '/about' },
-    { name: 'Courses', href: '/courses', isCourses: true },
-    { 
-      name: 'Resources', 
-      href: '/#',
-      megaMenu: true,
-      dropdown: [
-        { name: 'Blog', href: '/blog', description: 'Insights, tutorials & industry updates', icon: 'blog' },
-        { name: 'Pricing', href: '/pricing', description: 'Transparent plans for every budget', icon: 'pricing' },
-        { name: 'FAQs', href: '/faqs', description: 'Quick answers to common questions', icon: 'faqs' },
-        { name: 'Make Payment', href: '/payment', description: 'Secure & easy online payments', icon: 'payment' },
-        { name: 'Terms of Service', href: '/terms', description: 'Our terms & conditions', icon: 'terms' },
-        { name: 'Privacy Policy', href: '/privacy', description: 'How we protect your data', icon: 'privacy' }
-      ]
-    },
-    { name: 'Contact', href: '/contact' }
-  ];
-
-  const isActive = (href) => {
-    if (href === '/') return currentPath === '/';
-    return currentPath === href || currentPath.startsWith(href + '/');
-  };
-
-  const handleNavigation = (href) => {
-    if (typeof window !== 'undefined') {
+    const close = () => {
       setIsMenuOpen(false);
-      setActiveDropdown(null);
-      if (href.startsWith('https://')) {
-        window.open(href, '_blank', 'noopener,noreferrer');
-        return;
-      }
-      router.push(href);
-    }
-  };
-
-  useEffect(() => {
-    const handleRouteChange = (url) => {
-      setCurrentPath(url);
-      setIsMenuOpen(false);
-      setActiveDropdown(null);
+      setOpenMenu(null);
     };
-    router.events.on('routeChangeStart', handleRouteChange);
-    return () => router.events.off('routeChangeStart', handleRouteChange);
+    router.events.on('routeChangeStart', close);
+    return () => router.events.off('routeChangeStart', close);
   }, [router.events]);
 
-  const Logo = () => {
-    const logoImagePath = scrolled ? "/logo.png" : "/logo-white.webp";
-    const useImageLogo = true;
-    const logoSize = "w-20 h-20";
+  useEffect(() => {
+    document.body.style.overflow = isMenuOpen ? 'hidden' : '';
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isMenuOpen]);
 
-    if (useImageLogo && logoImagePath) {
-      return (
-        <motion.div
-          className="flex items-center cursor-pointer group"
-          onClick={() => handleNavigation('/')}
-          whileHover={{ scale: 1.02 }}
-          whileTap={{ scale: 0.98 }}
-        >
-          <div className="relative">
-            <Image
-              src={logoImagePath}
-              alt="Celestial Web Solutions Logo"
-              width={80}
-              height={80}
-              className={logoSize + " object-contain"}
-              priority={!scrolled} // logo-white.webp is above the fold
-              onError={(e) => { e.target.style.display = 'none'; }}
-            />
-          </div>
-          <div className="ml-3">
-            <div
-              className={scrolled
-                ? "text-xl font-bold bg-gradient-to-r from-orange-600 via-orange-500 to-red-500 bg-clip-text text-transparent group-hover:from-orange-500 group-hover:to-orange-600 transition-all duration-300"
-                : "text-xl font-bold text-white transition-all duration-300"}
-              style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}
-            >
-              Celestial
-            </div>
-            <div
-              className={scrolled ? "text-xs text-gray-500 dark:text-gray-400 -mt-1" : "text-xs text-white -mt-1"}
-              style={{ fontFamily: 'Albert Sans, sans-serif' }}
-            >
-              Web Solutions
-            </div>
-          </div>
-        </motion.div>
-      );
-    }
-
-    return (
-      <motion.div
-        className="flex items-center cursor-pointer group"
-        onClick={() => handleNavigation('/')}
-        whileHover={{ scale: 1.02 }}
-        whileTap={{ scale: 0.98 }}
-      >
-        <motion.div whileHover={{ rotate: 5 }} className="w-10 h-10 bg-gradient-to-br from-orange-500 to-red-500 rounded-xl shadow-lg flex items-center justify-center text-white font-bold text-lg">
-          C
-        </motion.div>
-        <div className="ml-3">
-          <div className="text-xl font-bold bg-gradient-to-r from-orange-600 via-orange-500 to-red-500 bg-clip-text text-transparent" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>
-            Celestial
-          </div>
-          <div className="text-xs text-gray-500 dark:text-gray-400 -mt-1" style={{ fontFamily: 'Albert Sans, sans-serif' }}>
-            Web Solutions
-          </div>
-        </div>
-      </motion.div>
-    );
+  const isActive = (href) => {
+    if (href === '/') return router.pathname === '/';
+    return router.pathname === href || router.pathname.startsWith(`${href}/`);
   };
 
-  // ✅ Request a Service Button — Desktop
-  const RequestServiceButton = () => (
-    <motion.button
-      onClick={() => setIsExpertModalOpen(true)}
-      className="hidden md:flex items-center gap-2.5 px-5 py-2.5 rounded-full font-semibold text-sm relative overflow-hidden"
-      style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}
-      whileHover={{ scale: 1.04 }}
-      whileTap={{ scale: 0.97 }}
-    >
-      {/* Outer glow ring */}
-      <motion.span
-        className="absolute inset-0 rounded-full"
-        style={{
-          background: 'linear-gradient(135deg, #f97316, #ef4444)',
-          boxShadow: '0 0 0 0 rgba(249,115,22,0.5)',
-        }}
-        animate={{
-          boxShadow: [
-            '0 0 0 0px rgba(249,115,22,0.4)',
-            '0 0 0 6px rgba(249,115,22,0)',
-          ],
-        }}
-        transition={{ duration: 1.8, repeat: Infinity, ease: 'easeOut' }}
-      />
-
-      {/* Shimmer sweep */}
-      <motion.span
-        className="absolute inset-0 rounded-full"
-        style={{
-          background: 'linear-gradient(105deg, transparent 40%, rgba(255,255,255,0.25) 50%, transparent 60%)',
-          backgroundSize: '200% 100%',
-        }}
-        animate={{ backgroundPosition: ['200% center', '-200% center'] }}
-        transition={{ duration: 2.5, repeat: Infinity, ease: 'linear', repeatDelay: 1 }}
-      />
-
-      {/* Code icon */}
-      <span className="relative z-10 flex items-center justify-center w-5 h-5 bg-white/20 rounded-full">
-        <svg className="w-3 h-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-          <path strokeLinecap="round" strokeLinejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-        </svg>
-      </span>
-
-      {/* Text */}
-      <span className="relative z-10 text-white tracking-wide">Request a Service</span>
-
-      {/* Arrow */}
-      <motion.span
-        className="relative z-10"
-        initial={{ x: 0 }}
-        whileHover={{ x: 3 }}
-        transition={{ type: 'spring', stiffness: 400, damping: 20 }}
-      >
-        <svg className="w-4 h-4 text-white/80" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-          <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-        </svg>
-      </motion.span>
-    </motion.button>
-  );
-
-  // ✅ Request a Service Button — Mobile
-  const RequestServiceButtonMobile = () => (
-    <motion.button
-      onClick={() => { setIsMenuOpen(false); setIsExpertModalOpen(true); }}
-      className="w-full flex items-center justify-center gap-3 px-6 py-4 rounded-2xl font-semibold relative overflow-hidden"
-      style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}
-      whileHover={{ scale: 1.02 }}
-      whileTap={{ scale: 0.97 }}
-    >
-      {/* Background gradient */}
-      <span className="absolute inset-0 rounded-2xl bg-gradient-to-r from-orange-500 via-orange-500 to-red-500" />
-
-      {/* Shimmer */}
-      <motion.span
-        className="absolute inset-0 rounded-2xl"
-        style={{
-          background: 'linear-gradient(105deg, transparent 40%, rgba(255,255,255,0.2) 50%, transparent 60%)',
-          backgroundSize: '200% 100%',
-        }}
-        animate={{ backgroundPosition: ['200% center', '-200% center'] }}
-        transition={{ duration: 2.5, repeat: Infinity, ease: 'linear', repeatDelay: 0.8 }}
-      />
-
-      {/* Pulsing dot */}
-      <span className="relative z-10 flex items-center gap-1.5">
-        <span className="w-2 h-2 rounded-full bg-white animate-ping absolute opacity-75" />
-        <span className="w-2 h-2 rounded-full bg-white relative" />
-      </span>
-
-      {/* Code icon */}
-      <span className="relative z-10 flex items-center justify-center w-6 h-6 bg-white/20 rounded-full">
-        <svg className="w-3.5 h-3.5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-          <path strokeLinecap="round" strokeLinejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-        </svg>
-      </span>
-
-      <span className="relative z-10 text-white text-base tracking-wide">Request a Service</span>
-
-      <motion.span
-        className="relative z-10"
-        animate={{ x: [0, 4, 0] }}
-        transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }}
-      >
-        <svg className="w-4 h-4 text-white/80" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-          <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-        </svg>
-      </motion.span>
-    </motion.button>
-  );
-
-  // Icon map for mega menu items
-  const getDropdownIcon = (iconName) => {
-    const iconClass = "w-5 h-5";
-    switch (iconName) {
-      case 'blog': return <BookOpen className={iconClass} />;
-      case 'pricing': return <DollarSign className={iconClass} />;
-      case 'faqs': return <HelpCircle className={iconClass} />;
-      case 'payment': return <CreditCard className={iconClass} />;
-      case 'terms': return <FileText className={iconClass} />;
-      case 'privacy': return <Shield className={iconClass} />;
-      default: return <FileText className={iconClass} />;
-    }
+  const openDropdown = (name) => {
+    if (closeTimer.current) clearTimeout(closeTimer.current);
+    setOpenMenu(name);
   };
 
-  const renderNavItem = (item) => {
-    if (item.dropdown) {
-      return (
-        <motion.button
-          className={`flex items-center space-x-2 px-4 py-3 text-sm font-medium rounded-xl transition-all duration-300 ${
-            isActive(item.href)
-              ? 'text-white bg-gradient-to-r from-orange-500 to-orange-600 shadow-lg shadow-orange-500/25'
-              : scrolled
-                ? 'text-gray-700 dark:text-gray-300 hover:text-orange-600 dark:hover:text-orange-400 hover:bg-gray-100/50 dark:hover:bg-gray-800/50'
-                : 'text-white hover:text-orange-100 hover:bg-white/10'
-          }`}
-          style={{ fontFamily: 'Albert Sans, sans-serif' }}
-          whileHover={{ y: -1 }}
-          onClick={() => handleNavigation(item.href)}
-        >
-          <span>{item.name}</span>
-          <motion.svg
-            className="w-4 h-4 transition-transform duration-200"
-            animate={{ rotate: activeDropdown === item.name ? 180 : 0 }}
-            fill="none" viewBox="0 0 24 24" stroke="currentColor"
-          >
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-          </motion.svg>
-        </motion.button>
-      );
-    }
-
-    return (
-      <motion.button
-        className={`flex items-center space-x-2 px-4 py-3 text-sm font-medium rounded-xl transition-all duration-300 relative ${
-          isActive(item.href)
-            ? 'text-white bg-gradient-to-r from-orange-500 to-orange-600 shadow-lg shadow-orange-500/25'
-            : scrolled
-              ? 'text-gray-700 dark:text-gray-300 hover:text-orange-600 dark:hover:text-orange-400 hover:bg-gray-100/50 dark:hover:bg-gray-800/50'
-              : 'text-white hover:text-orange-100 hover:bg-white/10'
-        }`}
-        style={{ fontFamily: 'Albert Sans, sans-serif' }}
-        whileHover={{ y: -1 }}
-        onClick={() => handleNavigation(item.href)}
-      >
-        <span>{item.name}</span>
-        {item.isCourses && (
-          <span className="absolute -top-1 -right-1 bg-red-500 text-white text-[10px] font-bold px-1.5 py-0.5 rounded animate-pulse">
-            New
-          </span>
-        )}
-      </motion.button>
-    );
+  const scheduleClose = () => {
+    if (closeTimer.current) clearTimeout(closeTimer.current);
+    closeTimer.current = setTimeout(() => setOpenMenu(null), 140);
   };
+
+  const navLinkClass = (active) =>
+    `inline-flex items-center gap-1.5 px-3 py-2 text-[15px] font-medium rounded-lg transition-colors ${
+      active
+        ? 'text-gray-950'
+        : 'text-gray-700 hover:text-gray-950 hover:bg-gray-100'
+    }`;
 
   return (
     <>
       <header
-        className={`fixed w-full top-0 z-[9990] transition-all duration-500 ${
-          scrolled
-            ? 'bg-white/95 dark:bg-gray-900/95 backdrop-blur-xl shadow-2xl border-b border-gray-200/20 dark:border-gray-700/20'
-            : 'bg-transparent'
+        className={`fixed inset-x-0 top-0 z-[9990] bg-white transition-shadow duration-300 ${
+          scrolled ? 'shadow-[0_1px_0_rgba(0,0,0,0.08)]' : 'border-b border-black/[0.06]'
         }`}
       >
-        <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-18 md:h-20">
+        <nav className="mx-auto flex h-[72px] max-w-7xl items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
+          <Link href="/" className="flex items-center gap-3 shrink-0" aria-label="Celestial Web Solutions home">
+            <Image
+              src="/logo.png"
+              alt="Celestial Web Solutions"
+              width={44}
+              height={44}
+              className="h-11 w-11 object-contain"
+              priority
+            />
+            <span className="hidden sm:block leading-tight">
+              <span
+                className="block text-[17px] font-bold tracking-tight text-gray-950"
+                style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}
+              >
+                Celestial
+              </span>
+              <span
+                className="block text-[11px] font-medium uppercase tracking-[0.14em] text-gray-500"
+                style={{ fontFamily: 'Albert Sans, sans-serif' }}
+              >
+                Web Solutions
+              </span>
+            </span>
+          </Link>
 
-            <Logo />
+          <div className="hidden lg:flex items-center gap-1">
+            <Link href="/" className={navLinkClass(isActive('/'))} style={{ fontFamily: 'Albert Sans, sans-serif' }}>
+              Home
+            </Link>
 
-            {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center space-x-2 md:space-x-3 lg:space-x-4">
-              {navigation.map((item) => (
-                <div key={item.name} className="relative group"
-                  onMouseEnter={() => item.dropdown ? setActiveDropdown(item.name) : null}
-                  onMouseLeave={() => item.dropdown ? setActiveDropdown(null) : null}
-                >
-                  {renderNavItem(item)}
-                  <AnimatePresence>
-                    {item.dropdown && activeDropdown === item.name && (
-                      item.megaMenu ? (
-                        /* StackOverflow-style Mega Menu */
-                        <motion.div
-                          initial={{ opacity: 0, y: 10, scale: 0.96 }}
-                          animate={{ opacity: 1, y: 0, scale: 1 }}
-                          exit={{ opacity: 0, y: 10, scale: 0.96 }}
-                          transition={{ duration: 0.25, ease: [0.23, 1, 0.32, 1] }}
-                          className="absolute top-full right-0 pt-3 w-[520px]"
+            <div
+              className="relative"
+              onMouseEnter={() => openDropdown('services')}
+              onMouseLeave={scheduleClose}
+            >
+              <button
+                type="button"
+                className={navLinkClass(isActive('/web-design-company-in-ghana'))}
+                style={{ fontFamily: 'Albert Sans, sans-serif' }}
+                aria-expanded={openMenu === 'services'}
+                onClick={() => setOpenMenu(openMenu === 'services' ? null : 'services')}
+              >
+                Services
+                <ChevronDown size={14} className={`transition-transform ${openMenu === 'services' ? 'rotate-180' : ''}`} />
+              </button>
+              <AnimatePresence>
+                {openMenu === 'services' && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 8 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 6 }}
+                    transition={{ duration: 0.16 }}
+                    className="absolute left-0 top-full mt-3 w-[320px] rounded-2xl border border-black/8 bg-white p-3 shadow-2xl shadow-black/10"
+                    onMouseEnter={() => openDropdown('services')}
+                    onMouseLeave={scheduleClose}
+                  >
+                    <div className="grid grid-cols-1 gap-0.5">
+                      {SERVICES.map((item) => (
+                        <Link
+                          key={item.href}
+                          href={item.href}
+                          className="rounded-xl px-3.5 py-2.5 text-sm font-medium text-gray-700 hover:bg-orange-50 hover:text-orange-700 transition-colors"
+                          style={{ fontFamily: 'Albert Sans, sans-serif' }}
                         >
-                        <div className="bg-white dark:bg-gray-900 backdrop-blur-xl rounded-2xl shadow-[0_20px_60px_-15px_rgba(0,0,0,0.2)] dark:shadow-[0_20px_60px_-15px_rgba(0,0,0,0.5)] border border-gray-200/60 dark:border-gray-700/40 overflow-hidden">
-                          {/* Header */}
-                          <div className="px-6 pt-5 pb-3 border-b border-gray-100 dark:border-gray-800">
-                            <h3 className="text-xs font-semibold uppercase tracking-widest text-gray-400 dark:text-gray-500" style={{ fontFamily: 'Albert Sans, sans-serif' }}>Resources</h3>
-                          </div>
-
-                          {/* 2-column grid */}
-                          <div className="grid grid-cols-2 gap-1 p-3">
-                            {item.dropdown.map((dropItem, index) => (
-                              <motion.button
-                                key={dropItem.name}
-                                className="flex items-start gap-3 px-4 py-3.5 rounded-xl text-left hover:bg-orange-50/70 dark:hover:bg-orange-900/15 transition-all duration-200 group"
-                                style={{ fontFamily: 'Albert Sans, sans-serif' }}
-                                initial={{ opacity: 0, y: 8 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ delay: index * 0.04 }}
-                                onClick={() => handleNavigation(dropItem.href)}
-                              >
-                                <span className="flex-shrink-0 mt-0.5 w-9 h-9 rounded-lg bg-gradient-to-br from-orange-50 to-orange-100 dark:from-orange-900/30 dark:to-orange-800/20 flex items-center justify-center text-orange-500 dark:text-orange-400 group-hover:from-orange-100 group-hover:to-orange-200 dark:group-hover:from-orange-900/50 dark:group-hover:to-orange-800/30 transition-all duration-200">
-                                  {getDropdownIcon(dropItem.icon)}
-                                </span>
-                                <div className="min-w-0">
-                                  <span className="block text-sm font-semibold text-gray-800 dark:text-gray-100 group-hover:text-orange-600 dark:group-hover:text-orange-400 transition-colors duration-200">{dropItem.name}</span>
-                                  <span className="block text-xs text-gray-500 dark:text-gray-400 mt-0.5 leading-relaxed">{dropItem.description}</span>
-                                </div>
-                              </motion.button>
-                            ))}
-                          </div>
-
-                          {/* Footer CTA */}
-                          <div className="px-6 py-3.5 bg-gray-50/80 dark:bg-gray-800/50 border-t border-gray-100 dark:border-gray-800">
-                            <motion.button
-                              className="flex items-center gap-2 text-sm font-medium text-orange-600 dark:text-orange-400 hover:text-orange-700 dark:hover:text-orange-300 transition-colors duration-200"
-                              style={{ fontFamily: 'Albert Sans, sans-serif' }}
-                              whileHover={{ x: 3 }}
-                              onClick={() => handleNavigation('/contact')}
-                            >
-                              <span>Need help? Contact us</span>
-                              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                                <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                              </svg>
-                            </motion.button>
-                          </div>
-                        </div>
-                        </motion.div>
-                      ) : (
-                        /* Regular dropdown for non-mega items */
-                        <motion.div
-                          initial={{ opacity: 0, y: 10, scale: 0.95 }}
-                          animate={{ opacity: 1, y: 0, scale: 1 }}
-                          exit={{ opacity: 0, y: 10, scale: 0.95 }}
-                          transition={{ duration: 0.2 }}
-                          className="absolute top-full left-0 pt-2 w-64"
-                        >
-                        <div className="bg-white/95 dark:bg-gray-900/95 backdrop-blur-xl rounded-2xl shadow-2xl border border-gray-200/20 dark:border-gray-700/20 overflow-hidden">
-                          <div className="py-3">
-                            {item.dropdown.map((dropItem, index) => (
-                              <motion.button
-                                key={dropItem.name}
-                                className="w-full flex items-center px-4 py-3 text-sm text-gray-700 dark:text-gray-300 hover:text-orange-600 dark:hover:text-orange-400 hover:bg-orange-50/50 dark:hover:bg-orange-900/20 transition-all duration-200 text-left"
-                                style={{ fontFamily: 'Albert Sans, sans-serif' }}
-                                whileHover={{ x: 4 }}
-                                initial={{ opacity: 0, x: -10 }}
-                                animate={{ opacity: 1, x: 0 }}
-                                transition={{ delay: index * 0.05 }}
-                                onClick={() => handleNavigation(dropItem.href)}
-                              >
-                                <span className="font-medium">{dropItem.name}</span>
-                              </motion.button>
-                            ))}
-                          </div>
-                        </div>
-                        </motion.div>
-                      )
-                    )}
-                  </AnimatePresence>
-                </div>
-              ))}
+                          {item.name}
+                        </Link>
+                      ))}
+                      <Link
+                        href="/web-design-company-in-ghana"
+                        className="mt-1 rounded-xl px-3.5 py-2.5 text-sm font-semibold text-orange-600 hover:bg-orange-50 transition-colors"
+                        style={{ fontFamily: 'Albert Sans, sans-serif' }}
+                      >
+                        View all services →
+                      </Link>
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </div>
 
-            {/* Right Side Actions */}
-            <div className="flex items-center space-x-3">
-              {/* ✅ Request a Service Desktop Button */}
-              <RequestServiceButton />
+            <Link
+              href="/portfolio"
+              className={navLinkClass(isActive('/portfolio'))}
+              style={{ fontFamily: 'Albert Sans, sans-serif' }}
+            >
+              Portfolio
+            </Link>
+            <Link
+              href="/pricing"
+              className={navLinkClass(isActive('/pricing'))}
+              style={{ fontFamily: 'Albert Sans, sans-serif' }}
+            >
+              Pricing
+            </Link>
+            <Link
+              href="/about"
+              className={navLinkClass(isActive('/about'))}
+              style={{ fontFamily: 'Albert Sans, sans-serif' }}
+            >
+              About
+            </Link>
 
-              {/* Mobile menu button */}
-              <div className="md:hidden">
-                <motion.button
-                  onClick={() => setIsMenuOpen(!isMenuOpen)}
-                  className="flex items-center justify-center w-10 h-10 rounded-xl bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700 transition-all duration-300"
-                  whileTap={{ scale: 0.95 }}
-                  aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
-                >
-                  {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
-                </motion.button>
-              </div>
+            <div
+              className="relative"
+              onMouseEnter={() => openDropdown('resources')}
+              onMouseLeave={scheduleClose}
+            >
+              <button
+                type="button"
+                className={navLinkClass(RESOURCES.some((item) => isActive(item.href)))}
+                style={{ fontFamily: 'Albert Sans, sans-serif' }}
+                aria-expanded={openMenu === 'resources'}
+                onClick={() => setOpenMenu(openMenu === 'resources' ? null : 'resources')}
+              >
+                Resources
+                <ChevronDown size={14} className={`transition-transform ${openMenu === 'resources' ? 'rotate-180' : ''}`} />
+              </button>
+              <AnimatePresence>
+                {openMenu === 'resources' && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 8 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 6 }}
+                    transition={{ duration: 0.16 }}
+                    className="absolute left-0 top-full mt-3 w-[340px] rounded-2xl border border-black/8 bg-white p-3 shadow-2xl shadow-black/10"
+                    onMouseEnter={() => openDropdown('resources')}
+                    onMouseLeave={scheduleClose}
+                  >
+                    {RESOURCES.map((item) => (
+                      <Link
+                        key={item.href}
+                        href={item.href}
+                        className="flex items-start gap-3 rounded-xl px-3 py-2.5 hover:bg-orange-50 transition-colors"
+                      >
+                        <span className="mt-0.5 flex h-8 w-8 items-center justify-center rounded-lg bg-orange-50 text-orange-600">
+                          <DropdownIcon name={item.icon} />
+                        </span>
+                        <span>
+                          <span
+                            className="block text-sm font-semibold text-gray-900"
+                            style={{ fontFamily: 'Albert Sans, sans-serif' }}
+                          >
+                            {item.name}
+                          </span>
+                          <span
+                            className="block text-xs text-gray-500 mt-0.5"
+                            style={{ fontFamily: 'Albert Sans, sans-serif' }}
+                          >
+                            {item.description}
+                          </span>
+                        </span>
+                      </Link>
+                    ))}
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </div>
           </div>
 
-          {/* Mobile Navigation */}
-          <AnimatePresence>
-            {isMenuOpen && (
-              <motion.div
-                initial={{ opacity: 0, height: 0, y: -20 }}
-                animate={{ opacity: 1, height: 'auto', y: 0 }}
-                exit={{ opacity: 0, height: 0, y: -20 }}
-                transition={{ duration: 0.3, ease: "easeInOut" }}
-                className="md:hidden bg-white/95 dark:bg-gray-900/95 backdrop-blur-xl rounded-2xl mt-4 shadow-2xl border border-gray-200/20 dark:border-gray-700/20 max-h-[calc(100vh-100px)] overflow-y-auto"
-              >
-                <div className="p-6 space-y-2">
-                  {navigation.map((item, index) => (
-                    <motion.div
-                      key={item.name}
-                      initial={{ opacity: 0, x: -20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: index * 0.1 }}
-                    >
-                      <button
-                        className={`w-full flex items-center justify-between px-4 py-3.5 text-base font-medium rounded-xl transition-all duration-300 relative active:scale-[0.98] ${
-                          isActive(item.href)
-                            ? 'text-white bg-gradient-to-r from-orange-500 to-orange-600 shadow-lg'
-                            : 'text-gray-800 dark:text-gray-100 hover:text-orange-600 dark:hover:text-orange-400 hover:bg-orange-50/50 dark:hover:bg-orange-900/20'
-                        }`}
-                        style={{ fontFamily: 'Albert Sans, sans-serif' }}
-                        onClick={(e) => {
-                          e.preventDefault();
-                          e.stopPropagation();
-                          if (item.dropdown) {
-                            setActiveDropdown(activeDropdown === item.name ? null : item.name);
-                          } else {
-                            handleNavigation(item.href);
-                          }
-                        }}
-                      >
-                        <span className="flex items-center gap-2">
-                          {item.name}
-                          {item.isCourses && (
-                            <span className="bg-red-500 text-white text-[10px] font-bold px-1.5 py-0.5 rounded animate-pulse">New</span>
-                          )}
-                        </span>
-                        {item.dropdown && (
-                          <motion.span animate={{ rotate: activeDropdown === item.name ? 180 : 0 }} transition={{ duration: 0.2 }} className="text-lg flex items-center">
-                            <ChevronDown size={20} />
-                          </motion.span>
-                        )}
-                      </button>
+          <div className="hidden lg:flex items-center gap-2.5">
+            <LanguageSwitcher variant="header" dropUp={false} />
+            <Link
+              href="/contact"
+              className="inline-flex items-center justify-center rounded-full border border-gray-900 bg-white px-4 py-2.5 text-sm font-semibold text-gray-900 hover:bg-gray-50 transition-colors"
+              style={{ fontFamily: 'Albert Sans, sans-serif' }}
+            >
+              Contact Us
+            </Link>
+            <button
+              type="button"
+              onClick={() => setIsExpertModalOpen(true)}
+              className="inline-flex items-center justify-center rounded-full bg-orange-500 px-4 py-2.5 text-sm font-semibold text-white hover:bg-orange-600 transition-colors"
+              style={{ fontFamily: 'Albert Sans, sans-serif' }}
+            >
+              Request a Service
+            </button>
+          </div>
 
-                      <AnimatePresence>
-                        {item.dropdown && activeDropdown === item.name && (
-                          <motion.div
-                            initial={{ opacity: 0, height: 0 }}
-                            animate={{ opacity: 1, height: 'auto' }}
-                            exit={{ opacity: 0, height: 0 }}
-                            transition={{ duration: 0.25 }}
-                            className="mt-2"
-                            style={{ overflow: 'hidden' }}
-                          >
-                            {/* Section header for mobile mega menu */}
-                            {item.megaMenu && (
-                              <div className="px-4 py-2 mb-1">
-                                <span className="text-[10px] font-semibold uppercase tracking-widest text-gray-400 dark:text-gray-500" style={{ fontFamily: 'Albert Sans, sans-serif' }}>Resources</span>
-                              </div>
-                            )}
-                            <div className={item.megaMenu ? 'space-y-0.5 ml-2' : 'space-y-1 ml-4'}>
-                              {item.dropdown.map((dropItem, dropIndex) => (
-                                <motion.button
-                                  key={dropItem.name}
-                                  initial={{ opacity: 0, x: -10 }}
-                                  animate={{ opacity: 1, x: 0 }}
-                                  transition={{ delay: dropIndex * 0.05 }}
-                                  className="w-full flex items-start gap-3 px-4 py-3.5 text-left hover:bg-orange-50/50 dark:hover:bg-orange-900/15 rounded-xl transition-all duration-200 group active:bg-orange-100 dark:active:bg-orange-900/30"
-                                  style={{ fontFamily: 'Albert Sans, sans-serif' }}
-                                  onClick={() => handleNavigation(dropItem.href)}
-                                >
-                                  {item.megaMenu && dropItem.icon && (
-                                    <span className="flex-shrink-0 mt-0.5 w-8 h-8 rounded-lg bg-orange-50 dark:bg-orange-900/20 flex items-center justify-center text-orange-500 dark:text-orange-400">
-                                      {getDropdownIcon(dropItem.icon)}
-                                    </span>
-                                  )}
-                                  <div className="min-w-0">
-                                    <span className="block text-sm font-medium text-gray-700 dark:text-gray-300 group-hover:text-orange-600 dark:group-hover:text-orange-400 transition-colors">{dropItem.name}</span>
-                                    {dropItem.description && (
-                                      <span className="block text-xs text-gray-400 dark:text-gray-500 mt-0.5 leading-relaxed">{dropItem.description}</span>
-                                    )}
-                                  </div>
-                                </motion.button>
-                              ))}
-                            </div>
-                          </motion.div>
-                        )}
-                      </AnimatePresence>
-                    </motion.div>
-                  ))}
-
-                  {/* ✅ Request a Service Mobile Button */}
-                  <div className="pt-4 border-t border-gray-200 dark:border-gray-700">
-                    <RequestServiceButtonMobile />
-                  </div>
-                </div>
-              </motion.div>
-            )}
-          </AnimatePresence>
+          <div className="flex lg:hidden items-center gap-2">
+            <LanguageSwitcher variant="header" dropUp={false} />
+            <button
+              type="button"
+              aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
+              onClick={() => setIsMenuOpen((value) => !value)}
+              className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-black/10 text-gray-900"
+            >
+              {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
+            </button>
+          </div>
         </nav>
+
+        <AnimatePresence>
+          {isMenuOpen && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: 'auto' }}
+              exit={{ opacity: 0, height: 0 }}
+              className="lg:hidden border-t border-black/[0.06] bg-white overflow-hidden"
+            >
+              <div className="max-h-[calc(100vh-72px)] overflow-y-auto px-4 py-4 space-y-1">
+                <Link href="/" className="block rounded-xl px-4 py-3 text-base font-medium text-gray-900 hover:bg-gray-50" style={{ fontFamily: 'Albert Sans, sans-serif' }}>
+                  Home
+                </Link>
+
+                <button
+                  type="button"
+                  onClick={() => setOpenMenu(openMenu === 'm-services' ? null : 'm-services')}
+                  className="flex w-full items-center justify-between rounded-xl px-4 py-3 text-base font-medium text-gray-900 hover:bg-gray-50"
+                  style={{ fontFamily: 'Albert Sans, sans-serif' }}
+                >
+                  Services
+                  <ChevronDown size={16} className={openMenu === 'm-services' ? 'rotate-180' : ''} />
+                </button>
+                {openMenu === 'm-services' && (
+                  <div className="ml-2 border-l border-black/10 pl-3 space-y-1">
+                    {SERVICES.map((item) => (
+                      <Link key={item.href} href={item.href} className="block rounded-lg px-3 py-2.5 text-sm text-gray-600 hover:text-orange-600" style={{ fontFamily: 'Albert Sans, sans-serif' }}>
+                        {item.name}
+                      </Link>
+                    ))}
+                    <Link href="/web-design-company-in-ghana" className="block rounded-lg px-3 py-2.5 text-sm font-semibold text-orange-600" style={{ fontFamily: 'Albert Sans, sans-serif' }}>
+                      View all services →
+                    </Link>
+                  </div>
+                )}
+
+                <Link href="/portfolio" className="block rounded-xl px-4 py-3 text-base font-medium text-gray-900 hover:bg-gray-50" style={{ fontFamily: 'Albert Sans, sans-serif' }}>
+                  Portfolio
+                </Link>
+                <Link href="/pricing" className="block rounded-xl px-4 py-3 text-base font-medium text-gray-900 hover:bg-gray-50" style={{ fontFamily: 'Albert Sans, sans-serif' }}>
+                  Pricing
+                </Link>
+                <Link href="/about" className="block rounded-xl px-4 py-3 text-base font-medium text-gray-900 hover:bg-gray-50" style={{ fontFamily: 'Albert Sans, sans-serif' }}>
+                  About
+                </Link>
+
+                <button
+                  type="button"
+                  onClick={() => setOpenMenu(openMenu === 'm-resources' ? null : 'm-resources')}
+                  className="flex w-full items-center justify-between rounded-xl px-4 py-3 text-base font-medium text-gray-900 hover:bg-gray-50"
+                  style={{ fontFamily: 'Albert Sans, sans-serif' }}
+                >
+                  Resources
+                  <ChevronDown size={16} className={openMenu === 'm-resources' ? 'rotate-180' : ''} />
+                </button>
+                {openMenu === 'm-resources' && (
+                  <div className="ml-2 border-l border-black/10 pl-3 space-y-1">
+                    {RESOURCES.map((item) => (
+                      <Link key={item.href} href={item.href} className="block rounded-lg px-3 py-2.5 text-sm text-gray-600 hover:text-orange-600" style={{ fontFamily: 'Albert Sans, sans-serif' }}>
+                        {item.name}
+                      </Link>
+                    ))}
+                  </div>
+                )}
+
+                <div className="pt-4 space-y-2.5">
+                  <Link
+                    href="/contact"
+                    className="flex w-full items-center justify-center rounded-full border border-gray-900 px-4 py-3 text-sm font-semibold text-gray-900"
+                    style={{ fontFamily: 'Albert Sans, sans-serif' }}
+                  >
+                    Contact Us
+                  </Link>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setIsMenuOpen(false);
+                      setIsExpertModalOpen(true);
+                    }}
+                    className="flex w-full items-center justify-center rounded-full bg-orange-500 px-4 py-3 text-sm font-semibold text-white"
+                    style={{ fontFamily: 'Albert Sans, sans-serif' }}
+                  >
+                    Request a Service
+                  </button>
+                </div>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </header>
 
-      {/* Request a Service Modal */}
-      <TalkToExpertModal
-        isOpen={isExpertModalOpen}
-        onClose={() => setIsExpertModalOpen(false)}
-      />
+      <TalkToExpertModal isOpen={isExpertModalOpen} onClose={() => setIsExpertModalOpen(false)} />
     </>
   );
-};
-
-export default Navbar;
+}
