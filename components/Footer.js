@@ -101,12 +101,12 @@ export default function Footer() {
               How can we help?{' '}
               <Link
                 href="/contact"
-                className="group relative inline-flex items-center gap-1.5 text-gray-950 underline decoration-orange-500 decoration-2 underline-offset-[6px] transition-colors duration-300 hover:text-orange-600 hover:decoration-orange-600 dark:text-white dark:decoration-[#c8f542] dark:hover:text-[#c8f542] dark:hover:decoration-white"
+                className="group relative inline-flex items-center gap-1.5 text-gray-950 underline decoration-orange-500 decoration-2 underline-offset-[6px] transition-colors duration-300 hover:text-orange-600 hover:decoration-orange-600 focus:text-orange-600 focus:decoration-orange-600 active:text-orange-600 active:decoration-orange-600 dark:text-white dark:decoration-[#c8f542] dark:hover:text-[#c8f542] dark:hover:decoration-white dark:focus:text-[#c8f542] dark:focus:decoration-white dark:active:text-[#c8f542] dark:active:decoration-white"
               >
                 <span>Contact us.</span>
                 <span
                   aria-hidden="true"
-                  className="inline-flex translate-x-0 opacity-70 transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:translate-x-1 group-hover:opacity-100"
+                  className="inline-flex translate-x-0 opacity-70 transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:translate-x-1 group-hover:opacity-100 group-focus:translate-x-1 group-focus:opacity-100 group-active:translate-x-1 group-active:opacity-100"
                 >
                   →
                 </span>
