@@ -236,11 +236,6 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/request-a-quote" className={footerLink}>
-                  Request a Quote
-                </Link>
-              </li>
-              <li>
                 <Link href="/best-web-designer-in-accra" className={footerLink}>
                   Best in Accra
                 </Link>
