@@ -6,6 +6,7 @@ import {
   CreditCard,
   DollarSign,
   FileText,
+  GraduationCap,
   HelpCircle,
   Menu,
   Shield,
