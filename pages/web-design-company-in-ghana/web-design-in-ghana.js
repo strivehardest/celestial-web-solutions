@@ -32,7 +32,7 @@ const service = {
     "professional web designer Ghana",
     "affordable web design Ghana"
   ],
-  icon: require("lucide-react").Monitor,
+  icon: Monitor,
   heroImage: "https://www.ntc.edu/sites/default/files/styles/16_9_1600x900/public/2021-06/web-design-header.jpg?itok=KPytPu7S",
   keywords: ["web design", "UI/UX design", "responsive websites", "landing pages"],
   details: [
