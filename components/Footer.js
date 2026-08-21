@@ -101,9 +101,15 @@ export default function Footer() {
               How can we help?{' '}
               <Link
                 href="/contact"
-                className="underline decoration-orange-500 decoration-2 underline-offset-[6px] transition-opacity hover:opacity-80 dark:decoration-[#c8f542]"
+                className="group relative inline-flex items-center gap-1.5 text-gray-950 underline decoration-orange-500 decoration-2 underline-offset-[6px] transition-colors duration-300 hover:text-orange-600 hover:decoration-orange-600 dark:text-white dark:decoration-[#c8f542] dark:hover:text-[#c8f542] dark:hover:decoration-white"
               >
-                Contact us.
+                <span>Contact us.</span>
+                <span
+                  aria-hidden="true"
+                  className="inline-flex translate-x-0 opacity-70 transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:translate-x-1 group-hover:opacity-100"
+                >
+                  →
+                </span>
               </Link>
             </p>
             <p className="mt-2 max-w-md text-[14px] text-gray-500 dark:text-white/55">
