@@ -357,8 +357,8 @@ export default function Footer() {
 
       {/* Legal bar — leave room on mobile for fixed chat button */}
       <div className="border-t border-white/10">
-        <div className="mx-auto flex max-w-7xl flex-col gap-4 px-4 py-6 pb-28 sm:px-6 lg:flex-row lg:items-center lg:justify-between lg:gap-6 lg:px-8 lg:pb-8">
-          <div className="flex flex-wrap items-center gap-x-5 gap-y-2 text-[13px] text-white/55">
+        <div className="mx-auto flex max-w-7xl flex-col items-center gap-4 px-4 py-6 pb-28 text-center sm:px-6 lg:flex-row lg:items-center lg:justify-between lg:gap-6 lg:px-8 lg:pb-8 lg:text-left">
+          <div className="flex flex-col items-center gap-y-2 text-[13px] text-white/55 sm:flex-row sm:flex-wrap sm:justify-center sm:gap-x-5 lg:items-center lg:justify-start">
             <Link href="/privacy" className="transition-colors hover:text-white">
               Privacy Notice
             </Link>
@@ -370,7 +370,7 @@ export default function Footer() {
             </Link>
             <span>© {year} Celestial Web Solutions. All rights reserved.</span>
           </div>
-          <div className="flex flex-wrap items-center gap-4">
+          <div className="flex flex-wrap items-center justify-center gap-4 lg:justify-end">
             <div className="flex items-center gap-2.5">
               <span className="text-[11px] font-semibold uppercase tracking-[0.14em] text-white/40">
                 Theme
