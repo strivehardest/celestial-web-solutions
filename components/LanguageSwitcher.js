@@ -124,8 +124,8 @@ export default function LanguageSwitcher({
                   className={`
                     w-full flex items-center gap-3 px-3.5 py-2.5 text-left text-sm transition-colors
                     ${active
-                      ? 'bg-orange-50 text-orange-700 font-semibold'
-                      : 'text-gray-700 hover:bg-gray-50'}
+                      ? 'bg-orange-50 text-orange-700 font-semibold dark:bg-orange-500/15 dark:text-orange-300'
+                      : 'text-gray-700 hover:bg-gray-50 dark:text-gray-300 dark:hover:bg-white/5'}
                   `}
                   style={{ fontFamily: 'Albert Sans, sans-serif' }}
                 >
