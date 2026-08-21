@@ -32,6 +32,7 @@ const SERVICES = [
 
 const RESOURCES = [
   { name: 'Blog', href: '/blog', description: 'Insights and tutorials', icon: 'blog' },
+  { name: 'Courses', href: '/courses', description: 'Learn web design & development', icon: 'courses' },
   { name: 'FAQs', href: '/faqs', description: 'Common questions answered', icon: 'faqs' },
   { name: 'Make Payment', href: '/payment', description: 'Secure online payments', icon: 'payment' },
   { name: 'Terms of Service', href: '/terms', description: 'Our terms and conditions', icon: 'terms' },
@@ -43,6 +44,8 @@ function DropdownIcon({ name }) {
   switch (name) {
     case 'blog':
       return <BookOpen className={className} />;
+    case 'courses':
+      return <GraduationCap className={className} />;
     case 'pricing':
       return <DollarSign className={className} />;
     case 'faqs':
