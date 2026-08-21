@@ -1,8 +1,8 @@
 import { ArrowRight } from 'lucide-react';
 
 /**
- * Arrow hidden until parent `.group` is hovered, focused, or pressed.
- * Absolutely positioned so the label does not shift on hover.
+ * Arrow shown only while the parent `.group` is pressed or focused
+ * (not on hover). Absolutely positioned so the label does not shift.
  */
 export default function CtaArrow({
   size = 18,
@@ -15,7 +15,6 @@ export default function CtaArrow({
       className={`
         cta-arrow pointer-events-none absolute right-4 top-1/2 z-10
         -translate-y-1/2 translate-x-1 opacity-0
-        group-hover:translate-x-0 group-hover:opacity-100
         group-focus:translate-x-0 group-focus:opacity-100
         group-focus-visible:translate-x-0 group-focus-visible:opacity-100
         group-active:translate-x-0 group-active:opacity-100
