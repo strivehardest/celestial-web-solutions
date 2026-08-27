@@ -33,7 +33,7 @@ const service = {
     "online store Ghana",
     "ecommerce web developer Ghana"
   ],
-  icon: require("lucide-react").ShoppingCart,
+  icon: ShoppingCart,
   heroImage: "https://admin.wac.co/uploads/What_is_E_commerce_and_What_are_its_Applications_2_d2eb0d4402.jpg",
   keywords: [
     "e-commerce website development Ghana",
