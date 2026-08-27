@@ -17,6 +17,7 @@ const PLACEHOLDER_IMAGE = "/png/screenshots/placeholder.webp";
 const PORTFOLIO_IMAGES = {
   "act-campus-care": "/png/screenshots/act-campus-care.webp",
   "ghanas-event": "/png/screenshots/ghanas-event.webp",
+  "ghanas-event-app": "/png/screenshots/ghanas-event.webp",
   "ghanas-event-blog": "/png/screenshots/ghanas-event-blog.webp",
   "building-planner-designs": "/png/screenshots/buildingplanner.webp",
   "celestial-shopping": "/png/screenshots/celestial-shopping.webp",
@@ -58,6 +59,7 @@ const CATEGORIES = [
   "business & corporate",
   "e-commerce & retail",
   "events & ticketing",
+  "mobile app",
   "portfolio & personal",
   "news & media",
   "educational institutions",
@@ -125,6 +127,10 @@ function matchesFilter(p, filter) {
     case "real estate & construction":
       return category.includes("real estate") || category.includes("construction") ||
         title.includes("homes") || title.includes("building");
+    case "events & ticketing":
+      return category.includes("event") || category.includes("ticketing");
+    case "mobile app":
+      return category.includes("mobile app") || category.includes("mobile") || title.includes("app");
     case "churches & religious":
       return description.includes("chaplain") || description.includes("motivational speaker") ||
         title.includes("church");
