@@ -34,7 +34,7 @@ const service = {
     "security hardening Ghana",
     "server management Ghana"
   ],
-  icon: require("lucide-react").LifeBuoy,
+  icon: LifeBuoy,
   heroImage: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=90&w=2400&auto=format&fit=crop",
   keywords: ["IT support", "website maintenance", "security", "server management", "monitoring"],
   details: [
