@@ -89,6 +89,17 @@ const projects = [
       "User Feedback System",
       "Cloudfare Turnstile Integration",
     ],
+    app: {
+      title: "Ghanas Event Mobile App",
+      description:
+        "Native iOS and Android apps for discovering events, buying tickets, and scanning QR codes on the go. Available soon on the App Store and Google Play.",
+      comingSoon: true,
+      link: "https://www.ghanasevent.com",
+      linkLabel: "Open web app",
+      playStoreUrl: null,
+      appStoreUrl: null,
+      platforms: ["iOS", "Android"],
+    },
   },
   {
     title: "Ghanas Event Blog",
