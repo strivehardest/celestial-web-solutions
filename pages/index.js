@@ -479,7 +479,7 @@ const IndexPage = ({ latestPosts = [] }) => {
               className="text-center"
             >
               <motion.div
-                className="inline-flex max-w-full items-center gap-1.5 rounded-full bg-orange-500/90 px-3 py-1.5 text-[11px] font-bold text-white shadow-lg sm:gap-2 sm:px-4 sm:py-2 sm:text-sm"
+                className="mb-6 inline-flex max-w-full items-center gap-1.5 rounded-full bg-orange-500/90 px-3 py-1.5 text-[11px] font-bold text-white shadow-lg sm:gap-2 sm:px-4 sm:py-2 sm:text-sm"
                 style={{ fontFamily: 'Albert Sans, sans-serif' }}
                 initial={{ opacity: 0, scale: 0.8 }}
                 whileInView={{ opacity: 1, scale: 1 }}
