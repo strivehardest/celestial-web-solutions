@@ -60,9 +60,10 @@ export default function ContactChatWidget() {
       style={{
         position: 'fixed',
         right: '20px',
-        bottom: '20px',
-        zIndex: 9999,
+        bottom: '56px',
+        zIndex: 10050,
         fontFamily: 'Albert Sans, sans-serif',
+        pointerEvents: 'auto',
       }}
     >
       {isOpen && (
@@ -293,41 +294,40 @@ export default function ContactChatWidget() {
         aria-expanded={isOpen}
         aria-label={isOpen ? 'Close chat menu' : 'Open chat menu'}
         style={{
-          width: '60px',
-          height: '60px',
-          borderRadius: '16px',
-          border: 'none',
+          width: '58px',
+          height: '58px',
+          borderRadius: '9999px',
+          border: '3px solid #ffffff',
           cursor: 'pointer',
-          background: isOpen
-            ? 'linear-gradient(145deg, #ea580c 0%, #c2410c 100%)'
-            : 'linear-gradient(145deg, #fb923c 0%, #f97316 55%, #ea580c 100%)',
-          boxShadow: '0 14px 30px rgba(249, 115, 22, 0.42)',
+          background: isOpen ? '#ea580c' : '#f97316',
+          boxShadow: '0 10px 28px rgba(0, 0, 0, 0.35), 0 0 0 1px rgba(249, 115, 22, 0.35)',
           color: '#fff',
           display: 'inline-flex',
           alignItems: 'center',
           justifyContent: 'center',
           position: 'relative',
-          transition: 'transform 0.18s ease, box-shadow 0.18s ease',
+          transition: 'transform 0.18s ease, box-shadow 0.18s ease, background-color 0.18s ease',
         }}
         onMouseEnter={(event) => {
-          event.currentTarget.style.transform = 'translateY(-2px) scale(1.03)';
-          event.currentTarget.style.boxShadow = '0 18px 34px rgba(249, 115, 22, 0.48)';
+          event.currentTarget.style.transform = 'translateY(-2px) scale(1.04)';
+          event.currentTarget.style.boxShadow =
+            '0 14px 32px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(249, 115, 22, 0.45)';
         }}
         onMouseLeave={(event) => {
           event.currentTarget.style.transform = 'translateY(0) scale(1)';
-          event.currentTarget.style.boxShadow = '0 14px 30px rgba(249, 115, 22, 0.42)';
+          event.currentTarget.style.boxShadow =
+            '0 10px 28px rgba(0, 0, 0, 0.35), 0 0 0 1px rgba(249, 115, 22, 0.35)';
         }}
       >
         <span
           aria-hidden="true"
           style={{
             position: 'absolute',
-            inset: 0,
-            borderRadius: '16px',
-            background: 'rgba(251, 146, 60, 0.35)',
+            inset: '-6px',
+            borderRadius: '9999px',
+            border: '2px solid rgba(249, 115, 22, 0.45)',
             animation: 'cwsChatPulse 2s infinite',
             pointerEvents: 'none',
-            zIndex: -1,
           }}
         />
         {isOpen ? (
@@ -335,7 +335,7 @@ export default function ContactChatWidget() {
             <path d="M18 6L6 18M6 6l12 12" strokeLinecap="round" />
           </svg>
         ) : (
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
             <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H5.2L4 17.2V4h16v12z" />
             <circle cx="8" cy="10" r="1.2" />
             <circle cx="12" cy="10" r="1.2" />
