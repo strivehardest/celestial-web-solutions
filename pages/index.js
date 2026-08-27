@@ -464,7 +464,7 @@ const IndexPage = ({ latestPosts = [] }) => {
       <div className="min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300">
 
         {/* ── Hero Text Section ── */}
-        <section className="relative py-16 sm:py-24 overflow-hidden min-h-[620px]">
+        <section className="relative overflow-hidden min-h-[620px] pt-28 pb-16 sm:pt-32 sm:pb-24">
           {/* Static background image from public folder */}
           <div className="absolute inset-0 w-full h-full">
             <img src="/hero-bg.jpg" alt="Hero Background" className="w-full h-full object-cover object-center" style={{zIndex:0}} />
