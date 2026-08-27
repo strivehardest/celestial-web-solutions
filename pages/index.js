@@ -479,16 +479,20 @@ const IndexPage = ({ latestPosts = [] }) => {
               className="text-center"
             >
               <motion.div
-                className="inline-flex items-center space-x-2 bg-orange-500/90 text-white px-4 py-2 rounded-full mb-6 text-xs sm:text-sm font-bold shadow-lg"
+                className="inline-flex max-w-full items-center gap-1.5 rounded-full bg-orange-500/90 px-3 py-1.5 text-[11px] font-bold text-white shadow-lg sm:gap-2 sm:px-4 sm:py-2 sm:text-sm"
                 style={{ fontFamily: 'Albert Sans, sans-serif' }}
                 initial={{ opacity: 0, scale: 0.8 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.2, duration: 0.6 }}
               >
-                <span>Full Stack Development</span>
-                <span className="animate-pulse">●</span>
-                <span>Available for Projects</span>
+                <span className="hidden sm:inline">Full Stack Development</span>
+                <span className="sm:hidden">Full Stack Dev</span>
+                <span className="animate-pulse" aria-hidden="true">
+                  ●
+                </span>
+                <span className="hidden sm:inline">Available for Projects</span>
+                <span className="sm:hidden">Available</span>
               </motion.div>
 
               <h1
