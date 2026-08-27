@@ -83,41 +83,37 @@ import { ArrowRight, ArrowLeft, ExternalLink, Calendar, MapPin, User, Clock, Sta
 function StoreBadge({ store, href, comingSoon }) {
   const isPlay = store === 'play';
   const label = isPlay ? 'Google Play' : 'App Store';
-  const sub = comingSoon || !href ? 'Coming soon' : isPlay ? 'Get it on' : 'Download on the';
-  const content = (
-    <>
-      <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-black text-white dark:bg-white dark:text-black">
-        {isPlay ? (
-          <svg viewBox="0 0 24 24" className="h-5 w-5" fill="currentColor" aria-hidden>
-            <path d="M3.6 2.3c-.3.2-.6.6-.6 1.1v17.2c0 .5.3.9.6 1.1l9.7-9.7L3.6 2.3zm12.1 7L13 12l2.7 2.7 3.5-2c.6-.3.6-1.1 0-1.4l-3.5-2zM4.9 1.1l10.4 6 2.6-1.5L7.7.4C6.6-.1 5.5.2 4.9 1.1zM4.9 22.9c.6.9 1.7 1.2 2.8.7l10.2-5.9-2.6-1.5-10.4 6.7z" />
-          </svg>
-        ) : (
-          <svg viewBox="0 0 24 24" className="h-5 w-5" fill="currentColor" aria-hidden>
-            <path d="M16.4 12.7c0-2.2 1.8-3.3 1.9-3.4-1-1.5-2.6-1.7-3.2-1.7-1.3-.1-2.6.8-3.3.8-.7 0-1.8-.8-3-.7-1.5.1-2.9.9-3.7 2.3-1.6 2.8-.4 6.9 1.1 9.1.8 1.1 1.7 2.3 2.9 2.2 1.2-.1 1.6-.7 3-.7s1.8.7 3 .7 2-.1 2.9-2.3c1.1-1.1 1.5-2.2 1.5-2.3-.1 0-2.8-1.1-2.8-4.1zM14.3 5.8c.6-.8 1.1-1.8.9-2.8-.9.1-2 .6-2.6 1.4-.6.7-1.1 1.8-.9 2.8 1 .1 2-.5 2.6-1.4z" />
-          </svg>
-        )}
-      </span>
-      <span className="min-w-0 text-left">
-        <span className="block text-[10px] uppercase tracking-wide text-gray-500 dark:text-gray-400">{sub}</span>
-        <span className="block text-sm font-semibold text-gray-900 dark:text-white">{label}</span>
-      </span>
-    </>
+  const src = isPlay
+    ? '/images/stores/google-play-badge.png'
+    : '/images/stores/app-store-badge.svg';
+  const img = (
+    <img
+      src={src}
+      alt={comingSoon || !href ? `${label} — Get App soon` : label}
+      className={`h-12 w-auto object-contain sm:h-14 ${comingSoon || !href ? 'opacity-80' : ''}`}
+    />
   );
-
-  const className =
-    'inline-flex min-w-[160px] items-center gap-3 rounded-2xl border border-gray-200 bg-white px-4 py-3 shadow-sm transition dark:border-gray-700 dark:bg-gray-950';
 
   if (comingSoon || !href) {
     return (
-      <div className={`${className} opacity-90`} aria-label={`${label} — Coming soon`}>
-        {content}
+      <div className="relative inline-flex flex-col items-start gap-1" aria-label={`${label} — Get App soon`}>
+        <div className="pointer-events-none select-none">{img}</div>
+        <span className="rounded-full bg-orange-500/10 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-orange-600 dark:text-orange-400">
+          Get App soon
+        </span>
       </div>
     );
   }
 
   return (
-    <a href={href} target="_blank" rel="noopener noreferrer" className={`${className} hover:border-orange-400 hover:shadow-md`}>
-      {content}
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="inline-flex transition hover:opacity-90"
+      aria-label={label}
+    >
+      {img}
     </a>
   );
 }
@@ -131,10 +127,10 @@ const ProjectAppSection = ({ project }) => {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, delay: 0.22 }}
-      className="rounded-2xl border border-orange-200/70 bg-gradient-to-br from-orange-50 via-white to-white p-6 shadow-sm dark:border-orange-500/20 dark:from-orange-500/10 dark:via-gray-900 dark:to-gray-900 sm:p-8"
+      className="rounded-2xl border border-gray-200 bg-gray-50 p-6 dark:border-gray-800 dark:bg-gray-900 sm:p-8"
     >
       <div className="mb-5 flex flex-wrap items-center gap-3">
-        <span className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-orange-500 text-white shadow-lg shadow-orange-500/25">
+        <span className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-orange-500 text-white">
           <Smartphone className="h-5 w-5" />
         </span>
         <div>
@@ -146,7 +142,7 @@ const ProjectAppSection = ({ project }) => {
           </h2>
           {app.comingSoon && (
             <span className="mt-1 inline-flex items-center rounded-full bg-orange-500/10 px-2.5 py-0.5 text-xs font-semibold uppercase tracking-wide text-orange-600 dark:text-orange-400">
-              Coming soon
+              Get App soon
             </span>
           )}
         </div>
@@ -171,7 +167,7 @@ const ProjectAppSection = ({ project }) => {
         </div>
       )}
 
-      <div className="flex flex-wrap gap-3">
+      <div className="flex flex-wrap items-end gap-4">
         <StoreBadge store="play" href={app.playStoreUrl} comingSoon={app.comingSoon || !app.playStoreUrl} />
         <StoreBadge store="apple" href={app.appStoreUrl} comingSoon={app.comingSoon || !app.appStoreUrl} />
         {app.link && (
@@ -179,10 +175,10 @@ const ProjectAppSection = ({ project }) => {
             href={app.link}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex min-w-[160px] items-center justify-center gap-2 rounded-2xl bg-orange-500 px-4 py-3 text-sm font-semibold text-white shadow-lg shadow-orange-500/25 transition hover:bg-orange-600"
+            className="inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-orange-500 px-5 text-sm font-semibold text-white transition hover:bg-orange-600"
             style={{ fontFamily: 'Albert Sans, sans-serif' }}
           >
-            {app.linkLabel || 'Open app'}
+            {app.linkLabel || 'Open web app'}
             <ExternalLink className="h-4 w-4" />
           </a>
         )}
@@ -702,7 +698,7 @@ export default function ProjectDetail({ project, currentIndex, prevProject: prev
                 )}
                 {project.app?.link && (
                   <GlassButton href={project.app.link} variant="light" external>
-                    {project.app.comingSoon ? 'App Coming Soon' : (project.app.linkLabel || 'Open App')}
+                    {project.app.comingSoon ? 'Get App soon' : (project.app.linkLabel || 'Open App')}
                     {project.app.comingSoon ? <Smartphone className="w-4 h-4" /> : <ExternalLink className="w-4 h-4" />}
                   </GlassButton>
                 )}

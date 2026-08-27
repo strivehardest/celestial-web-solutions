@@ -12,7 +12,7 @@ import GlassButton from "../components/GlassButton";
 // ─────────────────────────────────────────────────────────────────────────────
 // Constants
 // ─────────────────────────────────────────────────────────────────────────────
-const PLACEHOLDER_IMAGE = "/png/screenshots/placeholder.webp";
+const PLACEHOLDER_IMAGE = "/png/screenshots/placeholder.svg";
 
 const PORTFOLIO_IMAGES = {
   "act-campus-care": "/png/screenshots/act-campus-care.webp",
@@ -280,9 +280,9 @@ const PortfolioCard = ({ project, image, index }) => {
               <span className="inline-flex items-center rounded-full bg-orange-500/10 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-orange-600 dark:text-orange-400">
                 Mobile App
               </span>
-              {project.app.comingSoon && (
+              {project.app?.comingSoon && (
                 <span className="inline-flex items-center rounded-full bg-gray-100 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-gray-600 dark:bg-gray-800 dark:text-gray-300">
-                  Coming Soon
+                  Get App soon
                 </span>
               )}
             </div>
