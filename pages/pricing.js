@@ -29,7 +29,7 @@ const paymentMethods = [
     title: 'MTN Mobile Money',
     subtitle: 'Merchant Number',
     icon: Smartphone,
-    color: 'from-yellow-400 to-yellow-500',
+    color: 'bg-yellow-400',
     details: { number: '705992', name: 'Celestial Web Solutions' },
     logo: '/mtn-momo-logo.png',
   },
@@ -38,7 +38,7 @@ const paymentMethods = [
     title: 'MTN Mobile Money',
     subtitle: 'Merchant Number',
     icon: Smartphone,
-    color: 'from-yellow-400 to-yellow-500',
+    color: 'bg-yellow-400',
     details: { number: '435991', name: 'Celestial Web Solutions' },
     logo: '/mtn-momo-logo.png',
   },
@@ -47,7 +47,7 @@ const paymentMethods = [
     title: 'Telecel Cash',
     subtitle: 'Pay with Telecel Money',
     icon: Smartphone,
-    color: 'from-red-500 to-red-600',
+    color: 'bg-red-500',
     details: { number: '0209044550', name: 'Waliu Ibrahimah Aforlabi' },
     logo: '/telecel-logo.webp',
   },
@@ -56,7 +56,7 @@ const paymentMethods = [
     title: 'Paystack Payment',
     subtitle: 'Secure online payment',
     icon: CreditCard,
-    color: 'from-blue-500 to-blue-600',
+    color: 'bg-blue-500',
     details: { link: 'paystack.shop/pay/payment-for-celestial' },
     logo: '/paystack-logo.png',
   },
@@ -65,7 +65,7 @@ const paymentMethods = [
     title: 'Bank Transfer',
     subtitle: 'Available on demand',
     icon: Building2,
-    color: 'from-orange-500 to-orange-600',
+    color: 'bg-orange-500',
     details: {
       onDemand: true,
       message: 'Bank account details are available on demand. Contact us and we\'ll share the transfer details for your payment.',
@@ -555,7 +555,7 @@ export default function PricingWithCalculator() {
       </Head>
 
       {/* Hero Section */}
-      <section className="relative py-20 bg-gradient-to-br from-orange-500 via-orange-600 to-red-500 overflow-hidden">
+      <section className="relative py-20 bg-orange-500 overflow-hidden">
         {/* Background Image */}
         <div className="absolute inset-0 overflow-hidden">
           <img 
@@ -563,7 +563,7 @@ export default function PricingWithCalculator() {
             alt="Pricing Background"
             className="w-full h-full object-cover opacity-20"
           />
-          <div className="absolute inset-0 bg-gradient-to-br from-orange-300/50 via-orange-600/40 to-red-500/80"></div>
+          <div className="absolute inset-0 bg-orange-600/60"></div>
         </div>
 
         <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
@@ -608,7 +608,7 @@ export default function PricingWithCalculator() {
       {/* Calculator Section */}
       <AnimatePresence>
         {showCalculator && (
-          <motion.section initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: "auto" }} exit={{ opacity: 0, height: 0 }} transition={{ duration: 0.3 }} className="py-16 bg-gradient-to-br from-orange-50 to-red-50 dark:from-gray-800 dark:to-gray-900">
+          <motion.section initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: "auto" }} exit={{ opacity: 0, height: 0 }} transition={{ duration: 0.3 }} className="py-16 bg-orange-50 dark:bg-gray-800">
             <div className="max-w-4xl mx-auto px-4">
               <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-2xl p-8">
                 <div className="flex items-center justify-between mb-8">
@@ -934,7 +934,7 @@ export default function PricingWithCalculator() {
             
             <table className="w-full">
               <thead>
-                <tr className="bg-gradient-to-r from-orange-500 to-orange-600 text-white">
+                <tr className="bg-orange-500 text-white">
                   <th className="px-6 py-4 text-left font-bold" style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}>Features</th>
                   <th className="px-6 py-4 text-center font-bold" style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}>Starter</th>
                   <th className="px-6 py-4 text-center font-bold" style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}>Professional</th>
@@ -1222,7 +1222,7 @@ export default function PricingWithCalculator() {
                 </tr>
 
                 {/* CTA Row */}
-                <tr className="bg-gradient-to-r from-gray-100 to-orange-50 dark:from-gray-800 dark:to-gray-700">
+                <tr className="bg-orange-50 dark:bg-gray-800">
                   <td className="px-6 py-6"></td>
                   {pricingPlans.map((plan, idx) => (
                     <td key={idx} className="px-6 py-6 text-center">
@@ -1264,7 +1264,7 @@ export default function PricingWithCalculator() {
           <div className="overflow-x-auto rounded-2xl shadow-lg">
             <table className="w-full text-sm md:text-base">
               <thead>
-                <tr className="bg-gradient-to-r from-orange-500 to-orange-600 text-white">
+                <tr className="bg-orange-500 text-white">
                   <th className="px-6 py-4 text-left font-bold" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>Features</th>
                   <th className="px-6 py-4 text-center font-bold" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>Celestial Web Solutions</th>
                   <th className="px-6 py-4 text-center font-bold" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>In-house Team</th>
@@ -1309,7 +1309,7 @@ export default function PricingWithCalculator() {
       </section>
 
       {/* FAQ Banner */}
-      <section className="py-12 px-4 bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-gray-800 dark:to-gray-700">
+      <section className="py-12 px-4 bg-blue-50 dark:bg-gray-800">
         <div className="max-w-4xl mx-auto text-center">
           <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4" style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}>
             Have questions about our pricing or process?
@@ -1388,7 +1388,7 @@ export default function PricingWithCalculator() {
                   transition={{ duration: 0.3, ease: 'easeInOut' }}
                   className="mt-6 overflow-hidden"
                 >
-                  <div className={`max-w-md mx-auto rounded-2xl p-6 bg-gradient-to-br ${method.color} text-white shadow-xl`}>
+                  <div className={`max-w-md mx-auto rounded-2xl p-6 ${method.color} text-white shadow-xl`}>
                     <div className="flex items-center gap-3 mb-4">
                       <method.icon size={24} />
                       <div className="text-left">
@@ -1480,7 +1480,7 @@ export default function PricingWithCalculator() {
       <section 
         className="py-16 text-white text-center relative overflow-hidden"
         style={{
-          backgroundImage: 'linear-gradient(135deg, rgba(255,107,0,0.9) 0%, rgba(234,88,12,0.9) 100%), url("/hero-bg.jpg")',
+          backgroundImage: 'linear-gradient(rgba(249,115,22,0.92), rgba(249,115,22,0.92)), url("/hero-bg.jpg")',
           backgroundSize: 'cover',
           backgroundPosition: 'center'
         }}

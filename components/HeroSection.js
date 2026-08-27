@@ -15,7 +15,7 @@ const HeroSection = () => {
       <div 
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{
-          backgroundImage: 'linear-gradient(135deg, rgba(255,107,0,0.65) 0%, rgba(255,69,0,0.6) 50%, rgba(220,38,127,0.65) 100%), url("/hero-bg.jpg")',
+          backgroundImage: 'linear-gradient(rgba(249,115,22,0.72), rgba(249,115,22,0.72)), url("/hero-bg.jpg")',
           backgroundAttachment: 'fixed'
         }}
       />
@@ -43,20 +43,20 @@ const HeroSection = () => {
         </div>
         
         {/* Animated Background Elements */}
-        <div className="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-br from-orange-400/30 to-orange-600/30 rounded-full opacity-50 animate-pulse"></div>
-        <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-gradient-to-tr from-orange-300/30 to-red-400/30 rounded-full opacity-50 animate-pulse" style={{animationDelay: '2s'}}></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-gradient-to-r from-orange-500/20 to-red-500/20 rounded-full opacity-30 animate-spin" style={{animationDuration: '20s'}}></div>
+        <div className="absolute -top-40 -right-40 w-80 h-80 bg-orange-400/30 rounded-full opacity-50 animate-pulse"></div>
+        <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-orange-300/30 rounded-full opacity-50 animate-pulse" style={{animationDelay: '2s'}}></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-orange-500/20 rounded-full opacity-30 animate-spin" style={{animationDuration: '20s'}}></div>
         
         {/* Binary Code Rain Effect */}
-        <div className="absolute top-0 left-1/4 w-0.5 h-full bg-gradient-to-b from-orange-400/20 via-orange-500/10 to-transparent animate-pulse"></div>
-        <div className="absolute top-0 right-1/3 w-0.5 h-full bg-gradient-to-b from-orange-300/20 via-orange-400/10 to-transparent animate-pulse" style={{animationDelay: '1.5s'}}></div>
-        <div className="absolute top-0 left-1/2 w-0.5 h-full bg-gradient-to-b from-orange-500/15 via-orange-400/8 to-transparent animate-pulse" style={{animationDelay: '3s'}}></div>
+        <div className="absolute top-0 left-1/4 w-0.5 h-full bg-orange-400/10 animate-pulse"></div>
+        <div className="absolute top-0 right-1/3 w-0.5 h-full bg-orange-300/10 animate-pulse" style={{animationDelay: '1.5s'}}></div>
+        <div className="absolute top-0 left-1/2 w-0.5 h-full bg-orange-500/10 animate-pulse" style={{animationDelay: '3s'}}></div>
       </div>
       
       {/* Mobile-only simplified background elements */}
       <div className="absolute inset-0 overflow-hidden md:hidden">
-        <div className="absolute -top-20 -right-20 w-40 h-40 bg-gradient-to-br from-orange-400/20 to-orange-600/20 rounded-full opacity-50 animate-pulse"></div>
-        <div className="absolute -bottom-20 -left-20 w-48 h-48 bg-gradient-to-tr from-orange-300/20 to-red-400/20 rounded-full opacity-50 animate-pulse" style={{animationDelay: '2s'}}></div>
+        <div className="absolute -top-20 -right-20 w-40 h-40 bg-orange-400/20 rounded-full opacity-50 animate-pulse"></div>
+        <div className="absolute -bottom-20 -left-20 w-48 h-48 bg-orange-300/20 rounded-full opacity-50 animate-pulse" style={{animationDelay: '2s'}}></div>
       </div>
       
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -89,7 +89,7 @@ const HeroSection = () => {
             transition={{ delay: 0.3, duration: 0.8 }}
           >
             <span className="block">Welcome to</span>
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-300 via-orange-400 to-red-400">
+            <span className="text-orange-500">
               Celestial Web Solutions
             </span>
           </motion.h1>
@@ -125,14 +125,14 @@ const HeroSection = () => {
           >
             {/* Primary CTA Button */}
             <motion.button
-              className="group relative w-full sm:w-auto px-8 sm:px-10 py-4 sm:py-5 lg:px-14 lg:py-6 bg-gradient-to-r from-orange-500 to-red-500 text-white font-bold rounded-2xl shadow-2xl overflow-hidden text-base sm:text-lg lg:text-xl transition-all duration-300"
+              className="group relative w-full sm:w-auto px-8 sm:px-10 py-4 sm:py-5 lg:px-14 lg:py-6 bg-orange-500 text-white font-bold rounded-2xl shadow-2xl overflow-hidden text-base sm:text-lg lg:text-xl transition-all duration-300"
               style={{ fontFamily: 'Albert Sans, sans-serif', fontWeight: 400 }}
               whileHover={{ scale: 1.08, y: -4 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => handleNavigation('/contact')}
             >
               {/* Animated background glow */}
-              <div className="absolute inset-0 bg-gradient-to-r from-orange-600 to-red-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <div className="absolute inset-0 bg-orange-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               
               <div className="relative flex items-center justify-center">
                 <Zap className="w-5 h-5 sm:w-6 sm:h-6 mr-3" />

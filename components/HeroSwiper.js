@@ -17,7 +17,7 @@ const heroSlides = [
     ctaLink: '/contact',
     ctaLabel: 'START YOUR PROJECT',
     mainImage: '/portfolio/desktop/ghanas-event.png',
-    bgColor: 'from-amber-950 via-yellow-900 to-stone-900',
+    bgColor: 'bg-amber-950',
   },
   {
     tag: 'HEALTHCARE & WELLNESS',
@@ -28,7 +28,7 @@ const heroSlides = [
     ctaLink: '/contact',
     ctaLabel: 'START YOUR PROJECT',
     mainImage: '/portfolio/desktop/act-campus-care.png',
-    bgColor: 'from-blue-950 via-sky-900 to-indigo-950',
+    bgColor: 'bg-blue-950',
   },
   {
     tag: 'NEWS & MEDIA, CMS',
@@ -39,7 +39,7 @@ const heroSlides = [
     ctaLink: '/contact',
     ctaLabel: 'START YOUR PROJECT',
     mainImage: '/portfolio/desktop/ghanas-event-blog.png',
-    bgColor: 'from-slate-950 via-blue-950 to-indigo-900',
+    bgColor: 'bg-slate-950',
   },
   {
     tag: 'PERSONAL BRAND, MEDIA',
@@ -50,7 +50,7 @@ const heroSlides = [
     ctaLink: '/contact',
     ctaLabel: 'START YOUR PROJECT',
     mainImage: '/portfolio/desktop/kafui-desktop.webp',
-    bgColor: 'from-stone-950 via-amber-950 to-yellow-950',
+    bgColor: 'bg-stone-950',
   },
   {
     tag: 'EDUCATION, INSTITUTIONAL',
@@ -61,7 +61,7 @@ const heroSlides = [
     ctaLink: '/contact',
     ctaLabel: 'START YOUR PROJECT',
     mainImage: '/portfolio/desktop/copti.webp',
-    bgColor: 'from-cyan-950 via-teal-900 to-sky-900',
+    bgColor: 'bg-cyan-950',
   },
   {
     tag: 'WEB DEVELOPMENT, SEO',
@@ -72,7 +72,7 @@ const heroSlides = [
     ctaLink: '/contact',
     ctaLabel: 'START YOUR PROJECT',
     mainImage: '/portfolio/desktop/building.png',
-    bgColor: 'from-blue-950 via-blue-900 to-amber-900',
+    bgColor: 'bg-blue-950',
   },
   {
     tag: 'E-COMMERCE, WEB DESIGN',
@@ -83,7 +83,7 @@ const heroSlides = [
     ctaLink: '/contact',
     ctaLabel: 'START YOUR PROJECT',
     mainImage: '/portfolio/desktop/myspace.png',
-    bgColor: 'from-gray-950 via-neutral-900 to-stone-900',
+    bgColor: 'bg-gray-950',
   },
   {
     tag: 'CUSTOM WEBSITE, BRANDING',
@@ -94,7 +94,7 @@ const heroSlides = [
     ctaLink: '/contact',
     ctaLabel: 'START YOUR PROJECT',
     mainImage: '/portfolio/desktop/elolo.png',
-    bgColor: 'from-slate-950 via-blue-950 to-indigo-950',
+    bgColor: 'bg-slate-950',
   },
   {
     tag: 'NEWS & MEDIA, ADSENSE',
@@ -105,7 +105,7 @@ const heroSlides = [
     ctaLink: '/contact',
     ctaLabel: 'START YOUR PROJECT',
     mainImage: '/portfolio/desktop/ghanaupdates.png',
-    bgColor: 'from-red-950 via-red-900 to-red-800',
+    bgColor: 'bg-red-950',
   },
   {
     tag: 'E-COMMERCE, WOOCOMMERCE',
@@ -116,7 +116,7 @@ const heroSlides = [
     ctaLink: '/contact',
     ctaLabel: 'START YOUR PROJECT',
     mainImage: '/portfolio/desktop/dlautos.png',
-    bgColor: 'from-green-950 via-green-900 to-emerald-900',
+    bgColor: 'bg-green-950',
   },
   {
     tag: 'REAL ESTATE, WEB APPLICATION',
@@ -127,7 +127,7 @@ const heroSlides = [
     ctaLink: '/contact',
     ctaLabel: 'START YOUR PROJECT',
     mainImage: '/portfolio/desktop/valyd.png',
-    bgColor: 'from-emerald-950 via-teal-900 to-green-950',
+    bgColor: 'bg-emerald-950',
   },
   {
     tag: 'AGRIBUSINESS, BRANDING',
@@ -138,7 +138,7 @@ const heroSlides = [
     ctaLink: '/contact',
     ctaLabel: 'START YOUR PROJECT',
     mainImage: '/portfolio/desktop/trueseeds.png',
-    bgColor: 'from-green-950 via-green-900 to-green-900',
+    bgColor: 'bg-green-950',
   },
 ];
 
@@ -172,7 +172,7 @@ export default function HeroSwiper() {
         {heroSlides.map((slide, index) => (
           <SwiperSlide key={index}>
             {/* Background gradient */}
-            <div className={`absolute inset-0 bg-gradient-to-br ${slide.bgColor}`} />
+            <div className={`absolute inset-0 ${slide.bgColor}`} />
             <div className="absolute inset-0 bg-black/40" />
 
             {/* Slide content */}

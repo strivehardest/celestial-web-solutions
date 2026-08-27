@@ -103,7 +103,7 @@ const Navbar = () => {
           <div className="ml-3">
             <div
               className={scrolled
-                ? "text-xl font-bold bg-gradient-to-r from-orange-600 via-orange-500 to-red-500 bg-clip-text text-transparent group-hover:from-orange-500 group-hover:to-orange-600 transition-all duration-300"
+                ? "text-xl font-bold text-orange-600 transition-all duration-300"
                 : "text-xl font-bold text-white transition-all duration-300"}
               style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}
             >
@@ -127,11 +127,11 @@ const Navbar = () => {
         whileHover={{ scale: 1.02 }}
         whileTap={{ scale: 0.98 }}
       >
-        <motion.div whileHover={{ rotate: 5 }} className="w-10 h-10 bg-gradient-to-br from-orange-500 to-red-500 rounded-xl shadow-lg flex items-center justify-center text-white font-bold text-lg">
+        <motion.div whileHover={{ rotate: 5 }} className="w-10 h-10 bg-orange-500 rounded-xl shadow-lg flex items-center justify-center text-white font-bold text-lg">
           C
         </motion.div>
         <div className="ml-3">
-          <div className="text-xl font-bold bg-gradient-to-r from-orange-600 via-orange-500 to-red-500 bg-clip-text text-transparent" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>
+          <div className="text-xl font-bold text-orange-600" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>
             Celestial
           </div>
           <div className="text-xs text-gray-500 dark:text-gray-400 -mt-1" style={{ fontFamily: 'Albert Sans, sans-serif' }}>
@@ -155,7 +155,7 @@ const Navbar = () => {
       <motion.span
         className="absolute inset-0 rounded-full"
         style={{
-          background: 'linear-gradient(135deg, #f97316, #ef4444)',
+          background: '#f97316',
           boxShadow: '0 0 0 0 rgba(249,115,22,0.5)',
         }}
         animate={{
@@ -212,7 +212,7 @@ const Navbar = () => {
       whileTap={{ scale: 0.97 }}
     >
       {/* Background gradient */}
-      <span className="absolute inset-0 rounded-2xl bg-gradient-to-r from-orange-500 via-orange-500 to-red-500" />
+      <span className="absolute inset-0 rounded-2xl bg-orange-500" />
 
       {/* Shimmer */}
       <motion.span
@@ -272,7 +272,7 @@ const Navbar = () => {
         <motion.button
           className={`flex items-center space-x-2 px-4 py-3 text-sm font-medium rounded-xl transition-all duration-300 ${
             isActive(item.href)
-              ? 'text-white bg-gradient-to-r from-orange-500 to-orange-600 shadow-lg shadow-orange-500/25'
+              ? 'text-white bg-orange-500 shadow-lg shadow-orange-500/25'
               : scrolled
                 ? 'text-gray-700 dark:text-gray-300 hover:text-orange-600 dark:hover:text-orange-400 hover:bg-gray-100/50 dark:hover:bg-gray-800/50'
                 : 'text-white hover:text-orange-100 hover:bg-white/10'
@@ -297,7 +297,7 @@ const Navbar = () => {
       <motion.button
         className={`flex items-center space-x-2 px-4 py-3 text-sm font-medium rounded-xl transition-all duration-300 relative ${
           isActive(item.href)
-            ? 'text-white bg-gradient-to-r from-orange-500 to-orange-600 shadow-lg shadow-orange-500/25'
+            ? 'text-white bg-orange-500 shadow-lg shadow-orange-500/25'
             : scrolled
               ? 'text-gray-700 dark:text-gray-300 hover:text-orange-600 dark:hover:text-orange-400 hover:bg-gray-100/50 dark:hover:bg-gray-800/50'
               : 'text-white hover:text-orange-100 hover:bg-white/10'
@@ -367,7 +367,7 @@ const Navbar = () => {
                                 transition={{ delay: index * 0.04 }}
                                 onClick={() => handleNavigation(dropItem.href)}
                               >
-                                <span className="flex-shrink-0 mt-0.5 w-9 h-9 rounded-lg bg-gradient-to-br from-orange-50 to-orange-100 dark:from-orange-900/30 dark:to-orange-800/20 flex items-center justify-center text-orange-500 dark:text-orange-400 group-hover:from-orange-100 group-hover:to-orange-200 dark:group-hover:from-orange-900/50 dark:group-hover:to-orange-800/30 transition-all duration-200">
+                                <span className="flex-shrink-0 mt-0.5 w-9 h-9 rounded-lg bg-orange-50 dark:bg-orange-900/30 flex items-center justify-center text-orange-500 dark:text-orange-400 group-hover:bg-orange-100 dark:group-hover:bg-orange-900/50 transition-all duration-200">
                                   {getDropdownIcon(dropItem.icon)}
                                 </span>
                                 <div className="min-w-0">
@@ -469,7 +469,7 @@ const Navbar = () => {
                       <button
                         className={`w-full flex items-center justify-between px-4 py-3.5 text-base font-medium rounded-xl transition-all duration-300 relative active:scale-[0.98] ${
                           isActive(item.href)
-                            ? 'text-white bg-gradient-to-r from-orange-500 to-orange-600 shadow-lg'
+                            ? 'text-white bg-orange-500 shadow-lg'
                             : 'text-gray-800 dark:text-gray-100 hover:text-orange-600 dark:hover:text-orange-400 hover:bg-orange-50/50 dark:hover:bg-orange-900/20'
                         }`}
                         style={{ fontFamily: 'Albert Sans, sans-serif' }}

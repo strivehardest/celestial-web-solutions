@@ -25,16 +25,16 @@ const highlights = [
 ];
 
 const heroProjects = [
-  { image: '/portfolio/desktop/ghanas-event.png', title: 'Ghanas Event', bgColor: 'from-amber-950 via-yellow-900 to-stone-900' },
-  { image: '/portfolio/desktop/ghanas-event-blog.png', title: 'Ghanas Event Blog', bgColor: 'from-slate-950 via-blue-950 to-indigo-900' },
-  { image: '/portfolio/desktop/copti.webp', title: 'Conference of Principals of Technical Institutions', bgColor: 'from-blue-400 via-blue-500 to-blue-600' },
-  { image: '/portfolio/desktop/kafui-desktop.webp', title: 'Kafui Dey Interviews', bgColor: 'from-stone-950 via-amber-950 to-yellow-950' },
-  { image: '/portfolio/desktop/trueseeds.webp', title: 'Tru Seeds Africa', bgColor: 'from-green-400 via-green-500 to-emerald-600' },
-  { image: '/portfolio/desktop/building.png', title: 'Building Planner Designs', bgColor: 'from-blue-950 via-blue-900 to-amber-900' },
-  { image: '/portfolio/desktop/ghanaupdates.png', title: 'Ghana Updates Online', bgColor: 'from-red-950 via-red-900 to-red-800' },
-  { image: '/portfolio/desktop/dlautos.png', title: 'DL Auto Parts', bgColor: 'from-green-950 via-green-900 to-emerald-900' },
-  { image: '/portfolio/desktop/valyd.png', title: 'Valyd Homes', bgColor: 'from-emerald-950 via-teal-900 to-green-950' },
-  { image: '/portfolio/desktop/elolo.png', title: 'Elolo Agbleke', bgColor: 'from-slate-950 via-blue-950 to-indigo-950' },
+  { image: '/portfolio/desktop/ghanas-event.png', title: 'Ghanas Event', bgColor: 'bg-amber-950' },
+  { image: '/portfolio/desktop/ghanas-event-blog.png', title: 'Ghanas Event Blog', bgColor: 'bg-slate-950' },
+  { image: '/portfolio/desktop/copti.webp', title: 'Conference of Principals of Technical Institutions', bgColor: 'bg-blue-400' },
+  { image: '/portfolio/desktop/kafui-desktop.webp', title: 'Kafui Dey Interviews', bgColor: 'bg-stone-950' },
+  { image: '/portfolio/desktop/trueseeds.webp', title: 'Tru Seeds Africa', bgColor: 'bg-green-400' },
+  { image: '/portfolio/desktop/building.png', title: 'Building Planner Designs', bgColor: 'bg-blue-950' },
+  { image: '/portfolio/desktop/ghanaupdates.png', title: 'Ghana Updates Online', bgColor: 'bg-red-950' },
+  { image: '/portfolio/desktop/dlautos.png', title: 'DL Auto Parts', bgColor: 'bg-green-950' },
+  { image: '/portfolio/desktop/valyd.png', title: 'Valyd Homes', bgColor: 'bg-emerald-950' },
+  { image: '/portfolio/desktop/elolo.png', title: 'Elolo Agbleke', bgColor: 'bg-slate-950' },
 ];
 
 const serviceFocus = [
@@ -223,7 +223,7 @@ export default function BestWebDesignerInAccraPage({ latestPosts = [] }) {
           >
             {heroProjects.map((project, index) => (
               <SwiperSlide key={index}>
-                <div className={`absolute inset-0 bg-gradient-to-br ${project.bgColor}`} />
+                <div className={`absolute inset-0 ${project.bgColor}`} />
                 <div className="absolute inset-0 bg-black/40" />
 
                 <div className="relative z-10 w-full h-full max-w-[1440px] mx-auto px-6 sm:px-8 lg:px-16">
@@ -503,7 +503,7 @@ export default function BestWebDesignerInAccraPage({ latestPosts = [] }) {
               <div className="text-center pt-4">
                 <Link
                   href="/portfolio"
-                  className="inline-flex items-center gap-2 px-8 py-3 rounded-full bg-gradient-to-r from-orange-500 to-orange-600 text-white font-semibold hover:from-orange-600 hover:to-orange-700 transition-all shadow-lg shadow-orange-500/30"
+                  className="inline-flex items-center gap-2 px-8 py-3 rounded-full bg-orange-500 text-white font-semibold hover:bg-orange-600 transition-all shadow-lg shadow-orange-500/30"
                   style={{ fontFamily: 'Albert Sans, sans-serif', fontWeight: 400 }}
                 >
                   View All Projects <span>→</span>
@@ -617,7 +617,7 @@ export default function BestWebDesignerInAccraPage({ latestPosts = [] }) {
                 ).map((article, index) => (
                   <Link key={index} href={article.href}>
                     <div className="rounded-2xl border border-gray-200 dark:border-white/10 bg-white/80 dark:bg-white/5 backdrop-blur overflow-hidden hover:shadow-lg transition-all duration-300 cursor-pointer h-full flex flex-col">
-                      <div className="relative h-40 overflow-hidden bg-gradient-to-br from-orange-400 to-orange-600">
+                      <div className="relative h-40 overflow-hidden bg-orange-400">
                         <img
                           src={article.image}
                           alt={article.alt}
@@ -645,7 +645,7 @@ export default function BestWebDesignerInAccraPage({ latestPosts = [] }) {
             </div>
 
             {/* Final CTA */}
-            <div className="rounded-2xl border border-gray-200 dark:border-white/10 bg-gradient-to-r from-orange-50 to-orange-100 dark:from-orange-950/20 dark:to-orange-900/20 p-8 text-center space-y-4">
+            <div className="rounded-2xl border border-gray-200 dark:border-white/10 bg-orange-50 dark:bg-orange-950/20 p-8 text-center space-y-4">
               <h3 className="text-2xl font-display font-bold text-gray-900 dark:text-white">Ready to Launch Your Web Presence in Accra?</h3>
               <p className="text-base text-gray-700 dark:text-gray-200 max-w-2xl mx-auto" style={{ fontFamily: 'Albert Sans, sans-serif', fontWeight: 400 }}>
                 Join businesses across Accra and Greater Accra that have transformed their online presence with our web design services.
@@ -653,7 +653,7 @@ export default function BestWebDesignerInAccraPage({ latestPosts = [] }) {
               <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
                 <Link
                   href="/contact"
-                  className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-gradient-to-r from-orange-500 to-orange-600 text-white font-semibold hover:from-orange-600 hover:to-orange-700 transition-all shadow-lg shadow-orange-500/30"
+                  className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-orange-500 text-white font-semibold hover:bg-orange-600 transition-all shadow-lg shadow-orange-500/30"
                   style={{ fontFamily: 'Albert Sans, sans-serif', fontWeight: 400 }}
                 >
                   Get a Website Today

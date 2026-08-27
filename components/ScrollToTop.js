@@ -68,7 +68,7 @@ export default function ScrollToTop() {
           position: 'absolute',
           inset: 3,
           borderRadius: '50%',
-          background: 'linear-gradient(145deg, #fb923c 0%, #ea580c 100%)',
+          background: '#ea580c',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',

@@ -385,7 +385,7 @@ const CategoryFilters = ({ filter, onFilterChange }) => (
         whileTap={{ scale: 0.95 }}
         className={`px-4 py-2 rounded-full font-semibold transition-all duration-300 text-xs ${
           filter === category
-            ? "bg-gradient-to-r from-orange-500 to-orange-600 text-white shadow-lg"
+            ? "bg-orange-500 text-white shadow-lg"
             : "bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-orange-50 dark:hover:bg-gray-700 border border-gray-200 dark:border-gray-700"
         }`}
         style={{ fontFamily: "Albert Sans, sans-serif" }}
@@ -400,13 +400,13 @@ const CategoryFilters = ({ filter, onFilterChange }) => (
 // HappyClients
 // ─────────────────────────────────────────────────────────────────────────────
 const HappyClients = () => (
-  <section className="py-12 bg-gradient-to-r from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 rounded-3xl mt-24 mb-12">
+  <section className="py-12 bg-gray-50 dark:bg-gray-900 rounded-3xl mt-24 mb-12">
     <div className="max-w-7xl mx-auto px-4 mb-8">
       <motion.h2
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="text-3xl md:text-4xl font-bold text-center mb-4 bg-gradient-to-r from-orange-600 to-orange-500 bg-clip-text text-transparent"
+        className="text-3xl md:text-4xl font-bold text-center mb-4 text-orange-600"
         style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}
       >
         Our Happy Clients
@@ -466,7 +466,7 @@ const CTASection = () => (
         alt="Team collaborating"
         className="w-full h-full object-cover"
       />
-      <div className="absolute inset-0 bg-gradient-to-r from-orange-600/95 via-orange-500/90 to-red-600/95" />
+      <div className="absolute inset-0 bg-orange-600/95" />
     </div>
 
     <div className="relative z-10 text-center px-4">
@@ -485,8 +485,8 @@ const CTASection = () => (
       </p>
 
       <div className="flex flex-col sm:flex-row gap-4 justify-center">
-        <GlassButton href="/contact" variant="light">Start a Project</GlassButton>
-        <GlassButton href="/pricing" variant="light">View Pricing</GlassButton>
+        <GlassButton href="/contact" variant="white">Start a Project</GlassButton>
+        <GlassButton href="/pricing" variant="outline">View Pricing</GlassButton>
       </div>
 
       <div
@@ -570,7 +570,7 @@ export default function Portfolio() {
                 style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}
               >
                 Our Work Speaks
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-orange-600">
+                <span className="text-transparent bg-clip-text bg-orange-400">
                   {" "}for Itself
                 </span>
               </h1>
@@ -599,8 +599,8 @@ export default function Portfolio() {
               </p>
 
               <div className="flex flex-wrap gap-4">
-                <GlassButton href="/contact" variant="light">Start Your Project</GlassButton>
-                <GlassButton href="/web-design-company-in-ghana" variant="light">Our Services</GlassButton>
+                <GlassButton href="/contact" variant="white">Start Your Project</GlassButton>
+                <GlassButton href="/web-design-company-in-ghana" variant="outline">Our Services</GlassButton>
               </div>
             </motion.div>
           </div>

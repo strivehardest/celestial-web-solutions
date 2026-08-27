@@ -57,7 +57,7 @@ export default function ThemeToggle({ isMobile }) {
             onClick={() => selectTheme(themeOption.value)}
             className={`relative p-2 rounded-full transition-colors duration-200
               ${isSelected
-                ? 'bg-gradient-to-r from-orange-500 to-orange-600 text-white shadow-md'
+                ? 'bg-orange-500 text-white shadow-md'
                 : 'text-gray-500 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200'}
               ${isMobile ? 'flex-1' : ''}`}
             aria-label={`${themeOption.label} theme`}

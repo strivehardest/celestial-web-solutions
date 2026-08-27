@@ -63,12 +63,27 @@ export default function PremiumCTA({
 
   const variantClasses = {
     primary:
-      'bg-gradient-to-r from-orange-500 via-orange-500 to-orange-600 border border-orange-400/40 shadow-lg shadow-orange-500/25 text-white hover:from-orange-600 hover:to-orange-700',
+      'bg-orange-500 border border-orange-400/40 shadow-lg shadow-orange-500/25 !text-white hover:bg-orange-600 hover:!text-white',
     secondary:
-      'bg-white border border-white shadow-lg text-orange-600 hover:text-orange-700 hover:bg-orange-50',
+      'bg-white border border-white shadow-lg !text-orange-600 hover:!text-orange-700 hover:bg-orange-50',
     outline:
-      'bg-transparent border-2 border-orange-500 text-orange-600 hover:bg-orange-500 hover:text-white hover:border-orange-500 dark:border-orange-400 dark:text-orange-400 dark:hover:bg-orange-500 dark:hover:text-white',
+      'bg-white border-2 border-orange-500 !text-orange-600 hover:bg-orange-500 hover:!text-white hover:border-orange-500 dark:bg-transparent dark:border-orange-400 dark:!text-orange-400 dark:hover:bg-orange-500 dark:hover:!text-white',
+    // White chip — for orange / dark heroes
+    light:
+      'bg-white border border-white shadow-lg !text-orange-600 hover:!text-orange-700 hover:bg-orange-50',
+    // Frosted / bordered white text — secondary action on orange / dark heroes
+    ghost:
+      'bg-transparent border-2 border-white !text-white hover:bg-white/10 hover:!text-white',
   };
+
+  const labelColorClass =
+    variant === 'primary'
+      ? '!text-white'
+      : variant === 'ghost'
+        ? '!text-white group-hover:!text-white'
+      : variant === 'outline'
+        ? '!text-orange-600 dark:!text-orange-400 group-hover:!text-white dark:group-hover:!text-white'
+        : '!text-orange-600';
 
   const classes = `
     group relative inline-flex items-center justify-center font-bold rounded-full
@@ -95,20 +110,21 @@ export default function PremiumCTA({
       )}
 
       {/* Label stays centered; arrow overlays right padding on hover (no layout shift) */}
-      <span className="relative z-10 tracking-wide transition-colors duration-300">
+      <span className={`relative z-10 tracking-wide transition-colors duration-300 ${labelColorClass}`}>
         {children}
       </span>
 
       {icon && (
         <span
           aria-hidden="true"
-          className="
+          className={`
             pointer-events-none absolute right-4 top-1/2 z-10
             -translate-y-1/2 translate-x-1 opacity-0
             group-hover:translate-x-0 group-hover:opacity-100
             group-focus-visible:translate-x-0 group-focus-visible:opacity-100
             transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)]
-          "
+            ${labelColorClass}
+          `}
         >
           <svg
             className="h-5 w-5 shrink-0"

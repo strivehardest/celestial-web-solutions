@@ -232,7 +232,7 @@ We are committed to resolving any disputes fairly and professionally in accordan
 
       <div className="min-h-screen bg-white dark:bg-gray-900">
         {/* Hero Section */}
-        <section className="relative py-20 bg-gradient-to-br from-orange-500 via-orange-600 to-red-500 overflow-hidden">
+        <section className="relative py-20 bg-orange-500 overflow-hidden">
           {/* Background Image */}
           <div className="absolute inset-0 overflow-hidden">
             <img 
@@ -240,7 +240,7 @@ We are committed to resolving any disputes fairly and professionally in accordan
               alt="Terms and Conditions Background"
               className="w-full h-full object-cover opacity-20"
             />
-            <div className="absolute inset-0 bg-gradient-to-br from-orange-500/80 via-orange-600/80 to-red-500/80"></div>
+            <div className="absolute inset-0 bg-orange-500/80"></div>
           </div>
 
           <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
@@ -337,7 +337,7 @@ We are committed to resolving any disputes fairly and professionally in accordan
                 >
                   {/* Section Header */}
                   <div className="flex items-start space-x-4 mb-6">
-                    <div className="w-12 h-12 rounded-lg bg-gradient-to-r from-orange-500 to-orange-600 flex items-center justify-center flex-shrink-0">
+                    <div className="w-12 h-12 rounded-lg bg-orange-500 flex items-center justify-center flex-shrink-0">
                       <section.icon size={24} className="text-white" />
                     </div>
                     <div>
@@ -370,7 +370,7 @@ We are committed to resolving any disputes fairly and professionally in accordan
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="bg-gradient-to-r from-orange-500 via-orange-600 to-red-500 rounded-3xl p-8 md:p-12 shadow-2xl"
+              className="bg-orange-500 rounded-3xl p-8 md:p-12 shadow-2xl"
             >
               <h3
                 className="text-3xl font-bold text-white mb-4"
@@ -390,7 +390,7 @@ We are committed to resolving any disputes fairly and professionally in accordan
                 <PremiumCTA href="/contact" size="large" variant="light">
                   Contact Us
                 </PremiumCTA>
-                <PremiumCTA href="mailto:info@celestialwebsolutions.net" size="large" variant="light">
+                <PremiumCTA href="mailto:info@celestialwebsolutions.net" size="large" variant="ghost">
                   <span>Email Us</span>
                 </PremiumCTA>
               </div>

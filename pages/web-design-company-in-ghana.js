@@ -203,7 +203,7 @@ export default function ServicesPage() {
 													style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}
 												>
 													<span className="block">World-class</span>
-													<span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-orange-600 min-h-[1.2em] inline-block">
+													<span className="text-transparent bg-clip-text bg-orange-400 min-h-[1.2em] inline-block">
 														{displayText}
 														<span className="animate-pulse">|</span>
 													</span>
@@ -250,10 +250,10 @@ export default function ServicesPage() {
 												className="hidden lg:grid grid-cols-2 gap-4"
 											>
 												{[
-													{ icon: Rocket, value: "20+", label: "Projects Completed", color: "from-orange-500 to-orange-600" },
-													{ icon: Users, value: "20+", label: "Happy Clients", color: "from-orange-400 to-orange-500" },
-													{ icon: Star, value: "5.0", label: "Average Rating", color: "from-orange-500 to-orange-600" },
-													{ icon: Zap, value: "99%", label: "Client Satisfaction", color: "from-orange-400 to-orange-500" }
+													{ icon: Rocket, value: "20+", label: "Projects Completed", color: "bg-orange-500" },
+													{ icon: Users, value: "20+", label: "Happy Clients", color: "bg-orange-400" },
+													{ icon: Star, value: "5.0", label: "Average Rating", color: "bg-orange-500" },
+													{ icon: Zap, value: "99%", label: "Client Satisfaction", color: "bg-orange-400" }
 												].map((stat, index) => (
 													<motion.div
 														key={index}
@@ -263,7 +263,7 @@ export default function ServicesPage() {
 														whileHover={{ scale: 1.05, y: -5 }}
 														className="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-6 hover:bg-white/15 transition-colors"
 													>
-														<div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${stat.color} flex items-center justify-center mb-4 shadow-lg`}>
+														<div className={`w-12 h-12 rounded-xl ${stat.color} flex items-center justify-center mb-4 shadow-lg`}>
 															<stat.icon className="w-6 h-6 text-white" />
 														</div>
 														<div className="text-3xl font-bold text-white mb-1" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>
@@ -350,7 +350,7 @@ export default function ServicesPage() {
                               
 															{/* Service Icon Badge */}
 															<motion.div 
-																className="absolute top-6 left-6 w-16 h-16 bg-gradient-to-br from-orange-500 to-orange-600 rounded-2xl flex items-center justify-center shadow-xl shadow-orange-500/30"
+																className="absolute top-6 left-6 w-16 h-16 bg-orange-500 rounded-2xl flex items-center justify-center shadow-xl shadow-orange-500/30"
 																whileHover={{ rotate: 10, scale: 1.1 }}
 															>
 																<service.icon className="w-8 h-8 text-white" />
@@ -456,10 +456,10 @@ export default function ServicesPage() {
 
 											<div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
 												{[
-													{ icon: Zap, title: "Fast Delivery", desc: "Quick turnaround without compromising quality", color: "from-orange-500 to-orange-600" },
-													{ icon: Users, title: "Expert Team", desc: "Skilled developers & designers at your service", color: "from-orange-400 to-orange-500" },
-													{ icon: Star, title: "Quality First", desc: "Premium solutions that exceed expectations", color: "from-orange-500 to-orange-600" },
-													{ icon: CheckCircle2, title: "24/7 Support", desc: "Always here when you need assistance", color: "from-orange-400 to-orange-500" }
+													{ icon: Zap, title: "Fast Delivery", desc: "Quick turnaround without compromising quality", color: "bg-orange-500" },
+													{ icon: Users, title: "Expert Team", desc: "Skilled developers & designers at your service", color: "bg-orange-400" },
+													{ icon: Star, title: "Quality First", desc: "Premium solutions that exceed expectations", color: "bg-orange-500" },
+													{ icon: CheckCircle2, title: "24/7 Support", desc: "Always here when you need assistance", color: "bg-orange-400" }
 												].map((item, index) => (
 													<motion.div
 														key={index}
@@ -470,7 +470,7 @@ export default function ServicesPage() {
 														whileHover={{ y: -10, scale: 1.02 }}
 														className="bg-white dark:bg-gray-900 rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all border border-gray-100 dark:border-gray-800"
 													>
-														<div className={`w-14 h-14 rounded-xl bg-gradient-to-br ${item.color} flex items-center justify-center mb-4 shadow-lg`}>
+														<div className={`w-14 h-14 rounded-xl ${item.color} flex items-center justify-center mb-4 shadow-lg`}>
 															<item.icon className="w-7 h-7 text-white" />
 														</div>
 														<h3 
@@ -503,7 +503,7 @@ export default function ServicesPage() {
 													alt="CTA Background"
 													className="w-full h-full object-cover"
 												/>
-												<div className="absolute inset-0 bg-gradient-to-r from-orange-600/95 via-orange-500/90 to-red-600/95"></div>
+												<div className="absolute inset-0 bg-orange-600/95"></div>
                         
 												{/* Decorative Elements */}
 												<div className="absolute top-0 left-0 w-full h-full overflow-hidden">
@@ -546,10 +546,10 @@ export default function ServicesPage() {
 														Let's discuss your project and create something amazing together. Get started with a free consultation today.
 													</p>
 													<div className="flex flex-col sm:flex-row gap-4 justify-center">
-														<GlassButton href="/contact" variant="light">
+														<GlassButton href="/contact" variant="white">
 															Get Started Today
 														</GlassButton>
-														<GlassButton href="/portfolio" variant="light">
+														<GlassButton href="/portfolio" variant="outline">
 															View Our Work
 														</GlassButton>
 													</div>
