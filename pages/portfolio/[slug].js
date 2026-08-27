@@ -700,6 +700,12 @@ export default function ProjectDetail({ project, currentIndex, prevProject: prev
                     Visit Live Site <ExternalLink className="w-4 h-4" />
                   </GlassButton>
                 )}
+                {project.app?.link && (
+                  <GlassButton href={project.app.link} variant="light" external>
+                    {project.app.comingSoon ? 'App Coming Soon' : (project.app.linkLabel || 'Open App')}
+                    {project.app.comingSoon ? <Smartphone className="w-4 h-4" /> : <ExternalLink className="w-4 h-4" />}
+                  </GlassButton>
+                )}
                 <GlassButton href="/contact" variant="light">
                   Start Similar Project <ArrowRight className="w-4 h-4" />
                 </GlassButton>
