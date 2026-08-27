@@ -25,7 +25,7 @@ const PORTFOLIO_IMAGES = {
   "doeman-group": "/png/screenshots/doeman-screenshot.webp",
   "adbay-store": "/png/screenshots/adbay-full.webp",
   "elolo-agbleke-website": "/png/screenshots/elolo-full.webp",
-  "finance-tracker": "/png/screenshots/finance-tracker-full.webp",
+  "finance-tracker": "/png/screenshots/finance-tracker.png",
   "ghana-updates-online": "/png/screenshots/ghanaupdates-full.webp",
   "myspace-furniture": "/png/screenshots/myspace-furniture.webp",
   "valyd-homes": "/png/screenshots/valyd.webp",
