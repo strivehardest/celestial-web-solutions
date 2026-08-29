@@ -34,9 +34,10 @@ All services are provided according to the specifications agreed upon in individ
       icon: CreditCard,
       content: `Payment terms are specified in individual project agreements. Unless otherwise agreed:
 
-• Full payment is required before any project work begins
+• Full payment is required before any project work begins for most projects
+• Flexible payment plans may be offered for larger, higher-cost projects only, and must be agreed in writing before work starts
 • We accept payments in Ghana Cedis (₵) through mobile money, bank transfer, cash, and international payments via Flutterwave/Paystack
-• Work will not commence until payment has been received and confirmed in full
+• Work will not commence until the agreed initial payment has been received and confirmed
 • Monthly service fees (hosting, maintenance, SEO) are due in advance
 • Late payments may incur a fee of 2% per month on outstanding amounts
 • All prices quoted are valid for 30 days unless otherwise stated
@@ -68,7 +69,7 @@ Timeline adjustments will be communicated and agreed upon with clients as needed
 • Timely provision of content, images, logos, and other materials
 • Prompt feedback and approvals during the development process
 • Access to necessary third-party services (hosting, domain, existing systems)
-• Full payment before project work begins
+• Payment according to agreed terms (full payment upfront for most projects)
 • Reasonable and constructive feedback during review phases
 • Final content review and approval before project launch
 • Compliance with applicable laws and regulations for their business

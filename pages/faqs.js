@@ -64,7 +64,7 @@ export default function FAQs() {
       questions: [
         {
           question: "How much does a website cost?",
-          answer: "Our websites start from GH₵2,500 for basic business websites and can range up to GH₵25,000+ for complex e-commerce platforms. We provide detailed quotes based on your specific requirements."
+          answer: "Our websites start from GH₵2,500 for basic business websites and can range up to GH₵25,000+ for complex e-commerce platforms. We provide detailed quotes based on your specific requirements. Flexible payment plans may be available for larger projects depending on scope and cost."
         },
         {
           question: "Do you accept payments in Cedis?",
@@ -72,7 +72,7 @@ export default function FAQs() {
         },
         {
           question: "When is payment required?",
-          answer: "Full payment is required before we begin any project work. Once your quote is accepted and payment is received and confirmed, we schedule your project and start development. This ensures we can commit our full team and resources to your project from the start."
+          answer: "For most projects, full payment is required before we begin any work. Once your quote is accepted and payment is received and confirmed, we schedule your project and start development. Flexible payment plans may be available for larger, higher-cost projects only — we will discuss this with you during your quote if it applies."
         },
         {
           question: "Are there any hidden costs?",
