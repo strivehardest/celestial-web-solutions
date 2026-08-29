@@ -42,7 +42,7 @@ export default function ScrollToTop() {
       type="button"
       onClick={handleClick}
       aria-label="Scroll to top"
-      className="fixed bottom-8 left-8 z-50 group"
+      className="fixed bottom-16 left-8 z-[10040] group"
       style={{
         width: 52,
         height: 52,

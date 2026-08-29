@@ -64,15 +64,15 @@ export default function FAQs() {
       questions: [
         {
           question: "How much does a website cost?",
-          answer: "Our websites start from GH₵2,500 for basic business websites and can range up to GH₵25,000+ for complex e-commerce platforms. We offer flexible payment plans and provide detailed quotes based on your specific requirements."
+          answer: "Our websites start from GH₵2,500 for basic business websites and can range up to GH₵25,000+ for complex e-commerce platforms. We provide detailed quotes based on your specific requirements. Flexible payment plans may be available for larger projects depending on scope and cost."
         },
         {
           question: "Do you accept payments in Cedis?",
           answer: "Yes! We accept payments in Ghana Cedis (GH₵) through mobile money (MTN, Vodafone, AirtelTigo), bank transfers, and cash payments. We also accept international payments via Flutterwave, DPO Pay and Paystack for overseas clients."
         },
         {
-          question: "Do you offer payment plans?",
-          answer: "Absolutely! We offer flexible payment plans including 50% upfront and 50% on completion, or monthly installments for larger projects. We work with your budget to make quality web development accessible."
+          question: "When is payment required?",
+          answer: "For most projects, full payment is required before we begin any work. Once your quote is accepted and payment is received and confirmed, we schedule your project and start development. Flexible payment plans may be available for larger, higher-cost projects only — we will discuss this with you during your quote if it applies."
         },
         {
           question: "Are there any hidden costs?",
