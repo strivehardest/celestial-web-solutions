@@ -65,22 +65,6 @@ const HeroSection = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          {/* Developer Badge - Responsive text and padding */}
-          <motion.div
-            className="inline-flex items-center space-x-2 bg-white/20 backdrop-blur-sm border border-orange-300/30 text-white px-3 py-2 sm:px-6 sm:py-3 rounded-full mb-6 sm:mb-8 text-xs sm:text-sm font-semibold"
-            style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.2, duration: 0.6 }}
-          >
-            <span className="hidden sm:inline">Full Stack Development</span>
-            <span className="sm:hidden">Full Stack Dev</span>
-            <span className="animate-pulse">â—</span>
-            <span className="hidden sm:inline">Available for Projects</span>
-            <span className="sm:hidden">Available</span>
-          </motion.div>
-
-          
           <motion.h1
             className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold mb-6 sm:mb-8 text-white drop-shadow-2xl leading-tight"
             style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}
