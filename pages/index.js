@@ -194,7 +194,7 @@ const portfolioItems = [
     description: "A culturally grounded VR wellness platform helping HBCU students regulate stress and build resilience.",
     tech: ["Next.js", "React", "TypeScript", "Sanity CMS", "Tailwind CSS"],
     link: "/portfolio/act-campus-care",
-    image: "/portfolio/desktop/act-campus-care.png",
+    image: "/portfolio/desktop/campus-care.png",
     accent: "#0e4f88"
   },
   {

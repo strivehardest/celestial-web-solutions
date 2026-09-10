@@ -80,6 +80,113 @@ import projects from "../../data/projects";
 import WhatsAppButton from '../../components/WhatsAppButton';
 import { ArrowRight, ArrowLeft, ExternalLink, Calendar, MapPin, User, Clock, Star, CheckCircle2, Code2, Layers, Rocket, Target, AlertCircle, Monitor, Smartphone } from 'lucide-react';
 
+function StoreBadge({ store, href, comingSoon }) {
+  const isPlay = store === 'play';
+  const label = isPlay ? 'Google Play' : 'App Store';
+  const src = isPlay
+    ? '/images/stores/google-play-badge.png'
+    : '/images/stores/app-store-badge.svg';
+  const img = (
+    <img
+      src={src}
+      alt={comingSoon || !href ? `${label} — Get App soon` : label}
+      className={`h-12 w-auto object-contain sm:h-14 ${comingSoon || !href ? 'opacity-80' : ''}`}
+    />
+  );
+
+  if (comingSoon || !href) {
+    return (
+      <div className="relative inline-flex flex-col items-start gap-1" aria-label={`${label} — Get App soon`}>
+        <div className="pointer-events-none select-none">{img}</div>
+        <span className="rounded-full bg-orange-500/10 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-orange-600 dark:text-orange-400">
+          Get App soon
+        </span>
+      </div>
+    );
+  }
+
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="inline-flex transition hover:opacity-90"
+      aria-label={label}
+    >
+      {img}
+    </a>
+  );
+}
+
+const ProjectAppSection = ({ project }) => {
+  const app = project?.app;
+  if (!app) return null;
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6, delay: 0.22 }}
+      className="rounded-2xl border border-gray-200 bg-gray-50 p-6 dark:border-gray-800 dark:bg-gray-900 sm:p-8"
+    >
+      <div className="mb-5 flex flex-wrap items-center gap-3">
+        <span className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-orange-500 text-white">
+          <Smartphone className="h-5 w-5" />
+        </span>
+        <div>
+          <h2
+            className="text-2xl font-bold text-gray-900 dark:text-white sm:text-3xl"
+            style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}
+          >
+            {app.title || `${project.title} App`}
+          </h2>
+          {app.comingSoon && (
+            <span className="mt-1 inline-flex items-center rounded-full bg-orange-500/10 px-2.5 py-0.5 text-xs font-semibold uppercase tracking-wide text-orange-600 dark:text-orange-400">
+              Get App soon
+            </span>
+          )}
+        </div>
+      </div>
+
+      {app.description && (
+        <p className="mb-6 max-w-2xl text-gray-600 dark:text-gray-300" style={{ fontFamily: 'Albert Sans, sans-serif' }}>
+          {app.description}
+        </p>
+      )}
+
+      {app.platforms?.length > 0 && (
+        <div className="mb-5 flex flex-wrap gap-2">
+          {app.platforms.map((platform) => (
+            <span
+              key={platform}
+              className="rounded-full border border-gray-200 bg-white px-3 py-1 text-xs font-semibold text-gray-700 dark:border-gray-700 dark:bg-gray-950 dark:text-gray-200"
+            >
+              {platform}
+            </span>
+          ))}
+        </div>
+      )}
+
+      <div className="flex flex-wrap items-end gap-4">
+        <StoreBadge store="play" href={app.playStoreUrl} comingSoon={app.comingSoon || !app.playStoreUrl} />
+        <StoreBadge store="apple" href={app.appStoreUrl} comingSoon={app.comingSoon || !app.appStoreUrl} />
+        {app.link && (
+          <a
+            href={app.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-orange-500 px-5 text-sm font-semibold text-white transition hover:bg-orange-600"
+            style={{ fontFamily: 'Albert Sans, sans-serif' }}
+          >
+            {app.linkLabel || 'Open web app'}
+            <ExternalLink className="h-4 w-4" />
+          </a>
+        )}
+      </div>
+    </motion.div>
+  );
+};
+
 const GlassButton = ({ children, href, variant = 'light', className = '', external = false, onClick }) => {
   const baseStyles = "inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full font-semibold text-sm transition-all duration-300 backdrop-blur-md border";
   const variants = {
@@ -589,6 +696,12 @@ export default function ProjectDetail({ project, currentIndex, prevProject: prev
                     Visit Live Site <ExternalLink className="w-4 h-4" />
                   </GlassButton>
                 )}
+                {project.app?.link && (
+                  <GlassButton href={project.app.link} variant="light" external>
+                    {project.app.comingSoon ? 'Get App soon' : (project.app.linkLabel || 'Open App')}
+                    {project.app.comingSoon ? <Smartphone className="w-4 h-4" /> : <ExternalLink className="w-4 h-4" />}
+                  </GlassButton>
+                )}
                 <GlassButton href="/contact" variant="light">
                   Start Similar Project <ArrowRight className="w-4 h-4" />
                 </GlassButton>
@@ -680,6 +793,9 @@ export default function ProjectDetail({ project, currentIndex, prevProject: prev
 
               {/* Device Mockup Section */}
               <DeviceMockup project={project} />
+
+              {/* Mobile App Section */}
+              <ProjectAppSection project={project} />
 
               {/* YouTube Project Walkthrough */}
               <ProjectVideo project={project} />

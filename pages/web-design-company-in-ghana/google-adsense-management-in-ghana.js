@@ -9,7 +9,7 @@ const service = {
   title: "Google AdSense Management",
   slug: "google-adsense-management-in-ghana",
   description: "Maximize your website revenue with our expert Google AdSense management services. We handle setup, optimization, policy compliance, and ongoing monitoring to ensure you get the best returns from your site traffic.",
-  icon: require("lucide-react").TrendingUp,
+  icon: TrendingUp,
   heroImage: "https://cdn.worldvectorlogo.com/logos/google-adsense.svg",
   keywords: ["adsense management", "website monetization", "ad optimization", "google adsense ghana"],
   details: [

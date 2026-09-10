@@ -82,6 +82,10 @@ const nextConfig = {
 
   reactStrictMode: true,
 
+  experimental: {
+    optimizePackageImports: ['lucide-react', 'react-icons'],
+  },
+
   images: {
     dangerouslyAllowSVG: true,
     contentDispositionType: 'attachment',

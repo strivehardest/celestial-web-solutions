@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { Sun, Moon, Monitor } from 'lucide-react';
 import { applySavedTheme, setThemePreference, startThemeGuard } from '../lib/theme';
 
-export default function ThemeToggle({ isMobile }) {
+export default function ThemeToggle({ isMobile, variant = 'default' }) {
   const [theme, setTheme] = useState('system');
   const [mounted, setMounted] = useState(false);
 
@@ -39,11 +39,18 @@ export default function ThemeToggle({ isMobile }) {
 
   if (!mounted) return null;
 
+  const isFooter = variant === 'footer';
+  const isHeader = variant === 'header';
+
   return (
     <div
-      className={`notranslate skiptranslate flex items-center rounded-full border shadow-lg backdrop-blur-sm
-                 bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-600
-                 p-1 ${isMobile ? 'w-full justify-center' : ''}`}
+      className={`notranslate skiptranslate flex items-center rounded-full border p-1
+                 ${isFooter
+                   ? 'border-gray-200 bg-gray-100 shadow-none dark:border-white/15 dark:bg-white/5'
+                   : isHeader
+                     ? 'border-black/10 bg-white shadow-none dark:border-white/15 dark:bg-gray-900'
+                     : 'border-gray-200 bg-white shadow-lg backdrop-blur-sm dark:border-gray-600 dark:bg-gray-800'}
+                 ${isMobile ? 'w-full justify-center' : ''}`}
       translate="no"
     >
       {themes.map((themeOption) => {
@@ -55,15 +62,19 @@ export default function ThemeToggle({ isMobile }) {
             key={themeOption.value}
             type="button"
             onClick={() => selectTheme(themeOption.value)}
-            className={`relative p-2 rounded-full transition-colors duration-200
+            className={`relative rounded-full p-2 transition-colors duration-200
               ${isSelected
-                ? 'bg-gradient-to-r from-orange-500 to-orange-600 text-white shadow-md'
-                : 'text-gray-500 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200'}
+                ? 'bg-orange-500 text-white shadow-sm'
+                : isFooter
+                  ? 'text-gray-500 hover:text-gray-900 dark:text-white/50 dark:hover:text-white'
+                  : isHeader
+                    ? 'text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white'
+                    : 'text-gray-500 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-200'}
               ${isMobile ? 'flex-1' : ''}`}
             aria-label={`${themeOption.label} theme`}
             title={`${themeOption.label} theme`}
           >
-            <Icon size={16} />
+            <Icon size={isFooter || isHeader ? 15 : 16} />
           </button>
         );
       })}

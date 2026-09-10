@@ -244,6 +244,7 @@ export default function PricingWithCalculator() {
           "5-Page Custom Coded Website",
           "React/Next.js Frontend",
           "Node.js Backend",
+          "Supabase Backend (Auth & Database)",
           "Mobile-Responsive Design",
           "Advanced SEO Optimization",
           "Contact Form with Database",
@@ -300,6 +301,7 @@ export default function PricingWithCalculator() {
           "10-Page Custom Web Application",
           "React/Next.js Frontend",
           "Node.js/Express Backend",
+          "Supabase Auth, Database & Storage",
           "MongoDB/PostgreSQL Database",
           "Custom Admin Dashboard",
           "User Authentication System",
@@ -359,6 +361,7 @@ export default function PricingWithCalculator() {
           "Custom E-Commerce Platform",
           "React/Next.js Storefront",
           "Node.js Backend & REST API",
+          "Supabase Auth, Database & Storage",
           "MongoDB/PostgreSQL Database",
           "Unlimited Products",
           "Advanced Shopping Cart",
@@ -427,6 +430,7 @@ export default function PricingWithCalculator() {
           "Custom Full Stack Application",
           "React/Next.js/Vue.js Frontend",
           "Node.js/Python/Django Backend",
+          "Supabase Auth, Database & Realtime",
           "PostgreSQL/MongoDB Database",
           "Microservices Architecture",
           "Custom Admin Dashboard",
@@ -974,10 +978,19 @@ export default function PricingWithCalculator() {
                 {/* Technology Stack */}
                 <tr className="bg-white dark:bg-gray-900 hover:bg-orange-50 dark:hover:bg-gray-700/50 transition-colors">
                   <td className="px-6 py-4 font-bold text-gray-900 dark:text-white" style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}>Technology</td>
-                  <td className="px-6 py-4 text-center text-sm text-gray-600 dark:text-gray-400">{billingPeriod === "monthly" ? "WordPress" : "React/Next.js"}</td>
-                  <td className="px-6 py-4 text-center text-sm text-gray-600 dark:text-gray-400">{billingPeriod === "monthly" ? "WordPress" : "React + Node.js"}</td>
-                  <td className="px-6 py-4 text-center text-sm text-gray-600 dark:text-gray-400">{billingPeriod === "monthly" ? "WooCommerce" : "Custom Stack"}</td>
-                  <td className="px-6 py-4 text-center text-sm text-gray-600 dark:text-gray-400">{billingPeriod === "monthly" ? "WordPress" : "Full Custom"}</td>
+                  <td className="px-6 py-4 text-center text-sm text-gray-600 dark:text-gray-400">{billingPeriod === "monthly" ? "WordPress" : "React/Next.js + Supabase"}</td>
+                  <td className="px-6 py-4 text-center text-sm text-gray-600 dark:text-gray-400">{billingPeriod === "monthly" ? "WordPress" : "React + Node.js + Supabase"}</td>
+                  <td className="px-6 py-4 text-center text-sm text-gray-600 dark:text-gray-400">{billingPeriod === "monthly" ? "WooCommerce" : "Custom Stack + Supabase"}</td>
+                  <td className="px-6 py-4 text-center text-sm text-gray-600 dark:text-gray-400">{billingPeriod === "monthly" ? "WordPress" : "Full Custom + Supabase"}</td>
+                </tr>
+
+                {/* Backend / BaaS */}
+                <tr className="bg-white dark:bg-gray-900 hover:bg-orange-50 dark:hover:bg-gray-700/50 transition-colors">
+                  <td className="px-6 py-4 font-bold text-gray-900 dark:text-white" style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}>Backend / BaaS</td>
+                  <td className="px-6 py-4 text-center text-sm text-gray-600 dark:text-gray-400">{billingPeriod === "monthly" ? "WordPress" : "Supabase"}</td>
+                  <td className="px-6 py-4 text-center text-sm text-gray-600 dark:text-gray-400">{billingPeriod === "monthly" ? "WordPress" : "Supabase"}</td>
+                  <td className="px-6 py-4 text-center text-sm text-gray-600 dark:text-gray-400">{billingPeriod === "monthly" ? "WooCommerce" : "Supabase"}</td>
+                  <td className="px-6 py-4 text-center text-sm text-gray-600 dark:text-gray-400">{billingPeriod === "monthly" ? "Custom PHP" : "Supabase + Custom"}</td>
                 </tr>
 
                 {/* Delivery Time */}

@@ -12,11 +12,12 @@ import GlassButton from "../components/GlassButton";
 // ─────────────────────────────────────────────────────────────────────────────
 // Constants
 // ─────────────────────────────────────────────────────────────────────────────
-const PLACEHOLDER_IMAGE = "/png/screenshots/placeholder.webp";
+const PLACEHOLDER_IMAGE = "/png/screenshots/placeholder.svg";
 
 const PORTFOLIO_IMAGES = {
   "act-campus-care": "/png/screenshots/act-campus-care.webp",
   "ghanas-event": "/png/screenshots/ghanas-event.webp",
+  "ghanas-event-app": "/png/screenshots/ghanas-event.webp",
   "ghanas-event-blog": "/png/screenshots/ghanas-event-blog.webp",
   "building-planner-designs": "/png/screenshots/buildingplanner.webp",
   "celestial-shopping": "/png/screenshots/celestial-shopping.webp",
@@ -24,7 +25,7 @@ const PORTFOLIO_IMAGES = {
   "doeman-group": "/png/screenshots/doeman-screenshot.webp",
   "adbay-store": "/png/screenshots/adbay-full.webp",
   "elolo-agbleke-website": "/png/screenshots/elolo-full.webp",
-  "finance-tracker": "/png/screenshots/finance-tracker-full.webp",
+  "finance-tracker": "/png/screenshots/finance-tracker.png",
   "ghana-updates-online": "/png/screenshots/ghanaupdates-full.webp",
   "myspace-furniture": "/png/screenshots/myspace-furniture.webp",
   "valyd-homes": "/png/screenshots/valyd.webp",
@@ -58,6 +59,7 @@ const CATEGORIES = [
   "business & corporate",
   "e-commerce & retail",
   "events & ticketing",
+  "mobile app",
   "portfolio & personal",
   "news & media",
   "educational institutions",
@@ -125,6 +127,10 @@ function matchesFilter(p, filter) {
     case "real estate & construction":
       return category.includes("real estate") || category.includes("construction") ||
         title.includes("homes") || title.includes("building");
+    case "events & ticketing":
+      return category.includes("event") || category.includes("ticketing");
+    case "mobile app":
+      return category.includes("mobile app") || category.includes("mobile") || title.includes("app");
     case "churches & religious":
       return description.includes("chaplain") || description.includes("motivational speaker") ||
         title.includes("church");
@@ -267,6 +273,19 @@ const PortfolioCard = ({ project, image, index }) => {
             >
               {project.category}
             </p>
+          )}
+
+          {project.app && (
+            <div className="mt-2 flex flex-wrap items-center gap-1.5">
+              <span className="inline-flex items-center rounded-full bg-orange-500/10 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-orange-600 dark:text-orange-400">
+                Mobile App
+              </span>
+              {project.app?.comingSoon && (
+                <span className="inline-flex items-center rounded-full bg-gray-100 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-gray-600 dark:bg-gray-800 dark:text-gray-300">
+                  Get App soon
+                </span>
+              )}
+            </div>
           )}
         </div>
       </Link>

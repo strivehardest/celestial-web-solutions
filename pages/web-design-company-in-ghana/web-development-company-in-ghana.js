@@ -2,7 +2,7 @@ import Head from 'next/head';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import WhatsAppButton from '../../components/WhatsAppButton';
-import { ArrowRight, ArrowLeft, CheckCircle2, Zap, Users, Clock, Award, Search, Monitor, ShoppingCart, LifeBuoy } from 'lucide-react';
+import { ArrowRight, ArrowLeft, CheckCircle2, Zap, Users, Clock, Award, Search, Monitor, ShoppingCart, LifeBuoy, Code } from 'lucide-react';
 
 const GlassButton = ({ children, href, variant = 'light', external = false }) => {
   const baseStyles = "inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full font-semibold text-sm transition-all duration-300 backdrop-blur-md border";
@@ -32,7 +32,7 @@ const service = {
     "website developers in Ghana",
     "custom web development Ghana"
   ],
-  icon: require("lucide-react").Code,
+  icon: Code,
   heroImage: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?q=90&w=800&auto=format&fit=crop",
   keywords: [
     "web development company in Ghana",

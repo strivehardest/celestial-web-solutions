@@ -98,7 +98,7 @@ export default function GoogleTranslate() {
             if (!window.google || !window.google.translate) return;
             new window.google.translate.TranslateElement({
               pageLanguage: 'en',
-              includedLanguages: 'en,fr,es,ee,ak,gaa',
+              includedLanguages: 'en,fr,es',
               autoDisplay: false,
               multilanguagePage: true,
               layout: window.google.translate.TranslateElement.InlineLayout.SIMPLE

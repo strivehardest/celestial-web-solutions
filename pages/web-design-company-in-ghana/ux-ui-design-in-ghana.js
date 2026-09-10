@@ -3,7 +3,7 @@ import Head from 'next/head';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import WhatsAppButton from '../../components/WhatsAppButton';
-import { ArrowRight, ArrowLeft, CheckCircle2, Zap, Users, Clock, Award, Search, Code, Monitor, ShoppingCart, LifeBuoy } from 'lucide-react';
+import { ArrowRight, ArrowLeft, CheckCircle2, Zap, Users, Clock, Award, Search, Code, Monitor, ShoppingCart, LifeBuoy, Palette } from 'lucide-react';
 
 const GlassButton = ({ children, href, variant = 'light', external = false }) => {
   const baseStyles = "inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full font-semibold text-sm transition-all duration-300 backdrop-blur-md border";
@@ -26,7 +26,7 @@ const service = {
   title: "UX/UI Design",
   slug: "ux-ui-design",
   description: "We create intuitive, user-centered designs that enhance user experience and drive engagement. Our UX/UI design services combine research, strategy, and creativity to deliver seamless digital experiences.",
-  icon: require("lucide-react").Palette,
+  icon: Palette,
   heroImage: "https://images.unsplash.com/photo-1561070791-2526d30994b5?q=90&w=800&auto=format&fit=crop",
   keywords: ["UX design", "UI design", "user experience", "interface design"],
   details: [
