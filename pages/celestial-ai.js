@@ -217,7 +217,7 @@ export default function CelestialAIPage({ liveModel = false }) {
                   Ask Celestial AI
                 </h1>
                 <p className="mt-3 max-w-xl text-base text-gray-600 dark:text-gray-400 sm:text-lg">
-                  Get instant answers about our services, pricing in Cedis, payments, timelines, and web development in Ghana and around the world.
+                  Ask about web development in general, pricing in Cedis, payments, timelines, and how building a website in Ghana compares with the rest of the world.
                 </p>
               </motion.div>
 
@@ -332,10 +332,8 @@ export default function CelestialAIPage({ liveModel = false }) {
               </span>
             </div>
 
-            <form
-              onSubmit={handleSubmit}
-              className="flex items-end gap-2 rounded-2xl border border-gray-200 bg-gray-50 p-1.5 shadow-sm transition focus-within:border-orange-400 focus-within:ring-2 focus-within:ring-orange-500/20 dark:border-white/10 dark:bg-white/[0.04]"
-            >
+            <form onSubmit={handleSubmit} className="celestial-ai-composer">
+              <div className="celestial-ai-composer-inner">
               <textarea
                 ref={textareaRef}
                 rows={1}
@@ -379,6 +377,7 @@ export default function CelestialAIPage({ liveModel = false }) {
               >
                 {isSending ? <Loader2 className="h-5 w-5 animate-spin" /> : <ArrowUp className="h-5 w-5" />}
               </button>
+              </div>
             </form>
 
             {liveModel && (

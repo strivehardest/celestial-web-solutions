@@ -42,58 +42,122 @@ function sanitizeMessages(input) {
     .slice(-MAX_HISTORY);
 }
 
+function withLanguageReminder(messages, language) {
+  if (!language || language === 'en' || !messages.length) return messages;
+  const langName = LANGUAGE_NAMES[language] || language;
+  const reminder = `\n\n[Important: reply to this message entirely in ${langName}. Do not answer in English.]`;
+  return messages.map((m, index) =>
+    index === messages.length - 1 && m.role === 'user'
+      ? { ...m, content: `${m.content}${reminder}` }
+      : m
+  );
+}
+
+async function askOpenAICompatible(provider, model, messages, language, signal) {
+  const response = await fetch(provider.url, {
+    method: 'POST',
+    signal,
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${provider.key}`,
+      ...(provider.extraHeaders || {}),
+    },
+    body: JSON.stringify({
+      model,
+      temperature: 0.4,
+      max_tokens: 700,
+      messages: [{ role: 'system', content: buildSystemPrompt(language) }, ...messages],
+    }),
+  });
+
+  if (!response.ok) {
+    const errorText = await response.text().catch(() => '');
+    const error = new Error(`${provider.name}/${model} responded ${response.status}: ${errorText.slice(0, 300)}`);
+    error.status = response.status;
+    throw error;
+  }
+
+  const data = await response.json();
+  const content = data?.choices?.[0]?.message?.content;
+  if (!content || typeof content !== 'string') {
+    throw new Error(`${provider.name}/${model} returned an empty completion`);
+  }
+  return content.trim();
+}
+
+// Native Gemini generateContent. Required for AQ. auth keys from Google AI Studio;
+// the OpenAI-compatible Bearer route rejects those keys.
+async function askGeminiNative(provider, model, messages, language, signal) {
+  const url = `https://generativelanguage.googleapis.com/v1beta/models/${encodeURIComponent(model)}:generateContent`;
+  const contents = messages.map((m) => ({
+    role: m.role === 'assistant' ? 'model' : 'user',
+    parts: [{ text: m.content }],
+  }));
+
+  const response = await fetch(url, {
+    method: 'POST',
+    signal,
+    headers: {
+      'Content-Type': 'application/json',
+      'x-goog-api-key': provider.key,
+    },
+    body: JSON.stringify({
+      system_instruction: { parts: [{ text: buildSystemPrompt(language) }] },
+      contents,
+      generationConfig: {
+        temperature: 0.4,
+        maxOutputTokens: 700,
+      },
+    }),
+  });
+
+  if (!response.ok) {
+    const errorText = await response.text().catch(() => '');
+    const error = new Error(`${provider.name}/${model} responded ${response.status}: ${errorText.slice(0, 300)}`);
+    error.status = response.status;
+    throw error;
+  }
+
+  const data = await response.json();
+  const content = data?.candidates?.[0]?.content?.parts?.map((p) => p.text).filter(Boolean).join('') || '';
+  if (!content.trim()) {
+    throw new Error(`${provider.name}/${model} returned an empty completion`);
+  }
+  return content.trim();
+}
+
 async function askModel(provider, model, messages, language) {
   const controller = new AbortController();
   const timer = setTimeout(() => controller.abort(), ATTEMPT_TIMEOUT_MS);
   try {
-    const response = await fetch(provider.url, {
-      method: 'POST',
-      signal: controller.signal,
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${provider.key}`,
-        ...(provider.extraHeaders || {}),
-      },
-      body: JSON.stringify({
-        model,
-        temperature: 0.4,
-        max_tokens: 700,
-        messages: [{ role: 'system', content: buildSystemPrompt(language) }, ...messages],
-      }),
-    });
-
-    if (!response.ok) {
-      const errorText = await response.text().catch(() => '');
-      const error = new Error(`${provider.name}/${model} responded ${response.status}: ${errorText.slice(0, 300)}`);
-      error.status = response.status;
-      throw error;
+    if (provider.transport === 'gemini') {
+      return await askGeminiNative(provider, model, messages, language, controller.signal);
     }
-
-    const data = await response.json();
-    const content = data?.choices?.[0]?.message?.content;
-    if (!content || typeof content !== 'string') {
-      throw new Error(`${provider.name}/${model} returned an empty completion`);
-    }
-    return content.trim();
+    return await askOpenAICompatible(provider, model, messages, language, controller.signal);
   } finally {
     clearTimeout(timer);
   }
 }
 
 // Walk every configured provider and its candidate models until one answers.
-// A rejected key (401/403, or Gemini's 400 "valid API key") means every model
-// on that provider will fail, so skip the rest of it.
+// A rejected key means every model on that provider will fail, so skip the rest of it.
 async function askProviders(providers, messages, language) {
   const startedAt = Date.now();
+  const prepared = withLanguageReminder(messages, language);
   for (const provider of providers) {
     for (const model of provider.models) {
       if (Date.now() - startedAt > TOTAL_BUDGET_MS) return null;
       try {
-        const reply = await askModel(provider, model, messages, language);
+        const reply = await askModel(provider, model, prepared, language);
         return { reply, provider: provider.name, model };
       } catch (error) {
         console.error('[celestial-ai] attempt failed:', error.message);
-        const badKey = error.status === 401 || error.status === 403 || /api key/i.test(error.message);
+        const badKey =
+          error.status === 401 ||
+          error.status === 403 ||
+          /api[_ ]?key|invalid authentication|ACCESS_TOKEN_TYPE_UNSUPPORTED|unauthenticated/i.test(
+            error.message
+          );
         if (badKey) break;
       }
     }
