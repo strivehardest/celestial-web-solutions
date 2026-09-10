@@ -113,7 +113,12 @@ export default function PaymentPage() {
       icon: CreditCard,
       color: "from-blue-500 to-blue-600",
       details: {
-        link: "paystack.shop/pay/payment-for-celestial"
+        link: "paystack.shop/pay/vt_gybi4yj0",
+        ussd: "*415*3370#",
+        posters: {
+          light: "/Celestial_Web_Solutions_poster_light.png",
+          dark: "/Celestial_Web_Solutions_poster_dark.png",
+        },
       },
       logo: "/paystack-logo.png"
     },
@@ -251,17 +256,51 @@ export default function PaymentPage() {
                     )}
 
                     {option.details.link && (
-                      <PremiumCTA
-                        href={`https://${option.details.link}`}
-                        size="small"
-                        variant="primary"
-                        external={true}
-                        className="mt-4"
-                        icon={false}
-                      >
-                        Pay with Paystack
-                        <ExternalLink size={18} style={{ marginLeft: 8 }} />
-                      </PremiumCTA>
+                      <div className="space-y-5">
+                        {option.details.ussd && (
+                          <div className="flex justify-between items-center bg-white dark:bg-gray-700 p-3 rounded-lg">
+                            <span>Dial USSD code:</span>
+                            <div className="flex items-center space-x-2">
+                              <strong>{option.details.ussd}</strong>
+                              <button
+                                type="button"
+                                onClick={() => copyToClipboard(option.details.ussd, `${option.id}-ussd`)}
+                                aria-label="Copy Paystack USSD code"
+                              >
+                                <Copy size={16} className="text-orange-500" />
+                              </button>
+                              {copied === `${option.id}-ussd` && <Check size={16} className="text-green-500" />}
+                            </div>
+                          </div>
+                        )}
+
+                        {option.details.posters && (
+                          <div className="rounded-2xl overflow-hidden border border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-900">
+                            <img
+                              src={option.details.posters.light}
+                              alt="Paystack scan to pay for Celestial Web Solutions — Mobile Money, Apple Pay, cards, and USSD *415*3370#"
+                              className="w-full h-auto dark:hidden"
+                            />
+                            <img
+                              src={option.details.posters.dark}
+                              alt="Paystack scan to pay for Celestial Web Solutions — Mobile Money, Apple Pay, cards, and USSD *415*3370#"
+                              className="w-full h-auto hidden dark:block"
+                            />
+                          </div>
+                        )}
+
+                        <PremiumCTA
+                          href={`https://${option.details.link}`}
+                          size="small"
+                          variant="primary"
+                          external={true}
+                          className="mt-1"
+                          icon={false}
+                        >
+                          Pay with Paystack
+                          <ExternalLink size={18} style={{ marginLeft: 8 }} />
+                        </PremiumCTA>
+                      </div>
                     )}
 
                     {option.details.onDemand && (

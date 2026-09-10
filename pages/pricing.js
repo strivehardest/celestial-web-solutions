@@ -57,7 +57,7 @@ const paymentMethods = [
     subtitle: 'Secure online payment',
     icon: CreditCard,
     color: 'from-blue-500 to-blue-600',
-    details: { link: 'paystack.shop/pay/payment-for-celestial' },
+    details: { link: 'paystack.shop/pay/vt_gybi4yj0' },
     logo: '/paystack-logo.png',
   },
   {
