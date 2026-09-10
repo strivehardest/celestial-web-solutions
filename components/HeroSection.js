@@ -67,7 +67,7 @@ const HeroSection = () => {
         >
           {/* Developer Badge - Responsive text and padding */}
           <motion.div
-            className="inline-flex items-center space-x-2 bg-white/20 backdrop-blur-sm border border-orange-300/30 text-white px-3 py-2 sm:px-6 sm:py-3 rounded-full mb-6 sm:mb-8 text-xs sm:text-sm font-semibold"
+            className="inline-flex max-w-full items-center gap-1.5 rounded-full border border-orange-300/30 bg-white/20 px-3 py-1.5 text-[11px] font-semibold text-white backdrop-blur-sm sm:mb-8 sm:gap-2 sm:px-6 sm:py-3 sm:text-sm mb-6"
             style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -75,7 +75,9 @@ const HeroSection = () => {
           >
             <span className="hidden sm:inline">Full Stack Development</span>
             <span className="sm:hidden">Full Stack Dev</span>
-            <span className="animate-pulse">â—</span>
+            <span className="animate-pulse" aria-hidden="true">
+              ●
+            </span>
             <span className="hidden sm:inline">Available for Projects</span>
             <span className="sm:hidden">Available</span>
           </motion.div>
