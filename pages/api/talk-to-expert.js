@@ -3,7 +3,7 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
-  const { firstName, lastName, email, phone, company, service, budget, message, turnstileToken } = req.body;
+  const { firstName, lastName, email, phone, company, businessCategory, service, budget, timeframe, message, turnstileToken } = req.body;
 
   // Validate required fields
   if (!firstName || !lastName || !email || !phone || !company || !service) {
@@ -53,8 +53,10 @@ export default async function handler(req, res) {
         email,
         phone: phone || 'Not provided',
         company,
+        businessCategory: businessCategory || 'Not specified',
         service,
         budget: budget || 'Not specified',
+        timeframe: timeframe || 'To be confirmed',
         message: message || 'No additional message',
         _source: 'Talk to an Expert Modal',
       }),

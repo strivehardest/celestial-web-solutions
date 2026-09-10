@@ -5,6 +5,7 @@ import Link from 'next/link';
 import dynamic from 'next/dynamic';
 import WhatsAppButton from '../components/WhatsAppButton';
 import PremiumCTA from '../components/PremiumCTA';
+import AgreementDownloadButton from '../components/AgreementDownloadButton';
 
 const Map = dynamic(() => import('../components/Map'), {
   ssr: false,
@@ -36,10 +37,12 @@ export default function Contact() {
     email: '',
     phone: '',
     subject: '',
-    message: ''
+    timeframe: '',
+    message: '',
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null);
+  const [agreementSnapshot, setAgreementSnapshot] = useState(null);
   const [turnstileToken, setTurnstileToken] = useState(null);
   const turnstileRef = useRef(null);
   const turnstileWidgetId = useRef(null);
@@ -135,8 +138,12 @@ export default function Contact() {
         body: JSON.stringify({ ...formData, turnstileToken }),
       });
       if (response.ok) {
+        setAgreementSnapshot({
+          ...formData,
+          source: 'contact',
+        });
         setSubmitStatus('success');
-        setFormData({ name: '', email: '', phone: '', subject: '', message: '' });
+        setFormData({ name: '', email: '', phone: '', subject: '', timeframe: '', message: '' });
         setTurnstileToken(null);
         if (turnstileWidgetId.current !== null && window.turnstile) {
           window.turnstile.reset(turnstileWidgetId.current);
@@ -407,10 +414,18 @@ export default function Contact() {
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                       </svg>
                     )}
-                    <div>
-                      {submitStatus === 'success'
-                        ? "Thank you! Your message has been sent successfully. We'll get back to you soon!"
-                        : 'Sorry, there was an error sending your message. Please try again.'}
+                    <div className="flex-1">
+                      {submitStatus === 'success' ? (
+                        <div className="space-y-3">
+                          <p>Thank you! Your message has been sent successfully. We&apos;ll get back to you soon!</p>
+                          <p className="text-sm text-green-700 dark:text-green-300">
+                            Download a Celestial project agreement PDF with your request details, estimated timeframe, and payment terms.
+                          </p>
+                          <AgreementDownloadButton agreementData={agreementSnapshot} />
+                        </div>
+                      ) : (
+                        'Sorry, there was an error sending your message. Please try again.'
+                      )}
                     </div>
                   </div>
                 </motion.div>
@@ -468,6 +483,24 @@ export default function Contact() {
                     <option value="IT Support">IT Support</option>
                     <option value="Google Ads Management">Google Ads Management</option>
                     <option value="Google AdSense Management">Google AdSense Management</option>
+                  </select>
+                </div>
+
+                <div className="space-y-2">
+                  <label htmlFor="timeframe" className="block text-sm font-bold text-gray-800 dark:text-gray-200" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>Preferred timeframe</label>
+                  <select
+                    id="timeframe" name="timeframe"
+                    value={formData.timeframe} onChange={handleInputChange}
+                    className="w-full px-5 py-3 border-2 border-gray-200 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-2xl focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-all duration-300"
+                    style={{ fontFamily: 'Albert Sans, sans-serif' }}
+                  >
+                    <option value="">Select a timeframe (optional)</option>
+                    <option value="ASAP (rush — may include surcharge)">ASAP (rush — may include surcharge)</option>
+                    <option value="1–2 weeks">1–2 weeks</option>
+                    <option value="2–4 weeks">2–4 weeks</option>
+                    <option value="1–2 months">1–2 months</option>
+                    <option value="3+ months">3+ months</option>
+                    <option value="Flexible / to be confirmed">Flexible / to be confirmed</option>
                   </select>
                 </div>
 

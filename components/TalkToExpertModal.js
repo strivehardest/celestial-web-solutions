@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Send, CheckCircle, AlertCircle, Loader2 } from 'lucide-react';
+import AgreementDownloadButton from './AgreementDownloadButton';
 
 // Cloudflare Turnstile site key (public, exposed to browser)
 const TURNSTILE_SITE_KEY = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY || '1x00000000000000000000AA';
@@ -15,6 +16,7 @@ const TalkToExpertModal = ({ isOpen, onClose }) => {
     businessCategory: '',
     service: '',
     budget: '',
+    timeframe: '',
     message: '',
   });
     const businessCategoryOptions = [
@@ -31,6 +33,7 @@ const TalkToExpertModal = ({ isOpen, onClose }) => {
     ];
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null); // 'success' | 'error' | null
+  const [agreementSnapshot, setAgreementSnapshot] = useState(null);
   const [turnstileToken, setTurnstileToken] = useState(null);
   const turnstileRef = useRef(null);
   const turnstileWidgetId = useRef(null);
@@ -125,10 +128,14 @@ const TalkToExpertModal = ({ isOpen, onClose }) => {
       });
 
       if (response.ok) {
+        setAgreementSnapshot({
+          ...formData,
+          source: 'talk-to-expert',
+        });
         setSubmitStatus('success');
         setFormData({
           firstName: '', lastName: '', email: '', phone: '',
-          company: '', service: '', budget: '', message: '',
+          company: '', businessCategory: '', service: '', budget: '', timeframe: '', message: '',
         });
         setTurnstileToken(null);
       } else {
@@ -159,6 +166,15 @@ const TalkToExpertModal = ({ isOpen, onClose }) => {
     'GHS 5,000 – GHS 15,000',
     'GHS 15,000+',
     'Not sure yet',
+  ];
+
+  const timeframeOptions = [
+    'ASAP (rush — may include surcharge)',
+    '1–2 weeks',
+    '2–4 weeks',
+    '1–2 months',
+    '3+ months',
+    'Flexible / to be confirmed',
   ];
 
   const inputClass =
@@ -241,16 +257,22 @@ const TalkToExpertModal = ({ isOpen, onClose }) => {
                 >
                   Message Sent Successfully!
                 </h3>
-                <p className="text-sm text-gray-500 dark:text-gray-400 mb-6" style={{ fontFamily: 'Albert Sans, sans-serif' }}>
+                <p className="text-sm text-gray-500 dark:text-gray-400 mb-4" style={{ fontFamily: 'Albert Sans, sans-serif' }}>
                   Thank you for reaching out. Our team will get back to you within 24 hours.
                 </p>
-                <button
-                  onClick={() => { setSubmitStatus(null); onClose(); }}
-                  className="px-6 py-2.5 bg-gradient-to-r from-orange-500 to-red-500 text-white font-semibold text-sm rounded-xl hover:shadow-lg hover:shadow-orange-500/25 transition-all duration-200"
-                  style={{ fontFamily: 'Albert Sans, sans-serif' }}
-                >
-                  Close
-                </button>
+                <p className="text-xs text-gray-400 dark:text-gray-500 mb-6" style={{ fontFamily: 'Albert Sans, sans-serif' }}>
+                  Download a Celestial project agreement PDF with your request details, estimated timeframe, and payment terms.
+                </p>
+                <div className="flex flex-col items-center gap-3">
+                  <AgreementDownloadButton agreementData={agreementSnapshot} />
+                  <button
+                    onClick={() => { setSubmitStatus(null); setAgreementSnapshot(null); onClose(); }}
+                    className="px-6 py-2.5 bg-gradient-to-r from-orange-500 to-red-500 text-white font-semibold text-sm rounded-xl hover:shadow-lg hover:shadow-orange-500/25 transition-all duration-200"
+                    style={{ fontFamily: 'Albert Sans, sans-serif' }}
+                  >
+                    Close
+                  </button>
+                </div>
               </motion.div>
             ) : (
               /* Form */
@@ -405,6 +427,26 @@ const TalkToExpertModal = ({ isOpen, onClose }) => {
                   >
                     <option value="">Select...</option>
                     {budgetOptions.map(opt => (
+                      <option key={opt} value={opt}>{opt}</option>
+                    ))}
+                  </select>
+                </div>
+
+                {/* Timeframe */}
+                <div>
+                  <label htmlFor="timeframe" className={labelClass} style={{ fontFamily: 'Albert Sans, sans-serif' }}>
+                    Preferred timeframe
+                  </label>
+                  <select
+                    id="timeframe"
+                    name="timeframe"
+                    value={formData.timeframe}
+                    onChange={handleChange}
+                    className={`${inputClass} appearance-none cursor-pointer`}
+                    style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%239ca3af' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E")`, backgroundRepeat: 'no-repeat', backgroundPosition: 'right 12px center' }}
+                  >
+                    <option value="">Select...</option>
+                    {timeframeOptions.map(opt => (
                       <option key={opt} value={opt}>{opt}</option>
                     ))}
                   </select>

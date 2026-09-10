@@ -3,7 +3,7 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
-  const { name, email, phone, subject, message, turnstileToken } = req.body;
+  const { name, email, phone, subject, timeframe, message, turnstileToken } = req.body;
 
   // Validate required fields
   if (!name || !email || !subject || !message) {
@@ -52,6 +52,7 @@ export default async function handler(req, res) {
         email,
         phone: phone || 'Not provided',
         subject,
+        timeframe: timeframe || 'To be confirmed',
         message,
         _source: 'Contact Page',
       }),
