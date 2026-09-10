@@ -292,16 +292,18 @@ export default function Footer() {
                 <FiPhone className="mt-0.5 h-4 w-4 shrink-0 text-[#ff7a1a]" />
                 <div className="space-y-0.5">
                   <a
-                    href="tel:+233599211746"
+                    href="tel:+233245671832"
                     className="block transition-colors hover:text-gray-950 dark:hover:text-white"
                   >
-                    +233 59 921 1746
+                    +233 24 567 1832
                   </a>
                   <a
-                    href="tel:+233530517782"
+                    href="https://wa.me/233530505031"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="block transition-colors hover:text-gray-950 dark:hover:text-white"
                   >
-                    +233 53 051 7782
+                    WhatsApp +233 53 050 5031
                   </a>
                 </div>
               </li>
