@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
-import { MapPin, Phone, Mail, ArrowRight } from 'lucide-react';
+import { MapPin, Phone, Mail, ArrowRight, Smartphone } from 'lucide-react';
 import ThemeToggle from './ThemeToggle';
 import LanguageSwitcher from './LanguageSwitcher';
 import { useState, useEffect } from 'react';
@@ -346,6 +346,13 @@ export default function Footer({ darkMode, toggleDarkMode }) {
                   <Phone size={16} className="text-orange-500" />
                   +233 24 567 1832
                 </a>
+                <Link href="/payment" className="flex items-center gap-3 text-gray-500 dark:text-gray-400 hover:text-orange-500 dark:hover:text-orange-400 transition-colors text-base" style={{ fontFamily: 'Albert Sans, sans-serif' }}>
+                  <Smartphone size={16} className="text-orange-500 shrink-0" />
+                  <span>
+                    Paystack USSD:{' '}
+                    <span className="notranslate font-semibold text-gray-700 dark:text-gray-200" translate="no">*415*3370#</span>
+                  </span>
+                </Link>
                 <a href="mailto:info@celestialwebsolutions.net" className="flex items-center gap-3 text-gray-500 dark:text-gray-400 hover:text-orange-500 dark:hover:text-orange-400 transition-colors text-base" style={{ fontFamily: 'Albert Sans, sans-serif' }}>
                   <Mail size={16} className="text-orange-500" />
                   info@celestialwebsolutions.net

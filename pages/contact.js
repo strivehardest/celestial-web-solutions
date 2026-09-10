@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion } from "framer-motion";
 import Head from 'next/head';
+import Link from 'next/link';
 import dynamic from 'next/dynamic';
 import WhatsAppButton from '../components/WhatsAppButton';
 import PremiumCTA from '../components/PremiumCTA';
@@ -20,6 +21,7 @@ const TURNSTILE_SITE_KEY = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
 const typingPhrases = [
   'Call us: +233 24 567 1832',
   'WhatsApp us: +233 53 050 5031',
+  'Pay with Paystack: *415*3370#',
   'Email: info@celestialwebsolutions.net',
   'Offices in Keta & Accra, Ghana',
   'Free Consultation Available',
@@ -270,6 +272,22 @@ export default function Contact() {
                     <span className="text-orange-500 font-semibold">+</span> Accra, Greater Accra
                   </p>
                 </motion.div>
+
+                {/* Paystack USSD */}
+                <Link href="/payment" className="sm:col-span-2">
+                  <motion.div whileHover={{ scale: 1.02, y: -2 }} className="bg-white dark:bg-gray-800 rounded-3xl shadow-xl p-6 border border-blue-100 dark:border-gray-700 hover:shadow-2xl hover:shadow-blue-500/10 transition-all duration-300 h-full">
+                    <div className="flex items-center mb-4">
+                      <div className="w-14 h-14 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center shadow-lg">
+                        <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                        </svg>
+                      </div>
+                    </div>
+                    <h3 className="font-bold text-gray-900 dark:text-white mb-2 text-lg" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>Paystack USSD</h3>
+                    <p className="notranslate text-gray-600 dark:text-gray-300 font-medium" translate="no" style={{ fontFamily: 'Albert Sans, sans-serif' }}>*415*3370#</p>
+                    <p className="text-sm text-gray-500 dark:text-gray-400 mt-1" style={{ fontFamily: 'Albert Sans, sans-serif' }}>Dial to pay, or tap for scan-to-pay and checkout.</p>
+                  </motion.div>
+                </Link>
               </div>
 
               {/* ── Office Locations Maps ── */}

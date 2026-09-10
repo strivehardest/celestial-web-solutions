@@ -41,7 +41,7 @@ const Navbar = () => {
         { name: 'Blog', href: '/blog', description: 'Insights, tutorials & industry updates', icon: 'blog' },
         { name: 'Pricing', href: '/pricing', description: 'Transparent plans for every budget', icon: 'pricing' },
         { name: 'FAQs', href: '/faqs', description: 'Quick answers to common questions', icon: 'faqs' },
-        { name: 'Make Payment', href: '/payment', description: 'Secure & easy online payments', icon: 'payment' },
+        { name: 'Make Payment', href: '/payment', description: 'Paystack USSD *415*3370# & checkout', icon: 'payment' },
         { name: 'Terms of Service', href: '/terms', description: 'Our terms & conditions', icon: 'terms' },
         { name: 'Privacy Policy', href: '/privacy', description: 'How we protect your data', icon: 'privacy' }
       ]

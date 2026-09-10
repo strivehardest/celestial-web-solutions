@@ -35,7 +35,7 @@ All services are provided according to the specifications agreed upon in individ
       content: `Payment terms are specified in individual project agreements. Unless otherwise agreed:
 
 • Project payments are due according to the payment schedule outlined in your project agreement
-• We accept payments in Ghana Cedis (₵) through mobile money, bank transfer, cash, and international payments via Flutterwave/Paystack
+• We accept payments in Ghana Cedis (₵) through mobile money, bank transfer, cash, Paystack (online or USSD *415*3370#), and international payments via Flutterwave/Paystack
 • A deposit of 50% is typically required before work commences
 • Final payment is due upon project completion and before final delivery
 • Monthly service fees (hosting, maintenance, SEO) are due in advance

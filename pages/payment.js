@@ -18,6 +18,7 @@ const typingPhrases = [
   'Pay with MTN Mobile Money',
   'Pay with Telecel Cash',
   'Pay securely via Paystack',
+  'Dial *415*3370# to pay with Paystack',
   'Bank transfer available on demand',
   'Fast, Secure, Trusted Payments',
   'Contact: +233 24 567 1832',

@@ -68,7 +68,7 @@ export default function FAQs() {
         },
         {
           question: "Do you accept payments in Cedis?",
-          answer: "Yes! We accept payments in Ghana Cedis (GH₵) through mobile money (MTN, Vodafone, AirtelTigo), bank transfers, and cash payments. We also accept international payments via Flutterwave, DPO Pay and Paystack for overseas clients."
+          answer: "Yes! We accept payments in Ghana Cedis (GH₵) through mobile money (MTN, Vodafone, AirtelTigo), bank transfers, and cash payments. You can also pay with Paystack online or by dialing *415*3370#. We accept international payments via Flutterwave, DPO Pay and Paystack for overseas clients."
         },
         {
           question: "Do you offer payment plans?",

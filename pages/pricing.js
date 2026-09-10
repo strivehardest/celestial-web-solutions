@@ -20,6 +20,7 @@ const typingPhrases = [
   'Custom Web App Quotes',
   'Flexible Payment Plans',
   'Contact us: +233 24 567 1832',
+  'Paystack USSD: *415*3370#',
   'Email: info@celestialwebsolutions.net',
 ];
 
@@ -57,7 +58,7 @@ const paymentMethods = [
     subtitle: 'Secure online payment',
     icon: CreditCard,
     color: 'from-blue-500 to-blue-600',
-    details: { link: 'paystack.shop/pay/vt_gybi4yj0' },
+    details: { link: 'paystack.shop/pay/vt_gybi4yj0', ussd: '*415*3370#' },
     logo: '/paystack-logo.png',
   },
   {
@@ -1421,17 +1422,35 @@ export default function PricingWithCalculator() {
                       )}
                       {/* Paystack Details */}
                       {method.details.link && (
-                        <div>
-                          <p className="text-xs text-white/70 uppercase tracking-wide mb-2" style={{ fontFamily: "Albert Sans, sans-serif" }}>Payment Link</p>
-                          <a
-                            href={`https://${method.details.link}`}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="inline-flex items-center gap-2 px-4 py-2 bg-white text-blue-600 font-semibold rounded-lg hover:bg-gray-100 transition-colors text-sm"
-                            style={{ fontFamily: "Albert Sans, sans-serif" }}
-                          >
-                            Pay with Paystack <ArrowRight size={14} />
-                          </a>
+                        <div className="space-y-3">
+                          {method.details.ussd && (
+                            <div className="flex items-center justify-between">
+                              <div>
+                                <p className="text-xs text-white/70 uppercase tracking-wide" style={{ fontFamily: "Albert Sans, sans-serif" }}>Dial USSD code</p>
+                                <p className="notranslate font-bold text-lg tracking-wider" translate="no" style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}>{method.details.ussd}</p>
+                              </div>
+                              <button
+                                onClick={() => copyToClipboard(method.details.ussd, `${method.id}-ussd`)}
+                                className="p-2 rounded-lg bg-white/20 hover:bg-white/30 transition-colors"
+                                title="Copy USSD code"
+                                type="button"
+                              >
+                                {copiedText === `${method.id}-ussd` ? <Check size={16} /> : <Copy size={16} />}
+                              </button>
+                            </div>
+                          )}
+                          <div>
+                            <p className="text-xs text-white/70 uppercase tracking-wide mb-2" style={{ fontFamily: "Albert Sans, sans-serif" }}>Payment Link</p>
+                            <a
+                              href={`https://${method.details.link}`}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="inline-flex items-center gap-2 px-4 py-2 bg-white text-blue-600 font-semibold rounded-lg hover:bg-gray-100 transition-colors text-sm"
+                              style={{ fontFamily: "Albert Sans, sans-serif" }}
+                            >
+                              Pay with Paystack <ArrowRight size={14} />
+                            </a>
+                          </div>
                         </div>
                       )}
                       {/* Bank Transfer — on demand */}
