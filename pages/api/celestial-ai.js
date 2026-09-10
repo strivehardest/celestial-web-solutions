@@ -65,7 +65,7 @@ async function askOpenAICompatible(provider, model, messages, language, signal) 
     body: JSON.stringify({
       model,
       temperature: 0.4,
-      max_tokens: 700,
+        max_tokens: 1200,
       messages: [{ role: 'system', content: buildSystemPrompt(language) }, ...messages],
     }),
   });
@@ -106,7 +106,7 @@ async function askGeminiNative(provider, model, messages, language, signal) {
       contents,
       generationConfig: {
         temperature: 0.4,
-        maxOutputTokens: 700,
+        maxOutputTokens: 1200,
       },
     }),
   });
