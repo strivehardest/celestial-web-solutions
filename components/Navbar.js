@@ -32,7 +32,7 @@ const SERVICES = [
 ];
 
 const RESOURCES = [
-  { name: 'Celestial AI', href: '/celestial-ai', description: 'Ask anything, get instant answers', icon: 'ai' },
+  { name: 'Celestial AI', href: '/celestial-ai', description: 'Ask about web dev & compare agencies', icon: 'ai' },
   { name: 'Blog', href: '/blog', description: 'Insights and tutorials', icon: 'blog' },
   { name: 'Courses', href: '/courses', description: 'Learn web design & development', icon: 'courses' },
   { name: 'FAQs', href: '/faqs', description: 'Common questions answered', icon: 'faqs' },

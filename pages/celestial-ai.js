@@ -178,23 +178,117 @@ export default function CelestialAIPage({ liveModel = false }) {
   return (
     <>
       <Head>
-        <title>Celestial AI | Ask Anything About Celestial Web Solutions</title>
+        <title>Celestial AI | Web Development Assistant &amp; Agency Comparison | Celestial Web Solutions</title>
         <meta
           name="description"
-          content="Chat with Celestial AI for instant answers about Celestial Web Solutions' services, pricing in Ghana Cedis, Paystack and mobile money payments, timelines, portfolio, courses, and how web development in Ghana compares with the rest of the world."
+          content="Ask Celestial AI about web development, website pricing in Ghana Cedis, Paystack and MoMo payments, timelines, and how Celestial Web Solutions compares to other web design agencies in Ghana and worldwide."
         />
         <meta
           name="keywords"
-          content="Celestial AI, Celestial Web Solutions chatbot, web design Ghana AI assistant, website cost Ghana, web development Ghana vs USA, Paystack USSD *415*3370#"
+          content="Celestial AI, Celestial Web Solutions, web development Ghana, compare web design agencies Ghana, website cost Ghana, web agency comparison, best web designer Accra, Paystack USSD, WordPress vs Next.js, web development Ghana vs USA"
         />
-        <meta property="og:title" content="Celestial AI | Celestial Web Solutions" />
+        <meta name="author" content="Celestial Web Solutions" />
+        <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+        <meta name="googlebot" content="index, follow" />
+        <link rel="canonical" href="https://www.celestialwebsolutions.net/celestial-ai" />
+
+        <meta property="og:type" content="website" />
+        <meta property="og:site_name" content="Celestial Web Solutions" />
+        <meta property="og:locale" content="en_GB" />
+        <meta property="og:title" content="Celestial AI | Ask About Web Development &amp; Compare Agencies" />
         <meta
           property="og:description"
-          content="Instant answers about web design and development services, pricing, payments and the Ghana web market."
+          content="Instant answers on web development, Ghana pricing, payments, and how Celestial Web Solutions compares to other agencies."
         />
-        <meta property="og:type" content="website" />
         <meta property="og:url" content="https://www.celestialwebsolutions.net/celestial-ai" />
-        <link rel="canonical" href="https://www.celestialwebsolutions.net/celestial-ai" />
+        <meta property="og:image" content="https://www.celestialwebsolutions.net/og-image.jpg" />
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="@strivehardest" />
+        <meta name="twitter:title" content="Celestial AI | Web Development Assistant" />
+        <meta
+          name="twitter:description"
+          content="Ask about web development, Ghana website pricing, and compare Celestial Web Solutions to other agencies."
+        />
+        <meta name="twitter:image" content="https://www.celestialwebsolutions.net/og-image.jpg" />
+
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@graph': [
+                {
+                  '@type': 'WebApplication',
+                  '@id': 'https://www.celestialwebsolutions.net/celestial-ai#app',
+                  name: 'Celestial AI',
+                  url: 'https://www.celestialwebsolutions.net/celestial-ai',
+                  applicationCategory: 'BusinessApplication',
+                  operatingSystem: 'Web',
+                  description:
+                    'AI assistant for Celestial Web Solutions that answers questions about web development, pricing in Ghana Cedis, payments, timelines, and agency comparisons.',
+                  offers: {
+                    '@type': 'Offer',
+                    price: '0',
+                    priceCurrency: 'GHS',
+                  },
+                  provider: {
+                    '@type': 'Organization',
+                    name: 'Celestial Web Solutions',
+                    url: 'https://www.celestialwebsolutions.net',
+                    logo: 'https://www.celestialwebsolutions.net/logo.png',
+                  },
+                },
+                {
+                  '@type': 'BreadcrumbList',
+                  itemListElement: [
+                    {
+                      '@type': 'ListItem',
+                      position: 1,
+                      name: 'Home',
+                      item: 'https://www.celestialwebsolutions.net/',
+                    },
+                    {
+                      '@type': 'ListItem',
+                      position: 2,
+                      name: 'Celestial AI',
+                      item: 'https://www.celestialwebsolutions.net/celestial-ai',
+                    },
+                  ],
+                },
+                {
+                  '@type': 'FAQPage',
+                  mainEntity: [
+                    {
+                      '@type': 'Question',
+                      name: 'How does Celestial Web Solutions compare to other web agencies?',
+                      acceptedAnswer: {
+                        '@type': 'Answer',
+                        text: 'Compare agencies on portfolio, transparent GH₵ pricing, Ghana payment options (Paystack, MoMo, Telecel, USSD), written timelines and warranty, code ownership, post-launch support, and whether you speak to the builder. Celestial publishes package prices from GH₵2,500, offers WordPress and custom Next.js tiers, and includes free domain and hosting for the first year.',
+                      },
+                    },
+                    {
+                      '@type': 'Question',
+                      name: 'How much does a website cost in Ghana?',
+                      acceptedAnswer: {
+                        '@type': 'Answer',
+                        text: 'Celestial Web Solutions websites start from GH₵2,500 for a Starter WordPress site and range up to GH₵28,000 for Enterprise custom builds. E-commerce starts from GH₵4,500.',
+                      },
+                    },
+                    {
+                      '@type': 'Question',
+                      name: 'What is Celestial AI?',
+                      acceptedAnswer: {
+                        '@type': 'Answer',
+                        text: 'Celestial AI is a free chat assistant on celestialwebsolutions.net that answers questions about Celestial Web Solutions services, web development basics, Ghana vs global pricing, and how the agency compares to freelancers, local studios and international firms.',
+                      },
+                    },
+                  ],
+                },
+              ],
+            }),
+          }}
+        />
       </Head>
 
       <div className="min-h-screen bg-white pt-[72px] dark:bg-gray-950" style={BODY_FONT}>
@@ -215,7 +309,7 @@ export default function CelestialAIPage({ liveModel = false }) {
                   Ask Celestial AI
                 </h1>
                 <p className="mt-3 max-w-xl text-base text-gray-600 dark:text-gray-400 sm:text-lg">
-                  Ask about web development in general, pricing in Cedis, payments, timelines, and how building a website in Ghana compares with the rest of the world.
+                  Ask about web development, compare Celestial Web Solutions to other agencies, check pricing in Cedis, and see how building in Ghana stacks up against the rest of the world.
                 </p>
               </motion.div>
 
