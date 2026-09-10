@@ -1,11 +1,16 @@
 import { buildSystemPrompt, LANGUAGE_NAMES } from '../../lib/celestialAI/knowledge';
 import { answerLocally } from '../../lib/celestialAI/localAnswer';
-import { resolveProvider } from '../../lib/celestialAI/provider';
+import { resolveProviders } from '../../lib/celestialAI/provider';
 
 const MAX_MESSAGE_CHARS = 1500;
 const MAX_HISTORY = 12;
 const RATE_LIMIT_WINDOW_MS = 60 * 60 * 1000;
 const RATE_LIMIT_MAX = 60;
+const ATTEMPT_TIMEOUT_MS = 12000;
+const TOTAL_BUDGET_MS = 26000;
+
+// Vercel Pages API routes default to 10s; allow time for one retry.
+export const config = { maxDuration: 30 };
 
 // Best-effort per-instance limiter; serverless instances don't share memory,
 // so this only softens abuse rather than enforcing a hard global quota.
@@ -37,9 +42,9 @@ function sanitizeMessages(input) {
     .slice(-MAX_HISTORY);
 }
 
-async function askProvider(provider, messages, language) {
+async function askModel(provider, model, messages, language) {
   const controller = new AbortController();
-  const timer = setTimeout(() => controller.abort(), 25000);
+  const timer = setTimeout(() => controller.abort(), ATTEMPT_TIMEOUT_MS);
   try {
     const response = await fetch(provider.url, {
       method: 'POST',
@@ -50,7 +55,7 @@ async function askProvider(provider, messages, language) {
         ...(provider.extraHeaders || {}),
       },
       body: JSON.stringify({
-        model: provider.model,
+        model,
         temperature: 0.4,
         max_tokens: 700,
         messages: [{ role: 'system', content: buildSystemPrompt(language) }, ...messages],
@@ -59,18 +64,41 @@ async function askProvider(provider, messages, language) {
 
     if (!response.ok) {
       const errorText = await response.text().catch(() => '');
-      throw new Error(`${provider.name} responded ${response.status}: ${errorText.slice(0, 300)}`);
+      const error = new Error(`${provider.name}/${model} responded ${response.status}: ${errorText.slice(0, 300)}`);
+      error.status = response.status;
+      throw error;
     }
 
     const data = await response.json();
     const content = data?.choices?.[0]?.message?.content;
     if (!content || typeof content !== 'string') {
-      throw new Error(`${provider.name} returned an empty completion`);
+      throw new Error(`${provider.name}/${model} returned an empty completion`);
     }
     return content.trim();
   } finally {
     clearTimeout(timer);
   }
+}
+
+// Walk every configured provider and its candidate models until one answers.
+// A rejected key (401/403, or Gemini's 400 "valid API key") means every model
+// on that provider will fail, so skip the rest of it.
+async function askProviders(providers, messages, language) {
+  const startedAt = Date.now();
+  for (const provider of providers) {
+    for (const model of provider.models) {
+      if (Date.now() - startedAt > TOTAL_BUDGET_MS) return null;
+      try {
+        const reply = await askModel(provider, model, messages, language);
+        return { reply, provider: provider.name, model };
+      } catch (error) {
+        console.error('[celestial-ai] attempt failed:', error.message);
+        const badKey = error.status === 401 || error.status === 403 || /api key/i.test(error.message);
+        if (badKey) break;
+      }
+    }
+  }
+  return null;
 }
 
 export default async function handler(req, res) {
@@ -98,15 +126,14 @@ export default async function handler(req, res) {
     return res.status(400).json({ error: 'Please include a question.' });
   }
 
-  const provider = resolveProvider();
+  const providers = resolveProviders();
 
-  if (provider) {
-    try {
-      const reply = await askProvider(provider, messages, language);
-      return res.status(200).json({ reply, source: 'ai', model: provider.model });
-    } catch (error) {
-      console.error('[celestial-ai] provider error, falling back to knowledge base:', error.message);
+  if (providers.length) {
+    const result = await askProviders(providers, messages, language);
+    if (result) {
+      return res.status(200).json({ reply: result.reply, source: 'ai', model: `${result.provider}/${result.model}` });
     }
+    console.error('[celestial-ai] all providers failed, answering from knowledge base');
   }
 
   const reply = answerLocally(lastUser.content, { language });
