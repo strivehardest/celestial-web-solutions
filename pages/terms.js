@@ -36,7 +36,7 @@ All services are provided according to the specifications agreed upon in individ
 
 • Full payment is required before any project work begins for most projects
 • Flexible payment plans may be offered for larger, higher-cost projects only, and must be agreed in writing before work starts
-• We accept payments in Ghana Cedis (₵) through mobile money, bank transfer, cash, and international payments via Flutterwave/Paystack
+• We accept payments in Ghana Cedis (₵) through mobile money, bank transfer, cash, Paystack (online or USSD *415*3370#), and international payments via Flutterwave/Paystack
 • Work will not commence until the agreed initial payment has been received and confirmed
 • Monthly service fees (hosting, maintenance, SEO) are due in advance
 • Late payments may incur a fee of 2% per month on outstanding amounts
@@ -263,7 +263,7 @@ We are committed to resolving any disputes fairly and professionally in accordan
               </p>
               <div className="mt-6 text-orange-100">
                 <p style={{ fontFamily: "Albert Sans, sans-serif" }}>
-                  Last Updated: August 29, 2026
+                  Last Updated: September 10, 2026
                 </p>
               </div>
             </motion.div>
