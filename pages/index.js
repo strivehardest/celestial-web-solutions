@@ -194,7 +194,7 @@ const portfolioItems = [
     description: "A culturally grounded VR wellness platform helping HBCU students regulate stress and build resilience.",
     tech: ["Next.js", "React", "TypeScript", "Sanity CMS", "Tailwind CSS"],
     link: "/portfolio/act-campus-care",
-    image: "/portfolio/desktop/act-campus-care.png",
+    image: "/portfolio/desktop/campus-care.png",
     accent: "#0e4f88"
   },
   {
@@ -464,7 +464,7 @@ const IndexPage = ({ latestPosts = [] }) => {
       <div className="min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300">
 
         {/* ── Hero Text Section ── */}
-        <section className="relative py-16 sm:py-24 overflow-hidden min-h-[620px]">
+        <section className="relative overflow-hidden min-h-[620px] pt-28 pb-16 sm:pt-32 sm:pb-24">
           {/* Static background image from public folder */}
           <div className="absolute inset-0 w-full h-full">
             <img src="/hero-bg.jpg" alt="Hero Background" className="w-full h-full object-cover object-center" style={{zIndex:0}} />
@@ -478,19 +478,6 @@ const IndexPage = ({ latestPosts = [] }) => {
               transition={{ duration: 0.8 }}
               className="text-center"
             >
-              <motion.div
-                className="inline-flex items-center space-x-2 bg-orange-500/90 text-white px-4 py-2 rounded-full mb-6 text-xs sm:text-sm font-bold shadow-lg"
-                style={{ fontFamily: 'Albert Sans, sans-serif' }}
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.2, duration: 0.6 }}
-              >
-                <span>Full Stack Development</span>
-                <span className="animate-pulse">●</span>
-                <span>Available for Projects</span>
-              </motion.div>
-
               <h1
                 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold mb-6 text-white drop-shadow-lg leading-tight"
                 style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}

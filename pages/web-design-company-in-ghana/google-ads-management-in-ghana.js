@@ -3,7 +3,7 @@ import Head from 'next/head';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import WhatsAppButton from '../../components/WhatsAppButton';
-import { ArrowRight, ArrowLeft, CheckCircle2, Zap, Users, Clock, Award, Search, Monitor, ShoppingCart, LifeBuoy } from 'lucide-react';
+import { ArrowRight, ArrowLeft, CheckCircle2, Zap, Users, Clock, Award, Search, Monitor, ShoppingCart, LifeBuoy, MousePointer } from 'lucide-react';
 
 const GlassButton = ({ children, href, variant = 'light', external = false }) => {
   const baseStyles = "inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full font-semibold text-sm transition-all duration-300 backdrop-blur-md border";
@@ -26,7 +26,7 @@ const service = {
   title: "Google Ads Management",
   slug: "google-ads-management",
   description: "We drive targeted traffic and maximize conversions through expertly managed Google Ads campaigns. Our certified specialists handle strategy, keyword research, ad creation, bid management, and continuous optimization across Search, Display, Shopping, and Video campaigns to maximize your ROI.",
-  icon: require("lucide-react").MousePointer,
+  icon: MousePointer,
   heroImage: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRI23FVIbMh2YmJeuWfIldox2fhWDLkv6P8ww&s",
   keywords: ["Google Ads", "PPC management", "paid advertising", "campaign management"],
   details: [

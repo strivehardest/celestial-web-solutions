@@ -2,6 +2,7 @@ import { useState, useRef } from 'react';
 import { useRouter } from 'next/router';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
+import CtaArrow from './CtaArrow';
 
 function isExternalHref(href = '', { external, target } = {}) {
   if (external || target === '_blank') return true;
@@ -56,9 +57,9 @@ export default function PremiumCTA({
   };
 
   const sizeClasses = {
-    small: 'pl-5 pr-9 py-2.5 text-sm',
-    default: 'pl-8 pr-11 py-4 text-base',
-    large: 'pl-10 pr-12 py-5 text-lg',
+    small: 'px-5 py-2.5 text-sm',
+    default: 'px-8 py-4 text-base',
+    large: 'px-10 py-5 text-lg',
   };
 
   const variantClasses = {
@@ -72,7 +73,7 @@ export default function PremiumCTA({
 
   const classes = `
     group relative inline-flex items-center justify-center font-bold rounded-full
-    overflow-hidden cursor-pointer
+    cursor-pointer
     ${sizeClasses[resolvedSize] || sizeClasses.default}
     ${variantClasses[variant] || variantClasses.primary}
     ${className}
@@ -94,37 +95,10 @@ export default function PremiumCTA({
         />
       )}
 
-      {/* Label stays centered; arrow overlays right padding on hover (no layout shift) */}
-      <span className="relative z-10 tracking-wide transition-colors duration-300">
+      <span className="relative z-10 inline-flex items-center tracking-wide transition-colors duration-300">
         {children}
+        {icon && <CtaArrow size={resolvedSize === 'small' ? 16 : 18} />}
       </span>
-
-      {icon && (
-        <span
-          aria-hidden="true"
-          className="
-            pointer-events-none absolute right-4 top-1/2 z-10
-            -translate-y-1/2 translate-x-1 opacity-0
-            group-hover:translate-x-0 group-hover:opacity-100
-            group-focus-visible:translate-x-0 group-focus-visible:opacity-100
-            transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)]
-          "
-        >
-          <svg
-            className="h-5 w-5 shrink-0"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2.25}
-              d="M17 8l4 4m0 0l-4 4m4-4H3"
-            />
-          </svg>
-        </span>
-      )}
     </>
   );
 
@@ -206,6 +180,8 @@ export function TextCTA({ children, href = '/contact', className = '', ...props 
             ml-1 inline-flex w-4 shrink-0 justify-end
             opacity-0 -translate-x-1
             group-hover:opacity-100 group-hover:translate-x-0
+            group-focus:opacity-100 group-focus:translate-x-0
+            group-active:opacity-100 group-active:translate-x-0
             transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)]
           "
         >

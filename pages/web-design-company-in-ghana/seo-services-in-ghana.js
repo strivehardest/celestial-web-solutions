@@ -33,7 +33,7 @@ const service = {
     "search engine optimization Ghana",
     "local SEO Ghana"
   ],
-  icon: require("lucide-react").Search,
+  icon: Search,
   heroImage: "https://www.intellibright.com/wp-content/uploads/2025/04/Search-Engine-Optimization.jpg",
   keywords: [
     "SEO services in Ghana",

@@ -27,7 +27,7 @@ const heroSlides = [
     caseStudyLabel: 'VIEW PROJECT',
     ctaLink: '/contact',
     ctaLabel: 'START YOUR PROJECT',
-    mainImage: '/portfolio/desktop/act-campus-care.png',
+    mainImage: '/portfolio/desktop/campus-care.png',
     bgColor: 'from-blue-950 via-sky-900 to-indigo-950',
   },
   {

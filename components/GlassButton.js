@@ -22,9 +22,9 @@ export default function GlassButton({
 }) {
   const classes = `
     group relative inline-flex items-center justify-center
-    pl-6 pr-10 py-3 rounded-full font-semibold
+    px-6 py-3 rounded-full font-semibold
     transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)]
-    backdrop-blur-md border cursor-pointer overflow-hidden
+    backdrop-blur-md border cursor-pointer
     focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-400/70 focus-visible:ring-offset-2
     dark:focus-visible:ring-offset-gray-900
     ${VARIANTS[variant] || VARIANTS.light}
@@ -33,8 +33,10 @@ export default function GlassButton({
 
   const content = (
     <>
-      <span className="relative z-10 tracking-wide">{children}</span>
-      <CtaArrow size={17} accent={variant === 'orange' || variant === 'dark'} />
+      <span className="relative z-10 inline-flex items-center tracking-wide">
+        {children}
+        <CtaArrow size={17} accent={variant === 'orange' || variant === 'dark'} />
+      </span>
     </>
   );
 
