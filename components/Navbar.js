@@ -10,6 +10,7 @@ import {
   HelpCircle,
   Menu,
   Shield,
+  Sparkles,
   X,
 } from 'lucide-react';
 import { useRouter } from 'next/router';
@@ -31,6 +32,7 @@ const SERVICES = [
 ];
 
 const RESOURCES = [
+  { name: 'Celestial AI', href: '/celestial-ai', description: 'Ask anything, get instant answers', icon: 'ai' },
   { name: 'Blog', href: '/blog', description: 'Insights and tutorials', icon: 'blog' },
   { name: 'Courses', href: '/courses', description: 'Learn web design & development', icon: 'courses' },
   { name: 'FAQs', href: '/faqs', description: 'Common questions answered', icon: 'faqs' },
@@ -42,6 +44,8 @@ const RESOURCES = [
 function DropdownIcon({ name }) {
   const className = 'w-4 h-4';
   switch (name) {
+    case 'ai':
+      return <Sparkles className={className} />;
     case 'blog':
       return <BookOpen className={className} />;
     case 'courses':

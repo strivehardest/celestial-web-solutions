@@ -224,6 +224,11 @@ export default function Footer() {
             </h3>
             <ul className="space-y-2.5">
               <li>
+                <Link href="/celestial-ai" className={footerLink}>
+                  Celestial AI
+                </Link>
+              </li>
+              <li>
                 <Link href="/faqs" className={footerLink}>
                   FAQs
                 </Link>

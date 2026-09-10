@@ -5,6 +5,7 @@ const PHONE_NUMBER = '+233245671832';
 const WHATSAPP_MESSAGE = "Hi! I'm interested in your web development services.";
 const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`;
 const PHONE_HREF = `tel:${PHONE_NUMBER}`;
+const AI_HREF = '/celestial-ai';
 
 let activeInstanceId = null;
 
@@ -184,6 +185,57 @@ export default function ContactChatWidget() {
           </div>
 
           <div style={{ padding: '14px' }}>
+            <a
+              href={AI_HREF}
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '12px',
+                padding: '12px',
+                marginBottom: '10px',
+                borderRadius: '14px',
+                textDecoration: 'none',
+                color: '#111827',
+                background: '#fff7ed',
+                border: '1px solid #fdba74',
+                transition: 'background-color 0.15s ease, border-color 0.15s ease, transform 0.15s ease',
+              }}
+              onMouseEnter={(event) => {
+                event.currentTarget.style.background = '#ffedd5';
+                event.currentTarget.style.borderColor = '#fb923c';
+                event.currentTarget.style.transform = 'translateY(-1px)';
+              }}
+              onMouseLeave={(event) => {
+                event.currentTarget.style.background = '#fff7ed';
+                event.currentTarget.style.borderColor = '#fdba74';
+                event.currentTarget.style.transform = 'translateY(0)';
+              }}
+            >
+              <span
+                style={{
+                  width: '42px',
+                  height: '42px',
+                  borderRadius: '12px',
+                  background: 'linear-gradient(135deg, #f97316, #ea580c)',
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  flexShrink: 0,
+                }}
+              >
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                  <path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9L12 3z" />
+                  <path d="M19 16l.8 2.2L22 19l-2.2.8L19 22l-.8-2.2L16 19l2.2-.8L19 16z" />
+                </svg>
+              </span>
+              <span style={{ minWidth: 0 }}>
+                <span style={{ display: 'block', fontSize: '14px', fontWeight: 700 }}>Ask Celestial AI</span>
+                <span style={{ display: 'block', marginTop: '2px', fontSize: '12px', color: '#64748b' }}>
+                  Instant answers, 24/7
+                </span>
+              </span>
+            </a>
+
             <a
               href={WHATSAPP_URL}
               target="_blank"

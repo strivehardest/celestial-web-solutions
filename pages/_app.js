@@ -20,6 +20,9 @@ function MyApp({ Component, pageProps }) {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
   const [showExpertPopup, setShowExpertPopup] = useState(false);
+  // The AI chat page has its own fixed composer, so the global footer and
+  // floating widgets would overlap it.
+  const isAiChatPage = router.pathname === '/celestial-ai';
 
 // Render studio completely standalone — no site layout, no scripts
   if (router.pathname.startsWith('/studio')) {
@@ -60,7 +63,7 @@ function MyApp({ Component, pageProps }) {
 
   // Auto-show Talk to Expert popup once per session after 5 seconds
   useEffect(() => {
-    if (typeof window === 'undefined') return;
+    if (typeof window === 'undefined' || isAiChatPage) return;
     const alreadyShown = sessionStorage.getItem('expertPopupShown');
     if (alreadyShown) return;
 
@@ -70,7 +73,7 @@ function MyApp({ Component, pageProps }) {
     }, 5000);
 
     return () => clearTimeout(timer);
-  }, []);
+  }, [isAiChatPage]);
 
   return (
     <LanguageProvider>
@@ -135,11 +138,11 @@ function MyApp({ Component, pageProps }) {
       />
 
       <Navbar />
-      <ScrollToTop />
+      {!isAiChatPage && <ScrollToTop />}
 
       <Component {...pageProps} />
-      <Footer />
-      <ContactChatWidget />
+      {!isAiChatPage && <Footer />}
+      {!isAiChatPage && <ContactChatWidget />}
 
       {/* AdSense — lazyOnload means it loads after everything else, only on homepage */}
       {router.pathname === '/' && (
