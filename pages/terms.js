@@ -1,242 +1,71 @@
 import Head from "next/head";
 import { motion } from "framer-motion";
-import { FileText, Shield, Clock, CreditCard, Users, AlertTriangle, CheckCircle, Info, Mail, Phone, MapPin } from "lucide-react";
+import {
+  FileText,
+  Shield,
+  Clock,
+  CreditCard,
+  Users,
+  AlertTriangle,
+  CheckCircle,
+  Info,
+  Mail,
+  Phone,
+  MapPin,
+  Download,
+} from "lucide-react";
 import WhatsAppButton from '../components/WhatsAppButton';
 import PremiumCTA from '../components/PremiumCTA';
+import { TERMS_META, TERMS_SECTIONS } from '../lib/termsContent';
 
+const ICON_MAP = {
+  fileText: FileText,
+  users: Users,
+  creditCard: CreditCard,
+  clock: Clock,
+  checkCircle: CheckCircle,
+  shield: Shield,
+  info: Info,
+  alertTriangle: AlertTriangle,
+};
 
 export default function Terms() {
-  const sections = [
-    {
-      title: "1. Agreement to Terms",
-      icon: FileText,
-      content: `By accessing and using the services provided by Celestial Web Solutions ("we," "our," or "us"), you ("client," "you," or "your") accept and agree to be bound by the terms and provision of this agreement. If you do not agree to abide by these terms and conditions, you are not authorized to use or access our services.
-
-These terms constitute a legally binding agreement between you and Celestial Web Solutions. We reserve the right to update, change or replace any part of these Terms and Conditions by posting updates and/or changes to our website.`
-    },
-    {
-      title: "2. Services Description",
-      icon: Users,
-      content: `Celestial Web Solutions provides web development, web design, e-commerce solutions, digital marketing, SEO optimization, and related technology services. Our services include but are not limited to:
-
-• Custom website development using modern technologies (React, Next.js, WordPress, etc.)
-• Responsive web design and user experience optimization
-• E-commerce platform development and integration
-• Search engine optimization (SEO) services
-• Website maintenance and support services
-• Digital marketing and online advertising management
-• Domain registration and web hosting services
-
-All services are provided according to the specifications agreed upon in individual project contracts or service agreements.`
-    },
-    {
-      title: "3. Payment Terms",
-      icon: CreditCard,
-      content: `Payment terms are specified in individual project agreements. Unless otherwise agreed:
-
-• Full payment is required before any project work begins for most projects
-• Flexible payment plans may be offered for larger, higher-cost projects only, and must be agreed in writing before work starts
-• We accept payments in Ghana Cedis (₵) through mobile money, bank transfer, cash, Paystack (online or USSD *415*3370#), and international payments via Flutterwave/Paystack
-• Work will not commence until the agreed initial payment has been received and confirmed
-• Monthly service fees (hosting, maintenance, SEO) are due in advance
-• Late payments may incur a fee of 2% per month on outstanding amounts
-• All prices quoted are valid for 30 days unless otherwise stated
-• Additional work beyond the original scope will be charged separately
-
-This policy ensures we can dedicate our full resources to your project from day one. Payment schedules and methods will be clearly outlined in your project agreement.`
-    },
-    {
-      title: "4. Project Timeline & Delivery",
-      icon: Clock,
-      content: `Project timelines are estimates based on project complexity and scope:
-
-• Timeline estimates are provided in good faith based on project requirements
-• Actual delivery dates may vary due to project complexity, client feedback cycles, or unforeseen technical challenges
-• Client delays in providing required materials, feedback, or approvals may extend project timelines
-• We will communicate any significant delays promptly and work to minimize impact
-• Rush projects may incur additional fees (25-50% surcharge)
-• Project completion is subject to final client approval
-• We strive to deliver projects on or before the agreed timeline
-
-Timeline adjustments will be communicated and agreed upon with clients as needed.`
-    },
-    {
-      title: "5. Client Responsibilities",
-      icon: CheckCircle,
-      content: `Clients are responsible for providing the following to ensure successful project completion:
-
-• Accurate project requirements and specifications
-• Timely provision of content, images, logos, and other materials
-• Prompt feedback and approvals during the development process
-• Access to necessary third-party services (hosting, domain, existing systems)
-• Payment according to agreed terms (full payment upfront for most projects)
-• Reasonable and constructive feedback during review phases
-• Final content review and approval before project launch
-• Compliance with applicable laws and regulations for their business
-
-Delays in client responsibilities may impact project timelines and may incur additional charges for extended project duration.`
-    },
-    {
-      title: "6. Intellectual Property & Ownership",
-      icon: Shield,
-      content: `Ownership rights are clearly defined as follows:
-• Upon full payment, clients own the final delivered website/application and custom code developed specifically for their project
-• Clients retain ownership of their business content, images, logos, and proprietary information
-• Celestial Web Solutions retains rights to general methodologies, techniques, and any pre-existing intellectual property
-• Third-party software, plugins, and frameworks remain subject to their respective licenses
-• We reserve the right to use completed projects in our portfolio and marketing materials (unless otherwise agreed)
-• Any custom graphics, designs, or code developed specifically for your project becomes your property upon full payment
-• We may reuse general concepts, layouts, or non-proprietary elements in future projects
-
-Detailed intellectual property terms will be specified in individual project agreements.`
-  },
-    {
-      title: "7. Footer Credit & Attribution",
-      icon: Info,
-      content: `Celestial Web Solutions reserves the right to display our company name and/or a "Developed by Celestial Web Solutions" credit in the footer section of any website we design or develop. This credit may appear as a small text link or logo in the website's footer, typically stating "Developed by Celestial Web Solutions" and linking to our official website.
-
-    This practice is standard in the web development industry and serves as a form of professional recognition and portfolio building. It does not affect the functionality or user experience of your website.
-
-    If a client wishes to remove this credit, a fee of 500 Ghana Cedis (₵500) or the equivalent in another currency will apply. This fee compensates for the loss of public attribution and helps support our business growth. The removal request must be made in writing before the project is completed and delivered. Upon payment of the removal fee, we will ensure the credit is not displayed on your website.
-
-    Exceptions to this policy may be considered for sensitive projects or upon mutual agreement, but must be discussed and confirmed in writing prior to project launch.`
-    },
-    {
-      title: "8. Warranties & Support",
-      icon: AlertTriangle,
-      content: `Our warranty and support terms include:
-
-• 30-day warranty on custom development work for bug fixes and minor adjustments
-• Ongoing support packages available for continued maintenance and updates
-• We do not warrant that websites will be error-free or uninterrupted
-• Third-party software/services are subject to their own warranties and terms
-• Support response times vary based on support package (24-72 hours typical)
-• Emergency support available for critical issues (additional charges may apply)
-• We provide training and documentation to help clients manage their websites
-• Major changes or new features beyond original scope are not covered under warranty
-
-Extended support and maintenance packages are available and recommended for optimal website performance.`
-    },
-    {
-      title: "9. Limitation of Liability",
-      icon: Info,
-      content: `Celestial Web Solutions' liability is limited as follows:
-
-• Our total liability for any project shall not exceed the total amount paid by the client for that specific project
-• We are not liable for indirect, incidental, special, consequential, or punitive damages
-• We are not responsible for data loss, business interruption, or lost profits
-• Clients are responsible for maintaining backups of their data and content
-• We are not liable for issues arising from third-party services, hosting providers, or external integrations
-• Force majeure events (natural disasters, government actions, etc.) may excuse performance delays
-• We recommend clients maintain appropriate business insurance coverage
-
-These limitations apply to the maximum extent permitted by law in Ghana.`
-    },
-    {
-      title: "10. Online Courses & Educational Services",
-      icon: Users,
-      content: `Celestial Web Solutions offers online courses on various topics including WordPress, Next.js, Web Design, and Excel. The following terms apply:
-
-• All course materials and content are provided "as is" for educational purposes
-• Students must have a valid email address to enroll in courses
-• After successful payment, course access is immediately available
-• Course materials are available for download immediately upon enrollment
-• Courses may be accessed through multiple platforms: online videos, Google Meet, Zoom, Teams, and in-person classes
-• Course content is subject to change at our discretion with appropriate notice
-• Students are expected to respect intellectual property rights; course materials cannot be shared or redistributed
-• Refunds are not available for courses once access has been granted, except in cases of technical issues
-• Course completion certificates are issued upon meeting all course requirements
-• Student progress and data collected during courses are kept confidential and used for course improvement only
-• We reserve the right to remove students who violate course policies or code of conduct
-
-All course enrollments are governed by these terms and the specific course agreement provided at enrollment.`
-    },
-    {
-      title: "11. Payment for Courses & Educational Services",
-      icon: CreditCard,
-      content: `Payment terms for online courses:
-
-• Payments are processed through Paystack, our secure payment processor
-• All prices are displayed in Ghana Cedis (GH₵) unless otherwise noted
-• Payment must be completed before course access is granted
-• All course fees are non-refundable once access has been provided
-• Technical refunds may be issued within 24 hours of enrollment if courses cannot be accessed due to system errors
-• Discounted course pricing may apply for limited periods; prices are subject to change
-• We accept all payment methods available through Paystack
-• Payment confirmation and course access details will be sent to the enrolled email address
-• Students must complete a post-enrollment Google Form with their profile information
-
-All financial transactions are final unless technical issues prevent course access.`
-    },
-    {
-      title: "12. Termination",
-      icon: AlertTriangle,
-      content: `Either party may terminate services under the following conditions:
-
-• Client may terminate services at any time with written notice, but remains liable for work completed and expenses incurred
-• We may terminate services for non-payment, breach of terms, or if client requests violate legal/ethical standards
-• Upon termination, client will receive all completed work upon payment of outstanding invoices
-• Ongoing service subscriptions require 30 days written notice for cancellation
-• Students may request course unenrollment within 24 hours of initial enrollment for technical issues only
-• Refunds for terminated projects will be calculated based on work completed
-• All confidential information must be returned or destroyed upon termination
-• Termination does not relieve either party of obligations that arose before termination
-
-Termination procedures and any applicable refunds will be handled professionally and promptly.`
-    },
-    {
-      title: "13. Governing Law & Dispute Resolution",
-      icon: Shield,
-      content: `These terms are governed by the laws of Ghana:
-
-• Any disputes will first be addressed through good faith negotiation
-• If negotiation fails, disputes will be resolved through arbitration in Accra, Ghana
-• Ghana courts will have jurisdiction over any legal proceedings
-• These terms are interpreted according to Ghanaian law
-• Any invalid provisions will not affect the validity of remaining terms
-• Amendments must be in writing and signed by both parties
-• These terms supersede all previous agreements between the parties
-
-We are committed to resolving any disputes fairly and professionally in accordance with Ghanaian legal standards.`
-    }
-  ];
+  const sections = TERMS_SECTIONS.map((section) => ({
+    ...section,
+    icon: ICON_MAP[section.iconKey] || FileText,
+  }));
 
   return (
     <>
-      {/* SEO Meta Tags */}
       <Head>
         <title>Terms & Conditions | Celestial Web Solutions</title>
         <meta
           name="description"
-          content="Terms and conditions for Celestial Web Solutions' web development services. Our policies on payments, project delivery, warranties, and client responsibilities."
+          content="Terms and conditions for Celestial Web Solutions' web development services. Our policies on payments, project delivery, warranties, and client responsibilities. Download the branded PDF."
         />
         <meta
           name="keywords"
-          content="terms and conditions, web development contract, service agreement, Celestial Web Solutions terms, Ghana web development policies"
+          content="terms and conditions, web development contract, service agreement, Celestial Web Solutions terms, Ghana web development policies, download PDF"
         />
         <meta name="author" content="Celestial Web Solutions" />
-        <meta name="robots" content="noindex, follow" />
+        <meta name="robots" content="index, follow" />
 
-        {/* Open Graph */}
         <meta property="og:title" content="Terms & Conditions | Celestial Web Solutions" />
         <meta
           property="og:description"
-          content="Read our terms and conditions for web development services, payment policies, and client agreements."
+          content="Read our terms and conditions for web development services, payment policies, and client agreements. Download a Celestial-branded PDF."
         />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://celestialwebsolutions.net/terms" />
+        <meta property="og:url" content="https://www.celestialwebsolutions.net/terms" />
 
-        {/* Canonical URL */}
-        <link rel="canonical" href="https://celestialwebsolutions.net/terms" />
+        <link rel="canonical" href="https://www.celestialwebsolutions.net/terms" />
       </Head>
 
       <div className="min-h-screen bg-white dark:bg-gray-900">
-        {/* Hero Section */}
         <section className="relative py-20 bg-gradient-to-br from-orange-500 via-orange-600 to-red-500 overflow-hidden">
-          {/* Background Image */}
           <div className="absolute inset-0 overflow-hidden">
-            <img 
-              src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=1920&h=600&fit=crop" 
+            <img
+              src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=1920&h=600&fit=crop"
               alt="Terms and Conditions Background"
               className="w-full h-full object-cover opacity-20"
             />
@@ -263,14 +92,24 @@ We are committed to resolving any disputes fairly and professionally in accordan
               </p>
               <div className="mt-6 text-orange-100">
                 <p style={{ fontFamily: "Albert Sans, sans-serif" }}>
-                  Last Updated: September 10, 2026
+                  Last Updated: {TERMS_META.lastUpdated}
                 </p>
+              </div>
+              <div className="mt-8 flex justify-center">
+                <a
+                  href={`/${TERMS_META.filename}`}
+                  download={TERMS_META.filename}
+                  className="inline-flex items-center gap-2 rounded-xl bg-white px-6 py-3 text-orange-600 font-semibold shadow-lg shadow-orange-900/20 transition hover:bg-orange-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
+                  style={{ fontFamily: "Albert Sans, sans-serif" }}
+                >
+                  <Download size={18} aria-hidden />
+                  Download PDF
+                </a>
               </div>
             </motion.div>
           </div>
         </section>
 
-        {/* Quick Navigation */}
         <section className="py-8 bg-gray-50 dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
           <div className="max-w-6xl mx-auto px-4">
             <div className="flex flex-wrap justify-center gap-3">
@@ -294,10 +133,8 @@ We are committed to resolving any disputes fairly and professionally in accordan
           </div>
         </section>
 
-        {/* Terms Content */}
         <section className="py-16">
           <div className="max-w-4xl mx-auto px-4">
-            {/* Introduction */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -316,14 +153,21 @@ We are committed to resolving any disputes fairly and professionally in accordan
                     className="text-blue-600 dark:text-blue-200 leading-relaxed"
                     style={{ fontFamily: "Albert Sans, sans-serif" }}
                   >
-                    These terms and conditions outline the rules and regulations for the use of Celestial Web Solutions' services. 
-                    By engaging our services, you agree to these terms in full. Please read them carefully and contact us if you have any questions.
+                    {TERMS_META.intro}
                   </p>
+                  <a
+                    href={`/${TERMS_META.filename}`}
+                    download={TERMS_META.filename}
+                    className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-orange-600 hover:text-orange-700 dark:text-orange-400"
+                    style={{ fontFamily: "Albert Sans, sans-serif" }}
+                  >
+                    <Download size={16} aria-hidden />
+                    Download Celestial-branded PDF
+                  </a>
                 </div>
               </div>
             </motion.div>
 
-            {/* Terms Sections */}
             <div className="space-y-8">
               {sections.map((section, index) => (
                 <motion.div
@@ -335,7 +179,6 @@ We are committed to resolving any disputes fairly and professionally in accordan
                   transition={{ delay: index * 0.1 }}
                   className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg border border-gray-100 dark:border-gray-700"
                 >
-                  {/* Section Header */}
                   <div className="flex items-start space-x-4 mb-6">
                     <div className="w-12 h-12 rounded-lg bg-gradient-to-r from-orange-500 to-orange-600 flex items-center justify-center flex-shrink-0">
                       <section.icon size={24} className="text-white" />
@@ -350,7 +193,6 @@ We are committed to resolving any disputes fairly and professionally in accordan
                     </div>
                   </div>
 
-                  {/* Section Content */}
                   <div
                     className="text-gray-700 dark:text-gray-300 leading-relaxed whitespace-pre-line"
                     style={{ fontFamily: "Albert Sans, sans-serif" }}
@@ -363,7 +205,6 @@ We are committed to resolving any disputes fairly and professionally in accordan
           </div>
         </section>
 
-        {/* Contact Section */}
         <section className="py-16 bg-gray-50 dark:bg-gray-800">
           <div className="max-w-4xl mx-auto px-4 text-center">
             <motion.div
@@ -382,31 +223,37 @@ We are committed to resolving any disputes fairly and professionally in accordan
                 className="text-orange-100 mb-8 max-w-2xl mx-auto leading-relaxed"
                 style={{ fontFamily: "Albert Sans, sans-serif" }}
               >
-                If you have any questions about these Terms and Conditions, please don't hesitate to contact us. 
+                If you have any questions about these Terms and Conditions, please don't hesitate to contact us.
                 We're here to help clarify any concerns you may have.
               </p>
-              
+
               <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-4">
                 <PremiumCTA href="/contact" size="large" variant="light">
                   Contact Us
                 </PremiumCTA>
-                <PremiumCTA href="mailto:info@celestialwebsolutions.net" size="large" variant="light">
-                  <span>Email Us</span>
-                </PremiumCTA>
+                <a
+                  href={`/${TERMS_META.filename}`}
+                  download={TERMS_META.filename}
+                  className="inline-flex items-center gap-2 rounded-xl border-2 border-white/80 bg-transparent px-6 py-3 font-semibold text-white transition hover:bg-white/10"
+                  style={{ fontFamily: "Albert Sans, sans-serif" }}
+                >
+                  <Download size={18} aria-hidden />
+                  Download PDF
+                </a>
               </div>
 
               <div className="mt-8 text-orange-100 space-y-2">
                 <p className="flex items-center justify-center space-x-2" style={{ fontFamily: "Albert Sans, sans-serif" }}>
                   <Mail size={18} />
-                  <span>Email: info@celestialwebsolutions.net</span>
+                  <span>Email: {TERMS_META.email}</span>
                 </p>
                 <p className="flex items-center justify-center space-x-2" style={{ fontFamily: "Albert Sans, sans-serif" }}>
                   <Phone size={18} />
-                  <span>Phone: +233 530 505 031</span>
+                  <span>Phone: {TERMS_META.phone} · WhatsApp: {TERMS_META.whatsapp}</span>
                 </p>
                 <p className="flex items-center justify-center space-x-2" style={{ fontFamily: "Albert Sans, sans-serif" }}>
                   <MapPin size={18} />
-                  <span>235 Agblor Link, Keta, Ghana</span>
+                  <span>{TERMS_META.address}</span>
                 </p>
               </div>
             </motion.div>

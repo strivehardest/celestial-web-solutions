@@ -86,6 +86,16 @@ const nextConfig = {
     optimizePackageImports: ['lucide-react', 'react-icons'],
   },
 
+  webpack: (config, { isServer }) => {
+    if (isServer) {
+      config.externals = config.externals || [];
+      if (Array.isArray(config.externals)) {
+        config.externals.push('pdfkit');
+      }
+    }
+    return config;
+  },
+
   images: {
     dangerouslyAllowSVG: true,
     contentDispositionType: 'attachment',
