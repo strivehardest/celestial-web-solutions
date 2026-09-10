@@ -90,7 +90,7 @@ export default function Layout({ children }) {
           }
 
           ::-webkit-scrollbar-thumb {
-            background: linear-gradient(180deg, #f97316, #ea580c);
+            background: #f97316;
             border-radius: 10px;
             border: 3px solid #f3f4f6;
             background-clip: padding-box;
@@ -101,7 +101,7 @@ export default function Layout({ children }) {
           }
 
           ::-webkit-scrollbar-thumb:hover {
-            background: linear-gradient(180deg, #ea580c, #c2410c);
+            background: #ea580c;
           }
 
           * {
@@ -131,7 +131,7 @@ export default function Layout({ children }) {
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.5 }}
             onClick={scrollToTop}
-            className="fixed bottom-6 left-6 p-3 bg-gradient-to-r from-orange-500 to-orange-600 text-white rounded-full shadow-lg hover:shadow-orange-500/25 z-50"
+            className="fixed bottom-6 left-6 p-3 bg-orange-500 text-white rounded-full shadow-lg hover:shadow-orange-500/25 z-50"
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
           >
@@ -170,7 +170,7 @@ export default function Layout({ children }) {
                   }}
                 />
                 <span 
-                  className="hidden text-xl font-bold bg-gradient-to-r from-orange-600 to-orange-500 bg-clip-text text-transparent"
+                  className="hidden text-xl font-bold text-orange-600"
                   style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}
                 >
                   Celestial
@@ -330,7 +330,7 @@ export default function Layout({ children }) {
             {/* Company Info */}
             <div className="md:col-span-2">
               <h3 
-                className="text-2xl font-bold bg-gradient-to-r from-orange-500 to-orange-400 bg-clip-text text-transparent mb-4"
+                className="text-2xl font-bold text-orange-500 mb-4"
                 style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}
               >
                 Celestial Web Solutions

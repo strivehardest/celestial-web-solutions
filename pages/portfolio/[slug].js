@@ -83,10 +83,11 @@ import { ArrowRight, ArrowLeft, ExternalLink, Calendar, MapPin, User, Clock, Sta
 const GlassButton = ({ children, href, variant = 'light', className = '', external = false, onClick }) => {
   const baseStyles = "inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full font-semibold text-sm transition-all duration-300 backdrop-blur-md border";
   const variants = {
-    light: "bg-white/20 hover:bg-white/30 text-white border-white/30 hover:border-white/50 shadow-lg hover:shadow-xl",
-    dark: "bg-black/20 hover:bg-black/30 text-gray-900 dark:text-white border-black/20 dark:border-white/20 hover:border-black/40 dark:hover:border-white/40",
-    orange: "bg-orange-500/90 hover:bg-orange-600 text-white border-orange-400/50 hover:border-orange-500 shadow-lg hover:shadow-orange-500/25",
-    outline: "bg-transparent hover:bg-white/10 text-white border-white/50 hover:border-white"
+    light: "bg-white/20 hover:bg-white/30 !text-white border-white/30 hover:border-white/50 shadow-lg hover:shadow-xl",
+    dark: "bg-black/20 hover:bg-black/30 !text-gray-900 dark:!text-white border-black/20 dark:border-white/20",
+    orange: "bg-orange-500 hover:bg-orange-600 !text-white border-orange-400/50 hover:border-orange-500 shadow-lg hover:shadow-orange-500/25",
+    white: "bg-white hover:bg-orange-50 !text-orange-600 border-white shadow-lg hover:shadow-xl",
+    outline: "bg-transparent hover:bg-white/10 !text-white border-2 border-white/70 hover:border-white"
   };
   const Component = href ? (external ? 'a' : Link) : 'button';
   const props = href ? (external ? { href, target: "_blank", rel: "noopener noreferrer" } : { href }) : { onClick };
@@ -429,7 +430,7 @@ export default function ProjectDetail({ project, currentIndex, prevProject: prev
           <title>Project Not Found | Celestial Web Solutions</title>
           <meta name="robots" content="noindex, nofollow" />
         </Head>
-        <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 flex items-center justify-center px-4">
+        <div className="min-h-screen bg-gray-50 dark:bg-gray-900 flex items-center justify-center px-4">
           <div className="text-center max-w-md">
             <AlertCircle className="w-16 h-16 text-orange-500 mx-auto mb-4" />
             <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-4" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>Project Not Found</h1>
@@ -589,7 +590,7 @@ export default function ProjectDetail({ project, currentIndex, prevProject: prev
                     Visit Live Site <ExternalLink className="w-4 h-4" />
                   </GlassButton>
                 )}
-                <GlassButton href="/contact" variant="light">
+                <GlassButton href="/contact" variant="white">
                   Start Similar Project <ArrowRight className="w-4 h-4" />
                 </GlassButton>
               </div>
@@ -774,7 +775,7 @@ export default function ProjectDetail({ project, currentIndex, prevProject: prev
                     <motion.div key={i} initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }}
                       transition={{ duration: 0.4, delay: 0.8 + i * 0.1 }}
                       className="flex items-start gap-4 p-5 rounded-xl bg-gray-50 dark:bg-gray-900 border border-gray-100 dark:border-gray-800">
-                      <div className="w-12 h-12 bg-gradient-to-br from-orange-500 to-orange-600 rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg shadow-orange-500/20">
+                      <div className="w-12 h-12 bg-orange-500 rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg shadow-orange-500/20">
                         <phase.icon className="w-6 h-6 text-white" />
                       </div>
                       <div>
@@ -823,7 +824,7 @@ export default function ProjectDetail({ project, currentIndex, prevProject: prev
 
                 {/* Project Info Card */}
                 <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.5 }}
-                  className="bg-gradient-to-br from-orange-500 to-orange-600 rounded-2xl p-6 text-white shadow-xl shadow-orange-500/20">
+                  className="bg-orange-500 rounded-2xl p-6 text-white shadow-xl shadow-orange-500/20">
                   <h3 className="text-xl font-bold mb-4" style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}>Project Info</h3>
                   <div className="space-y-4">
                     {project.client && (
@@ -958,7 +959,7 @@ export default function ProjectDetail({ project, currentIndex, prevProject: prev
           <div className="absolute inset-0">
             <Image src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=90&w=2400&auto=format&fit=crop"
               alt="Team collaboration" fill className="object-cover" />
-            <div className="absolute inset-0 bg-gradient-to-r from-orange-600/95 via-orange-500/90 to-red-500/95" />
+            <div className="absolute inset-0 bg-orange-600/95" />
           </div>
           <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} viewport={{ once: true }}>
@@ -969,7 +970,7 @@ export default function ProjectDetail({ project, currentIndex, prevProject: prev
                 Let's bring your vision to life with cutting-edge technology and creative solutions.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <GlassButton href="/contact" variant="light">Start Your Project <ArrowRight className="w-4 h-4" /></GlassButton>
+                <GlassButton href="/contact" variant="white">Start Your Project <ArrowRight className="w-4 h-4" /></GlassButton>
                 <GlassButton href="/portfolio" variant="outline">View More Projects</GlassButton>
               </div>
             </motion.div>

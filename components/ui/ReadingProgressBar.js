@@ -54,8 +54,7 @@ export default function ReadingProgressBar() {
           style={{
             height: "100%",
             width: mounted ? `${progress}%` : "0%",
-            background:
-              "linear-gradient(90deg, #f97316 0%, #fb923c 60%, #fdba74 100%)",
+            background: "#f97316",
             boxShadow:
               progress > 1
                 ? "0 0 8px 2px rgba(249,115,22,0.8), 0 0 20px 4px rgba(249,115,22,0.4)"

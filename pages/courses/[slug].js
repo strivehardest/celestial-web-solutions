@@ -211,7 +211,7 @@ export default function CourseDetail() {
                   className="bg-white dark:bg-gray-800 rounded-2xl shadow-2xl overflow-hidden sticky top-24"
                 >
                   {/* Course Image */}
-                  <div className="relative h-48 bg-gradient-to-br from-orange-400 to-blue-500">
+                  <div className="relative h-48 bg-orange-500">
                     {course.thumbnail && (
                       <Image
                         src={course.thumbnail}
@@ -342,7 +342,7 @@ export default function CourseDetail() {
                           href={`https://www.instagram.com/?url=${encodeURIComponent(typeof window !== 'undefined' ? window.location.href : '')}`}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="flex items-center justify-center w-10 h-10 rounded-full bg-gradient-to-tr from-yellow-400 via-pink-500 to-purple-600 hover:from-yellow-500 hover:via-pink-600 hover:to-purple-700 text-white transition-colors"
+                          className="flex items-center justify-center w-10 h-10 rounded-full bg-pink-500 hover:bg-pink-600 text-white transition-colors"
                           title="Share on Instagram"
                         >
                           <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -667,7 +667,7 @@ export default function CourseDetail() {
                       <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-6" style={{ fontFamily: '"Bricolage Grotesque", sans-serif', fontWeight: 700 }}>Student Reviews</h2>
                       
                       {/* Write a Review Section */}
-                      <div className="bg-gradient-to-br from-orange-50 to-blue-50 dark:from-gray-700 dark:to-gray-700 rounded-2xl p-8 text-center">
+                      <div className="bg-orange-50 dark:from-gray-700 dark:to-gray-700 rounded-2xl p-8 text-center">
                         <MessageCircle className="w-16 h-16 text-orange-600 mx-auto mb-4" />
                         <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-3" style={{ fontFamily: '"Bricolage Grotesque", sans-serif', fontWeight: 700 }}>
                           Share Your Experience
@@ -748,7 +748,7 @@ export default function CourseDetail() {
               {courses.filter(c => c.id !== course.id).slice(0, 3).map((relatedCourse) => (
                 <Link key={relatedCourse.id} href={`/courses/${relatedCourse.slug}`}>
                   <div className="bg-white dark:bg-gray-700 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 cursor-pointer">
-                    <div className="relative h-48 bg-gradient-to-br from-orange-400 to-blue-500">
+                    <div className="relative h-48 bg-orange-500">
                       {relatedCourse.thumbnail && (
                         <Image
                           src={relatedCourse.thumbnail}

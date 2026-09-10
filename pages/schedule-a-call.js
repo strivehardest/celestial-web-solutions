@@ -17,7 +17,7 @@ export default function ScheduleCall() {
       <div className="min-h-screen bg-white dark:bg-gray-900">
         <section className="relative py-20 overflow-hidden">
           <div className="absolute inset-0 bg-cover bg-center bg-no-repeat" style={{ backgroundImage: 'url(https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1500&q=80)' }} />
-          <div className="absolute inset-0 bg-gradient-to-br from-orange-500/95 via-orange-600/90 to-red-500/95"></div>
+          <div className="absolute inset-0 bg-orange-500/95"></div>
           <div className="relative z-10 max-w-3xl mx-auto px-4 text-center">
             <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
               <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 drop-shadow-lg" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>

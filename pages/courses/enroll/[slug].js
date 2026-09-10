@@ -495,7 +495,7 @@ export default function EnrollCourse() {
 
                 {/* Course Info */}
                 <div className="mb-6 pb-6 border-b border-gray-200 dark:border-gray-700">
-                  <div className="relative h-32 rounded-xl overflow-hidden mb-4 bg-gradient-to-br from-orange-400 to-blue-500">
+                  <div className="relative h-32 rounded-xl overflow-hidden mb-4 bg-orange-500">
                     {course.thumbnail && (
                       <Image
                         src={course.thumbnail}

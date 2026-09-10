@@ -106,7 +106,7 @@ export default function Dashboard() {
                 <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6 sticky top-24">
                   {/* Profile */}
                   <div className="text-center mb-6 pb-6 border-b border-gray-200 dark:border-gray-700">
-                    <div className="w-24 h-24 rounded-full bg-gradient-to-br from-orange-400 to-blue-500 flex items-center justify-center text-white text-3xl font-bold mx-auto mb-4">
+                    <div className="w-24 h-24 rounded-full bg-orange-500 flex items-center justify-center text-white text-3xl font-bold mx-auto mb-4">
                       {mockUser.fullName.charAt(0)}
                     </div>
                     <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-1"
@@ -206,7 +206,7 @@ export default function Dashboard() {
                           Start your learning journey by enrolling in a course
                         </p>
                         <Link href="/courses">
-                          <button className="bg-gradient-to-r from-orange-600 to-blue-600 text-white px-6 py-3 rounded-lg font-semibold">
+                          <button className="bg-orange-600 text-white px-6 py-3 rounded-lg font-semibold">
                             Browse Courses
                           </button>
                         </Link>
@@ -221,7 +221,7 @@ export default function Dashboard() {
                             <div className="p-6">
                               <div className="flex flex-col md:flex-row gap-6">
                                 {/* Course Image */}
-                                <div className="md:w-64 h-40 bg-gradient-to-br from-orange-400 to-blue-500 rounded-xl flex-shrink-0 flex items-center justify-center">
+                                <div className="md:w-64 h-40 bg-orange-500 rounded-xl flex-shrink-0 flex items-center justify-center">
                                   <Play className="w-16 h-16 text-white opacity-80" />
                                 </div>
 
@@ -258,7 +258,7 @@ export default function Dashboard() {
                                     </div>
                                     <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
                                       <div
-                                        className="bg-gradient-to-r from-orange-600 to-blue-600 h-2 rounded-full transition-all duration-300"
+                                        className="bg-orange-600 h-2 rounded-full transition-all duration-300"
                                         style={{ width: `${course.progress}%` }}
                                       />
                                     </div>
@@ -277,7 +277,7 @@ export default function Dashboard() {
                                   {/* Actions */}
                                   <div className="flex flex-wrap gap-3">
                                     <Link href={`/courses/${course.slug}`}>
-                                      <button className="flex items-center gap-2 bg-gradient-to-r from-orange-600 to-blue-600 text-white px-6 py-2 rounded-lg font-semibold hover:shadow-lg transition-all">
+                                      <button className="flex items-center gap-2 bg-orange-600 text-white px-6 py-2 rounded-lg font-semibold hover:shadow-lg transition-all">
                                         <Play className="w-4 h-4" />
                                         Continue Learning
                                       </button>

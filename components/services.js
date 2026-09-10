@@ -3,7 +3,7 @@ import * as gtag from "../lib/gtag";
 
 const Services = ({ services }) => {
   return (
-    <section className="py-20 bg-gradient-to-br from-orange-50 via-white to-orange-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
+    <section className="py-20 bg-orange-50 dark:bg-gray-900">
       <div className="max-w-7xl mx-auto px-4">
         {/* Header Section - remains unchanged */}
         <div className="text-center mb-16">
@@ -48,7 +48,7 @@ const Services = ({ services }) => {
                 <div className="relative z-10 flex flex-col h-full">
                   <div className="flex items-start gap-6 mb-6">
                     <motion.div 
-                      className="w-16 h-16 bg-gradient-to-br from-orange-500 to-orange-600 rounded-xl flex items-center justify-center shadow-lg group-hover:shadow-orange-500/25 flex-shrink-0"
+                      className="w-16 h-16 bg-orange-500 rounded-xl flex items-center justify-center shadow-lg group-hover:shadow-orange-500/25 flex-shrink-0"
                       whileHover={{ 
                         scale: 1.1, 
                         rotate: 5,
@@ -83,8 +83,8 @@ const Services = ({ services }) => {
                 </div>
 
                 {/* Enhanced decorative elements */}
-                <div className="absolute -top-4 -right-4 w-32 h-32 bg-gradient-to-br from-orange-500/10 to-orange-600/20 rounded-full blur-xl group-hover:scale-150 transition-transform duration-500"></div>
-                <div className="absolute -bottom-2 -left-2 w-24 h-24 bg-gradient-to-br from-orange-400/10 to-orange-500/20 rounded-full blur-lg group-hover:scale-125 transition-transform duration-500"></div>
+                <div className="absolute -top-4 -right-4 w-32 h-32 bg-orange-500/10 rounded-full blur-xl group-hover:scale-150 transition-transform duration-500"></div>
+                <div className="absolute -bottom-2 -left-2 w-24 h-24 bg-orange-400/10 rounded-full blur-lg group-hover:scale-125 transition-transform duration-500"></div>
               </motion.article>
             );
           })}
@@ -93,7 +93,7 @@ const Services = ({ services }) => {
         {/* CTA Section - remains unchanged */}
         <div className="mt-16 text-center">
           <motion.button
-            className="bg-gradient-to-r from-orange-500 to-red-500 text-white px-8 py-4 rounded-full font-semibold shadow-lg hover:shadow-orange-500/30 transition-all duration-300"
+            className="bg-orange-500 text-white px-8 py-4 rounded-full font-semibold shadow-lg hover:shadow-orange-500/30 transition-all duration-300"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             onClick={() => console.log('Get Started clicked')}

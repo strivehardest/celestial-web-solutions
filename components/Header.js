@@ -42,7 +42,7 @@ export default function PremiumCTA({
   };
 
   const variantClasses = {
-    primary: 'bg-gradient-to-r from-orange-500 to-orange-600 text-white',
+    primary: 'bg-orange-500 text-white',
     secondary: 'bg-white text-orange-600',
     outline: 'bg-transparent text-orange-600 border-2 border-orange-500',
   };
@@ -67,7 +67,7 @@ export default function PremiumCTA({
     >
       {/* Background slide effect */}
       <motion.span
-        className={`absolute inset-0 ${variant === 'primary' ? 'bg-white' : 'bg-gradient-to-r from-orange-500 to-orange-600'}`}
+        className={`absolute inset-0 ${variant === 'primary' ? 'bg-white' : 'bg-orange-500'}`}
         initial={{ x: '-100%', skewX: '-15deg' }}
         animate={{ x: isHovered ? '0%' : '-100%' }}
         transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
@@ -140,7 +140,7 @@ export default function PremiumCTA({
         }}
         transition={{ duration: 0.8, ease: 'easeInOut' }}
         style={{
-          background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent)',
+          background: 'rgba(255,255,255,0.25)',
           width: '50%',
         }}
       />
