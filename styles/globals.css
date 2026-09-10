@@ -376,3 +376,39 @@ html.dark .celestial-ai-composer-inner {
     background: linear-gradient(90deg, #fdba74, #f97316, #ea580c);
   }
 }
+
+/* Celestial AI brand mark — orbital ring around the company logo */
+@keyframes celestial-ai-orbit {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.celestial-ai-mark-orbit {
+  border: 2px dashed rgba(249, 115, 22, 0.7);
+  animation: celestial-ai-orbit 12s linear infinite;
+}
+
+.celestial-ai-mark-orbit::after {
+  content: '';
+  position: absolute;
+  top: -4px;
+  left: 50%;
+  width: 8px;
+  height: 8px;
+  margin-left: -4px;
+  border-radius: 9999px;
+  background: #f97316;
+  box-shadow: 0 0 0 4px rgba(249, 115, 22, 0.2), 0 0 12px rgba(249, 115, 22, 0.55);
+}
+
+html.dark .celestial-ai-mark-orbit {
+  border-color: rgba(251, 146, 60, 0.75);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .celestial-ai-mark-orbit {
+    animation: none;
+  }
+}
+

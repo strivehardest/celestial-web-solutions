@@ -1,10 +1,10 @@
 import Head from 'next/head';
-import Image from 'next/image';
 import Link from 'next/link';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
-import { ArrowUp, ChevronDown, Globe, Loader2, Plus, Sparkles } from 'lucide-react';
+import { ArrowUp, ChevronDown, Globe, Loader2, Plus } from 'lucide-react';
 import CelestialAIMarkdown from '../components/CelestialAIMarkdown';
+import CelestialAIMark from '../components/CelestialAIMark';
 import { GUEST_DAILY_LIMIT, LANGUAGE_NAMES, SUGGESTED_QUESTIONS } from '../lib/celestialAI/config';
 
 const HEADING_FONT = { fontFamily: 'Bricolage Grotesque, sans-serif' };
@@ -207,9 +207,7 @@ export default function CelestialAIPage({ liveModel = false }) {
                 transition={{ duration: 0.5 }}
                 className="flex flex-col items-center"
               >
-                <span className="mb-5 inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-orange-500 text-white shadow-lg shadow-orange-500/30">
-                  <Sparkles className="h-7 w-7" />
-                </span>
+                <CelestialAIMark size="lg" className="mb-6" />
                 <h1
                   className="text-4xl font-bold tracking-tight text-gray-950 dark:text-white sm:text-5xl"
                   style={HEADING_FONT}
@@ -319,7 +317,7 @@ export default function CelestialAIPage({ liveModel = false }) {
               ) : (
                 <span />
               )}
-              <span
+                <span
                 className={`inline-flex items-center gap-1.5 rounded-full border px-3 py-1 text-xs font-semibold ${
                   limitReached
                     ? 'border-red-200 bg-red-50 text-red-600 dark:border-red-500/30 dark:bg-red-500/10 dark:text-red-300'
@@ -327,7 +325,9 @@ export default function CelestialAIPage({ liveModel = false }) {
                 }`}
                 title={`Guests can ask ${GUEST_DAILY_LIMIT} questions per day`}
               >
-                <Sparkles className="h-3 w-3" />
+                <svg viewBox="0 0 16 16" className="h-3 w-3" fill="currentColor" aria-hidden="true">
+                  <path d="M8 1.2l1.35 3.55L13 6.1l-3.65 1.35L8 11l-1.35-3.55L3 6.1l3.65-1.35L8 1.2z" />
+                </svg>
                 {hydrated ? `Guest: ${remaining} left` : 'Guest'}
               </span>
             </div>
@@ -419,10 +419,10 @@ export default function CelestialAIPage({ liveModel = false }) {
     return { props: { liveModel: hasLiveProvider() } };
   }
 
-  function AssistantAvatar() {
-    return (
-      <span className="mt-1 inline-flex h-8 w-8 shrink-0 items-center justify-center overflow-hidden rounded-full border border-gray-200 bg-white dark:border-white/10 dark:bg-gray-900">
-        <Image src="/logo.png" alt="Celestial AI" width={28} height={28} className="h-7 w-7 object-contain" />
-      </span>
-    );
-  }
+function AssistantAvatar() {
+  return (
+    <span className="mt-1 inline-flex shrink-0">
+      <CelestialAIMark size="sm" />
+    </span>
+  );
+}
