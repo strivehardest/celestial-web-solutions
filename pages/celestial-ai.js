@@ -39,7 +39,7 @@ function writeGuestUsage(used) {
 let idCounter = 0;
 const nextId = () => `${Date.now().toString(36)}-${idCounter++}`;
 
-export default function CelestialAIPage() {
+export default function CelestialAIPage({ liveModel = false }) {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState('');
   const [language, setLanguage] = useState('en');
@@ -352,22 +352,24 @@ export default function CelestialAIPage() {
                 className="max-h-40 min-h-[44px] flex-1 resize-none bg-transparent px-3 py-2.5 text-[15px] text-gray-900 placeholder:text-gray-400 focus:outline-none disabled:cursor-not-allowed dark:text-white"
               />
 
-              <label className="relative hidden shrink-0 sm:block">
-                <span className="sr-only">Language</span>
-                <Globe className="pointer-events-none absolute left-2.5 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-500 dark:text-gray-400" />
-                <select
-                  value={language}
-                  onChange={(event) => setLanguage(event.target.value)}
-                  className="h-11 appearance-none rounded-xl border border-gray-200 bg-white pl-8 pr-8 text-sm font-medium text-gray-700 focus:border-orange-400 focus:outline-none dark:border-white/10 dark:bg-gray-900 dark:text-gray-200"
-                >
-                  {languageOptions.map(([code, name]) => (
-                    <option key={code} value={code}>
-                      {name}
-                    </option>
-                  ))}
-                </select>
-                <ChevronDown className="pointer-events-none absolute right-2.5 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-500 dark:text-gray-400" />
-              </label>
+              {liveModel && (
+                <label className="relative hidden shrink-0 sm:block">
+                  <span className="sr-only">Language</span>
+                  <Globe className="pointer-events-none absolute left-2.5 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-500 dark:text-gray-400" />
+                  <select
+                    value={language}
+                    onChange={(event) => setLanguage(event.target.value)}
+                    className="h-11 appearance-none rounded-xl border border-gray-200 bg-white pl-8 pr-8 text-sm font-medium text-gray-700 focus:border-orange-400 focus:outline-none dark:border-white/10 dark:bg-gray-900 dark:text-gray-200"
+                  >
+                    {languageOptions.map(([code, name]) => (
+                      <option key={code} value={code}>
+                        {name}
+                      </option>
+                    ))}
+                  </select>
+                  <ChevronDown className="pointer-events-none absolute right-2.5 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-500 dark:text-gray-400" />
+                </label>
+              )}
 
               <button
                 type="submit"
@@ -379,39 +381,49 @@ export default function CelestialAIPage() {
               </button>
             </form>
 
-            <div className="mt-2 flex items-center justify-between gap-3 sm:hidden">
-              <label className="relative block">
-                <span className="sr-only">Language</span>
-                <Globe className="pointer-events-none absolute left-2.5 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-gray-500" />
-                <select
-                  value={language}
-                  onChange={(event) => setLanguage(event.target.value)}
-                  className="h-8 appearance-none rounded-lg border border-gray-200 bg-white pl-7 pr-7 text-xs font-medium text-gray-700 focus:outline-none dark:border-white/10 dark:bg-gray-900 dark:text-gray-200"
-                >
-                  {languageOptions.map(([code, name]) => (
-                    <option key={code} value={code}>
-                      {name}
-                    </option>
-                  ))}
-                </select>
-                <ChevronDown className="pointer-events-none absolute right-2 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-gray-500" />
-              </label>
-            </div>
+            {liveModel && (
+              <div className="mt-2 flex items-center justify-between gap-3 sm:hidden">
+                <label className="relative block">
+                  <span className="sr-only">Language</span>
+                  <Globe className="pointer-events-none absolute left-2.5 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-gray-500" />
+                  <select
+                    value={language}
+                    onChange={(event) => setLanguage(event.target.value)}
+                    className="h-8 appearance-none rounded-lg border border-gray-200 bg-white pl-7 pr-7 text-xs font-medium text-gray-700 focus:outline-none dark:border-white/10 dark:bg-gray-900 dark:text-gray-200"
+                  >
+                    {languageOptions.map(([code, name]) => (
+                      <option key={code} value={code}>
+                        {name}
+                      </option>
+                    ))}
+                  </select>
+                  <ChevronDown className="pointer-events-none absolute right-2 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-gray-500" />
+                </label>
+              </div>
+            )}
 
-            <p className="mt-2 text-center text-[11px] leading-snug text-gray-500 dark:text-gray-400">
-              Celestial AI provides general information about Celestial Web Solutions and web development. Prices are estimates in GH₵; confirm quotes with our team before paying.
-            </p>
+              <p className="mt-2 text-center text-[11px] leading-snug text-gray-500 dark:text-gray-400">
+                Celestial AI provides general information about Celestial Web Solutions and web development. Prices are estimates in GH₵; confirm quotes with our team before paying.
+              </p>
+            </div>
           </div>
         </div>
-      </div>
-    </>
-  );
-}
+      </>
+    );
+  }
 
-function AssistantAvatar() {
-  return (
-    <span className="mt-1 inline-flex h-8 w-8 shrink-0 items-center justify-center overflow-hidden rounded-full border border-gray-200 bg-white dark:border-white/10 dark:bg-gray-900">
-      <Image src="/logo.png" alt="Celestial AI" width={28} height={28} className="h-7 w-7 object-contain" />
-    </span>
-  );
-}
+  export async function getStaticProps() {
+    // Evaluated at build time on the server; the language selector only makes
+    // sense when a live model is configured, since the built-in knowledge engine
+    // answers in English.
+    const { hasLiveProvider } = await import('../lib/celestialAI/provider');
+    return { props: { liveModel: hasLiveProvider() } };
+  }
+
+  function AssistantAvatar() {
+    return (
+      <span className="mt-1 inline-flex h-8 w-8 shrink-0 items-center justify-center overflow-hidden rounded-full border border-gray-200 bg-white dark:border-white/10 dark:bg-gray-900">
+        <Image src="/logo.png" alt="Celestial AI" width={28} height={28} className="h-7 w-7 object-contain" />
+      </span>
+    );
+  }

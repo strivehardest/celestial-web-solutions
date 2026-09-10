@@ -1,5 +1,6 @@
 import { buildSystemPrompt, LANGUAGE_NAMES } from '../../lib/celestialAI/knowledge';
 import { answerLocally } from '../../lib/celestialAI/localAnswer';
+import { resolveProvider } from '../../lib/celestialAI/provider';
 
 const MAX_MESSAGE_CHARS = 1500;
 const MAX_HISTORY = 12;
@@ -25,38 +26,6 @@ function rateLimited(ip) {
     }
   }
   return entry.count > RATE_LIMIT_MAX;
-}
-
-function resolveProvider() {
-  if (process.env.OPENAI_API_KEY) {
-    return {
-      name: 'openai',
-      url: process.env.OPENAI_BASE_URL || 'https://api.openai.com/v1/chat/completions',
-      key: process.env.OPENAI_API_KEY,
-      model: process.env.CELESTIAL_AI_MODEL || 'gpt-4o-mini',
-    };
-  }
-  if (process.env.GROQ_API_KEY) {
-    return {
-      name: 'groq',
-      url: 'https://api.groq.com/openai/v1/chat/completions',
-      key: process.env.GROQ_API_KEY,
-      model: process.env.CELESTIAL_AI_MODEL || 'llama-3.3-70b-versatile',
-    };
-  }
-  if (process.env.OPENROUTER_API_KEY) {
-    return {
-      name: 'openrouter',
-      url: 'https://openrouter.ai/api/v1/chat/completions',
-      key: process.env.OPENROUTER_API_KEY,
-      model: process.env.CELESTIAL_AI_MODEL || 'openai/gpt-4o-mini',
-      extraHeaders: {
-        'HTTP-Referer': process.env.NEXT_PUBLIC_APP_URL || 'https://www.celestialwebsolutions.net',
-        'X-Title': 'Celestial AI',
-      },
-    };
-  }
-  return null;
 }
 
 function sanitizeMessages(input) {
