@@ -1,11 +1,9 @@
 import Link from 'next/link';
 import { ArrowRight, MessageCircle, Phone } from 'lucide-react';
-import AgreementMiniForm from './AgreementMiniForm';
 
 const SITE_HOSTS = ['celestialwebsolutions.net', 'www.celestialwebsolutions.net'];
 
 const CTA_RE = /\[\[cta:([^\]|]+)\|([^\]|]+)(?:\|([^\]]+))?\]\]/g;
-const AGREEMENT_MARKER = '[[agreement]]';
 
 function normalizeHref(href) {
   let internal = href.startsWith('/') || href.startsWith('tel:') || href.startsWith('mailto:');
@@ -198,23 +196,6 @@ export default function CelestialAIMarkdown({ text }) {
       blocks.push({ type: 'hr' });
       continue;
     }
-    if (trimmed === AGREEMENT_MARKER || trimmed.includes(AGREEMENT_MARKER)) {
-      flushParagraph();
-      flushList();
-      flushCtas();
-      const without = trimmed.replace(AGREEMENT_MARKER, '').trim();
-      if (without) {
-        const { ctas: nestedCtas, rest: nestedRest } = extractCtas(without);
-        if (nestedRest) paragraph.push(nestedRest);
-        flushParagraph();
-        if (nestedCtas.length) {
-          ctaBuffer.push(...nestedCtas);
-          flushCtas();
-        }
-      }
-      blocks.push({ type: 'agreement' });
-      continue;
-    }
 
     const { ctas, rest } = extractCtas(trimmed);
     if (ctas.length && !rest) {
@@ -285,9 +266,6 @@ export default function CelestialAIMarkdown({ text }) {
               ))}
             </div>
           );
-        }
-        if (block.type === 'agreement') {
-          return <AgreementMiniForm key={key} />;
         }
         if (block.type === 'h') {
           return (

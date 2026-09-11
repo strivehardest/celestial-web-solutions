@@ -89,24 +89,32 @@ const nextConfig = {
         './lib/pdf-assets/**/*',
         './public/fonts/**/*',
         './public/logo-pdf.png',
-        './node_modules/pdfkit/js/data/**/*',
+        './node_modules/pdfkit/**/*',
       ],
       '/api/terms-pdf': [
         './lib/pdf-assets/**/*',
         './public/fonts/**/*',
         './public/logo-pdf.png',
-        './node_modules/pdfkit/js/data/**/*',
+        './node_modules/pdfkit/**/*',
+      ],
+      'pages/api/client-agreement-pdf.js': [
+        './lib/pdf-assets/**/*',
+        './public/fonts/**/*',
+        './public/logo-pdf.png',
+        './node_modules/pdfkit/**/*',
+      ],
+      'pages/api/terms-pdf.js': [
+        './lib/pdf-assets/**/*',
+        './public/fonts/**/*',
+        './public/logo-pdf.png',
+        './node_modules/pdfkit/**/*',
       ],
     },
   },
 
   webpack: (config, { isServer }) => {
-    if (isServer) {
-      config.externals = config.externals || [];
-      if (Array.isArray(config.externals)) {
-        config.externals.push('pdfkit');
-      }
-    }
+    // Keep pdfkit bundled with the serverless function so its assets resolve.
+    // Do NOT mark it as an external — that commonly breaks font loading on Vercel.
     return config;
   },
 

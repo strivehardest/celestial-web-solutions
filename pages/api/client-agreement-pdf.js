@@ -73,7 +73,7 @@ export default async function handler(req, res) {
     console.error('Client agreement PDF generation failed:', error);
     return res.status(500).json({
       error: 'Failed to generate project agreement PDF',
-      detail: process.env.NODE_ENV === 'development' ? String(error?.message || error) : undefined,
+      detail: String(error?.message || error).slice(0, 300),
     });
   }
 }
