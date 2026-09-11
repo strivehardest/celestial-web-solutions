@@ -154,7 +154,11 @@ function extractCtas(line) {
 }
 
 export default function CelestialAIMarkdown({ text }) {
-  const lines = (text || '').replace(/\r\n/g, '\n').split('\n');
+  // Strip retired agreement markers so old/cached model replies never render a form UI
+  const cleaned = String(text || '')
+    .replace(/\[\[agreement\]\]/gi, '')
+    .replace(/\r\n/g, '\n');
+  const lines = cleaned.split('\n');
   const blocks = [];
   let list = null;
   let paragraph = [];
