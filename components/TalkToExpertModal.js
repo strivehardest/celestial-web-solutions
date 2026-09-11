@@ -232,12 +232,12 @@ const TalkToExpertModal = ({ isOpen, onClose }) => {
                     className="text-xl font-bold text-gray-900 dark:text-white"
                     style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}
                   >
-                    Let&apos;s do our best work together
+                    Request a Service
                   </h2>
                 </div>
               </div>
               <p className="text-sm text-gray-500 dark:text-gray-400" style={{ fontFamily: 'Albert Sans, sans-serif' }}>
-                How can we help? Fill out the form below and we&apos;ll reach out.
+                Tell us about your project and we&apos;ll get back to you with next steps.
               </p>
             </div>
 
@@ -255,13 +255,13 @@ const TalkToExpertModal = ({ isOpen, onClose }) => {
                   className="text-lg font-bold text-gray-900 dark:text-white mb-2"
                   style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}
                 >
-                  Message Sent Successfully!
+                  Request Sent Successfully!
                 </h3>
-                <p className="text-sm text-gray-500 dark:text-gray-400 mb-4" style={{ fontFamily: 'Albert Sans, sans-serif' }}>
-                  Thank you for reaching out. Our team will get back to you within 24 hours.
+                <p className="text-sm text-gray-500 dark:text-gray-400 mb-2" style={{ fontFamily: 'Albert Sans, sans-serif' }}>
+                  Thank you. A confirmation email has been sent to you, and our team at Celestial Web Solutions has been notified. We&apos;ll reply within 24 hours.
                 </p>
                 <p className="text-xs text-gray-400 dark:text-gray-500 mb-6" style={{ fontFamily: 'Albert Sans, sans-serif' }}>
-                  Download a Celestial project agreement PDF with your request details, estimated timeframe, and payment terms.
+                  Download your Celestial project agreement PDF with your request details, estimated timeframe, and payment terms.
                 </p>
                 <div className="flex flex-col items-center gap-3">
                   <AgreementDownloadButton agreementData={agreementSnapshot} />

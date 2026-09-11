@@ -5,7 +5,6 @@ import Link from 'next/link';
 import dynamic from 'next/dynamic';
 import WhatsAppButton from '../components/WhatsAppButton';
 import PremiumCTA from '../components/PremiumCTA';
-import AgreementDownloadButton from '../components/AgreementDownloadButton';
 
 const Map = dynamic(() => import('../components/Map'), {
   ssr: false,
@@ -42,7 +41,6 @@ export default function Contact() {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null);
-  const [agreementSnapshot, setAgreementSnapshot] = useState(null);
   const [turnstileToken, setTurnstileToken] = useState(null);
   const turnstileRef = useRef(null);
   const turnstileWidgetId = useRef(null);
@@ -138,10 +136,6 @@ export default function Contact() {
         body: JSON.stringify({ ...formData, turnstileToken }),
       });
       if (response.ok) {
-        setAgreementSnapshot({
-          ...formData,
-          source: 'contact',
-        });
         setSubmitStatus('success');
         setFormData({ name: '', email: '', phone: '', subject: '', timeframe: '', message: '' });
         setTurnstileToken(null);
@@ -415,17 +409,9 @@ export default function Contact() {
                       </svg>
                     )}
                     <div className="flex-1">
-                      {submitStatus === 'success' ? (
-                        <div className="space-y-3">
-                          <p>Thank you! Your message has been sent successfully. We&apos;ll get back to you soon!</p>
-                          <p className="text-sm text-green-700 dark:text-green-300">
-                            Download a Celestial project agreement PDF with your request details, estimated timeframe, and payment terms.
-                          </p>
-                          <AgreementDownloadButton agreementData={agreementSnapshot} />
-                        </div>
-                      ) : (
-                        'Sorry, there was an error sending your message. Please try again.'
-                      )}
+                      {submitStatus === 'success'
+                        ? 'Thank you! Your message has been sent successfully. A confirmation email is on its way to you, and our team has been notified. We\'ll get back to you soon!'
+                        : 'Sorry, there was an error sending your message. Please try again.'}
                     </div>
                   </div>
                 </motion.div>
