@@ -249,6 +249,11 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
+                <Link href="/request-a-service" className={footerLink}>
+                  Request a Service
+                </Link>
+              </li>
+              <li>
                 <Link href="/best-web-designer-in-accra" className={footerLink}>
                   Best in Accra
                 </Link>

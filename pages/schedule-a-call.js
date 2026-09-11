@@ -12,7 +12,17 @@ export default function ScheduleCall() {
         <title>Schedule a Call | Celestial Web Solutions</title>
         <meta name="description" content="Book a free consultation call with Celestial Web Solutions to discuss your web project, get expert advice, and start your digital journey." />
         <meta name="robots" content="index, follow" />
-        <link rel="canonical" href="https://celestialwebsolutions.net/schedule-a-call" />
+        <meta name="googlebot" content="index, follow" />
+        <link rel="canonical" href="https://www.celestialwebsolutions.net/schedule-a-call" />
+        <meta property="og:type" content="website" />
+        <meta property="og:site_name" content="Celestial Web Solutions" />
+        <meta property="og:title" content="Schedule a Call | Celestial Web Solutions" />
+        <meta property="og:description" content="Book a free consultation with Celestial Web Solutions to discuss your web project." />
+        <meta property="og:url" content="https://www.celestialwebsolutions.net/schedule-a-call" />
+        <meta property="og:image" content="https://www.celestialwebsolutions.net/og-image.jpg" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Schedule a Call | Celestial Web Solutions" />
+        <meta name="twitter:description" content="Book a free consultation with Celestial Web Solutions." />
       </Head>
       <div className="min-h-screen bg-white dark:bg-gray-900">
         <section className="relative py-20 overflow-hidden">

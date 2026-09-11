@@ -149,6 +149,24 @@ export default function PaymentPage() {
           name="keywords"
           content="Celestial Web Solutions payment, web design Ghana, website payment Ghana, MTN MoMo web design, Telecel Cash website, Paystack Ghana, bank transfer on demand, secure payment Ghana"
         />
+        <meta name="robots" content="index, follow" />
+        <meta name="googlebot" content="index, follow" />
+        <link rel="canonical" href="https://www.celestialwebsolutions.net/payment" />
+        <meta property="og:type" content="website" />
+        <meta property="og:site_name" content="Celestial Web Solutions" />
+        <meta property="og:title" content="Secure Payment Options | Celestial Web Solutions" />
+        <meta
+          property="og:description"
+          content="Pay with MTN MoMo, Telecel Cash, Paystack USSD *415*3370#, or bank transfer on demand."
+        />
+        <meta property="og:url" content="https://www.celestialwebsolutions.net/payment" />
+        <meta property="og:image" content="https://www.celestialwebsolutions.net/og-image.jpg" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Secure Payment Options | Celestial Web Solutions" />
+        <meta
+          name="twitter:description"
+          content="Pay securely for Celestial Web Solutions services via MoMo, Paystack, or bank transfer."
+        />
       </Head>
 
       {/* Hero Section */}
