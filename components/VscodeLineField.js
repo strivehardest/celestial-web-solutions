@@ -1,3 +1,5 @@
+import { Children, cloneElement, isValidElement } from 'react';
+
 /**
  * VS Code–style underline field: bottom rule + animated focus line.
  */
@@ -31,8 +33,48 @@ export default function VscodeLineField({
     rows: as === 'textarea' ? rows : undefined,
     type: as === 'input' ? type : undefined,
     className: controlClass,
-    style: { fontFamily: 'Albert Sans, sans-serif' },
+    style: {
+      fontFamily: 'Albert Sans, sans-serif',
+      ...(as === 'select' ? { colorScheme: 'light' } : null),
+    },
   };
+
+  const selectChildren =
+    as === 'select'
+      ? Children.map(children, (child) => {
+          if (!isValidElement(child)) return child;
+          if (child.type === 'option') {
+            return cloneElement(child, {
+              className: `text-stone-900 bg-white ${child.props.className || ''}`.trim(),
+              style: {
+                color: '#1c1917',
+                backgroundColor: '#ffffff',
+                ...(child.props.style || {}),
+              },
+            });
+          }
+          if (child.type === 'optgroup') {
+            return cloneElement(child, {
+              style: {
+                color: '#1c1917',
+                backgroundColor: '#ffffff',
+                ...(child.props.style || {}),
+              },
+              children: Children.map(child.props.children, (opt) => {
+                if (!isValidElement(opt) || opt.type !== 'option') return opt;
+                return cloneElement(opt, {
+                  style: {
+                    color: '#1c1917',
+                    backgroundColor: '#ffffff',
+                    ...(opt.props.style || {}),
+                  },
+                });
+              }),
+            });
+          }
+          return child;
+        })
+      : null;
 
   return (
     <div className={`vscode-line-field ${className}`}>
@@ -48,7 +90,7 @@ export default function VscodeLineField({
       ) : null}
 
       <div className="vscode-line-shell relative">
-        <Tag {...sharedProps}>{as === 'select' ? children : null}</Tag>
+        <Tag {...sharedProps}>{as === 'select' ? selectChildren : null}</Tag>
         <span className="vscode-line-base" aria-hidden="true" />
         <span className="vscode-line-active" aria-hidden="true" />
         <span className="vscode-line-caret" aria-hidden="true" />
