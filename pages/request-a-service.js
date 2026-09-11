@@ -568,16 +568,18 @@ export default function RequestAServicePage() {
                   </div>
                 )}
 
-                <PremiumCTA
-                  type="submit"
-                  size="large"
-                  variant="primary"
-                  icon
-                  className="w-full"
-                  disabled={isSubmitting || !turnstileToken}
-                >
-                  {isSubmitting ? 'Sending request…' : 'Submit service request'}
-                </PremiumCTA>
+                <div className="flex justify-center">
+                  <PremiumCTA
+                    type="submit"
+                    size="small"
+                    variant="primary"
+                    icon
+                    className="w-full max-w-[240px]"
+                    disabled={isSubmitting || !turnstileToken}
+                  >
+                    {isSubmitting ? 'Sending…' : 'Submit request'}
+                  </PremiumCTA>
+                </div>
               </div>
             </form>
           )}
