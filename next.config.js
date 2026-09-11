@@ -84,6 +84,20 @@ const nextConfig = {
 
   experimental: {
     optimizePackageImports: ['lucide-react', 'react-icons'],
+    outputFileTracingIncludes: {
+      '/api/client-agreement-pdf': [
+        './lib/pdf-assets/**/*',
+        './public/fonts/**/*',
+        './public/logo-pdf.png',
+        './node_modules/pdfkit/js/data/**/*',
+      ],
+      '/api/terms-pdf': [
+        './lib/pdf-assets/**/*',
+        './public/fonts/**/*',
+        './public/logo-pdf.png',
+        './node_modules/pdfkit/js/data/**/*',
+      ],
+    },
   },
 
   webpack: (config, { isServer }) => {
