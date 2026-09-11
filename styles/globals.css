@@ -429,6 +429,31 @@ html.dark .celestial-ai-mark-orbit {
   box-shadow: none !important;
 }
 
+/* Native <select> menus often paint a light panel; keep option text dark so it stays readable in dark mode */
+select.vscode-line-control {
+  color-scheme: light;
+  cursor: pointer;
+  appearance: auto;
+}
+
+select.vscode-line-control option,
+select.vscode-line-control optgroup {
+  color: #1c1917 !important;
+  background-color: #ffffff !important;
+  font-weight: 500;
+}
+
+html.dark select.vscode-line-control {
+  /* Closed field stays light text on dark page */
+  color: #f5f5f4;
+}
+
+html.dark select.vscode-line-control option,
+html.dark select.vscode-line-control optgroup {
+  color: #1c1917 !important;
+  background-color: #ffffff !important;
+}
+
 .vscode-line-base {
   position: absolute;
   left: 0;

@@ -17,6 +17,10 @@ export default function VscodeLineField({
   className = '',
 }) {
   const Tag = as === 'textarea' ? 'textarea' : as === 'select' ? 'select' : 'input';
+  const controlClass =
+    as === 'select'
+      ? 'vscode-line-control vscode-line-select peer w-full bg-transparent px-0.5 py-3 text-[15px] text-gray-900 dark:text-gray-100 focus:outline-none'
+      : 'vscode-line-control peer w-full bg-transparent px-0.5 py-3 text-[15px] text-gray-900 dark:text-gray-100 placeholder:text-gray-400 dark:placeholder:text-gray-500 focus:outline-none';
   const sharedProps = {
     id,
     name,
@@ -26,8 +30,7 @@ export default function VscodeLineField({
     placeholder: as === 'select' ? undefined : placeholder,
     rows: as === 'textarea' ? rows : undefined,
     type: as === 'input' ? type : undefined,
-    className:
-      'vscode-line-control peer w-full bg-transparent px-0.5 py-3 text-[15px] text-gray-900 dark:text-gray-100 placeholder:text-gray-400 dark:placeholder:text-gray-500 focus:outline-none',
+    className: controlClass,
     style: { fontFamily: 'Albert Sans, sans-serif' },
   };
 
