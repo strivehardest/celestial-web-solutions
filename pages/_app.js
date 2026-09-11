@@ -61,18 +61,28 @@ function MyApp({ Component, pageProps }) {
     };
   }, [router.events]);
 
-  // Auto-show Talk to Expert popup once per session after 5 seconds
+  // Single Request a Service modal: auto-show once per session, and open from Navbar CTA
   useEffect(() => {
     if (typeof window === 'undefined' || isAiChatPage) return;
-    const alreadyShown = sessionStorage.getItem('expertPopupShown');
-    if (alreadyShown) return;
 
-    const timer = setTimeout(() => {
+    const openModal = () => {
       setShowExpertPopup(true);
       sessionStorage.setItem('expertPopupShown', 'true');
-    }, 5000);
+    };
 
-    return () => clearTimeout(timer);
+    const onOpenRequest = () => openModal();
+    window.addEventListener('celestial:open-request-service', onOpenRequest);
+
+    const alreadyShown = sessionStorage.getItem('expertPopupShown');
+    let timer;
+    if (!alreadyShown) {
+      timer = setTimeout(openModal, 5000);
+    }
+
+    return () => {
+      window.removeEventListener('celestial:open-request-service', onOpenRequest);
+      if (timer) clearTimeout(timer);
+    };
   }, [isAiChatPage]);
 
   return (

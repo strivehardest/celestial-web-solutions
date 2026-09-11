@@ -16,7 +16,6 @@ import {
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import Image from 'next/image';
-import TalkToExpertModal from './TalkToExpertModal';
 import LanguageSwitcher from './LanguageSwitcher';
 import CtaArrow from './CtaArrow';
 
@@ -70,7 +69,11 @@ export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [openMenu, setOpenMenu] = useState(null);
-  const [isExpertModalOpen, setIsExpertModalOpen] = useState(false);
+  const openRequestService = () => {
+    if (typeof window !== 'undefined') {
+      window.dispatchEvent(new CustomEvent('celestial:open-request-service'));
+    }
+  };
   const closeTimer = useRef(null);
 
   useEffect(() => {
@@ -301,7 +304,7 @@ export default function Navbar() {
             </Link>
             <button
               type="button"
-              onClick={() => setIsExpertModalOpen(true)}
+              onClick={openRequestService}
               className="group relative inline-flex items-center justify-center rounded-full bg-orange-500 px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-orange-600"
               style={{ fontFamily: 'Albert Sans, sans-serif' }}
             >
@@ -404,7 +407,7 @@ export default function Navbar() {
                     type="button"
                     onClick={() => {
                       setIsMenuOpen(false);
-                      setIsExpertModalOpen(true);
+                      openRequestService();
                     }}
                     className="group relative flex w-full items-center justify-center rounded-full bg-orange-500 px-4 py-3 text-sm font-semibold text-white"
                     style={{ fontFamily: 'Albert Sans, sans-serif' }}
@@ -421,7 +424,6 @@ export default function Navbar() {
         </AnimatePresence>
       </header>
 
-      <TalkToExpertModal isOpen={isExpertModalOpen} onClose={() => setIsExpertModalOpen(false)} />
     </>
   );
 }
