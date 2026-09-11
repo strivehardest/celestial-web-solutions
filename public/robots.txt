@@ -1,4 +1,10 @@
 User-agent: *
 Allow: /
 
+# Keep private / utility surfaces out of search indexes
+Disallow: /dashboard
+Disallow: /studio
+Disallow: /api/
+Disallow: /404
+
 Sitemap: https://www.celestialwebsolutions.net/sitemap.xml

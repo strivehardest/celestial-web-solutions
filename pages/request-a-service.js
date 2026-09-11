@@ -182,12 +182,94 @@ export default function RequestAServicePage() {
   return (
     <>
       <Head>
-        <title>Request a Service | Celestial Web Solutions</title>
+        <title>Request a Service | Web Design &amp; Development Brief | Celestial Web Solutions</title>
         <meta
           name="description"
-          content="Request a website, ecommerce, SEO, or design project from Celestial Web Solutions. Share goals, budget, and timeframe so we can begin with the right brief."
+          content="Request a website, ecommerce, SEO, or design project from Celestial Web Solutions in Ghana. Share goals, features, budget, and timeframe so work can begin with the right brief."
         />
+        <meta
+          name="keywords"
+          content="request web design Ghana, website quote Ghana, hire web developer Accra, ecommerce website Ghana, Celestial Web Solutions service request, web design brief"
+        />
+        <meta name="author" content="Celestial Web Solutions" />
+        <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+        <meta name="googlebot" content="index, follow" />
         <link rel="canonical" href="https://www.celestialwebsolutions.net/request-a-service" />
+
+        <meta property="og:type" content="website" />
+        <meta property="og:site_name" content="Celestial Web Solutions" />
+        <meta property="og:locale" content="en_GB" />
+        <meta property="og:title" content="Request a Service | Celestial Web Solutions" />
+        <meta
+          property="og:description"
+          content="Share your project goals, budget, and timeframe. Celestial Web Solutions will reply within 24 hours with next steps."
+        />
+        <meta property="og:url" content="https://www.celestialwebsolutions.net/request-a-service" />
+        <meta property="og:image" content="https://www.celestialwebsolutions.net/og-image.jpg" />
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="@strivehardest" />
+        <meta name="twitter:title" content="Request a Service | Celestial Web Solutions" />
+        <meta
+          name="twitter:description"
+          content="Submit a full project brief for web design, ecommerce, SEO, or digital services in Ghana."
+        />
+        <meta name="twitter:image" content="https://www.celestialwebsolutions.net/og-image.jpg" />
+
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@graph': [
+                {
+                  '@type': 'WebPage',
+                  '@id': 'https://www.celestialwebsolutions.net/request-a-service#webpage',
+                  url: 'https://www.celestialwebsolutions.net/request-a-service',
+                  name: 'Request a Service | Celestial Web Solutions',
+                  description:
+                    'Submit a project brief for web design, development, ecommerce, SEO, or digital services with Celestial Web Solutions in Ghana.',
+                  isPartOf: {
+                    '@type': 'WebSite',
+                    name: 'Celestial Web Solutions',
+                    url: 'https://www.celestialwebsolutions.net',
+                  },
+                  about: {
+                    '@type': 'Organization',
+                    name: 'Celestial Web Solutions',
+                    url: 'https://www.celestialwebsolutions.net',
+                    email: 'info@celestialwebsolutions.net',
+                    telephone: '+233245671832',
+                  },
+                },
+                {
+                  '@type': 'BreadcrumbList',
+                  itemListElement: [
+                    {
+                      '@type': 'ListItem',
+                      position: 1,
+                      name: 'Home',
+                      item: 'https://www.celestialwebsolutions.net/',
+                    },
+                    {
+                      '@type': 'ListItem',
+                      position: 2,
+                      name: 'Request a Service',
+                      item: 'https://www.celestialwebsolutions.net/request-a-service',
+                    },
+                  ],
+                },
+                {
+                  '@type': 'ContactPage',
+                  name: 'Request a Service',
+                  url: 'https://www.celestialwebsolutions.net/request-a-service',
+                  description:
+                    'Project intake form for Celestial Web Solutions clients who want to start a website or digital service.',
+                },
+              ],
+            }),
+          }}
+        />
       </Head>
 
       <main className="min-h-screen bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-orange-50 via-stone-50 to-stone-100 dark:from-gray-950 dark:via-gray-950 dark:to-black">

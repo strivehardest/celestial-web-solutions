@@ -142,6 +142,8 @@ export default function FAQs() {
           content="web development FAQ, website cost in Ghana, web design questions, Celestial Web Solutions FAQ, website pricing in Cedis, web development process"
         />
         <meta name="author" content="Celestial Web Solutions" />
+        <meta name="robots" content="index, follow" />
+        <meta name="googlebot" content="index, follow" />
 
         {/* Open Graph */}
         <meta property="og:title" content="FAQs | Celestial Web Solutions" />

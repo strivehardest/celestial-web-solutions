@@ -165,14 +165,17 @@ export default function Contact() {
         <meta name="keywords" content="contact web designer Ghana, web design company Ghana, web design Accra, web design Keta" />
         <meta name="author" content="Celestial Web Solutions" />
         <meta name="robots" content="index, follow" />
+        <meta name="googlebot" content="index, follow" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta property="og:title" content="Contact Celestial Web Solutions | Ghana" />
         <meta property="og:description" content="Get in touch with Celestial Web Solutions. Contact us for web design and development services." />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://www.celestialwebsolutions.net/contact" />
+        <meta property="og:image" content="https://www.celestialwebsolutions.net/og-image.jpg" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Contact Celestial Web Solutions | Ghana" />
         <meta name="twitter:description" content="Contact us for web design and development services in Ghana." />
+        <meta name="twitter:image" content="https://www.celestialwebsolutions.net/og-image.jpg" />
         <link rel="canonical" href="https://www.celestialwebsolutions.net/contact" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
