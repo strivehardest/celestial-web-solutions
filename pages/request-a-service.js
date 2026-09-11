@@ -272,33 +272,54 @@ export default function RequestAServicePage() {
         />
       </Head>
 
-      <main className="min-h-screen bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-orange-50 via-stone-50 to-stone-100 dark:from-gray-950 dark:via-gray-950 dark:to-black">
-        <section className="relative overflow-hidden border-b border-orange-100/80 dark:border-white/5">
-          <div className="absolute inset-0 bg-[linear-gradient(120deg,rgba(249,115,22,0.12),transparent_45%,rgba(234,88,12,0.08))]" />
-          <div className="relative mx-auto max-w-5xl px-4 pb-14 pt-28 sm:px-6 lg:px-8">
-            <p
-              className="text-xs font-semibold uppercase tracking-[0.18em] text-orange-600 dark:text-orange-400"
-              style={{ fontFamily: 'Albert Sans, sans-serif' }}
+      <main className="min-h-screen bg-stone-50 dark:bg-gray-950">
+        <section className="relative overflow-hidden">
+          <div className="absolute inset-0">
+            <img
+              src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=2400&q=80"
+              alt="Celestial Web Solutions team discussing a client project brief"
+              className="h-full w-full object-cover"
+            />
+            <div className="absolute inset-0 bg-stone-950/55" />
+            <div className="absolute inset-0 bg-gradient-to-r from-orange-700/75 via-orange-600/55 to-stone-950/40" />
+          </div>
+
+          <div className="relative mx-auto flex min-h-[420px] max-w-5xl flex-col justify-end px-4 pb-14 pt-32 sm:min-h-[480px] sm:px-6 lg:px-8">
+            <motion.div
+              initial={{ opacity: 0, y: 18 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
             >
-              Celestial Web Solutions
-            </p>
-            <h1
-              className="mt-3 max-w-3xl text-4xl font-bold tracking-tight text-stone-950 dark:text-white sm:text-5xl"
-              style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}
-            >
-              Request a Service
-            </h1>
-            <p
-              className="mt-4 max-w-2xl text-lg leading-relaxed text-stone-600 dark:text-stone-300"
-              style={{ fontFamily: 'Albert Sans, sans-serif' }}
-            >
-              Share the details we need before work begins — goals, audience, features, budget, and timeframe.
-              Full payment is required before most projects start.
-            </p>
+              <p
+                className="text-xs font-semibold uppercase tracking-[0.18em] text-orange-100"
+                style={{ fontFamily: 'Albert Sans, sans-serif' }}
+              >
+                Celestial Web Solutions
+              </p>
+              <h1
+                className="mt-3 max-w-3xl text-4xl font-bold tracking-tight text-white sm:text-5xl"
+                style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}
+              >
+                Request a Service
+              </h1>
+              <p
+                className="mt-4 max-w-2xl text-lg leading-relaxed text-orange-50/95"
+                style={{ fontFamily: 'Albert Sans, sans-serif' }}
+              >
+                Share the details we need before work begins — goals, audience, features, budget, and timeframe.
+              </p>
+              <a
+                href="#project-brief"
+                className="mt-7 inline-flex items-center justify-center rounded-lg bg-white px-5 py-3 text-sm font-semibold text-stone-900 transition-colors hover:bg-orange-50"
+                style={{ fontFamily: 'Albert Sans, sans-serif' }}
+              >
+                Start your brief
+              </a>
+            </motion.div>
           </div>
         </section>
 
-        <section className="mx-auto max-w-5xl px-4 py-12 sm:px-6 lg:px-8">
+        <section id="project-brief" className="mx-auto max-w-5xl px-4 py-12 sm:px-6 lg:px-8">
           {submitStatus === 'success' ? (
             <motion.div
               ref={successRef}
