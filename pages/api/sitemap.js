@@ -23,6 +23,7 @@ const staticPaths = [
   { path: '/about',                                                                   priority: 0.7, changefreq: 'monthly' },
   { path: '/portfolio',                                                               priority: 0.8, changefreq: 'weekly'  },
   { path: '/contact',                                                                 priority: 0.6, changefreq: 'monthly' },
+  { path: '/request-a-service',                                                       priority: 0.8, changefreq: 'monthly' },
   { path: '/pricing',                                                                 priority: 0.7, changefreq: 'monthly' },
   { path: '/blog',                                                                    priority: 0.8, changefreq: 'daily'   },
   { path: '/courses',                                                                 priority: 0.8, changefreq: 'weekly'  },

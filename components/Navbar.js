@@ -69,11 +69,6 @@ export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [openMenu, setOpenMenu] = useState(null);
-  const openRequestService = () => {
-    if (typeof window !== 'undefined') {
-      window.dispatchEvent(new CustomEvent('celestial:open-request-service'));
-    }
-  };
   const closeTimer = useRef(null);
 
   useEffect(() => {
@@ -302,9 +297,8 @@ export default function Navbar() {
                 <CtaArrow size={15} />
               </span>
             </Link>
-            <button
-              type="button"
-              onClick={openRequestService}
+            <Link
+              href="/request-a-service"
               className="group relative inline-flex items-center justify-center rounded-full bg-orange-500 px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-orange-600"
               style={{ fontFamily: 'Albert Sans, sans-serif' }}
             >
@@ -312,7 +306,7 @@ export default function Navbar() {
                 Request a Service
                 <CtaArrow size={15} />
               </span>
-            </button>
+            </Link>
           </div>
 
           <div className="flex lg:hidden items-center gap-2">
@@ -403,12 +397,9 @@ export default function Navbar() {
                       <CtaArrow size={15} />
                     </span>
                   </Link>
-                  <button
-                    type="button"
-                    onClick={() => {
-                      setIsMenuOpen(false);
-                      openRequestService();
-                    }}
+                  <Link
+                    href="/request-a-service"
+                    onClick={() => setIsMenuOpen(false)}
                     className="group relative flex w-full items-center justify-center rounded-full bg-orange-500 px-4 py-3 text-sm font-semibold text-white"
                     style={{ fontFamily: 'Albert Sans, sans-serif' }}
                   >
@@ -416,7 +407,7 @@ export default function Navbar() {
                       Request a Service
                       <CtaArrow size={15} />
                     </span>
-                  </button>
+                  </Link>
                 </div>
               </div>
             </motion.div>

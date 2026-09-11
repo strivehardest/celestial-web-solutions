@@ -11,15 +11,37 @@ export default async function handler(req, res) {
     email,
     phone,
     company,
+    jobTitle,
     businessCategory,
+    websiteUrl,
+    city,
     service,
+    projectGoals,
+    targetAudience,
+    keyFeatures,
+    hasExistingBrand,
+    contentReady,
     budget,
     timeframe,
+    preferredContact,
+    howDidYouHear,
     message,
     turnstileToken,
   } = req.body || {};
 
-  if (!firstName || !lastName || !email || !phone || !company || !service) {
+  if (
+    !firstName ||
+    !lastName ||
+    !email ||
+    !phone ||
+    !company ||
+    !service ||
+    !projectGoals ||
+    !keyFeatures ||
+    !budget ||
+    !timeframe ||
+    !preferredContact
+  ) {
     return res.status(400).json({ error: 'Missing required fields' });
   }
 
@@ -55,10 +77,20 @@ export default async function handler(req, res) {
       email,
       phone,
       company,
+      jobTitle,
       businessCategory,
+      websiteUrl,
+      city,
       service,
+      projectGoals,
+      targetAudience,
+      keyFeatures,
+      hasExistingBrand,
+      contentReady,
       budget,
       timeframe,
+      preferredContact,
+      howDidYouHear,
       message,
     });
 

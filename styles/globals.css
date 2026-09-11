@@ -412,3 +412,113 @@ html.dark .celestial-ai-mark-orbit {
   }
 }
 
+/* ── VS Code–style form underlines ── */
+.vscode-line-shell {
+  position: relative;
+}
+
+.vscode-line-control {
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  background: transparent !important;
+}
+
+.vscode-line-control:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.vscode-line-base {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1px;
+  background: rgba(120, 113, 108, 0.45);
+  pointer-events: none;
+}
+
+html.dark .vscode-line-base {
+  background: rgba(168, 162, 158, 0.35);
+}
+
+.vscode-line-active {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #ea580c, #f97316, #ea580c);
+  transform: translateX(-50%);
+  transition: width 280ms cubic-bezier(0.22, 1, 0.36, 1);
+  pointer-events: none;
+}
+
+.vscode-line-shell:focus-within .vscode-line-active,
+.vscode-line-field:has(.vscode-line-control:not(:placeholder-shown):not([value=''])) .vscode-line-active {
+  width: 100%;
+}
+
+/* Keep filled selects looking focused-line when a real option is chosen */
+.vscode-line-field:has(select.vscode-line-control:valid) .vscode-line-active {
+  width: 100%;
+  opacity: 0.55;
+}
+
+.vscode-line-field:has(select.vscode-line-control:focus) .vscode-line-active {
+  opacity: 1;
+  width: 100%;
+}
+
+.vscode-line-caret {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 2px;
+  height: 0;
+  background: #f97316;
+  opacity: 0;
+  pointer-events: none;
+  transition: height 180ms ease, opacity 180ms ease;
+}
+
+.vscode-line-shell:focus-within .vscode-line-caret {
+  height: 14px;
+  opacity: 1;
+  animation: vscode-caret-pulse 1s steps(1, end) infinite;
+}
+
+@keyframes vscode-caret-pulse {
+  0%,
+  49% {
+    opacity: 1;
+  }
+  50%,
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes vscode-line-sweep {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
+}
+
+.vscode-line-shell:focus-within .vscode-line-active {
+  background-size: 200% 100%;
+  animation: vscode-line-sweep 1.6s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .vscode-line-active,
+  .vscode-line-caret {
+    transition: none;
+    animation: none !important;
+  }
+}
+

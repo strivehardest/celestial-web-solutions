@@ -5,6 +5,7 @@ import Link from 'next/link';
 import dynamic from 'next/dynamic';
 import WhatsAppButton from '../components/WhatsAppButton';
 import PremiumCTA from '../components/PremiumCTA';
+import VscodeLineField from '../components/VscodeLineField';
 
 const Map = dynamic(() => import('../components/Map'), {
   ssr: false,
@@ -44,6 +45,7 @@ export default function Contact() {
   const [turnstileToken, setTurnstileToken] = useState(null);
   const turnstileRef = useRef(null);
   const turnstileWidgetId = useRef(null);
+  const statusRef = useRef(null);
 
   // Typing effect state
   const [currentPhraseIndex, setCurrentPhraseIndex] = useState(0);
@@ -142,6 +144,9 @@ export default function Contact() {
         if (turnstileWidgetId.current !== null && window.turnstile) {
           window.turnstile.reset(turnstileWidgetId.current);
         }
+        setTimeout(() => {
+          statusRef.current?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }, 80);
       } else {
         setSubmitStatus('error');
       }
@@ -387,119 +392,87 @@ export default function Contact() {
                 <p className="text-gray-600 dark:text-gray-300 text-lg leading-relaxed" style={{ fontFamily: 'Albert Sans, sans-serif' }}>Tell us about your project and we'll get back to you within 24 hours.</p>
               </div>
 
-              {submitStatus && (
-                <motion.div
-                  initial={{ opacity: 0, y: -10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className={`mb-8 p-5 rounded-2xl border-l-4 ${
-                    submitStatus === 'success'
-                      ? 'bg-green-50 dark:bg-green-900/20 text-green-800 dark:text-green-400 border-green-500'
-                      : 'bg-red-50 dark:bg-red-900/20 text-red-800 dark:text-red-400 border-red-500'
-                  }`}
-                  style={{ fontFamily: 'Albert Sans, sans-serif' }}
-                >
-                  <div className="flex items-center">
-                    {submitStatus === 'success' ? (
-                      <svg className="w-6 h-6 mr-3 text-green-600 dark:text-green-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                      </svg>
-                    ) : (
-                      <svg className="w-6 h-6 mr-3 text-red-600 dark:text-red-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                      </svg>
-                    )}
-                    <div className="flex-1">
-                      {submitStatus === 'success'
-                        ? 'Thank you! Your message has been sent successfully. A confirmation email is on its way to you, and our team has been notified. We\'ll get back to you soon!'
-                        : 'Sorry, there was an error sending your message. Please try again.'}
-                    </div>
-                  </div>
-                </motion.div>
-              )}
-
-              <form onSubmit={handleSubmit} className="space-y-6">
+              <form onSubmit={handleSubmit} className="space-y-7">
                 <div className="grid sm:grid-cols-2 gap-6">
-                  <div className="space-y-2">
-                    <label htmlFor="name" className="block text-sm font-bold text-gray-800 dark:text-gray-200" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>Full Name *</label>
-                    <input
-                      type="text" id="name" name="name" required
-                      value={formData.name} onChange={handleInputChange}
-                      className="w-full px-5 py-3 border-2 border-gray-200 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-2xl focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-all duration-300"
-                      style={{ fontFamily: 'Albert Sans, sans-serif' }}
-                      placeholder="Your name"
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <label htmlFor="phone" className="block text-sm font-bold text-gray-800 dark:text-gray-200" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>Phone Number</label>
-                    <input
-                      type="tel" id="phone" name="phone"
-                      value={formData.phone} onChange={handleInputChange}
-                      className="w-full px-5 py-3 border-2 border-gray-200 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-2xl focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-all duration-300"
-                      style={{ fontFamily: 'Albert Sans, sans-serif' }}
-                      placeholder="+233 50 505 031"
-                    />
-                  </div>
-                </div>
-
-                <div className="space-y-2">
-                  <label htmlFor="email" className="block text-sm font-bold text-gray-800 dark:text-gray-200" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>Email Address *</label>
-                  <input
-                    type="email" id="email" name="email" required
-                    value={formData.email} onChange={handleInputChange}
-                    className="w-full px-5 py-3 border-2 border-gray-200 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-2xl focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-all duration-300"
-                    style={{ fontFamily: 'Albert Sans, sans-serif' }}
-                    placeholder="your@email.com"
+                  <VscodeLineField
+                    id="name"
+                    name="name"
+                    label="Full Name"
+                    required
+                    value={formData.name}
+                    onChange={handleInputChange}
+                    placeholder="Your name"
+                  />
+                  <VscodeLineField
+                    id="phone"
+                    name="phone"
+                    label="Phone Number"
+                    type="tel"
+                    value={formData.phone}
+                    onChange={handleInputChange}
+                    placeholder="+233 24 567 1832"
                   />
                 </div>
 
-                <div className="space-y-2">
-                  <label htmlFor="subject" className="block text-sm font-bold text-gray-800 dark:text-gray-200" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>Subject *</label>
-                  <select
-                    id="subject" name="subject" required
-                    value={formData.subject} onChange={handleInputChange}
-                    className="w-full px-5 py-3 border-2 border-gray-200 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-2xl focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-all duration-300"
-                    style={{ fontFamily: 'Albert Sans, sans-serif' }}
-                  >
-                    <option value="">Select a subject</option>
-                    <option value="Web Development">Web Development</option>
-                    <option value="Web Design">Web Design</option>
-                    <option value="E-commerce">E-commerce Solutions</option>
-                    <option value="SEO Optimization">SEO Optimization</option>
-                    <option value="UX/UI Design">UX/UI Design</option>
-                    <option value="IT Support">IT Support</option>
-                    <option value="Google Ads Management">Google Ads Management</option>
-                    <option value="Google AdSense Management">Google AdSense Management</option>
-                  </select>
-                </div>
+                <VscodeLineField
+                  id="email"
+                  name="email"
+                  label="Email Address"
+                  type="email"
+                  required
+                  value={formData.email}
+                  onChange={handleInputChange}
+                  placeholder="your@email.com"
+                />
 
-                <div className="space-y-2">
-                  <label htmlFor="timeframe" className="block text-sm font-bold text-gray-800 dark:text-gray-200" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>Preferred timeframe</label>
-                  <select
-                    id="timeframe" name="timeframe"
-                    value={formData.timeframe} onChange={handleInputChange}
-                    className="w-full px-5 py-3 border-2 border-gray-200 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-2xl focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-all duration-300"
-                    style={{ fontFamily: 'Albert Sans, sans-serif' }}
-                  >
-                    <option value="">Select a timeframe (optional)</option>
-                    <option value="ASAP (rush — may include surcharge)">ASAP (rush — may include surcharge)</option>
-                    <option value="1–2 weeks">1–2 weeks</option>
-                    <option value="2–4 weeks">2–4 weeks</option>
-                    <option value="1–2 months">1–2 months</option>
-                    <option value="3+ months">3+ months</option>
-                    <option value="Flexible / to be confirmed">Flexible / to be confirmed</option>
-                  </select>
-                </div>
+                <VscodeLineField
+                  as="select"
+                  id="subject"
+                  name="subject"
+                  label="Subject"
+                  required
+                  value={formData.subject}
+                  onChange={handleInputChange}
+                >
+                  <option value="">Select a subject</option>
+                  <option value="Web Development">Web Development</option>
+                  <option value="Web Design">Web Design</option>
+                  <option value="E-commerce">E-commerce Solutions</option>
+                  <option value="SEO Optimization">SEO Optimization</option>
+                  <option value="UX/UI Design">UX/UI Design</option>
+                  <option value="IT Support">IT Support</option>
+                  <option value="Google Ads Management">Google Ads Management</option>
+                  <option value="Google AdSense Management">Google AdSense Management</option>
+                </VscodeLineField>
 
-                <div className="space-y-2">
-                  <label htmlFor="message" className="block text-sm font-bold text-gray-800 dark:text-gray-200" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>Message *</label>
-                  <textarea
-                    id="message" name="message" required rows="5"
-                    value={formData.message} onChange={handleInputChange}
-                    className="w-full px-5 py-3 border-2 border-gray-200 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-2xl focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-all duration-300 resize-none"
-                    style={{ fontFamily: 'Albert Sans, sans-serif' }}
-                    placeholder="Tell us about your project..."
-                  />
-                </div>
+                <VscodeLineField
+                  as="select"
+                  id="timeframe"
+                  name="timeframe"
+                  label="Preferred timeframe"
+                  value={formData.timeframe}
+                  onChange={handleInputChange}
+                >
+                  <option value="">Select a timeframe (optional)</option>
+                  <option value="ASAP (rush — may include surcharge)">ASAP (rush — may include surcharge)</option>
+                  <option value="1–2 weeks">1–2 weeks</option>
+                  <option value="2–4 weeks">2–4 weeks</option>
+                  <option value="1–2 months">1–2 months</option>
+                  <option value="3+ months">3+ months</option>
+                  <option value="Flexible / to be confirmed">Flexible / to be confirmed</option>
+                </VscodeLineField>
+
+                <VscodeLineField
+                  as="textarea"
+                  id="message"
+                  name="message"
+                  label="Message"
+                  required
+                  rows={5}
+                  value={formData.message}
+                  onChange={handleInputChange}
+                  placeholder="Tell us about your project..."
+                />
 
                 {/* Cloudflare Turnstile */}
                 <div className="flex justify-center">
@@ -528,6 +501,52 @@ export default function Contact() {
                 </div>
               </form>
 
+              {submitStatus && (
+                <motion.div
+                  ref={statusRef}
+                  initial={{ opacity: 0, y: 8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className={`mt-6 rounded-xl border px-4 py-4 ${
+                    submitStatus === 'success'
+                      ? 'border-orange-200 bg-orange-50/80 text-stone-800 dark:border-orange-900/50 dark:bg-orange-950/30 dark:text-orange-100'
+                      : 'border-red-200 bg-red-50 text-red-800 dark:border-red-900/40 dark:bg-red-950/30 dark:text-red-200'
+                  }`}
+                  style={{ fontFamily: 'Albert Sans, sans-serif' }}
+                  role="status"
+                  aria-live="polite"
+                >
+                  <div className="flex items-start gap-3">
+                    <span
+                      className={`mt-0.5 inline-flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full ${
+                        submitStatus === 'success'
+                          ? 'bg-orange-500 text-white'
+                          : 'bg-red-500 text-white'
+                      }`}
+                    >
+                      {submitStatus === 'success' ? (
+                        <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
+                        </svg>
+                      ) : (
+                        <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                      )}
+                    </span>
+                    <div className="text-sm leading-relaxed">
+                      <p className="font-semibold text-stone-900 dark:text-white">
+                        {submitStatus === 'success' ? 'Message received' : 'Something went wrong'}
+                      </p>
+                      <p className="mt-1 text-stone-600 dark:text-stone-300">
+                        {submitStatus === 'success'
+                          ? 'A confirmation email is on its way to you, and our team at Celestial Web Solutions has been notified. We\'ll reply within 24 hours.'
+                          : 'Sorry, there was an error sending your message. Please try again.'}
+                      </p>
+                    </div>
+                  </div>
+                </motion.div>
+              )}
+
               <div className="mt-8 pt-6 border-t border-gray-200 dark:border-gray-700">
                 <p className="text-sm text-gray-600 dark:text-gray-300 mb-4 font-medium" style={{ fontFamily: 'Albert Sans, sans-serif' }}>Prefer to contact us directly?</p>
                 <div className="grid grid-cols-3 gap-3">
@@ -537,13 +556,13 @@ export default function Contact() {
                     Call
                   </motion.a>
                   <motion.a href="https://wa.me/233530505031" whileHover={{ scale: 1.05 }}
-                    className="flex items-center justify-center text-white bg-green-500 hover:bg-green-600 font-bold py-2 px-3 rounded-xl transition-all text-sm"
+                    className="flex items-center justify-center text-white bg-[#128C7E] hover:bg-[#0e7a6d] font-bold py-2 px-3 rounded-xl transition-all text-sm"
                     style={{ fontFamily: 'Albert Sans, sans-serif' }}
                     target="_blank" rel="noopener noreferrer">
                     WhatsApp
                   </motion.a>
                   <motion.a href="mailto:info@celestialwebsolutions.net" whileHover={{ scale: 1.05 }}
-                    className="flex items-center justify-center text-white bg-red-500 hover:bg-red-600 font-bold py-2 px-3 rounded-xl transition-all text-sm"
+                    className="flex items-center justify-center text-white bg-stone-800 hover:bg-stone-900 font-bold py-2 px-3 rounded-xl transition-all text-sm"
                     style={{ fontFamily: 'Albert Sans, sans-serif' }}>
                     Email
                   </motion.a>

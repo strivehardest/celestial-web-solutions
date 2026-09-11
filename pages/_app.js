@@ -10,7 +10,7 @@ import GoogleTranslate from '../components/GoogleTranslate';
 const Footer = dynamic(() => import('../components/Footer'), { ssr: false });
 const ScrollToTop = dynamic(() => import('../components/ScrollToTop'), { ssr: false });
 const SpinningLogoLoader = dynamic(() => import('../components/SpinningLogoLoader'), { ssr: false });
-const TalkToExpertModal = dynamic(() => import('../components/TalkToExpertModal'), { ssr: false });
+const RequestServicePromo = dynamic(() => import('../components/RequestServicePromo'), { ssr: false });
 import ReadingProgressBar from '../components/ui/ReadingProgressBar'; // moved to top, correct path
 
 const GA_TRACKING_ID = 'G-73D6Q2P389';
@@ -61,29 +61,24 @@ function MyApp({ Component, pageProps }) {
     };
   }, [router.events]);
 
-  // Single Request a Service modal: auto-show once per session, and open from Navbar CTA
+  // Promo once per session pointing to the full Request a Service page
   useEffect(() => {
-    if (typeof window === 'undefined' || isAiChatPage) return;
-
-    const openModal = () => {
-      setShowExpertPopup(true);
-      sessionStorage.setItem('expertPopupShown', 'true');
-    };
-
-    const onOpenRequest = () => openModal();
-    window.addEventListener('celestial:open-request-service', onOpenRequest);
+    if (typeof window === 'undefined' || isAiChatPage) return undefined;
+    if (router.pathname === '/request-a-service') return undefined;
 
     const alreadyShown = sessionStorage.getItem('expertPopupShown');
     let timer;
     if (!alreadyShown) {
-      timer = setTimeout(openModal, 5000);
+      timer = setTimeout(() => {
+        setShowExpertPopup(true);
+        sessionStorage.setItem('expertPopupShown', 'true');
+      }, 5000);
     }
 
     return () => {
-      window.removeEventListener('celestial:open-request-service', onOpenRequest);
       if (timer) clearTimeout(timer);
     };
-  }, [isAiChatPage]);
+  }, [isAiChatPage, router.pathname]);
 
   return (
     <LanguageProvider>
@@ -163,8 +158,8 @@ function MyApp({ Component, pageProps }) {
         />
       )}
 
-      {/* Auto-popup: Talk to an Expert */}
-      <TalkToExpertModal
+      {/* Auto-promo: Request a Service page */}
+      <RequestServicePromo
         isOpen={showExpertPopup}
         onClose={() => setShowExpertPopup(false)}
       />
