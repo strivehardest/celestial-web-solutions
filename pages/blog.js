@@ -6,7 +6,7 @@ import { useEffect, useState, useMemo } from "react";
 import Link from "next/link";
 import WhatsAppButton from '../components/WhatsAppButton';
 import GoogleAd from '../components/GoogleAd';
-import { client, urlFor } from '../lib/sanity';
+import { fetchSanity, urlFor } from '../lib/sanity';
 
 // ─── Static articles ───────────────────────────────────────────────────────────
 export const blogArticles = [
@@ -787,7 +787,7 @@ export async function getStaticProps() {
       seoKeywords,
     }`
 
-    const sanityPosts = await client.fetch(query)
+    const sanityPosts = await fetchSanity(query)
 
     return {
       props: { sanityPosts: sanityPosts || [] },

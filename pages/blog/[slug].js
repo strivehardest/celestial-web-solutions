@@ -19,7 +19,7 @@ import WhatsAppButton from '../../components/WhatsAppButton';
 import PremiumCTA from '../../components/PremiumCTA';
 import GoogleAd from '../../components/GoogleAd';
 import { useState, useEffect } from 'react';
-import { client } from '../../lib/sanity'
+import { fetchSanity } from '../../lib/sanity'
 import { PortableText } from '@portabletext/react'
 import { portableTextComponents } from '../../lib/portableTextComponents'
 
@@ -3642,13 +3642,19 @@ function normalizeArticle(raw, { isPortableText = false, publishedAt = null } = 
   }
 }
 
+// Allow longer on-demand ISR generation on Vercel (default hobby limit is tight
+// for this page's first-request Sanity + render path).
+export const config = {
+  maxDuration: 30,
+}
+
 export async function getStaticPaths() {
   let sanitySlugs = []
   try {
-    const sanityPosts = await client.fetch(ALL_SLUGS_QUERY)
+    const sanityPosts = await fetchSanity(ALL_SLUGS_QUERY)
     sanitySlugs = (sanityPosts || []).map((p) => p.slug).filter(Boolean)
   } catch (e) {
-    console.log('Sanity fetch failed, using hardcoded slugs only')
+    console.log('Sanity fetch failed, using hardcoded slugs only', e?.message || e)
   }
 
   const hardcodedSlugs = Object.keys(blogArticles)
@@ -3696,9 +3702,9 @@ export async function getStaticProps({ params }) {
   let article = null
   let isPortableText = false
 
-  // 1. Try Sanity first
+  // 1. Try Sanity first (timed — never hang the Vercel ISR invocation)
   try {
-    const sanityArticle = await client.fetch(POST_QUERY, { slug })
+    const sanityArticle = await fetchSanity(POST_QUERY, { slug })
     if (sanityArticle?.title) {
       article = normalizeArticle(sanityArticle, {
         isPortableText: true,

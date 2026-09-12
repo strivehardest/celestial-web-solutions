@@ -85,6 +85,17 @@ const nextConfig = {
   experimental: {
     optimizePackageImports: ['lucide-react', 'react-icons'],
     outputFileTracingIncludes: {
+      '/blog/[slug]': [
+        './node_modules/@sanity/client/**/*',
+        './node_modules/@sanity/image-url/**/*',
+        './node_modules/@portabletext/react/**/*',
+        './node_modules/get-it/**/*',
+      ],
+      '/blog': [
+        './node_modules/@sanity/client/**/*',
+        './node_modules/@sanity/image-url/**/*',
+        './node_modules/get-it/**/*',
+      ],
       '/api/client-agreement-pdf': [
         './lib/pdf-assets/**/*',
         './public/fonts/**/*',
