@@ -547,3 +547,17 @@ html.dark .vscode-line-base {
   }
 }
 
+/* Header logo soft orbit shimmer */
+@keyframes cws-logo-orbit {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .group:hover [style*='cws-logo-orbit'],
+  [style*='cws-logo-orbit'] {
+    animation: none !important;
+  }
+}
+
