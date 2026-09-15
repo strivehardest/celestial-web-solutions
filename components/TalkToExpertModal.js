@@ -128,8 +128,14 @@ const TalkToExpertModal = ({ isOpen, onClose }) => {
       });
 
       if (response.ok) {
+        const payload = await response.json().catch(() => ({}));
+        const agreementId = payload.agreementId || null;
+        const createdAt = payload.createdAt || null;
         setAgreementSnapshot({
           ...formData,
+          // Reuse the same CWS id + timestamp as the emailed PDF attachment.
+          agreementId: agreementId || undefined,
+          createdAt: createdAt || undefined,
           source: 'talk-to-expert',
         });
         setSubmitStatus('success');
@@ -262,6 +268,18 @@ const TalkToExpertModal = ({ isOpen, onClose }) => {
                 </p>
                 <p className="text-xs text-gray-400 dark:text-gray-500 mb-6" style={{ fontFamily: 'Albert Sans, sans-serif' }}>
                   Download your Celestial project agreement PDF with your request details, estimated timeframe, and payment terms.
+                  {agreementSnapshot?.agreementId ? (
+                    <>
+                      {' '}
+                      Agreement ID:{' '}
+                      <span className="font-semibold text-gray-600 dark:text-gray-300">
+                        {agreementSnapshot.agreementId}
+                      </span>{' '}
+                      (same code as the PDF emailed to you).
+                    </>
+                  ) : (
+                    <> If download stays disabled, check your confirmation email for the Agreement ID PDF.</>
+                  )}
                 </p>
                 <div className="flex flex-col items-center gap-3">
                   <AgreementDownloadButton agreementData={agreementSnapshot} />

@@ -1,4 +1,5 @@
 const { generateClientAgreementPdf } = require('../../lib/generateClientAgreementPdf');
+const { isValidAgreementId } = require('../../lib/agreementHelpers');
 
 export const config = {
   api: {
@@ -33,10 +34,20 @@ export default async function handler(req, res) {
       payload.name ||
       [payload.firstName, payload.lastName].filter(Boolean).join(' ').trim();
     const service = payload.service || payload.subject;
+    const agreementIdInput = String(payload.agreementId || '').trim();
 
     if (!clientName || !service) {
       return res.status(400).json({
         error: 'Client name and service (or subject) are required to generate an agreement.',
+      });
+    }
+
+    // Downloads must reuse the server-issued CWS id from submit — never mint a second code.
+    if (!isValidAgreementId(agreementIdInput)) {
+      return res.status(400).json({
+        error:
+          'A valid agreementId from your service request is required. Refresh the success screen after submitting, then download again.',
+        code: 'MISSING_AGREEMENT_ID',
       });
     }
 
@@ -45,12 +56,16 @@ export default async function handler(req, res) {
       throw new Error('Agreement PDF generator is not available');
     }
 
-    const result = await generate({
-      ...payload,
-      name: clientName,
-      service,
-      source: payload.source || 'website-form',
-    });
+    const result = await generate(
+      {
+        ...payload,
+        name: clientName,
+        service,
+        agreementId: agreementIdInput,
+        source: payload.source || 'website-form',
+      },
+      { requireAgreementId: true }
+    );
 
     const buffer = result.buffer || result.pdf || result;
     const filename =
@@ -62,6 +77,16 @@ export default async function handler(req, res) {
       throw new Error('PDF generator returned an invalid buffer');
     }
 
+    if (agreementId && agreementId !== agreementIdInput.toUpperCase()) {
+      console.error(
+        `[agreement] download PDF id mismatch: requested=${agreementIdInput} got=${agreementId}`
+      );
+      return res.status(500).json({
+        error: 'Agreement ID mismatch while generating PDF',
+        code: 'AGREEMENT_ID_MISMATCH',
+      });
+    }
+
     const out = Buffer.from(buffer);
     res.setHeader('Content-Type', 'application/pdf');
     res.setHeader('Content-Disposition', `attachment; filename="${filename}"`);
@@ -70,6 +95,12 @@ export default async function handler(req, res) {
     if (agreementId) res.setHeader('X-Agreement-Id', agreementId);
     return res.status(200).send(out);
   } catch (error) {
+    if (error?.code === 'MISSING_AGREEMENT_ID') {
+      return res.status(400).json({
+        error: error.message,
+        code: 'MISSING_AGREEMENT_ID',
+      });
+    }
     console.error('Client agreement PDF generation failed:', error);
     return res.status(500).json({
       error: 'Failed to generate project agreement PDF',
