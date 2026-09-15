@@ -159,8 +159,12 @@ export default function RequestAServicePage() {
       });
 
       if (response.ok) {
+        const payload = await response.json().catch(() => ({}));
         setAgreementSnapshot({
           ...formData,
+          // Reuse the same CWS id + timestamp as the emailed PDF attachment.
+          agreementId: payload.agreementId || undefined,
+          createdAt: payload.createdAt || undefined,
           source: 'request-a-service',
         });
         setSubmitStatus('success');
@@ -350,6 +354,16 @@ export default function RequestAServicePage() {
                 style={{ fontFamily: 'Albert Sans, sans-serif' }}
               >
                 Download your Celestial project agreement PDF with your request details, estimated timeframe, and payment terms.
+                {agreementSnapshot?.agreementId ? (
+                  <>
+                    {' '}
+                    Agreement ID:{' '}
+                    <span className="font-semibold text-stone-700 dark:text-stone-200">
+                      {agreementSnapshot.agreementId}
+                    </span>{' '}
+                    (same code as the PDF emailed to you).
+                  </>
+                ) : null}
               </p>
               <div className="mt-6 flex flex-col items-center gap-3">
                 <AgreementDownloadButton agreementData={agreementSnapshot} />
