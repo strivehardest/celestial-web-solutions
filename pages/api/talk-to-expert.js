@@ -71,7 +71,7 @@ export default async function handler(req, res) {
   }
 
   try {
-    await sendServiceRequestEmails({
+    const result = await sendServiceRequestEmails({
       firstName,
       lastName,
       email,
@@ -97,6 +97,8 @@ export default async function handler(req, res) {
     return res.status(200).json({
       success: true,
       message: 'Request sent successfully. A confirmation email has been sent to you.',
+      agreementId: result?.agreementId || null,
+      createdAt: result?.createdAt || null,
     });
   } catch (error) {
     console.error('Request a Service form error:', error);
