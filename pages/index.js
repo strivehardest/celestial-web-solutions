@@ -14,7 +14,7 @@ const happyClients = [
   { name: "COPTI", src: "/png/projects/copti.png" },
   { name: "Kafui Dey", src: "/png/projects/kafui-dey.png" },
   { name: "Ghana Event", src: "/png/projects/ghanasevent.jpeg" },
-  { name: "Act Campus Care", src: "/png/projects/act-campus-care.jpg" },
+  { name: "ACT Campus Care", src: "/png/projects/act-campus-care.jpg" },
 ];
 
 import { useState, useEffect, useRef } from 'react';

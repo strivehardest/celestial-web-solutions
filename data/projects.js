@@ -7,7 +7,7 @@ const projects = [
     category: "healthcare & wellness",
     client: "ACT Healing",
     clientCountry: "United States",
-    description: "Campus Care 2.0 is a culturally grounded, bio-responsive virtual reality wellness platform created by ACT Healing. The website introduces HBCU students and campus communities to immersive tools for regulating stress, strengthening resilience, and supporting restorative healing.",
+    description: "ACT Campus Care 2.0 is a culturally grounded, bio-responsive virtual reality wellness platform created by ACT Healing. The website introduces HBCU students and campus communities to immersive tools for regulating stress, strengthening resilience, and supporting restorative healing.",
     image: "/png/projects/act-campus-care.png",
     desktopImage: "/portfolio/desktop/campus-care.png",
     mobileImage: "/portfolio/mobile/act-campus-care.png",
@@ -15,7 +15,7 @@ const projects = [
     link: "https://www.actcampuscare.com",
     siteStatus: "live",
     process: [
-      { title: "Program Discovery", desc: "Mapped Campus Care offerings, HBCU audience needs, and donation/payment goals with ACT Healing." },
+      { title: "Program Discovery", desc: "Mapped campus care offerings, HBCU audience needs, and donation/payment goals with ACT Healing." },
       { title: "Content Architecture", desc: "Structured Sanity CMS models for courses, team profiles, and program pages." },
       { title: "Build & Integrations", desc: "Implemented Next.js/React UI, donations, analytics (GA4/GTM), PWA, and SEO schema." },
       { title: "Launch & Handover", desc: "QA across devices, Search Console setup, and client training for ongoing content updates. Completed Friday, 11 September 2026." }
@@ -33,7 +33,7 @@ const projects = [
     duration: "10 weeks",
     features: [
       "Culturally Grounded Wellness Experience",
-      "Campus Care Program Information",
+      "ACT Campus Care Program Information",
       "Courses and Program Pathways",
       "Founder and Team Profiles",
       "Donation and Payment System Integration",

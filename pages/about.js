@@ -66,7 +66,7 @@ const happyClients = [
     src: "/png/projects/ghanasevent.jpeg"
   },
   {
-    name: "Act Campus Care",
+    name: "ACT Campus Care",
     src: "/png/projects/act-campus-care.jpg"
   } 
 ];

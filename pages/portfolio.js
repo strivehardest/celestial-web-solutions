@@ -49,7 +49,7 @@ const HAPPY_CLIENTS = [
   { name: "Tru Seeds Africa",         src: "/png/projects/truseeds.webp" },
   { name: "COPTI",                    src: "/png/projects/copti.png" },
   { name: "Kafui Dey",                src: "/png/projects/kafui-dey.png" },
-  { name: "Act Campus Care",          src: "/png/projects/act-campus-care.jpg" },
+  { name: "ACT Campus Care",          src: "/png/projects/act-campus-care.jpg" },
   { name: "Ghana Event",              src: "/png/projects/ghanasevent.jpeg" },
 ];
 
