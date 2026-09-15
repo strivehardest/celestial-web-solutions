@@ -180,14 +180,21 @@ const CountryFlag = ({ country }) => {
 const PortfolioCard = ({ project, image, index }) => {
   const [imgSrc, setImgSrc] = useState(image ?? PLACEHOLDER_IMAGE);
 
+  const showLiveSite =
+    project.link &&
+    project.link !== "#" &&
+    project.completionDate !== "In Progress" &&
+    project.siteStatus !== "inactive";
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 24 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ delay: index * 0.05, duration: 0.5 }}
+      className="group relative"
     >
-      <Link href={`/portfolio/${project.slug}`} className="group block">
+      <Link href={`/portfolio/${project.slug}`} className="block">
 
         {/* Portrait image */}
         <div
@@ -236,24 +243,6 @@ const PortfolioCard = ({ project, image, index }) => {
               View <ArrowRight size={12} />
             </span>
           </div>
-
-          {/* Live site — only for active completed projects */}
-          {project.link &&
-            project.link !== "#" &&
-            project.completionDate !== "In Progress" &&
-            project.siteStatus !== "inactive" && (
-              <div className="absolute top-3 right-3 z-10 opacity-0 group-hover:opacity-100 transition-all duration-300 -translate-y-1 group-hover:translate-y-0">
-                <a
-                  href={project.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={(e) => e.stopPropagation()}
-                  className="inline-flex items-center gap-1 bg-white/90 backdrop-blur-sm text-gray-800 text-[10px] font-semibold px-2.5 py-1.5 rounded-full shadow hover:bg-white transition-colors"
-                >
-                  <ExternalLink size={10} /> Live Site
-                </a>
-              </div>
-            )}
         </div>
 
         {/* Meta below image */}
@@ -300,6 +289,19 @@ const PortfolioCard = ({ project, image, index }) => {
           )}
         </div>
       </Link>
+
+      {/* Live site sits outside Link to avoid nested <a> hydration errors */}
+      {showLiveSite && (
+        <a
+          href={project.link}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="absolute top-3 right-3 z-30 inline-flex items-center gap-1 rounded-full bg-white/90 px-2.5 py-1.5 text-[10px] font-semibold text-gray-800 shadow opacity-0 transition-all duration-300 -translate-y-1 backdrop-blur-sm hover:bg-white group-hover:opacity-100 group-hover:translate-y-0"
+          style={{ fontFamily: "Albert Sans, sans-serif" }}
+        >
+          <ExternalLink size={10} /> Live Site
+        </a>
+      )}
     </motion.div>
   );
 };
