@@ -160,11 +160,18 @@ export default function RequestAServicePage() {
 
       if (response.ok) {
         const payload = await response.json().catch(() => ({}));
+        const agreementId = payload.agreementId || null;
+        const createdAt = payload.createdAt || null;
+        if (!agreementId) {
+          console.warn(
+            '[request-a-service] submit succeeded but API did not return agreementId; download disabled to avoid a mismatched CWS code'
+          );
+        }
         setAgreementSnapshot({
           ...formData,
           // Reuse the same CWS id + timestamp as the emailed PDF attachment.
-          agreementId: payload.agreementId || undefined,
-          createdAt: payload.createdAt || undefined,
+          agreementId: agreementId || undefined,
+          createdAt: createdAt || undefined,
           source: 'request-a-service',
         });
         setSubmitStatus('success');
@@ -363,7 +370,12 @@ export default function RequestAServicePage() {
                     </span>{' '}
                     (same code as the PDF emailed to you).
                   </>
-                ) : null}
+                ) : (
+                  <>
+                    {' '}
+                    The download button stays locked until an Agreement ID is returned; use the PDF attached to your confirmation email if needed.
+                  </>
+                )}
               </p>
               <div className="mt-6 flex flex-col items-center gap-3">
                 <AgreementDownloadButton agreementData={agreementSnapshot} />
