@@ -97,6 +97,21 @@ const testimonials = [
     company: 'Ghana',
     text: 'Clean website and stylish too, Clean website and stylish too! Navigation is smooth and user friendly, I have already recommended!',
   },
+  {
+    id: 'campus-care',
+    tabName: 'Campus Care',
+    tabLogo: '/png/projects/act-campus-care.jpg',
+    cardPhoto: null,
+    cardLogo: '/png/projects/act-campus-care.jpg',
+    logoAlt: 'ACT Campus Care logo',
+    photoAlt: 'Cammie Connor',
+    logoInitials: 'ACC',
+    nameInitials: 'CC',
+    name: 'Cammie Connor',
+    role: 'Client',
+    company: 'Campus Care',
+    text: 'I will continue to work with Celestial Web Solutions. If you want your work done professionally and with understanding, patience and loyalty. This is the BEST company to invest in. Amazing job on my Webpage.',
+  },
 ];
 
 const AUTO_DELAY = 6000;
