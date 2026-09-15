@@ -220,6 +220,16 @@ const PortfolioCard = ({ project, image, index }) => {
             </div>
           )}
 
+          {/* Offline / expired domain badge */}
+          {project.siteStatus === "inactive" && project.completionDate !== "In Progress" && (
+            <div
+              className="absolute top-3 left-3 z-20 px-2.5 py-1 bg-gray-800/90 text-white text-[10px] font-bold rounded-full flex items-center gap-1 shadow-md"
+              style={{ fontFamily: "Albert Sans, sans-serif" }}
+            >
+              Site Offline
+            </div>
+          )}
+
           {/* Hover pill */}
           <div className="absolute bottom-4 right-4 z-10 opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0">
             <span className="inline-flex items-center gap-1.5 bg-orange-500 text-white text-xs font-semibold px-3 py-1.5 rounded-full shadow-lg">
@@ -227,10 +237,11 @@ const PortfolioCard = ({ project, image, index }) => {
             </span>
           </div>
 
-          {/* Live site */}
+          {/* Live site — only for active completed projects */}
           {project.link &&
             project.link !== "#" &&
-            project.completionDate !== "In Progress" && (
+            project.completionDate !== "In Progress" &&
+            project.siteStatus !== "inactive" && (
               <div className="absolute top-3 right-3 z-10 opacity-0 group-hover:opacity-100 transition-all duration-300 -translate-y-1 group-hover:translate-y-0">
                 <a
                   href={project.link}

@@ -13,6 +13,13 @@ const projects = [
     mobileImage: "/portfolio/mobile/act-campus-care.png",
     screenshot: "/png/screenshots/act-campus-care.webp",
     link: "https://www.actcampuscare.com",
+    siteStatus: "live",
+    process: [
+      { title: "Program Discovery", desc: "Mapped Campus Care offerings, HBCU audience needs, and donation/payment goals with ACT Healing." },
+      { title: "Content Architecture", desc: "Structured Sanity CMS models for courses, team profiles, and program pages." },
+      { title: "Build & Integrations", desc: "Implemented Next.js/React UI, donations, analytics (GA4/GTM), PWA, and SEO schema." },
+      { title: "Launch & Handover", desc: "QA across devices, Search Console setup, and client training for ongoing content updates. Completed Friday, 11 September 2026." }
+    ],
     tech: ["Next.js", "React", "TypeScript", "Sanity CMS", "Tailwind CSS"],
     techLogos: [
       { name: "Next.js",      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" },
@@ -22,8 +29,8 @@ const projects = [
       { name: "Sanity CMS",   logo: "https://cdn.worldvectorlogo.com/logos/sanity.svg" },
     ],
     startDate: "2026-07-01",
-    completionDate: "2026-08-05",
-    duration: "4 weeks",
+    completionDate: "2026-09-11",
+    duration: "10 weeks",
     features: [
       "Culturally Grounded Wellness Experience",
       "Campus Care Program Information",
@@ -54,6 +61,13 @@ const projects = [
     mobileImage: "/portfolio/mobile/ghanas-event.png",
     screenshot: "/png/screenshots/ghanas-event.webp",
     link: "https://www.ghanasevent.com",
+    siteStatus: "live",
+    process: [
+      { title: "Marketplace Scoping", desc: "Defined attendee discovery flows, organiser tools, and Mobile Money + card checkout." },
+      { title: "Product Design", desc: "Designed event listing, ticketing, and dashboard UX for Ghana’s 16 regions." },
+      { title: "Platform Development", desc: "Built Next.js + Supabase/Postgres stack with Paystack payments and QR tickets." },
+      { title: "Launch & Iteration", desc: "Staged rollout, analytics, auth/dashboard polish, and organiser onboarding." }
+    ],
     tech: ["Next.js", "React", "TypeScript", "Postgres", "Supabase", "Tailwind CSS", "Paystack"],
     techLogos: [
       { name: "Next.js",      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" },
@@ -104,6 +118,13 @@ const projects = [
     mobileImage: "/portfolio/mobile/ghanas-event.png",
     screenshot: "/png/screenshots/ghanas-event.webp",
     link: "https://www.ghanasevent.com",
+    siteStatus: "in-progress",
+    process: [
+      { title: "Discovery & Planning", desc: "Clarify goals, audience, content, and success metrics with the client." },
+      { title: "Design & Prototyping", desc: "Map information architecture, wireframes, and polished UI direction." },
+      { title: "Development", desc: "Build responsive pages, CMS/content models, integrations, and performance basics." },
+      { title: "QA, Launch & Handover", desc: "Test across devices, deploy, connect analytics/SEO, and hand over training." }
+    ],
     tech: ["React Native", "Expo", "TypeScript", "Supabase", "Postgres", "Paystack", "Android", "App Store"],
     techLogos: [
       { name: "React Native", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" },
@@ -154,6 +175,13 @@ const projects = [
     mobileImage: "/portfolio/mobile/ghanas-event-blog.png",
     screenshot: "/png/screenshots/ghanas-event-blog.webp",
     link: "https://blog.ghanasevent.com",
+    siteStatus: "live",
+    process: [
+      { title: "Discovery & Planning", desc: "Clarify goals, audience, content, and success metrics with the client." },
+      { title: "Design & Prototyping", desc: "Map information architecture, wireframes, and polished UI direction." },
+      { title: "Development", desc: "Build responsive pages, CMS/content models, integrations, and performance basics." },
+      { title: "QA, Launch & Handover", desc: "Test across devices, deploy, connect analytics/SEO, and hand over training." }
+    ],
     tech: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Sanity CMS"],
     techLogos: [
       { name: "Next.js",      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" },
@@ -191,6 +219,13 @@ const projects = [
     mobileImage: "/portfolio/mobile/kafui-mobile.webp",
     screenshot: "/png/screenshots/kafui-full.webp",
     link: "https://kafuideyinterviews.com",
+    siteStatus: "live",
+    process: [
+      { title: "Discovery & Planning", desc: "Clarify goals, audience, content, and success metrics with the client." },
+      { title: "Design & Prototyping", desc: "Map information architecture, wireframes, and polished UI direction." },
+      { title: "Development", desc: "Build responsive pages, CMS/content models, integrations, and performance basics." },
+      { title: "QA, Launch & Handover", desc: "Test across devices, deploy, connect analytics/SEO, and hand over training." }
+    ],
     tech: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Sanity CMS", "GROQ", "Spotify Widget", "Patreon Widget"],
     techLogos: [
       { name: "Next.js",      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" },
@@ -231,6 +266,14 @@ const projects = [
     mobileImage: "/png/screenshots/placeholder.svg",
     screenshot: "",
     link: "https://kafuideybooks.com",
+    siteStatus: "inactive",
+    siteNote: "Domain expired — screenshots below show the completed build.",
+    process: [
+      { title: "Discovery & Planning", desc: "Clarify goals, audience, content, and success metrics with the client." },
+      { title: "Design & Prototyping", desc: "Map information architecture, wireframes, and polished UI direction." },
+      { title: "Development", desc: "Build responsive pages, CMS/content models, integrations, and performance basics." },
+      { title: "QA, Launch & Handover", desc: "Test across devices, deploy, connect analytics/SEO, and hand over training." }
+    ],
     tech: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Supabase"],
     techLogos: [
       { name: "Next.js", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" },
@@ -264,6 +307,13 @@ const projects = [
     mobileImage: "/portfolio/mobile/copti.webp",
     screenshot: "/png/screenshots/copti-full.webp",
     link: "https://copti.org.gh",
+    siteStatus: "live",
+    process: [
+      { title: "Institution Briefing", desc: "Gathered COPTI goals, member needs, and content hierarchy for a national association site." },
+      { title: "Visual System", desc: "Established a clear institutional look with accessible navigation and membership-focused pages." },
+      { title: "Development", desc: "Built responsive pages, CMS-ready structure, and performance-focused front end." },
+      { title: "Launch Support", desc: "Deployed, verified SEO basics, and handed over editing guidance." }
+    ],
     tech: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Sanity CMS", "GROQ", "Vercel"],
     techLogos: [
       { name: "Next.js",      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" },
@@ -316,6 +366,13 @@ const projects = [
     mobileImage: "/portfolio/mobile/afrocinema.png",
     screenshot: "/png/screenshots/afrocinema.webp",
     link: "https://afrocinema.vercel.app",
+    siteStatus: "live",
+    process: [
+      { title: "Discovery & Planning", desc: "Clarify goals, audience, content, and success metrics with the client." },
+      { title: "Design & Prototyping", desc: "Map information architecture, wireframes, and polished UI direction." },
+      { title: "Development", desc: "Build responsive pages, CMS/content models, integrations, and performance basics." },
+      { title: "QA, Launch & Handover", desc: "Test across devices, deploy, connect analytics/SEO, and hand over training." }
+    ],
     tech: ["TypeScript", "React", "Next.js", "Javascript", "Tailwind CSS", "PLpgSQL", "Supabase"],
     techLogos: [
       { name: "TypeScript",   logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" },
@@ -357,6 +414,14 @@ const projects = [
     mobileImage: "/portfolio/mobile/trueseeds.png",
     screenshot: "/png/screenshots/truseeds.webp",
     link: "https://truseedsafrica.com",
+    siteStatus: "inactive",
+    siteNote: "Domain expired — screenshots below show the completed build.",
+    process: [
+      { title: "Discovery & Planning", desc: "Clarify goals, audience, content, and success metrics with the client." },
+      { title: "Design & Prototyping", desc: "Map information architecture, wireframes, and polished UI direction." },
+      { title: "Development", desc: "Build responsive pages, CMS/content models, integrations, and performance basics." },
+      { title: "QA, Launch & Handover", desc: "Test across devices, deploy, connect analytics/SEO, and hand over training." }
+    ],
     tech: ["Next.js", "React", "Tailwind CSS", "Framer Motion", "TypeScript"],
     techLogos: [
       { name: "Next.js",      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" },
@@ -398,6 +463,13 @@ const projects = [
     mobileImage: "/portfolio/mobile/myspace.png",
     screenshot: "/png/screenshots/myspace-furniture.webp",
     link: "https://www.myyspacefurniture.com",
+    siteStatus: "live",
+    process: [
+      { title: "Discovery & Planning", desc: "Clarify goals, audience, content, and success metrics with the client." },
+      { title: "Design & Prototyping", desc: "Map information architecture, wireframes, and polished UI direction." },
+      { title: "Development", desc: "Build responsive pages, CMS/content models, integrations, and performance basics." },
+      { title: "QA, Launch & Handover", desc: "Test across devices, deploy, connect analytics/SEO, and hand over training." }
+    ],
     tech: ["Next.js", "React", "JavaScript", "TypeScript", "Framer Motion", "Tailwind CSS", "Stripe", "MongoDB"],
     techLogos: [
       { name: "Next.js",      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" },
@@ -440,6 +512,13 @@ const projects = [
     mobileImage: "/portfolio/mobile/building.png",
     screenshot: "/png/screenshots/buildingplanner.webp",
     link: "https://www.buildingplannerdesigns.com",
+    siteStatus: "live",
+    process: [
+      { title: "Discovery & Planning", desc: "Clarify goals, audience, content, and success metrics with the client." },
+      { title: "Design & Prototyping", desc: "Map information architecture, wireframes, and polished UI direction." },
+      { title: "Development", desc: "Build responsive pages, CMS/content models, integrations, and performance basics." },
+      { title: "QA, Launch & Handover", desc: "Test across devices, deploy, connect analytics/SEO, and hand over training." }
+    ],
     tech: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Framer Motion", "Vercel", "GitHub"],
     techLogos: [
       { name: "Next.js",      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" },
@@ -482,6 +561,14 @@ const projects = [
     mobileImage: "/portfolio/mobile/dlauto.png",
     screenshot: "/png/screenshots/dlautos-full.webp",
     link: "https://dlautopartsgh.com/",
+    siteStatus: "inactive",
+    siteNote: "Live domain currently unavailable — screenshots below show the completed build.",
+    process: [
+      { title: "Discovery & Planning", desc: "Clarify goals, audience, content, and success metrics with the client." },
+      { title: "Design & Prototyping", desc: "Map information architecture, wireframes, and polished UI direction." },
+      { title: "Development", desc: "Build responsive pages, CMS/content models, integrations, and performance basics." },
+      { title: "QA, Launch & Handover", desc: "Test across devices, deploy, connect analytics/SEO, and hand over training." }
+    ],
     tech: ["WordPress", "PHP", "WooCommerce", "CSS3", "HTML5", "Paystack"],
     techLogos: [
       { name: "WordPress",   logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/wordpress/wordpress-plain.svg" },
@@ -524,6 +611,13 @@ const projects = [
     mobileImage: "/portfolio/mobile/ghanaupdates.png",
     screenshot: "/png/screenshots/ghanaupdates-full.webp",
     link: "https://ghanaupdates.online",
+    siteStatus: "live",
+    process: [
+      { title: "Discovery & Planning", desc: "Clarify goals, audience, content, and success metrics with the client." },
+      { title: "Design & Prototyping", desc: "Map information architecture, wireframes, and polished UI direction." },
+      { title: "Development", desc: "Build responsive pages, CMS/content models, integrations, and performance basics." },
+      { title: "QA, Launch & Handover", desc: "Test across devices, deploy, connect analytics/SEO, and hand over training." }
+    ],
     tech: ["WordPress", "Elementor", "Google AdSense"],
     techLogos: [
       { name: "WordPress", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/wordpress/wordpress-original.svg" },
@@ -558,6 +652,14 @@ const projects = [
     mobileImage: "",
     screenshot: "/png/screenshots/adbay-full.webp",
     link: "https://adbay.store",
+    siteStatus: "inactive",
+    siteNote: "Domain expired — screenshots below show the completed build.",
+    process: [
+      { title: "Discovery & Planning", desc: "Clarify goals, audience, content, and success metrics with the client." },
+      { title: "Design & Prototyping", desc: "Map information architecture, wireframes, and polished UI direction." },
+      { title: "Development", desc: "Build responsive pages, CMS/content models, integrations, and performance basics." },
+      { title: "QA, Launch & Handover", desc: "Test across devices, deploy, connect analytics/SEO, and hand over training." }
+    ],
     tech: ["WordPress", "Elementor", "CSS", "HTML", "PHP"],
     techLogos: [
       { name: "WordPress", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/wordpress/wordpress-original.svg" },
@@ -594,6 +696,13 @@ const projects = [
     mobileImage: "/portfolio/mobile/elolo.png",
     screenshot: "/png/screenshots/elolo-full.webp",
     link: "https://eloloagbleke.com",
+    siteStatus: "live",
+    process: [
+      { title: "Discovery & Planning", desc: "Clarify goals, audience, content, and success metrics with the client." },
+      { title: "Design & Prototyping", desc: "Map information architecture, wireframes, and polished UI direction." },
+      { title: "Development", desc: "Build responsive pages, CMS/content models, integrations, and performance basics." },
+      { title: "QA, Launch & Handover", desc: "Test across devices, deploy, connect analytics/SEO, and hand over training." }
+    ],
     tech: ["Next.js", "React", "Node.js", "Framer Motion", "JavaScript", "Tailwind CSS", "Vercel", "GitHub"],
     techLogos: [
       { name: "Vercel",       logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vercel/vercel-original.svg" },
@@ -635,6 +744,13 @@ const projects = [
     mobileImage: "/portfolio/mobile/doeman-mobile.webp",
     screenshot: "/png/screenshots/doeman-screenshot.webp",
     link: "https://www.doemangroup.com/",
+    siteStatus: "live",
+    process: [
+      { title: "Discovery & Planning", desc: "Clarify goals, audience, content, and success metrics with the client." },
+      { title: "Design & Prototyping", desc: "Map information architecture, wireframes, and polished UI direction." },
+      { title: "Development", desc: "Build responsive pages, CMS/content models, integrations, and performance basics." },
+      { title: "QA, Launch & Handover", desc: "Test across devices, deploy, connect analytics/SEO, and hand over training." }
+    ],
     tech: ["Next.js", "React", "Tailwind CSS", "Framer Motion", "SEO", "Google Analytics"],
     techLogos: [
       { name: "Next.js",      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" },
@@ -669,6 +785,14 @@ const projects = [
     mobileImage: "/portfolio/mobile/valyd.png",
     screenshot: "/png/screenshots/valyd.webp",
     link: "https://valydhomes.com",
+    siteStatus: "inactive",
+    siteNote: "Domain expired — screenshots below show the completed build.",
+    process: [
+      { title: "Discovery & Planning", desc: "Clarify goals, audience, content, and success metrics with the client." },
+      { title: "Design & Prototyping", desc: "Map information architecture, wireframes, and polished UI direction." },
+      { title: "Development", desc: "Build responsive pages, CMS/content models, integrations, and performance basics." },
+      { title: "QA, Launch & Handover", desc: "Test across devices, deploy, connect analytics/SEO, and hand over training." }
+    ],
     tech: ["Next.js", "React", "Tailwind CSS", "JavaScript", "Framer Motion"],
     techLogos: [
       { name: "Next.js",      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" },
@@ -702,6 +826,13 @@ const projects = [
     mobileImage: "/portfolio/mobile/celestial-shopping.png",
     screenshot: "/png/screenshots/celestial-shopping.webp",
     link: "https://celestial-shopping.vercel.app/",
+    siteStatus: "live",
+    process: [
+      { title: "Discovery & Planning", desc: "Clarify goals, audience, content, and success metrics with the client." },
+      { title: "Design & Prototyping", desc: "Map information architecture, wireframes, and polished UI direction." },
+      { title: "Development", desc: "Build responsive pages, CMS/content models, integrations, and performance basics." },
+      { title: "QA, Launch & Handover", desc: "Test across devices, deploy, connect analytics/SEO, and hand over training." }
+    ],
     tech: ["Next.js", "React", "Framer Motion", "Tailwind CSS", "Vercel", "Render", "Django"],
     techLogos: [
       { name: "Next.js",      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" },
@@ -741,6 +872,13 @@ const projects = [
     mobileImage: "/portfolio/mobile/finance-tracker.png",
     screenshot: "/png/screenshots/finance-tracker.png",
     link: "https://finance-tracker-muiu.onrender.com/",
+    siteStatus: "live",
+    process: [
+      { title: "Discovery & Planning", desc: "Clarify goals, audience, content, and success metrics with the client." },
+      { title: "Design & Prototyping", desc: "Map information architecture, wireframes, and polished UI direction." },
+      { title: "Development", desc: "Build responsive pages, CMS/content models, integrations, and performance basics." },
+      { title: "QA, Launch & Handover", desc: "Test across devices, deploy, connect analytics/SEO, and hand over training." }
+    ],
     tech: ["HTML5", "CSS3", "Django", "Python", "Github", "Render"],
     techLogos: [
       { name: "HTML5",  logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" },
@@ -787,6 +925,13 @@ const projects = [
     mobileImage: "/portfolio/mobile/waliu.png",
     screenshot: "/png/screenshots/waliu-portfolio-full.webp",
     link: "https://waliu-portfolio-sage.vercel.app",
+    siteStatus: "live",
+    process: [
+      { title: "Discovery & Planning", desc: "Clarify goals, audience, content, and success metrics with the client." },
+      { title: "Design & Prototyping", desc: "Map information architecture, wireframes, and polished UI direction." },
+      { title: "Development", desc: "Build responsive pages, CMS/content models, integrations, and performance basics." },
+      { title: "QA, Launch & Handover", desc: "Test across devices, deploy, connect analytics/SEO, and hand over training." }
+    ],
     tech: ["Next.js", "React", "Tailwind CSS", "Framer Motion", "JavaScript", "GitHub", "Vercel"],
     techLogos: [
       { name: "Next.js",      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" },

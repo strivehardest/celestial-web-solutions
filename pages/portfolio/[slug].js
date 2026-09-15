@@ -242,7 +242,7 @@ const DeviceMockup = ({ project }) => {
             className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white"
             style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}
           >
-            Device Preview
+            Desktop &amp; Mobile Screens
           </h2>
           <div className="flex items-center gap-2">
             {hasDesktop && (
@@ -523,7 +523,11 @@ export default function ProjectDetail({ project, currentIndex, prevProject: prev
   const formatDate = (dateString) => {
     if (!dateString || dateString === "In Progress") return "In Progress";
     try {
-      return new Date(dateString).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+      const parts = String(dateString).split('-').map(Number);
+      const date = parts.length === 3 && parts.every(Boolean)
+        ? new Date(parts[0], parts[1] - 1, parts[2])
+        : new Date(dateString);
+      return date.toLocaleDateString('en-GB', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
     } catch { return dateString; }
   };
 
@@ -690,11 +694,17 @@ export default function ProjectDetail({ project, currentIndex, prevProject: prev
                 {project.description}
               </p>
 
-              <div className="flex flex-wrap gap-4">
-                {project.link && project.link !== "#" && (
+              <div className="flex flex-wrap gap-4 items-center">
+                {project.link && project.link !== "#" && project.siteStatus !== 'inactive' && (
                   <GlassButton href={project.link} variant="orange" external>
                     Visit Live Site <ExternalLink className="w-4 h-4" />
                   </GlassButton>
+                )}
+                {project.siteStatus === 'inactive' && (
+                  <span className="inline-flex items-center gap-2 rounded-full bg-white/15 backdrop-blur-sm border border-white/25 px-4 py-2.5 text-sm font-semibold text-white">
+                    <AlertCircle className="w-4 h-4" />
+                    Site offline — preview via screenshots
+                  </span>
                 )}
                 {project.app?.link && (
                   <GlassButton href={project.app.link} variant="light" external>
@@ -702,10 +712,15 @@ export default function ProjectDetail({ project, currentIndex, prevProject: prev
                     {project.app.comingSoon ? <Smartphone className="w-4 h-4" /> : <ExternalLink className="w-4 h-4" />}
                   </GlassButton>
                 )}
-                <GlassButton href="/contact" variant="light">
+                <GlassButton href="/request-a-service" variant="light">
                   Start Similar Project <ArrowRight className="w-4 h-4" />
                 </GlassButton>
               </div>
+              {project.siteStatus === 'inactive' && project.siteNote && (
+                <p className="mt-4 max-w-2xl text-sm text-white/75" style={{ fontFamily: 'Albert Sans, sans-serif' }}>
+                  {project.siteNote}
+                </p>
+              )}
             </motion.div>
           </div>
         </section>
@@ -785,14 +800,103 @@ export default function ProjectDetail({ project, currentIndex, prevProject: prev
             {/* Left Column */}
             <div className="lg:col-span-2 space-y-16">
 
+              {/* Device Mockup Section — primary picture layout */}
+              <DeviceMockup project={project} />
+
               {/* Project Showcase Image */}
-              <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.1 }}
-                className="rounded-2xl overflow-hidden shadow-2xl ring-1 ring-gray-200 dark:ring-gray-800">
-                <Image src={project.image} alt={project.title} width={1000} height={600} className="w-full h-auto object-cover" priority />
+              <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.1 }}>
+                <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white mb-6" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>
+                  Project Snapshot
+                </h2>
+                <div className="rounded-2xl overflow-hidden shadow-2xl ring-1 ring-gray-200 dark:ring-gray-800">
+                  <Image src={project.image} alt={project.title} width={1000} height={600} className="w-full h-auto object-cover" priority />
+                </div>
               </motion.div>
 
-              {/* Device Mockup Section */}
-              <DeviceMockup project={project} />
+              {/* Technology Stack — main column for clearer arrangement */}
+              {(project.techLogos?.length > 0 || project.tech?.length > 0) && (
+                <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.12 }}>
+                  <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white mb-3" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>
+                    Technology Stack
+                  </h2>
+                  <p className="text-gray-600 dark:text-gray-400 mb-6" style={{ fontFamily: 'Albert Sans, sans-serif' }}>
+                    Tools and frameworks used to design, build, and ship this project.
+                  </p>
+                  <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                    {(project.techLogos?.length > 0 ? project.techLogos : project.tech.map((t) => ({ name: t, logo: null }))).map((tech, idx) => (
+                      <div
+                        key={`${tech.name}-${idx}`}
+                        className="flex items-center gap-3 rounded-xl border border-gray-200 bg-gray-50 px-4 py-3 dark:border-gray-800 dark:bg-gray-900"
+                      >
+                        <div className="relative h-8 w-8 flex-shrink-0">
+                          {tech.logo && !imageError[`main-tech-${idx}`] ? (
+                            <Image
+                              src={tech.logo}
+                              alt={tech.name}
+                              width={32}
+                              height={32}
+                              className="h-8 w-8 object-contain"
+                              onError={() => handleImageError(`main-tech-${idx}`)}
+                            />
+                          ) : (
+                            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-orange-500 text-sm font-bold text-white">
+                              {tech.name.charAt(0)}
+                            </div>
+                          )}
+                        </div>
+                        <span className="text-sm font-semibold text-gray-800 dark:text-gray-200" style={{ fontFamily: 'Albert Sans, sans-serif' }}>
+                          {tech.name}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                </motion.div>
+              )}
+
+              {/* Development Process — per project when provided */}
+              <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.15 }}>
+                <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white mb-3" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>
+                  Development Process
+                </h2>
+                <p className="text-gray-600 dark:text-gray-400 mb-8" style={{ fontFamily: 'Albert Sans, sans-serif' }}>
+                  How we took this project from brief to launch.
+                </p>
+                <div className="space-y-4">
+                  {(project.process?.length
+                    ? project.process
+                    : [
+                        { title: "Planning & Research", desc: "Understanding client requirements and market analysis", icon: 'Target' },
+                        { title: "Design & Prototyping", desc: "Creating wireframes and visual designs", icon: 'Layers' },
+                        { title: "Development", desc: "Building the application with modern technologies", icon: 'Code2' },
+                        { title: "Testing & Deployment", desc: "Quality assurance and production deployment", icon: 'Rocket' },
+                      ]
+                  ).map((phase, i) => {
+                    const icons = [Target, Layers, Code2, Rocket];
+                    const Icon = icons[i % icons.length];
+                    return (
+                      <motion.div
+                        key={phase.title}
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.4, delay: 0.2 + i * 0.08 }}
+                        className="flex items-start gap-4 rounded-xl border border-gray-100 bg-gray-50 p-5 dark:border-gray-800 dark:bg-gray-900"
+                      >
+                        <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-orange-500 to-orange-600 shadow-lg shadow-orange-500/20">
+                          <span className="text-sm font-bold text-white">{String(i + 1).padStart(2, '0')}</span>
+                        </div>
+                        <div>
+                          <h4 className="text-lg font-semibold text-gray-900 dark:text-white" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>
+                            {phase.title}
+                          </h4>
+                          <p className="mt-1 text-gray-600 dark:text-gray-400" style={{ fontFamily: 'Albert Sans, sans-serif' }}>
+                            {phase.desc}
+                          </p>
+                        </div>
+                      </motion.div>
+                    );
+                  })}
+                </div>
+              </motion.div>
 
               {/* Mobile App Section */}
               <ProjectAppSection project={project} />
@@ -875,67 +979,11 @@ export default function ProjectDetail({ project, currentIndex, prevProject: prev
                 </motion.div>
               )}
 
-              {/* Development Process */}
-              <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.6 }}>
-                <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white mb-8" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>
-                  Development Process
-                </h2>
-                <div className="space-y-6">
-                  {[
-                    { icon: Target, title: "Planning & Research", desc: "Understanding client requirements and market analysis" },
-                    { icon: Layers, title: "Design & Prototyping", desc: "Creating wireframes and visual designs" },
-                    { icon: Code2, title: "Development", desc: "Building the application with modern technologies" },
-                    { icon: Rocket, title: "Testing & Deployment", desc: "Quality assurance and production deployment" }
-                  ].map((phase, i) => (
-                    <motion.div key={i} initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }}
-                      transition={{ duration: 0.4, delay: 0.8 + i * 0.1 }}
-                      className="flex items-start gap-4 p-5 rounded-xl bg-gray-50 dark:bg-gray-900 border border-gray-100 dark:border-gray-800">
-                      <div className="w-12 h-12 bg-gradient-to-br from-orange-500 to-orange-600 rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg shadow-orange-500/20">
-                        <phase.icon className="w-6 h-6 text-white" />
-                      </div>
-                      <div>
-                        <h4 className="font-semibold text-gray-900 dark:text-white text-lg" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>{phase.title}</h4>
-                        <p className="text-gray-600 dark:text-gray-400" style={{ fontFamily: 'Albert Sans, sans-serif' }}>{phase.desc}</p>
-                      </div>
-                    </motion.div>
-                  ))}
-                </div>
-              </motion.div>
             </div>
 
             {/* Sidebar */}
             <div className="lg:col-span-1">
               <div className="sticky top-32 space-y-8">
-
-                {/* Technology Stack */}
-                <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.4 }}
-                  className="bg-gray-50 dark:bg-gray-900 rounded-2xl p-6 border border-gray-100 dark:border-gray-800">
-                  <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-6" style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}>
-                    Technology Stack
-                  </h3>
-                  <div className="flex flex-wrap gap-3">
-                    {(project.techLogos && project.techLogos.length > 0 ? project.techLogos : project.tech?.map(t => ({ name: t, logo: null }))).map((tech, idx) => (
-                      <motion.div key={idx} initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }}
-                        transition={{ duration: 0.3, delay: 0.5 + idx * 0.05 }}
-                        className="flex items-center gap-2 px-3 py-2 rounded-lg bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 shadow-sm">
-                        <div className="relative w-6 h-6 flex-shrink-0">
-                          {tech.logo && !imageError[idx] ? (
-                            <Image src={tech.logo} alt={tech.name} width={24} height={24}
-                              className="max-w-full max-h-full object-contain"
-                              onError={() => handleImageError(idx)} />
-                          ) : (
-                            <div className="w-6 h-6 bg-orange-500 rounded flex items-center justify-center text-white text-xs font-bold">
-                              {tech.name.charAt(0)}
-                            </div>
-                          )}
-                        </div>
-                        <span className="text-sm font-medium text-gray-700 dark:text-gray-300" style={{ fontFamily: 'Albert Sans, sans-serif' }}>
-                          {tech.name}
-                        </span>
-                      </motion.div>
-                    ))}
-                  </div>
-                </motion.div>
 
                 {/* Project Info Card */}
                 <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.5 }}
@@ -973,14 +1021,25 @@ export default function ProjectDetail({ project, currentIndex, prevProject: prev
                         ) : formatDate(project.completionDate || project.date)}
                       </p>
                     </div>
+                    {project.siteStatus === 'inactive' && (
+                      <div>
+                        <p className="text-orange-200 text-xs uppercase tracking-wide font-medium">Live site</p>
+                        <p className="font-semibold" style={{ fontFamily: 'Albert Sans, sans-serif' }}>Currently offline</p>
+                      </div>
+                    )}
                   </div>
-                  {project.link && project.link !== "#" && (
+                  {project.link && project.link !== "#" && project.siteStatus !== 'inactive' ? (
                     <a href={project.link} target="_blank" rel="noopener noreferrer"
                       className="mt-6 w-full inline-flex items-center justify-center gap-2 px-4 py-3 bg-white text-orange-600 rounded-xl font-semibold hover:bg-orange-50 transition-colors"
                       style={{ fontFamily: 'Albert Sans, sans-serif' }}>
                       Visit Website <ExternalLink className="w-4 h-4" />
                     </a>
-                  )}
+                  ) : project.siteStatus === 'inactive' ? (
+                    <div className="mt-6 w-full rounded-xl border border-white/30 bg-white/10 px-4 py-3 text-center text-sm font-semibold text-white/95"
+                      style={{ fontFamily: 'Albert Sans, sans-serif' }}>
+                      {project.siteNote || 'Domain expired — see screenshots on this page'}
+                    </div>
+                  ) : null}
                 </motion.div>
 
                 {/* Need Help Card */}
@@ -997,7 +1056,7 @@ export default function ProjectDetail({ project, currentIndex, prevProject: prev
                   <p className="text-gray-600 dark:text-gray-400 text-sm mb-4" style={{ fontFamily: 'Albert Sans, sans-serif' }}>
                     Let's discuss your project and bring your vision to life.
                   </p>
-                  <GlassButton href="/contact" variant="orange" className="w-full">
+                  <GlassButton href="/request-a-service" variant="orange" className="w-full">
                     Get in Touch <ArrowRight className="w-4 h-4" />
                   </GlassButton>
                 </motion.div>
@@ -1045,6 +1104,11 @@ export default function ProjectDetail({ project, currentIndex, prevProject: prev
                                   <path d="M6 2v6l4 4-4 4v6h12v-6l-4-4 4-4V2H6zm10 14.5V20H8v-3.5l4-4 4 4zm-4-5l-4-4V4h8v3.5l-4 4z"/>
                                 </svg>
                                 In Progress
+                              </span>
+                            )}
+                            {relatedProject.siteStatus === 'inactive' && relatedProject.completionDate !== "In Progress" && (
+                              <span className="absolute top-4 right-4 inline-flex items-center gap-1 px-3 py-1 bg-gray-900/85 backdrop-blur-sm text-white text-xs font-semibold rounded-full">
+                                Site Offline
                               </span>
                             )}
                           </div>
