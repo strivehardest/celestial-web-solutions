@@ -69,7 +69,17 @@ export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [openMenu, setOpenMenu] = useState(null);
+  const [reduceMotion, setReduceMotion] = useState(false);
   const closeTimer = useRef(null);
+
+  useEffect(() => {
+    if (typeof window === 'undefined' || !window.matchMedia) return undefined;
+    const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const sync = () => setReduceMotion(mq.matches);
+    sync();
+    mq.addEventListener?.('change', sync);
+    return () => mq.removeEventListener?.('change', sync);
+  }, []);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -126,16 +136,62 @@ export default function Navbar() {
         }`}
       >
         <nav className="mx-auto flex h-[72px] max-w-7xl items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
-          <Link href="/" className="flex items-center gap-3 shrink-0" aria-label="Celestial Web Solutions home">
-            <Image
-              src="/logo.png"
-              alt="Celestial Web Solutions"
-              width={44}
-              height={44}
-              className="h-11 w-11 object-contain"
-              priority
-            />
-            <span className="hidden sm:block leading-tight">
+          <Link
+            href="/"
+            className="group flex items-center gap-3 shrink-0"
+            aria-label="Celestial Web Solutions home"
+          >
+            <motion.span
+              className="relative inline-flex h-11 w-11 shrink-0 items-center justify-center"
+              initial={{ opacity: 0, scale: 0.86 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+            >
+              {/* Soft brand orbit on hover */}
+              <span
+                aria-hidden
+                className="pointer-events-none absolute inset-[-3px] rounded-full border border-orange-500/0 transition duration-500 group-hover:border-orange-500/35 group-hover:shadow-[0_0_0_3px_rgba(249,115,22,0.08)]"
+              />
+              {!reduceMotion && (
+                <span
+                  aria-hidden
+                  className="pointer-events-none absolute inset-[-6px] rounded-full opacity-0 transition duration-700 group-hover:opacity-100"
+                  style={{
+                    background:
+                      'conic-gradient(from 210deg, transparent 0deg, rgba(249,115,22,0.35) 48deg, transparent 110deg)',
+                    maskImage: 'radial-gradient(farthest-side, transparent calc(100% - 2px), #000 calc(100% - 1px))',
+                    WebkitMaskImage:
+                      'radial-gradient(farthest-side, transparent calc(100% - 2px), #000 calc(100% - 1px))',
+                    animation: 'cws-logo-orbit 3.6s linear infinite',
+                  }}
+                />
+              )}
+              <motion.span
+                className="relative inline-flex"
+                animate={reduceMotion ? { scale: 1 } : { scale: [1, 1.035, 1] }}
+                transition={
+                  reduceMotion
+                    ? { duration: 0 }
+                    : { duration: 3.8, repeat: Infinity, ease: 'easeInOut' }
+                }
+                whileHover={reduceMotion ? undefined : { scale: 1.06 }}
+              >
+                <Image
+                  src="/logo.png"
+                  alt="Celestial Web Solutions"
+                  width={44}
+                  height={44}
+                  className="h-11 w-11 object-contain drop-shadow-[0_0_0_rgba(249,115,22,0)] transition duration-500 group-hover:drop-shadow-[0_0_10px_rgba(249,115,22,0.28)]"
+                  priority
+                />
+              </motion.span>
+            </motion.span>
+            <motion.span
+              className="hidden sm:block leading-tight"
+              initial={{ opacity: 0, x: -6 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5, delay: 0.12, ease: [0.22, 1, 0.36, 1] }}
+            >
               <span
                 className="block text-[17px] font-bold tracking-tight text-gray-950 dark:text-white"
                 style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}
@@ -148,7 +204,7 @@ export default function Navbar() {
               >
                 Web Solutions
               </span>
-            </span>
+            </motion.span>
           </Link>
 
           <div className="hidden lg:flex items-center gap-1">

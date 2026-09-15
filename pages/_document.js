@@ -6,10 +6,14 @@ export default function Document() {
       <Head>
         {/* AdSense verification */}
         <meta name="google-adsense-account" content="ca-pub-6987345868426841" />
-        {/* PWA manifest and theme color */}
+        {/* PWA manifest, theme color, and brand favicons (logo mark — not letter C) */}
         <link rel="manifest" href="/manifest.json" />
         <meta name="theme-color" content="#f97316" />
-        <link rel="apple-touch-icon" href="/icons/icon-192x192.png" />
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+        <link rel="shortcut icon" href="/favicon.ico" />
         {/* Preconnect to font origins for faster loading */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
