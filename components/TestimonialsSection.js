@@ -98,7 +98,7 @@ const testimonials = [
     text: 'Clean website and stylish too, Clean website and stylish too! Navigation is smooth and user friendly, I have already recommended!',
   },
   {
-    id: 'campus-care',
+    id: 'campus-care', // Campus Care client endorsement
     tabName: 'Campus Care',
     tabLogo: '/png/projects/act-campus-care.jpg',
     cardPhoto: null,
