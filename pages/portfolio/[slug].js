@@ -86,12 +86,18 @@ function StoreBadge({ store, href, comingSoon, onDark = false }) {
   const src = isPlay
     ? '/images/stores/google-play-badge.png'
     : '/images/stores/app-store-badge.svg';
+  // Shared footprint so Play PNG and App Store SVG render equal height/width
+  // despite different intrinsic aspect ratios.
   const img = (
-    <img
-      src={src}
-      alt={comingSoon || !href ? `${label} — Get App soon` : label}
-      className={`h-12 w-auto object-contain sm:h-14 ${comingSoon || !href ? 'opacity-80' : ''}`}
-    />
+    <span className="inline-flex h-12 w-[160px] shrink-0 items-center justify-center sm:h-14 sm:w-[185px]">
+      <img
+        src={src}
+        alt={comingSoon || !href ? `${label} — Get App soon` : label}
+        className={`h-full w-auto max-h-full max-w-full object-contain object-center ${
+          comingSoon || !href ? 'opacity-80' : ''
+        }`}
+      />
+    </span>
   );
 
   if (comingSoon || !href) {
