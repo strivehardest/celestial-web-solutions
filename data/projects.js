@@ -112,18 +112,19 @@ const projects = [
     client: "Ghanas Event",
     clientCountry: "Ghana",
     description:
-      "Native iOS and Android apps for Ghanas Event — discover concerts, festivals, and local gatherings, buy tickets with Mobile Money, and scan secure QR codes on the go. Coming soon on the App Store and Google Play.",
-    image: "/png/projects/ghanas-event.png",
-    desktopImage: "/portfolio/desktop/ghanas-event.png",
+      "Native mobile apps for Ghanas Event — discover concerts, festivals, and local gatherings, buy tickets with Mobile Money, and scan secure QR codes on the go. Android build completed Friday, 11 September 2026; iOS and App Store / Google Play listings are still pending.",
+    image: "/portfolio/mobile/ghanas-event.png",
+    desktopImage: "/portfolio/mobile/ghanas-event.png",
     mobileImage: "/portfolio/mobile/ghanas-event.png",
-    screenshot: "/png/screenshots/ghanas-event.webp",
+    screenshot: "/portfolio/mobile/ghanas-event.png",
     link: "https://www.ghanasevent.com",
-    siteStatus: "in-progress",
+    siteStatus: "live",
+    siteNote: "Android app completed; Play Store and App Store URLs pending. Web platform is live.",
     process: [
-      { title: "Discovery & Planning", desc: "Clarify goals, audience, content, and success metrics with the client." },
-      { title: "Design & Prototyping", desc: "Map information architecture, wireframes, and polished UI direction." },
-      { title: "Development", desc: "Build responsive pages, CMS/content models, integrations, and performance basics." },
-      { title: "QA, Launch & Handover", desc: "Test across devices, deploy, connect analytics/SEO, and hand over training." }
+      { title: "Discovery & Planning", desc: "Scoped native event discovery, ticketing, and Mobile Money flows for Ghana." },
+      { title: "Design & Prototyping", desc: "Designed dark-theme mobile UI with search, event hero, and ticket wallet patterns." },
+      { title: "Android Development", desc: "Built the React Native / Expo Android app against Supabase and Paystack." },
+      { title: "Android Complete", desc: "Android app completed Friday, 11 September 2026. iOS and store listings remain pending." }
     ],
     tech: ["React Native", "Expo", "TypeScript", "Supabase", "Postgres", "Paystack", "Android", "App Store"],
     techLogos: [
@@ -136,8 +137,8 @@ const projects = [
       { name: "App Store", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/apple/apple-original.svg" },
     ],
     startDate: "2026-08-01",
-    completionDate: "In Progress",
-    duration: "In progress",
+    completionDate: "2026-09-11",
+    duration: "6 weeks (Android)",
     features: [
       "Browse Events Near You",
       "Search and Category Filters",
@@ -147,19 +148,19 @@ const projects = [
       "Push Notifications for Event Updates",
       "Organiser Event Tools",
       "Offline Ticket Access",
-      "iOS and Android Support",
+      "Android completed (iOS pending)",
       "Linked to Ghanas Event Web Platform",
     ],
     app: {
-      title: "Get App soon",
+      title: "Ghanas Event App",
       description:
-        "Ghanas Event for iOS and Android is coming soon on the App Store and Google Play. Use the web app today while store listings go live.",
+        "Android completed Friday, 11 September 2026. Google Play and App Store URLs are still pending (coming soon). iOS build remains in progress — use the live web app meanwhile.",
       comingSoon: true,
       link: "https://www.ghanasevent.com",
       linkLabel: "Open web app",
       playStoreUrl: null,
       appStoreUrl: null,
-      platforms: ["iOS", "Android"],
+      platforms: ["Android (completed)", "iOS (pending)"],
     },
   },
   {
