@@ -830,15 +830,17 @@ export default function ProjectDetail({ project, currentIndex, prevProject: prev
               {/* Device Mockup Section — primary picture layout */}
               <DeviceMockup project={project} />
 
-              {/* Project Showcase Image */}
-              <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.1 }}>
-                <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white mb-6" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>
-                  Project Snapshot
-                </h2>
-                <div className="rounded-2xl overflow-hidden shadow-2xl ring-1 ring-gray-200 dark:ring-gray-800">
-                  <Image src={project.image} alt={project.title} width={1000} height={600} className="w-full h-auto object-cover" priority />
-                </div>
-              </motion.div>
+              {/* Project Showcase Image — skip when framed mobile store gallery already covers visuals */}
+              {project.image && !(Array.isArray(project.mobileScreenshots) && project.mobileScreenshots.length > 0) && (
+                <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.1 }}>
+                  <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white mb-6" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>
+                    Project Snapshot
+                  </h2>
+                  <div className="rounded-2xl overflow-hidden shadow-2xl ring-1 ring-gray-200 dark:ring-gray-800">
+                    <Image src={project.image} alt={project.title} width={1000} height={600} className="w-full h-auto object-cover" priority />
+                  </div>
+                </motion.div>
+              )}
 
               {/* Technology Stack — main column for clearer arrangement */}
               {(project.techLogos?.length > 0 || project.tech?.length > 0) && (
