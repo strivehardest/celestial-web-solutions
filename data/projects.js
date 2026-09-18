@@ -163,13 +163,13 @@ const projects = [
     app: {
       title: "Ghanas Event App",
       description:
-        "Android completed Friday, 11 September 2026. Google Play and App Store URLs are still pending (coming soon). iOS build remains in progress — use the live web app meanwhile.",
-      comingSoon: true,
+        "Android completed Friday, 11 September 2026 and is live on Google Play. App Store / iOS remains coming soon — use the live web app meanwhile.",
+      comingSoon: false,
       link: "https://www.ghanasevent.com",
       linkLabel: "Open web app",
-      playStoreUrl: null,
+      playStoreUrl: "https://play.google.com/store/apps/details?id=com.ghanasevent.app",
       appStoreUrl: null,
-      platforms: ["Android (completed)", "iOS (pending)"],
+      platforms: ["Android (Google Play)", "iOS (pending)"],
     },
   },
   {
