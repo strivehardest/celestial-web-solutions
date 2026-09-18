@@ -86,26 +86,26 @@ function StoreBadge({ store, href, comingSoon, onDark = false }) {
   const src = isPlay
     ? '/images/stores/google-play-badge.png'
     : '/images/stores/app-store-badge.svg';
-  // Shared footprint so Play PNG and App Store SVG render equal height/width
-  // despite different intrinsic aspect ratios.
-  const img = (
-    <span className="inline-flex h-12 w-[160px] shrink-0 items-center justify-center sm:h-14 sm:w-[185px]">
+  // Identical height/width footprint for Play PNG and App Store SVG.
+  // object-fill stretches both into the same box so aspect differences don't read as size mismatch.
+  const badge = (
+    <span className="relative block h-12 w-[145px] shrink-0 sm:h-14 sm:w-[168px]">
       <img
         src={src}
         alt={comingSoon || !href ? `${label} — Get App soon` : label}
-        className={`h-full w-auto max-h-full max-w-full object-contain object-center ${
-          comingSoon || !href ? 'opacity-80' : ''
-        }`}
+        className={`h-full w-full object-fill ${comingSoon || !href ? 'opacity-80' : ''}`}
+        width={168}
+        height={56}
       />
     </span>
   );
 
   if (comingSoon || !href) {
     return (
-      <div className="relative inline-flex flex-col items-start gap-1" aria-label={`${label} — Get App soon`}>
-        <div className="pointer-events-none select-none">{img}</div>
+      <div className="relative inline-flex pb-6" aria-label={`${label} — Get App soon`}>
+        <div className="pointer-events-none select-none">{badge}</div>
         <span
-          className={`rounded-full px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide ${
+          className={`absolute left-1/2 top-full z-10 mt-1 -translate-x-1/2 whitespace-nowrap rounded-full px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide ${
             onDark
               ? 'bg-white/15 text-white/90 ring-1 ring-white/25'
               : 'bg-orange-500/10 text-orange-600 dark:text-orange-400'
@@ -125,7 +125,7 @@ function StoreBadge({ store, href, comingSoon, onDark = false }) {
       className="inline-flex transition hover:opacity-90"
       aria-label={label}
     >
-      {img}
+      {badge}
     </a>
   );
 }
@@ -179,7 +179,7 @@ const ProjectAppSection = ({ project }) => {
         </div>
       )}
 
-      <div className="flex flex-wrap items-end gap-4">
+      <div className="flex flex-wrap items-center gap-4">
         <StoreBadge store="play" href={app.playStoreUrl} comingSoon={!app.playStoreUrl} />
         <StoreBadge store="apple" href={app.appStoreUrl} comingSoon={!app.appStoreUrl} />
         {app.link && (
@@ -746,7 +746,7 @@ export default function ProjectDetail({ project, currentIndex, prevProject: prev
                   </span>
                 )}
                 {project.app ? (
-                  <div className="flex flex-wrap items-end gap-3 sm:gap-4">
+                  <div className="flex flex-wrap items-center gap-3 sm:gap-4">
                     <StoreBadge
                       store="play"
                       href={project.app.playStoreUrl}
