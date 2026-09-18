@@ -80,7 +80,7 @@ import projects from "../../data/projects";
 import WhatsAppButton from '../../components/WhatsAppButton';
 import { ArrowRight, ArrowLeft, ExternalLink, Calendar, MapPin, User, Clock, Star, CheckCircle2, Code2, Layers, Rocket, Target, AlertCircle, Monitor, Smartphone } from 'lucide-react';
 
-function StoreBadge({ store, href, comingSoon }) {
+function StoreBadge({ store, href, comingSoon, onDark = false }) {
   const isPlay = store === 'play';
   const label = isPlay ? 'Google Play' : 'App Store';
   const src = isPlay
@@ -98,7 +98,13 @@ function StoreBadge({ store, href, comingSoon }) {
     return (
       <div className="relative inline-flex flex-col items-start gap-1" aria-label={`${label} — Get App soon`}>
         <div className="pointer-events-none select-none">{img}</div>
-        <span className="rounded-full bg-orange-500/10 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-orange-600 dark:text-orange-400">
+        <span
+          className={`rounded-full px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide ${
+            onDark
+              ? 'bg-white/15 text-white/90 ring-1 ring-white/25'
+              : 'bg-orange-500/10 text-orange-600 dark:text-orange-400'
+          }`}
+        >
           Get App soon
         </span>
       </div>
@@ -722,7 +728,7 @@ export default function ProjectDetail({ project, currentIndex, prevProject: prev
               </p>
 
               <div className="flex flex-wrap gap-4 items-center">
-                {project.link && project.link !== "#" && project.siteStatus !== 'inactive' && (
+                {project.link && project.link !== "#" && project.siteStatus !== 'inactive' && !project.app && (
                   <GlassButton href={project.link} variant="orange" external>
                     Visit Live Site <ExternalLink className="w-4 h-4" />
                   </GlassButton>
@@ -733,12 +739,22 @@ export default function ProjectDetail({ project, currentIndex, prevProject: prev
                     Site offline — preview via screenshots
                   </span>
                 )}
-                {project.app?.link && (
-                  <GlassButton href={project.app.link} variant="light" external>
-                    {project.app.comingSoon ? 'Get App soon' : (project.app.linkLabel || 'Open App')}
-                    {project.app.comingSoon ? <Smartphone className="w-4 h-4" /> : <ExternalLink className="w-4 h-4" />}
-                  </GlassButton>
-                )}
+                {project.app ? (
+                  <div className="flex flex-wrap items-end gap-3 sm:gap-4">
+                    <StoreBadge
+                      store="play"
+                      href={project.app.playStoreUrl}
+                      comingSoon={!project.app.playStoreUrl}
+                      onDark
+                    />
+                    <StoreBadge
+                      store="apple"
+                      href={project.app.appStoreUrl}
+                      comingSoon={!project.app.appStoreUrl}
+                      onDark
+                    />
+                  </div>
+                ) : null}
                 <GlassButton href="/request-a-service" variant="light">
                   Start Similar Project <ArrowRight className="w-4 h-4" />
                 </GlassButton>
@@ -1057,7 +1073,64 @@ export default function ProjectDetail({ project, currentIndex, prevProject: prev
                       </div>
                     )}
                   </div>
-                  {project.link && project.link !== "#" && project.siteStatus !== 'inactive' ? (
+                  {project.app ? (
+                    <div className="mt-6 space-y-2">
+                      {project.link && project.link !== "#" && project.siteStatus !== 'inactive' ? (
+                        <a
+                          href={project.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="w-full inline-flex items-center justify-between gap-2 px-4 py-3 bg-white text-orange-600 rounded-xl font-semibold hover:bg-orange-50 transition-colors"
+                          style={{ fontFamily: 'Albert Sans, sans-serif' }}
+                        >
+                          <span>Website</span>
+                          <ExternalLink className="w-4 h-4 flex-shrink-0" />
+                        </a>
+                      ) : null}
+                      {project.app.playStoreUrl ? (
+                        <a
+                          href={project.app.playStoreUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="w-full inline-flex items-center justify-between gap-2 px-4 py-3 bg-white/15 ring-1 ring-white/30 text-white rounded-xl font-semibold hover:bg-white/25 transition-colors"
+                          style={{ fontFamily: 'Albert Sans, sans-serif' }}
+                        >
+                          <span>Android</span>
+                          <ExternalLink className="w-4 h-4 flex-shrink-0" />
+                        </a>
+                      ) : (
+                        <div
+                          className="w-full inline-flex items-center justify-between gap-2 px-4 py-3 bg-white/10 ring-1 ring-white/20 text-white/80 rounded-xl font-semibold"
+                          style={{ fontFamily: 'Albert Sans, sans-serif' }}
+                          aria-disabled="true"
+                        >
+                          <span>Android</span>
+                          <span className="text-[10px] uppercase tracking-wide text-white/70">Coming soon</span>
+                        </div>
+                      )}
+                      {project.app.appStoreUrl ? (
+                        <a
+                          href={project.app.appStoreUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="w-full inline-flex items-center justify-between gap-2 px-4 py-3 bg-white/15 ring-1 ring-white/30 text-white rounded-xl font-semibold hover:bg-white/25 transition-colors"
+                          style={{ fontFamily: 'Albert Sans, sans-serif' }}
+                        >
+                          <span>App Store</span>
+                          <ExternalLink className="w-4 h-4 flex-shrink-0" />
+                        </a>
+                      ) : (
+                        <div
+                          className="w-full inline-flex items-center justify-between gap-2 px-4 py-3 bg-white/10 ring-1 ring-white/20 text-white/80 rounded-xl font-semibold"
+                          style={{ fontFamily: 'Albert Sans, sans-serif' }}
+                          aria-disabled="true"
+                        >
+                          <span>App Store</span>
+                          <span className="text-[10px] uppercase tracking-wide text-white/70">Coming soon</span>
+                        </div>
+                      )}
+                    </div>
+                  ) : project.link && project.link !== "#" && project.siteStatus !== 'inactive' ? (
                     <a href={project.link} target="_blank" rel="noopener noreferrer"
                       className="mt-6 w-full inline-flex items-center justify-center gap-2 px-4 py-3 bg-white text-orange-600 rounded-xl font-semibold hover:bg-orange-50 transition-colors"
                       style={{ fontFamily: 'Albert Sans, sans-serif' }}>
