@@ -60,7 +60,17 @@ const nextConfig = {
         ],
       },
       {
-        source: '/(images|fonts|portfolio|png)/(.*)',
+        // Static screenshot assets only — do not match /portfolio or /portfolio/[slug] pages
+        source: '/portfolio/(desktop|mobile)/:path*',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable',
+          },
+        ],
+      },
+      {
+        source: '/(images|fonts|png)/(.*)',
         headers: [
           {
             key: 'Cache-Control',
