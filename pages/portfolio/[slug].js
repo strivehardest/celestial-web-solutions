@@ -205,8 +205,17 @@ const GlassButton = ({ children, href, variant = 'light', className = '', extern
 };
 
 const DeviceMockup = ({ project }) => {
-  const hasDesktop = project.desktopImage;
-  const hasMobile = project.mobileImage;
+  const hasDesktop = Boolean(project.desktopImage);
+  const mobileScreens = Array.isArray(project.mobileScreenshots) && project.mobileScreenshots.length > 0
+    ? project.mobileScreenshots.map((shot) =>
+        typeof shot === 'string'
+          ? { src: shot, label: 'Mobile' }
+          : { src: shot.src, label: shot.label || 'Mobile' }
+      )
+    : project.mobileImage
+      ? [{ src: project.mobileImage, label: 'Mobile' }]
+      : [];
+  const hasMobile = mobileScreens.length > 0;
   const [modal, setModal] = useState({ open: false, src: '', alt: '' });
 
   const openModal = (src, alt) => setModal({ open: true, src, alt });
@@ -230,6 +239,40 @@ const DeviceMockup = ({ project }) => {
 
   if (!hasDesktop && !hasMobile) return null;
 
+  const renderPhoneShot = (shot, sizes = '25vw', widthClass = 'w-56') => (
+    <div key={shot.src} className={`${widthClass} shrink-0 space-y-2`}>
+      <div
+        className="relative w-full rounded-2xl overflow-hidden shadow-xl ring-1 ring-gray-200 dark:ring-gray-700 cursor-zoom-in group"
+        style={{ paddingBottom: '177%' }}
+        onClick={() => openModal(shot.src, `${project.title} - ${shot.label}`)}
+      >
+        <div className="absolute inset-0">
+          <Image
+            src={shot.src}
+            alt={`${project.title} - ${shot.label}`}
+            fill
+            className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
+            sizes={sizes}
+          />
+          <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 flex items-center justify-center pointer-events-none">
+            <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/70 text-white text-xs font-semibold px-3 py-1.5 rounded-full flex items-center gap-1.5 pointer-events-none">
+              <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
+              </svg>
+              Click to expand
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="flex items-center justify-center gap-1.5 pt-1">
+        <Smartphone size={13} className="text-gray-400" />
+        <span className="text-xs text-gray-400 font-medium" style={{ fontFamily: 'Albert Sans, sans-serif', fontWeight: 400 }}>
+          {shot.label}
+        </span>
+      </div>
+    </div>
+  );
+
   return (
     <>
       <motion.div
@@ -242,7 +285,11 @@ const DeviceMockup = ({ project }) => {
             className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white"
             style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}
           >
-            Desktop &amp; Mobile Screens
+            {hasDesktop && hasMobile
+              ? 'Desktop & Mobile Screens'
+              : hasMobile
+                ? (mobileScreens.length > 1 ? 'App Screenshots' : 'Mobile Screen')
+                : 'Desktop Screen'}
           </h2>
           <div className="flex items-center gap-2">
             {hasDesktop && (
@@ -292,35 +339,9 @@ const DeviceMockup = ({ project }) => {
               </div>
             </div>
 
-            {/* Mobile — 1/3 width */}
-            <div className="col-span-1 space-y-2">
-              <div
-                className="relative w-full rounded-2xl overflow-hidden shadow-xl ring-1 ring-gray-200 dark:ring-gray-700 cursor-zoom-in group"
-                style={{ paddingBottom: '177%' }}
-                onClick={() => openModal(project.mobileImage, `${project.title} - Mobile`)}
-              >
-                <div className="absolute inset-0">
-                  <Image
-                    src={project.mobileImage}
-                    alt={`${project.title} - Mobile`}
-                    fill
-                    className="object-cover transition-transform duration-500 group-hover:scale-105"
-                    sizes="(max-width: 768px) 33vw, 20vw"
-                  />
-                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 flex items-center justify-center pointer-events-none">
-                    <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/70 text-white text-xs font-semibold px-3 py-1.5 rounded-full flex items-center gap-1.5 pointer-events-none">
-                      <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
-                      </svg>
-                      Click to expand
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="flex items-center justify-center gap-1.5 pt-1">
-                <Smartphone size={13} className="text-gray-400" />
-                <span className="text-xs text-gray-400 font-medium" style={{ fontFamily: 'Albert Sans, sans-serif', fontWeight: 400 }}>Mobile</span>
-              </div>
+            {/* Mobile — 1/3 width (first shot when gallery exists) */}
+            <div className="col-span-1">
+              {renderPhoneShot(mobileScreens[0], '(max-width: 768px) 33vw, 20vw', 'w-full')}
             </div>
           </div>
 
@@ -355,37 +376,19 @@ const DeviceMockup = ({ project }) => {
             </div>
           </div>
 
+        ) : mobileScreens.length > 1 ? (
+          <div className="-mx-4 flex gap-4 overflow-x-auto px-4 pb-2 snap-x snap-mandatory sm:mx-0 sm:px-0">
+            {mobileScreens.map((shot) => renderPhoneShot(shot, '180px', 'w-44 sm:w-52 snap-start'))}
+          </div>
         ) : (
           <div className="flex justify-center">
-            <div className="w-56 space-y-2">
-              <div
-                className="relative w-full rounded-2xl overflow-hidden shadow-xl ring-1 ring-gray-200 dark:ring-gray-700 cursor-zoom-in group"
-                style={{ paddingBottom: '177%' }}
-                onClick={() => openModal(project.mobileImage, `${project.title} - Mobile`)}
-              >
-                <div className="absolute inset-0">
-                  <Image
-                    src={project.mobileImage}
-                    alt={`${project.title} - Mobile`}
-                    fill
-                    className="object-cover transition-transform duration-500 group-hover:scale-105"
-                    sizes="25vw"
-                  />
-                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 flex items-center justify-center">
-                    <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/70 text-white text-xs font-semibold px-3 py-1.5 rounded-full flex items-center gap-1.5">
-                      <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
-                      </svg>
-                      Click to expand
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="flex items-center justify-center gap-1.5 pt-1">
-                <Smartphone size={13} className="text-gray-400" />
-                <span className="text-xs text-gray-400 font-medium" style={{ fontFamily: 'Albert Sans, sans-serif', fontWeight: 400 }}>Mobile</span>
-              </div>
-            </div>
+            {renderPhoneShot(mobileScreens[0])}
+          </div>
+        )}
+
+        {hasDesktop && mobileScreens.length > 1 && (
+          <div className="mt-6 -mx-4 flex gap-4 overflow-x-auto px-4 pb-2 snap-x snap-mandatory sm:mx-0 sm:px-0">
+            {mobileScreens.slice(1).map((shot) => renderPhoneShot(shot, '180px', 'w-44 sm:w-52 snap-start'))}
           </div>
         )}
       </motion.div>

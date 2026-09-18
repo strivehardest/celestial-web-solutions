@@ -17,7 +17,7 @@ const PLACEHOLDER_IMAGE = "/png/screenshots/placeholder.svg";
 const PORTFOLIO_IMAGES = {
   "act-campus-care": "/png/screenshots/act-campus-care.webp",
   "ghanas-event": "/png/screenshots/ghanas-event.webp",
-  "ghanas-event-app": "/portfolio/mobile/ghanas-event.png",
+  "ghanas-event-app": "/images/stores/ghanas-event-app-landing.jpeg",
   "ghanas-event-blog": "/png/screenshots/ghanas-event-blog.webp",
   "building-planner-designs": "/png/screenshots/buildingplanner.webp",
   "celestial-shopping": "/png/screenshots/celestial-shopping.webp",
