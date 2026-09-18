@@ -112,11 +112,11 @@ const projects = [
     client: "Ghanas Event",
     clientCountry: "Ghana",
     description:
-      "Native mobile apps for Ghanas Event — discover concerts, festivals, and local gatherings, buy tickets with Mobile Money, and scan secure QR codes on the go. Android build completed Friday, 11 September 2026; iOS and App Store / Google Play listings are still pending.",
+      "Native mobile apps for Ghanas Event — discover concerts, festivals, and local gatherings, buy tickets with Mobile Money, and scan secure QR codes on the go. Android completed Friday, 11 September 2026 and is live on Google Play; iOS / App Store remains pending.",
     image: "/images/stores/ghanas-event-app-landing.jpeg",
     desktopImage: null,
     mobileImage: "/images/stores/ghanas-event-app-landing.jpeg",
-    screenshot: "/images/stores/ghanas-event-app-landing.jpeg",
+    screenshot: "",
     mobileScreenshots: [
       { src: "/images/stores/ghanas-event-app-landing.jpeg", label: "Landing" },
       { src: "/images/stores/ghanas-event-app-home.jpeg", label: "Home" },
@@ -128,12 +128,12 @@ const projects = [
     ],
     link: "https://www.ghanasevent.com",
     siteStatus: "live",
-    siteNote: "Android app completed; Play Store and App Store URLs pending. Web platform is live.",
+    siteNote: "Android app live on Google Play; App Store / iOS pending. Web platform is live.",
     process: [
       { title: "Discovery & Planning", desc: "Scoped native event discovery, ticketing, and Mobile Money flows for Ghana." },
       { title: "Design & Prototyping", desc: "Designed mobile UI for discovery, organiser tools, tickets, and account settings." },
       { title: "Android Development", desc: "Built the React Native / Expo Android app against Supabase and Paystack." },
-      { title: "Android Complete", desc: "Android app completed Friday, 11 September 2026. iOS and store listings remain pending." }
+      { title: "Android Complete", desc: "Android app completed Friday, 11 September 2026 and published to Google Play. iOS / App Store remains pending." }
     ],
     tech: ["React Native", "Expo", "TypeScript", "Supabase", "Postgres", "Paystack", "Android", "App Store"],
     techLogos: [
@@ -163,13 +163,13 @@ const projects = [
     app: {
       title: "Ghanas Event App",
       description:
-        "Android completed Friday, 11 September 2026. Google Play and App Store URLs are still pending (coming soon). iOS build remains in progress — use the live web app meanwhile.",
-      comingSoon: true,
+        "Android completed Friday, 11 September 2026 and is live on Google Play. App Store / iOS remains coming soon — use the live web app meanwhile.",
+      comingSoon: false,
       link: "https://www.ghanasevent.com",
       linkLabel: "Open web app",
-      playStoreUrl: null,
+      playStoreUrl: "https://play.google.com/store/apps/details?id=com.ghanasevent.app",
       appStoreUrl: null,
-      platforms: ["Android (completed)", "iOS (pending)"],
+      platforms: ["Android (Google Play)", "iOS (pending)"],
     },
   },
   {

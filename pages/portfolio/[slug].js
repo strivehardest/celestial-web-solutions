@@ -140,7 +140,7 @@ const ProjectAppSection = ({ project }) => {
           >
             {app.title || `${project.title} App`}
           </h2>
-          {app.comingSoon && (
+          {app.comingSoon && !app.playStoreUrl && !app.appStoreUrl && (
             <span className="mt-1 inline-flex items-center rounded-full bg-orange-500/10 px-2.5 py-0.5 text-xs font-semibold uppercase tracking-wide text-orange-600 dark:text-orange-400">
               Get App soon
             </span>
@@ -168,8 +168,8 @@ const ProjectAppSection = ({ project }) => {
       )}
 
       <div className="flex flex-wrap items-end gap-4">
-        <StoreBadge store="play" href={app.playStoreUrl} comingSoon={app.comingSoon || !app.playStoreUrl} />
-        <StoreBadge store="apple" href={app.appStoreUrl} comingSoon={app.comingSoon || !app.appStoreUrl} />
+        <StoreBadge store="play" href={app.playStoreUrl} comingSoon={!app.playStoreUrl} />
+        <StoreBadge store="apple" href={app.appStoreUrl} comingSoon={!app.appStoreUrl} />
         {app.link && (
           <a
             href={app.link}
@@ -242,24 +242,43 @@ const DeviceMockup = ({ project }) => {
   const renderPhoneShot = (shot, sizes = '25vw', widthClass = 'w-56') => (
     <div key={shot.src} className={`${widthClass} shrink-0 space-y-2`}>
       <div
-        className="relative w-full rounded-2xl overflow-hidden shadow-xl ring-1 ring-gray-200 dark:ring-gray-700 cursor-zoom-in group"
-        style={{ paddingBottom: '177%' }}
+        className="relative mx-auto w-full cursor-zoom-in group"
         onClick={() => openModal(shot.src, `${project.title} - ${shot.label}`)}
+        role="button"
+        tabIndex={0}
+        onKeyDown={(e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            openModal(shot.src, `${project.title} - ${shot.label}`);
+          }
+        }}
+        aria-label={`Expand ${project.title} ${shot.label} screenshot`}
       >
-        <div className="absolute inset-0">
-          <Image
-            src={shot.src}
-            alt={`${project.title} - ${shot.label}`}
-            fill
-            className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
-            sizes={sizes}
-          />
-          <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 flex items-center justify-center pointer-events-none">
-            <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/70 text-white text-xs font-semibold px-3 py-1.5 rounded-full flex items-center gap-1.5 pointer-events-none">
-              <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
-              </svg>
-              Click to expand
+        {/* Phone device frame */}
+        <div className="relative rounded-[2rem] bg-gradient-to-b from-neutral-800 via-neutral-950 to-black p-[9px] shadow-2xl shadow-black/30 ring-1 ring-white/10">
+          <div className="pointer-events-none absolute left-[-2px] top-[18%] h-10 w-[3px] rounded-l-full bg-neutral-700" />
+          <div className="pointer-events-none absolute left-[-2px] top-[32%] h-14 w-[3px] rounded-l-full bg-neutral-700" />
+          <div className="pointer-events-none absolute right-[-2px] top-[26%] h-16 w-[3px] rounded-r-full bg-neutral-700" />
+          <div className="relative overflow-hidden rounded-[1.45rem] bg-black ring-1 ring-white/5">
+            <div className="pointer-events-none absolute left-1/2 top-1.5 z-10 h-1.5 w-14 -translate-x-1/2 rounded-full bg-neutral-900/90" />
+            <div className="relative w-full" style={{ paddingBottom: '177%' }}>
+              <div className="absolute inset-0">
+                <Image
+                  src={shot.src}
+                  alt={`${project.title} - ${shot.label}`}
+                  fill
+                  className="object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]"
+                  sizes={sizes}
+                />
+                <div className="absolute inset-0 flex items-center justify-center bg-black/0 transition-all duration-300 group-hover:bg-black/20 pointer-events-none">
+                  <div className="flex items-center gap-1.5 rounded-full bg-black/70 px-3 py-1.5 text-xs font-semibold text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100 pointer-events-none">
+                    <svg className="h-3.5 w-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
+                    </svg>
+                    Click to expand
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -377,8 +396,13 @@ const DeviceMockup = ({ project }) => {
           </div>
 
         ) : mobileScreens.length > 1 ? (
-          <div className="-mx-4 flex gap-4 overflow-x-auto px-4 pb-2 snap-x snap-mandatory sm:mx-0 sm:px-0">
-            {mobileScreens.map((shot) => renderPhoneShot(shot, '180px', 'w-44 sm:w-52 snap-start'))}
+          <div className="rounded-3xl border border-gray-200/80 bg-gradient-to-b from-gray-50 to-white p-4 dark:border-gray-800 dark:from-gray-950 dark:to-gray-900 sm:p-6">
+            <p className="mb-4 text-sm text-gray-500 dark:text-gray-400" style={{ fontFamily: 'Albert Sans, sans-serif' }}>
+              Store preview — swipe through framed Android screens
+            </p>
+            <div className="-mx-1 flex gap-5 overflow-x-auto px-1 pb-3 snap-x snap-mandatory">
+              {mobileScreens.map((shot) => renderPhoneShot(shot, '180px', 'w-44 sm:w-52 snap-start'))}
+            </div>
           </div>
         ) : (
           <div className="flex justify-center">
@@ -907,8 +931,8 @@ export default function ProjectDetail({ project, currentIndex, prevProject: prev
               {/* YouTube Project Walkthrough */}
               <ProjectVideo project={project} />
 
-              {/* Full Page Screenshot */}
-              {project.screenshot && !imageError['screenshot'] && (
+              {/* Full Page Screenshot — skip for mobile screenshot galleries (use DeviceMockup phones instead) */}
+              {project.screenshot && !(Array.isArray(project.mobileScreenshots) && project.mobileScreenshots.length > 0) && !imageError['screenshot'] && (
                 <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.2 }}>
                   <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white mb-6" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>
                     Full Page Preview
