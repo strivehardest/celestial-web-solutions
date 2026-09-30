@@ -228,6 +228,7 @@ const DeviceMockup = ({ project }) => {
       ? [{ src: project.mobileImage, label: 'Mobile' }]
       : [];
   const hasMobile = mobileScreens.length > 0;
+  const preFramed = Boolean(project.preFramed);
   const [modal, setModal] = useState({ open: false, src: '', alt: '' });
 
   const openModal = (src, alt) => setModal({ open: true, src, alt });
@@ -304,6 +305,55 @@ const DeviceMockup = ({ project }) => {
     </div>
   );
 
+  // Screenshots that already include the device's own screen (status bar + system
+  // nav) render flat — no synthetic bezel — so they read cleanly at their native 1:2.
+  const renderFlatShot = (shot, sizes = '25vw', widthClass = 'w-56') => (
+    <div key={shot.src} className={`${widthClass} shrink-0 space-y-2`}>
+      <div
+        className="relative mx-auto w-full cursor-zoom-in group"
+        onClick={() => openModal(shot.src, `${project.title} - ${shot.label}`)}
+        role="button"
+        tabIndex={0}
+        onKeyDown={(e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            openModal(shot.src, `${project.title} - ${shot.label}`);
+          }
+        }}
+        aria-label={`Expand ${project.title} ${shot.label} screenshot`}
+      >
+        <div
+          className="relative w-full overflow-hidden rounded-[1.75rem] bg-black shadow-2xl shadow-black/30 ring-1 ring-black/10 dark:ring-white/10"
+          style={{ aspectRatio: '1080 / 2160' }}
+        >
+          <Image
+            src={shot.src}
+            alt={`${project.title} - ${shot.label}`}
+            fill
+            className="object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]"
+            sizes={sizes}
+          />
+          <div className="absolute inset-0 flex items-center justify-center bg-black/0 transition-all duration-300 group-hover:bg-black/20 pointer-events-none">
+            <div className="flex items-center gap-1.5 rounded-full bg-black/70 px-3 py-1.5 text-xs font-semibold text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100 pointer-events-none">
+              <svg className="h-3.5 w-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
+              </svg>
+              Click to expand
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="flex items-center justify-center gap-1.5 pt-1">
+        <Smartphone size={13} className="text-gray-400" />
+        <span className="text-xs text-gray-400 font-medium" style={{ fontFamily: 'Albert Sans, sans-serif', fontWeight: 400 }}>
+          {shot.label}
+        </span>
+      </div>
+    </div>
+  );
+
+  const renderShot = preFramed ? renderFlatShot : renderPhoneShot;
+
   return (
     <>
       <motion.div
@@ -372,7 +422,7 @@ const DeviceMockup = ({ project }) => {
 
             {/* Mobile — 1/3 width (first shot when gallery exists) */}
             <div className="col-span-1">
-              {renderPhoneShot(mobileScreens[0], '(max-width: 768px) 33vw, 20vw', 'w-full')}
+              {renderShot(mobileScreens[0], '(max-width: 768px) 33vw, 20vw', 'w-full')}
             </div>
           </div>
 
@@ -410,21 +460,23 @@ const DeviceMockup = ({ project }) => {
         ) : mobileScreens.length > 1 ? (
           <div className="rounded-3xl border border-gray-200/80 bg-gradient-to-b from-gray-50 to-white p-4 dark:border-gray-800 dark:from-gray-950 dark:to-gray-900 sm:p-6">
             <p className="mb-4 text-sm text-gray-500 dark:text-gray-400" style={{ fontFamily: 'Albert Sans, sans-serif' }}>
-              Store preview — swipe through framed Android screens
+              {preFramed
+                ? 'App screenshots — swipe through the live Android build'
+                : 'Store preview — swipe through framed Android screens'}
             </p>
             <div className="-mx-1 flex gap-5 overflow-x-auto px-1 pb-3 snap-x snap-mandatory">
-              {mobileScreens.map((shot) => renderPhoneShot(shot, '180px', 'w-44 sm:w-52 snap-start'))}
+              {mobileScreens.map((shot) => renderShot(shot, '180px', 'w-44 sm:w-52 snap-start'))}
             </div>
           </div>
         ) : (
           <div className="flex justify-center">
-            {renderPhoneShot(mobileScreens[0])}
+            {renderShot(mobileScreens[0])}
           </div>
         )}
 
         {hasDesktop && mobileScreens.length > 1 && (
           <div className="mt-6 -mx-4 flex gap-4 overflow-x-auto px-4 pb-2 snap-x snap-mandatory sm:mx-0 sm:px-0">
-            {mobileScreens.slice(1).map((shot) => renderPhoneShot(shot, '180px', 'w-44 sm:w-52 snap-start'))}
+            {mobileScreens.slice(1).map((shot) => renderShot(shot, '180px', 'w-44 sm:w-52 snap-start'))}
           </div>
         )}
       </motion.div>
@@ -1242,11 +1294,19 @@ export default function ProjectDetail({ project, currentIndex, prevProject: prev
         })()}
 
         {/* ── Full Width CTA ── */}
-        <section className="relative py-24 overflow-hidden">
+        <section className="relative py-24 overflow-hidden bg-gray-950">
           <div className="absolute inset-0">
-            <Image src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=90&w=2400&auto=format&fit=crop"
-              alt="Team collaboration" fill className="object-cover" />
-            <div className="absolute inset-0 bg-gradient-to-r from-orange-600/95 via-orange-500/90 to-red-500/95" />
+            <div className="absolute inset-0 bg-gradient-to-br from-orange-600 via-orange-500 to-red-500" />
+            <div
+              className="absolute inset-0 opacity-[0.12]"
+              style={{
+                backgroundImage:
+                  'linear-gradient(to right, rgba(255,255,255,0.6) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.6) 1px, transparent 1px)',
+                backgroundSize: '44px 44px',
+              }}
+            />
+            <div className="absolute -top-24 -left-24 h-72 w-72 rounded-full bg-white/10 blur-3xl" />
+            <div className="absolute -bottom-24 -right-16 h-80 w-80 rounded-full bg-black/20 blur-3xl" />
           </div>
           <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} viewport={{ once: true }}>

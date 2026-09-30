@@ -17,7 +17,7 @@ const PLACEHOLDER_IMAGE = "/png/screenshots/placeholder.svg";
 const PORTFOLIO_IMAGES = {
   "act-campus-care": "/png/screenshots/act-campus-care.webp",
   "ghanas-event": "/png/screenshots/ghanas-event.webp",
-  "ghanas-event-app": "/images/stores/ghanas-event-app-landing.jpeg",
+  "ghanas-event-app": "/mobile-app-ghanasevent/phone-01-welcome.png",
   "ghanas-event-blog": "/png/screenshots/ghanas-event-blog.webp",
   "building-planner-designs": "/png/screenshots/buildingplanner.webp",
   "celestial-shopping": "/png/screenshots/celestial-shopping.webp",
@@ -490,15 +490,20 @@ const CTASection = () => (
     initial={{ opacity: 0, y: 20 }}
     whileInView={{ opacity: 1, y: 0 }}
     viewport={{ once: true }}
-    className="relative mt-20 py-24 rounded-3xl overflow-hidden"
+    className="relative mt-20 py-24 rounded-3xl overflow-hidden bg-gray-950"
   >
     <div className="absolute inset-0">
-      <img
-        src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=90&w=2400&auto=format&fit=crop"
-        alt="Team collaborating"
-        className="w-full h-full object-cover"
+      <div className="absolute inset-0 bg-gradient-to-br from-orange-600 via-orange-500 to-red-600" />
+      <div
+        className="absolute inset-0 opacity-[0.12]"
+        style={{
+          backgroundImage:
+            "linear-gradient(to right, rgba(255,255,255,0.6) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.6) 1px, transparent 1px)",
+          backgroundSize: "44px 44px",
+        }}
       />
-      <div className="absolute inset-0 bg-gradient-to-r from-orange-600/95 via-orange-500/90 to-red-600/95" />
+      <div className="absolute -top-24 -left-24 h-72 w-72 rounded-full bg-white/10 blur-3xl" />
+      <div className="absolute -bottom-24 -right-16 h-80 w-80 rounded-full bg-black/20 blur-3xl" />
     </div>
 
     <div className="relative z-10 text-center px-4">
