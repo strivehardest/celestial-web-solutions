@@ -155,6 +155,11 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
+                <Link href="/web-design-company-in-ghana/app-development-in-ghana" className={footerLink}>
+                  App Development
+                </Link>
+              </li>
+              <li>
                 <Link
                   href="/web-design-company-in-ghana/ecommerce-website-development-ghana"
                   className={footerLink}

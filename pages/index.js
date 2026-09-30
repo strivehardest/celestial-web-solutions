@@ -21,7 +21,7 @@ import { useState, useEffect, useRef } from 'react';
 const TestimonialsSection = dynamic(() => import('../components/TestimonialsSection'), { ssr: false });
 import { useRouter } from 'next/router';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Code, Monitor, Search, ShoppingCart, ArrowRight, Zap, CheckCircle } from 'lucide-react';
+import { Code, Monitor, Search, ShoppingCart, Smartphone, ArrowRight, Zap, CheckCircle } from 'lucide-react';
 import Head from 'next/head';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -70,7 +70,7 @@ const SEOHead = () => {
             "@context": "https://schema.org",
             "@type": "WebDesignCompany",
             "name": "Celestial Web Solutions",
-            "description": "Celestial Web Solutions is a leading web design company in Ghana providing professional website design, web development, e-commerce solutions, and SEO services for businesses.",
+            "description": "Celestial Web Solutions is a leading web design company in Ghana providing professional website design, web development, mobile app development, e-commerce solutions, and SEO services for businesses.",
             "url": "https://www.celestialwebsolutions.net",
             "telephone": "+233-530-505-031",
             "email": "info@celestialwebsolutions.net",
@@ -122,6 +122,14 @@ const mainServices = [
     color: "from-orange-500 to-orange-600",
     link: "/web-design-company-in-ghana/seo-services-in-ghana",
     image: "https://www.intellibright.com/wp-content/uploads/2025/04/Search-Engine-Optimization.jpg"
+  },
+  {
+    icon: Smartphone,
+    title: "App Development",
+    description: "Cross-platform Android and iOS mobile apps with Mobile Money payments and store publishing",
+    color: "from-orange-500 to-orange-600",
+    link: "/web-design-company-in-ghana/app-development-in-ghana",
+    image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?q=90&w=800&auto=format&fit=crop"
   }
 ];
 
@@ -768,6 +776,7 @@ const IndexPage = ({ latestPosts = [] }) => {
                     {index === 1 && (<><p className="text-gray-600 dark:text-gray-300 text-lg leading-relaxed mb-2" style={{ fontFamily: 'Albert Sans, sans-serif' }}>As a reliable web development company in Ghana, we build custom websites and web applications that are secure, scalable, and performance-driven.</p><p className="text-gray-600 dark:text-gray-300 text-lg leading-relaxed" style={{ fontFamily: 'Albert Sans, sans-serif' }}>We work with modern technologies to deliver reliable web solutions for businesses looking to grow online in Ghana and beyond.</p></>)}
                     {index === 2 && (<><p className="text-gray-600 dark:text-gray-300 text-lg leading-relaxed mb-2" style={{ fontFamily: 'Albert Sans, sans-serif' }}>Looking to sell online? We provide e-commerce website development in Ghana for businesses that want to reach more customers and increase sales.</p><ul className="list-disc pl-6 text-gray-600 dark:text-gray-300 text-lg mb-2" style={{ fontFamily: 'Albert Sans, sans-serif' }}><li>Online stores</li><li>Secure payment integration</li><li>Product management systems</li><li>Mobile-friendly shopping experiences</li></ul></>)}
                     {index === 3 && (<><p className="text-gray-600 dark:text-gray-300 text-lg leading-relaxed mb-2" style={{ fontFamily: 'Albert Sans, sans-serif' }}>A great website is useless without visibility. Our SEO services in Ghana help businesses rank higher on Google and attract organic traffic.</p><ul className="list-disc pl-6 text-gray-600 dark:text-gray-300 text-lg mb-2" style={{ fontFamily: 'Albert Sans, sans-serif' }}><li>On-page SEO optimization</li><li>Keyword research</li><li>Technical SEO</li><li>Local SEO for Ghanaian businesses</li></ul></>)}
+                    {index === 4 && (<><p className="text-gray-600 dark:text-gray-300 text-lg leading-relaxed mb-2" style={{ fontFamily: 'Albert Sans, sans-serif' }}>Put your business in your customers' pockets. We build mobile apps for Android and iOS from one React Native codebase, like the Ghanas Event app now live on Google Play.</p><ul className="list-disc pl-6 text-gray-600 dark:text-gray-300 text-lg mb-2" style={{ fontFamily: 'Albert Sans, sans-serif' }}><li>Android and iOS apps</li><li>Mobile Money and card payments</li><li>Push notifications and admin dashboards</li><li>Play Store and App Store publishing</li></ul></>)}
                     <div className="pt-2">
                       <GlassButton href={service.link} variant="orange">Explore {service.title}</GlassButton>
                     </div>

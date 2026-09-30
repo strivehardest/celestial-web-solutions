@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
 import { motion } from "framer-motion";
-import { Monitor, Code, Search, ShoppingCart, Palette, Headphones, Target, MousePointer, CheckCircle2, Rocket, Users, Star, Zap, ArrowRight } from "lucide-react";
+import { Monitor, Code, Search, ShoppingCart, Palette, Headphones, Target, MousePointer, Smartphone, CheckCircle2, Rocket, Users, Star, Zap, ArrowRight } from "lucide-react";
 import Link from "next/link";
 import WhatsAppButton from '../components/WhatsAppButton';
 import GlassButton from '../components/GlassButton';
@@ -12,6 +12,7 @@ import GlassButton from '../components/GlassButton';
 const typingPhrases = [
 	'Web Development',
 	'UI/UX Design',
+	'App Development',
 	'E-Commerce',
 	'SEO Services',
 	'Digital Marketing'
@@ -33,6 +34,14 @@ const services = [
 		icon: Monitor,
 		image: "https://www.ntc.edu/sites/default/files/styles/16_9_1600x900/public/2021-06/web-design-header.jpg?itok=KPytPu7S",
 		keywords: ["responsive web design", "modern website design", "UI design", "mobile-first design"]
+	},
+	{ 
+		title: "App Development",
+		slug: "app-development-in-ghana",
+		description: "We build cross-platform mobile apps for Android and iOS with React Native and Expo. From MVPs to full-featured apps with Mobile Money payments, push notifications and admin dashboards, published to Google Play and the App Store.",
+		icon: Smartphone,
+		image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?q=90&w=800&auto=format&fit=crop",
+		keywords: ["mobile app development", "Android apps", "iOS apps", "React Native"]
 	},
 	{ 
 		title: "E-Commerce Solutions",
@@ -134,7 +143,7 @@ export default function ServicesPage() {
 			<Head>
 				<title>Web Design Company in Ghana | Professional Website Designers</title>
 				<meta name="description" content="Looking for a professional web design company in Ghana? Celestial Web Solutions designs modern, responsive, and SEO-friendly websites for businesses." />
-				<meta name="keywords" content="web services Ghana, web development services, web design services Ghana, web design companies in accra, e-commerce solutions, SEO services Ghana, UX/UI design, IT support Ghana, Google Ads management, Google AdSense management, digital marketing Ghana, web development company, design agency Ghana, full stack development, website maintenance, technical support" />
+				<meta name="keywords" content="web services Ghana, web development services, web design services Ghana, web design companies in accra, mobile app development Ghana, app developers in Ghana, e-commerce solutions, SEO services Ghana, UX/UI design, IT support Ghana, Google Ads management, Google AdSense management, digital marketing Ghana, web development company, design agency Ghana, full stack development, website maintenance, technical support" />
 				<meta name="author" content="Celestial Web Solutions" />
 				<meta name="robots" content="index, follow" />
 				<meta name="viewport" content="width=device-width, initial-scale=1.0" />

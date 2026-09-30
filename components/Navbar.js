@@ -22,6 +22,7 @@ import CtaArrow from './CtaArrow';
 const SERVICES = [
   { name: 'Web Development', href: '/web-design-company-in-ghana/web-development-company-in-ghana' },
   { name: 'Web Design', href: '/web-design-company-in-ghana/web-design-in-ghana' },
+  { name: 'App Development', href: '/web-design-company-in-ghana/app-development-in-ghana' },
   { name: 'E-Commerce', href: '/web-design-company-in-ghana/ecommerce-website-development-ghana' },
   { name: 'SEO Services', href: '/web-design-company-in-ghana/seo-services-in-ghana' },
   { name: 'UX/UI Design', href: '/web-design-company-in-ghana/ux-ui-design-in-ghana' },

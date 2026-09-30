@@ -8,6 +8,7 @@ import {
   Headphones,
   Megaphone,
   CircleDollarSign,
+  Smartphone,
 } from 'lucide-react';
 
 const SERVICES = [
@@ -20,6 +21,11 @@ const SERVICES = [
     title: 'Web Design',
     href: '/web-design-company-in-ghana/web-design-in-ghana',
     Icon: Monitor,
+  },
+  {
+    title: 'App Development',
+    href: '/web-design-company-in-ghana/app-development-in-ghana',
+    Icon: Smartphone,
   },
   {
     title: 'E-Commerce',

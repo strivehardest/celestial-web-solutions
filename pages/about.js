@@ -408,6 +408,7 @@ export default function AboutUs() {
                   {[
                     "Custom Web Development",
                     "E-commerce Solutions",
+                    "Mobile App Development",
                     "UI/UX Design",
                     "Brand Identity",
                     "SEO Optimization",

@@ -24,6 +24,7 @@ const urls = [
   "https://celestialwebsolutions.net/web-design-company-in-ghana/web-design-in-ghana",
   "https://celestialwebsolutions.net/web-design-company-in-ghana/web-development-company-in-ghana",
   "https://celestialwebsolutions.net/web-design-company-in-ghana/ecommerce-website-development-ghana",
+  "https://celestialwebsolutions.net/web-design-company-in-ghana/app-development-in-ghana",
   "https://celestialwebsolutions.net/web-design-company-in-ghana/seo-services-in-ghana",
   "https://celestialwebsolutions.net/web-design-company-in-ghana/ux-ui-design-in-ghana",
   "https://celestialwebsolutions.net/web-design-company-in-ghana/it-support-in-ghana",

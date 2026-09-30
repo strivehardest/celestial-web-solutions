@@ -98,6 +98,10 @@ export default function FAQs() {
           answer: "Absolutely! All our websites are built with mobile-first responsive design, ensuring they look and work perfectly on all devices - smartphones, tablets, and desktops. This is standard in all our projects."
         },
         {
+          question: "Do you build mobile apps for Android and iOS?",
+          answer: "Yes! Our App Development service builds cross-platform Android and iOS apps with React Native and Expo, including Mobile Money payments via Paystack, push notifications, admin dashboards and Play Store / App Store publishing. Apps start from GH₵12,000 (Starter), GH₵20,000 (Standard) and GH₵35,000 (Advanced), and typically take 6–12 weeks. See the Ghanas Event app, live on Google Play, in our portfolio."
+        },
+        {
           question: "Do you provide website maintenance?",
           answer: "Yes, we offer ongoing maintenance packages starting from GH₵150/month including security updates, content updates, backup services, and technical support. We also offer one-time maintenance services."
         }
