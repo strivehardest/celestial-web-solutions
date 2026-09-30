@@ -306,6 +306,7 @@ const projects = [
   },
   {
     title: "Conference of Principals of Technical Institutions",
+    shortTitle: "COPTI",
     slug: "copti",
     youtubeId: 'dUW_v4iY4cA',
     category: "educational institutions",
@@ -967,5 +968,24 @@ const projects = [
     ],
   },
 ];
+
+// Display order for compact showcases such as the footer. Inactive sites are skipped.
+export const featuredProjectSlugs = [
+  "act-campus-care",
+  "ghanas-event",
+  "ghanas-event-app",
+  "kafui-dey",
+  "copti",
+  "afrocinema",
+  "myspace-furniture",
+  "celestial-shopping",
+];
+
+export function getFeaturedProjects(limit = featuredProjectSlugs.length) {
+  return featuredProjectSlugs
+    .map((slug) => projects.find((project) => project.slug === slug))
+    .filter((project) => project && project.siteStatus !== "inactive")
+    .slice(0, limit);
+}
 
 export default projects;

@@ -10,12 +10,65 @@ import {
   FaYoutube,
 } from 'react-icons/fa';
 import { FiPhone, FiMail, FiMapPin, FiSmartphone } from 'react-icons/fi';
-import projects from '../data/projects';
+import { getFeaturedProjects } from '../data/projects';
 import ThemeToggle from './ThemeToggle';
 import CtaArrow from './CtaArrow';
 
 const footerLink =
   'block text-[14px] leading-6 text-gray-600 transition-colors hover:text-gray-950 dark:text-white/70 dark:hover:text-white';
+
+const footerHeading =
+  'mb-4 text-[13px] font-semibold uppercase tracking-[0.12em] text-gray-950 dark:text-white';
+
+const footerMoreLink =
+  'mt-4 inline-flex items-center gap-1 text-[13px] font-semibold text-[#ff7a1a] transition-opacity hover:opacity-80';
+
+const SERVICE_LINKS = [
+  { label: 'Web Development', href: '/web-design-company-in-ghana/web-development-company-in-ghana' },
+  { label: 'Web Design', href: '/web-design-company-in-ghana/web-design-in-ghana' },
+  { label: 'App Development', href: '/web-design-company-in-ghana/app-development-in-ghana' },
+  { label: 'E-Commerce', href: '/web-design-company-in-ghana/ecommerce-website-development-ghana' },
+  { label: 'SEO', href: '/web-design-company-in-ghana/seo-services-in-ghana' },
+  { label: 'UX/UI Design', href: '/web-design-company-in-ghana/ux-ui-design-in-ghana' },
+  { label: 'Google Ads', href: '/web-design-company-in-ghana/google-ads-management-in-ghana' },
+  { label: 'Google AdSense', href: '/web-design-company-in-ghana/google-adsense-management-in-ghana' },
+  { label: 'IT Support', href: '/web-design-company-in-ghana/it-support-in-ghana' },
+];
+
+const COMPANY_LINKS = [
+  { label: 'About', href: '/about' },
+  { label: 'Pricing', href: '/pricing' },
+  { label: 'Best in Accra', href: '/best-web-designer-in-accra' },
+  { label: 'Request a Service', href: '/request-a-service' },
+  { label: 'Make Payment', href: '/payment' },
+];
+
+const RESOURCE_LINKS = [
+  { label: 'Blog', href: '/blog' },
+  { label: 'Courses', href: '/courses' },
+  { label: 'Celestial AI', href: '/celestial-ai' },
+  { label: 'FAQs', href: '/faqs' },
+];
+
+const featuredProjects = getFeaturedProjects(8);
+
+function LinkColumn({ title, links, className = '', children }) {
+  return (
+    <div className={className}>
+      <h3 className={footerHeading}>{title}</h3>
+      <ul className="space-y-2.5">
+        {links.map(({ label, href }) => (
+          <li key={href}>
+            <Link href={href} className={footerLink}>
+              {label}
+            </Link>
+          </li>
+        ))}
+      </ul>
+      {children}
+    </div>
+  );
+}
 
 const whatsappLink =
   'https://wa.me/233530505031?text=' +
@@ -135,168 +188,38 @@ export default function Footer() {
 
       {/* Link columns */}
       <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
-        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-12">
-          <div className="lg:col-span-2">
-            <h3 className="mb-4 text-[13px] font-semibold uppercase tracking-[0.12em] text-gray-950 dark:text-white">
-              Services
-            </h3>
-            <ul className="space-y-2.5">
-              <li>
-                <Link
-                  href="/web-design-company-in-ghana/web-development-company-in-ghana"
-                  className={footerLink}
-                >
-                  Web Development
-                </Link>
-              </li>
-              <li>
-                <Link href="/web-design-company-in-ghana/web-design-in-ghana" className={footerLink}>
-                  Web Design
-                </Link>
-              </li>
-              <li>
-                <Link href="/web-design-company-in-ghana/app-development-in-ghana" className={footerLink}>
-                  App Development
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/web-design-company-in-ghana/ecommerce-website-development-ghana"
-                  className={footerLink}
-                >
-                  E-Commerce
-                </Link>
-              </li>
-              <li>
-                <Link href="/web-design-company-in-ghana/seo-services-in-ghana" className={footerLink}>
-                  SEO
-                </Link>
-              </li>
-              <li>
-                <Link href="/web-design-company-in-ghana/ux-ui-design-in-ghana" className={footerLink}>
-                  UX/UI Design
-                </Link>
-              </li>
-              <li>
-                <Link href="/pricing" className={footerLink}>
-                  Pricing
-                </Link>
-              </li>
-            </ul>
-          </div>
+        <div className="grid grid-cols-2 gap-x-6 gap-y-10 md:grid-cols-6 lg:grid-cols-12 lg:gap-x-8">
+          <LinkColumn title="Services" links={SERVICE_LINKS} className="md:col-span-2 lg:col-span-2">
+            <Link href="/web-design-company-in-ghana" className={footerMoreLink}>
+              All services <span aria-hidden="true">→</span>
+            </Link>
+          </LinkColumn>
 
-          <div className="lg:col-span-2">
-            <h3 className="mb-4 text-[13px] font-semibold uppercase tracking-[0.12em] text-gray-950 dark:text-white">
-              Company
-            </h3>
-            <ul className="space-y-2.5">
-              <li>
-                <Link href="/about" className={footerLink}>
-                  About
-                </Link>
-              </li>
-              <li>
-                <Link href="/portfolio" className={footerLink}>
-                  Portfolio
-                </Link>
-              </li>
-              <li>
-                <Link href="/blog" className={footerLink}>
-                  Blog
-                </Link>
-              </li>
-              <li>
-                <Link href="/courses" className={footerLink}>
-                  Courses
-                </Link>
-              </li>
-              <li>
-                <Link href="/payment" className={footerLink}>
-                  Make Payment
-                </Link>
-              </li>
-              <li>
-                <Link href="/schedule-a-call" className={footerLink}>
-                  Schedule a Call
-                </Link>
-              </li>
-            </ul>
-          </div>
+          <LinkColumn title="Company" links={COMPANY_LINKS} className="md:col-span-2 lg:col-span-2" />
 
-          <div className="lg:col-span-2">
-            <h3 className="mb-4 text-[13px] font-semibold uppercase tracking-[0.12em] text-gray-950 dark:text-white">
-              Resources
-            </h3>
-            <ul className="space-y-2.5">
-              <li>
-                <Link href="/celestial-ai" className={footerLink}>
-                  Celestial AI
-                </Link>
-              </li>
-              <li>
-                <Link href="/faqs" className={footerLink}>
-                  FAQs
-                </Link>
-              </li>
-              <li>
-                <Link href="/terms" className={footerLink}>
-                  Terms of Service
-                </Link>
-              </li>
-              <li>
-                <Link href="/privacy" className={footerLink}>
-                  Privacy Policy
-                </Link>
-              </li>
-              <li>
-                <Link href="/contact" className={footerLink}>
-                  Contact Us
-                </Link>
-              </li>
-              <li>
-                <Link href="/request-a-service" className={footerLink}>
-                  Request a Service
-                </Link>
-              </li>
-              <li>
-                <Link href="/best-web-designer-in-accra" className={footerLink}>
-                  Best in Accra
-                </Link>
-              </li>
-            </ul>
-          </div>
+          <LinkColumn title="Resources" links={RESOURCE_LINKS} className="md:col-span-2 lg:col-span-2" />
 
-          <div className="lg:col-span-3">
-            <div className="mb-4 flex items-baseline justify-between gap-3">
-              <h3 className="text-[13px] font-semibold uppercase tracking-[0.12em] text-gray-950 dark:text-white">
-                Portfolio
-              </h3>
-              <Link
-                href="/portfolio"
-                className="text-[12px] font-medium text-[#ff7a1a] transition-opacity hover:opacity-80"
-              >
-                View all →
-              </Link>
-            </div>
-            <ul className="grid grid-cols-1 gap-x-6 gap-y-2 sm:grid-cols-2">
-              {projects.map((project) => (
-                <li key={project.slug} className="min-w-0">
+          <div className="md:col-span-3 lg:col-span-3">
+            <h3 className={footerHeading}>Portfolio</h3>
+            <ul className="space-y-3">
+              {featuredProjects.map((project) => (
+                <li key={project.slug}>
                   <Link
                     href={`/portfolio/${project.slug}`}
-                    className={`${footerLink} truncate`}
-                    title={project.title}
+                    className="block text-[14px] leading-5 text-gray-600 transition-colors hover:text-gray-950 dark:text-white/70 dark:hover:text-white"
                   >
-                    {project.title}
+                    {project.shortTitle || project.title.trim()}
                   </Link>
                 </li>
               ))}
             </ul>
+            <Link href="/portfolio" className={footerMoreLink}>
+              View all projects <span aria-hidden="true">→</span>
+            </Link>
           </div>
 
-          <div className="lg:col-span-3">
-            <h3 className="mb-4 text-[13px] font-semibold uppercase tracking-[0.12em] text-gray-950 dark:text-white">
-              Get in touch
-            </h3>
+          <div className="col-span-2 md:col-span-3 lg:col-span-3">
+            <h3 className={footerHeading}>Get in touch</h3>
             <ul className="space-y-3 text-[14px] text-gray-600 dark:text-white/70">
               <li className="flex items-start gap-2.5">
                 <FiPhone className="mt-0.5 h-4 w-4 shrink-0 text-[#ff7a1a]" />
