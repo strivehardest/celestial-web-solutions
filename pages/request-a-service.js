@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { motion } from 'framer-motion';
 import VscodeLineField from '../components/VscodeLineField';
 import AgreementDownloadButton from '../components/AgreementDownloadButton';
@@ -46,6 +47,7 @@ const businessCategoryOptions = [
 
 const serviceOptions = [
   'Web Design & Development',
+  'App Development',
   'E-commerce Website',
   'SEO Services',
   'Google Ads Management',
@@ -82,6 +84,15 @@ export default function RequestAServicePage() {
   const turnstileRef = useRef(null);
   const turnstileWidgetId = useRef(null);
   const successRef = useRef(null);
+  const router = useRouter();
+
+  useEffect(() => {
+    if (!router.isReady) return;
+    const requested = router.query.service;
+    if (typeof requested === 'string' && serviceOptions.includes(requested)) {
+      setFormData((prev) => (prev.service ? prev : { ...prev, service: requested }));
+    }
+  }, [router.isReady, router.query.service]);
 
   useEffect(() => {
     if (!TURNSTILE_SITE_KEY) {

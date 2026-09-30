@@ -156,6 +156,7 @@ const TalkToExpertModal = ({ isOpen, onClose }) => {
 
   const serviceOptions = [
     'Web Design & Development',
+    'App Development',
     'E-commerce Website',
     'SEO Services',
     'Google Ads Management',

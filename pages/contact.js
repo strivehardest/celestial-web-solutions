@@ -440,6 +440,7 @@ export default function Contact() {
                   <option value="">Select a subject</option>
                   <option value="Web Development">Web Development</option>
                   <option value="Web Design">Web Design</option>
+                  <option value="App Development">App Development</option>
                   <option value="E-commerce">E-commerce Solutions</option>
                   <option value="SEO Optimization">SEO Optimization</option>
                   <option value="UX/UI Design">UX/UI Design</option>
