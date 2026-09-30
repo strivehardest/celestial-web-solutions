@@ -1,4 +1,5 @@
 import Head from "next/head";
+import Link from "next/link";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Check, Star, Zap, Globe, ShoppingCart, Rocket, Crown, Smartphone, Calculator, Plus, Minus, Info, X, Clock, Sparkles, ArrowRight, Copy, Building2, CreditCard } from "lucide-react";
@@ -17,6 +18,7 @@ const currencies = [
 const typingPhrases = [
   'Affordable Web Design Packages',
   'E-Commerce Website Pricing',
+  'Mobile App Development Pricing',
   'Custom Web App Quotes',
   'Flexible Payment Plans',
   'Contact us: +233 24 567 1832',
@@ -470,6 +472,73 @@ export default function PricingWithCalculator() {
     }
   ];
 
+  const appPlans = [
+    {
+      name: "Starter App",
+      description: "MVP to validate your idea on Android and iOS",
+      icon: Smartphone,
+      popular: false,
+      price: 12000,
+      deliveryTime: "6-8 weeks",
+      features: [
+        "Up to 8 Screens",
+        "Android + iOS (React Native / Expo)",
+        "User Sign-up & Login",
+        "Basic Backend (Supabase)",
+        "One Core Feature Flow",
+        "UI/UX Design in Figma",
+        "Weekly Test Builds",
+        "Play Store & App Store Publishing Support",
+        "30 Days Free Bug Fixes"
+      ],
+      cta: "Choose Starter App"
+    },
+    {
+      name: "Standard App",
+      description: "Full-featured app for growing businesses",
+      icon: Rocket,
+      popular: true,
+      price: 20000,
+      deliveryTime: "8-10 weeks",
+      features: [
+        "Up to 15 Screens",
+        "Android + iOS (React Native / Expo)",
+        "Email, Phone OTP & Social Login",
+        "Paystack Checkout (MoMo & Cards)",
+        "Push Notifications",
+        "Web Admin Dashboard",
+        "Supabase Auth, Database & Storage",
+        "Analytics Integration",
+        "Google Play & App Store Publishing",
+        "Training & Handover Docs",
+        "30 Days Free Bug Fixes"
+      ],
+      cta: "Choose Standard App"
+    },
+    {
+      name: "Advanced App",
+      description: "Custom platforms with complex features",
+      icon: Crown,
+      popular: false,
+      price: 35000,
+      deliveryTime: "10-12+ weeks",
+      features: [
+        "Unlimited Screens (as scoped)",
+        "Android + iOS (React Native / Expo)",
+        "Custom Backend & REST APIs",
+        "Real-time Features (chat, live updates)",
+        "Role-based Access & Admin Dashboard",
+        "Payments, Maps, QR & Camera",
+        "Third-party Integrations",
+        "Offline Support",
+        "Google Play & App Store Publishing",
+        "Source Code Ownership",
+        "3 Months Free Maintenance"
+      ],
+      cta: "Choose Advanced App"
+    }
+  ];
+
   const formatPrice = (priceInGHS) => {
     const currency = currencies.find(c => c.code === selectedCurrency);
     const convertedPrice = priceInGHS * exchangeRates[selectedCurrency];
@@ -904,6 +973,130 @@ export default function PricingWithCalculator() {
     </div>
   </div>
 </section>
+
+      <section id="app-development" className="py-20 bg-white dark:bg-gray-900 scroll-mt-24">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="text-center mb-12">
+            <span
+              className="inline-block px-4 py-2 bg-orange-100 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400 rounded-full text-sm font-semibold mb-4"
+              style={{ fontFamily: "Albert Sans, sans-serif" }}
+            >
+              ANDROID + iOS
+            </span>
+            <h2
+              className="text-4xl font-bold text-gray-900 dark:text-white mb-3"
+              style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}
+            >
+              App Development Packages
+            </h2>
+            <p
+              className="text-gray-500 dark:text-slate-400 max-w-2xl mx-auto"
+              style={{ fontFamily: "Albert Sans, sans-serif" }}
+            >
+              Cross-platform mobile apps built with React Native, with Mobile Money payments and store publishing. Like the{" "}
+              <Link href="/portfolio/ghanas-event-app" className="text-orange-600 dark:text-orange-400 font-semibold hover:underline">
+                Ghanas Event app
+              </Link>
+              , live on Google Play.
+            </p>
+          </div>
+
+          <div key={`app-${dynamicKey}`} className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {appPlans.map((plan, idx) => (
+              <motion.div
+                key={plan.name}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: idx * 0.08 }}
+                className={`relative rounded-2xl p-6 flex flex-col gap-5 border transition-all duration-300 ${
+                  plan.popular
+                    ? "bg-orange-50 dark:bg-orange-500/10 border-orange-300 dark:border-orange-500/40 shadow-xl shadow-orange-100 dark:shadow-orange-900/20"
+                    : "bg-white dark:bg-white/[0.03] border-gray-200 dark:border-white/10 hover:border-orange-200 dark:hover:border-white/20"
+                }`}
+              >
+                {plan.popular && (
+                  <div className="absolute -top-3 right-4 bg-orange-500 text-white text-[10px] font-bold px-3 py-1 rounded-full tracking-wide">
+                    Most Popular
+                  </div>
+                )}
+                <div className="w-10 h-10 rounded-xl bg-orange-100 dark:bg-orange-500/15 border border-orange-200 dark:border-orange-500/30 flex items-center justify-center">
+                  <plan.icon className="text-orange-500 dark:text-orange-400" size={20} />
+                </div>
+                <div>
+                  <h3
+                    className="text-lg font-bold text-gray-900 dark:text-slate-100 mb-1"
+                    style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}
+                  >
+                    {plan.name}
+                  </h3>
+                  <p
+                    className="text-gray-500 dark:text-slate-500 text-sm leading-relaxed"
+                    style={{ fontFamily: "Albert Sans, sans-serif" }}
+                  >
+                    {plan.description}
+                  </p>
+                </div>
+                <div>
+                  <p className="text-xs text-gray-400 dark:text-slate-500" style={{ fontFamily: "Albert Sans, sans-serif" }}>
+                    Starting from
+                  </p>
+                  {priceTag(plan.price, {
+                    className: "text-3xl font-bold text-orange-600 dark:text-orange-400",
+                    style: { fontFamily: "Bricolage Grotesque, sans-serif" },
+                  })}
+                  <div className="flex items-center gap-1 mt-1 text-gray-400 dark:text-slate-500 text-xs">
+                    <Clock size={11} />
+                    <span className="notranslate" translate="no">{plan.deliveryTime}</span>
+                  </div>
+                </div>
+                <ul className="flex-1 space-y-2 text-sm" style={{ fontFamily: "Albert Sans, sans-serif" }}>
+                  {plan.features.map((feat, i) => (
+                    <li key={i} className="flex items-start gap-2 text-gray-600 dark:text-slate-400">
+                      <Check className="text-green-500 mt-0.5 shrink-0" size={14} />
+                      <span>{feat}</span>
+                    </li>
+                  ))}
+                </ul>
+                <PremiumCTA
+                  href={getWhatsAppLink(`${plan.name} (App Development)`, plan.price)}
+                  size="default"
+                  variant={plan.popular ? "primary" : "outline"}
+                  className="w-full justify-center"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {plan.cta}
+                </PremiumCTA>
+              </motion.div>
+            ))}
+          </div>
+
+          <div
+            className="mt-8 rounded-2xl border border-gray-200 dark:border-white/10 bg-gray-50 dark:bg-white/[0.03] p-5 text-sm text-gray-600 dark:text-slate-400 space-y-1"
+            style={{ fontFamily: "Albert Sans, sans-serif" }}
+          >
+            <p>
+              <span className="font-semibold text-gray-900 dark:text-white">App maintenance:</span> from{" "}
+              {priceTag(500, { suffix: "/month" })} for bug fixes, OS updates and store compliance.
+            </p>
+            <p>
+              <span className="font-semibold text-gray-900 dark:text-white">Store accounts:</span> Google Play (US$25 one-time) and Apple Developer (US$99/year) are registered in your name, so you own the app.
+            </p>
+            <p>
+              <span className="font-semibold text-gray-900 dark:text-white">Payment:</span> full payment is required before work begins for most projects. Flexible payment plans are only available for larger projects and must be agreed in writing.
+            </p>
+            <p className="pt-2">
+              <Link
+                href="/web-design-company-in-ghana/app-development-in-ghana"
+                className="text-orange-600 dark:text-orange-400 font-semibold hover:underline"
+              >
+                Learn more about App Development →
+              </Link>
+            </p>
+          </div>
+        </div>
+      </section>
 
       {/* Package Comparison Section */}
       <section className="py-20 bg-gray-50 dark:bg-gray-800">
