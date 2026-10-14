@@ -178,6 +178,8 @@ export default function AboutUs() {
     { name: 'Vercel', logo: 'https://www.svgrepo.com/show/354513/vercel-icon.svg' },
     { name: 'Render', logo: 'https://images.seeklogo.com/logo-png/53/1/render-logo-png_seeklogo-532232.png' },
     { name: 'GitHub', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg' },
+    { name: 'Android', logo: '/images/tech/android.svg' },
+    { name: 'iOS', logo: '/images/tech/apple.svg', className: 'dark:invert' },
     { name: 'Elementor', logo: 'https://cdn.iconscout.com/icon/free/png-256/free-elementor-logo-icon-svg-download-png-3029975.png' }
   ];
 
@@ -638,7 +640,7 @@ export default function AboutUs() {
                             <img
                               src={tech.logo}
                               alt={tech.name}
-                              className="max-w-full max-h-full object-contain"
+                              className={`max-w-full max-h-full object-contain ${tech.className || ''}`}
                               loading="lazy"
                               onError={(e) => {
                                 e.target.style.display = 'none';
