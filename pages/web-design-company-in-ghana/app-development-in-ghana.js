@@ -23,6 +23,7 @@ const GlassButton = ({ children, href, variant = 'light', external = false }) =>
 
 const PAGE_URL = 'https://www.celestialwebsolutions.net/web-design-company-in-ghana/app-development-in-ghana';
 const PLAY_STORE_URL = 'https://play.google.com/store/apps/details?id=com.ghanasevent.app';
+const APP_STORE_URL = 'https://apps.apple.com/us/app/ghanas-event/id6818324205';
 
 const service = {
   title: "App Development",
@@ -283,11 +284,14 @@ export default function AppDevelopmentServicePage() {
                       Ghanas Event Mobile App
                     </h2>
                     <p className="text-gray-700 dark:text-gray-300 mb-5" style={{ fontFamily: 'Albert Sans, sans-serif' }}>
-                      An event discovery and ticketing app for Ghana, built with Capacitor, Next.js, Supabase and Paystack, with native biometric unlock and Firebase push notifications. Attendees find events, pay with Mobile Money and carry secure QR tickets on their phones. The Android app is live on Google Play; iOS is coming soon.
+                      An event discovery and ticketing app for Ghana, built with Capacitor, Next.js, Supabase and Paystack, with native biometric unlock and Firebase push notifications. Attendees find events, pay with Mobile Money and carry secure QR tickets on their phones. The app is live on both Google Play and the Apple App Store.
                     </p>
                     <div className="flex flex-wrap items-center gap-4">
                       <a href={PLAY_STORE_URL} target="_blank" rel="noopener noreferrer" aria-label="Get Ghanas Event on Google Play">
                         <img src="/images/stores/google-play-badge.png" alt="Get it on Google Play" className="h-12 w-auto" loading="lazy" />
+                      </a>
+                      <a href={APP_STORE_URL} target="_blank" rel="noopener noreferrer" aria-label="Download Ghanas Event on the App Store">
+                        <img src="/images/stores/app-store-badge.svg" alt="Download on the App Store" className="h-12 w-auto" loading="lazy" />
                       </a>
                       <Link
                         href="/portfolio/ghanas-event-app"
