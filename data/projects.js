@@ -141,7 +141,7 @@ const projects = [
       { title: "Discovery & Planning", desc: "Scoped a native shell around the live platform with biometric unlock, push, and Mobile Money flows for Ghana." },
       { title: "Design & Prototyping", desc: "Designed mobile UI for discovery, tickets, check-in, alerts, and account settings in light and dark themes." },
       { title: "Capacitor Build & Native Plugins", desc: "Wrapped the Next.js app with Capacitor 8 and wired native biometrics, push notifications, haptics, and sharing." },
-      { title: "Store Launch", desc: "Published the Android app to Google Play and the iOS app to the App Store, with Firebase Cloud Messaging push." }
+      { title: "Store Launch", desc: "Published Android to Google Play on Friday, 11 September 2026 and iOS to the App Store on Tuesday, 13 October 2026. Combined duration is 12 weeks." }
     ],
     tech: ["Next.js 16", "React 19", "TypeScript", "Tailwind CSS", "Capacitor", "Supabase", "Paystack", "Firebase Cloud Messaging", "Android", "App Store"],
     techLogos: [
@@ -157,8 +157,8 @@ const projects = [
       { name: "App Store", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/apple/apple-original.svg" },
     ],
     startDate: "2026-08-01",
-    completionDate: "2026-09-11",
-    duration: "6 weeks (Android)",
+    completionDate: "2026-10-13",
+    duration: "12 weeks",
     features: [
       "Browse Events Near You",
       "Search and Category Filters",
