@@ -158,7 +158,7 @@ const projects = [
     ],
     startDate: "2026-08-01",
     completionDate: "2026-09-11",
-    duration: "6 weeks (Android)",
+    duration: "6 weeks (Android & iOS)",
     features: [
       "Browse Events Near You",
       "Search and Category Filters",
