@@ -102,10 +102,10 @@ function StoreBadge({ store, href, comingSoon, onDark = false }) {
 
   if (comingSoon || !href) {
     return (
-      <div className="relative inline-flex pb-6" aria-label={`${label} — Get App soon`}>
+      <div className="inline-flex flex-col items-center gap-1.5" aria-label={`${label} — Get App soon`}>
         <div className="pointer-events-none select-none">{badge}</div>
         <span
-          className={`absolute left-1/2 top-full z-10 mt-1 -translate-x-1/2 whitespace-nowrap rounded-full px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide ${
+          className={`whitespace-nowrap rounded-full px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide ${
             onDark
               ? 'bg-white/15 text-white/90 ring-1 ring-white/25'
               : 'bg-orange-500/10 text-orange-600 dark:text-orange-400'
@@ -179,7 +179,7 @@ const ProjectAppSection = ({ project }) => {
         </div>
       )}
 
-      <div className="flex flex-wrap items-center gap-4">
+      <div className="flex flex-wrap items-start gap-4">
         <StoreBadge store="play" href={app.playStoreUrl} comingSoon={!app.playStoreUrl} />
         <StoreBadge store="apple" href={app.appStoreUrl} comingSoon={!app.appStoreUrl} />
         {app.link && (
@@ -798,7 +798,7 @@ export default function ProjectDetail({ project, currentIndex, prevProject: prev
                   </span>
                 )}
                 {project.app ? (
-                  <div className="flex flex-wrap items-center gap-3 sm:gap-4">
+                  <div className="flex flex-wrap items-start gap-3 sm:gap-4">
                     <StoreBadge
                       store="play"
                       href={project.app.playStoreUrl}
@@ -829,7 +829,7 @@ export default function ProjectDetail({ project, currentIndex, prevProject: prev
         {/* ── Project Stats Bar ── */}
         <section className="bg-gray-50 dark:bg-gray-900 border-y border-gray-200 dark:border-gray-800">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-5 gap-6 md:gap-8">
 
               {/* CLIENT */}
               {project.client && (
@@ -870,6 +870,21 @@ export default function ProjectDetail({ project, currentIndex, prevProject: prev
                 </motion.div>
               )}
 
+              {/* STARTED — stored on every project, previously never rendered */}
+              {project.startDate && (
+                <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.55 }} className="flex items-center gap-3 min-w-0">
+                  <div className="w-10 h-10 rounded-full bg-orange-100 dark:bg-orange-900/30 flex items-center justify-center flex-shrink-0">
+                    <Calendar className="w-5 h-5 text-orange-600" />
+                  </div>
+                  <div className="min-w-0">
+                    <p className="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wide font-medium">Started</p>
+                    <p className="text-gray-900 dark:text-white font-semibold whitespace-normal leading-snug" style={{ fontFamily: 'Albert Sans, sans-serif' }}>
+                      {formatDate(project.startDate)}
+                    </p>
+                  </div>
+                </motion.div>
+              )}
+
               {/* COMPLETED */}
               <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.6 }} className="flex items-center gap-3 min-w-0">
                 <div className="w-10 h-10 rounded-full bg-orange-100 dark:bg-orange-900/30 flex items-center justify-center flex-shrink-0">
@@ -877,7 +892,7 @@ export default function ProjectDetail({ project, currentIndex, prevProject: prev
                 </div>
                 <div className="min-w-0">
                   <p className="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wide font-medium">Completed</p>
-                  <p className="text-gray-900 dark:text-white font-semibold truncate" style={{ fontFamily: 'Albert Sans, sans-serif' }}>
+                  <p className="text-gray-900 dark:text-white font-semibold whitespace-normal leading-snug" style={{ fontFamily: 'Albert Sans, sans-serif' }}>
                     {project.completionDate === "In Progress" ? (
                       <span className="inline-flex items-center gap-1">
                         <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4 flex-shrink-0" viewBox="0 0 24 24" fill="currentColor">
@@ -1109,6 +1124,12 @@ export default function ProjectDetail({ project, currentIndex, prevProject: prev
                       <div>
                         <p className="text-orange-200 text-xs uppercase tracking-wide font-medium">Duration</p>
                         <p className="font-semibold" style={{ fontFamily: 'Albert Sans, sans-serif' }}>{project.duration}</p>
+                      </div>
+                    )}
+                    {project.startDate && (
+                      <div>
+                        <p className="text-orange-200 text-xs uppercase tracking-wide font-medium">Started</p>
+                        <p className="font-semibold" style={{ fontFamily: 'Albert Sans, sans-serif' }}>{formatDate(project.startDate)}</p>
                       </div>
                     )}
                     <div>
