@@ -25,6 +25,7 @@ const highlights = [
 ];
 
 const heroProjects = [
+  { image: '/portfolio/desktop/ghanalogos-desktop.png', title: 'GhanaLogos', bgColor: 'from-emerald-950 via-green-900 to-stone-900' },
   { image: '/portfolio/desktop/ghanas-event.png', title: 'Ghanas Event', bgColor: 'from-amber-950 via-yellow-900 to-stone-900' },
   { image: '/portfolio/desktop/ghanas-event-blog.png', title: 'Ghanas Event Blog', bgColor: 'from-slate-950 via-blue-950 to-indigo-900' },
   { image: '/portfolio/desktop/copti.webp', title: 'Conference of Principals of Technical Institutions', bgColor: 'from-blue-400 via-blue-500 to-blue-600' },
@@ -44,6 +45,13 @@ const serviceFocus = [
 ];
 
 const portfolioHighlights = [
+  {
+    title: 'GhanaLogos',
+    category: 'Branding & Design',
+    description: 'Official Ghanaian brand logos in SVG and PNG, with category browse, instant search, Premium 4K exports, and a developer API.',
+    image: '/png/projects/ghanalogos-all.png',
+    slug: 'ghana-logos'
+  },
   {
     title: 'Ghanas Event',
     category: 'Events & Ticketing',

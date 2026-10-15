@@ -197,6 +197,15 @@ const typingPhrases = [
 // ─────────────────────────────────────────────
 const portfolioItems = [
   {
+    title: "GhanaLogos",
+    category: "Branding & Design",
+    description: "Official Ghanaian brand logos in SVG and PNG — browse by category, search instantly, and download free or Premium 4K files.",
+    tech: ["Next.js 14", "React", "TypeScript", "Sanity CMS", "Paystack"],
+    link: "/portfolio/ghana-logos",
+    image: "/portfolio/desktop/ghanalogos-desktop.png",
+    accent: "#0F6B3D"
+  },
+  {
     title: "ACT Campus Care 2.0",
     category: "Healthcare & Wellness",
     description: "A culturally grounded VR wellness platform helping HBCU students regulate stress and build resilience.",

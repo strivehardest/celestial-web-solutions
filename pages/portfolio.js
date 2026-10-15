@@ -15,6 +15,7 @@ import GlassButton from "../components/GlassButton";
 const PLACEHOLDER_IMAGE = "/png/screenshots/placeholder.svg";
 
 const PORTFOLIO_IMAGES = {
+  "ghana-logos": "/png/screenshots/GhanaLogos.webp",
   "act-campus-care": "/png/screenshots/act-campus-care.webp",
   "ghanas-event": "/png/screenshots/ghanas-event.webp",
   "ghanas-event-app": "/mobile-app-ghanasevent/phone-01-welcome.png",
@@ -56,6 +57,7 @@ const HAPPY_CLIENTS = [
 const CATEGORIES = [
   "all",
   "agriculture & farming",
+  "branding & design",
   "business & corporate",
   "e-commerce & retail",
   "events & ticketing",
@@ -108,6 +110,9 @@ function matchesFilter(p, filter) {
   if (category === term) return true;
 
   switch (filter) {
+    case "branding & design":
+      return category.includes("branding") || category.includes("logo") ||
+        title.includes("logo") || description.includes("logo");
     case "business & corporate":
       return category.includes("business") || category.includes("corporate") ||
         title.includes("solutions") || title.includes("planner") || title.includes("group");

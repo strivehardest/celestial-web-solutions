@@ -9,6 +9,17 @@ import 'swiper/css/effect-fade';
 
 const heroSlides = [
   {
+    tag: 'BRANDING & DESIGN',
+    title: 'GhanaLogos',
+    description: 'Official logos of Ghanaian brands in SVG and PNG — browse by category, search instantly, and download free or Premium 4K files.',
+    caseStudyLink: '/portfolio/ghana-logos',
+    caseStudyLabel: 'VIEW PROJECT',
+    ctaLink: '/contact',
+    ctaLabel: 'START YOUR PROJECT',
+    mainImage: '/portfolio/desktop/ghanalogos-desktop.png',
+    bgColor: 'from-emerald-950 via-green-900 to-stone-900',
+  },
+  {
     tag: 'EVENTS & TICKETING',
     title: 'Ghanas\nEvent',
     description: 'Ghana\'s event discovery and ticketing platform — Mobile Money payments, QR tickets, and listings across all 16 regions.',

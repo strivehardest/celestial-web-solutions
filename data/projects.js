@@ -1,6 +1,64 @@
 // data/projects.js
 const projects = [
   {
+    title: "GhanaLogos",
+    slug: "ghana-logos",
+    youtubeId: "",
+    category: "branding & design",
+    client: "GhanaLogos",
+    clientCountry: "Ghana",
+    description: "GhanaLogos is a vector logo library of official Ghanaian brand marks in SVG and PNG. Designers, newsrooms and developers can browse by category, search instantly, download free daily files, or unlock Premium for unlimited downloads and 4K exports — with a public API so other apps and websites can use the same library.",
+    image: "/png/projects/ghanalogos-all.png",
+    desktopImage: "/portfolio/desktop/ghanalogos-desktop.png",
+    mobileImage: "/portfolio/mobile/ghanalogos-mobile.png",
+    screenshot: "/png/screenshots/GhanaLogos.webp",
+    link: "https://ghanalogos.com",
+    siteStatus: "live",
+    process: [
+      { title: "Library Scoping", desc: "Mapped Ghanaian brand categories, SVG/PNG delivery, free daily quotas, and Premium plans paid by Mobile Money or card." },
+      { title: "Product Design", desc: "Designed browse, instant search, accounts, contributor submissions, and API documentation for designers and developers." },
+      { title: "Platform Development", desc: "Built Next.js 14 with Sanity CMS, Paystack checkout, Upstash Redis limits, Resend email, and Arkesel SMS." },
+      { title: "Launch & SEO", desc: "Shipped the admin studio, Google Analytics, light and dark modes, and a search-friendly, mobile-ready public library." }
+    ],
+    tech: ["Next.js 14", "React", "TypeScript", "Tailwind CSS", "Sanity CMS", "Upstash Redis", "Paystack", "Resend", "Arkesel SMS", "Google Analytics"],
+    techLogos: [
+      { name: "Next.js 14",      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" },
+      { name: "React",           logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" },
+      { name: "TypeScript",      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" },
+      { name: "Tailwind CSS",    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg" },
+      { name: "Sanity CMS",      logo: "https://cdn.worldvectorlogo.com/logos/sanity.svg" },
+      { name: "Upstash Redis",   logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg" },
+      { name: "Paystack",        logo: "https://upload.wikimedia.org/wikipedia/commons/f/f9/Paystack_Logo.svg" },
+      { name: "Resend",          logo: "/images/tech/resend.jpg" },
+      { name: "Arkesel SMS",     logo: null },
+      { name: "Google Analytics",logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/google/google-original.svg" },
+    ],
+    startDate: "2026-09-17",
+    completionDate: "2026-10-15",
+    duration: "4 weeks",
+    features: [
+      "Official Ghanaian Brand Logos in SVG and PNG",
+      "Browse Logos by Category",
+      "Instant Logo Search",
+      "Free Daily Downloads",
+      "Premium Unlimited Downloads and 4K Exports",
+      "Paystack Payments (Mobile Money and Cards)",
+      "Developer API with Free and Paid Plans",
+      "Online API Documentation",
+      "Sign In with Email, Google or GitHub",
+      "Account Page for Profile, API Access and Contributions",
+      "Contributor Programme with Review and Rewards",
+      "Sanity Admin Studio for Logos and Submissions",
+      "SEO-Optimised for Google Search",
+      "Light and Dark Modes",
+      "Responsive Mobile-Friendly Design",
+      "Rate Limiting with Upstash Redis",
+      "Transactional Emails with Resend",
+      "SMS Notifications with Arkesel",
+      "Google Analytics Integration",
+    ],
+  },
+  {
     title: "ACT Campus Care 2.0",
     slug: "act-campus-care",
     youtubeId: "",
@@ -984,6 +1042,7 @@ const projects = [
 
 // Display order for compact showcases such as the footer. Inactive sites are skipped.
 export const featuredProjectSlugs = [
+  "ghana-logos",
   "act-campus-care",
   "ghanas-event",
   "ghanas-event-app",
@@ -991,7 +1050,6 @@ export const featuredProjectSlugs = [
   "copti",
   "afrocinema",
   "myspace-furniture",
-  "celestial-shopping",
 ];
 
 export function getFeaturedProjects(limit = featuredProjectSlugs.length) {
