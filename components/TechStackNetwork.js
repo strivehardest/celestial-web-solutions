@@ -36,6 +36,12 @@ const stackLayers = [
     description: 'Design systems and dev tools for polished workflows.',
     tools: ['Figma', 'Tailwind', 'Sanity CMS', 'WordPress'],
   },
+  {
+    id: 'mobile',
+    label: 'Android & iOS',
+    description: 'Native apps published to Google Play and the App Store.',
+    tools: ['Android', 'iOS'],
+  },
 ];
 
 const callouts = [
@@ -71,8 +77,8 @@ const callouts = [
 
 const stats = [
   { value: '20+', label: 'Projects shipped', icon: FolderKanban },
-  { value: '19', label: 'Technologies', icon: Cpu },
-  { value: '5', label: 'Stack layers', icon: Layers },
+  { value: '21', label: 'Technologies', icon: Cpu },
+  { value: '6', label: 'Stack layers', icon: Layers },
   { value: '2 wk', label: 'Avg. MVP timeline', icon: Clock },
   { value: '10k+', label: 'Hours of work', icon: Timer },
   { value: '500k+', label: 'Lines of code', icon: Code2 },
@@ -220,7 +226,7 @@ export default function TechStackNetwork() {
         >
           Tap a layer to filter markers on the globe
         </motion.p>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {stackLayers.map((layer, i) => (
             <motion.button
               key={layer.id}
