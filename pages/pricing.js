@@ -997,7 +997,7 @@ export default function PricingWithCalculator() {
               <Link href="/portfolio/ghanas-event-app" className="text-orange-600 dark:text-orange-400 font-semibold hover:underline">
                 Ghanas Event app
               </Link>
-              , live on Google Play.
+              , live on Google Play and the App Store.
             </p>
           </div>
 

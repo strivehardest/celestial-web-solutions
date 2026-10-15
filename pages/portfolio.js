@@ -15,6 +15,8 @@ import GlassButton from "../components/GlassButton";
 const PLACEHOLDER_IMAGE = "/png/screenshots/placeholder.svg";
 
 const PORTFOLIO_IMAGES = {
+  "ghana-logos": "/png/screenshots/GhanaLogos.webp",
+  "celestial-radio": "/png/screenshots/celestial-radio.webp",
   "act-campus-care": "/png/screenshots/act-campus-care.webp",
   "ghanas-event": "/png/screenshots/ghanas-event.webp",
   "ghanas-event-app": "/mobile-app-ghanasevent/phone-01-welcome.png",
@@ -27,7 +29,7 @@ const PORTFOLIO_IMAGES = {
   "elolo-agbleke-website": "/png/screenshots/elolo-full.webp",
   "finance-tracker": "/png/screenshots/finance-tracker.png",
   "ghana-updates-online": "/png/screenshots/ghanaupdates-full.webp",
-  "myspace-furniture": "/png/screenshots/myspace-furniture.webp",
+  "myspace-furniture": "/png/screenshots/myyspace.webp",
   "valyd-homes": "/png/screenshots/valyd.webp",
   "personal-portfolio-website": "/png/screenshots/waliu-portfolio-full.webp",
   "tru-seeds-africa": "/png/screenshots/truseeds.webp",
@@ -56,6 +58,7 @@ const HAPPY_CLIENTS = [
 const CATEGORIES = [
   "all",
   "agriculture & farming",
+  "branding & design",
   "business & corporate",
   "e-commerce & retail",
   "events & ticketing",
@@ -108,6 +111,9 @@ function matchesFilter(p, filter) {
   if (category === term) return true;
 
   switch (filter) {
+    case "branding & design":
+      return category.includes("branding") || category.includes("logo") ||
+        title.includes("logo") || description.includes("logo");
     case "business & corporate":
       return category.includes("business") || category.includes("corporate") ||
         title.includes("solutions") || title.includes("planner") || title.includes("group");
@@ -280,7 +286,12 @@ const PortfolioCard = ({ project, image, index }) => {
               <span className="inline-flex items-center rounded-full bg-orange-500/10 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-orange-600 dark:text-orange-400">
                 Mobile App
               </span>
-              {project.app?.comingSoon && (
+              {project.app?.playStoreUrl && !project.app?.appStoreUrl && (
+                <span className="inline-flex items-center rounded-full bg-gray-100 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-gray-600 dark:bg-gray-800 dark:text-gray-300">
+                  App Store soon
+                </span>
+              )}
+              {!project.app?.playStoreUrl && !project.app?.appStoreUrl && (
                 <span className="inline-flex items-center rounded-full bg-gray-100 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-gray-600 dark:bg-gray-800 dark:text-gray-300">
                   Get App soon
                 </span>

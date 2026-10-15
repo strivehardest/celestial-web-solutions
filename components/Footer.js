@@ -84,10 +84,11 @@ const socialLinks = [
 ];
 
 const TIME_ZONES = [
+  { city: 'Keta', country: 'Ghana', timezone: 'Africa/Accra', flagCode: 'gh' },
   { city: 'Accra', country: 'Ghana', timezone: 'Africa/Accra', flagCode: 'gh' },
   { city: 'Lagos', country: 'Nigeria', timezone: 'Africa/Lagos', flagCode: 'ng' },
-  { city: 'New York', country: 'USA', timezone: 'America/New_York', flagCode: 'us' },
   { city: 'London', country: 'UK', timezone: 'Europe/London', flagCode: 'gb' },
+  { city: 'New York', country: 'USA', timezone: 'America/New_York', flagCode: 'us' },
 ];
 
 function LiveClocks() {
@@ -113,7 +114,7 @@ function LiveClocks() {
   }, []);
 
   return (
-    <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">
+    <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
       {TIME_ZONES.map(({ city, country, flagCode }) => (
         <div
           key={city}
@@ -260,7 +261,13 @@ export default function Footer() {
               </li>
               <li className="flex items-start gap-2.5">
                 <FiMapPin className="mt-0.5 h-4 w-4 shrink-0 text-[#ff7a1a]" />
-                <span>Accra, Ghana · Remote worldwide</span>
+                <span>
+                  Keta, Volta Region
+                  <br />
+                  Accra, Greater Accra
+                  <br />
+                  Remote worldwide
+                </span>
               </li>
             </ul>
             <div className="mt-5 flex flex-wrap gap-2">

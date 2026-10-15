@@ -11,6 +11,7 @@ const layerLabels = {
   content: 'Content & CMS',
   commerce: 'Commerce & Pay',
   design: 'Design & Tools',
+  mobile: 'Android & iOS',
 };
 
 export const globeTechNodes = [
@@ -33,6 +34,8 @@ export const globeTechNodes = [
   { name: 'Shopify', icon: '/images/shopify-logo.png', layer: 'commerce', lat: 28, lng: 132, blurb: 'Hosted e-commerce platform', description: 'Shopify powers fully managed online stores with themes, inventory, and payment processing built in.' },
   { name: 'WooCommerce', icon: '/images/tech/woocommerce.svg', layer: 'commerce', lat: -44, lng: 22, blurb: 'WordPress e-commerce plugin', description: 'WooCommerce turns WordPress into a full online store — flexible, customisable, and cost-effective.' },
   { name: 'Figma', icon: '/images/tech/figma.svg', layer: 'design', lat: 34, lng: -158, blurb: 'Collaborative UI design tool', description: 'Figma is where we wireframe, prototype, and hand off pixel-perfect designs before a single line of code is written.' },
+  { name: 'Android', icon: '/images/tech/android.svg', layer: 'mobile', lat: -6, lng: 158, blurb: 'Google Play apps', description: 'We ship Android apps to Google Play, including the Ghanas Event app with Mobile Money checkout and push notifications.' },
+  { name: 'iOS', icon: '/images/tech/apple.svg', className: 'dark:invert', layer: 'mobile', lat: 62, lng: 168, blurb: 'App Store apps', description: 'We ship iOS apps to the App Store. Ghanas Event is live for iPhone with Face ID, QR tickets, and Mobile Money checkout.' },
 ];
 
 function latLngToXYZ(lat, lng) {
@@ -288,7 +291,7 @@ export default function InteractiveTechGlobe({ activeLayer, onLayerChange, onNod
                 }`}
                 style={{ width: markerSize, height: markerSize, padding: 4 }}
               >
-                <Image src={node.icon} alt="" width={markerSize - 12} height={markerSize - 12} className="object-contain pointer-events-none" />
+                <Image src={node.icon} alt="" width={markerSize - 12} height={markerSize - 12} className={`object-contain pointer-events-none ${node.className || ''}`} />
               </span>
               <span
                 className={`text-[8px] sm:text-[9px] font-semibold px-1.5 py-0.5 rounded-full border max-w-[4.5rem] truncate ${
@@ -338,7 +341,7 @@ export default function InteractiveTechGlobe({ activeLayer, onLayerChange, onNod
             </button>
             <div className="flex items-center gap-3 pr-6">
               <div className="w-11 h-11 rounded-xl bg-white dark:bg-gray-800 border border-orange-200 dark:border-orange-700 flex items-center justify-center shrink-0">
-                <Image src={selectedNode.icon} alt="" width={28} height={28} className="object-contain" />
+                <Image src={selectedNode.icon} alt="" width={28} height={28} className={`object-contain ${selectedNode.className || ''}`} />
               </div>
               <div>
                 <p className="font-bold text-gray-900 dark:text-white" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>
