@@ -215,6 +215,15 @@ const portfolioItems = [
     accent: "#0F6B3D"
   },
   {
+    title: "Celestial Radio",
+    category: "News & Media",
+    description: "Live Ghana, Africa and world internet radio — search stations, save favourites, and play Peace FM, Joy FM and more from one app.",
+    tech: ["Next.js", "React", "Tailwind CSS", "PWA", "Vercel"],
+    link: "/portfolio/celestial-radio",
+    image: "/portfolio/desktop/celestial-radio.png",
+    accent: "#F5C542"
+  },
+  {
     title: "ACT Campus Care 2.0",
     category: "Healthcare & Wellness",
     description: "A culturally grounded VR wellness platform helping HBCU students regulate stress and build resilience.",
@@ -274,7 +283,7 @@ const portfolioItems = [
     description: "Modern furniture e-commerce with mattresses, sofas, chairs, tables, and home decor.",
     tech: ["Next.js", "TypeScript", "Framer Motion", "Tailwind CSS"],
     link: "/portfolio/myspace-furniture",
-    image: "/portfolio/desktop/myspace.webp",
+    image: "/portfolio/desktop/myspace.png",
     accent: "#f97316"
   },
   {

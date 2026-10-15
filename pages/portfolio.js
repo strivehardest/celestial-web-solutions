@@ -16,6 +16,7 @@ const PLACEHOLDER_IMAGE = "/png/screenshots/placeholder.svg";
 
 const PORTFOLIO_IMAGES = {
   "ghana-logos": "/png/screenshots/GhanaLogos.webp",
+  "celestial-radio": "/png/screenshots/celestial-radio.webp",
   "act-campus-care": "/png/screenshots/act-campus-care.webp",
   "ghanas-event": "/png/screenshots/ghanas-event.webp",
   "ghanas-event-app": "/mobile-app-ghanasevent/phone-01-welcome.png",
@@ -28,7 +29,7 @@ const PORTFOLIO_IMAGES = {
   "elolo-agbleke-website": "/png/screenshots/elolo-full.webp",
   "finance-tracker": "/png/screenshots/finance-tracker.png",
   "ghana-updates-online": "/png/screenshots/ghanaupdates-full.webp",
-  "myspace-furniture": "/png/screenshots/myspace-furniture.webp",
+  "myspace-furniture": "/png/screenshots/myyspace.webp",
   "valyd-homes": "/png/screenshots/valyd.webp",
   "personal-portfolio-website": "/png/screenshots/waliu-portfolio-full.webp",
   "tru-seeds-africa": "/png/screenshots/truseeds.webp",

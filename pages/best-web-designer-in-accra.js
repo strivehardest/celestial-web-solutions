@@ -26,6 +26,7 @@ const highlights = [
 
 const heroProjects = [
   { image: '/portfolio/desktop/ghanalogos-desktop.png', title: 'GhanaLogos', bgColor: 'from-emerald-950 via-green-900 to-stone-900' },
+  { image: '/portfolio/desktop/celestial-radio.png', title: 'Celestial Radio', bgColor: 'from-slate-950 via-indigo-950 to-amber-900' },
   { image: '/portfolio/desktop/ghanas-event.png', title: 'Ghanas Event', bgColor: 'from-amber-950 via-yellow-900 to-stone-900' },
   { image: '/portfolio/desktop/ghanas-event-blog.png', title: 'Ghanas Event Blog', bgColor: 'from-slate-950 via-blue-950 to-indigo-900' },
   { image: '/portfolio/desktop/copti.webp', title: 'Conference of Principals of Technical Institutions', bgColor: 'from-blue-400 via-blue-500 to-blue-600' },
@@ -51,6 +52,13 @@ const portfolioHighlights = [
     description: 'Official Ghanaian brand logos in SVG and PNG, with category browse, instant search, Premium 4K exports, and a developer API.',
     image: '/png/projects/ghanalogos-all.png',
     slug: 'ghana-logos'
+  },
+  {
+    title: 'Celestial Radio',
+    category: 'News & Media',
+    description: 'Live Ghana, Africa and world internet radio with search, saved stations, and a persistent player.',
+    image: '/png/projects/celestial-radio.png',
+    slug: 'celestial-radio'
   },
   {
     title: 'Ghanas Event',
