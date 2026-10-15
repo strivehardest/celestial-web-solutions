@@ -278,7 +278,8 @@ export default function Contact() {
                   <h3 className="font-bold text-gray-900 dark:text-white mb-2 text-lg" style={{ fontFamily: 'Bricolage Grotesque, sans-serif' }}>Offices</h3>
                   <p className="text-gray-600 dark:text-gray-300 font-medium text-sm leading-relaxed" style={{ fontFamily: 'Albert Sans, sans-serif' }}>
                     Keta, Volta Region<br />
-                    <span className="text-orange-500 font-semibold">+</span> Accra, Greater Accra
+                    <span className="text-orange-500 font-semibold">+</span> Accra, Greater Accra<br />
+                    <span className="text-orange-500 font-semibold">+</span> Remote worldwide
                   </p>
                 </motion.div>
 

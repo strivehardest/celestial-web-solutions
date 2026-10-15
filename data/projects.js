@@ -176,7 +176,7 @@ const projects = [
     client: "Ghanas Event",
     clientCountry: "Ghana",
     description:
-      "The Ghanas Event mobile app is a Capacitor-powered native build of the live platform for Android and iOS — discover concerts, festivals, and local gatherings, buy tickets with Mobile Money, and scan secure QR codes on the go. It adds native fingerprint and face unlock and push notifications through Firebase Cloud Messaging. Android is live on Google Play; iOS / App Store is in progress.",
+      "The Ghanas Event mobile app is a Capacitor-powered native build of the live platform for Android and iOS — discover concerts, festivals, and local gatherings, buy tickets with Mobile Money, and scan secure QR codes on the go. It adds native fingerprint and face unlock and push notifications through Firebase Cloud Messaging. Android is live on Google Play and iOS is live on the App Store.",
     image: "/mobile-app-ghanasevent/phone-01-welcome.png",
     desktopImage: null,
     mobileImage: "/mobile-app-ghanasevent/phone-01-welcome.png",
@@ -194,12 +194,12 @@ const projects = [
     ],
     link: "https://www.ghanasevent.com",
     siteStatus: "live",
-    siteNote: "Android app live on Google Play; App Store / iOS pending. Web platform is live.",
+    siteNote: "Live on Google Play and the App Store. Web platform is live.",
     process: [
       { title: "Discovery & Planning", desc: "Scoped a native shell around the live platform with biometric unlock, push, and Mobile Money flows for Ghana." },
       { title: "Design & Prototyping", desc: "Designed mobile UI for discovery, tickets, check-in, alerts, and account settings in light and dark themes." },
       { title: "Capacitor Build & Native Plugins", desc: "Wrapped the Next.js app with Capacitor 8 and wired native biometrics, push notifications, haptics, and sharing." },
-      { title: "Android Launch", desc: "Published the Android app to Google Play with Firebase Cloud Messaging push. iOS / App Store is in progress." }
+      { title: "Store Launch", desc: "Published Android to Google Play on Friday, 11 September 2026 and iOS to the App Store on Tuesday, 13 October 2026. Combined duration is 12 weeks." }
     ],
     tech: ["Next.js 16", "React 19", "TypeScript", "Tailwind CSS", "Capacitor", "Supabase", "Paystack", "Firebase Cloud Messaging", "Android", "App Store"],
     techLogos: [
@@ -215,8 +215,8 @@ const projects = [
       { name: "App Store", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/apple/apple-original.svg" },
     ],
     startDate: "2026-08-01",
-    completionDate: "2026-09-11",
-    duration: "6 weeks (Android)",
+    completionDate: "2026-10-13",
+    duration: "12 weeks",
     features: [
       "Browse Events Near You",
       "Search and Category Filters",
@@ -228,19 +228,19 @@ const projects = [
       "Push Notifications via Firebase Cloud Messaging",
       "Light and Dark Themes",
       "Organiser Event Tools",
-      "Android on Google Play (iOS in progress)",
+      "Live on Google Play and the App Store",
       "Shares the Live Ghanas Event Platform",
     ],
     app: {
       title: "Ghanas Event App",
       description:
-        "Built with Capacitor around the live platform, with native biometric unlock and Firebase Cloud Messaging push. The Android app is live on Google Play; iOS / App Store is in progress — use the live web app meanwhile.",
+        "Built with Capacitor around the live platform, with native biometric unlock and Firebase Cloud Messaging push. Live on Google Play and the App Store.",
       comingSoon: false,
       link: "https://www.ghanasevent.com",
       linkLabel: "Open web app",
       playStoreUrl: "https://play.google.com/store/apps/details?id=com.ghanasevent.app",
-      appStoreUrl: null,
-      platforms: ["Android (Google Play)", "iOS (pending)"],
+      appStoreUrl: "https://apps.apple.com/app/ghanas-event/id6818324205",
+      platforms: ["Android (Google Play)", "iOS (App Store)"],
     },
   },
   {

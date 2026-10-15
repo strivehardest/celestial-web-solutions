@@ -285,7 +285,12 @@ const PortfolioCard = ({ project, image, index }) => {
               <span className="inline-flex items-center rounded-full bg-orange-500/10 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-orange-600 dark:text-orange-400">
                 Mobile App
               </span>
-              {project.app?.comingSoon && (
+              {project.app?.playStoreUrl && !project.app?.appStoreUrl && (
+                <span className="inline-flex items-center rounded-full bg-gray-100 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-gray-600 dark:bg-gray-800 dark:text-gray-300">
+                  App Store soon
+                </span>
+              )}
+              {!project.app?.playStoreUrl && !project.app?.appStoreUrl && (
                 <span className="inline-flex items-center rounded-full bg-gray-100 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-gray-600 dark:bg-gray-800 dark:text-gray-300">
                   Get App soon
                 </span>

@@ -74,12 +74,12 @@ const SEOHead = () => {
             "url": "https://www.celestialwebsolutions.net",
             "telephone": "+233-530-505-031",
             "email": "info@celestialwebsolutions.net",
-            "areaServed": ["Accra", "Keta", "Ghana", "West Africa"],
+            "areaServed": ["Keta", "Accra", "Ghana", "Worldwide"],
             "address": {
               "@type": "PostalAddress",
               "streetAddress": "235 Agblor Link, Keta",
-              "addressLocality": "Accra",
-              "addressRegion": "Greater Accra",
+              "addressLocality": "Keta",
+              "addressRegion": "Volta Region",
               "postalCode": "DS 1742",
               "addressCountry": "GH"
             }
@@ -179,6 +179,15 @@ const techStackCategories = [
       { name: 'TailwindCSS', icon: '/images/tailwindcss-logo.png' },
       { name: 'Sanity CMS', icon: '/images/tech/sanity.svg' },
       { name: 'WordPress', icon: '/images/tech/wordpress.svg' }
+    ]
+  },
+  {
+    title: "Android & iOS",
+    description: "Native mobile apps for Google Play and the App Store",
+    color: "from-green-500 to-gray-700",
+    items: [
+      { name: 'Android', icon: '/images/tech/android.svg' },
+      { name: 'iOS', icon: '/images/tech/apple.svg', className: 'dark:invert' }
     ]
   }
 ];
@@ -785,7 +794,7 @@ const IndexPage = ({ latestPosts = [] }) => {
                     {index === 1 && (<><p className="text-gray-600 dark:text-gray-300 text-lg leading-relaxed mb-2" style={{ fontFamily: 'Albert Sans, sans-serif' }}>As a reliable web development company in Ghana, we build custom websites and web applications that are secure, scalable, and performance-driven.</p><p className="text-gray-600 dark:text-gray-300 text-lg leading-relaxed" style={{ fontFamily: 'Albert Sans, sans-serif' }}>We work with modern technologies to deliver reliable web solutions for businesses looking to grow online in Ghana and beyond.</p></>)}
                     {index === 2 && (<><p className="text-gray-600 dark:text-gray-300 text-lg leading-relaxed mb-2" style={{ fontFamily: 'Albert Sans, sans-serif' }}>Looking to sell online? We provide e-commerce website development in Ghana for businesses that want to reach more customers and increase sales.</p><ul className="list-disc pl-6 text-gray-600 dark:text-gray-300 text-lg mb-2" style={{ fontFamily: 'Albert Sans, sans-serif' }}><li>Online stores</li><li>Secure payment integration</li><li>Product management systems</li><li>Mobile-friendly shopping experiences</li></ul></>)}
                     {index === 3 && (<><p className="text-gray-600 dark:text-gray-300 text-lg leading-relaxed mb-2" style={{ fontFamily: 'Albert Sans, sans-serif' }}>A great website is useless without visibility. Our SEO services in Ghana help businesses rank higher on Google and attract organic traffic.</p><ul className="list-disc pl-6 text-gray-600 dark:text-gray-300 text-lg mb-2" style={{ fontFamily: 'Albert Sans, sans-serif' }}><li>On-page SEO optimization</li><li>Keyword research</li><li>Technical SEO</li><li>Local SEO for Ghanaian businesses</li></ul></>)}
-                    {index === 4 && (<><p className="text-gray-600 dark:text-gray-300 text-lg leading-relaxed mb-2" style={{ fontFamily: 'Albert Sans, sans-serif' }}>Put your business in your customers' pockets. We build mobile apps for Android and iOS from one cross-platform codebase, like the Ghanas Event app now live on Google Play.</p><ul className="list-disc pl-6 text-gray-600 dark:text-gray-300 text-lg mb-2" style={{ fontFamily: 'Albert Sans, sans-serif' }}><li>Android and iOS apps</li><li>Mobile Money and card payments</li><li>Push notifications and admin dashboards</li><li>Play Store and App Store publishing</li></ul></>)}
+                    {index === 4 && (<><p className="text-gray-600 dark:text-gray-300 text-lg leading-relaxed mb-2" style={{ fontFamily: 'Albert Sans, sans-serif' }}>Put your business in your customers' pockets. We build mobile apps for Android and iOS from one cross-platform codebase, like the Ghanas Event app now live on Google Play and the App Store.</p><ul className="list-disc pl-6 text-gray-600 dark:text-gray-300 text-lg mb-2" style={{ fontFamily: 'Albert Sans, sans-serif' }}><li>Android and iOS apps</li><li>Mobile Money and card payments</li><li>Push notifications and admin dashboards</li><li>Play Store and App Store publishing</li></ul></>)}
                     <div className="pt-2">
                       <GlassButton href={service.link} variant="orange">Explore {service.title}</GlassButton>
                     </div>
@@ -920,7 +929,7 @@ const IndexPage = ({ latestPosts = [] }) => {
 
             <TechStackNetwork />
 
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-8 mb-12">
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-8 mb-12">
               {techStackCategories.map((category, index) => (
                 <motion.div key={category.title} className="text-center" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: index * 0.1 }}>
                   <div className={`h-1 w-full bg-gradient-to-r ${category.color} rounded-full mb-4`} />
@@ -945,7 +954,7 @@ const IndexPage = ({ latestPosts = [] }) => {
                       {category.items.map((item, itemIndex) => (
                         <motion.div key={`${item.name}-${index}-${itemIndex}`} className="flex flex-col items-center w-16 sm:w-20 flex-shrink-0" whileHover={{ y: -5, scale: 1.05 }} transition={{ duration: 0.2 }}>
                           <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-xl bg-gray-100 dark:bg-gray-800 p-2 sm:p-3 flex items-center justify-center hover:shadow-xl hover:bg-orange-50 dark:hover:bg-gray-700 transition-all duration-300 group">
-                            <Image src={item.icon} alt={item.name} width={40} height={40} className="max-w-8 max-h-8 sm:max-w-10 sm:max-h-10 object-contain group-hover:scale-110 transition-transform duration-300" onError={(e) => { e.target.style.display = 'none'; }} />
+                            <Image src={item.icon} alt={item.name} width={40} height={40} className={`max-w-8 max-h-8 sm:max-w-10 sm:max-h-10 object-contain group-hover:scale-110 transition-transform duration-300 ${item.className || ''}`} onError={(e) => { e.target.style.display = 'none'; }} />
                           </div>
                           <span className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 mt-2 font-medium text-center">{item.name}</span>
                         </motion.div>
