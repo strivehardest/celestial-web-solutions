@@ -635,7 +635,8 @@ const projects = [
     mobileImage: "/portfolio/mobile/ghanaupdates.png",
     screenshot: "/png/screenshots/ghanaupdates-full.webp",
     link: "https://ghanaupdates.online",
-    siteStatus: "live",
+    siteStatus: "inactive",
+    siteNote: "Live domain currently unavailable — screenshots below show the completed build.",
     process: [
       { title: "Discovery & Planning", desc: "Clarify goals, audience, content, and success metrics with the client." },
       { title: "Design & Prototyping", desc: "Map information architecture, wireframes, and polished UI direction." },
@@ -720,7 +721,8 @@ const projects = [
     mobileImage: "/portfolio/mobile/elolo.png",
     screenshot: "/png/screenshots/elolo-full.webp",
     link: "https://eloloagbleke.com",
-    siteStatus: "live",
+    siteStatus: "inactive",
+    siteNote: "Live domain currently unavailable — screenshots below show the completed build.",
     process: [
       { title: "Discovery & Planning", desc: "Clarify goals, audience, content, and success metrics with the client." },
       { title: "Design & Prototyping", desc: "Map information architecture, wireframes, and polished UI direction." },
