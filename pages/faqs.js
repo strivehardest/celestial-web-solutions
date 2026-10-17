@@ -99,7 +99,7 @@ export default function FAQs() {
         },
         {
           question: "Do you build mobile apps for Android and iOS?",
-          answer: "Yes! Our App Development service builds cross-platform Android and iOS apps with React Native and Expo, including Mobile Money payments via Paystack, push notifications, admin dashboards and Play Store / App Store publishing. Apps start from GH₵12,000 (Starter), GH₵20,000 (Standard) and GH₵35,000 (Advanced), and typically take 6–12 weeks. See the Ghanas Event app, live on Google Play, in our portfolio."
+          answer: "Yes! Our App Development service builds cross-platform Android and iOS apps with React Native and Expo, including Mobile Money payments via Paystack, push notifications, admin dashboards and Play Store / App Store publishing. Apps start from GH₵12,000 (Starter), GH₵20,000 (Standard) and GH₵35,000 (Advanced), and typically take 6–12 weeks. See the Ghanas Event app, live on Google Play and the Apple App Store, in our portfolio."
         },
         {
           question: "Do you provide website maintenance?",
