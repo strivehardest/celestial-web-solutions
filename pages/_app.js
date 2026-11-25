@@ -14,6 +14,7 @@ const RequestServicePromo = dynamic(() => import('../components/RequestServicePr
 import ReadingProgressBar from '../components/ui/ReadingProgressBar'; // moved to top, correct path
 
 const GA_TRACKING_ID = 'G-73D6Q2P389';
+const GOOGLE_ADS_ID = 'AW-18461845593';
 const TIKTOK_PIXEL_ID = 'D6E4AVRC77UAAN008960';
 
 function MyApp({ Component, pageProps }) {
@@ -101,6 +102,7 @@ function MyApp({ Component, pageProps }) {
           gtag('config', '${GA_TRACKING_ID}', {
             page_path: window.location.pathname,
           });
+          gtag('config', '${GOOGLE_ADS_ID}');
         `}
       </Script>
 
