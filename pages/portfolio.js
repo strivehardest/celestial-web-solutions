@@ -148,15 +148,11 @@ function matchesFilter(p, filter) {
   }
 }
 
+// Hide the agency's own marketing site from the client grid — not product apps
+// we ship under Celestial Web Solutions (e.g. SikaLens: client + description mention CWS).
 function excludeOwn(p) {
-  const t = (p.title       || "").toLowerCase();
-  const c = (p.client      || "").toLowerCase();
-  const d = (p.description || "").toLowerCase();
-  return !(
-    t.includes("celestial web solutions") ||
-    c.includes("celestial web solutions") ||
-    d.includes("celestial web solutions")
-  );
+  const t = (p.title || "").toLowerCase();
+  return !t.includes("celestial web solutions");
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
