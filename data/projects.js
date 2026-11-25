@@ -117,7 +117,7 @@ const projects = [
     client: "Ghanas Event",
     clientCountry: "Ghana",
     description:
-      "The Ghanas Event mobile app is a React Native / Expo app for Android and iOS — discover concerts, festivals, tourist sites, and local gatherings across Ghana, buy tickets with Mobile Money, and scan secure QR codes at the door. It adds native Face ID / fingerprint unlock, organiser dashboards, and push notifications through Firebase Cloud Messaging. Android is live on Google Play; iOS / App Store is in progress.",
+      "The Ghanas Event mobile app is a React Native / Expo app for Android and iOS — discover concerts, festivals, tourist sites, and local gatherings across Ghana, buy tickets with Mobile Money, and scan secure QR codes at the door. It adds native Face ID / fingerprint unlock, organiser dashboards, and push notifications through Firebase Cloud Messaging. Live on Google Play and the App Store.",
     image: "/images/stores/ghanas-event-app-home.jpg",
     desktopImage: null,
     mobileImage: "/images/stores/ghanas-event-app-home.jpg",
@@ -138,14 +138,14 @@ const projects = [
     ],
     link: "https://www.ghanasevent.com",
     siteStatus: "live",
-    siteNote: "Android app live on Google Play; App Store / iOS pending. Web platform is live.",
+    siteNote: "Android and iOS apps live on Google Play and the App Store. Web platform is live.",
     process: [
       { title: "Discovery & Planning", desc: "Scoped a React Native / Expo app for event discovery, ticketing, organiser tools, biometric unlock, push, and Mobile Money flows for Ghana." },
       { title: "Design & Prototyping", desc: "Designed mobile UI for discovery, event detail, tickets, QR scan, organiser dashboard, tourist sites, and account settings in light and dark themes." },
       { title: "Expo Build & Native Features", desc: "Built with Expo (React Native) and TypeScript, wiring Supabase, Paystack checkout, Face ID / fingerprint unlock, Firebase Cloud Messaging push, and EAS builds for the stores." },
-      { title: "Android Launch", desc: "Published the Android app to Google Play with Firebase Cloud Messaging push. iOS / App Store is in progress." }
+      { title: "Store Launch", desc: "Published to Google Play and the App Store with Firebase Cloud Messaging push. Web platform remains live at ghanasevent.com." }
     ],
-    tech: ["React Native", "Expo", "TypeScript", "Supabase", "Paystack", "Firebase Cloud Messaging", "Android", "App Store"],
+    tech: ["React Native", "Expo", "TypeScript", "Supabase", "Paystack", "Firebase Cloud Messaging", "Android", "iOS", "App Store", "Google Play"],
     techLogos: [
       { name: "React Native", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" },
       { name: "Expo", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/expo/expo-original.svg" },
@@ -157,8 +157,8 @@ const projects = [
       { name: "App Store", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/apple/apple-original.svg" },
     ],
     startDate: "2026-08-01",
-    completionDate: "2026-09-11",
-    duration: "6 weeks (Android)",
+    completionDate: "2026-10-13",
+    duration: "10 weeks",
     features: [
       "Browse Events Near You",
       "Search and Category Filters",
@@ -171,18 +171,18 @@ const projects = [
       "Push Notifications via Firebase Cloud Messaging",
       "Light and Dark Themes",
       "Organiser Dashboard, Sales and Payouts",
-      "Android on Google Play (iOS in progress)",
+      "Live on Google Play and the App Store",
     ],
     app: {
       title: "Ghanas Event App",
       description:
-        "Built with Expo (React Native), with native biometric unlock and Firebase Cloud Messaging push. The Android app is live on Google Play; iOS / App Store is in progress — use the live web app meanwhile.",
+        "Built with Expo (React Native), with native biometric unlock and Firebase Cloud Messaging push. Live on Google Play and the App Store.",
       comingSoon: false,
       link: "https://www.ghanasevent.com",
       linkLabel: "Open web app",
       playStoreUrl: "https://play.google.com/store/apps/details?id=com.ghanasevent.app",
-      appStoreUrl: null,
-      platforms: ["Android (Google Play)", "iOS (pending)"],
+      appStoreUrl: "https://apps.apple.com/app/id6818324205",
+      platforms: ["Android (Google Play)", "iOS (App Store)"],
     },
   },
   {
