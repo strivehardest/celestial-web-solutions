@@ -22,6 +22,8 @@ const GlassButton = ({ children, href, variant = 'light', external = false }) =>
 };
 
 const PAGE_URL = 'https://www.celestialwebsolutions.net/web-design-company-in-ghana/app-development-in-ghana';
+const SIKALENS_PLAY_URL = 'https://play.google.com/store/apps/details?id=com.sikalens.app';
+const SIKALENS_APP_STORE_URL = 'https://apps.apple.com/app/id6826582927';
 const PLAY_STORE_URL = 'https://play.google.com/store/apps/details?id=com.ghanasevent.app';
 
 const service = {
@@ -267,6 +269,51 @@ export default function AppDevelopmentServicePage() {
               >
                 <p className="text-xs font-semibold uppercase tracking-[0.14em] text-orange-600 dark:text-orange-400 mb-3" style={{ fontFamily: 'Albert Sans, sans-serif' }}>
                   Featured app project
+                </p>
+                <div className="flex flex-col sm:flex-row gap-6 items-start">
+                  <img
+                    src="/images/stores/sikalens-02-home.jpeg"
+                    alt="SikaLens home screen — MoMo and bank balances"
+                    className="w-40 rounded-2xl border border-gray-200 dark:border-gray-700 shadow-md flex-shrink-0"
+                    loading="lazy"
+                  />
+                  <div>
+                    <h2
+                      className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white mb-3"
+                      style={{ fontFamily: "Bricolage Grotesque, sans-serif" }}
+                    >
+                      SikaLens
+                    </h2>
+                    <p className="text-gray-700 dark:text-gray-300 mb-5" style={{ fontFamily: 'Albert Sans, sans-serif' }}>
+                      Our own offline-first MoMo and bank expense tracker for Ghana — paste MTN, Telecel or AirtelTigo SMS, keep GH₵ wallets in sync, set budgets and review insights, all PIN-locked on the phone with no cloud account. Built with React Native and Expo. Live on Google Play and the App Store.
+                    </p>
+                    <div className="flex flex-wrap items-center gap-4">
+                      <a href={SIKALENS_PLAY_URL} target="_blank" rel="noopener noreferrer" aria-label="Get SikaLens on Google Play">
+                        <img src="/images/stores/google-play-badge.png" alt="Get it on Google Play" className="h-12 w-auto" loading="lazy" />
+                      </a>
+                      <a href={SIKALENS_APP_STORE_URL} target="_blank" rel="noopener noreferrer" aria-label="Download SikaLens on the App Store">
+                        <img src="/images/stores/app-store-badge.svg" alt="Download on the App Store" className="h-12 w-auto" loading="lazy" />
+                      </a>
+                      <Link
+                        href="/portfolio/sikalens"
+                        className="inline-flex items-center gap-2 text-orange-600 dark:text-orange-400 font-semibold hover:underline"
+                        style={{ fontFamily: 'Albert Sans, sans-serif' }}
+                      >
+                        View case study <ArrowRight className="w-4 h-4" />
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5 }}
+                className="bg-white dark:bg-gray-900 rounded-2xl p-8 shadow-lg border border-gray-100 dark:border-gray-800"
+              >
+                <p className="text-xs font-semibold uppercase tracking-[0.14em] text-orange-600 dark:text-orange-400 mb-3" style={{ fontFamily: 'Albert Sans, sans-serif' }}>
+                  Also shipping
                 </p>
                 <div className="flex flex-col sm:flex-row gap-6 items-start">
                   <img

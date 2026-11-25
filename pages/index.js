@@ -197,6 +197,15 @@ const typingPhrases = [
 // ─────────────────────────────────────────────
 const portfolioItems = [
   {
+    title: "SikaLens",
+    category: "Mobile App · Finance",
+    description: "Offline MoMo & bank expense tracker for Ghana — paste SMS, keep GH₵ wallets true, PIN-locked on your phone.",
+    tech: ["React Native", "Expo", "TypeScript", "Android", "iOS"],
+    link: "/portfolio/sikalens",
+    image: "/images/stores/sikalens-02-home.jpeg",
+    accent: "#0E6A62"
+  },
+  {
     title: "ACT Campus Care 2.0",
     category: "Healthcare & Wellness",
     description: "A culturally grounded VR wellness platform helping HBCU students regulate stress and build resilience.",

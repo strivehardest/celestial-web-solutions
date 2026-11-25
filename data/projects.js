@@ -186,6 +186,78 @@ const projects = [
     },
   },
   {
+    title: "SikaLens",
+    slug: "sikalens",
+    youtubeId: "",
+    category: "mobile app",
+    client: "Celestial Web Solutions",
+    clientCountry: "Ghana",
+    description:
+      "SikaLens is an offline-first MoMo and bank expense tracker for Ghana, built for and by Celestial Web Solutions. Paste MTN, Telecel, or AirtelTigo SMS, keep GH₵ wallets in sync, set budgets, and review insights — PIN-locked on your phone with no cloud account. Live on Google Play and the App Store at sikalens.app.",
+    image: "/images/stores/sikalens-02-home.jpeg",
+    desktopImage: null,
+    mobileImage: "/images/stores/sikalens-02-home.jpeg",
+    screenshot: "",
+    preFramed: true,
+    mobileScreenshots: [
+      { src: "/images/stores/sikalens-02-home.jpeg", label: "Home" },
+      { src: "/images/stores/sikalens-01-login.jpeg", label: "PIN lock" },
+      { src: "/images/stores/sikalens-07-wallets.jpeg", label: "Wallets" },
+      { src: "/images/stores/sikalens-03-activity.jpeg", label: "Activity" },
+      { src: "/images/stores/sikalens-04-budgets.jpeg", label: "Budgets" },
+      { src: "/images/stores/sikalens-05-insights.jpeg", label: "Insights" },
+      { src: "/images/stores/sikalens-06-settings.jpeg", label: "Settings" },
+    ],
+    link: "https://sikalens.app",
+    siteStatus: "live",
+    siteNote: "Android and iOS apps live on Google Play and the App Store. Product site: sikalens.app.",
+    process: [
+      { title: "Discovery & Planning", desc: "Scoped a Ghana-first offline ledger for MoMo SMS parsing, multi-wallet balances, PIN/biometrics, and store publishing for Android and iOS." },
+      { title: "Design & Prototyping", desc: "Designed Lagoon-themed screens for PIN lock, home balances, activity, budgets, insights, settings, and wallet management around GH₵ and Ghana MoMo networks." },
+      { title: "Offline-first Build", desc: "Built a React Native / Expo app with on-device storage, MoMo SMS paste-and-parse, wallets that update from opening balances, budgets, insights graphs, encrypted backups, and CSV/PDF export." },
+      { title: "Store Launch", desc: "Published to Google Play and the App Store with Premium plans via store billing. Marketing site and support live at sikalens.app." }
+    ],
+    tech: ["React Native", "Expo", "TypeScript", "Expo Secure Store", "Biometrics", "Android", "iOS", "App Store", "Google Play"],
+    techLogos: [
+      { name: "React Native", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" },
+      { name: "Expo", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/expo/expo-original.svg" },
+      { name: "TypeScript", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" },
+      { name: "Android", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/android/android-original.svg" },
+      { name: "iOS", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/apple/apple-original.svg" },
+      { name: "App Store", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/apple/apple-original.svg" },
+      { name: "Google Play", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/google/google-original.svg" },
+    ],
+    startDate: "2026-10-01",
+    completionDate: "2026-11-24",
+    duration: "8 weeks",
+    features: [
+      "Paste MoMo SMS (MTN, Telecel, AirtelTigo) with amount, fee, and direction parsing",
+      "Multi-wallet MoMo, bank, and cash books in GH₵",
+      "Opening balances that stay in sync with every send, receive, and cash-out",
+      "PIN lock with optional fingerprint / Face ID",
+      "Budgets matched to Ghana life (airtime, bills, business, cash-out)",
+      "On-device monthly insights and spend graphs",
+      "Encrypted passphrase backups you create and share yourself",
+      "CSV and PDF export (raw MoMo SMS omitted from CSV)",
+      "Optional live currency converter; ledger stays offline-first",
+      "Light, dark, and Lagoon themes (Premium colour washes optional)",
+      "No cloud account — ledger stays in on-device storage",
+      "Free core tracking plus Premium history, wallets, themes, and exports",
+      "Live on Google Play and the App Store",
+    ],
+    app: {
+      title: "SikaLens",
+      description:
+        "Offline MoMo & bank tracker for Ghana. Paste SMS, keep wallets true, and lock the ledger with a PIN — live on Google Play and the App Store.",
+      comingSoon: false,
+      link: "https://sikalens.app",
+      linkLabel: "Open sikalens.app",
+      playStoreUrl: "https://play.google.com/store/apps/details?id=com.sikalens.app",
+      appStoreUrl: "https://apps.apple.com/app/id6826582927",
+      platforms: ["Android (Google Play)", "iOS (App Store)"],
+    },
+  },
+  {
     title: "Ghanas Event Blog",
     slug: "ghanas-event-blog",
     youtubeId: "",
@@ -984,6 +1056,7 @@ const projects = [
 
 // Display order for compact showcases such as the footer. Inactive sites are skipped.
 export const featuredProjectSlugs = [
+  "sikalens",
   "act-campus-care",
   "ghanas-event",
   "ghanas-event-app",
@@ -991,7 +1064,6 @@ export const featuredProjectSlugs = [
   "copti",
   "afrocinema",
   "myspace-furniture",
-  "celestial-shopping",
 ];
 
 export function getFeaturedProjects(limit = featuredProjectSlugs.length) {
