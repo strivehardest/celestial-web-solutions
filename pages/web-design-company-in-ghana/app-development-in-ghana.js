@@ -473,7 +473,7 @@ export default function AppDevelopmentServicePage() {
                           <Users className="w-5 h-5" />
                         </div>
                         <div>
-                          <p className="font-semibold" style={{ fontFamily: 'Albert Sans, sans-serif' }}>Live on Google Play</p>
+                          <p className="font-semibold" style={{ fontFamily: 'Albert Sans, sans-serif' }}>Live on Both Stores</p>
                           <p className="text-orange-200 text-sm">Ghanas Event App</p>
                         </div>
                       </div>
