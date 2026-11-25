@@ -317,7 +317,7 @@ export default function AppDevelopmentServicePage() {
                 </p>
                 <div className="flex flex-col sm:flex-row gap-6 items-start">
                   <img
-                    src="/mobile-app-ghanasevent/phone-03-home.png"
+                    src="/images/stores/ghanas-event-app-home.jpg"
                     alt="Ghanas Event mobile app home screen"
                     className="w-40 rounded-2xl border border-gray-200 dark:border-gray-700 shadow-md flex-shrink-0"
                     loading="lazy"
@@ -330,7 +330,7 @@ export default function AppDevelopmentServicePage() {
                       Ghanas Event Mobile App
                     </h2>
                     <p className="text-gray-700 dark:text-gray-300 mb-5" style={{ fontFamily: 'Albert Sans, sans-serif' }}>
-                      An event discovery and ticketing app for Ghana, built with Capacitor, Next.js, Supabase and Paystack, with native biometric unlock and Firebase push notifications. Attendees find events, pay with Mobile Money and carry secure QR tickets on their phones. The Android app is live on Google Play; iOS is coming soon.
+                      An event discovery and ticketing app for Ghana, built with Expo (React Native), TypeScript, Supabase and Paystack, with native biometric unlock and Firebase push notifications. Attendees find events, pay with Mobile Money and carry secure QR tickets on their phones. The Android app is live on Google Play; iOS is coming soon.
                     </p>
                     <div className="flex flex-wrap items-center gap-4">
                       <a href={PLAY_STORE_URL} target="_blank" rel="noopener noreferrer" aria-label="Get Ghanas Event on Google Play">
