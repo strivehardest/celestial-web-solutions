@@ -616,9 +616,12 @@ export default function ProjectDetail({ project, currentIndex, prevProject: prev
     try {
       const parts = String(dateString).split('-').map(Number);
       const date = parts.length === 3 && parts.every(Boolean)
-        ? new Date(parts[0], parts[1] - 1, parts[2])
+        ? new Date(Date.UTC(parts[0], parts[1] - 1, parts[2]))
         : new Date(dateString);
-      return date.toLocaleDateString('en-GB', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+      // Deterministic en-GB-style string (avoid server/client toLocaleDateString comma mismatch).
+      const weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+      const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+      return `${weekdays[date.getUTCDay()]}, ${date.getUTCDate()} ${months[date.getUTCMonth()]} ${date.getUTCFullYear()}`;
     } catch { return dateString; }
   };
 
